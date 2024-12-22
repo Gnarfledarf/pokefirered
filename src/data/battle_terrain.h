@@ -13,7 +13,7 @@ const struct BattleTerrain gBattleTerrainInfo[BATTLE_TERRAIN_COUNT] =
 {
     [BATTLE_TERRAIN_GRASS] =
     {
-        .name = _("NORMAL - GRASS"),
+        .name = _("Normal - Grass"),
     #if B_NATURE_POWER_MOVES >= GEN_6
         .naturePower = MOVE_ENERGY_BALL,
     #elif B_NATURE_POWER_MOVES >= GEN_4
@@ -27,7 +27,7 @@ const struct BattleTerrain gBattleTerrainInfo[BATTLE_TERRAIN_COUNT] =
     },
     [BATTLE_TERRAIN_LONG_GRASS] =
     {
-        .name = _("NORMAL - LONG GRASS      "),
+        .name = _("Normal - Long Grass      "),
     #if B_NATURE_POWER_MOVES >= GEN_6
         .naturePower = MOVE_ENERGY_BALL,
     #elif B_NATURE_POWER_MOVES >= GEN_4
@@ -41,7 +41,7 @@ const struct BattleTerrain gBattleTerrainInfo[BATTLE_TERRAIN_COUNT] =
     },
     [BATTLE_TERRAIN_SAND] =
     {
-        .name = _("NORMAL - SAND            "),
+        .name = _("Normal - Sand            "),
         .naturePower = B_NATURE_POWER_MOVES >= GEN_6 ? MOVE_EARTH_POWER : MOVE_EARTHQUAKE,
         .secretPowerEffect = MOVE_EFFECT_ACC_MINUS_1,
         .camouflageType = TYPE_GROUND,
@@ -49,7 +49,7 @@ const struct BattleTerrain gBattleTerrainInfo[BATTLE_TERRAIN_COUNT] =
     },
     [BATTLE_TERRAIN_UNDERWATER] =
     {
-        .name = _("NORMAL - UNDERWATER      "),
+        .name = _("Normal - Underwater      "),
         .naturePower = MOVE_HYDRO_PUMP,
         .secretPowerEffect = B_SECRET_POWER_EFFECT >= GEN_6 ? MOVE_EFFECT_ATK_MINUS_1 : MOVE_EFFECT_DEF_MINUS_1,
         .camouflageType = TYPE_WATER,
@@ -57,7 +57,7 @@ const struct BattleTerrain gBattleTerrainInfo[BATTLE_TERRAIN_COUNT] =
     },
     [BATTLE_TERRAIN_WATER] =
     {
-        .name = _("NORMAL - WATER           "),
+        .name = _("Normal - Water           "),
         .naturePower = B_NATURE_POWER_MOVES >= GEN_4 ? MOVE_HYDRO_PUMP : MOVE_SURF,
         .secretPowerEffect = MOVE_EFFECT_ATK_MINUS_1,
         .camouflageType = TYPE_WATER,
@@ -65,7 +65,7 @@ const struct BattleTerrain gBattleTerrainInfo[BATTLE_TERRAIN_COUNT] =
     },
     [BATTLE_TERRAIN_POND] =
     {
-        .name = _("NORMAL - POND            "),
+        .name = _("Normal - Pond            "),
         .naturePower = B_NATURE_POWER_MOVES >= GEN_4 ? MOVE_HYDRO_PUMP : MOVE_BUBBLE_BEAM,
         .secretPowerEffect = B_SECRET_POWER_EFFECT >= GEN_4 ? MOVE_EFFECT_ATK_MINUS_1 : MOVE_EFFECT_SPD_MINUS_1,
         .camouflageType = TYPE_WATER,
@@ -73,7 +73,7 @@ const struct BattleTerrain gBattleTerrainInfo[BATTLE_TERRAIN_COUNT] =
     },
     [BATTLE_TERRAIN_MOUNTAIN] =
     {
-        .name = _("NORMAL - MOUNTAIN        "),
+        .name = _("Normal - Mountain        "),
     #if B_NATURE_POWER_MOVES >= GEN_6
         .naturePower = MOVE_EARTH_POWER,
     #elif B_NATURE_POWER_MOVES >= GEN_5
@@ -93,7 +93,7 @@ const struct BattleTerrain gBattleTerrainInfo[BATTLE_TERRAIN_COUNT] =
     },
     [BATTLE_TERRAIN_CAVE] =
     {
-        .name = _("NORMAL - CAVE            "),
+        .name = _("Normal - Cave            "),
     #if B_NATURE_POWER_MOVES >= GEN_6
         .naturePower = MOVE_EARTH_POWER,
     #elif B_NATURE_POWER_MOVES >= GEN_5
@@ -109,7 +109,7 @@ const struct BattleTerrain gBattleTerrainInfo[BATTLE_TERRAIN_COUNT] =
     },
     [BATTLE_TERRAIN_BUILDING] =
     {
-        .name = _("NORMAL - BUILDING        "),
+        .name = _("Normal - Building        "),
         .naturePower = B_NATURE_POWER_MOVES >= GEN_4 ? MOVE_TRI_ATTACK : MOVE_SWIFT,
         .secretPowerEffect = MOVE_EFFECT_PARALYSIS,
         .camouflageType = TYPE_NORMAL,
@@ -117,7 +117,7 @@ const struct BattleTerrain gBattleTerrainInfo[BATTLE_TERRAIN_COUNT] =
     },
     [BATTLE_TERRAIN_PLAIN] =
     {
-        .name = _("NORMAL - PLAIN           "),
+        .name = _("Normal - Plain           "),
     #if B_NATURE_POWER_MOVES >= GEN_6
         .naturePower = MOVE_TRI_ATTACK,
     #elif B_NATURE_POWER_MOVES >= GEN_4
@@ -138,49 +138,49 @@ const struct BattleTerrain gBattleTerrainInfo[BATTLE_TERRAIN_COUNT] =
     },
     [BATTLE_TERRAIN_SOARING] =
     {
-        .name = _("NORMAL - SOARING         "),
+        .name = _("Normal - Soaring         "),
         .naturePower = MOVE_AIR_SLASH,
         .secretPowerEffect = MOVE_EFFECT_SPD_MINUS_1,
         .camouflageType = TYPE_FLYING,
     },
     [BATTLE_TERRAIN_SKY_PILLAR] =
     {
-        .name = _("NORMAL - SKY PILLAR      "),
+        .name = _("Normal - Sky Pillar      "),
         .naturePower = MOVE_AIR_SLASH,
         .secretPowerEffect = MOVE_EFFECT_SPD_MINUS_1,
         .camouflageType = TYPE_FLYING,
     },
     [BATTLE_TERRAIN_BURIAL_GROUND] =
     {
-        .name = _("NORMAL - BURIAL GROUND   "),
+        .name = _("Normal - Burial Ground   "),
         .naturePower = MOVE_SHADOW_BALL,
         .secretPowerEffect = MOVE_EFFECT_FLINCH,
         .camouflageType = TYPE_GHOST,
     },
     [BATTLE_TERRAIN_PUDDLE] =
     {
-        .name = _("NORMAL - PUDDLE          "),
+        .name = _("Normal - Puddle          "),
         .naturePower = MOVE_MUD_BOMB,
         .secretPowerEffect = B_SECRET_POWER_EFFECT >= GEN_5 ? MOVE_EFFECT_SPD_MINUS_1 : MOVE_EFFECT_ACC_MINUS_1,
         .camouflageType = TYPE_GROUND,
     },
     [BATTLE_TERRAIN_MARSH] =
     {
-        .name = _("NORMAL - MARSH           "),
+        .name = _("Normal - Marsh           "),
         .naturePower = MOVE_MUD_BOMB,
         .secretPowerEffect = MOVE_EFFECT_SPD_MINUS_1,
         .camouflageType = TYPE_GROUND,
     },
     [BATTLE_TERRAIN_SWAMP] =
     {
-        .name = _("NORMAL - SWAMP           "),
+        .name = _("Normal - Swamp           "),
         .naturePower = MOVE_MUD_BOMB,
         .secretPowerEffect = MOVE_EFFECT_SPD_MINUS_1,
         .camouflageType = TYPE_GROUND,
     },
     [BATTLE_TERRAIN_SNOW] =
     {
-        .name = _("NORMAL - SNOW            "),
+        .name = _("Normal - Snow            "),
     #if B_NATURE_POWER_MOVES >= GEN_7
         .naturePower = MOVE_ICE_BEAM,
     #elif B_NATURE_POWER_MOVES >= GEN_6
@@ -193,42 +193,42 @@ const struct BattleTerrain gBattleTerrainInfo[BATTLE_TERRAIN_COUNT] =
     },
     [BATTLE_TERRAIN_ICE] =
     {
-        .name = _("NORMAL - ICE             "),
+        .name = _("Normal - Ice             "),
         .naturePower = MOVE_ICE_BEAM,
         .secretPowerEffect = MOVE_EFFECT_FREEZE_OR_FROSTBITE,
         .camouflageType = TYPE_ICE,
     },
     [BATTLE_TERRAIN_VOLCANO] =
     {
-        .name = _("NORMAL - VOLCANO         "),
+        .name = _("Normal - Volcano         "),
         .naturePower = MOVE_LAVA_PLUME,
         .secretPowerEffect = MOVE_EFFECT_BURN,
         .camouflageType = TYPE_FIRE,
     },
     [BATTLE_TERRAIN_DISTORTION_WORLD] =
     {
-        .name = _("NORMAL - DISTORTION WORLD"),
+        .name = _("Normal - Distortion World"),
         .naturePower = MOVE_TRI_ATTACK,
         .secretPowerEffect = MOVE_EFFECT_PARALYSIS,
         .camouflageType = TYPE_NORMAL,
     },
     [BATTLE_TERRAIN_SPACE] =
     {
-        .name = _("NORMAL - SPACE           "),
+        .name = _("Normal - Space           "),
         .naturePower = MOVE_DRACO_METEOR,
         .secretPowerEffect = MOVE_EFFECT_FLINCH,
         .camouflageType = TYPE_DRAGON,
     },
     [BATTLE_TERRAIN_ULTRA_SPACE] =
     {
-        .name = _("NORMAL - ULTRA SPACE     "),
+        .name = _("Normal - Ultra Space     "),
         .naturePower = MOVE_PSYSHOCK,
         .secretPowerEffect = MOVE_EFFECT_DEF_MINUS_1,
         .camouflageType = TYPE_PSYCHIC,
     },
     [BATTLE_TERRAIN_LINK] =
     {
-        .name = _("NORMAL - LINK            "),
+        .name = _("Normal - LINK            "),
         .naturePower = B_NATURE_POWER_MOVES >= GEN_4 ? MOVE_TRI_ATTACK : MOVE_SWIFT,
         .secretPowerEffect = MOVE_EFFECT_PARALYSIS,
         .camouflageType = TYPE_NORMAL,
@@ -242,7 +242,7 @@ const struct BattleTerrain gBattleTerrainInfo[BATTLE_TERRAIN_COUNT] =
     },
     [BATTLE_TERRAIN_GYM] =
     {
-        .name = _("NORMAL - GYM             "),
+        .name = _("Normal - Gym             "),
         .naturePower = B_NATURE_POWER_MOVES >= GEN_4 ? MOVE_TRI_ATTACK : MOVE_SWIFT,
         .secretPowerEffect = MOVE_EFFECT_PARALYSIS,
         .camouflageType = TYPE_NORMAL,
@@ -256,7 +256,7 @@ const struct BattleTerrain gBattleTerrainInfo[BATTLE_TERRAIN_COUNT] =
     },
     [BATTLE_TERRAIN_LEADER] =
     {
-        .name = _("NORMAL - LEADER          "),
+        .name = _("Normal - Leader          "),
         .naturePower = B_NATURE_POWER_MOVES >= GEN_4 ? MOVE_TRI_ATTACK : MOVE_SWIFT,
         .secretPowerEffect = MOVE_EFFECT_PARALYSIS,
         .camouflageType = TYPE_NORMAL,
@@ -270,7 +270,7 @@ const struct BattleTerrain gBattleTerrainInfo[BATTLE_TERRAIN_COUNT] =
     },
     [BATTLE_TERRAIN_INDOOR_2] =
     {
-        .name = _("NORMAL - INDOOR_2        "),
+        .name = _("Normal - Indoor_2        "),
         .naturePower = B_NATURE_POWER_MOVES >= GEN_4 ? MOVE_TRI_ATTACK : MOVE_SWIFT,
         .secretPowerEffect = MOVE_EFFECT_PARALYSIS,
         .camouflageType = TYPE_NORMAL,
@@ -284,7 +284,7 @@ const struct BattleTerrain gBattleTerrainInfo[BATTLE_TERRAIN_COUNT] =
     },
     [BATTLE_TERRAIN_INDOOR_1] =
     {
-        .name = _("NORMAL - INDOOR_1        "),
+        .name = _("Normal - Indoor_1        "),
         .naturePower = B_NATURE_POWER_MOVES >= GEN_4 ? MOVE_TRI_ATTACK : MOVE_SWIFT,
         .secretPowerEffect = MOVE_EFFECT_PARALYSIS,
         .camouflageType = TYPE_NORMAL,
@@ -298,7 +298,7 @@ const struct BattleTerrain gBattleTerrainInfo[BATTLE_TERRAIN_COUNT] =
     },
     [BATTLE_TERRAIN_LORELEI] =
     {
-        .name = _("NORMAL - LORELEI         "),
+        .name = _("Normal - Lorelei         "),
         .naturePower = B_NATURE_POWER_MOVES >= GEN_4 ? MOVE_TRI_ATTACK : MOVE_SWIFT,
         .secretPowerEffect = MOVE_EFFECT_PARALYSIS,
         .camouflageType = TYPE_NORMAL,
@@ -312,7 +312,7 @@ const struct BattleTerrain gBattleTerrainInfo[BATTLE_TERRAIN_COUNT] =
     },
     [BATTLE_TERRAIN_BRUNO] =
     {
-        .name = _("NORMAL - BRUNO           "),
+        .name = _("Normal - Bruno           "),
         .naturePower = B_NATURE_POWER_MOVES >= GEN_4 ? MOVE_TRI_ATTACK : MOVE_SWIFT,
         .secretPowerEffect = MOVE_EFFECT_PARALYSIS,
         .camouflageType = TYPE_NORMAL,
@@ -326,7 +326,7 @@ const struct BattleTerrain gBattleTerrainInfo[BATTLE_TERRAIN_COUNT] =
     },
     [BATTLE_TERRAIN_AGATHA] =
     {
-        .name = _("NORMAL - AGATHA          "),
+        .name = _("Normal - Agatha          "),
         .naturePower = B_NATURE_POWER_MOVES >= GEN_4 ? MOVE_TRI_ATTACK : MOVE_SWIFT,
         .secretPowerEffect = MOVE_EFFECT_PARALYSIS,
         .camouflageType = TYPE_NORMAL,
@@ -340,7 +340,7 @@ const struct BattleTerrain gBattleTerrainInfo[BATTLE_TERRAIN_COUNT] =
     },
     [BATTLE_TERRAIN_LANCE] =
     {
-        .name = _("NORMAL - LANCE           "),
+        .name = _("Normal - Lance           "),
         .naturePower = B_NATURE_POWER_MOVES >= GEN_4 ? MOVE_TRI_ATTACK : MOVE_SWIFT,
         .secretPowerEffect = MOVE_EFFECT_PARALYSIS,
         .camouflageType = TYPE_NORMAL,
@@ -354,7 +354,7 @@ const struct BattleTerrain gBattleTerrainInfo[BATTLE_TERRAIN_COUNT] =
     },
     [BATTLE_TERRAIN_CHAMPION] =
     {
-        .name = _("NORMAL - CHAMPION        "),
+        .name = _("Normal - Champion        "),
         .naturePower = B_NATURE_POWER_MOVES >= GEN_4 ? MOVE_TRI_ATTACK : MOVE_SWIFT,
         .secretPowerEffect = MOVE_EFFECT_PARALYSIS,
         .camouflageType = TYPE_NORMAL,

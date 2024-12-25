@@ -37,7 +37,7 @@ const struct FieldMoveInfo gFieldMovesInfo[FIELD_MOVE_COUNT] =
         .partyMessageId = PARTY_MSG_CANT_USE_HERE,
         .description = COMPOUND_STRING("Fly to a known town."),
         .setUpFunc = FieldMove_SetUpFly,
-        .questLogText = COMPOUND_STRING("{STR_VAR_1} used the Hidden Move\nFLY and flew to {STR_VAR_2}."),
+        .questLogText = COMPOUND_STRING("{STR_VAR_1} used the Hidden Move\nFly and flew to {STR_VAR_2}."),
     },
     [FIELD_MOVE_SURF] =
     {

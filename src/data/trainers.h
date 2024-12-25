@@ -5179,7 +5179,7 @@
     [DIFFICULTY_NORMAL][TRAINER_LASS_LISA] =
     {
 #line 1966
-        .trainerName = _("LISA"),
+        .trainerName = _("Lisa"),
 #line 1967
         .trainerClass = TRAINER_CLASS_LASS,
 #line 1968
@@ -15960,7 +15960,7 @@
     [DIFFICULTY_NORMAL][TRAINER_SCIENTIST_JOSE] =
     {
 #line 6102
-        .trainerName = _("JOSE"),
+        .trainerName = _("José"),
 #line 6103
         .trainerClass = TRAINER_CLASS_SCIENTIST,
 #line 6104
@@ -31720,7 +31720,7 @@
     [DIFFICULTY_NORMAL][TRAINER_COOL_COUPLE_LEX_NYA] =
     {
 #line 12366
-        .trainerName = _("LEX & NYA"),
+        .trainerName = _("Lex & Nya"),
 #line 12367
         .trainerClass = TRAINER_CLASS_COOL_COUPLE,
 #line 12368
@@ -38334,7 +38334,7 @@
     [DIFFICULTY_NORMAL][TRAINER_COOL_COUPLE_LEX_NYA_2] =
     {
 #line 14881
-        .trainerName = _("LEX & NYA"),
+        .trainerName = _("Lex & Nya"),
 #line 14882
         .trainerClass = TRAINER_CLASS_COOL_COUPLE,
 #line 14883

@@ -426,7 +426,7 @@ B_DEF_NAME_WITH_PREFIX2 = FD 3F
 B_EFF_NAME_WITH_PREFIX2 = FD 40
 B_SCR_ACTIVE_NAME_WITH_PREFIX2 = FD 41
 
-@ indicates the end of a town/city name (before " TOWN" or " CITY")
+@ indicates the end of a town/city name (before " Town" or " City")
 NAME_END = FC 00
 
 @ special 0xF7 character

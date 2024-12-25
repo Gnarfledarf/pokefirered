@@ -623,7 +623,7 @@ static u8 CreateBagInputHandlerTask(u8 location)
 
 static bool8 TryAllocListMenuBuffers(void)
 {
-    // The items pocket has the highest capacity, + 1 for CANCEL
+    // The items pocket has the highest capacity, + 1 for Cancel
     sListMenuItems = Alloc((BAG_ITEMS_COUNT + 1) * sizeof(struct ListMenuItem));
     if (sListMenuItems == NULL)
         return FALSE;

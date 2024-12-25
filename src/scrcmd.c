@@ -1688,8 +1688,8 @@ bool8 ScrCmd_bufferitemname(struct ScriptContext * ctx)
     return FALSE;
 }
 
-static const u8 sText_S[] = _("S");
-static const u8 sText_IES[] = _("IES");
+static const u8 sText_S[] = _("s");
+static const u8 sText_IES[] = _("ies");
 
 bool8 ScrCmd_bufferitemnameplural(struct ScriptContext * ctx)
 {
@@ -1831,7 +1831,7 @@ bool8 ScrCmd_checkfieldmoveusable(struct ScriptContext* ctx)
         gFieldEffectArguments[0] = species | NOT_IN_PARTY_MASK;
         gSpecialVar_0x8004 = species;
         gSpecialVar_Result = TRUE;
-        StringCopy(gStringVar1, COMPOUND_STRING("PROF. OAK's "));
+        StringCopy(gStringVar1, COMPOUND_STRING("Prof. Oak's "));
         StringAppend(gStringVar1, gSpeciesInfo[species].speciesName);
         StringCopy(gStringVar2, gMovesInfo[moveId].name);
     }

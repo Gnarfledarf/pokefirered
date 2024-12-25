@@ -4721,7 +4721,7 @@
     [TRAINER_LASS_LISA] =
     {
 #line 1950
-        .trainerName = _("LISA"),
+        .trainerName = _("Lisa"),
 #line 1951
         .trainerClass = TRAINER_CLASS_LASS,
 #line 1952
@@ -15072,7 +15072,7 @@
     [TRAINER_SCIENTIST_JOSE] =
     {
 #line 6086
-        .trainerName = _("José"),
+        .trainerName = _("Jose"),
 #line 6087
         .trainerClass = TRAINER_CLASS_SCIENTIST,
 #line 6088
@@ -30283,7 +30283,7 @@
     [TRAINER_COOL_COUPLE_LEX_NYA] =
     {
 #line 12350
-        .trainerName = _("Ley & Nya"),
+        .trainerName = _("Lex & Nya"),
 #line 12351
         .trainerClass = TRAINER_CLASS_COOL_COUPLE,
 #line 12352
@@ -36643,7 +36643,7 @@
     [TRAINER_COOL_COUPLE_LEX_NYA_2] =
     {
 #line 14865
-        .trainerName = _("Ley & Nya"),
+        .trainerName = _("Lex & Nya"),
 #line 14866
         .trainerClass = TRAINER_CLASS_COOL_COUPLE,
 #line 14867

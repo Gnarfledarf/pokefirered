@@ -38,7 +38,7 @@ CeladonCity_Text_ExplainXAccuracyDireHit::
     .string "Trainer Tips\p"
     .string "X Accuracy boosts the accuracy of\n"
     .string "techniques.\p"
-    .string "DIRE HIT jacks up the likelihood\n"
+    .string "Dire Hit jacks up the likelihood\n"
     .string "of critical hits.\p"
     .string "Get your items at the Celadon\n"
     .string "Dept. Store!$"

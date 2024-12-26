@@ -32,7 +32,7 @@ LavenderTown_Text_SilphScopeNotice::
 
 LavenderTown_Text_VolunteerPokemonHouse::
     .string "Lavender Volunteer\n"
-    .string "Pokémon HOUSE$"
+    .string "Pokémon House$"
 
 LavenderTown_Text_PokemonTowerSign::
     .string "Pokémon Tower\n"

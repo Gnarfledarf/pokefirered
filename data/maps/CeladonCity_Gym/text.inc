@@ -81,7 +81,7 @@ CeladonCity_Gym_Text_TinaDefeat::
     .string "You're an eye-opener!$"
 
 CeladonCity_Gym_Text_TinaPostBattle::
-    .string "Oh, you were looking at ERIKA…\n"
+    .string "Oh, you were looking at Erika…\n"
     .string "You weren't looking at me…$"
 
 CeladonCity_Gym_Text_TamiaIntro::
@@ -101,7 +101,7 @@ CeladonCity_Gym_Text_TamiaPostBattle::
 
 CeladonCity_Gym_Text_LisaIntro::
     .string "Oh, hey!\p"
-    .string "We don't like BUG- or FIRE-type\n"
+    .string "We don't like Bug- or Fire-type\n"
     .string "Pokémon in here!$"
 
 CeladonCity_Gym_Text_LisaDefeat::

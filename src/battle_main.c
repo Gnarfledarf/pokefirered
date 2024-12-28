@@ -355,7 +355,7 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     TRAINER_CLASS(BLACK_BELT, "Black Belt", 6),
     TRAINER_CLASS(RIVAL_EARLY, "Rival", 4),
     TRAINER_CLASS(SCIENTIST, "Scientist", 12),
-    TRAINER_CLASS(BOSS, "BOSS", 25),
+    TRAINER_CLASS(BOSS, "Boss", 25),
     TRAINER_CLASS(LEADER, "Leader", 25),
     TRAINER_CLASS(TEAM_ROCKET, "Team Rocket", 8),
     TRAINER_CLASS(COOLTRAINER, "Cooltrainer", 9, ITEM_ULTRA_BALL),

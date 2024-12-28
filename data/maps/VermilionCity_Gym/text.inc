@@ -90,7 +90,7 @@ VermilionCity_Gym_Text_GymGuyAdvice::
     .string "Lightning American!\p"
     .string "He's an expert on electric\n"
     .string "Pokémon.\p"
-    .string "Bird/Water-type Pokémon match\n"
+    .string "Flying/Water-type Pokémon match\n"
     .string "poorly against the Electric type.\p"
     .string "Beware of paralysis, too.\p"
     .string "Lt. Surge is very cautious.\p"

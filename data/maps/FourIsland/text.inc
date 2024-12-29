@@ -52,5 +52,5 @@ FourIsland_Text_MadeSlushieUsingIcefallCaveIce::
     .string "It's chilly and tasty!$"
 
 FourIsland_Text_LoreleisHouse::
-    .string "Lorelei'S House$"
+    .string "Lorelei's House$"
 

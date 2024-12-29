@@ -70,7 +70,7 @@ SaffronCity_Text_FightingDojo::
     .string "Fighting Dojo$"
 
 SaffronCity_Text_GymSign::
-    .string "Saffron City Pokémon GYM\n"
+    .string "Saffron City Pokémon Gym\n"
     .string "Leader: Sabrina\l"
     .string "The Master of Psychic Pokémon!$"
 

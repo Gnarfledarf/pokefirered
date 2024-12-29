@@ -28,7 +28,7 @@ VictoryRoad_3F_Text_GeorgeDefeat::
     .string "The rumors were true!$"
 
 VictoryRoad_3F_Text_GeorgePostBattle::
-    .string "So, it was you who beat Giovannu\n"
+    .string "So, it was you who beat Giovanni\n"
     .string "of Team Rocket?$"
 
 VictoryRoad_3F_Text_AlexaIntro::

@@ -242,7 +242,7 @@ static void SimulateInputChooseAction(u32 battler)
     case 1:
         if (--gBattleStruct->simulatedInputState[2] == 0)
         {
-            // Move cursor to BAG
+            // Move cursor to Bag
             PlaySE(SE_SELECT);
             ActionSelectionDestroyCursorAt(0);
             ActionSelectionCreateCursorAt(1, 0);
@@ -253,7 +253,7 @@ static void SimulateInputChooseAction(u32 battler)
     case 2:
         if (--gBattleStruct->simulatedInputState[2] == 0)
         {
-            // Open bag
+            // Open Bag
             PlaySE(SE_SELECT);
             BtlController_EmitTwoReturnValues(battler, 1, B_ACTION_USE_ITEM, 0);
             OakOldManBufferExecCompleted(battler);

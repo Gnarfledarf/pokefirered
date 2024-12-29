@@ -227,7 +227,7 @@ OneIsland_PokemonCenter_1F_Text_AnotherGemstoneInSeviiIslands::
 
 OneIsland_PokemonCenter_1F_Text_ReturnedTriPassForRainbowPass::
     .string "{PLAYER} returned the Tri-Pass and\n"
-    .string "received the RAINBOW Pass.$"
+    .string "received the Rainbow Pass.$"
 
 OneIsland_PokemonCenter_1F_Text_ObtainedExtraMapPage::
     .string "Obtained an extra page for the\n"

@@ -32,7 +32,7 @@ VermilionCity_Gym_Text_ExplainTM34::
     .string "Teach it to an Electric Pokémon!$"
 
 VermilionCity_Gym_Text_MakeRoomInYourBag::
-    .string "Yo, kid, make room in your BAG!$"
+    .string "Yo, kid, make room in your Bag!$"
 
 VermilionCity_Gym_Text_LtSurgeDefeat::
     .string "Now that's a shocker!\p"

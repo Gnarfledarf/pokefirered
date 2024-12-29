@@ -47,7 +47,7 @@ FiveIsland_MemorialPillar_Text_YourMonsLookHealthy::
 
 FiveIsland_MemorialPillar_Text_ThisIsWhereIBuriedMyOnix::
     .string "This is where I buried my Onix…\n"
-    .string "It was named Tectonix$"
+    .string "It was named Tectonix.$"
 
 FiveIsland_MemorialPillar_Text_HereLiesTectonixLemonadeOffering::
     .string "“Here lies Tectonix” is engraved\n"

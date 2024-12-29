@@ -40,7 +40,7 @@ SaffronCity_Gym_Text_ExplainTM04::
     .string "to raise both Sp. Atk and Sp. Def.$"
 
 SaffronCity_Gym_Text_BagFullOfOtherItems::
-    .string "Your BAG is full of other items.$"
+    .string "Your Bag is full of other items.$"
 
 SaffronCity_Gym_Text_AmandaIntro::
     .string "Sabrina is far younger than I,\n"
@@ -111,7 +111,7 @@ SaffronCity_Gym_Text_CameronDefeat::
     .string "Down and out!$"
 
 SaffronCity_Gym_Text_CameronPostBattle::
-    .string "There used to be two Pokémon GYMS\n"
+    .string "There used to be two Pokémon Gyms\n"
     .string "in Saffron.\p"
     .string "The Fighting Dojo next door lost\n"
     .string "its Gym status, though.\p"

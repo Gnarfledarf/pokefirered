@@ -222,6 +222,7 @@ gScriptCmdTable::
 	.4byte ScrCmd_nop1							 @ 0xda
 	.4byte ScrCmd_nop1							 @ 0xdb
 	.4byte ScrCmd_fadescreenswapbuffers          @ 0xdc
+	.4byte ScrCmd_checkpcspace					 @ 0xdd
 
 gScriptCmdTableEnd::
 	.4byte ScrCmd_nop

@@ -47,6 +47,7 @@ bool8 RemoveBagItem(u16 itemId, u16 count);
 u8 GetPocketByItemId(u16 itemId);
 void ClearItemSlots(struct ItemSlot *itemSlots, u8 b);
 u8 CountUsedPCItemSlots(void);
+bool8 CheckPCHasSpace(u16 itemId, u16 count);
 bool8 CheckPCHasItem(u16 itemId, u16 count);
 bool8 AddPCItem(u16 itemId, u16 count);
 void SwapRegisteredBike(void);

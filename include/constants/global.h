@@ -51,17 +51,20 @@
 
 // capacities of various saveblock objects
 #define DAYCARE_MON_COUNT   2
-#define PC_ITEMS_COUNT      30
-#define BAG_ITEMS_COUNT     42
+#define PC_ITEMS_COUNT      20
+#define BAG_ITEMS_COUNT     30
 #define BAG_KEYITEMS_COUNT  30
 #define BAG_POKEBALLS_COUNT 27
-#define BAG_TMHM_COUNT      108
+#define BAG_TMHM_COUNT      64
 #define BAG_BERRIES_COUNT   43
+#define BAG_MEDICINE_COUNT 25
+#define BAG_BATTLEITEMS_COUNT 25
+#define BAG_TREASURES_COUNT 12
 #define OBJECT_EVENTS_COUNT 16
 #define OBJECT_EVENT_TEMPLATES_COUNT 64
 #define MAIL_COUNT         (PARTY_SIZE + 10)
 #define PC_MAIL_NUM(i)     (PARTY_SIZE + (i))
-#define DECOR_MAX_SECRET_BASE 16
+#define DECOR_MAX_SECRET_BASE 2
 #define MAX_REMATCH_ENTRIES 100
 #define UNION_ROOM_KB_ROW_COUNT 10
 #define GIFT_RIBBONS_COUNT 11

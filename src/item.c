@@ -60,6 +60,12 @@ void SetBagPocketsPointers(void)
     gBagPockets[POCKET_TM_HM - 1].capacity = BAG_TMHM_COUNT;
     gBagPockets[POCKET_BERRIES - 1].itemSlots = gSaveBlock1Ptr->bagPocket_Berries;
     gBagPockets[POCKET_BERRIES - 1].capacity = BAG_BERRIES_COUNT;
+    gBagPockets[POCKET_MEDICINE - 1].itemSlots = gSaveBlock1Ptr->bagPocket_Medicine;
+    gBagPockets[POCKET_MEDICINE - 1].capacity = BAG_MEDICINE_COUNT;
+    gBagPockets[POCKET_BATTLE_ITEMS - 1].itemSlots = gSaveBlock1Ptr->bagPocket_BattleItems;
+    gBagPockets[POCKET_BATTLE_ITEMS - 1].capacity = BAG_BATTLEITEMS_COUNT;
+    gBagPockets[POCKET_TREASURES - 1].itemSlots = gSaveBlock1Ptr->bagPocket_Treasures;
+    gBagPockets[POCKET_TREASURES - 1].capacity = BAG_TREASURES_COUNT;
 }
 
 void CopyItemName(u16 itemId, u8 * dest)

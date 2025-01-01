@@ -806,6 +806,9 @@ struct SaveBlock1
     /*0x0296*/ u16 registeredItem; // registered for use with SELECT button
     /*0x0298*/ struct ItemSlot pcItems[PC_ITEMS_COUNT];
     /*0x0310*/ struct ItemSlot bagPocket_Items[BAG_ITEMS_COUNT];
+               struct ItemSlot bagPocket_Medicine[BAG_MEDICINE_COUNT];
+               struct ItemSlot bagPocket_BattleItems[BAG_BATTLEITEMS_COUNT];
+               struct ItemSlot bagPocket_Treasures[BAG_TREASURES_COUNT];
     /*0x03b8*/ struct ItemSlot bagPocket_KeyItems[BAG_KEYITEMS_COUNT];
     /*0x0430*/ struct ItemSlot bagPocket_PokeBalls[BAG_POKEBALLS_COUNT];
     /*0x0464*/ struct ItemSlot bagPocket_TMHM[BAG_TMHM_COUNT];
@@ -845,7 +848,7 @@ struct SaveBlock1
     /*0x3C98*/ struct DaycareMon route5DayCareMon;
     /*0x3D34*/ u32 towerChallengeId;
     /*0x3D38*/ struct TrainerTower trainerTower[NUM_TOWER_CHALLENGE_TYPES];
-    /*0x3D24*/ u8 unusedSB1[0x1C];
+    /*0x3D24*/ u8 unusedSB1[0];
 }; // size: 0x3D68
 
 struct MapPosition

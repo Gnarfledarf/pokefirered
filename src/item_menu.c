@@ -56,6 +56,9 @@ struct BagMenuAlloc
 struct BagSlots
 {
     struct ItemSlot bagPocket_Items[BAG_ITEMS_COUNT];
+    struct ItemSlot bagPocket_Medicine[BAG_MEDICINE_COUNT];
+    struct ItemSlot bagPocket_BattleItems[BAG_BATTLEITEMS_COUNT];
+    struct ItemSlot bagPocket_Treasures[BAG_TREASURES_COUNT];
     struct ItemSlot bagPocket_KeyItems[BAG_KEYITEMS_COUNT];
     struct ItemSlot bagPocket_PokeBalls[BAG_POKEBALLS_COUNT];
     u16 itemsAbove[NUM_BAG_POCKETS_NO_CASES];
@@ -183,6 +186,9 @@ static const struct BgTemplate sBgTemplates[2] = {
 
 static const u8 *const sPocketNames[] = {
     gText_Items2,
+    gText_Medicine2,
+    gText_BattleItems2,
+    gText_Treasures2,
     gText_KeyItems2,
     gText_PokeBalls2
 };
@@ -206,6 +212,8 @@ static const struct MenuAction sItemMenuContextActions[] = {
     [ITEMMENUACTION_DESELECT] = {gOtherText_Deselect, {.void_u8 = Task_ItemMenuAction_ToggleSelect}},
     [ITEMMENUACTION_DUMMY] = {gString_Dummy, {.void_u8 = NULL}}
 };
+
+
 
 static const u8 sContextMenuItems_Field[][4] = {
     {
@@ -244,6 +252,39 @@ static const u8 sContextMenuItems_GiveIfNotKeyItemPocket[][2] = {
         ITEMMENUACTION_GIVE,
         ITEMMENUACTION_CANCEL
     }
+};
+
+// these are all 2D arrays with a width of 2 but are represented as 1D arrays
+// ITEMMENUACTION_DUMMY is used to represent blank spaces
+static const u8 sContextMenuItems_ItemsPocket[] = {
+    ITEMMENUACTION_USE,     ITEMMENUACTION_GIVE,
+    ITEMMENUACTION_TOSS,    ITEMMENUACTION_CANCEL
+
+};
+
+static const u8 sContextMenuItems_KeyItemsPocket[] = {
+    ITEMMENUACTION_USE,     ITEMMENUACTION_REGISTER,
+    ITEMMENUACTION_DUMMY,   ITEMMENUACTION_CANCEL
+
+};
+
+static const u8 sContextMenuItems_BallsPocket[] = {
+    ITEMMENUACTION_GIVE,    ITEMMENUACTION_DUMMY,
+    ITEMMENUACTION_TOSS,    ITEMMENUACTION_CANCEL
+
+};
+
+static const u8 sContextMenuItems_TmHmPocket[] = {
+    ITEMMENUACTION_USE,     ITEMMENUACTION_GIVE,
+    ITEMMENUACTION_DUMMY,   ITEMMENUACTION_CANCEL
+
+};
+
+static const u8 sContextMenuItems_BerriesPocket[] = {
+    ITEMMENUACTION_CHECK,   ITEMMENUACTION_DUMMY,
+    ITEMMENUACTION_USE,     ITEMMENUACTION_GIVE,
+    ITEMMENUACTION_TOSS,    ITEMMENUACTION_CANCEL
+
 };
 
 static const u8 sContextMenuItems_Open[] = {
@@ -336,7 +377,7 @@ void GoToBagMenu(u8 location, u8 pocket, MainCallback bagCallback)
         {
             sBagMenuDisplay->data[i] = 0;
         }
-        if (pocket == OPEN_BAG_ITEMS || pocket == OPEN_BAG_KEYITEMS || pocket == OPEN_BAG_POKEBALLS)
+        if (pocket == OPEN_BAG_ITEMS || pocket == OPEN_BAG_MEDICINE || pocket == OPEN_BAG_BATTLEITEMS || pocket == OPEN_BAG_TREASURES || pocket == OPEN_BAG_KEYITEMS || pocket == OPEN_BAG_POKEBALLS)
             gBagMenuState.pocket = pocket;
         gTextFlags.autoScroll = FALSE;
         gSpecialVar_ItemId = ITEM_NONE;
@@ -1391,6 +1432,18 @@ static void OpenContextMenu(u8 taskId)
                 else
                     sContextMenuItemsPtr = sContextMenuItems_Field[gBagMenuState.pocket];
                 break;
+            case OPEN_BAG_MEDICINE:
+                sContextMenuItemsPtr = sContextMenuItems_ItemsPocket;
+                sContextMenuNumItems = ARRAY_COUNT(sContextMenuItems_ItemsPocket);
+                break;
+            case OPEN_BAG_BATTLEITEMS:
+                sContextMenuItemsPtr = sContextMenuItems_ItemsPocket;
+                sContextMenuNumItems = ARRAY_COUNT(sContextMenuItems_ItemsPocket);
+                break;
+            case OPEN_BAG_TREASURES:
+                sContextMenuItemsPtr = sContextMenuItems_ItemsPocket;
+                sContextMenuNumItems = ARRAY_COUNT(sContextMenuItems_ItemsPocket);
+                break;
             case OPEN_BAG_KEYITEMS:
                 sContextMenuItemsPtr = sContextMenuItemsBuffer;
                 sContextMenuNumItems = 3;
@@ -1407,7 +1460,7 @@ static void OpenContextMenu(u8 taskId)
                     sContextMenuItemsBuffer[0] = ITEMMENUACTION_USE;
                 break;
             case OPEN_BAG_POKEBALLS:
-                sContextMenuItemsPtr = sContextMenuItems_Field[gBagMenuState.pocket];
+                sContextMenuItemsPtr = sContextMenuItems_BallsPocket;
                 sContextMenuNumItems = 3;
                 break;
             }
@@ -2064,6 +2117,9 @@ static void BackUpPlayerBag(void)
     u32 i;
     sBackupPlayerBag = AllocZeroed(sizeof(struct BagSlots));
     memcpy(sBackupPlayerBag->bagPocket_Items, gSaveBlock1Ptr->bagPocket_Items, BAG_ITEMS_COUNT * sizeof(struct ItemSlot));
+    memcpy(sBackupPlayerBag->bagPocket_Medicine, gSaveBlock1Ptr->bagPocket_Medicine, BAG_MEDICINE_COUNT * sizeof(struct ItemSlot));
+    memcpy(sBackupPlayerBag->bagPocket_BattleItems, gSaveBlock1Ptr->bagPocket_BattleItems, BAG_BATTLEITEMS_COUNT * sizeof(struct ItemSlot));
+    memcpy(sBackupPlayerBag->bagPocket_Treasures, gSaveBlock1Ptr->bagPocket_Treasures, BAG_TREASURES_COUNT * sizeof(struct ItemSlot));    
     memcpy(sBackupPlayerBag->bagPocket_KeyItems, gSaveBlock1Ptr->bagPocket_KeyItems, BAG_KEYITEMS_COUNT * sizeof(struct ItemSlot));
     memcpy(sBackupPlayerBag->bagPocket_PokeBalls, gSaveBlock1Ptr->bagPocket_PokeBalls, BAG_POKEBALLS_COUNT * sizeof(struct ItemSlot));
     sBackupPlayerBag->registeredItem = gSaveBlock1Ptr->registeredItem;
@@ -2074,6 +2130,9 @@ static void BackUpPlayerBag(void)
         sBackupPlayerBag->cursorPos[i] = gBagMenuState.cursorPos[i];
     }
     ClearItemSlots(gSaveBlock1Ptr->bagPocket_Items, BAG_ITEMS_COUNT);
+    ClearItemSlots(gSaveBlock1Ptr->bagPocket_Medicine, BAG_MEDICINE_COUNT);
+    ClearItemSlots(gSaveBlock1Ptr->bagPocket_BattleItems, BAG_BATTLEITEMS_COUNT);
+    ClearItemSlots(gSaveBlock1Ptr->bagPocket_Treasures, BAG_TREASURES_COUNT);
     ClearItemSlots(gSaveBlock1Ptr->bagPocket_KeyItems, BAG_KEYITEMS_COUNT);
     ClearItemSlots(gSaveBlock1Ptr->bagPocket_PokeBalls, BAG_POKEBALLS_COUNT);
     gSaveBlock1Ptr->registeredItem = ITEM_NONE;
@@ -2084,6 +2143,9 @@ static void RestorePlayerBag(void)
 {
     u32 i;
     memcpy(gSaveBlock1Ptr->bagPocket_Items, sBackupPlayerBag->bagPocket_Items, BAG_ITEMS_COUNT * sizeof(struct ItemSlot));
+    memcpy(gSaveBlock1Ptr->bagPocket_Medicine, sBackupPlayerBag->bagPocket_Medicine, BAG_MEDICINE_COUNT * sizeof(struct ItemSlot));
+    memcpy(gSaveBlock1Ptr->bagPocket_BattleItems, sBackupPlayerBag->bagPocket_BattleItems, BAG_BATTLEITEMS_COUNT * sizeof(struct ItemSlot));
+    memcpy(gSaveBlock1Ptr->bagPocket_Treasures, sBackupPlayerBag->bagPocket_Treasures, BAG_TREASURES_COUNT * sizeof(struct ItemSlot));
     memcpy(gSaveBlock1Ptr->bagPocket_KeyItems, sBackupPlayerBag->bagPocket_KeyItems, BAG_KEYITEMS_COUNT * sizeof(struct ItemSlot));
     memcpy(gSaveBlock1Ptr->bagPocket_PokeBalls, sBackupPlayerBag->bagPocket_PokeBalls, BAG_POKEBALLS_COUNT * sizeof(struct ItemSlot));
     gSaveBlock1Ptr->registeredItem = sBackupPlayerBag->registeredItem;
@@ -2100,6 +2162,7 @@ void InitOldManBag(void)
 {
     BackUpPlayerBag();
     AddBagItem(ITEM_POTION, 1);
+    AddBagItem(ITEM_TEACHY_TV, 1);
     AddBagItem(ITEM_POKE_BALL, 1);
     GoToBagMenu(ITEMMENULOCATION_OLD_MAN, OPEN_BAG_ITEMS, SetCB2ToReshowScreenAfterMenu2);
 }
@@ -2119,13 +2182,25 @@ static void Task_Bag_OldManTutorial(u8 taskId)
             SwitchPockets(taskId, 1, FALSE);
             break;
         case 306:
+            PlaySE(SE_BAG_POCKET);
+            SwitchPockets(taskId, 1, FALSE);
+            break;
+        case 408:
+            PlaySE(SE_BAG_POCKET);
+            SwitchPockets(taskId, 1, FALSE);
+            break;
+        case 510:
+            PlaySE(SE_BAG_POCKET);
+            SwitchPockets(taskId, 1, FALSE);
+            break;
+        case 612:
             PlaySE(SE_SELECT);
             bag_menu_print_cursor_(data[0], 2);
             Bag_FillMessageBoxWithPalette(1);
             gSpecialVar_ItemId = ITEM_POKE_BALL;
             OpenContextMenu(taskId);
             break;
-        case 408:
+        case 714:
             PlaySE(SE_SELECT);
             HideBagWindow(10);
             HideBagWindow(6);

@@ -64,3 +64,4 @@ prefabs.json
 src/data/map_group_count.h
 !/tools/mgba/mgba-rom-test.exe
 *.ss*
+*.code-workspace

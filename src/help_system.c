@@ -51,8 +51,8 @@ struct HelpSystemState
     u8 scrollSub;
 };
 
-struct HelpSystemState gHelpSystemState;
-u16 gHelpContextIdBackup;
+COMMON_DATA struct HelpSystemState gHelpSystemState = {0};
+COMMON_DATA u16 gHelpContextIdBackup = 0;
 
 static bool32 IsCurrentMapInArray(const u16 * mapIdxs);
 static void BuildMainTopicsListAndMoveToH00(struct HelpSystemListMenu * a0, struct ListMenuItem * a1);
@@ -1743,22 +1743,22 @@ static const u16 sGymMaps[] = {
 };
 
 static const u8 sDungeonMaps[][3] = {
-    { MAP_GROUP(VIRIDIAN_FOREST), MAP_NUM(VIRIDIAN_FOREST), 1 },
-    { MAP_GROUP(MT_MOON_1F), MAP_NUM(MT_MOON_1F), 3 },
-    { MAP_GROUP(ROCK_TUNNEL_1F), MAP_NUM(ROCK_TUNNEL_1F), 2 },
-    { MAP_GROUP(DIGLETTS_CAVE_NORTH_ENTRANCE), MAP_NUM(DIGLETTS_CAVE_NORTH_ENTRANCE), 3 },
-    { MAP_GROUP(SEAFOAM_ISLANDS_1F), MAP_NUM(SEAFOAM_ISLANDS_1F), 5 },
-    { MAP_GROUP(VICTORY_ROAD_1F), MAP_NUM(VICTORY_ROAD_1F), 3 },
-    { MAP_GROUP(CERULEAN_CAVE_1F), MAP_NUM(CERULEAN_CAVE_1F), 3 },
-    { MAP_GROUP(MT_EMBER_RUBY_PATH_B4F), MAP_NUM(MT_EMBER_RUBY_PATH_B4F), 1 },
-    { MAP_GROUP(MT_EMBER_SUMMIT_PATH_1F), MAP_NUM(MT_EMBER_SUMMIT_PATH_1F), 3 },
-    { MAP_GROUP(MT_EMBER_RUBY_PATH_B5F), MAP_NUM(MT_EMBER_RUBY_PATH_B5F), 7 },
-    { MAP_GROUP(THREE_ISLAND_BERRY_FOREST), MAP_NUM(THREE_ISLAND_BERRY_FOREST), 1 },
-    { MAP_GROUP(SIX_ISLAND_PATTERN_BUSH), MAP_NUM(SIX_ISLAND_PATTERN_BUSH), 1 },
-    { MAP_GROUP(FIVE_ISLAND_LOST_CAVE_ENTRANCE), MAP_NUM(FIVE_ISLAND_LOST_CAVE_ENTRANCE), 15 },
-    { MAP_GROUP(FOUR_ISLAND_ICEFALL_CAVE_ENTRANCE), MAP_NUM(FOUR_ISLAND_ICEFALL_CAVE_ENTRANCE), 4 },
-    { MAP_GROUP(SIX_ISLAND_ALTERING_CAVE), MAP_NUM(SIX_ISLAND_ALTERING_CAVE), 1 },
-    { MAP_GROUP(SEVEN_ISLAND_TANOBY_RUINS_MONEAN_CHAMBER), MAP_NUM(SEVEN_ISLAND_TANOBY_RUINS_MONEAN_CHAMBER), 7 }
+    { MAP_GROUP(MAP_VIRIDIAN_FOREST), MAP_NUM(MAP_VIRIDIAN_FOREST), 1 },
+    { MAP_GROUP(MAP_MT_MOON_1F), MAP_NUM(MAP_MT_MOON_1F), 3 },
+    { MAP_GROUP(MAP_ROCK_TUNNEL_1F), MAP_NUM(MAP_ROCK_TUNNEL_1F), 2 },
+    { MAP_GROUP(MAP_DIGLETTS_CAVE_NORTH_ENTRANCE), MAP_NUM(MAP_DIGLETTS_CAVE_NORTH_ENTRANCE), 3 },
+    { MAP_GROUP(MAP_SEAFOAM_ISLANDS_1F), MAP_NUM(MAP_SEAFOAM_ISLANDS_1F), 5 },
+    { MAP_GROUP(MAP_VICTORY_ROAD_1F), MAP_NUM(MAP_VICTORY_ROAD_1F), 3 },
+    { MAP_GROUP(MAP_CERULEAN_CAVE_1F), MAP_NUM(MAP_CERULEAN_CAVE_1F), 3 },
+    { MAP_GROUP(MAP_MT_EMBER_RUBY_PATH_B4F), MAP_NUM(MAP_MT_EMBER_RUBY_PATH_B4F), 1 },
+    { MAP_GROUP(MAP_MT_EMBER_SUMMIT_PATH_1F), MAP_NUM(MAP_MT_EMBER_SUMMIT_PATH_1F), 3 },
+    { MAP_GROUP(MAP_MT_EMBER_RUBY_PATH_B5F), MAP_NUM(MAP_MT_EMBER_RUBY_PATH_B5F), 7 },
+    { MAP_GROUP(MAP_THREE_ISLAND_BERRY_FOREST), MAP_NUM(MAP_THREE_ISLAND_BERRY_FOREST), 1 },
+    { MAP_GROUP(MAP_SIX_ISLAND_PATTERN_BUSH), MAP_NUM(MAP_SIX_ISLAND_PATTERN_BUSH), 1 },
+    { MAP_GROUP(MAP_FIVE_ISLAND_LOST_CAVE_ENTRANCE), MAP_NUM(MAP_FIVE_ISLAND_LOST_CAVE_ENTRANCE), 15 },
+    { MAP_GROUP(MAP_FOUR_ISLAND_ICEFALL_CAVE_ENTRANCE), MAP_NUM(MAP_FOUR_ISLAND_ICEFALL_CAVE_ENTRANCE), 4 },
+    { MAP_GROUP(MAP_SIX_ISLAND_ALTERING_CAVE), MAP_NUM(MAP_SIX_ISLAND_ALTERING_CAVE), 1 },
+    { MAP_GROUP(MAP_SEVEN_ISLAND_TANOBY_RUINS_MONEAN_CHAMBER), MAP_NUM(MAP_SEVEN_ISLAND_TANOBY_RUINS_MONEAN_CHAMBER), 7 }
 };
 
 void SetHelpContextDontCheckBattle(u8 contextId)
@@ -1847,14 +1847,14 @@ static bool8 IsInDungeonMap(void)
 }
 
 #define IN_PLAYERS_HOUSE \
-    ((gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PALLET_TOWN_PLAYERS_HOUSE_1F) \
-  && gSaveBlock1Ptr->location.mapNum == MAP_NUM(PALLET_TOWN_PLAYERS_HOUSE_1F))     \
- || (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PALLET_TOWN_PLAYERS_HOUSE_2F)  \
-  && gSaveBlock1Ptr->location.mapNum == MAP_NUM(PALLET_TOWN_PLAYERS_HOUSE_2F)))    \
+    ((gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_PALLET_TOWN_PLAYERS_HOUSE_1F) \
+  && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_PALLET_TOWN_PLAYERS_HOUSE_1F))     \
+ || (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_PALLET_TOWN_PLAYERS_HOUSE_2F)  \
+  && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_PALLET_TOWN_PLAYERS_HOUSE_2F)))    \
 
  #define IN_OAKS_LAB \
-    (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PALLET_TOWN_PROFESSOR_OAKS_LAB) \
-  && gSaveBlock1Ptr->location.mapNum == MAP_NUM(PALLET_TOWN_PROFESSOR_OAKS_LAB))    \
+    (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB) \
+  && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB))    \
 
 void SetHelpContextForMap(void)
 {
@@ -1954,12 +1954,12 @@ static void BuildMainTopicsListAndMoveToH00(struct HelpSystemListMenu * helpList
     {
         if (sHelpSystemContextTopicFlags[sHelpSystemContextId][sHelpSystemContextTopicOrder[i]] == TRUE)
         {
-            listMenuItemsBuffer[totalItems].label = sHelpSystemTopicPtrs[sHelpSystemContextTopicOrder[i]];
-            listMenuItemsBuffer[totalItems].index = sHelpSystemContextTopicOrder[i];
+            listMenuItemsBuffer[totalItems].name = sHelpSystemTopicPtrs[sHelpSystemContextTopicOrder[i]];
+            listMenuItemsBuffer[totalItems].id = sHelpSystemContextTopicOrder[i];
             totalItems++;
         }
     }
-    listMenuItemsBuffer[totalItems - 1].index = -2;
+    listMenuItemsBuffer[totalItems - 1].id = -2;
     helpListMenu->sub.totalItems = totalItems;
     helpListMenu->sub.maxShowed = totalItems;
     helpListMenu->sub.left = 0;
@@ -1989,16 +1989,16 @@ static void SetHelpSystemSubmenuItems(struct HelpSystemListMenu * helpListMenu, 
         if (IsHelpSystemSubmenuEnabled(submenuItems[i]) == TRUE)
         {
             if (gHelpSystemState.topic == TOPIC_WHAT_TO_DO)
-                listMenuItemsBuffer[totalItems].label = sHelpSystemSpecializedQuestionTextPtrs[submenuItems[i]];
+                listMenuItemsBuffer[totalItems].name = sHelpSystemSpecializedQuestionTextPtrs[submenuItems[i]];
             else if (gHelpSystemState.topic == TOPIC_HOW_TO_DO)
-                listMenuItemsBuffer[totalItems].label = sHelpSystemMenuTopicTextPtrs[submenuItems[i]];
+                listMenuItemsBuffer[totalItems].name = sHelpSystemMenuTopicTextPtrs[submenuItems[i]];
             else if (gHelpSystemState.topic == TOPIC_TERMS)
-                listMenuItemsBuffer[totalItems].label = sHelpSystemTermTextPtrs[submenuItems[i]];
+                listMenuItemsBuffer[totalItems].name = sHelpSystemTermTextPtrs[submenuItems[i]];
             else if (gHelpSystemState.topic == TOPIC_ABOUT_GAME)
-                listMenuItemsBuffer[totalItems].label = sHelpSystemGeneralTopicTextPtrs[submenuItems[i]];
+                listMenuItemsBuffer[totalItems].name = sHelpSystemGeneralTopicTextPtrs[submenuItems[i]];
             else // TOPIC_TYPE_MATCHUP
-                listMenuItemsBuffer[totalItems].label = sHelpSystemTypeMatchupTextPtrs[submenuItems[i]];
-            listMenuItemsBuffer[totalItems].index = submenuItems[i];
+                listMenuItemsBuffer[totalItems].name = sHelpSystemTypeMatchupTextPtrs[submenuItems[i]];
+            listMenuItemsBuffer[totalItems].id = submenuItems[i];
             totalItems++;
         }
     }
@@ -2006,13 +2006,13 @@ static void SetHelpSystemSubmenuItems(struct HelpSystemListMenu * helpListMenu, 
     {
         for (i = 0, submenuItems = sTerms_Basic; submenuItems[i] != HELP_END; i++)
         {
-            listMenuItemsBuffer[totalItems].label = sHelpSystemTermTextPtrs[submenuItems[i]];
-            listMenuItemsBuffer[totalItems].index = submenuItems[i];
+            listMenuItemsBuffer[totalItems].name = sHelpSystemTermTextPtrs[submenuItems[i]];
+            listMenuItemsBuffer[totalItems].id = submenuItems[i];
             totalItems++;
         }
     }
-    listMenuItemsBuffer[totalItems].label = Help_Text_Cancel;
-    listMenuItemsBuffer[totalItems].index = -2;
+    listMenuItemsBuffer[totalItems].name = Help_Text_Cancel;
+    listMenuItemsBuffer[totalItems].id = -2;
     totalItems++;
     helpListMenu->sub.totalItems = totalItems;
     helpListMenu->sub.maxShowed = 7;
@@ -2471,7 +2471,7 @@ static void ResetHelpSystemCursor(struct HelpSystemListMenu * helpListMenu)
 
 static void PrintHelpSystemTopicMouseoverDescription(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer)
 {
-    s32 index = listMenuItemsBuffer[helpListMenu->itemsAbove + helpListMenu->cursorPos].index;
+    s32 index = listMenuItemsBuffer[helpListMenu->itemsAbove + helpListMenu->cursorPos].id;
     if (index == -2)
         HelpSystem_PrintTopicMouseoverDescription(sHelpSystemTopicMouseoverDescriptionPtrs[5]);
     else

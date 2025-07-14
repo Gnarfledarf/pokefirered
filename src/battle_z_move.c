@@ -103,6 +103,7 @@ static const u8 sText_FollowMe[] = _("Follow Me");
 static const u8 sText_RecoverHP[] = _("Recover HP");
 static const u8 sText_HealAllyHP[] = _("Heal Replacement HP");
 static const u8 sText_PowerColon[] = _("Power: ");
+static const u8 sText_NoAdditionalEffect[] = _("No Additional Effect");
 
 // Functions
 bool32 IsZMove(u32 move)
@@ -151,7 +152,7 @@ u32 GetUsableZMove(u32 battler, u32 move)
         if (zMove != MOVE_NONE)
             return zMove;  // Signature z move exists
 
-        if (move != MOVE_NONE && zMove != MOVE_Z_STATUS && GetMoveType(move) == ItemId_GetSecondaryId(item))
+        if (move != MOVE_NONE && zMove != MOVE_Z_STATUS && GetMoveType(move) == GetItemSecondaryId(item))
             return GetTypeBasedZMove(move);
     }
 
@@ -195,7 +196,7 @@ bool32 IsViableZMove(u32 battler, u32 move)
         if (zMove != MOVE_NONE)
             return TRUE;
 
-        if (move != MOVE_NONE && GetMoveType(move) == ItemId_GetSecondaryId(item))
+        if (move != MOVE_NONE && GetMoveType(move) == GetItemSecondaryId(item))
             return TRUE;
     }
 
@@ -351,6 +352,10 @@ bool32 MoveSelectionDisplayZMove(u16 zmove, u32 battler)
                 gDisplayedStringBattle[4] = EOS;
                 PREPARE_STAT_BUFFER(gBattleTextBuff1, zEffect - Z_EFFECT_ATK_UP_3 + 1);
                 ExpandBattleTextBuffPlaceholders(gBattleTextBuff1, gDisplayedStringBattle + 4);
+                break;
+            default:
+                if (B_SHOW_USELESS_Z_MOVE_INFO == TRUE)
+                    StringCopy(gDisplayedStringBattle, sText_NoAdditionalEffect);
                 break;
             }
 

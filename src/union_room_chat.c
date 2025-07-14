@@ -326,7 +326,9 @@ void EnterUnionRoomChat(void)
 
 static void InitChatWork(struct UnionRoomChat * unionRoomChat)
 {
+#if FREE_UNION_ROOM_CHAT == FALSE
     int i;
+#endif //FREE_UNION_ROOM_CHAT
 
     unionRoomChat->routineNo = CHATENTRYROUTINE_JOIN;
     unionRoomChat->routineState = 0;
@@ -342,8 +344,10 @@ static void InitChatWork(struct UnionRoomChat * unionRoomChat)
     unionRoomChat->exitType = 0;
     unionRoomChat->changedRegisteredTexts = FALSE;
     PrepareSendBuffer_Null(unionRoomChat->sendMessageBuffer);
+#if FREE_UNION_ROOM_CHAT == FALSE
     for (i = 0; i < UNION_ROOM_KB_ROW_COUNT; i++)
         StringCopy(unionRoomChat->registeredTexts[i], gSaveBlock1Ptr->registeredTexts[i]);
+#endif //FREE_UNION_ROOM_CHAT
 }
 
 static void FreeChatWork(void)
@@ -465,7 +469,7 @@ static void ChatEntryRoutine_HandleInput(void)
         {
             GoToRoutine(CHATENTRYROUTINE_SWITCH);
         }
-        else if (JOY_REPT(B_BUTTON))
+        else if (JOY_REPEAT(B_BUTTON))
         {
             if (sWork->bufferCursorPos)
             {
@@ -1024,7 +1028,7 @@ static bool32 TypeChatMessage_HandleDPad(void)
 {
     do
     {
-        if (JOY_REPT(DPAD_UP))
+        if (JOY_REPEAT(DPAD_UP))
         {
             if (sWork->currentRow > 0)
                 sWork->currentRow--;
@@ -1033,7 +1037,7 @@ static bool32 TypeChatMessage_HandleDPad(void)
 
             break;
         }
-        if (JOY_REPT(DPAD_DOWN))
+        if (JOY_REPEAT(DPAD_DOWN))
         {
             if (sWork->currentRow < sKeyboardPageMaxRow[sWork->currentPage])
             {
@@ -1048,7 +1052,7 @@ static bool32 TypeChatMessage_HandleDPad(void)
         }
         if (sWork->currentPage != UNION_ROOM_KB_PAGE_COUNT)
         {
-            if (JOY_REPT(DPAD_LEFT))
+            if (JOY_REPEAT(DPAD_LEFT))
             {
                 if (sWork->currentCol > 0)
                     sWork->currentCol--;
@@ -1056,7 +1060,7 @@ static bool32 TypeChatMessage_HandleDPad(void)
                     sWork->currentCol = 4;
                 break;
             }
-            if (JOY_REPT(DPAD_RIGHT))
+            if (JOY_REPEAT(DPAD_RIGHT))
             {
                 if (sWork->currentCol < 4)
                     sWork->currentCol++;
@@ -1174,9 +1178,11 @@ static void ResetMessageEntryBuffer(void)
 
 static void SaveRegisteredTextsToSB1(void)
 {
+#if FREE_UNION_ROOM_CHAT == FALSE
     int i;
     for (i = 0; i < UNION_ROOM_KB_ROW_COUNT; i++)
         StringCopy(gSaveBlock1Ptr->registeredTexts[i], sWork->registeredTexts[i]);
+#endif //FREE_UNION_ROOM_CHAT
 }
 
 u8 *UnionRoomChat_GetWorkRegisteredText(int arg0)
@@ -1422,6 +1428,7 @@ u8 *UnionRoomChat_GetNameOfPlayerWhoDisbandedChat(void)
 
 void UnionRoomChat_InitializeRegisteredTexts(void)
 {
+#if FREE_UNION_ROOM_CHAT == FALSE
     StringCopy(gSaveBlock1Ptr->registeredTexts[0], gText_Hello);
     StringCopy(gSaveBlock1Ptr->registeredTexts[1], gText_Pokemon2);
     StringCopy(gSaveBlock1Ptr->registeredTexts[2], gText_Trade);
@@ -1432,6 +1439,7 @@ void UnionRoomChat_InitializeRegisteredTexts(void)
     StringCopy(gSaveBlock1Ptr->registeredTexts[7], gText_YaySmileEmoji);
     StringCopy(gSaveBlock1Ptr->registeredTexts[8], gText_ThankYou);
     StringCopy(gSaveBlock1Ptr->registeredTexts[9], gText_ByeBye);
+#endif //FREE_UNION_ROOM_CHAT
 }
 
 #define tState               data[0]

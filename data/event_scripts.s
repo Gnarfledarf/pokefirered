@@ -50,6 +50,7 @@
 
 	.section script_data, "aw", %progbits
 
+	.set ALLOCATE_SCRIPT_CMD_TABLE, 1
 	.include "data/script_cmd_table.inc"
 
 	.align 2
@@ -862,7 +863,7 @@ Text_MakingPreparations::
 Text_WantWhichFloor::
 	.string "Which floor do you want?$"
 
-Text_BagItemCanBeRegistered::
+gText_SelectWithoutRegisteredItem::
 	.string "An item in the BAG can be\n"
 	.string "registered to SELECT for easy use.$"
 
@@ -1132,8 +1133,8 @@ EventScript_HandOverItem::
 	.include "data/scripts/flavor_text.inc"
 	.include "data/scripts/questionnaire.inc"
 
-EventScript_BagItemCanBeRegistered::
-	msgbox Text_BagItemCanBeRegistered, MSGBOX_SIGN
+EventScript_SelectWithoutRegisteredItem::
+	msgbox gText_SelectWithoutRegisteredItem, MSGBOX_SIGN
 	end
 
 EventScript_Return::
@@ -1367,3 +1368,4 @@ Text_TestMsg::
 	.include "data/text/new_game_intro.inc"
 	.include "data/text/pokedude.inc"
 	.include "data/scripts/follower.inc"
+	.include "data/scripts/dexnav.inc"

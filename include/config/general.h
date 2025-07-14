@@ -8,8 +8,9 @@
 // Ruby's actual debug build does not use the AGBPrint features.
 // #define NDEBUG
 
-// Fire Red likely forgot to define NDEBUG/NOAGBPRN before release, leading
-// to the inclusion of asserts in the retail ROM.
+// To enable printf debugging, comment out "#define NDEBUG". This allows
+// the various AGBPrint functions to be used. (See include/gba/isagbprint.h).
+// See below for enabling different pretty printing versions.
 
 #ifndef NDEBUG
 #define PRETTY_PRINT_OFF (0)
@@ -31,7 +32,7 @@
 //       AGB_PRINT is supported on respective debug units.
 
 #define LOG_HANDLER (LOG_HANDLER_MGBA_PRINT)
-#endif // NDEBUG
+#endif
 
 // Uncomment to fix some identified minor bugs
 #define BUGFIX
@@ -42,6 +43,8 @@
 #else // Default version seems to be LeafGreen
 #define GAME_VERSION VERSION_LEAF_GREEN
 #endif // GAME_VERSION
+
+#define IS_FRLG (GAME_VERSION == VERSION_FIRE_RED || GAME_VERSION == VERSION_LEAF_GREEN)
 
 // rev1 renamed the source folder for reasons
 #define CODE_ROOT "C:/WORK/POKeFRLG/Src/pm_lgfr_ose/source/"
@@ -71,7 +74,6 @@
 
 // General settings
 #define EXPANSION_INTRO              TRUE    // If TRUE, a custom RHH intro will play after the vanilla copyright screen.
-#define POKEDEX_PLUS_HGSS            FALSE   // If TRUE, enables the custom HGSS style Pokedex.
 #define SUMMARY_SCREEN_NATURE_COLORS TRUE    // If TRUE, nature-based stat boosts and reductions will be red and blue in the summary screen.
 #define HQ_RANDOM                    TRUE    // If TRUE, replaces the default RNG with an implementation of SFC32 RNG. May break code that relies on RNG.
 #define COMPETITIVE_PARTY_SYNTAX     TRUE    // If TRUE, parties are defined in "competitive syntax".
@@ -88,4 +90,5 @@
 // Naming Screen
 #define AUTO_LOWERCASE_KEYBOARD      GEN_LATEST  // Starting in GEN_6, after entering the first uppercase character, the keyboard switches to lowercase letters.
 
+#define SAVE_TYPE_ERROR_SCREEN              FALSE   // When enabled, this shows an error message when the game is loaded on a cart without a flash chip or on an emulator with the wrong save type setting instead of crashing.
 #endif // GUARD_CONFIG_GENERAL_H

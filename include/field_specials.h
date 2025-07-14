@@ -3,8 +3,10 @@
 
 #include "global.h"
 
+extern u16 gScrollableMultichoice_ScrollOffset;
+
 u8 GetLeadMonIndex(void);
-s32 CountDigits(s32 number);
+size_t CountDigits(s32 value);
 void TV_PrintIntToStringVar(u8 varidx, s32 number);
 u16 GetStarterSpecies(void);
 void StopPokemonLeagueLightingEffectTask(void);

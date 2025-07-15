@@ -8,3 +8,4 @@ To set up the repository, see [INSTALL.md](https://github.com/rh-hideout/pokeeme
 # Credits
 [rh-hideout/pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion/wiki/Credits)  
 [Sotomura/pokefirered-rtc](https://github.com/Sotomura/pokefirered/tree/pokefirered-rtc)
+[Soilydude (PokéCommunity) "Wild Pokémon Drop Held Item on Fainting"](https://www.pokecommunity.com/threads/simple-modifications-directory.416647/page-25#post-10833382)

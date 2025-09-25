@@ -51,7 +51,81 @@
     F(STEEL_WING) \
     F(SKILL_SWAP) \
     F(SNATCH) \
-    F(OVERHEAT)
+    F(OVERHEAT) \
+    F(ROOST) \
+    F(FOCUS_BLAST) \
+    F(ENERGY_BALL) \
+    F(FALSE_SWIPE) \
+    F(BRINE) \
+    F(FLING) \
+    F(CHARGE_BEAM) \
+    F(ENDURE) \
+    F(DRAGON_PULSE) \
+    F(DRAIN_PUNCH) \
+    F(WILL_O_WISP) \
+    F(SILVER_WIND) \
+    F(EMBARGO) \
+    F(EXPLOSION) \
+    F(SHADOW_CLAW) \
+    F(PAYBACK) \
+    F(RECYCLE) \
+    F(GIGA_IMPACT) \
+    F(ROCK_POLISH) \
+    F(DAZZLING_GLEAM) \
+    F(STONE_EDGE) \
+    F(AVALANCHE) \
+    F(THUNDER_WAVE) \
+    F(GYRO_BALL) \
+    F(SWORDS_DANCE) \
+    F(STEALTH_ROCK) \
+    F(PSYCH_UP) \
+    F(CAPTIVATE) \
+    F(DARK_PULSE) \
+    F(ROCK_SLIDE) \
+    F(X_SCISSOR) \
+    F(SLEEP_TALK) \
+    F(NATURAL_GIFT) \
+    F(POISON_JAB) \
+    F(DREAM_EATER) \
+    F(GRASS_KNOT) \
+    F(SWAGGER) \
+    F(PLUCK) \
+    F(U_TURN) \
+    F(SUBSTITUTE) \
+    F(FLASH_CANNON) \
+    F(TRICK_ROOM) \
+    F(HONE_CLAWS) \
+    F(PSYSHOCK) \
+    F(VENOSHOCK) \
+    F(TELEKINESIS) \
+    F(SMACK_DOWN) \
+    F(SLUDGE_WAVE) \
+    F(FLAME_CHARGE) \
+    F(LOW_SWEEP)/* \
+    F(ROUND) \
+    F(ECHOED_VOICE) \
+    F(ALLY_SWITCH) \
+    F(SCALD) \
+    F(SKY_DROP) \
+    F(INCINERATE) \
+    F(QUASH) \
+    F(ACROBATICS) \
+    F(RETALIATE) \
+    F(VOLT_SWITCH) \
+    F(STRUGGLE_BUG) \
+    F(BULLDOZE) \
+    F(FROST_BREATH) \
+    F(DRAGON_TAIL) \
+    F(WORK_UP) \
+    F(WILD_CHARGE) \
+    F(SNARL) \
+    F(INFESTATION) \
+    F(NATURE_POWER) \
+    F(POWER_UP_PUNCH) \
+    F(CONFIDE) \
+    F(BRUTAL_SWING) \
+    F(SMART_STRIKE) \
+    F(AURORA_VEIL)*/
 
 #define FOREACH_HM(F) \
     F(CUT) \
@@ -61,7 +135,10 @@
     F(FLASH) \
     F(ROCK_SMASH) \
     F(WATERFALL) \
-    F(DIVE)
+    F(DIVE) /*\
+    F(WHIRLPOOL) \
+    F(DEFOG) \
+    F(ROCK_CLIMB)*/
 
 #define FOREACH_TMHM(F) \
     FOREACH_TM(F) \

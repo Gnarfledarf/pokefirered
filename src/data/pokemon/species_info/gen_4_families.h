@@ -30,10 +30,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 4,
         .weight = 102,
         .description = COMPOUND_STRING(
-            "The shell on its back is made of soil. \n"
-            "On a very healthy Turtwig, the shell \n"
-            "should feel moist. The leaf on its head\n"
-            "wilts if it is thirsty."),
+        #ifdef FIRERED
+            "Made from soil, the shell on its back hardens\n"
+            "when it drinks water. It lives along lakes."
+        #else
+            "It undertakes photosynthesis with its body,\n"
+            "making oxygen. The leaf on its head wilts if\n"
+            "it is thirsty."
+        #endif
+        ),
         .pokemonScale = 491,
         .pokemonOffset = 20,
         .trainerScale = 256,
@@ -100,10 +105,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 11,
         .weight = 970,
         .description = COMPOUND_STRING(
-            "A Grotle that lives in the forest is said\n"
-            "to have its own secret springwater well. \n"
-            "It carries fellow Pokémon there on \n"
-            "its back."),
+        #ifdef FIRERED
+            "It lives along water in forests. In the\n"
+            "daytime, it leaves the forest to sunbathe\n"
+            "its treed shell."
+        #else
+            "The shell is hardened soil.\n"
+            "Some Pokémon come to peck the berries\n"
+            "growing on the trees on its back."
+        #endif
+        ),
         .pokemonScale = 320,
         .pokemonOffset = 9,
         .trainerScale = 256,
@@ -176,10 +187,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 22,
         .weight = 3100,
         .description = COMPOUND_STRING(
-            "Some Pokémon are born on a Torterra's\n"
-            "back and spend their entire life there.\n"
-            "Ancient people imagined that beneath \n"
-            "the ground, a gigantic Torterra dwelled."),
+        #ifdef FIRERED
+            "Small Pokémon occasionally gather on its\n"
+            "unmoving back to begin building their nests."
+        #else
+            "Groups of this Pokémon migrating in\n"
+            "search of water have been mistaken\n"
+            "for “moving forests”."
+        #endif
+        ),
         .pokemonScale = 256,
         .pokemonOffset = 0,
         .trainerScale = 348,
@@ -245,10 +261,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 5,
         .weight = 62,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "It agilely scales sheer cliffs to live atop\n"
+            "craggy mountains. Its fire is put out when\n"
+            "it sleeps."
+        #else
             "Its fiery rear end is fueled by gas made\n"
-            "in its belly. Before going to sleep,\n"
-            "Chimchar extinguish the flame on their\n"
-            "tails to prevent fires."),
+            "in its belly. Even rain can't extinguish\n"
+            "the fire."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 15,
         .trainerScale = 256,
@@ -319,10 +341,14 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 9,
         .weight = 220,
         .description = COMPOUND_STRING(
-            "It carefully controls the intensity of\n"
-            "the flame on its tail, so as to keep its\n"
-            "foes at an adequate distance.\n"
-            "Its fiery tail is but one weapon."),
+        #ifdef FIRERED
+            "To intimidate attackers, it stretches the\n"
+            "fire on its tail to make itself appear bigger."
+        #else
+            "It uses ceilings and walls to launch aerial\n"
+            "attacks. Its fiery tail is but one weapon."
+        #endif
+        ),
         .pokemonScale = 338,
         .pokemonOffset = 9,
         .trainerScale = 256,
@@ -397,10 +423,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 12,
         .weight = 550,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "It uses a special kind of martial arts\n"
+            "involving all its limbs. Its fire never\n"
+            "goes out."
+        #else
             "Its crown of fire is indicative of its\n"
-            "fiery nature. It uses a special kind of\n"
-            "martial arts involving all of its limbs to\n"
-            "take on any opponent."),
+            "fiery nature. It is beaten by none in\n"
+            "terms of quickness."
+        #endif
+        ),
         .pokemonScale = 282,
         .pokemonOffset = 3,
         .trainerScale = 256,
@@ -470,10 +502,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 4,
         .weight = 52,
         .description = COMPOUND_STRING(
-            "A poor walker, it often falls down. However,\n"
-            "its strong pride makes it puff up its chest\n"
-            "without a care. It's difficult to bond with\n"
-            "since it won't listen to its Trainer."),
+        #ifdef FIRERED
+            "Because it is very proud, it hates accepting\n"
+            "food from people. Its thick down guards it\n"
+            "from cold."
+        #else
+            "It lives along shores in northern countries.\n"
+            "A skilled swimmer, it dives for over\n"
+            "10 minutes to hunt."
+        #endif
+        ),
         .pokemonScale = 491,
         .pokemonOffset = 17,
         .trainerScale = 256,
@@ -543,10 +581,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 8,
         .weight = 230,
         .description = COMPOUND_STRING(
-            "Because every Prinplup considers itself\n"
-            "to be the most important, they can never\n"
-            "form a group. It searches for prey in\n"
-            "icy seas."),
+        #ifdef FIRERED
+            "It lives alone, away from others.\n"
+            "Apparently, every one of them believes it\n"
+            "is the most important."
+        #else
+            "Its wings deliver wicked blows that\n"
+            "snap even the thickest of trees.\n"
+            "It searches for prey in icy seas."
+        #endif
+        ),
         .pokemonScale = 366,
         .pokemonOffset = 10,
         .trainerScale = 257,
@@ -627,10 +671,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 17,
         .weight = 845,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "The three horns that extend from its\n"
-            "beak attest to its power. It avoids\n"
-            "unnecessary disputes, but it will decimate\n"
-            "anything that threatens its pride."),
+            "beak attest to its power. The leader\n"
+            "has the biggest horns."
+        #else
+            "It swims as fast as a jet boat.\n"
+            "The edges of its wings are sharp and can\n"
+            "slice apart drifting ice."
+        #endif
+        ),
         .pokemonScale = 259,
         .pokemonOffset = 0,
         .trainerScale = 290,
@@ -700,10 +750,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 3,
         .weight = 20,
         .description = COMPOUND_STRING(
-            "They flock around mountains and fields,\n"
-            "chasing after bug Pokémon. However,\n"
-            "they bicker if the group grows too big.\n"
-            "Their singing is noisy and annoying."),
+        #ifdef FIRERED
+            "They flock in great numbers. Though small,\n"
+            "they flap their wings with great power."
+        #else
+            "Usually with a large flock, it is barely\n"
+            "noticeable when alone.\n"
+            "Its cries are very strident."
+        #endif
+        ),
         .pokemonScale = 530,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -784,10 +839,14 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 6,
         .weight = 155,
         .description = COMPOUND_STRING(
-            "Recognizing their own weakness, they\n"
-            "maintain huge flocks. Fierce scuffles\n"
-            "break out between various flocks.\n"
-            "When alone, a Staravia cries noisily."),
+        #ifdef FIRERED
+            "It flies around forests and fields in search\n"
+            "of bug Pokémon. It stays within a huge flock."
+        #else
+            "It lives in forests and fields. Squabbles\n"
+            "over territory occur when flocks collide."
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -872,10 +931,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 12,
         .weight = 249,
         .description = COMPOUND_STRING(
-            "When Staravia evolve into Staraptor,\n"
-            "they leave the flock to live alone. It has\n"
-            "a savage nature. It will courageously\n"
-            "challenge foes that are much larger."),
+        #ifdef FIRERED
+            "It has a savage nature. It will courageously\n"
+            "challenge foes that are much larger."
+        #else
+            "The muscles in its wings and legs\n"
+            "are strong. It can easily fly while\n"
+            "gripping a small Pokémon."
+        #endif
+        ),
         .pokemonScale = 282,
         .pokemonOffset = 4,
         .trainerScale = 256,
@@ -951,10 +1015,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 5,
         .weight = 200,
         .description = COMPOUND_STRING(
-            "A comparison revealed that Bidoof's front\n"
-            "teeth grow at the same rate as Rattata's.\n"
-            "It constantly gnaws on logs and rocks to\n"
-            "whittle down its front teeth."),
+        #ifdef FIRERED
+            "With nerves of steel, nothing can perturb it.\n"
+            "It is more agile and active than it appears."
+        #else
+            "It constantly gnaws on logs and rocks\n"
+            "to whittle down its front teeth.\n"
+            "It nests alongside water."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 16,
         .trainerScale = 256,
@@ -1037,10 +1106,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 10,
         .weight = 315,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "It makes its nest by damming streams\n"
-            "with bark and mud. A river dammed by\n"
-            "Bibarel will never overflow its banks,\n"
-            "which is appreciated by people nearby."),
+            "with bark and mud. It is known as an\n"
+            "industrious worker."
+        #else
+            "While its movements out of water are sluggish,\n"
+            "it can swim as fast as any Feebas."
+        #endif
+        ),
         .pokemonScale = 305,
         .pokemonOffset = 8,
         .trainerScale = 257,
@@ -1120,10 +1194,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 3,
         .weight = 22,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "It shakes its head back to front,\n"
             "causing its antennae to hit each other\n"
-            "and sound like a xylophone.\n"
-            "These sounds are fall hallmarks."),
+            "and sound like a xylophone."
+        #else
+            "It chats with others using the\n"
+            "sounds of its colliding antennae\n"
+            "These sounds are fall hallmarks."
+        #endif
+        ),
         .pokemonScale = 530,
         .pokemonOffset = 17,
         .trainerScale = 256,
@@ -1216,10 +1296,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 10,
         .weight = 255,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "It crosses its knifelike arms in front\n"
+            "of its chest when it cries. It can compose\n"
+            "melodies ad lib."
+        #else
             "It signals its emotions with its melodies.\n"
-            "There is a village that hosts a contest\n"
-            "based on the amazingly variable cries\n"
-            "of this Pokémon."),
+            "Scientists are studying these melodic\n"
+            "patterns."
+        #endif
+        ),
         .pokemonScale = 305,
         .pokemonOffset = 8,
         .trainerScale = 257,
@@ -1302,10 +1388,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 5,
         .weight = 95,
         .description = COMPOUND_STRING(
-            "It rapidly contracts and relaxes its\n"
-            "muscles to generate electricity. Its\n"
-            "body shines if endangered. It flees\n"
-            "while the foe is momentarily blinded."),
+        #ifdef FIRERED
+            "All of its fur dazzles if danger is sensed.\n"
+            "It flees while the foe is momentarily blinded."
+        #else
+            "Its forelegs have a muscle-based system\n"
+            "of generating electricity. Its body shines\n"
+            "if endangered."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 17,
         .trainerScale = 256,
@@ -1384,10 +1475,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 9,
         .weight = 305,
         .description = COMPOUND_STRING(
-            "Strong electricity courses through the\n"
-            "tips of its sharp claws. A light scratch\n"
-            "has enough amperage to cause fainting\n"
-            "in foes."),
+        #ifdef FIRERED
+            "Its claws loose electricity with\n"
+            "enough amperage to cause fainting.\n"
+            "They live in small groups."
+        #else
+            "It rests its forelegs on others to communicate\n"
+            "with rhythmic electric pulses from its claws."
+        #endif
+        ),
         .pokemonScale = 338,
         .pokemonOffset = 10,
         .trainerScale = 256,
@@ -1470,10 +1566,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 14,
         .weight = 420,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "It has eyes which can see through\n"
-            "anything. Luxray's ability to see\n"
-            "through objects comes in handy when\n"
-            "it's scouting for danger."),
+            "anything. It spots and captures prey\n"
+            "hiding behind objects."
+        #else
+            "When its eyes gleam gold, it can spot hiding\n"
+            "prey--even those taking shelter behind a wall."
+        #endif
+        ),
         .pokemonScale = 265,
         .pokemonOffset = 2,
         .trainerScale = 262,
@@ -1554,10 +1655,14 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 9,
         .weight = 315,
         .description = COMPOUND_STRING(
-            "A lifelong jungle dweller from 100 million\n"
-            "years ago, its skull is as hard as iron. \n"
-            "It would snap obstructing trees with\n"
-            "headbutts."),
+        #ifdef FIRERED
+            "It lived in jungles around 100 million\n"
+            "years ago. Its skull is as hard as iron."
+        #else
+            "It was resurrected from an iron ball-like\n"
+            "fossil. It downs prey with its head butts."
+        #endif
+        ),
         .pokemonScale = 338,
         .pokemonOffset = 10,
         .trainerScale = 256,
@@ -1622,10 +1727,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 16,
         .weight = 1025,
         .description = COMPOUND_STRING(
-            "The result of repeated headbutts\n"
-            "is a skull grown thick and hard.\n"
-            "However, its brain has shrunk in size\n"
-            "compared with Cranidos's."),
+        #ifdef FIRERED
+            "Its powerful head butt has enough\n"
+            "power to shatter even the most durable\n"
+            "things upon impact."
+        #else
+            "Its skull is as hard as iron. It is a\n"
+            "brute that tears down jungle trees while\n"
+            "catching prey."
+        #endif
+        ),
         .pokemonScale = 259,
         .pokemonOffset = 1,
         .trainerScale = 296,
@@ -1693,10 +1804,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 5,
         .weight = 570,
         .description = COMPOUND_STRING(
-            "This Pokémon lived in primeval jungles.\n"
-            "Few enemies would have been willing to\n"
-            "square off against its heavily armored\n"
-            "face, so it's thought."),
+        #ifdef FIRERED
+            "A Pokémon that lived in jungles around\n"
+            "100 million years ago. Its facial hide\n"
+            "is extremely hard."
+        #else
+            "It habitually polishes its face by\n"
+            "rubbing it against tree trunks.\n"
+            "It is weak to attacks from behind."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 16,
         .trainerScale = 256,
@@ -1762,10 +1879,14 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 13,
         .weight = 1495,
         .description = COMPOUND_STRING(
-            "Their rock-hard faces serve to protect\n"
-            "them from any frontral attacks.\n"
-            "When attacked, they form a wall.\n"
-            "They shielded their young in that way."),
+        #ifdef FIRERED
+            "Any frontal attack is repulsed. It is a docile\n"
+            "Pokémon that feeds on grass and berries."
+        #else
+            "When attacked, they form a wall with their\n"
+            "shieldlike faces to protect their young."
+        #endif
+        ),
         .pokemonScale = 272,
         .pokemonOffset = 4,
         .trainerScale = 256,
@@ -1831,10 +1952,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 2,
         .weight = 34,
         .description = COMPOUND_STRING(
-            "If its cloak is even slightly damaged, it\n"
-            "will immediately repair it with whatever is\n"
-            "near at hand. The Pokémon within the cloak\n"
-            "is scrawny and vulnerable to the cold."),
+        #ifdef FIRERED
+            "To shelter itself from cold, wintry winds,\n"
+            "it covers itself with a cloak made of twigs\n"
+            "and leaves."
+        #else
+            "If its cloak is broken in battle, it quickly\n"
+            "remakes the cloak with materials nearby."
+        #endif
+        ),
         .pokemonScale = 682,
         .pokemonOffset = 24,
         .trainerScale = 256,
@@ -1900,10 +2026,18 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 2,
         .weight = 34,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "It weaves a cloak together with sand, mud,\n"
             "and silk it spits out. This earthen cloak\n"
             "is ruined by wind and rain, so the Pokémon\n"
-            "hides away in caves and other such places."),
+            "hides away in caves and other such places."
+        #else
+            "It weaves a cloak together with sand, mud,\n"
+            "and silk it spits out. This earthen cloak\n"
+            "is ruined by wind and rain, so the Pokémon\n"
+            "hides away in caves and other such places."
+        #endif
+        ),
         .pokemonScale = 682,
         .pokemonOffset = 24,
         .trainerScale = 256,
@@ -1969,10 +2103,18 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 2,
         .weight = 34,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "When confronted by a lack of other\n"
             "materials, Burmy will create its cloak\n"
             "using dust and refuse. The cloak seems to\n"
-            "be more comfortable than one would think."),
+            "be more comfortable than one would think."
+        #else
+            "When confronted by a lack of other\n"
+            "materials, Burmy will create its cloak\n"
+            "using dust and refuse. The cloak seems to\n"
+            "be more comfortable than one would think."
+        #endif
+        ),
         .pokemonScale = 682,
         .pokemonOffset = 24,
         .trainerScale = 256,
@@ -2039,10 +2181,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 5,
         .weight = 65,
         .description = COMPOUND_STRING(
-            "Its appearance changes depending\n"
-            "on where Burmy evolved. The materials\n"
-            "on hand become a part of its body.\n"
-            "The cloak is never shed."),
+        #ifdef FIRERED
+            "When Burmy evolved, its cloak fashioned from\n"
+            "plant matter became a part of this Pokémon's\n"
+            "body. The cloak is never shed."
+        #else
+            "Its appearance changes depending on where it\n"
+            "evolved. The grassy materials on hand become\n"
+            "a part of its body."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -2105,10 +2253,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 5,
         .weight = 65,
         .description = COMPOUND_STRING(
-            "Its earthen skin is reasonably hard, it has\n"
-            "no problem repelling a Starly's pecking.\n"
-            "It is said that a Wormadam that evolves\n"
-            "on a cold day will have a thicker cloak."),
+        #ifdef FIRERED
+            "When Burmy evolved, its cloak made of earthen\n"
+            "matter became a part of this Pokémon's body.\n"
+            "The cloak is never shed."
+        #else
+            "Its appearance changes depending on where it\n"
+            "evolved. The sand and mud on hand become\n"
+            "a part of its body."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -2172,10 +2326,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 5,
         .weight = 65,
         .description = COMPOUND_STRING(
-            "Its body, composed of refuse, blends in to\n"
-            "the scenery enough to be inconspicuous.\n"
-            "This seems to be the perfect way for it to\n"
-            "evade the detection of predators."),
+        #ifdef FIRERED
+            "When Burmy evolved, its cloak composed of\n"
+            "refuse became a part of this Pokémon's body.\n"
+            "The cloak is never shed."
+        #else
+            "Its appearance changes depending on where it\n"
+            "evolved. The dust and refuse on hand become\n"
+            "a part of its body."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -2307,10 +2467,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 3,
         .weight = 55,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "A Pokémon formed by three others.\n"
-            "It constantly gathers honey from flowers\n"
-            "to please Vespiquen. At night, they\n"
-            "cluster to form a beehive and sleep."),
+            "It busily carries sweet floral honey\n"
+            "to Vespiquen."
+        #else
+            "It collects and delivers honey to its\n"
+            "colony. At night, they cluster to form\n"
+            "a beehive and sleep."
+        #endif
+        ),
         .pokemonScale = 530,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -2394,10 +2560,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 12,
         .weight = 385,
         .description = COMPOUND_STRING(
-            "It houses its colony in cells in its body\n"
-            "and releases various pheromones to\n"
-            "make those grubs do its bidding.\n"
-            "There is only one in a colony."),
+        #ifdef FIRERED
+            "Its abdomen is a honeycomb for grubs.\n"
+            "It raises its grubs on honey collected\n"
+            "by Combee."
+        #else
+            "When endangered, grubs from its six-cell\n"
+            "honeycomb strike back. There is only one\n"
+            "in a colony."
+        #endif
+        ),
         .pokemonScale = 282,
         .pokemonOffset = 4,
         .trainerScale = 256,
@@ -2470,10 +2642,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 4,
         .weight = 39,
         .description = COMPOUND_STRING(
-            "A pair may be seen rubbing their cheek\n"
-            "pouches together in an effort to share\n"
-            "stored electricity. It stores them with\n"
-            "berries in tree holes."),
+        #ifdef FIRERED
+            "It makes fur balls that crackle with static\n"
+            "electricity. It stores them with berries in\n"
+            "tree holes."
+        #else
+            "It makes electricity with pouches in its\n"
+            "cheeks and shoots charges from its tail.\n"
+            "It lives atop trees."
+        #endif
+        ),
         .pokemonScale = 491,
         .pokemonOffset = 16,
         .trainerScale = 256,
@@ -2557,10 +2735,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 7,
         .weight = 295,
         .description = COMPOUND_STRING(
-            "It inflates its flotation sac, keeping its\n"
-            "face above water in order to watch for\n"
-            "prey movement. It swims by rotating its\n"
-            "two tails like a screw."),
+        #ifdef FIRERED
+            "It has a flotation sac that is like an\n"
+            "inflatable collar. It floats on water\n"
+            "with its head out."
+        #else
+            "It swims by rotating its two tails\n"
+            "like a screw. When it dives, its\n"
+            "flotation sac collapses."
+        #endif
+        ),
         .pokemonScale = 365,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -2637,10 +2821,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 11,
         .weight = 335,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "Its flotation sac developed as a result\n"
+            "of pursuing aquatic prey. It assists in\n"
+            "the rescues of drowning people."
+        #else
             "Its flotation sac developed as a result\n"
             "of pursuing aquatic prey. It can double\n"
-            "as a rubber raft. It assists in the rescues\n"
-            "of drowning people."),
+            "as a rubber raft."
+        #endif
+        ),
         .pokemonScale = 320,
         .pokemonOffset = 7,
         .trainerScale = 256,
@@ -2721,10 +2911,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 4,
         .weight = 33,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "The small ball holds the nutrients needed\n"
-            "for evolution. Apparently, it is also very\n"
-            "sweet and tasty. Pokémon like Starly and\n"
-            "Taillow try to peck it off."),
+            "for evolution. Apparently, it is very\n"
+            "sweet and tasty."
+        #else
+            "Sunlight colors it red. When the small\n"
+            "ball is drained of nutrients, it shrivels\n"
+            "to herald evolution."
+        #endif
+        ),
         .pokemonScale = 491,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -2797,10 +2993,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 5,
         .weight = 93,
         .description = COMPOUND_STRING(
-            "It's motionless, save for the occasional\n"
-            "quiver. A rich array of Pokémon can be\n"
-            "found gathered around it, drawn by the\n"
-            "scent exuded from Cherrim's folded petals."),
+        #ifdef FIRERED
+            "It blooms during times of strong sunlight.\n"
+            "It tries to make up for everything it endured\n"
+            "as a bud."
+        #else
+            "It is docile as a bud, but turns cheerful\n"
+            "when it blooms. It folds back into a bud\n"
+            "if sunlight wanes."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -2869,10 +3071,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 5,
         .weight = 93,
         .description = COMPOUND_STRING(
-            "Cherrim takes this form on sunny days.\n"
-            "Its faint scent entices bug Pokémon to it.\n"
-            "It immediately closes its petals and\n"
-            "becomes immobile once the sun hides."),
+        #ifdef FIRERED
+            "After absorbing plenty of sunlight, Cherrim\n"
+            "takes this form. It's full of energy while\n"
+            "it's like this, and its liveliness will go\n"
+            "on until sundown."
+        #else
+            "The faint scent that emanates from its full\n"
+            "blossom entices bug Pokémon to it."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -2934,10 +3142,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 3,
         .weight = 63,
         .description = COMPOUND_STRING(
-            "It oozes a purple fluid to deter enemies.\n"
-            "While harmless, the fluid is awfully sticky.\n"
-            "Apparently, there are more West Sea\n"
-            "Shellos now than there were in the past."),
+        #ifdef FIRERED
+            "Its colors and shapes differ from\n"
+            "region to region. In the Sinnoh region,\n"
+            "two types are confirmed."
+        #else
+            "It lives along bodies of water. Its body\n"
+            "shape has changed to suit its habitat."
+        #endif
+        ),
         .pokemonScale = 530,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -3000,10 +3213,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 3,
         .weight = 63,
         .description = COMPOUND_STRING(
-            "It's capable of spending a limited amount\n"
-            "of time on land until their skin dries out.\n"
-            "One theory suggests that living in cold\n"
-            "seas causes Shellos to take on this form."),
+        #ifdef FIRERED
+            "Shellos lives in the sea and feasts on plankton.\n"
+            "The lovelier the ocean where Shellos resides, the\n"
+            "more vibrant its color becomes."
+        #else
+            "The difference in color from one Shellos to\n"
+            "another seems to be a result of their diet. No\n"
+            "large changes can be seen in their capabilities."
+        #endif
+        ),
         .pokemonScale = 530,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -3066,10 +3285,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 9,
         .weight = 299,
         .description = COMPOUND_STRING(
-            "It appears on shallow-water beaches to\n"
-            "eat sand for nourishment. Should one\n"
-            "Gastrodon encounter another of a\n"
-            "different color, a fierce battle will ensue."),
+        #ifdef FIRERED
+            "It has a pliable body without any bones.\n"
+            "If any part of its body is torn off, it\n"
+            "grows right back."
+        #else
+            "It apparently had a huge shell for\n"
+            "protection in ancient times. It lives\n"
+            "in shallow tidal pools."
+        #endif
+        ),
         .pokemonScale = 338,
         .pokemonOffset = 8,
         .trainerScale = 256,
@@ -3130,10 +3355,17 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 9,
         .weight = 299,
         .description = COMPOUND_STRING(
-            "Found more often on land than in the sea.\n"
-            "They normally live in rocky seashores, but\n"
-            "when cloudy or rainy, they can sometimes\n"
-            "be found on mountains, far from the sea."),
+        #ifdef FIRERED
+            "A team of researchers is scouring the\n"
+            "oceans of the world in search of a\n"
+            "Gastrodon in a color never seen before."
+        #else
+            "Plankton, invisible to the naked eye,\n"
+            "is its main food source. It comes onto\n"
+            "the land periodically, but the reason\n"
+            "for this is not known."
+        #endif
+        ),
         .pokemonScale = 338,
         .pokemonOffset = 8,
         .trainerScale = 256,
@@ -3196,10 +3428,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 4,
         .weight = 12,
         .description = COMPOUND_STRING(
-            "Because of the way it floats aimlessly,\n"
-            "an old folktale calls it a “Signpost for\n"
-            "Wandering Spirits.” Children holding\n"
-            "them sometimes vanish."),
+        #ifdef FIRERED
+            "A Pokémon formed by the spirits of people\n"
+            "and Pokémon. It loves damp, humid seasons."
+        #else
+            "It tugs on the hands of children\n"
+            "to steal them away.\n"
+            "However, it gets pulled around instead."
+        #endif
+        ),
         .pokemonScale = 491,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -3267,10 +3504,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 12,
         .weight = 150,
         .description = COMPOUND_STRING(
-            "Even while under careful observation,\n"
-            "large flocks of Drifblim flying at dusk\n"
-            "will inexplicably disappear from view.\n"
-            "No one knows where they go."),
+        #ifdef FIRERED
+            "It's drowzy in daytime, but flies\n"
+            "off in the evening in big groups.\n"
+            "No one knows where they go."
+        #else
+            "It carries people and Pokémon when\n"
+            "it flies. But since it only drifts,\n"
+            "it can end up anywhere."
+        #endif
+        ),
         .pokemonScale = 282,
         .pokemonOffset = 4,
         .trainerScale = 256,
@@ -3340,10 +3583,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 4,
         .weight = 55,
         .description = COMPOUND_STRING(
-            "You can tell how it feels by the way\n"
-            "it rolls its ears. When it's scared,\n"
-            "both ears are rolled up. When it senses\n"
-            "danger, it perks them up."),
+        #ifdef FIRERED
+            "It slams foes by sharply uncoiling its\n"
+            "rolled ears. It stings enough to make a\n"
+            "grown-up cry in pain."
+        #else
+            "When it senses danger, it perks up its\n"
+            "ears. On cold nights, it sleeps with its\n"
+            "head tucked into its fur."
+        #endif
+        ),
         .pokemonScale = 491,
         .pokemonOffset = 16,
         .trainerScale = 256,
@@ -3408,10 +3657,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 12,
         .weight = 333,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "An extremely cautious Pokémon.\n"
+            "It cloaks its body with its fluffy\n"
+            "ear fur when it senses danger."
+        #else
             "It is very conscious of its looks and\n"
             "never fails to groom its ears.\n"
-            "It runs with sprightly jumps."),
+            "It runs with sprightly jumps."
+        #endif
+        ),
         .pokemonScale = 282,
         .pokemonOffset = 4,
         .trainerScale = 256,
@@ -3478,10 +3733,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 13,
         .weight = 283,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "It swings its ears like whips and strikes\n"
+            "its enemies with them. It has an intensely\n"
+            "combative disposition."
+        #else
             "Mega Evolution awakens its combative\n"
             "instincts. It has shed any fur that got in\n"
-            "the way of its attacks.\n"
-            "crescent."),
+            "the way of its attacks."
+        #endif
+        ),
         .pokemonScale = 282,
         .pokemonOffset = 4,
         .trainerScale = 256,
@@ -3549,10 +3810,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 5,
         .weight = 39,
         .description = COMPOUND_STRING(
-            "It is a very fickle Pokémon, which is \n"
-            "very popular among some. It claws its\n"
-            "Trainer's nose if it isn't fed and\n"
-            "purrs when affectionate."),
+        #ifdef FIRERED
+            "It claws if displeased and purrs when\n"
+            "affectionate. Its fickleness is very\n"
+            "popular among some."
+        #else
+            "With its sharp glare, it puts foes in a\n"
+            "mild hypnotic state. It is a very fickle\n"
+            "Pokémon."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -3618,10 +3885,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 10,
         .weight = 438,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "It is a brazen brute that barges its way\n"
             "into another Pokémon's nest and claims\n"
-            "it as its own. It binds its body with its\n"
-            "tails to make itself look bigger."),
+            "it as its own."
+        #else
+            "To make itself appear intimidatingly beefy,\n"
+            "it tightly cinches its waist with its twin\n"
+            "tails."
+        #endif
+        ),
         .pokemonScale = 305,
         .pokemonOffset = 7,
         .trainerScale = 257,
@@ -3691,10 +3964,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 4,
         .weight = 192,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "It protects itself by spraying a\n"
-            "nose-curling, stinky fluid from its rear\n"
-            "to repel attackers. The stench lingers\n"
-            "for 24 hours."),
+            "noxious fluid from its rear.\n"
+            "The stench lingers for 24 hours."
+        #else
+            "It sprays a nose-curling, stinky fluid\n"
+            "from its rear to repel attackers."
+        #endif
+        ),
         .pokemonScale = 491,
         .pokemonOffset = 17,
         .trainerScale = 256,
@@ -3762,10 +4040,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 10,
         .weight = 380,
         .description = COMPOUND_STRING(
-            "It attacks by spraying a horribly smelly\n"
-            "fluid from the tip of its tail. The fluid\n"
-            "smells worse the longer it is allowed\n"
-            "to fester."),
+        #ifdef FIRERED
+            "It sprays a vile-smelling fluid from the\n"
+            "tip of its tail to attack. Its range is\n"
+            "over 50 meters."
+        #else
+            "It sprays a stinky fluid from its tail.\n"
+            "The fluid smells worse the longer it is\n"
+            "allowed to fester."
+        #endif
+        ),
         .pokemonScale = 305,
         .pokemonOffset = 9,
         .trainerScale = 257,
@@ -3832,10 +4116,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 5,
         .weight = 605,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Implements shaped like it were discovered\n"
-            "in ancient tombs. There are researchers\n"
-            "who believe this Pokémon reflected like a\n"
-            "mirror in the distant past."),
+            "in ancient tombs. It is unknown if they\n"
+            "are related."
+        #else
+            "X-ray photos were taken to check its body\n"
+            "structure. Nothing appeared, however."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -3910,10 +4199,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 13,
         .weight = 1870,
         .description = COMPOUND_STRING(
-            "In ages past, this Pokémon was revered as\n"
-            "a bringer of rain. One caused a news stir\n"
-            "when it was dug up at a construction site\n"
-            "after a 2000-year sleep."),
+        #ifdef FIRERED
+            "One caused a news stir when it was dug up at\n"
+            "a construction site after a 2000-year sleep.\n"
+        #else
+            "It can summon rain clouds.\n"
+            "People long ago revered it as the bringer\n"
+            "of plentiful harvests."
+        #endif
+        ),
         .pokemonScale = 272,
         .pokemonOffset = 3,
         .trainerScale = 256,
@@ -3983,10 +4277,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 5,
         .weight = 19,
         .description = COMPOUND_STRING(
-            "It mimics the cries of other Pokémon to\n"
-            "trick them into thinking it's one of them.\n"
-            "This way they won't attack it. It can\n"
-            "also learn and speak human words."),
+        #ifdef FIRERED
+            "It can learn and speak human words. If\n"
+            "they gather, they all learn the same saying."
+        #else
+            "It keeps rhythm by flicking its\n"
+            "tail feathers like a metronome.\n"
+            "It imitates human speech."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 15,
         .trainerScale = 256,
@@ -4067,10 +4366,14 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 10,
         .weight = 1080,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "A Pokémon that was formed by 108 spirits.\n"
-            "Its constant mischief and misdeeds\n"
-            "resulted in it being bound to an\n"
-            "Odd Keystone by a mysterious spell."),
+            "It is bound to a fissure in an odd keystone."
+        #else
+            "It was bound to a fissure in an odd keystone\n"
+            "as punishment for misdeeds 500 years ago."
+        #endif
+        ),
         .pokemonScale = 305,
         .pokemonOffset = 7,
         .trainerScale = 257,
@@ -4136,10 +4439,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 7,
         .weight = 205,
         .description = COMPOUND_STRING(
-            "It nests in horizontal holes warmed by\n"
-            "geothermal heat. Foes who stray too\n"
-            "close can expect to be pounced on\n"
-            "and bitten."),
+        #ifdef FIRERED
+            "It nests in horizontal holes in cave walls.\n"
+            "It pounces to catch prey that stray too close."
+        #else
+            "It once lived in the tropics.\n"
+            "To avoid the cold, it lives in\n"
+            "caves warmed by geothermal heat."
+        #endif
+        ),
         .pokemonScale = 365,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -4218,10 +4526,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 14,
         .weight = 560,
         .description = COMPOUND_STRING(
-            "Shiny objects are its passion. It can be\n"
-            "found in its cave, scarcely moving,\n"
-            "its gaze fixed on the jewels it's amassed\n"
-            "or Carbink it has caught."),
+        #ifdef FIRERED
+            "There is a long-held belief that\n"
+            "medicine made from its scales will\n"
+            "heal even incurable illnesses."
+        #else
+            "It habitually digs up and hoards\n"
+            "gems in its nest. Its loot is constantly\n"
+            "targeted by thieves."
+        #endif
+        ),
         .pokemonScale = 265,
         .pokemonOffset = 2,
         .trainerScale = 262,
@@ -4304,10 +4618,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 19,
         .weight = 950,
         .description = COMPOUND_STRING(
-            "When it folds up its body and extends its\n"
-            "wings, it looks like a jet plane. It is\n"
-            "covered in fine scales that reduce drag,\n"
-            "enabling it to fly at high speeds."),
+        #ifdef FIRERED
+            "When it folds up its body and extends\n"
+            "its wings, it looks like a jet plane.\n"
+            "It flies at sonic speed."
+        #else
+            "It flies at speeds equal to a jet fighter\n"
+            "plane. It never allows its prey to escape."
+        #endif
+        ),
         .pokemonScale = 256,
         .pokemonOffset = 1,
         .trainerScale = 326,
@@ -4388,10 +4707,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 19,
         .weight = 950,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Excess energy melted its arms and wings\n"
-            "into giant scythes, sending it mad with\n"
-            "rage. It swings its scythes wildly and\n"
-            "slices the ground to pieces."),
+            "transforming them into giant scythes."
+        #else
+            "Its vaunted wings become scythes, sending\n"
+            "it mad with rage. It swings its scythes\n"
+            "wildly and slices the ground to pieces."
+        #endif
+        ),
         .pokemonScale = 256,
         .pokemonOffset = 1,
         .trainerScale = 326,
@@ -4459,10 +4783,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 7,
         .weight = 202,
         .description = COMPOUND_STRING(
-            "It can discern the physical and emotional\n"
-            "states of people, Pokémon, and other\n"
-            "natural things from the shape of their\n"
-            "aura waves."),
+        #ifdef FIRERED
+            "The aura that emanates from its body\n"
+            "intensifies to alert others if it is\n"
+            "afraid or sad."
+        #else
+            "Its body is lithe yet powerful.\n"
+            "It can crest three mountains and\n"
+            "cross two canyons in one night."
+        #endif
+        ),
         .pokemonScale = 365,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -4530,10 +4860,14 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 12,
         .weight = 540,
         .description = COMPOUND_STRING(
-            "It understands human speech.\n"
-            "It is said that no foe can remain invisible\n"
-            "to Lucario, since it can detect Auras.\n"
-            "Even foes it could not otherwise see."),
+        #ifdef FIRERED
+            "It has the ability to sense the auras of\n"
+            "all things. It understands human speech."
+        #else
+            "By catching the aura emanating from others,\n"
+            "it can read their thoughts and movements."
+        #endif
+        ),
         .pokemonScale = 282,
         .pokemonOffset = 4,
         .trainerScale = 256,
@@ -4600,10 +4934,17 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 13,
         .weight = 575,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "Black streaks all over its body show where\n"
+            "its auras and the energy of Mega Evolution\n"
+            "intermingled and raced through it."
+        #else
             "It readies itself to face its enemies by\n"
             "focusing its mental energies. Its fighting\n"
             "style can be summed up in a single word:\n"
-            "heartless."),
+            "heartless."
+        #endif
+        ),
         .pokemonScale = 282,
         .pokemonOffset = 4,
         .trainerScale = 256,
@@ -4671,10 +5012,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 8,
         .weight = 495,
         .description = COMPOUND_STRING(
-            "Hippopotas shuts its nostrils tight when\n"
-            "travelling through sand. Instead of\n"
-            "perspiration, it expels grains of sand\n"
-            "from its body."),
+        #ifdef FIRERED
+            "It lives in arid places.\n"
+            "Instead of perspiration, it expels grainy\n"
+            "sand from its body."
+        #else
+            "It enshrouds itself with sand to protect\n"
+            "itself from germs. It does not enjoy\n"
+            "getting wet."
+        #endif
+        ),
         .pokemonScale = 366,
         .pokemonOffset = 11,
         .trainerScale = 257,
@@ -4755,10 +5102,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 20,
         .weight = 3000,
         .description = COMPOUND_STRING(
-            "It is surprisingly quick to anger.\n"
-            "It brandishes its gaping mouth in a\n"
-            "display of fearsome strength and raises\n"
-            "vast quantities of sand while attacking."),
+        #ifdef FIRERED
+            "It blasts internally stored sand from port\n"
+            "on its body to create a towering twister for\n"
+            "attack."
+        #else
+            "Its huge mouth is almost two meters across.\n"
+            "It has enough power to completely crush a car."
+        #endif
+        ),
         .pokemonScale = 261,
         .pokemonOffset = 2,
         .trainerScale = 334,
@@ -4836,10 +5188,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 8,
         .weight = 120,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "It grips prey with its tail claws and\n"
             "injects poison. It tenaciously hangs\n"
-            "on until the poison takes.\n"
-            "It can survive a year without food."),
+            "on until the poison takes."
+        #else
+            "It lives in arid lands. It buries itself in\n"
+            "sand and lies in wait for unsuspecting prey."
+        #endif
+        ),
         .pokemonScale = 366,
         .pokemonOffset = 12,
         .trainerScale = 257,
@@ -4919,10 +5276,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 13,
         .weight = 615,
         .description = COMPOUND_STRING(
-            "Possessing a sturdy build, it takes\n"
-            "pride in its strength. It has the power\n"
-            "in its clawed arms to make scrap\n"
-            "out of a car."),
+        #ifdef FIRERED
+            "It has the power in its clawed arms to\n"
+            "make scrap of a car. The tips of its\n"
+            "claws release poison."
+        #else
+            "Its body is encased in a sturdy shell.\n"
+            "Its head rotates 180 degrees,\n"
+            "eliminating blind spots."
+        #endif
+        ),
         .pokemonScale = 272,
         .pokemonOffset = 5,
         .trainerScale = 256,
@@ -4995,10 +5358,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 7,
         .weight = 230,
         .description = COMPOUND_STRING(
-            "Croagunk rarely fights fairly. Inflating\n"
-            "its poison sacs, it fills the area with\n"
-            "an odd sound and hits flinching\n"
-            "opponents with a poison jab."),
+        #ifdef FIRERED
+            "Its cheeks hold poison sacs. It tries to\n"
+            "catch foes off guard to jab them with toxic\n"
+            "fingers."
+        #else
+            "Inflating its poison sacs, it makes an eerie\n"
+            "blubbering sound for intimidation."
+        #endif
+        ),
         .pokemonScale = 365,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -5079,10 +5447,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 13,
         .weight = 444,
         .description = COMPOUND_STRING(
-            "Swaying and dodging the attacks\n"
-            "of its foes, it weaves its flexible body\n"
-            "in close, then lunges out with its\n"
-            "poisonous claws."),
+        #ifdef FIRERED
+            "Its knuckle claws secrete a toxin so vile\n"
+            "that even a scratch could prove fatal."
+        #else
+            "The toxin made in its poison sacs is pumped\n"
+            "to the knuckle claws through tubes down its\n"
+            "arms."
+        #endif
+        ),
         .pokemonScale = 272,
         .pokemonOffset = 3,
         .trainerScale = 256,
@@ -5163,10 +5536,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 14,
         .weight = 270,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "It attracts prey with its sweet-smelling\n"
+            "saliva, then chomps down.\n"
+            "It takes a whole day to eat prey."
+        #else
             "Hanging from branches using its\n"
             "tentacles, it looks like a plant.\n"
-            "It attracts prey with its sweet-smelling\n"
-            "saliva, then chomps down."),
+            "It awaits prey, mouth wide open."
+        #endif
+        ),
         .pokemonScale = 265,
         .pokemonOffset = 2,
         .trainerScale = 262,
@@ -5243,10 +5622,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 4,
         .weight = 70,
         .description = COMPOUND_STRING(
-            "Its double tail fins propel its energetic\n"
-            "jumps. When it breaks the surface of the\n"
-            "sea, Wingull swoop down to grab it on\n"
-            "the fly."),
+        #ifdef FIRERED
+            "After long exposure to sunlight, the\n"
+            "patterns on its tail fins shine vividly\n"
+            "when darkness arrives."
+        #else
+            "The way its two tail fins flutter\n"
+            "while it swims has earned it the\n"
+            "nickname “Beautifly of the Sea”."
+        #endif
+        ),
         .pokemonScale = 491,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -5330,10 +5715,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 12,
         .weight = 240,
         .description = COMPOUND_STRING(
-            "Lumineon swimming in the darkness\n"
-            "of the deep sea look like stars shining\n"
-            "in the night sky. It competes for food\n"
-            "with Lanturn."),
+        #ifdef FIRERED
+            "It lives on the deep-sea floor.\n"
+            "It attracts prey by flashing the\n"
+            "patterns on its four tail fins."
+        #else
+            "To avoid detection by predators,\n"
+            "it crawls along the seafloor using\n"
+            "the two fins on its chest."
+        #endif
+        ),
         .pokemonScale = 282,
         .pokemonOffset = 4,
         .trainerScale = 256,
@@ -5416,10 +5807,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 10,
         .weight = 505,
         .description = COMPOUND_STRING(
-            "During cold seasons, it migrates to the\n"
-            "mountain's lower reaches. Seemingly\n"
-            "curious about people, they gather around\n"
-            "footsteps they find on snowy mountains."),
+        #ifdef FIRERED
+            "It lives on snowy mountains.\n"
+            "Having had little contact with\n"
+            "humans, it is boldly inquisitive."
+        #else
+            "In the spring, it grows berries with the\n"
+            "texture of frozen treats around its belly."
+        #endif
+        ),
         .pokemonScale = 305,
         .pokemonOffset = 7,
         .trainerScale = 257,
@@ -5500,10 +5896,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 22,
         .weight = 1355,
         .description = COMPOUND_STRING(
-            "It lives a quiet life on mountains that\n"
-            "are perpetually covered in snow. It hides\n"
-            "itself by whipping up blizzards.\n"
-            "It is also known as “The Ice Monster.”"),
+        #ifdef FIRERED
+            "It whips up blizzards in mountains that\n"
+            "are always buried in snow.\n"
+            "It is the abominable snowman."
+        #else
+            "It blankets wide areas in snow by\n"
+            "whipping up blizzards. It is also\n"
+            "known as “The Ice Monster”."
+        #endif
+        ),
         .pokemonScale = 256,
         .pokemonOffset = 0,
         .trainerScale = 348,
@@ -5583,10 +5985,18 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 27,
         .weight = 1850,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "The sprouts on Abomasnow's back grow into\n"
             "great shafts of ice when it Mega Evolves.\n"
             "Dislikes associating with others and\n"
-            "chooses to live quietly deep in mountains."),
+            "chooses to live quietly deep in mountains."
+        #else
+            "The sprouts on Abomasnow's back grow into\n"
+            "great shafts of ice when it Mega Evolves.\n"
+            "Dislikes associating with others and\n"
+            "chooses to live quietly deep in mountains."
+        #endif
+        ),
         .pokemonScale = 256,
         .pokemonOffset = 0,
         .trainerScale = 348,
@@ -5655,10 +6065,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 3,
         .weight = 3,
         .description = COMPOUND_STRING(
-            "Its body is composed of plasma and loves\n"
-            "to surprise others. One boy's invention led\n"
-            "to the development of many machines that\n"
-            "can use of Rotom's unique capabilities."),
+        #ifdef FIRERED
+            "Its body is composed of plasma.\n"
+            "It is known to infiltrate electronic\n"
+            "devices and wreak havoc.\n"
+        #else
+            "Its electric-like body can enter some kinds\n"
+            "of machines and take control in order to\n"
+            "make mischief."
+        #endif
+        ),
         .pokemonScale = 530,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -5736,10 +6152,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 3,
         .weight = 3,
         .description = COMPOUND_STRING(
-            "If the convection microwave oven is\n"
-            "not working properly, then the Rotom\n"
-            "inhabiting it will become lethargic. It\n"
-            "makes mischief by turning up the heat."),
+        #ifdef FIRERED
+            "This Rotom has possessed a convection\n"
+            "microwave oven that uses a special motor.\n"
+            "It also has a flair for manipulating flames."
+        #else
+            "This form of Rotom enjoys making mischief\n"
+            "by turning up the heat. It will gleefully\n"
+            "burn your favorite outfit."
+        #endif
+        ),
         .pokemonScale = 530,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -5808,10 +6230,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 3,
         .weight = 3,
         .description = COMPOUND_STRING(
-            "It enjoys coming up with water-based\n"
-            "pranks. The model of washing machine that\n"
-            "Rotom can inspirit has been discontinued,\n"
-            "so they are now traded at high prices."),
+        #ifdef FIRERED
+            "This form of Rotom enjoys coming up with\n"
+            "water-based pranks. Be careful with it if\n"
+            "you don't want your room flooded."
+        #else
+            "This Rotom has possessed a washing machine\n"
+            "that uses a special motor. It blasts out\n"
+            "water to get enemies to back down."
+        #endif
+        ),
         .pokemonScale = 530,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -5879,10 +6307,17 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 3,
         .weight = 3,
         .description = COMPOUND_STRING(
-            "In this form, Rotom likes to play freezing\n"
-            "cold pranks. You may find it's turned the\n"
-            "bath you just filled to solid ice!\n"
-            "It battles by spewing cold air."),
+        #ifdef FIRERED
+            "Rotom assumes this form when it takes over\n"
+            "a refrigerator powered by a special motor.\n"
+            "It battles by spewing cold air."
+        #else
+            "When it's like this, Rotom likes to\n"
+            "play pranks that are freezing cold.\n"
+            "You may find it's turned the bath you\n"
+            "just filled to solid ice!"
+        #endif
+        ),
         .pokemonScale = 530,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -5949,10 +6384,17 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 3,
         .weight = 3,
         .description = COMPOUND_STRING(
-            "The first appliance developed that Rotom\n"
-            "coud inspirit was the electric fan. It uses\n"
-            "its power over wind in its pranks, happily\n"
-            "blowing any important documents it finds."),
+        #ifdef FIRERED
+            "In this form, Rotom applies its new power\n"
+            "over wind to its love of pranks. It will\n"
+            "happily blow away any important documents\n"
+            "it can find."
+        #else
+            "This Rotom has taken over a fan that has\n"
+            "a special motor. Its gusts of wind blow\n"
+            "its opponents away!"
+        #endif
+        ),
         .pokemonScale = 530,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -6044,10 +6486,17 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 3,
         .weight = 3,
         .description = COMPOUND_STRING(
-            "The lawn mower is an appliance that led to\n"
-            "the development of the Rotom Dex. It will\n"
-            "mow down grass and flowers, then swagger\n"
-            "around with pride at its accomplishments."),
+        #ifdef FIRERED
+            "This is Rotom after it's seized control\n"
+            "of a lawn mower that has a special motor.\n"
+            "As it mows down grass, it scatters the\n"
+            "clippings everywhere."
+        #else
+            "In this form, Rotom focuses its antics on\n"
+            "plants. Any flowers you were growing are\n"
+            "going to get mowed down."
+        #endif
+        ),
         .pokemonScale = 530,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -6125,10 +6574,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 3,
         .weight = 3,
         .description = COMPOUND_STRING(
-            "Known as ”The Being of Knowledge,”\n"
-            "according to some sources, this Pokémon\n"
-            "provided people with the intelligence\n"
-            "necessary to solve various problems."),
+        #ifdef FIRERED
+            "Known as “The Being of Knowledge”.\n"
+            "It is said that it can wipe out the\n"
+            "memory of those who see its eyes."
+        #else
+            "It is said that its emergence gave humans\n"
+            "the intelligence to improve their quality\n"
+            "of life."
+        #endif
+        ),
         .pokemonScale = 530,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -6205,10 +6660,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 3,
         .weight = 3,
         .description = COMPOUND_STRING(
-            "Although it slumbers at the bottom of a\n"
-            "lake, its spirit is said to leave its body\n"
-            "and flitter on the water surface. It\n"
-            "taught humans of sorrow, pain, and joy."),
+        #ifdef FIRERED
+            "Known as “The Being of Emotion”.\n"
+            "It taught humans the nobility of\n"
+            "sorrow, pain, and joy."
+        #else
+            "It sleeps at the bottom of a lake.\n"
+            "Its spirit is said to leave its body\n"
+            "to fly on the lake's surface."
+        #endif
+        ),
         .pokemonScale = 530,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -6289,10 +6750,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 3,
         .weight = 3,
         .description = COMPOUND_STRING(
-            "This Pokémon is said to have endowed\n"
-            "humans with the determination needed to\n"
-            "do things. It is thought that Uxie, Mesprit\n"
-            "and Azelf all came from the same egg."),
+        #ifdef FIRERED
+            "Known as “The Being of Willpower”.\n"
+            "It sleeps at the bottom of a lake\n"
+            "to keep the world in balance."
+        #else
+            "It is thought that Uxie, Mesprit and Azelf\n"
+            "all came from the same egg."
+        #endif
+        ),
         .pokemonScale = 530,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -6369,10 +6835,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 54,
         .weight = 6830,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "It has the power to control time.\n"
+            "It appears in Sinnoh-region myths\n"
+            "as an ancient deity."
+        #else
             "A Pokémon spoken of in legend.\n"
-            "It completely controls the flow of time.\n"
-            "It uses its power to travel at will\n"
-            "through the past and future."),
+            "It is said that time began moving\n"
+            "when Dialga was born."
+        #endif
+        ),
         .pokemonScale = 256,
         .pokemonOffset = 0,
         .trainerScale = 721,
@@ -6440,10 +6912,18 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 70,
         .weight = 8500,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Radiant light caused Dialga to take on a\n"
             "form bearing a striking resemblance to the\n"
             "creator Pokémon. It wields such a colossal\n"
-            "strength that this might be its true form."),
+            "strength that this might be its true form."
+        #else
+            "Radiant light caused Dialga to take on a\n"
+            "form bearing a striking resemblance to the\n"
+            "creator Pokémon. It wields such a colossal\n"
+            "strength that this might be its true form."
+        #endif
+        ),
         .pokemonScale = 256,
         .pokemonOffset = 0,
         .trainerScale = 721,
@@ -6518,10 +6998,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 42,
         .weight = 3360,
         .description = COMPOUND_STRING(
-            "Palkia has the ability to distort space.\n"
-            "Its total control over the boundaries of\n"
-            "space enable it to transport itself to\n"
-            "faraway places and other dimensions."),
+        #ifdef FIRERED
+            "It has the power to distort space.\n"
+            "It is described as a deity in\n"
+            "Sinnoh-region mythology."
+        #else
+            "It is said to live in a gap in the\n"
+            "spatial dimension parallel to ours.\n"
+            "It appears in mythology."
+        #endif
+        ),
         .pokemonScale = 256,
         .pokemonOffset = 0,
         .trainerScale = 650,
@@ -6589,10 +7075,18 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 63,
         .weight = 6600,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "It soars across the sky in a form that\n"
             "resembles the creator of all things.\n"
             "Perhaps this imitation of appearance is a\n"
-            "strategy for gaining Arceus's powers."),
+            "strategy for gaining Arceus's powers."
+        #else
+            "It soars across the sky in a form that\n"
+            "resembles the creator of all things.\n"
+            "Perhaps this imitation of appearance is a\n"
+            "strategy for gaining Arceus's powers."
+        #endif
+        ),
         .pokemonScale = 256,
         .pokemonOffset = 0,
         .trainerScale = 650,
@@ -6665,10 +7159,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 17,
         .weight = 4300,
         .description = COMPOUND_STRING(
-            "Boiling blood, like magma, circulates\n"
-            "through its body. It dwells in volcanic\n"
-            "caves, using its cross-shaped feet\n"
-            "to crawl on ceilings and walls."),
+        #ifdef FIRERED
+            "It dwells in volcanic caves.\n"
+            "It digs in with its cross-shaped feet\n"
+            "to crawl on ceilings and walls."
+        #else
+            "Its body is made of rugged steel.\n"
+            "However, it is partially melted\n"
+            "in spots because of its own heat."
+        #endif
+        ),
         .pokemonScale = 259,
         .pokemonOffset = 1,
         .trainerScale = 290,
@@ -6742,10 +7242,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 37,
         .weight = 4200,
         .description = COMPOUND_STRING(
-            "There is an enduring legend that\n"
-            "states this Pokémon shaped Regirock,\n"
-            "Regice, and Registeel out of clay, ice,\n"
-            "and magma."),
+        #ifdef FIRERED
+            "There is an enduring legend that states\n"
+            "this Pokémon towed continents with ropes."
+        #else
+            "It is said to have made Pokémon that look\n"
+            "like itself from a special ice mountain,\n"
+            "rocks, and magma."
+        #endif
+        ),
         .pokemonScale = 256,
         .pokemonOffset = 2,
         .trainerScale = 610,
@@ -6820,10 +7325,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 45,
         .weight = 7500,
         .description = COMPOUND_STRING(
-            "This Pokémon is said to live in a world\n"
-            "on the reverse side of ours, where common\n"
-            "knowledge is distorted and strange.\n"
-            "It was banished for its violence."),
+        #ifdef FIRERED
+            "A Pokémon that is said to live in a world\n"
+            "on the reverse side of ours.\n"
+            "It appears in an ancient cemetery."
+        #else
+            "It was banished for its violence.\n"
+            "It silently gazed upon the old world\n"
+            "from the Distortion World."
+        #endif
+        ),
         .pokemonScale = 256,
         .pokemonOffset = 0,
         .trainerScale = 614,
@@ -6892,10 +7403,18 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 69,
         .weight = 6500,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Giratina loses its legs upon changing into\n"
             "this form. It's believed it hails from a\n"
             "world where the heavens and the earth\n"
-            "are as one."),
+            "are as one."
+        #else
+            "Giratina loses its legs upon changing into\n"
+            "this form. It's believed it hails from a\n"
+            "world where the heavens and the earth\n"
+            "are as one."
+        #endif
+        ),
         .pokemonScale = 256,
         .pokemonOffset = 0,
         .trainerScale = 614,
@@ -6975,10 +7494,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 15,
         .weight = 856,
         .description = COMPOUND_STRING(
-            "Those who sleep holding one of\n"
-            "Cresselia's feathers are assured of\n"
-            "joyful dreams. It is said to represent\n"
-            "the crescent moon."),
+        #ifdef FIRERED
+            "Shiny particles are released from its wings\n"
+            "like a veil. It is said to represent the\n"
+            "crescent moon."
+        #else
+            "On nights around the quarter moon,\n"
+            "the aurora from its tail extends\n"
+            "and undulates beautifully."
+        #endif
+        ),
         .pokemonScale = 268,
         .pokemonOffset = 2,
         .trainerScale = 271,
@@ -7056,10 +7581,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 4,
         .weight = 31,
         .description = COMPOUND_STRING(
-            "When the water warms, they inflate the\n"
-            "flotation sac on their heads and drift\n"
-            "languidly on the sea in packs.\n"
-            "It always returns to where it was born."),
+        #ifdef FIRERED
+            "A Pokémon that lives in warm seas.\n"
+            "It inflates the flotation sac on its head\n"
+            "to drift and search for food."
+        #else
+            "It drifts in warm seas. It always returns\n"
+            "to where it was born, no matter how far it\n"
+            "may have drifted."
+        #endif
+        ),
         .pokemonScale = 491,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -7133,10 +7664,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 3,
         .weight = 14,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "Born on a cold seafloor, it will swim great\n"
+            "distances to return to its birthplace."
+        #else
             "Water makes up 80% of its body.\n"
-            "It starts its life with a wondrous power\n"
-            "that permits it to bond with any kind\n"
-            "of Pokémon."),
+            "This Pokémon is easily affected by\n"
+            "its environment."
+        #endif
+        ),
         .pokemonScale = 530,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -7213,10 +7749,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 15,
         .weight = 505,
         .description = COMPOUND_STRING(
-            "It chases people and Pokémon from its\n"
-            "territory by causing them to experience\n"
-            "deep, nightmarish slumbers. However,\n"
-            "it means no harm."),
+        #ifdef FIRERED
+            "It can lull people to sleep and make them\n"
+            "dream. It is active during nights of the\n"
+            "new moon."
+        #else
+            "Folklore has it that on moonless nights,\n"
+            "this Pokémon will make people see horrific\n"
+            "nightmares."
+        #endif
+        ),
         .pokemonScale = 268,
         .pokemonOffset = 2,
         .trainerScale = 271,
@@ -7296,10 +7838,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 2,
         .weight = 21,
         .description = COMPOUND_STRING(
-            "The flowers all over its body bloom if it is\n"
-            "lovingly hugged and senses gratitude. It\n"
-            "dissolves toxins in the air to transform\n"
-            "ruined land into a lush field of flowers."),
+        #ifdef FIRERED
+            "It lives in flower patches and avoids\n"
+            "detection by curling up to look like a\n"
+            "flowering plant."
+        #else
+            "It can dissolve toxins in the air to\n"
+            "instantly transform ruined land into a\n"
+            "lush field of flowers."
+        #endif
+        ),
         .pokemonScale = 682,
         .pokemonOffset = 24,
         .trainerScale = 256,
@@ -7375,10 +7923,18 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .height = 4,
         .weight = 52,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Upon taking in the scent of a particular\n"
             "rare flower, Shaymin is enveloped in light\n"
             "and its tiny body transforms, confering\n"
-            "the power of flight upon it."),
+            "the power of flight upon it."
+        #else
+            "Upon taking in the scent of a particular\n"
+            "rare flower, Shaymin is enveloped in light\n"
+            "and its tiny body transforms, confering\n"
+            "the power of flight upon it."
+        #endif
+        ),
         .pokemonScale = 682,
         .pokemonOffset = 24,
         .trainerScale = 256,

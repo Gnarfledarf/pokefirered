@@ -7906,10 +7906,18 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .height = 16,
         .weight = 480,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Its arrival brings an end to the winter.\n"
             "According to legend, this Pokémon's love\n"
             "gives rise to the budding of fresh life\n"
-            "across the land."),
+            "across the land."
+        #else
+            "Its arrival brings an end to the winter.\n"
+            "According to legend, this Pokémon's love\n"
+            "gives rise to the budding of fresh life\n"
+            "across the land."
+        #endif
+        ),
         .pokemonScale = 259,
         .pokemonOffset = 1,
         .trainerScale = 296,
@@ -7974,10 +7982,18 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .height = 16,
         .weight = 480,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "From the clouds, it descends upon\n"
             "those who treat any form of life\n"
             "with disrespect and metes out\n"
-            "wrathful, ruthless punishment."),
+            "wrathful, ruthless punishment."
+        #else
+            "From the clouds, it descends upon\n"
+            "those who treat any form of life\n"
+            "with disrespect and metes out\n"
+            "wrathful, ruthless punishment."
+        #endif
+        ),
         .pokemonScale = 259,
         .pokemonOffset = 1,
         .trainerScale = 296,

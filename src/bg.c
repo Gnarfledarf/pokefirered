@@ -1,6 +1,7 @@
 #include <limits.h>
 #include "global.h"
 #include "bg.h"
+#include "decompress.h"
 #include "dma3.h"
 #include "gpu_regs.h"
 
@@ -43,7 +44,7 @@ static struct BgConfig2 sGpuBgConfigs2[4];
 static u32 sDmaBusyBitfield[4];
 static u8 gpu_tile_allocation_map_bg[0x100];
 
-bool32 gWindowTileAutoAllocEnabled;
+COMMON_DATA bool32 gWindowTileAutoAllocEnabled = 0;
 
 static const struct BgConfig sZeroedBgControlStruct = { 0 };
 
@@ -293,7 +294,7 @@ int BgTileAllocOp(int bg, int offset, int count, int mode)
 
     switch (mode)
     {
-    case BG_TILE_FIND_FREE_SPACE:
+    case 0:
         start = GetBgControlAttribute(bg, BG_CTRL_ATTR_CHARBASEINDEX) * (BG_CHAR_SIZE / TILE_SIZE_4BPP);
         end = start + 0x400;
         if (end > 0x800)
@@ -322,13 +323,13 @@ int BgTileAllocOp(int bg, int offset, int count, int mode)
             }
         }
         return -1;
-    case BG_TILE_ALLOC:
+    case 1:
         start = GetBgControlAttribute(bg, BG_CTRL_ATTR_CHARBASEINDEX) * (BG_CHAR_SIZE / TILE_SIZE_4BPP) + offset;
         end = start + count;
         for (i = start; i < end; i++)
             gpu_tile_allocation_map_bg[i / 8] |= 1 << (i % 8);
         break;
-    case BG_TILE_FREE:
+    case 2:
         start = GetBgControlAttribute(bg, BG_CTRL_ATTR_CHARBASEINDEX) * (BG_CHAR_SIZE / TILE_SIZE_4BPP) + offset;
         end = start + count;
         for (i = start; i < end; i++)
@@ -443,7 +444,7 @@ u16 LoadBgTiles(u8 bg, const void *src, u16 size, u16 destOffset)
 
     if (gWindowTileAutoAllocEnabled == TRUE)
     {
-        BgTileAllocOp(bg, tileOffset / 0x20, size / 0x20, BG_TILE_ALLOC);
+        BgTileAllocOp(bg, tileOffset / 0x20, size / 0x20, 1);
     }
 
     return cursor;
@@ -568,7 +569,7 @@ u16 GetBgAttribute(u8 bg, u8 attributeId)
             return GetBgControlAttribute(bg, BG_CTRL_ATTR_MOSAIC);
         case BG_ATTR_WRAPAROUND:
             return GetBgControlAttribute(bg, BG_CTRL_ATTR_WRAPAROUND);
-        case BG_ATTR_MAPSIZE:
+        case BG_ATTR_METRIC:
             switch (GetBgType(bg))
             {
                 case 0:
@@ -578,7 +579,7 @@ u16 GetBgAttribute(u8 bg, u8 attributeId)
                 default:
                     return 0;
             }
-        case BG_ATTR_BGTYPE:
+        case BG_ATTR_TYPE:
             return GetBgType(bg);
         case BG_ATTR_BASETILE:
             return sGpuBgConfigs2[bg].baseTile;
@@ -736,6 +737,77 @@ u32 ChangeBgY(u8 bg, u32 value, u8 op)
     return sGpuBgConfigs2[bg].bg_y;
 }
 
+s32 ChangeBgY_ScreenOff(u32 bg, s32 value, u8 op)
+{
+    u32 mode;
+    u16 temp1;
+    u16 temp2;
+
+    if (IsInvalidBg(bg) || !GetBgControlAttribute(bg, BG_CTRL_ATTR_VISIBLE))
+    {
+        return -1;
+    }
+
+    switch (op)
+    {
+    case BG_COORD_SET:
+    default:
+        sGpuBgConfigs2[bg].bg_y = value;
+        break;
+    case BG_COORD_ADD:
+        sGpuBgConfigs2[bg].bg_y += value;
+        break;
+    case BG_COORD_SUB:
+        sGpuBgConfigs2[bg].bg_y -= value;
+        break;
+    }
+
+    mode = GetBgMode();
+
+    switch (bg)
+    {
+    case 0:
+        temp1 = sGpuBgConfigs2[0].bg_y >> 0x8;
+        SetGpuReg_ForcedBlank(REG_OFFSET_BG0VOFS, temp1);
+        break;
+    case 1:
+        temp1 = sGpuBgConfigs2[1].bg_y >> 0x8;
+        SetGpuReg_ForcedBlank(REG_OFFSET_BG1VOFS, temp1);
+        break;
+    case 2:
+        if (mode == 0)
+        {
+            temp1 = sGpuBgConfigs2[2].bg_y >> 0x8;
+            SetGpuReg_ForcedBlank(REG_OFFSET_BG2VOFS, temp1);
+
+        }
+        else
+        {
+            temp1 = sGpuBgConfigs2[2].bg_y >> 0x10;
+            temp2 = sGpuBgConfigs2[2].bg_y & 0xFFFF;
+            SetGpuReg_ForcedBlank(REG_OFFSET_BG2Y_H, temp1);
+            SetGpuReg_ForcedBlank(REG_OFFSET_BG2Y_L, temp2);
+        }
+        break;
+    case 3:
+        if (mode == 0)
+        {
+            temp1 = sGpuBgConfigs2[3].bg_y >> 0x8;
+            SetGpuReg_ForcedBlank(REG_OFFSET_BG3VOFS, temp1);
+        }
+        else if (mode == 2)
+        {
+            temp1 = sGpuBgConfigs2[3].bg_y >> 0x10;
+            temp2 = sGpuBgConfigs2[3].bg_y & 0xFFFF;
+            SetGpuReg_ForcedBlank(REG_OFFSET_BG3Y_H, temp1);
+            SetGpuReg_ForcedBlank(REG_OFFSET_BG3Y_L, temp2);
+        }
+        break;
+    }
+
+    return sGpuBgConfigs2[bg].bg_y;
+}
+
 u32 GetBgY(u8 bg)
 {
     if (IsInvalidBg32(bg) != FALSE)
@@ -839,7 +911,7 @@ void CopyToBgTilemapBuffer(u8 bg, const void *src, u16 mode, u16 destOffset)
         }
         else
         {
-            LZ77UnCompWram(src, (void *)(sGpuBgConfigs2[bg].tilemap + (destOffset * 32)));
+            DecompressDataWithHeaderWram(src, (void *)(sGpuBgConfigs2[bg].tilemap + (destOffset * 32)));
         }
     }
 }

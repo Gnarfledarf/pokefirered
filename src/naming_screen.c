@@ -1,4 +1,5 @@
 #include "global.h"
+#include "decompress.h"
 #include "gflib.h"
 #include "data.h"
 #include "keyboard_text.h"
@@ -291,10 +292,10 @@ static const u16 sRival_Gfx[] = INCBIN_U16("graphics/naming_screen/rival.4bpp");
 
 static const u8 *const sTransferredToPCMessages[] =
 {
-    Text_MonSentToBoxInSomeonesPC,
-    Text_MonSentToBoxInBillsPC,
-    Text_MonSentToBoxSomeonesBoxFull,
-    Text_MonSentToBoxBillsBoxFull
+    gText_PkmnTransferredSomeonesPC,
+    gText_PkmnTransferredBillsPC,
+    gText_PkmnTransferredSomeonesPCBoxFull,
+    gText_PkmnTransferredBillsPCBoxFull
 };
 
 static const struct BgTemplate sBgTemplates[] =
@@ -1640,13 +1641,13 @@ static void HandleDpadMovement(struct Task *task)
 
     GetCursorPos(&cursorX, &cursorY);
     input = INPUT_NONE;
-    if (JOY_REPT(DPAD_UP))
+    if (JOY_REPEAT(DPAD_UP))
         input = INPUT_DPAD_UP;
-    if (JOY_REPT(DPAD_DOWN))
+    if (JOY_REPEAT(DPAD_DOWN))
         input = INPUT_DPAD_DOWN;
-    if (JOY_REPT(DPAD_LEFT))
+    if (JOY_REPEAT(DPAD_LEFT))
         input = INPUT_DPAD_LEFT;
-    if (JOY_REPT(DPAD_RIGHT))
+    if (JOY_REPEAT(DPAD_RIGHT))
         input = INPUT_DPAD_RIGHT;
 
     // Get new cursor position
@@ -1872,7 +1873,7 @@ static void SaveInputText(void)
 
 static void LoadGfx(void)
 {
-    LZ77UnCompWram(gNamingScreenMenu_Gfx, sNamingScreen->tileBuffer);
+    DecompressDataWithHeaderWram(gNamingScreenMenu_Gfx, sNamingScreen->tileBuffer);
     LoadBgTiles(1, sNamingScreen->tileBuffer, sizeof(sNamingScreen->tileBuffer), 0);
     LoadBgTiles(2, sNamingScreen->tileBuffer, sizeof(sNamingScreen->tileBuffer), 0);
     LoadBgTiles(3, sNamingScreen->tileBuffer, sizeof(sNamingScreen->tileBuffer), 0);

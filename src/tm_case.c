@@ -20,7 +20,6 @@
 #include "data.h"
 #include "scanline_effect.h"
 #include "strings.h"
-#include "menu_indicators.h"
 #include "constants/items.h"
 #include "constants/songs.h"
 #include "constants/quest_log.h"
@@ -47,9 +46,9 @@ enum {
 
 // IDs for the actions in the context menu
 enum {
-    ACTION_USE,
-    ACTION_GIVE,
-    ACTION_EXIT
+    TMCASE_ACTION_USE,
+    TMCASE_ACTION_GIVE,
+    TMCASE_ACTION_EXIT
 };
 
 enum {
@@ -114,7 +113,6 @@ static EWRAM_DATA struct {
 static EWRAM_DATA void *sTilemapBuffer = NULL;
 static EWRAM_DATA struct ListMenuItem * sListMenuItemsBuffer = NULL;
 static EWRAM_DATA u8 (* sListMenuStringsBuffer)[29] = NULL;
-static EWRAM_DATA u16 * sTMSpritePaletteBuffer = NULL;
 
 static void CB2_SetUpTMCaseUI_Blocking(void);
 static bool8 DoSetUpTMCaseUI(void);
@@ -176,7 +174,6 @@ static void TintDiscpriteByType(u8 type);
 static void SetDiscSpritePosition(struct Sprite *sprite, u8 tmIdx);
 static void SwapDisc(u8 spriteId, u16 itemId);
 static void SpriteCB_SwapDisc(struct Sprite *sprite);
-static void LoadDiscTypePalettes(void);
 
 static const struct BgTemplate sBGTemplates[] = {
     {
@@ -216,13 +213,13 @@ static void (*const sSelectTMActionTasks[])(u8 taskId) = {
 };
 
 static const struct MenuAction sMenuActions[] = {
-    [ACTION_USE]  = {gOtherText_Use,  {Action_Use}  },
-    [ACTION_GIVE] = {gOtherText_Give, {Action_Give} },
-    [ACTION_EXIT] = {gOtherText_Exit, {Action_Exit} },
+    [TMCASE_ACTION_USE]  = {gOtherText_Use,  {Action_Use}  },
+    [TMCASE_ACTION_GIVE] = {gOtherText_Give, {Action_Give} },
+    [TMCASE_ACTION_EXIT] = {gOtherText_Exit, {Action_Exit} },
 };
 
-static const u8 sMenuActionIndices_Field[] = {ACTION_USE, ACTION_GIVE, ACTION_EXIT};
-static const u8 sMenuActionIndices_UnionRoom[] = {ACTION_GIVE, ACTION_EXIT};
+static const u8 sMenuActionIndices_Field[] = {TMCASE_ACTION_USE, TMCASE_ACTION_GIVE, TMCASE_ACTION_EXIT};
+static const u8 sMenuActionIndices_UnionRoom[] = {TMCASE_ACTION_GIVE, TMCASE_ACTION_EXIT};
 
 static const struct YesNoFuncTable sYesNoFuncTable = {Task_PrintSaleConfirmedText, Task_SaleOfTMsCanceled};
 
@@ -457,10 +454,10 @@ static void CB2_SetUpTMCaseUI_Blocking(void)
     }
 }
 
-#define tListTaskId       data[0]
-#define tSelection        data[1]
-#define tQuantityOwned    data[2]
-#define tQuantitySelected data[8]
+#define tListTaskId data[0]
+#define tListPos    data[1]
+#define tQuantity   data[2]
+#define tItemCount  data[8]
 
 #define tPokedudeState data[8] // Re-used
 #define tPokedudeTimer data[9]
@@ -510,7 +507,7 @@ static bool8 DoSetUpTMCaseUI(void)
             gMain.state++;
         break;
     case 9:
-        SortPocketAndPlaceHMsFirst(&gBagPockets[POCKET_TM_HM - 1]);
+        SortBerriesOrTMHMs(POCKET_TM_HM);
         gMain.state++;
         break;
     case 10:
@@ -545,7 +542,7 @@ static bool8 DoSetUpTMCaseUI(void)
         gMain.state++;
         break;
     case 16:
-        sTMCaseDynamicResources->discSpriteId = CreateDiscSprite(BagGetItemIdByPocketPosition(POCKET_TM_HM, sTMCaseStaticResources.scrollOffset + sTMCaseStaticResources.selectedRow));
+        sTMCaseDynamicResources->discSpriteId = CreateDiscSprite(GetBagItemId(POCKET_TM_HM, sTMCaseStaticResources.scrollOffset + sTMCaseStaticResources.selectedRow));
         gMain.state++;
         break;
     case 17:
@@ -571,18 +568,19 @@ static void ResetBufferPointers_NoFree(void)
     sTilemapBuffer = NULL;
     sListMenuItemsBuffer = NULL;
     sListMenuStringsBuffer = NULL;
-    sTMSpritePaletteBuffer = NULL;
 }
 
 static void LoadBGTemplates(void)
 {
     void ** ptr;
-    ResetAllBgsCoordinatesAndBgCntRegs();
+
+    ResetVramOamAndBgCntRegs();
     ptr = &sTilemapBuffer;
     *ptr = AllocZeroed(0x800);
     ResetBgsAndClearDma3BusyFlags(0);
     InitBgsFromTemplates(0, sBGTemplates, ARRAY_COUNT(sBGTemplates));
     SetBgTilemapBuffer(2, *ptr);
+    ResetAllBgsCoordinates();
     ScheduleBgCopyTilemapToVram(1);
     ScheduleBgCopyTilemapToVram(2);
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_1D_MAP | DISPCNT_OBJ_ON);
@@ -604,19 +602,19 @@ static bool8 HandleLoadTMCaseGraphicsAndPalettes(void)
     case 1:
         if (FreeTempTileDataBuffersIfPossible() != TRUE)
         {
-            LZDecompressWram(gTMCaseMenu_Tilemap, sTilemapBuffer);
+            DecompressDataWithHeaderWram(gTMCaseMenu_Tilemap, sTilemapBuffer);
             sTMCaseDynamicResources->seqId++;
         }
         break;
     case 2:
-        LZDecompressWram(gTMCase_Tilemap, GetBgTilemapBuffer(1));
+        DecompressDataWithHeaderWram(gTMCase_Tilemap, GetBgTilemapBuffer(1));
         sTMCaseDynamicResources->seqId++;
         break;
     case 3:
         if (gSaveBlock2Ptr->playerGender == MALE)
-            LoadCompressedPalette(gTMCaseMenu_Male_Pal, BG_PLTT_ID(0), 4 * PLTT_SIZE_4BPP);
+            LoadPalette(gTMCaseMenu_Male_Pal, BG_PLTT_ID(0), 4 * PLTT_SIZE_4BPP);
         else
-            LoadCompressedPalette(gTMCaseMenu_Female_Pal, BG_PLTT_ID(0), 4 * PLTT_SIZE_4BPP);
+            LoadPalette(gTMCaseMenu_Female_Pal, BG_PLTT_ID(0), 4 * PLTT_SIZE_4BPP);
         sTMCaseDynamicResources->seqId++;
         break;
     case 4:
@@ -624,7 +622,6 @@ static bool8 HandleLoadTMCaseGraphicsAndPalettes(void)
         sTMCaseDynamicResources->seqId++;
         break;
     default:
-        LoadDiscTypePalettes();
         sTMCaseDynamicResources->seqId = 0;
         return TRUE;
     }
@@ -634,24 +631,24 @@ static bool8 HandleLoadTMCaseGraphicsAndPalettes(void)
 
 static void CreateTMCaseListMenuBuffers(void)
 {
-    struct BagPocket * pocket = &gBagPockets[POCKET_TM_HM - 1];
+    struct BagPocket * pocket = &gBagPockets[POCKET_TM_HM];
     sListMenuItemsBuffer = Alloc((pocket->capacity + 1) * sizeof(struct ListMenuItem));
     sListMenuStringsBuffer = Alloc(sTMCaseDynamicResources->numTMs * 29);
 }
 
 static void InitTMCaseListMenuItems(void)
 {
-    struct BagPocket * pocket = &gBagPockets[POCKET_TM_HM - 1];
+    struct BagPocket * pocket = &gBagPockets[POCKET_TM_HM];
     u16 i;
 
     for (i = 0; i < sTMCaseDynamicResources->numTMs; i++)
     {
         GetTMNumberAndMoveString(sListMenuStringsBuffer[i], pocket->itemSlots[i].itemId);
-        sListMenuItemsBuffer[i].label = sListMenuStringsBuffer[i];
-        sListMenuItemsBuffer[i].index = i;
+        sListMenuItemsBuffer[i].name = sListMenuStringsBuffer[i];
+        sListMenuItemsBuffer[i].id = i;
     }
-    sListMenuItemsBuffer[i].label = gText_Close;
-    sListMenuItemsBuffer[i].index = LIST_CANCEL;
+    sListMenuItemsBuffer[i].name = gText_Close;
+    sListMenuItemsBuffer[i].id = LIST_CANCEL;
 
     gMultiuseListMenuTemplate.items = sListMenuItemsBuffer;
     gMultiuseListMenuTemplate.totalItems = sTMCaseDynamicResources->numTMs + 1; // +1 for Cancel
@@ -702,7 +699,7 @@ static void List_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *li
     if (itemIndex == LIST_CANCEL)
         itemId = ITEM_NONE;
     else
-        itemId = BagGetItemIdByPocketPosition(POCKET_TM_HM, itemIndex);
+        itemId = GetBagItemId(POCKET_TM_HM, itemIndex);
 
     if (onInit != TRUE)
     {
@@ -717,13 +714,13 @@ static void List_ItemPrintFunc(u8 windowId, u32 itemIndex, u8 y)
 {
     if (itemIndex != LIST_CANCEL)
     {
-        u16 itemId = BagGetItemIdByPocketPosition(POCKET_TM_HM, itemIndex);
+        u16 itemId = GetBagItemId(POCKET_TM_HM, itemIndex);
         if (!IsItemHM(itemId))
         {
-            if (!ItemId_GetImportance(itemId))
+            if (!GetItemImportance(itemId))
             {
-                ConvertIntToDecimalStringN(gStringVar1, BagGetQuantityByPocketPosition(POCKET_TM_HM, itemIndex), STR_CONV_MODE_RIGHT_ALIGN, 3);
-                StringExpandPlaceholders(gStringVar4, gText_TimesStrVar1);
+                ConvertIntToDecimalStringN(gStringVar1, GetBagItemQuantity(POCKET_TM_HM, itemIndex), STR_CONV_MODE_RIGHT_ALIGN, 3);
+                StringExpandPlaceholders(gStringVar4, gText_xVar1);
             }
             else
             {
@@ -742,7 +739,7 @@ static void PrintDescription(s32 itemIndex)
 {
     const u8 * str;
     if (itemIndex != LIST_CANCEL)
-        str = ItemId_GetDescription(BagGetItemIdByPocketPosition(POCKET_TM_HM, itemIndex));
+        str = GetItemDescription(GetBagItemId(POCKET_TM_HM, itemIndex));
     else
         str = gText_TMCaseWillBePutAway;
     FillWindowPixelBuffer(WIN_DESCRIPTION, 0);
@@ -812,10 +809,10 @@ void ResetTMCaseCursorPos(void)
 
 static void TMCaseSetup_GetTMCount(void)
 {
-    struct BagPocket * pocket = &gBagPockets[POCKET_TM_HM - 1];
+    struct BagPocket *pocket = &gBagPockets[POCKET_TM_HM];
     u16 i;
 
-    BagPocketCompaction(pocket->itemSlots, pocket->capacity);
+    CompactItemsInBagPocket(POCKET_TM_HM);
     sTMCaseDynamicResources->numTMs = 0;
     for (i = 0; i < pocket->capacity; i++)
     {
@@ -866,8 +863,6 @@ static void DestroyTMCaseBuffers(void)
         Free(sListMenuItemsBuffer);
     if (sListMenuStringsBuffer != NULL)
         Free(sListMenuStringsBuffer);
-    if (sTMSpritePaletteBuffer != NULL)
-        Free(sTMSpritePaletteBuffer);
     FreeAllWindowBuffers();
 }
 
@@ -927,9 +922,9 @@ static void Task_HandleListInput(u8 taskId)
                     SetDescriptionWindowShade(1);
                     RemoveScrollArrows();
                     PrintListCursor(tListTaskId, COLOR_CURSOR_SELECTED);
-                    tSelection = input;
-                    tQuantityOwned = BagGetQuantityByPocketPosition(POCKET_TM_HM, input);
-                    gSpecialVar_ItemId = BagGetItemIdByPocketPosition(POCKET_TM_HM, input);
+                    tListPos = input;
+                    tQuantity = GetBagItemQuantity(POCKET_TM_HM, input);
+                    gSpecialVar_ItemId = GetBagItemId(POCKET_TM_HM, input);
                     gTasks[taskId].func = sSelectTMActionTasks[sTMCaseStaticResources.menuType];
                     break;
                 }
@@ -1046,7 +1041,7 @@ static void Action_Use(u8 taskId)
 static void Action_Give(u8 taskId)
 {
     s16 * data = gTasks[taskId].data;
-    u16 itemId = BagGetItemIdByPocketPosition(POCKET_TM_HM, tSelection);
+    u16 itemId = GetBagItemId(POCKET_TM_HM, tListPos);
     RemoveContextMenu(&sTMCaseDynamicResources->contextMenuWindowId);
     ClearStdWindowAndFrameToTransparent(WIN_SELECTED_MSG, FALSE);
     ClearWindowTilemap(WIN_SELECTED_MSG);
@@ -1055,7 +1050,7 @@ static void Action_Give(u8 taskId)
     PutWindowTilemap(WIN_MOVE_INFO);
     ScheduleBgCopyTilemapToVram(0);
     ScheduleBgCopyTilemapToVram(1);
-    if (!ItemId_GetImportance(itemId))
+    if (!GetItemImportance(itemId))
     {
         if (CalculatePlayerPartyCount() == 0)
         {
@@ -1075,13 +1070,13 @@ static void Action_Give(u8 taskId)
 
 static void PrintError_ThereIsNoPokemon(u8 taskId)
 {
-    PrintMessageWithFollowupTask(taskId, FONT_NORMAL, gText_ThereIsNoPokemon, Task_WaitButtonAfterErrorPrint);
+    PrintMessageWithFollowupTask(taskId, FONT_NORMAL, gText_NoPokemon, Task_WaitButtonAfterErrorPrint);
 }
 
 static void PrintError_ItemCantBeHeld(u8 taskId)
 {
     CopyItemName(gSpecialVar_ItemId, gStringVar1);
-    StringExpandPlaceholders(gStringVar4, gText_ItemCantBeHeld);
+    StringExpandPlaceholders(gStringVar4, gText_Var1CantBeHeld);
     PrintMessageWithFollowupTask(taskId, FONT_NORMAL, gStringVar4, Task_WaitButtonAfterErrorPrint);
 }
 
@@ -1132,7 +1127,7 @@ static void Task_SelectedTMHM_GiveParty(u8 taskId)
 {
     s16 * data = gTasks[taskId].data;
 
-    if (!ItemId_GetImportance(BagGetItemIdByPocketPosition(POCKET_TM_HM, tSelection)))
+    if (!GetItemImportance(GetBagItemId(POCKET_TM_HM, tListPos)))
     {
         sTMCaseDynamicResources->nextScreenCallback = CB2_GiveHoldItem;
         Task_BeginFadeOutFromTMCase(taskId);
@@ -1148,7 +1143,7 @@ static void Task_SelectedTMHM_GivePC(u8 taskId)
 {
     s16 * data = gTasks[taskId].data;
 
-    if (!ItemId_GetImportance(BagGetItemIdByPocketPosition(POCKET_TM_HM, tSelection)))
+    if (!GetItemImportance(GetBagItemId(POCKET_TM_HM, tListPos)))
     {
         sTMCaseDynamicResources->nextScreenCallback = CB2_ReturnToPokeStorage;
         Task_BeginFadeOutFromTMCase(taskId);
@@ -1162,9 +1157,9 @@ static void Task_SelectedTMHM_GivePC(u8 taskId)
 
 static void Task_SelectedTMHM_Sell(u8 taskId)
 {
-    s16 * data = gTasks[taskId].data;
+    s16 *data = gTasks[taskId].data;
 
-    if (ItemId_GetImportance(gSpecialVar_ItemId))
+    if (GetItemImportance(gSpecialVar_ItemId))
     {
         // Can't sell TM/HMs with no price (by default this is just the HMs)
         CopyItemName(gSpecialVar_ItemId, gStringVar1);
@@ -1173,18 +1168,24 @@ static void Task_SelectedTMHM_Sell(u8 taskId)
     }
     else
     {
-        tQuantitySelected = 1;
-        if (tQuantityOwned == 1)
+        tItemCount = 1;
+        if (tQuantity == 1)
         {
             PrintPlayersMoney();
             Task_AskConfirmSaleWithAmount(taskId);
         }
         else
         {
-            if (tQuantityOwned > 99)
-                tQuantityOwned = 99;
+            u32 maxQuantity = MAX_MONEY / GetItemSellPrice(gSpecialVar_ItemId);
+
+            if (tQuantity > MAX_BAG_ITEM_CAPACITY)
+                tQuantity = MAX_BAG_ITEM_CAPACITY;
+            
+            if (tQuantity > maxQuantity)
+                tQuantity = maxQuantity;
+
             CopyItemName(gSpecialVar_ItemId, gStringVar1);
-            StringExpandPlaceholders(gStringVar4, gText_HowManyWouldYouLikeToSell);
+            StringExpandPlaceholders(gStringVar4, gText_HowManyToSell);
             PrintMessageWithFollowupTask(taskId, GetDialogBoxFontId(), gStringVar4, Task_InitQuantitySelectUI);
         }
     }
@@ -1194,7 +1195,7 @@ static void Task_AskConfirmSaleWithAmount(u8 taskId)
 {
     s16 * data = gTasks[taskId].data;
 
-    ConvertIntToDecimalStringN(gStringVar3, ItemId_GetPrice(BagGetItemIdByPocketPosition(POCKET_TM_HM, tSelection)) / 2 * tQuantitySelected, STR_CONV_MODE_LEFT_ALIGN, 6);
+    ConvertIntToDecimalStringN(gStringVar3, GetItemSellPrice(gSpecialVar_ItemId) * tItemCount, STR_CONV_MODE_LEFT_ALIGN, 6);
     StringExpandPlaceholders(gStringVar4, gText_ICanPayThisMuch_WouldThatBeOkay);
     PrintMessageWithFollowupTask(taskId, GetDialogBoxFontId(), gStringVar4, Task_PlaceYesNoBox);
 }
@@ -1223,13 +1224,13 @@ static void Task_SaleOfTMsCanceled(u8 taskId)
 
 static void Task_InitQuantitySelectUI(u8 taskId)
 {
-    s16 * data = gTasks[taskId].data;
+    s16 *data = gTasks[taskId].data;
 
     TMCase_SetWindowBorder1(WIN_SELL_QUANTITY);
-    ConvertIntToDecimalStringN(gStringVar1, 1, STR_CONV_MODE_LEADING_ZEROS, 2);
-    StringExpandPlaceholders(gStringVar4, gText_TimesStrVar1);
+    ConvertIntToDecimalStringN(gStringVar1, 1, STR_CONV_MODE_LEADING_ZEROS, MAX_ITEM_DIGITS);
+    StringExpandPlaceholders(gStringVar4, gText_xVar1);
     TMCase_Print(WIN_SELL_QUANTITY, FONT_SMALL, gStringVar4, 4, 10, 1, 0, 0, COLOR_DARK);
-    SellTM_PrintQuantityAndSalePrice(1, ItemId_GetPrice(BagGetItemIdByPocketPosition(POCKET_TM_HM, tSelection)) / 2 * tQuantitySelected);
+    SellTM_PrintQuantityAndSalePrice(1, GetItemSellPrice(gSpecialVar_ItemId) * tItemCount);
     PrintPlayersMoney();
     CreateQuantityScrollArrows();
     ScheduleBgCopyTilemapToVram(0);
@@ -1240,19 +1241,19 @@ static void Task_InitQuantitySelectUI(u8 taskId)
 static void SellTM_PrintQuantityAndSalePrice(s16 quantity, s32 amount)
 {
     FillWindowPixelBuffer(WIN_SELL_QUANTITY, 0x11);
-    ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEADING_ZEROS, 2);
-    StringExpandPlaceholders(gStringVar4, gText_TimesStrVar1);
+    ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEADING_ZEROS, MAX_ITEM_DIGITS);
+    StringExpandPlaceholders(gStringVar4, gText_xVar1);
     TMCase_Print(WIN_SELL_QUANTITY, FONT_SMALL, gStringVar4, 4, 10, 1, 0, 0, COLOR_DARK);
-    PrintMoneyAmount(WIN_SELL_QUANTITY, 0x38, 0x0A, amount, 0);
+    PrintMoneyAmount(WIN_SELL_QUANTITY, CalculateMoneyTextHorizontalPosition(amount), 10, amount, 0);
 }
 
 static void Task_QuantitySelect_HandleInput(u8 taskId)
 {
-    s16 * data = gTasks[taskId].data;
+    s16 *data = gTasks[taskId].data;
 
-    if (AdjustQuantityAccordingToDPadInput(&tQuantitySelected, tQuantityOwned) == 1)
+    if (AdjustQuantityAccordingToDPadInput(&tItemCount, tQuantity) == TRUE)
     {
-        SellTM_PrintQuantityAndSalePrice(tQuantitySelected, ItemId_GetPrice(BagGetItemIdByPocketPosition(POCKET_TM_HM, tSelection)) / 2 * tQuantitySelected);
+        SellTM_PrintQuantityAndSalePrice(tItemCount, GetItemSellPrice(gSpecialVar_ItemId) * tItemCount);
     }
     else if (JOY_NEW(A_BUTTON))
     {
@@ -1286,9 +1287,9 @@ static void Task_PrintSaleConfirmedText(u8 taskId)
 
     PutWindowTilemap(WIN_LIST);
     ScheduleBgCopyTilemapToVram(0);
-    CopyItemName(gSpecialVar_ItemId, gStringVar1);
-    ConvertIntToDecimalStringN(gStringVar3, ItemId_GetPrice(BagGetItemIdByPocketPosition(POCKET_TM_HM, tSelection)) / 2 * tQuantitySelected, STR_CONV_MODE_LEFT_ALIGN, 6);
-    StringExpandPlaceholders(gStringVar4, gText_TurnedOverItemsWorthYen);
+    CopyItemName(gSpecialVar_ItemId, gStringVar2);
+    ConvertIntToDecimalStringN(gStringVar1, GetItemSellPrice(gSpecialVar_ItemId) * tItemCount, STR_CONV_MODE_LEFT_ALIGN, 6);
+    StringExpandPlaceholders(gStringVar4, gText_TurnedOverVar1ForVar2);
     PrintMessageWithFollowupTask(taskId, FONT_NORMAL, gStringVar4, Task_DoSaleOfTMs);
 }
 
@@ -1297,9 +1298,9 @@ static void Task_DoSaleOfTMs(u8 taskId)
     s16 * data = gTasks[taskId].data;
 
     PlaySE(SE_SHOP);
-    RemoveBagItem(gSpecialVar_ItemId, tQuantitySelected);
-    AddMoney(&gSaveBlock1Ptr->money, ItemId_GetPrice(gSpecialVar_ItemId) / 2 * tQuantitySelected);
-    RecordItemTransaction(gSpecialVar_ItemId, tQuantitySelected, QL_EVENT_SOLD_ITEM - QL_EVENT_USED_POKEMART);
+    RemoveBagItem(gSpecialVar_ItemId, tItemCount);
+    AddMoney(&gSaveBlock1Ptr->money, GetItemSellPrice(gSpecialVar_ItemId) * tItemCount);
+    RecordItemTransaction(gSpecialVar_ItemId, tItemCount, QL_EVENT_SOLD_ITEM - QL_EVENT_USED_POKEMART);
     DestroyListMenuTask(tListTaskId, &sTMCaseStaticResources.scrollOffset, &sTMCaseStaticResources.selectedRow);
     TMCaseSetup_GetTMCount();
     TMCaseSetup_InitListMenuPositions();
@@ -1328,12 +1329,12 @@ static void Task_AfterSale_ReturnToList(u8 taskId)
 void Pokedude_InitTMCase(void)
 {
     sPokedudeBagBackup = AllocZeroed(sizeof(*sPokedudeBagBackup));
-    memcpy(sPokedudeBagBackup->bagPocket_TMHM, gSaveBlock1Ptr->bagPocket_TMHM, sizeof(gSaveBlock1Ptr->bagPocket_TMHM));
-    memcpy(sPokedudeBagBackup->bagPocket_KeyItems, gSaveBlock1Ptr->bagPocket_KeyItems, sizeof(gSaveBlock1Ptr->bagPocket_KeyItems));
+    memcpy(sPokedudeBagBackup->bagPocket_TMHM, gSaveBlock1Ptr->bag.TMsHMs, sizeof(gSaveBlock1Ptr->bag.TMsHMs));
+    memcpy(sPokedudeBagBackup->bagPocket_KeyItems, gSaveBlock1Ptr->bag.keyItems, sizeof(gSaveBlock1Ptr->bag.keyItems));
     sPokedudeBagBackup->selectedRow = sTMCaseStaticResources.selectedRow;
     sPokedudeBagBackup->scrollOffset = sTMCaseStaticResources.scrollOffset;
-    ClearItemSlots(gSaveBlock1Ptr->bagPocket_TMHM, ARRAY_COUNT(gSaveBlock1Ptr->bagPocket_TMHM));
-    ClearItemSlots(gSaveBlock1Ptr->bagPocket_KeyItems, ARRAY_COUNT(gSaveBlock1Ptr->bagPocket_KeyItems));
+    CpuFastFill(0, gSaveBlock1Ptr->bag.TMsHMs, ARRAY_COUNT(gSaveBlock1Ptr->bag.TMsHMs));
+    CpuFastFill(0, gSaveBlock1Ptr->bag.keyItems, ARRAY_COUNT(gSaveBlock1Ptr->bag.keyItems));
     ResetTMCaseCursorPos();
     AddBagItem(ITEM_TM01, 1);
     AddBagItem(ITEM_TM03, 1);
@@ -1459,14 +1460,13 @@ static void Task_Pokedude_Run(u8 taskId)
         if (!gPaletteFade.active)
         {
             // Restore the player's bag
-            memcpy(gSaveBlock1Ptr->bagPocket_TMHM, sPokedudeBagBackup->bagPocket_TMHM, sizeof(gSaveBlock1Ptr->bagPocket_TMHM));
-            memcpy(gSaveBlock1Ptr->bagPocket_KeyItems, sPokedudeBagBackup->bagPocket_KeyItems, sizeof(gSaveBlock1Ptr->bagPocket_KeyItems));
+            memcpy(gSaveBlock1Ptr->bag.TMsHMs, sPokedudeBagBackup->bagPocket_TMHM, sizeof(gSaveBlock1Ptr->bag.TMsHMs));
+            memcpy(gSaveBlock1Ptr->bag.keyItems, sPokedudeBagBackup->bagPocket_KeyItems, sizeof(gSaveBlock1Ptr->bag.keyItems));
             DestroyListMenuTask(tListTaskId, NULL, NULL);
             sTMCaseStaticResources.selectedRow = sPokedudeBagBackup->selectedRow;
             sTMCaseStaticResources.scrollOffset = sPokedudeBagBackup->scrollOffset;
             Free(sPokedudeBagBackup);
             CpuFastCopy(gPlttBufferFaded, gPlttBufferUnfaded, PLTT_SIZE);
-            SetBagOpenFalse();
             BeginNormalPaletteFade(PALETTES_ALL, -2, 0, 16, 0);
             tPokedudeState++;
         }
@@ -1652,10 +1652,15 @@ static void SetDiscSpriteAnim(struct Sprite *sprite, u8 tmIdx)
         StartSpriteAnim(sprite, ANIM_TM);
 }
 
+#define NUM_TYPES_PER_PALETTE 16
+
 static void TintDiscpriteByType(u8 type)
 {
     u8 palOffset = PLTT_ID(IndexOfSpritePaletteTag(TAG_DISC));
-    LoadPalette(sTMSpritePaletteBuffer + sTMSpritePaletteOffsetByType[type], OBJ_PLTT_OFFSET + palOffset, PLTT_SIZE_4BPP);
+    u32 palTypeIndex = sTMSpritePaletteOffsetByType[type] / (NUM_TYPES_PER_PALETTE * PLTT_SIZE_4BPP);
+    u32 palTypeOffset = sTMSpritePaletteOffsetByType[type] % (NUM_TYPES_PER_PALETTE * PLTT_SIZE_4BPP);
+
+    LoadPalette(&gTMCaseDiscTypes_Pal[palTypeIndex][palTypeOffset], OBJ_PLTT_OFFSET + palOffset, PLTT_SIZE_4BPP);
     if (sTMCaseStaticResources.menuType == TMCASE_POKEDUDE)
         BlendPalettes(1 << (16 + palOffset), 4, RGB_BLACK);
 }
@@ -1725,19 +1730,4 @@ static void SpriteCB_SwapDisc(struct Sprite *sprite)
         else
             sprite->y2 -= DISC_Y_MOVE;
     }
-}
-
-// - 1 excludes TYPE_MYSTERY
-#define NUM_DISC_COLORS ((NUMBER_OF_MON_TYPES - 1) * 16)
-
-static void LoadDiscTypePalettes(void)
-{
-    struct SpritePalette spritePalette;
-
-    sTMSpritePaletteBuffer = Alloc(NUM_DISC_COLORS * sizeof(u16));
-    LZDecompressWram(gTMCaseDiscTypes1_Pal, sTMSpritePaletteBuffer); // Decompress the first 16
-    LZDecompressWram(gTMCaseDiscTypes2_Pal, sTMSpritePaletteBuffer + 0x100); // Decompress the rest (Only 17 total, this is just Dragon type)
-    spritePalette.data = sTMSpritePaletteBuffer + NUM_DISC_COLORS;
-    spritePalette.tag = TAG_DISC;
-    LoadSpritePalette(&spritePalette);
 }

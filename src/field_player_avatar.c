@@ -38,7 +38,6 @@ static u8 ObjectEventCB2_NoMovement2(struct ObjectEvent * object, struct Sprite 
 static bool8 TryUpdatePlayerSpinDirection(void);
 static bool8 TryInterruptObjectEventSpecialAnim(struct ObjectEvent * playerObjEvent, u8 direction);
 static void npc_clear_strange_bits(struct ObjectEvent * playerObjEvent);
-static bool8 TryDoMetatileBehaviorForcedMovement(void);
 static void MovePlayerAvatarUsingKeypadInput(u8 direction, u16 newKeys, u16 heldKeys);
 static void PlayerAllowForcedMovementIfMovingSameDirection(void);
 static bool8 ForcedMovement_None(void);
@@ -142,7 +141,7 @@ static u8 TeleportAnim_RotatePlayer(struct ObjectEvent * object, s16 *timer);
 
 void MovementType_Player(struct Sprite *sprite)
 {
-    UpdateObjectEventCurrentMovement(&gObjectEvents[sprite->data[0]], sprite, ObjectEventCB2_NoMovement2);
+    UpdateObjectEventCurrentMovement(&gObjectEvents[sprite->data[0]], sprite, (bool8 (*)(struct ObjectEvent *, struct Sprite *))ObjectEventCB2_NoMovement2);
 }
 
 static u8 ObjectEventCB2_NoMovement2(struct ObjectEvent * object, struct Sprite *sprite)
@@ -266,7 +265,7 @@ static const struct {
     {NULL, ForcedMovement_None},
 };
 
-static bool8 TryDoMetatileBehaviorForcedMovement(void)
+bool8 TryDoMetatileBehaviorForcedMovement(void)
 {
     int i;
     u8 behavior;
@@ -309,7 +308,22 @@ static bool8 ForcedMovement_None(void)
 static u8 DoForcedMovement(u8 direction, MovementAction movementAction)
 {
     struct PlayerAvatar *playerAvatar = &gPlayerAvatar;
-    u8 collision = CheckForPlayerAvatarCollision(direction);
+    u8 collision;
+
+    // Check for sideways stairs onto ice movement.
+    switch (direction)
+    {
+    case DIR_NORTHWEST:
+    case DIR_SOUTHWEST:
+        direction = DIR_WEST;
+        break;
+    case DIR_NORTHEAST:
+    case DIR_SOUTHEAST:
+        direction = DIR_EAST;
+        break;
+    }
+
+    collision = CheckForPlayerAvatarCollision(direction);
 
     playerAvatar->flags |= PLAYER_AVATAR_FLAG_FORCED;
     if (collision)
@@ -522,11 +536,20 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
         }
         return;
     }
-
+    
+    gPlayerAvatar.creeping = FALSE;
     if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
     {
-        // Same speed as running
-        PlayerWalkFast(direction);
+        if (FlagGet(DN_FLAG_SEARCHING) && (heldKeys & A_BUTTON))
+        {
+            gPlayerAvatar.creeping = TRUE;
+            PlayerWalkSlow(direction);
+        }
+        else
+        {
+            // Same speed as running
+            PlayerWalkFast(direction);
+        }
         return;
     }
 
@@ -594,14 +617,18 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
     }
 }
 
-bool32 PlayerIsMovingOnRockStairs(u8 direction)
+bool32 ObjectMovingOnRockStairs(struct ObjectEvent *objectEvent, u8 direction)
 {
-    struct ObjectEvent * objectEvent;
+#if SLOW_MOVEMENT_ON_STAIRS == TRUE
     s16 x, y;
 
-    objectEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
     x = objectEvent->currentCoords.x;
     y = objectEvent->currentCoords.y;
+
+    // TODO followers on sideways stairs
+    if (IsFollowerVisible() && GetFollowerObject() != NULL && (objectEvent->isPlayer || objectEvent->localId == OBJ_EVENT_ID_FOLLOWER))
+        return FALSE;
+
     switch (direction)
     {
     case DIR_NORTH:
@@ -609,9 +636,21 @@ bool32 PlayerIsMovingOnRockStairs(u8 direction)
     case DIR_SOUTH:
         MoveCoords(DIR_SOUTH, &x, &y);
         return MetatileBehavior_IsRockStairs(MapGridGetMetatileBehaviorAt(x, y));
+    case DIR_WEST:
+    case DIR_EAST:
+    case DIR_NORTHEAST:
+    case DIR_NORTHWEST:
+    case DIR_SOUTHWEST:
+    case DIR_SOUTHEAST:
+        // directionOverwrite is only used for sideways stairs motion
+        if (objectEvent->directionOverwrite)
+            return TRUE;
     default:
         return FALSE;
     }
+#else
+    return FALSE;
+#endif
 }
 
 static u8 CheckForPlayerAvatarCollision(u8 direction)
@@ -981,7 +1020,7 @@ void PlayerShakeHeadOrWalkInPlace(void)
     PlayerSetAnimId(MOVEMENT_ACTION_SHAKE_HEAD_OR_WALK_IN_PLACE, 0);
 }
 
-void HandleEnforcedLookDirectionOnPlayerStopMoving(void)
+void PlayerFreeze(void)
 {
     if (gPlayerAvatar.tileTransitionState == T_TILE_CENTER || gPlayerAvatar.tileTransitionState == T_NOT_MOVING)
     {
@@ -1092,6 +1131,8 @@ u8 player_get_pos_including_state_based_drift(s16 *x, s16 *y)
 
 u8 GetPlayerFacingDirection(void)
 {
+    Script_RequestEffects(SCREFF_V1);
+
     return gObjectEvents[gPlayerAvatar.objectEventId].facingDirection;
 }
 
@@ -1285,7 +1326,7 @@ void InitPlayerAvatar(s16 x, s16 y, u8 direction, u8 gender)
     u8 objectEventId;
     struct ObjectEvent *objectEvent;
 
-    playerObjEventTemplate.localId = OBJ_EVENT_ID_PLAYER;
+    playerObjEventTemplate.localId = LOCALID_PLAYER;
     playerObjEventTemplate.graphicsId = GetPlayerAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_NORMAL, gender);
     playerObjEventTemplate.x = x - 7;
     playerObjEventTemplate.y = y - 7;
@@ -2415,3 +2456,34 @@ static u8 TeleportAnim_RotatePlayer(struct ObjectEvent *object, s16 *a1)
 #undef tDeltaY
 #undef tRotationTimer
 #undef tState
+
+//sideways stairs
+u8 GetRightSideStairsDirection(u8 direction)
+{
+    switch (direction)
+    {
+    case DIR_WEST:
+        return DIR_NORTHWEST;
+    case DIR_EAST:
+        return DIR_SOUTHEAST;
+    default:
+        if (direction > DIR_EAST)
+            direction -= DIR_EAST;
+        return direction;
+    }
+}
+
+u8 GetLeftSideStairsDirection(u8 direction)
+{
+    switch (direction)
+    {
+    case DIR_WEST:
+        return DIR_SOUTHWEST;
+    case DIR_EAST:
+        return DIR_NORTHEAST;
+    default:
+        if (direction > DIR_EAST)
+            direction -= DIR_EAST;
+        return direction;
+    }
+}

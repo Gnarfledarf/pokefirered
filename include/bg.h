@@ -26,15 +26,15 @@ enum
 enum
 {
     BG_ATTR_CHARBASEINDEX = 1,
-    BG_ATTR_MAPBASEINDEX = 2,
-    BG_ATTR_SCREENSIZE = 3,
-    BG_ATTR_PALETTEMODE = 4,
-    BG_ATTR_MOSAIC = 5,
-    BG_ATTR_WRAPAROUND = 6,
-    BG_ATTR_PRIORITY = 7,
-    BG_ATTR_MAPSIZE = 8,
-    BG_ATTR_BGTYPE = 9,
-    BG_ATTR_BASETILE = 10
+    BG_ATTR_MAPBASEINDEX,
+    BG_ATTR_SCREENSIZE,
+    BG_ATTR_PALETTEMODE,
+    BG_ATTR_MOSAIC,
+    BG_ATTR_WRAPAROUND,
+    BG_ATTR_PRIORITY,
+    BG_ATTR_METRIC,
+    BG_ATTR_TYPE,
+    BG_ATTR_BASETILE,
 };
 
 // Modes for ChangeBgX / ChangeBgY
@@ -53,13 +53,6 @@ enum AdjustBgMosaicMode
     BG_MOSAIC_SET_V,
     BG_MOSAIC_INC_V,
     BG_MOSAIC_DEC_V,
-};
-
-enum BgTileAllocMode
-{
-    BG_TILE_FIND_FREE_SPACE,
-    BG_TILE_ALLOC,
-    BG_TILE_FREE,
 };
 
 struct BgTemplate
@@ -98,7 +91,7 @@ u16 GetBgAttribute(u8 bg, u8 attributeId);
 u32 ChangeBgX(u8 bg, u32 value, u8 op);
 u32 GetBgX(u8 bg);
 u32 ChangeBgY(u8 bg, u32 value, u8 op);
-u32 ChangeBgY_ScreenOff(u8 bg, u32 value, u8 op);
+s32 ChangeBgY_ScreenOff(u32 bg, s32 value, u8 op);
 u32 GetBgY(u8 bg);
 void SetBgAffine(u8 bg, u32 srcCenterX, u32 srcCenterY, s16 dispCenterX, s16 dispCenterY, s16 scaleX, s16 scaleY, u16 rotationAngle);
 u8 AdjustBgMosaic(u8 value, u8 mode);
@@ -120,7 +113,5 @@ void CopyTileMapEntry(const u16 *src, u16 *dest, s32 palette1, s32 tileOffset, s
 u32 GetBgType(u8 bg);
 bool32 IsInvalidBg32(u8 bg);
 bool32 IsTileMapOutsideWram(u8 bg);
-
-extern bool32 gWindowTileAutoAllocEnabled;
 
 #endif // GUARD_BG_H

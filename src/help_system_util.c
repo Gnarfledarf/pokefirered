@@ -10,7 +10,7 @@
 
 #define ZERO 0
 
-bool8 gHelpSystemEnabled;
+COMMON_DATA bool8 gHelpSystemEnabled = 0;
 
 struct HelpSystemVideoState
 {
@@ -25,7 +25,10 @@ struct HelpSystemVideoState
     /*0x15*/ u8 state;
 };
 
-static EWRAM_DATA u8 (*sMapTilesBackup)[BG_CHAR_SIZE] = NULL;
+#define TILES_BACKUP_HEAP 0x2000
+
+static EWRAM_DATA u8 sMapTilesBackup[BG_CHAR_SIZE - TILES_BACKUP_HEAP] = {0};
+static EWRAM_DATA u8 (*sMapTilesBackupHeap)[TILES_BACKUP_HEAP] = NULL;
 EWRAM_DATA u8 gDisableHelpSystemVolumeReduce = 0;
 EWRAM_DATA bool8 gHelpSystemToggleWithRButtonDisabled = FALSE;
 static EWRAM_DATA u8 sDelayTimer = 0;
@@ -161,8 +164,9 @@ void SaveMapGPURegs(void)
 
 void SaveMapTiles(void)
 {
-    sMapTilesBackup = Alloc(BG_CHAR_SIZE);
-    RequestDma3Copy((void *)BG_CHAR_ADDR(3), sMapTilesBackup, BG_CHAR_SIZE, DMA3_16BIT);
+    sMapTilesBackupHeap = Alloc(sizeof(*sMapTilesBackupHeap));
+    RequestDma3Copy((void *)BG_CHAR_ADDR(3), sMapTilesBackup, sizeof(sMapTilesBackup), DMA3_16BIT);
+    RequestDma3Copy((void *)(BG_CHAR_ADDR(3) + sizeof(sMapTilesBackup)), sMapTilesBackupHeap, sizeof(*sMapTilesBackupHeap), DMA3_16BIT);
 }
 
 void SaveMapTextColors(void)
@@ -191,8 +195,9 @@ void RestoreGPURegs(void)
 
 void RestoreMapTiles(void)
 {
-    RequestDma3Copy(sMapTilesBackup, (void *)BG_CHAR_ADDR(3), BG_CHAR_SIZE, DMA3_16BIT);
-    Free(sMapTilesBackup);
+    RequestDma3Copy(sMapTilesBackup, (void *)BG_CHAR_ADDR(3), sizeof(sMapTilesBackup), DMA3_16BIT);
+    RequestDma3Copy(sMapTilesBackupHeap, (void *)(BG_CHAR_ADDR(3) + sizeof(sMapTilesBackup)), sizeof(*sMapTilesBackupHeap), DMA3_16BIT);
+    Free(sMapTilesBackupHeap);
 }
 
 void RestoreMapTextColors(void)
@@ -397,7 +402,7 @@ void HelpSystemRenderText(u8 fontId, u8 * dest, const u8 * src, u8 x, u8 y, u8 w
             return;
         case CHAR_NEWLINE:
             x = orig_x;
-            y += gGlyphInfo.height + 1;
+            y += gCurGlyph.height + 1;
             break;
         case PLACEHOLDER_BEGIN:
             curChar = *src;
@@ -414,11 +419,11 @@ void HelpSystemRenderText(u8 fontId, u8 * dest, const u8 * src, u8 x, u8 y, u8 w
                     // This is required to match a dummy [sp+#0x24] read here
                     if (fontId == FONT_SMALL)
                     {
-                        x += gGlyphInfo.width;
+                        x += gCurGlyph.width;
                     }
                     else
                     {
-                        x += gGlyphInfo.width + ZERO;
+                        x += gCurGlyph.width + ZERO;
                     }
                 }
             }
@@ -444,11 +449,11 @@ void HelpSystemRenderText(u8 fontId, u8 * dest, const u8 * src, u8 x, u8 y, u8 w
                     }
                     if (fontId == FONT_SMALL)
                     {
-                        x += gGlyphInfo.width;
+                        x += gCurGlyph.width;
                     }
                     else
                     {
-                        x += gGlyphInfo.width + ZERO;
+                        x += gCurGlyph.width + ZERO;
                     }
                 }
             }
@@ -456,7 +461,7 @@ void HelpSystemRenderText(u8 fontId, u8 * dest, const u8 * src, u8 x, u8 y, u8 w
         case CHAR_PROMPT_SCROLL:
         case CHAR_PROMPT_CLEAR:
             x = orig_x;
-            y += gGlyphInfo.height + 1;
+            y += gCurGlyph.height + 1;
             break;
         case EXT_CTRL_CODE_BEGIN:
             curChar = *src;
@@ -545,11 +550,11 @@ void HelpSystemRenderText(u8 fontId, u8 * dest, const u8 * src, u8 x, u8 y, u8 w
                 DecompressAndRenderGlyph(fontId, curChar, &srcBlit, &destBlit, dest, x, y, width, height);
                 if (fontId == FONT_SMALL)
                 {
-                    x += gGlyphInfo.width;
+                    x += gCurGlyph.width;
                 }
                 else
                 {
-                    x += gGlyphInfo.width + ZERO;
+                    x += gCurGlyph.width + ZERO;
                 }
             }
             break;
@@ -565,13 +570,13 @@ void DecompressAndRenderGlyph(u8 fontId, u16 glyph, struct Bitmap *srcBlit, stru
         DecompressGlyph_Female(glyph, FALSE);
     else
         DecompressGlyph_Normal(glyph, FALSE);
-    srcBlit->pixels = gGlyphInfo.pixels;
+    srcBlit->pixels = (u8*) gCurGlyph.gfxBufferTop;
     srcBlit->width = 16;
     srcBlit->height = 16;
     destBlit->pixels = destBuffer;
     destBlit->width = width * 8;
     destBlit->height = height * 8;
-    BlitBitmapRect4Bit(srcBlit, destBlit, 0, 0, x, y, gGlyphInfo.width, gGlyphInfo.height, 0);
+    BlitBitmapRect4Bit(srcBlit, destBlit, 0, 0, x, y, gCurGlyph.width, gCurGlyph.height, 0);
 }
 
 void HelpSystem_PrintTextInTopLeftCorner(const u8 * str)
@@ -652,7 +657,7 @@ s32 HelpSystem_GetMenuInput(void)
     else if (JOY_NEW(A_BUTTON))
     {
         PlaySE(SE_SELECT);
-        return gHelpSystemListMenu.sub.items[gHelpSystemListMenu.itemsAbove + gHelpSystemListMenu.cursorPos].index;
+        return gHelpSystemListMenu.sub.items[gHelpSystemListMenu.itemsAbove + gHelpSystemListMenu.cursorPos].id;
     }
     else if (JOY_NEW(B_BUTTON))
     {
@@ -663,25 +668,25 @@ s32 HelpSystem_GetMenuInput(void)
     {
         return -6;
     }
-    else if (JOY_REPT(DPAD_UP))
+    else if (JOY_REPEAT(DPAD_UP))
     {
         if (!MoveCursor(1, 0))
             PlaySE(SE_SELECT);
         return -4;
     }
-    else if (JOY_REPT(DPAD_DOWN))
+    else if (JOY_REPEAT(DPAD_DOWN))
     {
         if (!MoveCursor(1, 1))
             PlaySE(SE_SELECT);
         return -5;
     }
-    else if (JOY_REPT(DPAD_LEFT))
+    else if (JOY_REPEAT(DPAD_LEFT))
     {
         if (!MoveCursor(7, 0))
             PlaySE(SE_SELECT);
         return -4;
     }
-    else if (JOY_REPT(DPAD_RIGHT))
+    else if (JOY_REPEAT(DPAD_RIGHT))
     {
         if (!MoveCursor(7, 1))
             PlaySE(SE_SELECT);
@@ -723,7 +728,7 @@ void PrintListMenuItems(void)
     {
         u8 x = gHelpSystemListMenu.sub.left + 8;
         u8 y = gHelpSystemListMenu.sub.top + glyphHeight * i;
-        HelpSystem_PrintTextAt(gHelpSystemListMenu.sub.items[r5].label, x, y);
+        HelpSystem_PrintTextAt(gHelpSystemListMenu.sub.items[r5].name, x, y);
         r5++;
     }
 }

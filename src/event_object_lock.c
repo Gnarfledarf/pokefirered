@@ -19,7 +19,7 @@ void Task_WaitPlayerStopMoving(u8 taskId)
 {
     if (IsPlayerStandingStill())
     {
-        HandleEnforcedLookDirectionOnPlayerStopMoving();
+        PlayerFreeze();
         DestroyTask(taskId);
     }
 }
@@ -47,7 +47,7 @@ void Task_WaitPlayerAndTargetNPCStopMoving(u8 taskId)
 
     if (task->data[0] == 0 && IsPlayerStandingStill() == TRUE)
     {
-        HandleEnforcedLookDirectionOnPlayerStopMoving();
+        PlayerFreeze();
         task->data[0] = 1;
     }
 
@@ -87,7 +87,7 @@ void FreezeObjects_WaitForPlayerAndSelected(void)
 
 void ClearPlayerHeldMovementAndUnfreezeObjectEvents(void)
 {
-    u8 objectEventId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
+    u8 objectEventId = GetObjectEventIdByLocalIdAndMap(LOCALID_PLAYER, 0, 0);
     ObjectEventClearHeldMovementIfFinished(&gObjectEvents[objectEventId]);
     ScriptMovement_UnfreezeObjectEvents();
     UnfreezeObjectEvents();
@@ -98,7 +98,7 @@ void UnionRoom_UnlockPlayerAndChatPartner(void)
     u8 objectEventId;
     if (gObjectEvents[gSelectedObjectEvent].active)
         ObjectEventClearHeldMovementIfFinished(&gObjectEvents[gSelectedObjectEvent]);
-    objectEventId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
+    objectEventId = GetObjectEventIdByLocalIdAndMap(LOCALID_PLAYER, 0, 0);
     ObjectEventClearHeldMovementIfFinished(&gObjectEvents[objectEventId]);
     ScriptMovement_UnfreezeObjectEvents();
     UnfreezeObjectEvents();
@@ -126,7 +126,7 @@ static void Task_FreezeObjectAndPlayer(u8 taskId)
 
     if (!task->tPlayerFrozen && IsPlayerStandingStill() == TRUE)
     {
-        HandleEnforcedLookDirectionOnPlayerStopMoving();
+        PlayerFreeze();
         task->tPlayerFrozen = TRUE;
     }
     if (!task->tObjectFrozen && !gObjectEvents[objectEventId].singleMovementActive)

@@ -1,19 +1,24 @@
 #include "global.h"
-#include "gflib.h"
-#include "decompress.h"
-#include "task.h"
-#include "blend_palette.h"
-#include "text_window.h"
-#include "menu.h"
-#include "help_system.h"
-#include "event_scripts.h"
-#include "scanline_effect.h"
-#include "pokeball.h"
-#include "naming_screen.h"
-#include "math_util.h"
-#include "overworld.h"
-#include "random.h"
+#include "bg.h"
 #include "data.h"
+#include "decompress.h"
+#include "event_scripts.h"
+#include "gpu_regs.h"
+#include "help_system.h"
+#include "malloc.h"
+#include "math_util.h"
+#include "menu.h"
+#include "naming_screen.h"
+#include "overworld.h"
+#include "palette.h"
+#include "pokeball.h"
+#include "random.h"
+#include "scanline_effect.h"
+#include "sound.h"
+#include "string_util.h"
+#include "task.h"
+#include "text_window.h"
+#include "util.h"
 #include "constants/songs.h"
 
 #define INTRO_SPECIES SPECIES_NIDORAN_F
@@ -951,7 +956,7 @@ static void Task_PikachuIntro_LoadPage1(u8 taskId)
         PlayBGM(MUS_NEW_GAME_INTRO);
         HofPCTopBar_Clear();
         HofPCTopBar_Print(gText_ABUTTONNext, 0, 1);
-        sOakSpeechResources->pikachuIntroTilemap = MallocAndDecompress(sPikachuIntro_Background_Tilemap, &size);
+        sOakSpeechResources->pikachuIntroTilemap = malloc_and_decompress(sPikachuIntro_Background_Tilemap, &size);
         CopyToBgTilemapBufferRect(1, sOakSpeechResources->pikachuIntroTilemap, 0, 2, 30, 19);
         CopyBgTilemapBufferToVram(1);
         Free(sOakSpeechResources->pikachuIntroTilemap);
@@ -1105,7 +1110,7 @@ static void Task_OakSpeech_Init(u8 taskId)
     }
     else
     {
-        sOakSpeechResources->oakSpeechBackgroundTiles = MallocAndDecompress(sOakSpeech_Background_Tiles, &size);
+        sOakSpeechResources->oakSpeechBackgroundTiles = malloc_and_decompress(sOakSpeech_Background_Tiles, &size);
         LoadBgTiles(1, sOakSpeechResources->oakSpeechBackgroundTiles, size, 0);
         CopyToBgTilemapBuffer(1, sOakSpeech_Background_Tilemap, 0, 0);
         CopyBgTilemapBufferToVram(1);
@@ -1188,7 +1193,7 @@ static void Task_OakSpeech_ReleaseNidoranFFromPokeBall(u8 taskId)
         spriteId = gTasks[taskId].tNidoranFSpriteId;
         gSprites[spriteId].invisible = FALSE;
         gSprites[spriteId].tSpriteTimer = 0;
-        CreatePokeballSpriteToReleaseMon(spriteId, gSprites[spriteId].oam.paletteNum, 100, 66, 0, 0, 32, 0xFFFF1FFF);
+        CreatePokeballSpriteToReleaseMon(spriteId, gSprites[spriteId].oam.paletteNum, 100, 66, 0, 0, 32, 0xFFFF1FFF, INTRO_SPECIES);
         gTasks[taskId].func = Task_OakSpeech_IsInhabitedFarAndWide;
         gTasks[taskId].tTimer = 0;
     }
@@ -1899,7 +1904,7 @@ static void CreateNidoranFSprite(u8 taskId)
     u8 spriteId;
 
     LoadSpecialPokePic(MonSpritesGfxManager_GetSpritePtr(MON_SPR_GFX_MANAGER_A, 0), INTRO_SPECIES, 0, TRUE);
-    LoadCompressedSpritePaletteUsingHeapWithTag(GetMonSpritePalFromSpeciesAndPersonality(INTRO_SPECIES, 0, 0), INTRO_SPECIES);
+    LoadSpritePaletteWithTag(GetMonSpritePalFromSpeciesAndPersonality(INTRO_SPECIES, 0, 0), INTRO_SPECIES);
     SetMultiuseSpriteTemplateToPokemon(INTRO_SPECIES, 0);
     spriteId = CreateSprite(&gMultiuseSpriteTemplate, 96, 96, 1);
     gSprites[spriteId].callback = SpriteCallbackDummy;
@@ -1985,19 +1990,19 @@ static void LoadTrainerPic(u16 whichPic, u16 tileOffset)
     {
     case MALE_PLAYER_PIC:
         LoadPalette(sOakSpeech_Red_Pal, BG_PLTT_ID(4), sizeof(sOakSpeech_Red_Pal));
-        LZ77UnCompVram(sOakSpeech_Red_Tiles, (void *)VRAM + 0x600 + tileOffset);
+        DecompressDataWithHeaderVram(sOakSpeech_Red_Tiles, (void *)VRAM + 0x600 + tileOffset);
         break;
     case FEMALE_PLAYER_PIC:
         LoadPalette(sOakSpeech_Leaf_Pal, BG_PLTT_ID(4), sizeof(sOakSpeech_Leaf_Pal));
-        LZ77UnCompVram(sOakSpeech_Leaf_Tiles, (void *)VRAM + 0x600 + tileOffset);
+        DecompressDataWithHeaderVram(sOakSpeech_Leaf_Tiles, (void *)VRAM + 0x600 + tileOffset);
         break;
     case RIVAL_PIC:
         LoadPalette(sOakSpeech_Rival_Pal, BG_PLTT_ID(6), sizeof(sOakSpeech_Rival_Pal));
-        LZ77UnCompVram(sOakSpeech_Rival_Tiles, (void *)VRAM + 0x600 + tileOffset);
+        DecompressDataWithHeaderVram(sOakSpeech_Rival_Tiles, (void *)VRAM + 0x600 + tileOffset);
         break;
     case OAK_PIC:
         LoadPalette(sOakSpeech_Oak_Pal, BG_PLTT_ID(6), sizeof(sOakSpeech_Oak_Pal));
-        LZ77UnCompVram(sOakSpeech_Oak_Tiles, (void *)VRAM + 0x600 + tileOffset);
+        DecompressDataWithHeaderVram(sOakSpeech_Oak_Tiles, (void *)VRAM + 0x600 + tileOffset);
         break;
     default:
         return;

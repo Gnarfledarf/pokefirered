@@ -562,7 +562,7 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
             if (FlagGet(FLAG_RUNNING_SHOES_TOGGLE) == FALSE)
             {
                 FlagSet(FLAG_RUNNING_SHOES_TOGGLE);
-                if (PlayerIsMovingOnRockStairs(direction))
+                if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
                     PlayerRunSlow(direction);
                 else
                     PlayerRun(direction);
@@ -575,7 +575,7 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
                 gRunToggleBtnSet = FALSE;
                 if (!(heldKeys & B_BUTTON))
                 {
-                    if (PlayerIsMovingOnRockStairs(direction))
+                    if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
                         PlayerWalkSlow(direction);
                     else
                         PlayerWalkNormal(direction);
@@ -583,7 +583,7 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
                 }
                 else
                 {
-                    if (PlayerIsMovingOnRockStairs(direction))
+                    if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
                         PlayerRunSlow(direction);
                     else
                         PlayerRun(direction);
@@ -593,14 +593,14 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
                 return;
             } 
         }
-        if (PlayerIsMovingOnRockStairs(direction))
+        if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
             PlayerRunSlow(direction);
         else
             PlayerRun(direction);
             gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
         return;
     
-        if (PlayerIsMovingOnRockStairs(direction))
+        if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
             PlayerRunSlow(direction);
         else
             PlayerRun(direction);
@@ -610,7 +610,7 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
     else
     {
         gRunToggleBtnSet = FALSE;
-        if (PlayerIsMovingOnRockStairs(direction))
+        if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
             PlayerWalkSlow(direction);
         else
             PlayerWalkNormal(direction);

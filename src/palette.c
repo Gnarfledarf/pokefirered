@@ -37,17 +37,20 @@ static const u8 sRoundedDownGrayscaleMap[] =
     31, 31
 };
 
-void LoadCompressedPalette(const u32 *src, u32 offset, u32 size)
-{
-    LZDecompressWram(src, gDecompressionBuffer);
-    CpuCopy16(gDecompressionBuffer, &gPlttBufferUnfaded[offset], size);
-    CpuCopy16(gDecompressionBuffer, &gPlttBufferFaded[offset], size);
-}
-
 void LoadPalette(const void *src, u32 offset, u32 size)
 {
     CpuCopy16(src, &gPlttBufferUnfaded[offset], size);
     CpuCopy16(src, &gPlttBufferFaded[offset], size);
+}
+
+// Drop in replacement for LoadPalette, uses CpuFastCopy, size must be 0 % 32
+void LoadPaletteFast(const void *src, u32 offset, u32 size)
+{
+    if ((u32)src & 3) // In case palette is not 4 byte aligned
+        return LoadPalette(src, offset, size);
+    CpuFastCopy(src, &gPlttBufferUnfaded[offset], size);
+    // Copying from EWRAM->EWRAM is faster than ROM->EWRAM
+    CpuFastCopy(&gPlttBufferUnfaded[offset], &gPlttBufferFaded[offset], size);
 }
 
 void FillPalette(u32 value, u32 offset, u32 size)
@@ -405,6 +408,45 @@ void InvertPlttBuffer(u32 selectedPalettes)
 
             for (i = 0; i < 16; ++i)
                 gPlttBufferFaded[paletteOffset + i] = ~gPlttBufferFaded[paletteOffset + i];
+        }
+        selectedPalettes >>= 1;
+        paletteOffset += 16;
+    }
+}
+
+void TintPlttBuffer(u32 selectedPalettes, s8 r, s8 g, s8 b)
+{
+    u16 paletteOffset = 0;
+
+    while (selectedPalettes)
+    {
+        if (selectedPalettes & 1)
+        {
+            u32 i;
+            for (i = 0; i < 16; i++)
+            {
+                struct PlttData *data = (struct PlttData *)&gPlttBufferFaded[paletteOffset + i];
+                data->r += r;
+                data->g += g;
+                data->b += b;
+            }
+        }
+        selectedPalettes >>= 1;
+        paletteOffset += 16;
+    }
+}
+
+void UnfadePlttBuffer(u32 selectedPalettes)
+{
+    u16 paletteOffset = 0;
+
+    while (selectedPalettes)
+    {
+        if (selectedPalettes & 1)
+        {
+            u8 i;
+            for (i = 0; i < 16; i++)
+                gPlttBufferFaded[paletteOffset + i] = gPlttBufferUnfaded[paletteOffset + i];
         }
         selectedPalettes >>= 1;
         paletteOffset += 16;

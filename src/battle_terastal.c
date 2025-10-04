@@ -20,8 +20,6 @@
 // Sets flags and variables upon a battler's Terastallization.
 void ActivateTera(u32 battler)
 {
-    u32 side = GetBattlerSide(battler);
-
     // Set appropriate flags.
     SetActiveGimmick(battler, GIMMICK_TERA);
     SetGimmickAsActivated(battler, GIMMICK_TERA);
@@ -29,8 +27,8 @@ void ActivateTera(u32 battler)
     // Remove Tera Orb charge.
     if (B_FLAG_TERA_ORB_CHARGED != 0
         && (B_FLAG_TERA_ORB_NO_COST == 0 || !FlagGet(B_FLAG_TERA_ORB_NO_COST))
-        && side == B_SIDE_PLAYER
-        && !(gBattleTypeFlags & BATTLE_TYPE_DOUBLE && !IsPartnerMonFromSameTrainer(battler)))
+        && IsOnPlayerSide(battler)
+        && !(IsDoubleBattle() && !IsPartnerMonFromSameTrainer(battler)))
     {
         FlagClear(B_FLAG_TERA_ORB_CHARGED);
     }
@@ -39,6 +37,9 @@ void ActivateTera(u32 battler)
     PREPARE_TYPE_BUFFER(gBattleTextBuff1, GetBattlerTeraType(battler));
     if (TryBattleFormChange(gBattlerAttacker, FORM_CHANGE_BATTLE_TERASTALLIZATION))
         BattleScriptExecute(BattleScript_TeraFormChange);
+    else if (gBattleStruct->illusion[gBattlerAttacker].state == ILLUSION_ON
+          && DoesSpeciesHaveFormChangeMethod(GetIllusionMonSpecies(gBattlerAttacker), FORM_CHANGE_BATTLE_TERASTALLIZATION))
+        BattleScriptExecute(BattleScript_IllusionOffAndTerastallization);
     else
         BattleScriptExecute(BattleScript_Terastallization);
 }
@@ -61,9 +62,16 @@ void ApplyBattlerVisualsForTeraAnim(u32 battler)
 // Returns whether a battler can Terastallize.
 bool32 CanTerastallize(u32 battler)
 {
-    u32 holdEffect = GetBattlerHoldEffect(battler, FALSE);
+    enum ItemHoldEffect holdEffect = GetBattlerHoldEffectIgnoreNegation(battler);
 
-    if (TESTING || GetBattlerSide(battler) == B_SIDE_OPPONENT)
+    if (gBattleMons[battler].volatiles.transformed && GET_BASE_SPECIES_ID(gBattleMons[battler].species) == SPECIES_TERAPAGOS)
+        return FALSE;
+
+    // Prevents Zigzagoon from terastalizing in vanilla.
+    if (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE && !IsOnPlayerSide(battler))
+        return FALSE;
+
+    if (TESTING || !IsOnPlayerSide(battler))
     {
         // Skip all other checks in this block, go to HasTrainerUsedGimmick
     }
@@ -103,41 +111,40 @@ bool32 CanTerastallize(u32 battler)
 // Returns a battler's Tera type.
 u32 GetBattlerTeraType(u32 battler)
 {
-    return GetMonData(&GetBattlerParty(battler)[gBattlerPartyIndexes[battler]], MON_DATA_TERA_TYPE);
+    return GetMonData(GetBattlerMon(battler), MON_DATA_TERA_TYPE);
 }
 
 // Uses up a type's Stellar boost.
 void ExpendTypeStellarBoost(u32 battler, u32 type)
 {
     if (type < 32 && gBattleMons[battler].species != SPECIES_TERAPAGOS_STELLAR) // avoid OOB access
-        gBattleStruct->stellarBoostFlags[GetBattlerSide(battler)] |= gBitTable[type];
+        gBattleStruct->stellarBoostFlags[GetBattlerSide(battler)] |= 1u << type;
 }
 
 // Checks whether a type's Stellar boost has been expended.
 bool32 IsTypeStellarBoosted(u32 battler, u32 type)
 {
     if (type < 32) // avoid OOB access
-        return !(gBattleStruct->stellarBoostFlags[GetBattlerSide(battler)] & gBitTable[type]);
+        return !(gBattleStruct->stellarBoostFlags[GetBattlerSide(battler)] & (1u << type));
     else
         return FALSE;
 }
 
 // Returns the STAB power multiplier to use when Terastallized.
 // Power multipliers from Smogon Research thread.
-uq4_12_t GetTeraMultiplier(u32 battler, u32 type)
+uq4_12_t GetTeraMultiplier(struct DamageContext *ctx)
 {
-    u32 teraType = GetBattlerTeraType(battler);
-    bool32 hasAdaptability = (GetBattlerAbility(battler) == ABILITY_ADAPTABILITY);
+    u32 teraType = GetBattlerTeraType(ctx->battlerAtk);
 
     // Safety check.
-    if (GetActiveGimmick(battler) != GIMMICK_TERA)
+    if (GetActiveGimmick(ctx->battlerAtk) != GIMMICK_TERA)
         return UQ_4_12(1.0);
 
     // Stellar-type checks.
     if (teraType == TYPE_STELLAR)
     {
-        bool32 shouldBoost = IsTypeStellarBoosted(battler, type);
-        if (IS_BATTLER_OF_BASE_TYPE(battler, type))
+        bool32 shouldBoost = IsTypeStellarBoosted(ctx->battlerAtk, ctx->moveType);
+        if (IS_BATTLER_OF_BASE_TYPE(ctx->battlerAtk, ctx->moveType))
         {
             if (shouldBoost)
                 return UQ_4_12(2.0);
@@ -150,18 +157,18 @@ uq4_12_t GetTeraMultiplier(u32 battler, u32 type)
             return UQ_4_12(1.0);
     }
     // Base and Tera type.
-    if (type == teraType && IS_BATTLER_OF_BASE_TYPE(battler, type))
+    if (ctx->moveType == teraType && IS_BATTLER_OF_BASE_TYPE(ctx->battlerAtk, ctx->moveType))
     {
-        if (hasAdaptability)
+        if (ctx->abilityAtk == ABILITY_ADAPTABILITY)
             return UQ_4_12(2.25);
         else
             return UQ_4_12(2.0);
     }
     // Base or Tera type only.
-    else if ((type == teraType && !IS_BATTLER_OF_BASE_TYPE(battler, type))
-             || (type != teraType && IS_BATTLER_OF_BASE_TYPE(battler, type)))
+    else if ((ctx->moveType == teraType && !IS_BATTLER_OF_BASE_TYPE(ctx->battlerAtk, ctx->moveType))
+             || (ctx->moveType != teraType && IS_BATTLER_OF_BASE_TYPE(ctx->battlerAtk, ctx->moveType)))
     {
-        if (hasAdaptability)
+        if (ctx->abilityAtk == ABILITY_ADAPTABILITY)
             return UQ_4_12(2.0);
         else
             return UQ_4_12(1.5);

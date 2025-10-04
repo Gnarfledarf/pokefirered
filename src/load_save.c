@@ -20,11 +20,7 @@
 
 struct LoadedSaveData
 {
- /*0x0000*/ struct ItemSlot items[BAG_ITEMS_COUNT];
- /*0x0078*/ struct ItemSlot keyItems[BAG_KEYITEMS_COUNT];
- /*0x00F0*/ struct ItemSlot pokeBalls[BAG_POKEBALLS_COUNT];
- /*0x0130*/ struct ItemSlot TMsHMs[BAG_TMHM_COUNT];
- /*0x0230*/ struct ItemSlot berries[BAG_BERRIES_COUNT];
+ /*0x0000*/ struct Bag bag;
  /*0x02E8*/ struct Mail mail[MAIL_COUNT];
 };
 
@@ -37,11 +33,11 @@ EWRAM_DATA struct PokemonStorageASLR gPokemonStorage = {0};
 EWRAM_DATA struct LoadedSaveData gLoadedSaveData = {0};
 
 // IWRAM common
-bool32 gFlashMemoryPresent = 0;
-struct SaveBlock1 *gSaveBlock1Ptr = NULL;
-struct SaveBlock2 *gSaveBlock2Ptr = NULL;
+COMMON_DATA bool32 gFlashMemoryPresent = 0;
+COMMON_DATA struct SaveBlock1 *gSaveBlock1Ptr = NULL;
+COMMON_DATA struct SaveBlock2 *gSaveBlock2Ptr = NULL;
 IWRAM_INIT struct SaveBlock3 *gSaveBlock3Ptr = &gSaveblock3;
-struct PokemonStorage *gPokemonStoragePtr = NULL;
+COMMON_DATA struct PokemonStorage *gPokemonStoragePtr = NULL;
 
 void CheckForFlashMemory(void)
 {
@@ -83,7 +79,7 @@ void SetSaveBlocksPointers(u16 offset)
     *sav1_LocalVar = (void *)(&gSaveblock1) + offset;
     gPokemonStoragePtr = (void *)(&gPokemonStorage) + offset;
 
-    SetBagPocketsPointers();
+    SetBagItemsPointers();
     QL_AddASLROffset(oldSave);
 }
 
@@ -215,18 +211,18 @@ void LoadObjectEvents(void)
         // Try to restore saved inactive follower
         if (gObjectEvents[i].localId == OBJ_EVENT_ID_FOLLOWER &&
             !gObjectEvents[i].active &&
-            gObjectEvents[i].graphicsId >= OBJ_EVENT_GFX_MON_BASE)
+            gObjectEvents[i].graphicsId & OBJ_EVENT_MON)
             gObjectEvents[i].active = TRUE;
     }
 }
 
-void SaveSerializedGame(void)
+void CopyPartyAndObjectsToSave(void)
 {
     SavePlayerParty();
     SaveObjectEvents();
 }
 
-void LoadSerializedGame(void)
+void CopyPartyAndObjectsFromSave(void)
 {
     LoadPlayerParty();
     LoadObjectEvents();
@@ -236,25 +232,8 @@ void LoadPlayerBag(void)
 {
     int i;
 
-    // load player items.
-    for (i = 0; i < BAG_ITEMS_COUNT; i++)
-        gLoadedSaveData.items[i] = gSaveBlock1Ptr->bagPocket_Items[i];
-
-    // load player key items.
-    for (i = 0; i < BAG_KEYITEMS_COUNT; i++)
-        gLoadedSaveData.keyItems[i] = gSaveBlock1Ptr->bagPocket_KeyItems[i];
-
-    // load player pokeballs.
-    for (i = 0; i < BAG_POKEBALLS_COUNT; i++)
-        gLoadedSaveData.pokeBalls[i] = gSaveBlock1Ptr->bagPocket_PokeBalls[i];
-
-    // load player TMs and HMs.
-    for (i = 0; i < BAG_TMHM_COUNT; i++)
-        gLoadedSaveData.TMsHMs[i] = gSaveBlock1Ptr->bagPocket_TMHM[i];
-
-    // load player berries.
-    for (i = 0; i < BAG_BERRIES_COUNT; i++)
-        gLoadedSaveData.berries[i] = gSaveBlock1Ptr->bagPocket_Berries[i];
+    // load player bag.
+    memcpy(&gLoadedSaveData.bag, &gSaveBlock1Ptr->bag, sizeof(struct Bag));
 
     // load mail.
     for (i = 0; i < MAIL_COUNT; i++)
@@ -265,25 +244,8 @@ void SavePlayerBag(void)
 {
     int i;
 
-    // save player items.
-    for (i = 0; i < BAG_ITEMS_COUNT; i++)
-        gSaveBlock1Ptr->bagPocket_Items[i] = gLoadedSaveData.items[i];
-
-    // save player key items.
-    for (i = 0; i < BAG_KEYITEMS_COUNT; i++)
-        gSaveBlock1Ptr->bagPocket_KeyItems[i] = gLoadedSaveData.keyItems[i];
-
-    // save player pokeballs.
-    for (i = 0; i < BAG_POKEBALLS_COUNT; i++)
-        gSaveBlock1Ptr->bagPocket_PokeBalls[i] = gLoadedSaveData.pokeBalls[i];
-
-    // save player TMs and HMs.
-    for (i = 0; i < BAG_TMHM_COUNT; i++)
-        gSaveBlock1Ptr->bagPocket_TMHM[i] = gLoadedSaveData.TMsHMs[i];
-
-    // save player berries.
-    for (i = 0; i < BAG_BERRIES_COUNT; i++)
-        gSaveBlock1Ptr->bagPocket_Berries[i] = gLoadedSaveData.berries[i];
+    // save player bag.
+    memcpy(&gSaveBlock1Ptr->bag, &gLoadedSaveData.bag, sizeof(struct Bag));
 
     // save mail.
     for (i = 0; i < MAIL_COUNT; i++)

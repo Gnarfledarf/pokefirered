@@ -1,19 +1,20 @@
 #include "global.h"
-#include "gflib.h"
 #include "battle.h"
 #include "battle_anim.h"
 #include "decompress.h"
 #include "graphics.h"
-#include "item.h"
+#include "main.h"
 #include "m4a.h"
 #include "pokeball.h"
+#include "pokemon.h"
+#include "sound.h"
+#include "sprite.h"
 #include "task.h"
 #include "trig.h"
 #include "util.h"
-#include "link.h"
-#include "battle_gfx_sfx_util.h"
+#include "data.h"
+#include "item.h"
 #include "constants/songs.h"
-#include "constants/sound.h"
 
 static void Task_DoPokeballSendOutAnim(u8 taskId);
 static inline void DoPokeballSendOutSoundEffect(u32 battler);
@@ -43,7 +44,7 @@ static void SpriteCB_TradePokeballEnd(struct Sprite *sprite);
 static void SpriteCB_HealthboxSlideInDelayed(struct Sprite *sprite);
 static void SpriteCB_HealthboxSlideIn(struct Sprite *sprite);
 static void SpriteCB_HitAnimHealthoxEffect(struct Sprite *sprite);
-static u16 GetBattlerPokeballItemId(u8 battlerId);
+static u16 GetBattlerPokeballItemId(u8 battler);
 
 // rom const data
 
@@ -108,7 +109,7 @@ const struct CompressedSpriteSheet gBallSpriteSheets[POKEBALL_COUNT] =
     [BALL_CHERISH] = {gBallGfx_Cherish, 384, GFX_TAG_CHERISH_BALL},
 };
 
-const struct CompressedSpritePalette gBallSpritePalettes[POKEBALL_COUNT] =
+const struct SpritePalette gBallSpritePalettes[POKEBALL_COUNT] =
 {
     [BALL_STRANGE] = {gBallPal_Strange, GFX_TAG_STRANGE_BALL},
     [BALL_POKE]    = {gBallPal_Poke,    GFX_TAG_POKE_BALL},
@@ -206,6 +207,8 @@ static const union AnimCmd *const sBallAnimSequences[] =
     sBallAnimSeq0,
     sBallAnimSeq1,
     sBallAnimSeq2,
+
+    // unused?
     sBallAnimSeq3,
     sBallAnimSeq4,
     sBallAnimSeq5,
@@ -560,7 +563,7 @@ u8 DoPokeballSendOutAnimation(u32 battler, s16 pan, u8 kindOfThrow)
 
 static void Task_DoPokeballSendOutAnim(u8 taskId)
 {
-    u32 throwCaseId, ballId, battlerId, ballSpriteId;
+    u32 throwCaseId, ballId, battler, ballSpriteId;
     bool32 notSendOut = FALSE;
     u32 throwXoffset = (B_ENEMY_THROW_BALLS >= GEN_6) ? 24 : 0;
     s32 throwYoffset = (B_ENEMY_THROW_BALLS >= GEN_6) ? -16 : 24;
@@ -572,8 +575,8 @@ static void Task_DoPokeballSendOutAnim(u8 taskId)
     }
 
     throwCaseId = gTasks[taskId].tThrowId;
-    battlerId = gTasks[taskId].tBattler;
-    ballId = ItemIdToBallId(GetBattlerPokeballItemId(battlerId));
+    battler = gTasks[taskId].tBattler;
+    ballId = GetBattlerPokeballItemId(battler);
     LoadBallGfx(ballId);
     ballSpriteId = CreateSprite(&gBallSpriteTemplates[ballId], 32, 80, 29);
     gSprites[ballSpriteId].data[0] = 0x80;
@@ -583,24 +586,24 @@ static void Task_DoPokeballSendOutAnim(u8 taskId)
     switch (throwCaseId)
     {
     case POKEBALL_PLAYER_SLIDEIN: // don't actually send out, trigger the slide-in animation
-        gBattlerTarget = battlerId;
+        gBattlerTarget = battler;
         gSprites[ballSpriteId].callback = HandleBallAnimEnd;
         gSprites[ballSpriteId].invisible = TRUE;
         break;
     case POKEBALL_PLAYER_SENDOUT:
-        gBattlerTarget = battlerId;
-        gSprites[ballSpriteId].x = (gBattleTypeFlags & BATTLE_TYPE_POKEDUDE) ? 32 : 48;
-        gSprites[ballSpriteId].y = (gBattleTypeFlags & BATTLE_TYPE_POKEDUDE) ? 64 : 70;
+        gBattlerTarget = battler;
+        gSprites[ballSpriteId].x = 24;
+        gSprites[ballSpriteId].y = 68;
         gSprites[ballSpriteId].callback = SpriteCB_MonSendOut_1;
-        DoPokeballSendOutSoundEffect(battlerId);
+        DoPokeballSendOutSoundEffect(battler);
         break;
     case POKEBALL_OPPONENT_SENDOUT:
-        gSprites[ballSpriteId].x = GetBattlerSpriteCoord(battlerId, BATTLER_COORD_X) + throwXoffset;
-        gSprites[ballSpriteId].y = GetBattlerSpriteCoord(battlerId, BATTLER_COORD_Y) + throwYoffset;
-        gBattlerTarget = battlerId;
+        gSprites[ballSpriteId].x = GetBattlerSpriteCoord(battler, BATTLER_COORD_X) + throwXoffset;
+        gSprites[ballSpriteId].y = GetBattlerSpriteCoord(battler, BATTLER_COORD_Y) + throwYoffset;
+        gBattlerTarget = battler;
         gSprites[ballSpriteId].data[0] = 0;
         gSprites[ballSpriteId].callback = GetOpponentMonSendOutCallback();
-        DoPokeballSendOutSoundEffect(battlerId);
+        DoPokeballSendOutSoundEffect(battler);
         break;
     default:
         gBattlerTarget = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
@@ -662,7 +665,7 @@ static void SpriteCB_BallThrow(struct Sprite *sprite)
         sprite->x2 = 0;
         sprite->y2 = 0;
         sprite->data[5] = 0;
-        ballId = ItemIdToBallId(GetBattlerPokeballItemId(opponentBattler));
+        ballId = GetBattlerPokeballItemId(opponentBattler);
         AnimateBallOpenParticles(sprite->x, sprite->y - 5, 1, 28, ballId);
         sprite->data[0] = LaunchBallFadeMonTask(FALSE, opponentBattler, 14, ballId);
         sprite->sBattler = opponentBattler;
@@ -892,7 +895,7 @@ static void Task_PlayCryWhenReleasedFromBall(u8 taskId)
     u8 wantedCry = gTasks[taskId].tCryTaskWantedCry;
     s8 pan = gTasks[taskId].tCryTaskPan;
     u16 species = gTasks[taskId].tCryTaskSpecies;
-    u8 battlerId = gTasks[taskId].tCryTaskBattler;
+    u8 battler = gTasks[taskId].tCryTaskBattler;
     u8 monSpriteId = gTasks[taskId].tCryTaskMonSpriteId;
     struct Pokemon *mon = (void *)(u32)((gTasks[taskId].tCryTaskMonPtr1 << 16) | (u16)(gTasks[taskId].tCryTaskMonPtr2));
 
@@ -909,7 +912,7 @@ static void Task_PlayCryWhenReleasedFromBall(u8 taskId)
             PlayCry_ByMode(species, pan, CRY_MODE_NORMAL);
         else
             PlayCry_ByMode(species, pan, CRY_MODE_WEAK);
-        gBattleSpritesDataPtr->healthBoxesData[battlerId].waitForCry = FALSE;
+        gBattleSpritesDataPtr->healthBoxesData[battler].waitForCry = FALSE;
         DestroyTask(taskId);
         break;
     case 2:
@@ -926,7 +929,7 @@ static void Task_PlayCryWhenReleasedFromBall(u8 taskId)
             else
                 PlayCry_ReleaseDouble(species, pan, CRY_MODE_WEAK_DOUBLES);
 
-            gBattleSpritesDataPtr->healthBoxesData[battlerId].waitForCry = FALSE;
+            gBattleSpritesDataPtr->healthBoxesData[battler].waitForCry = FALSE;
             DestroyTask(taskId);
         }
         else
@@ -966,7 +969,7 @@ static void Task_PlayCryWhenReleasedFromBall(u8 taskId)
         else
             PlayCry_ReleaseDouble(species, pan, CRY_MODE_WEAK);
 
-        gBattleSpritesDataPtr->healthBoxesData[battlerId].waitForCry = FALSE;
+        gBattleSpritesDataPtr->healthBoxesData[battler].waitForCry = FALSE;
         DestroyTask(taskId);
         break;
     }
@@ -974,11 +977,11 @@ static void Task_PlayCryWhenReleasedFromBall(u8 taskId)
 
 static void SpriteCB_ReleaseMonFromBall(struct Sprite *sprite)
 {
-    u8 battlerId = sprite->sBattler;
+    u8 battler = sprite->sBattler;
     u32 ballId;
 
     StartSpriteAnim(sprite, 1);
-    ballId = ItemIdToBallId(GetBattlerPokeballItemId(battlerId));
+    ballId = GetBattlerPokeballItemId(battler);
     AnimateBallOpenParticles(sprite->x, sprite->y - 5, 1, 28, ballId);
     sprite->data[0] = LaunchBallFadeMonTask(TRUE, sprite->sBattler, 14, ballId);
     sprite->callback = HandleBallAnimEnd;
@@ -990,18 +993,13 @@ static void SpriteCB_ReleaseMonFromBall(struct Sprite *sprite)
         u16 wantedCryCase;
         u8 taskId;
 
-        if (GetBattlerSide(battlerId) != B_SIDE_PLAYER)
-        {
-            mon = &gEnemyParty[gBattlerPartyIndexes[battlerId]];
+        mon = GetBattlerMon(battler);
+        if (!IsOnPlayerSide(battler))
             pan = 25;
-        }
         else
-        {
-            mon = &gPlayerParty[gBattlerPartyIndexes[battlerId]];
             pan = -25;
-        }
 
-        if ((battlerId == GetBattlerAtPosition(B_POSITION_PLAYER_LEFT) || battlerId == GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT))
+        if ((battler == GetBattlerAtPosition(B_POSITION_PLAYER_LEFT) || battler == GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT))
          && IsDoubleBattle() && gBattleSpritesDataPtr->animationData->introAnimActive)
         {
             if (gBattleTypeFlags & BATTLE_TYPE_MULTI && gBattleTypeFlags & BATTLE_TYPE_LINK)
@@ -1017,16 +1015,16 @@ static void SpriteCB_ReleaseMonFromBall(struct Sprite *sprite)
 
         if (!IsDoubleBattle() || !gBattleSpritesDataPtr->animationData->introAnimActive)
             wantedCryCase = 0;
-        else if (battlerId == GetBattlerAtPosition(B_POSITION_PLAYER_LEFT) || battlerId == GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT))
+        else if (battler == GetBattlerAtPosition(B_POSITION_PLAYER_LEFT) || battler == GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT))
             wantedCryCase = 1;
         else
             wantedCryCase = 2;
 
-        gBattleSpritesDataPtr->healthBoxesData[battlerId].waitForCry = TRUE;
+        gBattleSpritesDataPtr->healthBoxesData[battler].waitForCry = TRUE;
 
         taskId = CreateTask(Task_PlayCryWhenReleasedFromBall, 3);
 
-        illusionMon = GetIllusionMonPtr(battlerId);
+        illusionMon = GetIllusionMonPtr(battler);
         if (illusionMon != NULL)
             gTasks[taskId].tCryTaskSpecies = GetMonData(illusionMon, MON_DATA_SPECIES);
         else
@@ -1034,7 +1032,7 @@ static void SpriteCB_ReleaseMonFromBall(struct Sprite *sprite)
 
         gTasks[taskId].tCryTaskPan = pan;
         gTasks[taskId].tCryTaskWantedCry = wantedCryCase;
-        gTasks[taskId].tCryTaskBattler = battlerId;
+        gTasks[taskId].tCryTaskBattler = battler;
         gTasks[taskId].tCryTaskMonSpriteId = gBattlerSpriteIds[sprite->sBattler];
         gTasks[taskId].tCryTaskMonPtr1 = (u32)(mon) >> 16;
         gTasks[taskId].tCryTaskMonPtr2 = (u32)(mon);
@@ -1043,7 +1041,7 @@ static void SpriteCB_ReleaseMonFromBall(struct Sprite *sprite)
 
     StartSpriteAffineAnim(&gSprites[gBattlerSpriteIds[sprite->sBattler]], BATTLER_AFFINE_EMERGE);
 
-    if (GetBattlerSide(sprite->sBattler) == B_SIDE_OPPONENT)
+    if (!IsOnPlayerSide(sprite->sBattler))
         gSprites[gBattlerSpriteIds[sprite->sBattler]].callback = SpriteCB_OpponentMonFromBall;
     else
         gSprites[gBattlerSpriteIds[sprite->sBattler]].callback = SpriteCB_PlayerMonFromBall;
@@ -1074,35 +1072,35 @@ static void SpriteCB_BallThrow_StartCaptureMon(struct Sprite *sprite)
 static void HandleBallAnimEnd(struct Sprite *sprite)
 {
     bool8 affineAnimEnded = FALSE;
-    u8 battlerId = sprite->sBattler;
+    u8 battler = sprite->sBattler;
 
     if (sprite->data[7] == POKEBALL_PLAYER_SLIDEIN)
     {
-        gSprites[gBattlerSpriteIds[sprite->sBattler]].callback = SpriteCB_PlayerMonSlideIn;
-        AnimateSprite(&gSprites[gBattlerSpriteIds[sprite->sBattler]]);
-        gSprites[gBattlerSpriteIds[sprite->sBattler]].data[1] = 0x1000;
+        gSprites[gBattlerSpriteIds[battler]].callback = SpriteCB_PlayerMonSlideIn;
+        AnimateSprite(&gSprites[gBattlerSpriteIds[battler]]);
+        gSprites[gBattlerSpriteIds[battler]].data[1] = 0x1000;
     }
 
-    gSprites[gBattlerSpriteIds[battlerId]].invisible = FALSE;
+    gSprites[gBattlerSpriteIds[battler]].invisible = FALSE;
     if (sprite->animEnded)
         sprite->invisible = TRUE;
-    if (gSprites[gBattlerSpriteIds[battlerId]].affineAnimEnded)
+    if (gSprites[gBattlerSpriteIds[battler]].affineAnimEnded)
     {
-        StartSpriteAffineAnim(&gSprites[gBattlerSpriteIds[battlerId]], BATTLER_AFFINE_NORMAL);
+        StartSpriteAffineAnim(&gSprites[gBattlerSpriteIds[battler]], BATTLER_AFFINE_NORMAL);
         affineAnimEnded = TRUE;
     }
     else
     {
-        gSprites[gBattlerSpriteIds[battlerId]].data[1] -= 288;
-        gSprites[gBattlerSpriteIds[battlerId]].y2 = gSprites[gBattlerSpriteIds[battlerId]].data[1] >> 8;
+        gSprites[gBattlerSpriteIds[battler]].data[1] -= 288;
+        gSprites[gBattlerSpriteIds[battler]].y2 = gSprites[gBattlerSpriteIds[battler]].data[1] >> 8;
     }
     if (sprite->animEnded && affineAnimEnded)
     {
         s32 i, doneBattlers;
 
-        gSprites[gBattlerSpriteIds[battlerId]].y2 = 0;
+        gSprites[gBattlerSpriteIds[battler]].y2 = 0;
         gDoingBattleAnim = FALSE;
-        gBattleSpritesDataPtr->healthBoxesData[battlerId].ballAnimActive = FALSE;
+        gBattleSpritesDataPtr->healthBoxesData[battler].ballAnimActive = FALSE;
         FreeSpriteOamMatrix(sprite);
         DestroySprite(sprite);
 
@@ -1121,7 +1119,7 @@ static void HandleBallAnimEnd(struct Sprite *sprite)
 
 static void SpriteCB_BallThrow_CaptureMon(struct Sprite *sprite)
 {
-    u8 battlerId = sprite->sBattler;
+    u8 battler = sprite->sBattler;
 
     sprite->data[4]++;
     if (sprite->data[4] == 40)
@@ -1132,15 +1130,15 @@ static void SpriteCB_BallThrow_CaptureMon(struct Sprite *sprite)
     {
         gDoingBattleAnim = FALSE;
         m4aMPlayAllStop();
-        PlaySE(MUS_CAUGHT_INTRO);
+        PlaySE(MUS_EVOLVED);
     }
     else if (sprite->data[4] == 315)
     {
-        FreeOamMatrix(gSprites[gBattlerSpriteIds[sprite->sBattler]].oam.matrixNum);
-        DestroySprite(&gSprites[gBattlerSpriteIds[sprite->sBattler]]);
+        FreeOamMatrix(gSprites[gBattlerSpriteIds[battler]].oam.matrixNum);
+        DestroySprite(&gSprites[gBattlerSpriteIds[battler]]);
         DestroySpriteAndFreeResources(sprite);
         if (gMain.inBattle)
-            gBattleSpritesDataPtr->healthBoxesData[battlerId].ballAnimActive = FALSE;
+            gBattleSpritesDataPtr->healthBoxesData[battler].ballAnimActive = FALSE;
     }
 }
 
@@ -1260,7 +1258,10 @@ static u8 LaunchBallFadeMonTaskForPokeball(bool8 unFadeLater, u8 spritePalNum, u
     return LaunchBallFadeMonTask(unFadeLater, spritePalNum, selectedPalettes, BALL_POKE);
 }
 
-// Sprite data for the pokeball
+// Sprite data for the Pokémon
+#define sSpecies data[7]
+
+// Sprite data for the Poké Ball
 #define sMonSpriteId data[0]
 #define sDelay       data[1]
 #define sMonPalNum   data[2]
@@ -1270,14 +1271,14 @@ static u8 LaunchBallFadeMonTaskForPokeball(bool8 unFadeLater, u8 spritePalNum, u
 #define sFinalMonY   data[6]
 #define sTrigIdx     data[7]
 
-// Pokeball in Oak intro, and when receiving via trade
-void CreatePokeballSpriteToReleaseMon(u8 monSpriteId, u8 monPalNum, u8 x, u8 y, u8 oamPriority, u8 subpriortiy, u8 delay, u32 fadePalettes)
+// Poké Ball in Birch intro, and when receiving via trade
+void CreatePokeballSpriteToReleaseMon(u8 monSpriteId, u8 monPalNum, u8 x, u8 y, u8 oamPriority, u8 subpriority, u8 delay, u32 fadePalettes, u16 species)
 {
     u8 spriteId;
 
     LoadCompressedSpriteSheetUsingHeap(&gBallSpriteSheets[BALL_POKE]);
-    LoadCompressedSpritePaletteUsingHeap(&gBallSpritePalettes[BALL_POKE]);
-    spriteId = CreateSprite(&gBallSpriteTemplates[BALL_POKE], x, y, subpriortiy);
+    LoadSpritePalette(&gBallSpritePalettes[BALL_POKE]);
+    spriteId = CreateSprite(&gBallSpriteTemplates[BALL_POKE], x, y, subpriority);
 
     gSprites[spriteId].sMonSpriteId = monSpriteId;
     gSprites[spriteId].sFinalMonX = gSprites[monSpriteId].x;
@@ -1285,6 +1286,7 @@ void CreatePokeballSpriteToReleaseMon(u8 monSpriteId, u8 monPalNum, u8 x, u8 y, 
 
     gSprites[monSpriteId].x = x;
     gSprites[monSpriteId].y = y;
+    gSprites[monSpriteId].sSpecies = species;
 
     gSprites[spriteId].sDelay = delay;
     gSprites[spriteId].sMonPalNum = monPalNum;
@@ -1366,10 +1368,16 @@ static void SpriteCB_ReleasedMonFlyOut(struct Sprite *sprite)
     }
     if (sprite->animEnded && emergeAnimFinished && atFinalPosition)
     {
+        if (gSprites[monSpriteId].sSpecies == SPECIES_EGG)
+            DoMonFrontSpriteAnimation(&gSprites[monSpriteId], gSprites[monSpriteId].sSpecies, TRUE, 0);
+        else
+            DoMonFrontSpriteAnimation(&gSprites[monSpriteId], gSprites[monSpriteId].sSpecies, FALSE, 0);
+
         DestroySpriteAndFreeResources(sprite);
     }
 }
 
+#undef sSpecies
 #undef sFinalMonX
 #undef sFinalMonY
 #undef sTrigIdx
@@ -1381,7 +1389,7 @@ u8 CreateTradePokeballSprite(u8 monSpriteId, u8 monPalNum, u8 x, u8 y, u8 oamPri
     u8 spriteId;
 
     LoadCompressedSpriteSheetUsingHeap(&gBallSpriteSheets[BALL_POKE]);
-    LoadCompressedSpritePaletteUsingHeap(&gBallSpritePalettes[BALL_POKE]);
+    LoadSpritePalette(&gBallSpritePalettes[BALL_POKE]);
     spriteId = CreateSprite(&gBallSpriteTemplates[BALL_POKE], x, y, subPriority);
     gSprites[spriteId].sMonSpriteId = monSpriteId;
     gSprites[spriteId].sDelay = delay;
@@ -1414,7 +1422,7 @@ static void SpriteCB_TradePokeball(struct Sprite *sprite)
         sprite->callback = SpriteCB_TradePokeballSendOff;
 #ifdef BUGFIX
         // FIX: If this is used on a sprite that has previously had an affine animation, it will not
-        // play the shrink anim properly due to being paused.
+        // play the shrink anim properly due to being paused. Works together with the fix to ResetSpriteAfterAnim.
         gSprites[monSpriteId].affineAnimPaused = FALSE;
 #endif // BUGFIX
         StartSpriteAffineAnim(&gSprites[monSpriteId], BATTLER_AFFINE_RETURN);
@@ -1463,7 +1471,7 @@ static void SpriteCB_TradePokeballEnd(struct Sprite *sprite)
 #undef sFadePalsHi
 #undef sTimer
 
-// Unreferenced in RSE, but used here, possibly by mistake.
+// Unreferenced here and in RS, but used in FRLG, possibly by mistake.
 void DestroySpriteAndFreeResources_Ball(struct Sprite *sprite)
 {
     DestroySpriteAndFreeResources(sprite);
@@ -1474,16 +1482,16 @@ void DestroySpriteAndFreeResources_Ball(struct Sprite *sprite)
 
 #define sDelayTimer data[1]
 
-void StartHealthboxSlideIn(u8 battlerId)
+void StartHealthboxSlideIn(u8 battler)
 {
-    struct Sprite *healthboxSprite = &gSprites[gHealthboxSpriteIds[battlerId]];
+    struct Sprite *healthboxSprite = &gSprites[gHealthboxSpriteIds[battler]];
 
     healthboxSprite->sSpeedX = 5;
     healthboxSprite->sSpeedY = 0;
     healthboxSprite->x2 = 0x73;
     healthboxSprite->y2 = 0;
     healthboxSprite->callback = SpriteCB_HealthboxSlideIn;
-    if (GetBattlerSide(battlerId) != B_SIDE_PLAYER)
+    if (!IsOnPlayerSide(battler))
     {
         healthboxSprite->sSpeedX = -healthboxSprite->sSpeedX;
         healthboxSprite->sSpeedY = -healthboxSprite->sSpeedY;
@@ -1491,7 +1499,7 @@ void StartHealthboxSlideIn(u8 battlerId)
         healthboxSprite->y2 = -healthboxSprite->y2;
     }
     gSprites[healthboxSprite->data[5]].callback(&gSprites[healthboxSprite->data[5]]);
-    if (GetBattlerPosition(battlerId) == B_POSITION_PLAYER_RIGHT)
+    if (GetBattlerPosition(battler) == B_POSITION_PLAYER_RIGHT)
         healthboxSprite->callback = SpriteCB_HealthboxSlideInDelayed;
 }
 
@@ -1517,13 +1525,13 @@ static void SpriteCB_HealthboxSlideIn(struct Sprite *sprite)
 #undef sSpeedY
 #undef sDelayTimer
 
-void DoHitAnimHealthboxEffect(u8 battlerId)
+void DoHitAnimHealthboxEffect(u8 battler)
 {
     u8 spriteId;
 
     spriteId = CreateInvisibleSpriteWithCallback(SpriteCB_HitAnimHealthoxEffect);
     gSprites[spriteId].data[0] = 1;
-    gSprites[spriteId].data[1] = gHealthboxSpriteIds[battlerId];
+    gSprites[spriteId].data[1] = gHealthboxSpriteIds[battler];
     gSprites[spriteId].callback = SpriteCB_HitAnimHealthoxEffect;
 }
 
@@ -1546,10 +1554,10 @@ void LoadBallGfx(u8 ballId)
 {
     u16 var;
 
-    if (GetSpriteTileStartByTag(gBallSpriteSheets[ballId].tag) == TAG_NONE)
+    if (GetSpriteTileStartByTag(gBallSpriteSheets[ballId].tag) == 0xFFFF)
     {
         LoadCompressedSpriteSheetUsingHeap(&gBallSpriteSheets[ballId]);
-        LoadCompressedSpritePaletteUsingHeap(&gBallSpritePalettes[ballId]);
+        LoadSpritePalette(&gBallSpritePalettes[ballId]);
     }
 
     switch (ballId)
@@ -1559,7 +1567,7 @@ void LoadBallGfx(u8 ballId)
     case BALL_REPEAT:
     case BALL_SAFARI:
         var = GetSpriteTileStartByTag(gBallSpriteSheets[ballId].tag);
-        LZDecompressVram(gOpenPokeballGfx, (void *)(OBJ_VRAM0 + 0x100 + var * 32));
+        DecompressDataWithHeaderVram(gOpenPokeballGfx, (void *)(OBJ_VRAM0 + 0x100 + var * 32));
         break;
     }
 }
@@ -1570,16 +1578,12 @@ void FreeBallGfx(u8 ballId)
     FreeSpritePaletteByTag(gBallSpritePalettes[ballId].tag);
 }
 
-static u16 GetBattlerPokeballItemId(u8 battlerId)
+static u16 GetBattlerPokeballItemId(u8 battler)
 {
-    struct Pokemon *mon, *illusionMon;
+    struct Pokemon *illusionMon;
+    struct Pokemon *mon = GetBattlerMon(battler);
 
-    if (GetBattlerSide(battlerId) == B_SIDE_PLAYER)
-        mon = &gPlayerParty[gBattlerPartyIndexes[battlerId]];
-    else
-        mon = &gEnemyParty[gBattlerPartyIndexes[battlerId]];
-
-    illusionMon = GetIllusionMonPtr(battlerId);
+    illusionMon = GetIllusionMonPtr(battler);
     if (illusionMon != NULL)
         mon = illusionMon;
 
@@ -1588,11 +1592,10 @@ static u16 GetBattlerPokeballItemId(u8 battlerId)
 
 enum PokeBall ItemIdToBallId(u32 ballItem)
 {
-    enum PokeBall secondaryId = ItemId_GetSecondaryId(ballItem);
+    enum PokeBall secondaryId = GetItemSecondaryId(ballItem);
 
     if (secondaryId <= BALL_STRANGE || secondaryId >= POKEBALL_COUNT)
         return BALL_STRANGE;
 
     return secondaryId;
 }
-

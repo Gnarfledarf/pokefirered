@@ -235,6 +235,7 @@ static void ResetBattleTowerStreak(u8 levelType)
     gSaveBlock2Ptr->battleTower.curStreakChallengesNum[levelType] = 1;
 }
 
+#if FREE_BATTLE_TOWER_E_READER == FALSE
 static bool8 ShouldBattleEReaderTrainer(u8 levelType, u16 winStreak)
 {
     u8 trainerTeamLevel;
@@ -275,6 +276,7 @@ static bool8 ShouldBattleEReaderTrainer(u8 levelType, u16 winStreak)
 
     return (numValid == 3);
 }
+#endif //FREE_BATTLE_TOWER_E_READER
 
 static bool8 ChooseSpecialBattleTowerTrainer(void)
 {
@@ -289,12 +291,15 @@ static bool8 ChooseSpecialBattleTowerTrainer(void)
     battleTowerLevelType = gSaveBlock2Ptr->battleTower.battleTowerLevelType;
 
     winStreak = GetCurrentBattleTowerWinStreak(battleTowerLevelType);
+    
+#if FREE_BATTLE_TOWER_E_READER == FALSE
     if (ShouldBattleEReaderTrainer(battleTowerLevelType, winStreak))
     {
         gSaveBlock2Ptr->battleTower.battleTowerTrainerId = BATTLE_TOWER_EREADER_TRAINER_ID;
         retVal = TRUE;
     }
     else
+#endif //FREE_BATTLE_TOWER_E_READER
     {
         // Check if one of the battle tower trainers from record mixing should be the next trainer.
         for (recordIndex = 0; recordIndex < 5; recordIndex++)
@@ -407,11 +412,15 @@ void SetEReaderTrainerGfxId(void)
 
 u8 GetBattleTowerTrainerFrontSpriteId(u16 trainerId)
 {
+#if FREE_BATTLE_TOWER_E_READER == FALSE
     if (trainerId == BATTLE_TOWER_EREADER_TRAINER_ID)
     {
         return gFacilityClassToPicIndex[gSaveBlock2Ptr->battleTower.ereaderTrainer.trainerClass];
     }
     else if (trainerId < BATTLE_TOWER_RECORD_MIXING_TRAINER_BASE_ID)
+#else
+    if (trainerId < BATTLE_TOWER_RECORD_MIXING_TRAINER_BASE_ID)
+#endif //FREE_BATTLE_TOWER_E_READER
     {
         return gFacilityClassToPicIndex[sBattleTowerTrainers[trainerId].trainerClass];
     }
@@ -423,11 +432,15 @@ u8 GetBattleTowerTrainerFrontSpriteId(u16 trainerId)
 
 u8 GetBattleTowerTrainerClassNameId(void)
 {
+#if FREE_BATTLE_TOWER_E_READER == FALSE
     if (gSaveBlock2Ptr->battleTower.battleTowerTrainerId == BATTLE_TOWER_EREADER_TRAINER_ID)
     {
         return gFacilityClassToTrainerClass[gSaveBlock2Ptr->battleTower.ereaderTrainer.trainerClass];
     }
     else if (gSaveBlock2Ptr->battleTower.battleTowerTrainerId >= BATTLE_TOWER_RECORD_MIXING_TRAINER_BASE_ID)
+#else
+    if (gSaveBlock2Ptr->battleTower.battleTowerTrainerId >= BATTLE_TOWER_RECORD_MIXING_TRAINER_BASE_ID)
+#endif //FREE_BATTLE_TOWER_E_READER
     {
         return gFacilityClassToTrainerClass[gSaveBlock2Ptr->battleTower.records[gSaveBlock2Ptr->battleTower.battleTowerTrainerId - BATTLE_TOWER_RECORD_MIXING_TRAINER_BASE_ID].trainerClass];
     }
@@ -440,12 +453,16 @@ u8 GetBattleTowerTrainerClassNameId(void)
 void GetBattleTowerTrainerName(u8 *dest)
 {
     s32 i;
+#if FREE_BATTLE_TOWER_E_READER == FALSE
     if (gSaveBlock2Ptr->battleTower.battleTowerTrainerId == BATTLE_TOWER_EREADER_TRAINER_ID)
     {
         for (i = 0; i < PLAYER_NAME_LENGTH; i++)
             dest[i] = gSaveBlock2Ptr->battleTower.ereaderTrainer.name[i];
     }
     else if (gSaveBlock2Ptr->battleTower.battleTowerTrainerId < BATTLE_TOWER_RECORD_MIXING_TRAINER_BASE_ID)
+#else
+    if (gSaveBlock2Ptr->battleTower.battleTowerTrainerId < BATTLE_TOWER_RECORD_MIXING_TRAINER_BASE_ID)
+#endif //FREE_BATTLE_TOWER_E_READER
     {
         for (i = 0; i < 3; i++)
             dest[i] = sBattleTowerTrainers[gSaveBlock2Ptr->battleTower.battleTowerTrainerId].name[i];
@@ -520,6 +537,7 @@ static void FillBattleTowerTrainerParty(void)
         battleMonsOffset = 200;
         monPoolSize = 100;
     }
+#if FREE_BATTLE_TOWER_E_READER == FALSE
     else if (gSaveBlock2Ptr->battleTower.battleTowerTrainerId == BATTLE_TOWER_EREADER_TRAINER_ID)
     {
         // Load E-Reader trainer's party.
@@ -530,6 +548,7 @@ static void FillBattleTowerTrainerParty(void)
             return;
         } while (0);
     }
+#endif //FREE_BATTLE_TOWER_E_READER
     else
     {
         // Load a battle tower record's party. (From record mixing)
@@ -636,7 +655,7 @@ static void FillBattleTowerTrainerParty(void)
 
 static u8 AppendBattleTowerBannedSpeciesName(u16 species, u8 count)
 {
-    if (GetSetPokedexFlag(SpeciesToNationalDexNum(species), FLAG_GET_CAUGHT))
+    if (GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_CAUGHT))
     {
         if (count == 0)
             StringAppend(gStringVar1, gText_BattleTowerBan_Space);
@@ -768,9 +787,13 @@ static void BufferBattleTowerTrainerMessage(const u16 *greeting)
 
 void PrintBattleTowerTrainerGreeting(void)
 {
+#if FREE_BATTLE_TOWER_E_READER == FALSE
     if (gSaveBlock2Ptr->battleTower.battleTowerTrainerId == BATTLE_TOWER_EREADER_TRAINER_ID)
         BufferBattleTowerTrainerMessage(gSaveBlock2Ptr->battleTower.ereaderTrainer.greeting);
     else if (gSaveBlock2Ptr->battleTower.battleTowerTrainerId < BATTLE_TOWER_RECORD_MIXING_TRAINER_BASE_ID)
+#else
+    if (gSaveBlock2Ptr->battleTower.battleTowerTrainerId < BATTLE_TOWER_RECORD_MIXING_TRAINER_BASE_ID)
+#endif //FREE_BATTLE_TOWER_E_READER
         BufferBattleTowerTrainerMessage(sBattleTowerTrainers[gSaveBlock2Ptr->battleTower.battleTowerTrainerId].greeting);
     else
         BufferBattleTowerTrainerMessage(gSaveBlock2Ptr->battleTower.records[gSaveBlock2Ptr->battleTower.battleTowerTrainerId - BATTLE_TOWER_RECORD_MIXING_TRAINER_BASE_ID].greeting);
@@ -823,7 +846,7 @@ void StartSpecialBattle(void)
     {
     case 0: // battle tower battle
         gBattleTypeFlags = (BATTLE_TYPE_BATTLE_TOWER | BATTLE_TYPE_TRAINER);
-        gTrainerBattleOpponent_A = 0;
+        TRAINER_BATTLE_PARAM.opponentA = 0;
 
         FillBattleTowerTrainerParty();
 
@@ -845,18 +868,20 @@ void StartSpecialBattle(void)
         BattleTransition_StartOnField(transition);
         break;
     case 2: // e-reader trainer battle
+#if FREE_BATTLE_TOWER_E_READER == FALSE
         ZeroEnemyPartyMons();
 
         for (i = 0; i < 3; i++)
             CreateBattleTowerMon(&gEnemyParty[i], &gSaveBlock2Ptr->battleTower.ereaderTrainer.party[i]);
 
         gBattleTypeFlags = (BATTLE_TYPE_EREADER_TRAINER | BATTLE_TYPE_TRAINER);
-        gTrainerBattleOpponent_A = 0;
+        TRAINER_BATTLE_PARAM.opponentA = 0;
 
         CreateTask(Task_WaitBT, 1);
         PlayMapChosenOrBattleBGM(0);
         transition = BattleSetup_GetBattleTowerBattleTransition();
         BattleTransition_StartOnField(transition);
+#endif //FREE_BATTLE_TOWER_E_READER
         break;
     }
 }
@@ -889,8 +914,10 @@ void SetBattleTowerProperty(void)
             gSaveBlock2Ptr->battleTower.selectedPartyMons[i] = gSelectedOrderFromParty[i];
         break;
     case 6:
+#if FREE_BATTLE_TOWER_E_READER == FALSE
         if (gSaveBlock2Ptr->battleTower.battleTowerTrainerId == BATTLE_TOWER_EREADER_TRAINER_ID)
             ClearEReaderTrainer(&gSaveBlock2Ptr->battleTower.ereaderTrainer);
+#endif //FREE_BATTLE_TOWER_E_READER
         if (gSaveBlock2Ptr->battleTower.totalBattleTowerWins < 9999)
             gSaveBlock2Ptr->battleTower.totalBattleTowerWins++;
         gSaveBlock2Ptr->battleTower.curChallengeBattleNum[battleTowerLevelType]++;
@@ -1211,27 +1238,40 @@ void AwardBattleTowerRibbons(void)
 
 u8 GetEreaderTrainerFrontSpriteId(void)
 {
+#if FREE_BATTLE_TOWER_E_READER == FALSE
     return gFacilityClassToPicIndex[gSaveBlock2Ptr->battleTower.ereaderTrainer.trainerClass];
+#else
+    return 0;
+#endif //FREE_BATTLE_TOWER_E_READER
 }
 
 u8 GetEreaderTrainerClassId(void)
 {
+#if FREE_BATTLE_TOWER_E_READER == FALSE
     return gFacilityClassToTrainerClass[gSaveBlock2Ptr->battleTower.ereaderTrainer.trainerClass];
+#else
+    return 0;
+#endif //FREE_BATTLE_TOWER_E_READER
 }
 
 void CopyEReaderTrainerName5(u8 *trainerName)
 {
+#if FREE_BATTLE_TOWER_E_READER == FALSE
     s32 i;
 
     for (i = 0; i < 5; i++)
         trainerName[i] = gSaveBlock2Ptr->battleTower.ereaderTrainer.name[i];
 
     trainerName[i] = EOS;
+#else
+    trainerName[0] = EOS;
+#endif //FREE_BATTLE_TOWER_E_READER
 }
 
 // Checks if the saved E-Reader trainer is valid.
 void ValidateEReaderTrainer(void)
 {
+#if FREE_BATTLE_TOWER_E_READER == FALSE
     u32 i;
     u32 checksum;
     struct BattleTowerEReaderTrainer *ereaderTrainer;
@@ -1258,6 +1298,9 @@ void ValidateEReaderTrainer(void)
         ClearEReaderTrainer(&gSaveBlock2Ptr->battleTower.ereaderTrainer);
         gSpecialVar_Result = 1;
     }
+#else
+    gSpecialVar_Result = FALSE;
+#endif //FREE_BATTLE_TOWER_E_READER
 }
 
 void ClearEReaderTrainer(struct BattleTowerEReaderTrainer *ereaderTrainer)
@@ -1270,17 +1313,21 @@ void ClearEReaderTrainer(struct BattleTowerEReaderTrainer *ereaderTrainer)
 
 void BufferEReaderTrainerGreeting(void)
 {
+#if FREE_BATTLE_TOWER_E_READER == FALSE
     BufferBattleTowerTrainerMessage(gSaveBlock2Ptr->battleTower.ereaderTrainer.greeting);
+#endif //FREE_BATTLE_TOWER_E_READER
 }
 
 static void PrintEReaderTrainerFarewellMessage(void)
 {
+#if FREE_BATTLE_TOWER_E_READER == FALSE
     if (gBattleOutcome == B_OUTCOME_DREW)
         gStringVar4[0] = EOS;
     else if (gBattleOutcome == B_OUTCOME_WON)
         BufferBattleTowerTrainerMessage(gSaveBlock2Ptr->battleTower.ereaderTrainer.farewellPlayerWon);
     else
         BufferBattleTowerTrainerMessage(gSaveBlock2Ptr->battleTower.ereaderTrainer.farewellPlayerLost);
+#endif //FREE_BATTLE_TOWER_E_READER
 }
 
 void Dummy_TryEnableBravoTrainerBattleTower(void)
@@ -1304,17 +1351,17 @@ static void FillPartnerParty(u16 trainerId)
     u32 otID;
     u8 trainerName[(PLAYER_NAME_LENGTH * 3) + 1];
     s32 ball = -1;
+    enum DifficultyLevel difficulty = GetBattlePartnerDifficultyLevel(trainerId);
 
     if (trainerId > TRAINER_PARTNER(PARTNER_NONE))
     {
         for (i = 0; i < 3; i++)
             ZeroMonData(&gPlayerParty[i + 3]);
 
-        for (i = 0; i < 3 && i < gBattlePartners[trainerId - TRAINER_PARTNER(PARTNER_NONE)].partySize; i++)
+        for (i = 0; i < 3 && i < gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].partySize; i++)
         {
-            const struct TrainerMon *partyData = gBattlePartners[trainerId - TRAINER_PARTNER(PARTNER_NONE)].party;
-            const u8 *partnerName = gBattlePartners[trainerId - TRAINER_PARTNER(PARTNER_NONE)].trainerName;
-
+            const struct TrainerMon *partyData = gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].party;
+            const u8 *partnerName = gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].trainerName;
             for (k = 0; partnerName[k] != EOS && k < 3; k++)
             {
                 if (k == 0)
@@ -1384,9 +1431,9 @@ static void FillPartnerParty(u16 trainerId)
             }
             CalculateMonStats(&gPlayerParty[i + 3]);
 
-            StringCopy(trainerName, gBattlePartners[trainerId - TRAINER_PARTNER(PARTNER_NONE)].trainerName);
+            StringCopy(trainerName, gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].trainerName);
             SetMonData(&gPlayerParty[i + 3], MON_DATA_OT_NAME, trainerName);
-            j = gBattlePartners[SanitizeTrainerId(trainerId - TRAINER_PARTNER(PARTNER_NONE))].encounterMusic_gender >> 7;
+            j = gBattlePartners[difficulty][SanitizeTrainerId(trainerId - TRAINER_PARTNER(PARTNER_NONE))].encounterMusic_gender >> 7;
             SetMonData(&gPlayerParty[i + 3], MON_DATA_OT_GENDER, &j);
         }
     }
@@ -1432,7 +1479,7 @@ void DoSpecialTrainerBattle(void)
         }
         else if (gSpecialVar_0x8005 & MULTI_BATTLE_2_VS_1) // Player + AI against one trainer
         {
-            gTrainerBattleOpponent_B = 0xFFFF;
+            TRAINER_BATTLE_PARAM.opponentB = 0xFFFF;
             gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
         }
         else // MULTI_BATTLE_2_VS_2

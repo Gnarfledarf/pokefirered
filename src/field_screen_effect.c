@@ -192,7 +192,7 @@ static u8 StartUpdateFlashLevelEffect(s32 centerX, s32 centerY, s32 initialFlash
 // A higher flash level is a smaller flash radius (more darkness). 0 is full brightness
 void AnimateFlash(u8 newFlashLevel)
 {
-    u8 curFlashLevel = Overworld_GetFlashLevel();
+    u8 curFlashLevel = GetFlashLevel();
     bool32 fullBrightness = FALSE;
     if (newFlashLevel == 0)
         fullBrightness = TRUE;
@@ -393,9 +393,9 @@ static void Task_RushInjuredPokemonToCenter(u8 taskId)
         CopyWindowToVram(windowId, COPYWIN_FULL);
 
         // Scene changes if last heal location was the player's house
-        loc = GetHealLocation(SPAWN_PALLET_TOWN);
-        if (gSaveBlock1Ptr->lastHealLocation.mapGroup == loc->group
-         && gSaveBlock1Ptr->lastHealLocation.mapNum == loc->map
+        loc = GetHealLocation(HEAL_LOCATION_PALLET_TOWN);
+        if (gSaveBlock1Ptr->lastHealLocation.mapGroup == loc->mapGroup
+         && gSaveBlock1Ptr->lastHealLocation.mapNum == loc->mapNum
          && gSaveBlock1Ptr->lastHealLocation.warpId == WARP_ID_NONE
          && gSaveBlock1Ptr->lastHealLocation.x == loc->x
          && gSaveBlock1Ptr->lastHealLocation.y == loc->y)

@@ -82,6 +82,8 @@ struct Tileset
     /*0x00*/ bool8 isCompressed:1;
     /*0x00*/ u8 swapPalettes:7; // bitmask determining whether palette has an alternate, night-time palette
     /*0x01*/ bool8 isSecondary;
+    /*0x02*/ u8 lightPalettes; // Bitmask determining whether a palette should be time-blended as a light
+    /*0x03*/ u8 customLightColor; // Bitmask determining which light palettes have custom light colors (color 15)
     /*0x04*/ const u32 *tiles;
     /*0x08*/ const u16 (*palettes)[16];
     /*0x0c*/ const u16 *metatiles;
@@ -121,6 +123,7 @@ struct __attribute__((packed, aligned(4))) ObjectEventTemplate
             u8 movementType;
             u16 movementRangeX:4;
             u16 movementRangeY:4;
+            u16 unused:8;
             u16 trainerType;
             u16 trainerRange_berryTreeId;
         };
@@ -212,63 +215,65 @@ struct MapHeader
     /* 0x1B */ u8 battleType;
 };
 
+
 struct ObjectEvent
 {
-    /*0x00*/ /* 0*/ u32 active:1;
-             /* 1*/ u32 singleMovementActive:1;
-             /* 2*/ u32 triggerGroundEffectsOnMove:1;
-             /* 3*/ u32 triggerGroundEffectsOnStop:1;
-             /* 4*/ u32 disableCoveringGroundEffects:1;
-             /* 5*/ u32 landingJump:1;
-             /* 6*/ u32 heldMovementActive:1;
-             /* 7*/ u32 heldMovementFinished:1;
-    /*0x01*/ /* 8*/ u32 frozen:1;
-             /* 9*/ u32 facingDirectionLocked:1;
-             /*10*/ u32 disableAnim:1;
-             /*11*/ u32 enableAnim:1;
-             /*12*/ u32 inanimate:1;
-             /*13*/ u32 invisible:1;
-             /*14*/ u32 offScreen:1;
-             /*15*/ u32 trackedByCamera:1;
-    /*0x02*/ /*16*/ u32 isPlayer:1;
-             /*17*/ u32 hasReflection:1;
-             /*18*/ u32 inShortGrass:1;
-             /*19*/ u32 inShallowFlowingWater:1;
-             /*20*/ u32 inSandPile:1;
-             /*21*/ u32 inHotSprings:1;
-             /*22*/ u32 hasShadow:1;
-             /*23*/ u32 spriteAnimPausedBackup:1;
-    /*0x03*/ /*24*/ u32 spriteAffineAnimPausedBackup:1;
-             /*25*/ u32 disableJumpLandingGroundEffect:1;
-             /*26*/ u32 fixedPriority:1;
-             /*27*/ u32 hideReflection:1;
-             /*28*/ u32 shiny:1; // OW mon shininess
-          /*29-31*/ u32 padding:3;
-    /*0x04*/        u16 graphicsId;
-    /*0x06*/        u8 spriteId;
-    /*0x07*/        u8 movementType;
-    /*0x08*/        u8 trainerType;
-    /*0x09*/        u8 localId;
-    /*0x0A*/        u8 mapNum;
-    /*0x0B*/        u8 mapGroup;
-    /*0x0C*/        u8 currentElevation:4;
-                    u8 previousElevation:4;
-    /*0x0D*/        u8 fieldEffectSpriteId;
-    /*0x0E*/        struct Coords16 initialCoords;
-    /*0x12*/        struct Coords16 currentCoords;
-    /*0x16*/        struct Coords16 previousCoords;
-    /*0x1A*/        u16 facingDirection:4;
-                    u16 movementDirection:4;
-                    u16 rangeX:4;
-                    u16 rangeY:4;
-    /*0x1C*/        u8 warpArrowSpriteId;
-    /*0x1D*/        u8 movementActionId;
-    /*0x1E*/        u8 trainerRange_berryTreeId;
-    /*0x1F*/        u8 currentMetatileBehavior;
-    /*0x20*/        u8 previousMetatileBehavior;
-    /*0x21*/        u8 previousMovementDirection;
-    /*0x22*/        u8 directionSequenceIndex;
-    /*0x23*/        u8 playerCopyableMovement;
+    /*0x00*/ u32 active:1;
+             u32 singleMovementActive:1;
+             u32 triggerGroundEffectsOnMove:1;
+             u32 triggerGroundEffectsOnStop:1;
+             u32 disableCoveringGroundEffects:1;
+             u32 landingJump:1;
+             u32 heldMovementActive:1;
+             u32 heldMovementFinished:1;
+    /*0x01*/ u32 frozen:1;
+             u32 facingDirectionLocked:1;
+             u32 disableAnim:1;
+             u32 enableAnim:1;
+             u32 inanimate:1;
+             u32 invisible:1;
+             u32 offScreen:1;
+             u32 trackedByCamera:1;
+    /*0x02*/ u32 isPlayer:1;
+             u32 hasReflection:1;
+             u32 inShortGrass:1;
+             u32 inShallowFlowingWater:1;
+             u32 inSandPile:1;
+             u32 inHotSprings:1;
+             u32 hasShadow:1;
+             u32 spriteAnimPausedBackup:1;
+    /*0x03*/ u32 spriteAffineAnimPausedBackup:1;
+             u32 disableJumpLandingGroundEffect:1;
+             u32 fixedPriority:1;
+             u32 hideReflection:1;
+             u32 shiny:1; // OW mon shininess
+             u32 padding:3;
+    /*0x04*/ u16 graphicsId; // 12 bits for species; high 4 bits for form
+    /*0x06*/ u8 movementType;
+    /*0x07*/ u8 trainerType;
+    /*0x08*/ u8 localId;
+    /*0x09*/ u8 mapNum;
+    /*0x0A*/ u8 mapGroup;
+    /*0x0B*/ u8 currentElevation:4;
+             u8 previousElevation:4;
+    /*0x0C*/ struct Coords16 initialCoords;
+    /*0x10*/ struct Coords16 currentCoords;
+    /*0x14*/ struct Coords16 previousCoords;
+    /*0x18*/ u16 facingDirection:4; // current direction?
+             u16 movementDirection:4;
+             u16 rangeX:4;
+             u16 rangeY:4;
+    /*0x1A*/ u8 fieldEffectSpriteId;
+    /*0x1B*/ u8 warpArrowSpriteId;
+    /*0x1C*/ u8 movementActionId;
+    /*0x1D*/ u8 trainerRange_berryTreeId;
+    /*0x1E*/ u8 currentMetatileBehavior;
+    /*0x1F*/ u8 previousMetatileBehavior;
+    /*0x20*/ u8 previousMovementDirection:4;
+             u8 directionOverwrite:4;
+    /*0x21*/ u8 directionSequenceIndex;
+    /*0x22*/ u8 playerCopyableMovement; // COPY_MOVE_*
+    /*0x23*/ u8 spriteId;
     /*size = 0x24*/
 };
 
@@ -350,6 +355,8 @@ enum
     COLLISION_ISOLATED_HORIZONTAL_RAIL,
     COLLISION_VERTICAL_RAIL,
     COLLISION_HORIZONTAL_RAIL,
+    COLLISION_SIDEWAYS_STAIRS_TO_RIGHT,
+    COLLISION_SIDEWAYS_STAIRS_TO_LEFT,
     COLLISION_COUNT
 };
 
@@ -373,7 +380,8 @@ struct PlayerAvatar
 {
     /*0x00*/ u8 flags;
     /*0x01*/ u8 transitionFlags; // used to be bike, but it's not that in Emerald and probably isn't here either. maybe transition flags?
-    /*0x02*/ u8 runningState; // this is a static running state. 00 is not moving, 01 is turn direction, 02 is moving.
+    /*0x02*/ u8 runningState:7; // this is a static running state. 00 is not moving, 01 is turn direction, 02 is moving.
+             u8 creeping:1;
     /*0x03*/ u8 tileTransitionState; // this is a transition running state: 00 is not moving, 01 is transition between tiles, 02 means you are on the frame in which you have centered on a tile but are about to keep moving, even if changing directions. 2 is also used for a ledge hop, since you are transitioning.
     /*0x04*/ u8 spriteId;
     /*0x05*/ u8 objectEventId;
@@ -404,6 +412,11 @@ extern struct MapHeader gMapHeader;
 extern struct PlayerAvatar gPlayerAvatar;
 extern struct Camera gCamera;
 
+extern const struct Tileset* gCurrentPrimaryTileset;
+extern const struct Tileset* gCurrentSecondaryTileset;
+
+const struct Tileset* GetPrimaryTilesetFromLayout(const struct MapLayout* mapLayout);
+const struct Tileset* GetSecondaryTilesetFromLayout(const struct MapLayout* mapLayout);
 const struct Tileset* GetPrimaryTileset(const struct MapLayout* mapLayout);
 const struct Tileset* GetSecondaryTileset(const struct MapLayout* mapLayout);
 

@@ -1,4 +1,5 @@
 #include "global.h"
+#include "battle_main.h"
 #include "gflib.h"
 #include "decompress.h"
 #include "graphics.h"
@@ -7,7 +8,6 @@
 #include "move.h"
 #include "constants/item.h"
 #include "constants/items.h"
-#include "battle_main.h"
 
 EWRAM_DATA u8 *gItemIconDecompressionBuffer = NULL;
 EWRAM_DATA u8 *gItemIcon4x4Buffer = NULL;
@@ -46,13 +46,13 @@ u8 AddItemIconSprite(u16 tilesTag, u16 paletteTag, u16 itemId)
 {
     struct SpriteTemplate template;
     struct SpriteSheet spriteSheet;
-    struct CompressedSpritePalette spritePalette;
+    struct SpritePalette spritePalette;
     u8 spriteId;
 
     if (!AllocItemIconTemporaryBuffers())
         return MAX_SPRITES;
 
-    LZDecompressWram(GetItemIconPic(itemId), gItemIconDecompressionBuffer);
+    DecompressDataWithHeaderWram(GetItemIconPic(itemId), gItemIconDecompressionBuffer);
     CopyItemIconPicTo4x4Buffer(gItemIconDecompressionBuffer, gItemIcon4x4Buffer);
     spriteSheet.data = gItemIcon4x4Buffer;
     spriteSheet.size = 0x200;
@@ -61,7 +61,7 @@ u8 AddItemIconSprite(u16 tilesTag, u16 paletteTag, u16 itemId)
 
     spritePalette.data = GetItemIconPalette(itemId);
     spritePalette.tag = paletteTag;
-    LoadCompressedSpritePalette(&spritePalette);
+    LoadSpritePalette(&spritePalette);
 
     CpuCopy16(&gItemIconSpriteTemplate, &template, sizeof(struct SpriteTemplate));
     template.tileTag = tilesTag;
@@ -77,13 +77,13 @@ u8 AddCustomItemIconSprite(const struct SpriteTemplate * origTemplate, u16 tiles
 {
     struct SpriteTemplate template;
     struct SpriteSheet spriteSheet;
-    struct CompressedSpritePalette spritePalette;
+    struct SpritePalette spritePalette;
     u8 spriteId;
 
     if (!AllocItemIconTemporaryBuffers())
         return MAX_SPRITES;
 
-    LZDecompressWram(GetItemIconPic(itemId), gItemIconDecompressionBuffer);
+    DecompressDataWithHeaderWram(GetItemIconPic(itemId), gItemIconDecompressionBuffer);
     CopyItemIconPicTo4x4Buffer(gItemIconDecompressionBuffer, gItemIcon4x4Buffer);
     spriteSheet.data = gItemIcon4x4Buffer;
     spriteSheet.size = 0x200;
@@ -92,7 +92,7 @@ u8 AddCustomItemIconSprite(const struct SpriteTemplate * origTemplate, u16 tiles
 
     spritePalette.data = GetItemIconPalette(itemId);
     spritePalette.tag = paletteTag;
-    LoadCompressedSpritePalette(&spritePalette);
+    LoadSpritePalette(&spritePalette);
 
     CpuCopy16(origTemplate, &template, sizeof(struct SpriteTemplate));
     template.tileTag = tilesTag;
@@ -126,8 +126,8 @@ const void *GetItemIconPalette(u16 itemId)
         return gItemIconPalette_ReturnToFieldArrow;
     if (itemId >= ITEMS_COUNT)
         return gItemsInfo[0].iconPalette;
-    if (itemId >= ITEM_TM01 && itemId < ITEM_HM01 + NUM_HIDDEN_MACHINES)
-        return gTypesInfo[GetMoveType(gItemsInfo[itemId].secondaryId)].paletteTMHM;
+    if (gItemsInfo[itemId].pocket == POCKET_TM_HM)
+        return gTypesInfo[GetMoveType(GetItemTMHMMoveId(itemId))].paletteTMHM;
 
     return gItemsInfo[itemId].iconPalette;
 }

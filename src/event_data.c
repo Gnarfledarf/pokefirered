@@ -11,7 +11,10 @@ static bool8 IsFlagOrVarStoredInQuestLog(u16 idx, u8 a1);
 
 #define SPECIAL_FLAGS_SIZE (NUM_SPECIAL_FLAGS / 8)  // 8 flags per byte
 #define TEMP_FLAGS_SIZE    (NUM_TEMP_FLAGS / 8)
+#define DAILY_FLAGS_SIZE    (NUM_DAILY_FLAGS / 8)
 #define TEMP_VARS_SIZE     (NUM_TEMP_VARS * 2)      // 1/2 var per byte
+
+#define NUM_DAILY_FLAGS   (DAILY_FLAGS_END - DAILY_FLAGS_START + 1)
 
 EWRAM_DATA u16 gSpecialVar_0x8000 = 0;
 EWRAM_DATA u16 gSpecialVar_0x8001 = 0;
@@ -35,12 +38,28 @@ EWRAM_DATA u16 gSpecialVar_PrevTextColor = 0;
 EWRAM_DATA u16 gSpecialVar_0x8014 = 0;
 EWRAM_DATA u8 sSpecialFlags[SPECIAL_FLAGS_SIZE] = {};
 
-#define NUM_DAILY_FLAGS   (DAILY_FLAGS_END - DAILY_FLAGS_START + 1)
-#define DAILY_FLAGS_SIZE    (NUM_DAILY_FLAGS / 8)
+#if TESTING
+#define TEST_FLAGS_SIZE     1
+#define TEST_VARS_SIZE      8
+EWRAM_DATA static u8 sTestFlags[TEST_FLAGS_SIZE] = {0};
+EWRAM_DATA static u16 sTestVars[TEST_VARS_SIZE] = {0};
+#endif // TESTING
 
-u16 gLastQuestLogStoredFlagOrVarIdx;
+COMMON_DATA u16 gLastQuestLogStoredFlagOrVarIdx = 0;
 
 extern u16 *const gSpecialVars[];
+
+const u16 gBadgeFlags[NUM_BADGES] =
+{
+    FLAG_BADGE01_GET,
+    FLAG_BADGE02_GET,
+    FLAG_BADGE03_GET,
+    FLAG_BADGE04_GET,
+    FLAG_BADGE05_GET,
+    FLAG_BADGE06_GET,
+    FLAG_BADGE07_GET,
+    FLAG_BADGE08_GET,
+};
 
 void InitEventData(void)
 {
@@ -200,6 +219,10 @@ u16 *GetVarPointer(u16 idx)
         }
         return &gSaveBlock1Ptr->vars[idx - VARS_START];
     }
+#if TESTING
+    else if (idx >= TESTING_VARS_START)
+        return &sTestVars[idx - TESTING_VARS_START];
+#endif // TESTING
     return gSpecialVars[idx - SPECIAL_VARS_START];
 }
 
@@ -279,6 +302,10 @@ u8 *GetFlagAddr(u16 idx)
         }
         return &gSaveBlock1Ptr->flags[idx / 8];
     }
+#if TESTING
+    else if (idx >= TESTING_FLAGS_START)
+        return &sTestFlags[(idx - TESTING_FLAGS_START) / 8];
+#endif // TESTING
     return &sSpecialFlags[(idx - SPECIAL_FLAGS_START) / 8];
 }
 

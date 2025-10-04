@@ -1,12 +1,19 @@
-.macro def_special ptr
+@ 'requests_effects' should be set to 1 if the special contains a call
+@ to 'Script_RequestEffects', which allows it to be analyzed with
+@ 'RunScriptImmediatelyUntilEffect'.
+.macro def_special ptr:req, requests_effects=0
 .global SPECIAL_\ptr
 .set SPECIAL_\ptr, __special__
 .set __special__, __special__ + 1
+	.if \requests_effects == 0
 	.4byte \ptr
-	.endm
+	.else
+	.4byte \ptr + ROM_SIZE
+	.endif
+.endm
 
 .set __special__, 0
-	.align 2
+		.align 2
 gSpecials::
 	def_special HealPlayerParty
 	def_special SetCableClubWarp
@@ -67,7 +74,7 @@ gSpecials::
 	def_special PlayTrainerEncounterMusic
 	def_special ShouldTryRematchBattle
 	def_special IsTrainerReadyForRematch
-	def_special StartRematchBattle
+	def_special BattleSetup_StartRematchBattle
 	def_special ShowPokemonStorageSystemPC
 	def_special HasEnoughMonsForDoubleBattle
 	def_special NullFieldSpecial  @ Hoenn TV specials
@@ -227,12 +234,12 @@ gSpecials::
 	def_special GetElevatorFloor
 	def_special NullFieldSpecial  @ Lottery Corner specials
 	def_special NullFieldSpecial
-	def_special SelectMoveTutorMon
+	def_special ChooseMonForMoveRelearner
 	def_special SelectMoveDeleterMove
 	def_special MoveDeleterForgetMove
 	def_special BufferMoveDeleterNicknameAndMove
 	def_special GetNumMovesSelectedMonHas
-	def_special DisplayMoveTutorMenu
+	def_special TeachMoveRelearnerMove
 	def_special NullFieldSpecial  @ Hoenn Cycling Road specials
 	def_special NullFieldSpecial
 	def_special GetPlayerAvatarBike
@@ -295,7 +302,7 @@ gSpecials::
 	def_special NullFieldSpecial
 	def_special BufferEReaderTrainerName
 	def_special GetRandomSlotMachineId
-	def_special GetPlayerFacingDirection
+	def_special GetPlayerFacingDirection, requests_effects=TRUE
 	def_special NullFieldSpecial  @ Abandoned Ship room key specials
 	def_special NullFieldSpecial
 	def_special NullFieldSpecial
@@ -320,7 +327,7 @@ gSpecials::
 	def_special SetIcefallCaveCrackedIceMetatiles
 	def_special ShakeScreen
 	def_special StartGroudonKyogreBattle
-	def_special StartLegendaryBattle
+	def_special BattleSetup_StartLegendaryBattle
 	def_special StartRegiBattle
 	def_special SetUpTrainerMovement
 	def_special NullFieldSpecial
@@ -331,11 +338,11 @@ gSpecials::
 	def_special NullFieldSpecial
 	def_special NullFieldSpecial
 	def_special SetEReaderTrainerGfxId
-	def_special StartSouthernIslandBattle
+	def_special BattleSetup_StartLatiBattle
 	def_special NullFieldSpecial
 	def_special NullFieldSpecial
 	def_special NullFieldSpecial
-	def_special GetPartyMonSpecies
+	def_special ScriptGetPartyMonSpecies
 	def_special IsSelectedMonEgg
 	def_special NullFieldSpecial
 	def_special NullFieldSpecial
@@ -434,7 +441,7 @@ gSpecials::
 	def_special DrawSeagallopDestinationMenu
 	def_special GetSelectedSeagallopDestination
 	def_special GetSeagallopNumber
-	def_special GetPlayerFacingDirection
+	def_special GetPlayerFacingDirection, requests_effects=TRUE
 	def_special DoDeoxysTriangleInteraction
 	def_special SetDeoxysTrianglePalette
 	def_special IsPlayerLeftOfVermilionSailor
@@ -457,4 +464,5 @@ gSpecials::
 	def_special GetLastUsedSprayType
 	def_special TrySkyBattle
 	def_special TryPrepareSecondApproachingTrainer
+	def_special SetHiddenNature
 gSpecialsEnd::

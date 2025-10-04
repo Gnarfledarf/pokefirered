@@ -1784,7 +1784,7 @@ static void VBlankCB_Spiral(void)
         SetGpuReg(REG_OFFSET_WIN1V, sTransitionData->win1V);
         SetGpuReg(REG_OFFSET_WIN0H, gScanlineEffectRegBuffers[0][0]);
         SetGpuReg(REG_OFFSET_WIN1H, gScanlineEffectRegBuffers[0][1]);
-        DmaSet(0, gScanlineEffectRegBuffers[0], &REG_WIN0H, (DMA_32BIT << 16) | B_TRANS_DMA_FLAGS);
+        DmaSet(0, (void*)gScanlineEffectRegBuffers[0], &REG_WIN0H, (DMA_32BIT << 16) | B_TRANS_DMA_FLAGS);
     }
 }
 
@@ -1842,7 +1842,7 @@ static bool8 Mugshot_SetGfx(struct Task *task)
     s16 i, j;
     u16 *tilemap, *tileset;
     const u16 *mugshotsMap = sMugshotsTilemap;
-    u8 mugshotColor = GetTrainerMugshotColorFromId(gTrainerBattleOpponent_A);
+    u8 mugshotColor = GetTrainerMugshotColorFromId(TRAINER_BATTLE_PARAM.opponentA);
     
     GetBg0TilesDst(&tilemap, &tileset);
     CpuCopy16(sMugshotBanner_Gfx, tileset, sizeof(sMugshotBanner_Gfx));
@@ -2089,7 +2089,7 @@ static void HBlankCB_Mugshots(void)
 static void Mugshots_CreateTrainerPics(struct Task *task)
 {
     struct Sprite *opponentSprite, *playerSprite;
-    u32 trainerId = GetTrainerPicFromId(gTrainerBattleOpponent_A);
+    u32 trainerId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentA);
     s16 opponentRotationScales = gTrainerSprites[trainerId].mugshotRotation;
 
     gReservedSpritePaletteCount = 10;

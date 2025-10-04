@@ -1,4 +1,5 @@
 #include "global.h"
+#include "battle_main.h"
 #include "gflib.h"
 #include "decompress.h"
 #include "graphics.h"
@@ -7,7 +8,6 @@
 #include "move.h"
 #include "constants/item.h"
 #include "constants/items.h"
-#include "battle_main.h"
 
 EWRAM_DATA u8 *gItemIconDecompressionBuffer = NULL;
 EWRAM_DATA u8 *gItemIcon4x4Buffer = NULL;
@@ -126,8 +126,8 @@ const void *GetItemIconPalette(u16 itemId)
         return gItemIconPalette_ReturnToFieldArrow;
     if (itemId >= ITEMS_COUNT)
         return gItemsInfo[0].iconPalette;
-    if (itemId >= ITEM_TM01 && itemId < ITEM_HM01 + NUM_HIDDEN_MACHINES)
-        return gTypesInfo[GetMoveType(gItemsInfo[itemId].secondaryId)].paletteTMHM;
+    if (gItemsInfo[itemId].pocket == POCKET_TM_HM)
+        return gTypesInfo[GetMoveType(GetItemTMHMMoveId(itemId))].paletteTMHM;
 
     return gItemsInfo[itemId].iconPalette;
 }

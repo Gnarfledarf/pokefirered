@@ -75,3 +75,4 @@ tools/compresSmol/compresSmolTilemap
 *.fastSmol
 *.smolTM
 *.ss*
+*.code-workspace

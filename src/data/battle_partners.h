@@ -27,7 +27,7 @@
     [DIFFICULTY_NORMAL][PARTNER_STEVEN] =
     {
 #line 10
-        .trainerName = _("Steven"),
+        .trainerName = _("STEVEN"),
 #line 11
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 12

@@ -27,6 +27,8 @@
 #define ALIGNED(n) __attribute__((aligned(n)))
 #define PACKED __attribute__((packed))
 #define TRANSPARENT __attribute__ ((__transparent_union__))
+#define ALWAYS_INLINE inline __attribute__((always_inline))
+#define NONNULL __attribute__((__nonnull__))
 
 #define SOUND_INFO_PTR (*(struct SoundInfo **)0x3007FF0)
 #define INTR_CHECK     (*(u16 *)0x3007FF8)
@@ -84,8 +86,15 @@
 #define DISPLAY_WIDTH  240
 #define DISPLAY_HEIGHT 160
 
-#define TILE_SIZE_4BPP 32
-#define TILE_SIZE_8BPP 64
+// Dimensions of the GBA screen in tiles
+#define DISPLAY_TILE_WIDTH  (DISPLAY_WIDTH / TILE_WIDTH)
+#define DISPLAY_TILE_HEIGHT (DISPLAY_HEIGHT / TILE_HEIGHT)
+
+// Size of different tile formats in bytes
+#define TILE_SIZE(bpp) ((bpp) * TILE_WIDTH * TILE_HEIGHT / 8)
+#define TILE_SIZE_1BPP TILE_SIZE(1) // 8
+#define TILE_SIZE_4BPP TILE_SIZE(4) // 32
+#define TILE_SIZE_8BPP TILE_SIZE(8) // 64
 
 #define BG_TILE_ADDR_4BPP(n)   (void *)(BG_VRAM + (TILE_SIZE_4BPP * (n)))
 

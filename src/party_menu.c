@@ -4545,7 +4545,7 @@ static bool8 IsHPRecoveryItem(u16 item)
         return FALSE;
 }
 
-static void GetMedicineItemEffectMessage(u16 item)
+static void GetMedicineItemEffectMessage(u16 item, u32 statusCured)
 {
     switch (GetItemEffectType(item))
     {
@@ -4558,8 +4558,11 @@ static void GetMedicineItemEffectMessage(u16 item)
     case ITEM_EFFECT_CURE_BURN:
         StringExpandPlaceholders(gStringVar4, gText_PkmnBurnHealed);
         break;
-    case ITEM_EFFECT_CURE_FREEZE:
-        StringExpandPlaceholders(gStringVar4, gText_PkmnThawedOut);
+    case ITEM_EFFECT_CURE_FREEZE_FROSTBITE:
+        if (statusCured & STATUS1_FREEZE)
+            StringExpandPlaceholders(gStringVar4, gText_PkmnThawedOut);
+        if (statusCured & STATUS1_FROSTBITE)
+            StringExpandPlaceholders(gStringVar4, gText_PkmnFrostbiteHealed);
         break;
     case ITEM_EFFECT_CURE_PARALYSIS:
         StringExpandPlaceholders(gStringVar4, gText_PkmnCuredOfParalysis);
@@ -5013,6 +5016,7 @@ void ItemUseCB_Medicine(u8 taskId, TaskFunc func)
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
     u16 item = gSpecialVar_ItemId;
     bool8 canHeal, cannotUse;
+    u32 oldStatus = GetMonData(mon, MON_DATA_STATUS);
 
     if (NotUsingHPEVItemOnShedinja(mon, item) == FALSE) {
         cannotUse = TRUE;
@@ -5062,7 +5066,7 @@ void ItemUseCB_Medicine(u8 taskId, TaskFunc func)
         else
         {
             GetMonNickname(mon, gStringVar1);
-            GetMedicineItemEffectMessage(item);
+            GetMedicineItemEffectMessage(item, oldStatus);
             DisplayPartyMenuMessage(gStringVar4, TRUE);
             ScheduleBgCopyTilemapToVram(2);
             gTasks[taskId].func = func;
@@ -5353,7 +5357,7 @@ static void ItemUseCB_RestorePP(u8 taskId, TaskFunc func)
     RemoveBagItem(gSpecialVar_ItemId, 1);
     move = GetMonData(mon, gPartyMenu.ppMoveSlot + MON_DATA_MOVE1);
     StringCopy(gStringVar1, gMovesInfo[move].name);
-    GetMedicineItemEffectMessage(gSpecialVar_ItemId);
+    GetMedicineItemEffectMessage(gSpecialVar_ItemId, 0);
     DisplayPartyMenuMessage(gStringVar4, TRUE);
     ScheduleBgCopyTilemapToVram(2);
     gTasks[taskId].func = Task_ClosePartyMenuAfterText;
@@ -5371,7 +5375,7 @@ void ItemUseCB_PPUp(u8 taskId, TaskFunc func)
 
 u16 ItemIdToBattleMoveId(u16 item)
 {
-    return (GetItemPocket(item) == POCKET_TM_HM) ? gItemsInfo[item].secondaryId : MOVE_NONE;
+    return (GetItemPocket(item) == POCKET_TM_HM) ? GetItemTMHMMoveId(item) : MOVE_NONE;
 }
 
 bool8 MonKnowsMove(struct Pokemon *mon, u16 move)
@@ -6127,16 +6131,16 @@ u8 GetItemEffectType(u16 item)
     u32 statusCure;
     const u8 *itemEffect = GetItemEffect(item);
 
-    // Read the item's effect properties.
     if (itemEffect == NULL)
         return ITEM_EFFECT_NONE;
 
-    if ((itemEffect[0] & ITEM0_DIRE_HIT) || itemEffect[1] || itemEffect[2] || (itemEffect[3] & ITEM3_GUARD_SPEC))
+    if ((itemEffect[0] & ITEM0_DIRE_HIT) || itemEffect[1] || (itemEffect[3] & ITEM3_GUARD_SPEC))
         return ITEM_EFFECT_X_ITEM;
     else if (itemEffect[0] & ITEM0_SACRED_ASH)
         return ITEM_EFFECT_SACRED_ASH;
     else if (itemEffect[3] & ITEM3_LEVEL_UP)
         return ITEM_EFFECT_RAISE_LEVEL;
+
     statusCure = itemEffect[3] & ITEM3_STATUS_ALL;
     if (statusCure || (itemEffect[0] >> 7))
     {
@@ -6147,7 +6151,7 @@ u8 GetItemEffectType(u16 item)
         else if (statusCure == ITEM3_BURN)
             return ITEM_EFFECT_CURE_BURN;
         else if (statusCure == ITEM3_FREEZE)
-            return ITEM_EFFECT_CURE_FREEZE;
+            return ITEM_EFFECT_CURE_FREEZE_FROSTBITE;
         else if (statusCure == ITEM3_PARALYSIS)
             return ITEM_EFFECT_CURE_PARALYSIS;
         else if (statusCure == ITEM3_CONFUSION)
@@ -6157,6 +6161,7 @@ u8 GetItemEffectType(u16 item)
         else
             return ITEM_EFFECT_CURE_ALL_STATUS;
     }
+
     if (itemEffect[4] & (ITEM4_REVIVE | ITEM4_HEAL_HP))
         return ITEM_EFFECT_HEAL_HP;
     else if (itemEffect[4] & ITEM4_EV_ATK)
@@ -7117,13 +7122,14 @@ static void Task_PartyMenuWaitForFade(u8 taskId)
 #define tAnimWait       data[2]
 #define tNextFunc       3
 
-#define fusionType           data[7]
-#define firstFusion          data[8]
-#define firstFusionSlot      data[9]
-#define fusionResult         data[10]
-#define secondFusionSlot     data[11]
-#define unfuseSecondMon      data[12]
-#define moveToLearn          data[13]
+#define fusionType           data[6]
+#define firstFusion          data[7]
+#define firstFusionSlot      data[8]
+#define fusionResult         data[9]
+#define secondFusionSlot     data[10]
+#define unfuseSecondMon      data[11]
+#define moveToLearn          data[12]
+#define tExtraMoveHandling   data[13]
 #define forgetMove           data[14]
 #define storageIndex         data[15]
 
@@ -7237,6 +7243,96 @@ bool32 TryItemUseFusionChange(u8 taskId, TaskFunc task)
     }
 }
 
+static void RestoreFusionMon(struct Pokemon *mon)
+{
+    s32 i;
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) == SPECIES_NONE)
+            break;
+    }
+
+    if (i >= PARTY_SIZE)
+    {
+        CopyMonToPC(mon);
+    }
+    else
+    {
+        CopyMon(&gPlayerParty[i], mon, sizeof(*mon));
+        gPlayerPartyCount = i + 1;
+    }
+}
+
+static void DeleteInvalidFusionMoves(struct Pokemon *mon, u32 species)
+{
+    for (u32 i = 0; i < MAX_MON_MOVES; i++)
+    {
+        u32 move = GetMonData(mon, MON_DATA_MOVE1 + i);
+        bool32 toDelete = TRUE;
+        const struct LevelUpMove *learnset = GetSpeciesLevelUpLearnset(species);
+        for (u32 j = 0; learnset[j].move != LEVEL_UP_MOVE_END;j++)
+        {
+            if (learnset[j].move == move)
+            {
+                toDelete = FALSE;
+                break;
+            }
+        }
+        if (!toDelete)
+            continue;
+        const u16 *learnset2 = GetSpeciesTeachableLearnset(species);
+        for (u32 j = 0; learnset2[j] != MOVE_UNAVAILABLE;j++)
+        {
+            if (learnset2[j] == move)
+            {
+                toDelete = FALSE;
+                break;
+            }
+        }
+        if (!toDelete)
+            continue;
+        const u16 *learnset3 = GetSpeciesEggMoves(species);
+        for (u32 j = 0; learnset3[j] != MOVE_UNAVAILABLE;j++)
+        {
+            if (learnset3[j] == move)
+            {
+                toDelete = FALSE;
+                break;
+            }
+        }
+        if (toDelete)
+            DeleteMove(mon, move);
+    }
+}
+
+static void SwapFusionMonMoves(struct Pokemon *mon, const u16 moveTable[][2], u32 mode)
+{
+    u32 oldMoveIndex, newMoveIndex;
+    if (mode == FUSE_MON)
+    {
+        oldMoveIndex = 0;
+        newMoveIndex = 1;
+    }
+    else //mode == UNFUSE_MON
+    {
+        oldMoveIndex = 1;
+        newMoveIndex = 0;
+    }
+    for (u32 i = 0; i < MAX_MON_MOVES; i++)
+    {
+        u32 move = GetMonData(mon, MON_DATA_MOVE1 + i);
+        for (u32 j = 0; j < 2; j++)
+        {
+            if (move == moveTable[j][oldMoveIndex])
+            {
+                SetMonData(mon, MON_DATA_MOVE1 + i, &moveTable[j][newMoveIndex]);
+                SetMonData(mon, MON_DATA_PP1 + i, &gMovesInfo[moveTable[j][newMoveIndex]].pp);
+            }
+        }
+    }
+}
+
 static void Task_TryItemUseFusionChange(u8 taskId)
 {
     struct Pokemon *mon = &gPlayerParty[gTasks[taskId].firstFusionSlot];
@@ -7257,7 +7353,7 @@ static void Task_TryItemUseFusionChange(u8 taskId)
         else
         {
             mon2 = &gPokemonStoragePtr->fusions[gTasks[taskId].storageIndex];
-            GiveMonToPlayer(mon2);
+            RestoreFusionMon(mon2);
             ZeroMonData(&gPokemonStoragePtr->fusions[gTasks[taskId].storageIndex]);
         }
         targetSpecies = gTasks[taskId].tTargetSpecies;
@@ -7328,15 +7424,38 @@ static void Task_TryItemUseFusionChange(u8 taskId)
     case 6:
         if (!IsPartyMenuTextPrinterActive())
         {
-            if (gTasks[taskId].moveToLearn != 0)
+            if (gTasks[taskId].fusionType == FUSE_MON)
             {
-                if (gTasks[taskId].fusionType == FUSE_MON)
+#if P_FAMILY_KYUREM
+#if P_FAMILY_RESHIRAM
+                if (gTasks[taskId].tExtraMoveHandling == SWAP_EXTRA_MOVES_KYUREM_WHITE)
+                    SwapFusionMonMoves(mon, gKyuremWhiteSwapMoveTable, FUSE_MON);
+#endif //P_FAMILY_RESHIRAM
+#if P_FAMILY_ZEKROM
+                if (gTasks[taskId].tExtraMoveHandling == SWAP_EXTRA_MOVES_KYUREM_BLACK)
+                    SwapFusionMonMoves(mon, gKyuremBlackSwapMoveTable, FUSE_MON);
+#endif //P_FAMILY_ZEKROM
+#endif //P_FAMILY_KYUREM
+                if (gTasks[taskId].moveToLearn != 0)
                     FormChangeTeachMove(taskId, gTasks[taskId].moveToLearn, gTasks[taskId].firstFusionSlot);
-                else
+            }
+            else //(gTasks[taskId].fusionType == UNFUSE_MON)
+            {
+#if P_FAMILY_KYUREM
+#if P_FAMILY_RESHIRAM
+                if (gTasks[taskId].tExtraMoveHandling == SWAP_EXTRA_MOVES_KYUREM_WHITE)
+                    SwapFusionMonMoves(mon, gKyuremWhiteSwapMoveTable, UNFUSE_MON);
+#endif //P_FAMILY_RESHIRAM
+#if P_FAMILY_ZEKROM
+                if (gTasks[taskId].tExtraMoveHandling == SWAP_EXTRA_MOVES_KYUREM_BLACK)
+                    SwapFusionMonMoves(mon, gKyuremBlackSwapMoveTable, UNFUSE_MON);
+#endif //P_FAMILY_ZEKROM
+#endif //P_FAMILY_KYUREM
+                if ( gTasks[taskId].tExtraMoveHandling == FORGET_EXTRA_MOVES)
                 {
-                    DeleteMove(mon, gTasks[taskId].forgetMove);
+                    DeleteInvalidFusionMoves(mon, gTasks[taskId].fusionResult);
                     if (!DoesMonHaveAnyMoves(mon))
-                        FormChangeTeachMove(taskId, gTasks[taskId].moveToLearn, gTasks[taskId].firstFusionSlot);
+                        FormChangeTeachMove(taskId, MOVE_CONFUSION, gTasks[taskId].firstFusionSlot);
                 }
             }
             gTasks[taskId].tState++;
@@ -7383,7 +7502,7 @@ void ItemUseCB_Fusion(u8 taskId, TaskFunc taskFunc)
                     task->storageIndex = itemFusion[i].fusionStorageIndex;
                     task->fusionResult = itemFusion[i].targetSpecies1;
                     task->unfuseSecondMon = itemFusion[i].targetSpecies2;
-                    task->moveToLearn = itemFusion[i].unfuseForgetMove;
+                    task->tExtraMoveHandling = itemFusion[i].extraMoveHandling;
                     task->forgetMove = itemFusion[i].fusionMove;
                     TryItemUseFusionChange(taskId, taskFunc);
                     return;
@@ -7423,6 +7542,7 @@ void ItemUseCB_Fusion(u8 taskId, TaskFunc taskFunc)
                     task->fusionResult = itemFusion[i].fusingIntoMon;
                     task->secondFusionSlot = gPartyMenu.slotId;
                     task->moveToLearn = itemFusion[i].fusionMove;
+                    task->tExtraMoveHandling = itemFusion[i].extraMoveHandling;
                     // Start Fusion
                     TryItemUseFusionChange(taskId, taskFunc);
                     return;

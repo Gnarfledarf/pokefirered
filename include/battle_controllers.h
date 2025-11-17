@@ -204,7 +204,7 @@ struct ChooseMoveStruct
     u8 currentPp[MAX_MON_MOVES];
     u8 maxPp[MAX_MON_MOVES];
     u16 species;
-    u8 monTypes[3];
+    enum Type monTypes[3];
     struct ZMoveData zmove;
 };
 
@@ -280,6 +280,7 @@ void InitBattleControllers(void);
 bool32 IsValidForBattle(struct Pokemon *mon);
 void TryReceiveLinkBattleData(void);
 void PrepareBufferDataTransferLink(u32 battler, u32 bufferId, u16 size, u8 *data);
+void UpdateFriendshipFromXItem(u32 battler);
 
 // emitters
 void BtlController_EmitGetMonData(u32 battler, u32 bufferId, u8 requestId, u8 monToCheck);
@@ -302,8 +303,8 @@ void BtlController_EmitChooseItem(u32 battler, u32 bufferId, u8 *battlePartyOrde
 void BtlController_EmitChoosePokemon(u32 battler, u32 bufferId, u8 caseId, u8 slotId, u16 abilityId, u8 battlerPreventingSwitchout, u8 *data);
 void BtlController_EmitHealthBarUpdate(u32 battler, u32 bufferId, u16 hpValue);
 void BtlController_EmitExpUpdate(u32 battler, u32 bufferId, u8 partyId, s32 expPoints);
-void BtlController_EmitStatusIconUpdate(u32 battler, u32 bufferId, u32 status1, u32 status2);
-void BtlController_EmitStatusAnimation(u32 battler, u32 bufferId, bool8 status2, u32 status);
+void BtlController_EmitStatusIconUpdate(u32 battler, u32 bufferId, u32 status);
+void BtlController_EmitStatusAnimation(u32 battler, u32 bufferId, bool8 isVolatile, u32 status);
 void BtlController_EmitDataTransfer(u32 battler, u32 bufferId, u16 size, void *data);
 void BtlController_EmitTwoReturnValues(u32 battler, u32 bufferId, u8 ret8, u32 ret32);
 void BtlController_EmitChosenMonReturnValue(u32 battler, u32 bufferId, u8 partyId, u8 *battlePartyOrder);
@@ -364,7 +365,7 @@ void BtlController_HandleSpriteInvisibility(u32 battler);
 bool32 TwoPlayerIntroMons(u32 battlerId); // Double battle with both player pokemon active.
 bool32 TwoOpponentIntroMons(u32 battlerId); // Double battle with both opponent pokemon active.
 void BtlController_HandleIntroTrainerBallThrow(u32 battler, u16 tagTrainerPal, const u16 *trainerPal, s16 framesToWait, void (*controllerCallback)(u32 battler));
-void BtlController_HandleDrawPartyStatusSummary(u32 battler, u32 side, bool32 considerDelay);
+void BtlController_HandleDrawPartyStatusSummary(u32 battler, enum BattleSide side, bool32 considerDelay);
 void BtlController_HandleHidePartyStatusSummary(u32 battler);
 void BtlController_HandleBattleAnimation(u32 battler);
 
@@ -395,6 +396,10 @@ void HandleChooseMoveAfterDma3(u32 battler);
 void SetControllerToRecordedPlayer(u32 battler);
 void RecordedPlayerBufferExecCompleted(u32 battler);
 
+// recorded partner controller
+void SetControllerToRecordedPartner(u32 battler);
+void RecordedPartnerBufferExecCompleted(u32 battler);
+
 // opponent controller
 void SetControllerToOpponent(u32 battler);
 void OpponentBufferExecCompleted(u32 battler);
@@ -421,10 +426,51 @@ void LinkOpponentBufferExecCompleted(u32 battler);
 void SetControllerToLinkPartner(u32 battler);
 void LinkPartnerBufferExecCompleted(u32 battler);
 
+void TrySetBattlerShadowSpriteCallback(u32 battler);
+
+void AnimateMonAfterPokeBallFail(u32 battler);
+void TryShinyAnimAfterMonAnim(u32 battler);
+void WaitForMonAnimAfterLoad(u32 battler);
+void BtlController_HandleSwitchInWaitAndEnd(u32 battler);
+void BtlController_Intro_DelayAndEnd(u32 battler);
+void BtlController_HandleSwitchInShowHealthbox(u32 battler);
+void BtlController_HandleSwitchInTryShinyAnim(u32 battler);
+void BtlController_HandleSwitchInSoundAndEnd(u32 battler);
+void BtlController_HandleSwitchInShowSubstitute(u32 battler);
+
+// oak and old man controller
+void SetControllerToOakOrOldMan(u32 battler);
+void OakOldManBufferExecCompleted(u32 battler);
+
 // pokedude controller
 void SetControllerToPokedude(u32 battler);
 void InitPokedudePartyAndOpponent(void);
 void PokedudeBufferExecCompleted(u32 battler);
+
+// These flags are set to signal that the indicated message
+// was already emitted
+
+// Inflicting damage is key
+#define FIRST_BATTLE_MSG_FLAG_INFLICT_DMG    0x1
+// Lowering stats is advantageous
+#define FIRST_BATTLE_MSG_FLAG_STAT_CHG       0x2
+// Keep an eye on your HP
+#define FIRST_BATTLE_MSG_FLAG_HP_RESTORE     0x4
+//
+#define FIRST_BATTLE_MSG_FLAG_PARTY_MENU     0x8
+
+bool8 BtlCtrl_OakOldMan_TestState2Flag(u8 mask);
+void BtlCtrl_OakOldMan_SetState2Flag(u8 mask);
+void PrintOakText_InflictingDamageIsKey(u32 battler);
+void PrintOakText_HowDisappointing(u32 battler);
+void PrintOakText_OakNoRunningFromATrainer(u32 battler);
+void OakOldManHandleInputChooseMove(u32 battler);
+void BtlCtrl_DrawVoiceoverMessageFrame(void);
+void BtlCtrl_RemoveVoiceoverMessageFrame(void);
+
+bool32 ShouldBattleRestrictionsApply(u32 battler);
+void FreeShinyStars(void);
+
 
 // oak and old man controller
 void SetControllerToOakOrOldMan(u32 battler);
@@ -450,16 +496,5 @@ void PrintOakText_OakNoRunningFromATrainer(u32 battler);
 void OakOldManHandleInputChooseMove(u32 battler);
 void BtlCtrl_DrawVoiceoverMessageFrame(void);
 void BtlCtrl_RemoveVoiceoverMessageFrame(void);
-
-void TrySetBattlerShadowSpriteCallback(u32 battler);
-
-void TryShinyAnimAfterMonAnim(u32 battler);
-void WaitForMonAnimAfterLoad(u32 battler);
-void BtlController_HandleSwitchInWaitAndEnd(u32 battler);
-void BtlController_Intro_DelayAndEnd(u32 battler);
-void BtlController_HandleSwitchInShowHealthbox(u32 battler);
-void BtlController_HandleSwitchInTryShinyAnim(u32 battler);
-void BtlController_HandleSwitchInSoundAndEnd(u32 battler);
-void BtlController_HandleSwitchInShowSubstitute(u32 battler);
 
 #endif // GUARD_BATTLE_CONTROLLERS_H

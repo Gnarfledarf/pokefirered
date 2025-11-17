@@ -1352,7 +1352,7 @@ const u8 gText_Exit3[] = _("Exit");
 const u8 gText_Receive[] = _("Receive");
 const u8 gText_Send[] = _("Send");
 const u8 gText_Toss[] = _("Toss");
-const u8 gText_DelAllCancelOk[] = _("DEL. ALL{CLEAR_TO 0x57}Cancel{CLEAR_TO 0xA4}OK");
+const u8 gText_DelAllCancelOk[] = _("Del. all{CLEAR_TO 0x57}Cancel{CLEAR_TO 0xA4}OK");
 
 const u8 gText_BasePointsResetToZero[] = _("{STR_VAR_1}'s base points\nwere all reset to zero!{PAUSE_UNTIL_PRESS}");
 const u8 gText_PkmnFriendlyBaseVar2Fell[] = _("{STR_VAR_1} turned friendly.\nThe base {STR_VAR_2} fell!{PAUSE_UNTIL_PRESS}");
@@ -1405,7 +1405,7 @@ const u8 gText_Accuracy2[] = _("Accuracy");
 const u8 gText_Appeal[] = _("Appeal");
 const u8 gText_Jam[] = _("Jam");
 
-const u8 gText_DexHoennTitle[] = _("Hoenn Dex");
+const u8 gText_DexKantoTitle[] = _("Kanto Dex");
 const u8 gText_DexNatTitle[] = _("National Dex");
 const u8 gText_DexSortNumericalTitle[] = _("Numerical Mode");
 const u8 gText_DexSortAtoZTitle[] = _("A to Z Mode");
@@ -1432,7 +1432,7 @@ const u8 gText_DexSearchColorPurple[] = _("Purple");
 const u8 gText_DexSearchColorGray[] = _("Gray");
 const u8 gText_DexSearchColorWhite[] = _("White");
 const u8 gText_DexSearchColorPink[] = _("Pink");
-const u8 gText_DexHoennDescription[] = _("Hoenn region's Pokédex");
+const u8 gText_DexKantoDescription[] = _("Kanto region's Pokédex");
 const u8 gText_DexNatDescription[] = _("National edition Pokédex");
 const u8 gText_DexSortNumericalDescription[] = _("Pokémon are listed according to their\nnumber.");
 const u8 gText_DexSortAtoZDescription[] = _("Spotted and owned Pokémon are listed\nalphabetically.");

@@ -811,37 +811,30 @@ bool8 ScrCmd_fadescreenspeed(struct ScriptContext * ctx)
     return TRUE;
 }
 
-static EWRAM_DATA u32 *sPalBuffer = NULL;
-
 bool8 ScrCmd_fadescreenswapbuffers(struct ScriptContext *ctx)
 {
     u8 mode = ScriptReadByte(ctx);
+    u8 nowait = ScriptReadByte(ctx);
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
 
     switch (mode)
     {
-    case FADE_TO_BLACK:
-    case FADE_TO_WHITE:
-    default:
-        if (sPalBuffer == NULL)
-        {
-            sPalBuffer = Alloc(PLTT_SIZE);
-            CpuCopy32(gPlttBufferUnfaded, sPalBuffer, PLTT_SIZE);
-            FadeScreen(mode, 0);
-        }
-        break;
     case FADE_FROM_BLACK:
     case FADE_FROM_WHITE:
-        if (sPalBuffer != NULL)
-        {
-            CpuCopy32(sPalBuffer, gPlttBufferUnfaded, PLTT_SIZE);
-            FadeScreen(mode, 0);
-            FREE_AND_SET_NULL(sPalBuffer);
-        }
+        // Restore last weather blend before fading in,
+        // since BLDALPHA was modified by fade-out
+        SetGpuReg(
+            REG_OFFSET_BLDALPHA,
+            BLDALPHA_BLEND(gWeatherPtr->currBlendEVA, gWeatherPtr->currBlendEVB)
+        );
         break;
     }
 
+    FadeScreenHardware(mode, 0);
+
+    if (nowait)
+        return FALSE;
     SetupNativeScript(ctx, IsPaletteNotActive);
     return TRUE;
 }
@@ -999,7 +992,7 @@ bool8 ScrCmd_warphole(struct ScriptContext * ctx)
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE | SCREFF_HARDWARE);
 
     PlayerGetDestCoords(&x, &y);
-    if (mapGroup == MAP_GROUP(UNDEFINED) && mapNum == MAP_NUM(UNDEFINED))
+    if (mapGroup == MAP_GROUP(MAP_UNDEFINED) && mapNum == MAP_NUM(MAP_UNDEFINED))
         SetWarpDestinationToFixedHoleWarp(x - MAP_OFFSET, y - MAP_OFFSET);
     else
         SetWarpDestination(mapGroup, mapNum, WARP_ID_NONE, x - MAP_OFFSET, y - MAP_OFFSET);
@@ -1258,6 +1251,21 @@ bool8 ScrCmd_fadeinbgm(struct ScriptContext * ctx)
     return FALSE;
 }
 
+struct ObjectEvent *ScriptHideFollower(void)
+{
+    struct ObjectEvent *obj = GetFollowerObject();
+
+    if (obj == NULL || obj->invisible)
+        return NULL;
+
+    ClearObjectEventMovement(obj, &gSprites[obj->spriteId]);
+    gSprites[obj->spriteId].animCmdIndex = 0; // Reset start frame of animation
+    // Note: ScriptMovement_ returns TRUE on error
+    if (ScriptMovement_StartObjectMovementScript(obj->localId, obj->mapGroup, obj->mapNum, EnterPokeballMovement))
+        return NULL;
+    return obj;
+}
+
 bool8 ScrCmd_applymovement(struct ScriptContext * ctx)
 {
     u16 localId = VarGet(ScriptReadHalfword(ctx));
@@ -1267,24 +1275,21 @@ bool8 ScrCmd_applymovement(struct ScriptContext * ctx)
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
 
     // When applying script movements to follower, it may have frozen animation that must be cleared
-    if (localId == OBJ_EVENT_ID_FOLLOWER && (objEvent = GetFollowerObject()) && objEvent->frozen)
+    if ((localId == OBJ_EVENT_ID_FOLLOWER && (objEvent = GetFollowerObject()) && objEvent->frozen) 
+            || ((objEvent = &gObjectEvents[GetObjectEventIdByLocalId(localId)]) && IS_OW_MON_OBJ(objEvent)))
     {
         ClearObjectEventMovement(objEvent, &gSprites[objEvent->spriteId]);
         gSprites[objEvent->spriteId].animCmdIndex = 0; // Reset start frame of animation
     }
+
+    gObjectEvents[GetObjectEventIdByLocalId(localId)].directionOverwrite = DIR_NONE;
     ScriptMovement_StartObjectMovementScript(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, movementScript);
     sMovingNpcId = localId;
-    objEvent = GetFollowerObject();
-    // Force follower into pokeball
     if (localId != OBJ_EVENT_ID_FOLLOWER
-        && !FlagGet(FLAG_SAFE_FOLLOWER_MOVEMENT)
-        && (movementScript < Common_Movement_FollowerSafeStart || movementScript > Common_Movement_FollowerSafeEnd)
-        && (objEvent = GetFollowerObject())
-        && !objEvent->invisible)
+     && !FlagGet(FLAG_SAFE_FOLLOWER_MOVEMENT)
+     && (movementScript < Common_Movement_FollowerSafeStart || movementScript > Common_Movement_FollowerSafeEnd))
     {
-        ClearObjectEventMovement(objEvent, &gSprites[objEvent->spriteId]);
-        gSprites[objEvent->spriteId].animCmdIndex = 0; // Reset start frame of animation
-        ScriptMovement_StartObjectMovementScript(OBJ_EVENT_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, EnterPokeballMovement);
+        ScriptHideFollower();
     }
     return FALSE;
 }
@@ -1298,6 +1303,7 @@ bool8 ScrCmd_applymovementat(struct ScriptContext * ctx)
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
 
+    gObjectEvents[GetObjectEventIdByLocalId(localId)].directionOverwrite = DIR_NONE;
     ScriptMovement_StartObjectMovementScript(localId, mapNum, mapGroup, movementScript);
     sMovingNpcId = localId;
     return FALSE;
@@ -1323,7 +1329,7 @@ bool8 ScrCmd_waitmovement(struct ScriptContext * ctx)
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
 
-    if (localId != 0)
+    if (localId != LOCALID_NONE)
         sMovingNpcId = localId;
     sMovingNpcMapGroup = gSaveBlock1Ptr->location.mapGroup;
     sMovingNpcMapNum = gSaveBlock1Ptr->location.mapNum;
@@ -1339,7 +1345,7 @@ bool8 ScrCmd_waitmovementat(struct ScriptContext * ctx)
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
 
-    if (localId != 0)
+    if (localId != LOCALID_NONE)
         sMovingNpcId = localId;
     mapBank = ScriptReadByte(ctx);
     mapId = ScriptReadByte(ctx);
@@ -1595,7 +1601,7 @@ bool8 ScrCmd_releaseall(struct ScriptContext * ctx)
         ClearObjectEventMovement(followerObject, &gSprites[followerObject->spriteId]);
 
     HideFieldMessageBox();
-    playerObjectId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
+    playerObjectId = GetObjectEventIdByLocalIdAndMap(LOCALID_PLAYER, 0, 0);
     ObjectEventClearHeldMovementIfFinished(&gObjectEvents[playerObjectId]);
     ScriptMovement_UnfreezeObjectEvents();
     UnfreezeObjectEvents();
@@ -1615,7 +1621,7 @@ bool8 ScrCmd_release(struct ScriptContext * ctx)
     HideFieldMessageBox();
     if (gObjectEvents[gSelectedObjectEvent].active)
         ObjectEventClearHeldMovementIfFinished(&gObjectEvents[gSelectedObjectEvent]);
-    playerObjectId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
+    playerObjectId = GetObjectEventIdByLocalIdAndMap(LOCALID_PLAYER, 0, 0);
     ObjectEventClearHeldMovementIfFinished(&gObjectEvents[playerObjectId]);
     ScriptMovement_UnfreezeObjectEvents();
     UnfreezeObjectEvents();
@@ -1818,7 +1824,7 @@ static void DynamicMultichoiceSortList(struct ListMenuItem *items, u32 count)
     {
         for (j = 0; j < count - i - 1; ++j)
         {
-            if (items[j].index > items[j+1].index)
+            if (items[j].id > items[j+1].id)
             {
                 tmp = items[j];
                 items[j] = items[j+1];
@@ -1861,8 +1867,8 @@ bool8 ScrCmd_dynmultichoice(struct ScriptContext *ctx)
             u8 *nameBuffer = Alloc(100);
             const u8 *arg = (const u8 *) ScriptReadWord(ctx);
             StringExpandPlaceholders(nameBuffer, arg);
-            items[i].label = nameBuffer;
-            items[i].index = i;
+            items[i].name = nameBuffer;
+            items[i].id = i;
             if (i == initialSelected)
                 initialRow = i;
         }
@@ -1875,7 +1881,7 @@ bool8 ScrCmd_dynmultichoice(struct ScriptContext *ctx)
         {
             struct ListMenuItem *currentItem = MultichoiceDynamic_PeekElementAt(i);
             items[i] = *currentItem;
-            if (currentItem->index == initialSelected)
+            if (currentItem->id == initialSelected)
                 initialRow = i;
         }
         if (shouldSort)
@@ -1904,8 +1910,8 @@ bool8 ScrCmd_dynmultipush(struct ScriptContext *ctx)
     u8 *nameBuffer = Alloc(100);
     struct ListMenuItem item;
     StringExpandPlaceholders(nameBuffer, name);
-    item.label = nameBuffer;
-    item.index = id;
+    item.name = nameBuffer;
+    item.id = id;
     MultichoiceDynamic_PushElement(item);
     return FALSE;
 }
@@ -2973,4 +2979,26 @@ bool8 ScrCmd_setmonmetlocation(struct ScriptContext * ctx)
 void SetMovingNpcId(u16 npcId)
 {
     sMovingNpcId = npcId;
+}
+
+bool8 ScrFunc_hidefollower(struct ScriptContext *ctx)
+{
+    bool16 wait = VarGet(ScriptReadHalfword(ctx));
+    struct ObjectEvent *obj;
+
+    if ((obj = ScriptHideFollower()) != NULL && wait)
+    {
+        sMovingNpcId = obj->localId;
+        sMovingNpcMapGroup = obj->mapGroup;
+        sMovingNpcMapNum = obj->mapNum;
+        SetupNativeScript(ctx, WaitForMovementFinish);
+    }
+
+    // Just in case, prevent `applymovement`
+    // from hiding the follower again
+    if (obj)
+        FlagSet(FLAG_SAFE_FOLLOWER_MOVEMENT);
+
+    // execute next script command with no delay
+    return TRUE;
 }

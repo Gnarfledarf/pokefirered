@@ -19,13 +19,7 @@ BattleScript_OldMan_Pokedude_CaughtMessage::
 	endlinkbattle
 	finishturn
 
-BattleScript_GhostBallDodge::
-	waitmessage B_WAIT_TIME_LONG
-	printstring STRINGID_ITDODGEDBALL
-	waitmessage B_WAIT_TIME_LONG
-	finishaction
-
-@ pokemerald 	
+@ pokemerald
 	.align 2
 gBattlescriptsForUsingItem::
 	.4byte BattleScript_ItemRestoreHP                @ EFFECT_ITEM_RESTORE_HP
@@ -92,9 +86,8 @@ BattleScript_UseItemMessage:
 
 BattleScript_ItemRestoreHPRet:
 	clearmoveresultflags MOVE_RESULT_NO_EFFECT
-	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
-	healthbarupdate BS_SCRIPTING
-	datahpupdate BS_SCRIPTING
+	healthbarupdate BS_SCRIPTING, PASSIVE_HP_UPDATE
+	datahpupdate BS_SCRIPTING, PASSIVE_HP_UPDATE
 	printstring STRINGID_ITEMRESTOREDSPECIESHEALTH
 	waitmessage B_WAIT_TIME_LONG
 	return
@@ -147,9 +140,7 @@ BattleScript_ItemHealAndCureStatusEnd::
 BattleScript_ItemIncreaseStat::
 	call BattleScript_UseItemMessage
 	itemincreasestat
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_NOT_PROTECT_AFFECTED | STAT_CHANGE_ALLOW_PTR, BattleScript_ItemEnd
-	setgraphicalstatchangevalues
-	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	statbuffchange BS_ATTACKER, STAT_CHANGE_NOT_PROTECT_AFFECTED | STAT_CHANGE_ALLOW_PTR, BattleScript_ItemEnd
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
 	end
@@ -176,7 +167,7 @@ BattleScript_PokeFluteEnd::
 BattleScript_ItemSetMist::
 	call BattleScript_UseItemMessage
 	setmist
-	playmoveanimation BS_ATTACKER, MOVE_MIST
+	playmoveanimation MOVE_MIST
 	waitanimation
 	printfromtable gMistUsedStringIds
 	waitmessage B_WAIT_TIME_LONG
@@ -184,9 +175,10 @@ BattleScript_ItemSetMist::
 
 BattleScript_ItemSetFocusEnergy::
 	call BattleScript_UseItemMessage
-	jumpifstatus2 BS_ATTACKER, STATUS2_FOCUS_ENERGY_ANY, BattleScript_ButItFailed
+	jumpifvolatile BS_ATTACKER, VOLATILE_DRAGON_CHEER, BattleScript_ButItFailed
+	jumpifvolatile BS_ATTACKER, VOLATILE_FOCUS_ENERGY, BattleScript_ButItFailed
 	setfocusenergy BS_ATTACKER
-	playmoveanimation BS_ATTACKER, MOVE_FOCUS_ENERGY
+	playmoveanimation MOVE_FOCUS_ENERGY
 	waitanimation
 	copybyte sBATTLER, gBattlerAttacker
 	printstring STRINGID_PKMNUSEDXTOGETPUMPED
@@ -243,13 +235,13 @@ BattleScript_TryNicknameCaughtMon::
 	printstring STRINGID_GIVENICKNAMECAPTURED
 	waitstate
 	setbyte gBattleCommunication, 0
-	trygivecaughtmonnick BattleScript_GiveCaughtMonEnd
-	givecaughtmon
+	trygivecaughtmonnick
+	givecaughtmon BattleScript_SuccessBallThrowEnd
 	printfromtable gCaughtMonStringIds
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_SuccessBallThrowEnd
 BattleScript_GiveCaughtMonEnd::
-	givecaughtmon
+	givecaughtmon BattleScript_SuccessBallThrowEnd
 BattleScript_SuccessBallThrowEnd::
 	setbyte gBattleOutcome, B_OUTCOME_CAUGHT
 	finishturn
@@ -260,7 +252,10 @@ BattleScript_WallyBallThrow::
 	finishturn
 
 BattleScript_ShakeBallThrow::
+	animatewildpokemonafterfailedpokeball BS_TARGET
+	waitmessage B_WAIT_TIME_LONG
 	printfromtable gBallEscapeStringIds
+	waitanimation
 	waitmessage B_WAIT_TIME_LONG
 	jumpifword CMP_NO_COMMON_BITS, gBattleTypeFlags, BATTLE_TYPE_SAFARI, BattleScript_ShakeBallThrowEnd
 	jumpifbyte CMP_NOT_EQUAL, gNumSafariBalls, 0, BattleScript_ShakeBallThrowEnd
@@ -284,13 +279,12 @@ BattleScript_RunByUsingItem::
 	finishturn
 
 BattleScript_TrainerASlideMsgRet::
-	handletrainerslidemsg BS_SCRIPTING, 0
 	trainerslidein BS_OPPONENT1
-	handletrainerslidemsg BS_SCRIPTING, 1
+	handletrainerslidemsg BS_SCRIPTING, PRINT_SLIDE_MESSAGE
 	waitstate
 	trainerslideout BS_OPPONENT1
 	waitstate
-	handletrainerslidemsg BS_SCRIPTING, 2
+	handletrainerslidemsg BS_SCRIPTING, RESTORE_BATTLER_SLIDE_CONTROL
 	return
 
 BattleScript_TrainerASlideMsgEnd2::
@@ -298,15 +292,20 @@ BattleScript_TrainerASlideMsgEnd2::
 	end2
 
 BattleScript_TrainerBSlideMsgRet::
-	handletrainerslidemsg BS_SCRIPTING, 0
 	trainerslidein BS_OPPONENT2
-	handletrainerslidemsg BS_SCRIPTING, 1
+	handletrainerslidemsg BS_SCRIPTING, PRINT_SLIDE_MESSAGE
 	waitstate
 	trainerslideout BS_OPPONENT2
 	waitstate
-	handletrainerslidemsg BS_SCRIPTING, 2
+	handletrainerslidemsg BS_SCRIPTING, RESTORE_BATTLER_SLIDE_CONTROL
 	return
 
 BattleScript_TrainerBSlideMsgEnd2::
 	call BattleScript_TrainerBSlideMsgRet
 	end2
+
+BattleScript_GhostBallDodge::
+	waitmessage B_WAIT_TIME_LONG
+	printstring STRINGID_ITDODGEDBALL
+	waitmessage B_WAIT_TIME_LONG
+	finishaction

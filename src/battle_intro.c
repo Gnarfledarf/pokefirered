@@ -17,16 +17,16 @@ static const u8 sBattleAnimBgCnts[] = {REG_OFFSET_BG0CNT, REG_OFFSET_BG1CNT, REG
 
 static const TaskFunc sBattleIntroSlideFuncs[] =
 {
-    BattleIntroSlide1, // BATTLE_TERRAIN_GRASS
-    BattleIntroSlide1, // BATTLE_TERRAIN_LONG_GRASS
-    BattleIntroSlide2, // BATTLE_TERRAIN_SAND
-    BattleIntroSlide2, // BATTLE_TERRAIN_UNDERWATER
-    BattleIntroSlide2, // BATTLE_TERRAIN_WATER
-    BattleIntroSlide1, // BATTLE_TERRAIN_POND
-    BattleIntroSlide1, // BATTLE_TERRAIN_MOUNTAIN
-    BattleIntroSlide1, // BATTLE_TERRAIN_CAVE
-    BattleIntroSlide3, // BATTLE_TERRAIN_BUILDING
-    BattleIntroSlide3, // BATTLE_TERRAIN_PLAIN
+    BattleIntroSlide1, // BATTLE_ENVIRONMENT_GRASS
+    BattleIntroSlide1, // BATTLE_ENVIRONMENT_LONG_GRASS
+    BattleIntroSlide2, // BATTLE_ENVIRONMENT_SAND
+    BattleIntroSlide2, // BATTLE_ENVIRONMENT_UNDERWATER
+    BattleIntroSlide2, // BATTLE_ENVIRONMENT_WATER
+    BattleIntroSlide1, // BATTLE_ENVIRONMENT_POND
+    BattleIntroSlide1, // BATTLE_ENVIRONMENT_MOUNTAIN
+    BattleIntroSlide1, // BATTLE_ENVIRONMENT_CAVE
+    BattleIntroSlide3, // BATTLE_ENVIRONMENT_BUILDING
+    BattleIntroSlide3, // BATTLE_ENVIRONMENT_PLAIN
 };
 
 void SetAnimBgAttribute(u8 bgId, u8 attributeId, u8 value)
@@ -91,9 +91,9 @@ s32 GetAnimBgAttribute(u8 bgId, u8 attributeId)
 }
 
 #define tState data[0]
-#define tTerrain data[1]
+#define tEnvironment data[1]
 
-void HandleIntroSlide(u8 terrain)
+void HandleIntroSlide(u8 environment)
 {
     u8 taskId;
 
@@ -103,16 +103,19 @@ void HandleIntroSlide(u8 terrain)
     }
     else if ((gBattleTypeFlags & BATTLE_TYPE_LEGENDARY) && GetMonData(&gEnemyParty[0], MON_DATA_SPECIES, NULL) == SPECIES_KYOGRE)
     {
-        terrain = BATTLE_TERRAIN_UNDERWATER;
+        environment = BATTLE_ENVIRONMENT_UNDERWATER;
         taskId = CreateTask(BattleIntroSlide2, 0);
     }
     else
     {
-        taskId = CreateTask(sBattleIntroSlideFuncs[terrain], 0);
+        if (environment >= NELEMS(sBattleIntroSlideFuncs)
+         || sBattleIntroSlideFuncs[environment] == NULL)
+            environment = BATTLE_ENVIRONMENT_PLAIN;
+        taskId = CreateTask(sBattleIntroSlideFuncs[environment], 0);
     }
 
     gTasks[taskId].tState = 0;
-    gTasks[taskId].tTerrain = terrain;
+    gTasks[taskId].tEnvironment = environment;
     gTasks[taskId].data[2] = 0;
     gTasks[taskId].data[3] = 0;
     gTasks[taskId].data[4] = 0;

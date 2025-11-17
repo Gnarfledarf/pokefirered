@@ -43,8 +43,9 @@ enum {
 };
 
 extern const struct CompressedSpriteSheet gBallSpriteSheets[POKEBALL_COUNT];
-extern const struct CompressedSpritePalette gBallSpritePalettes[POKEBALL_COUNT];
+extern const struct SpritePalette gBallSpritePalettes[POKEBALL_COUNT];
 extern const struct SpriteTemplate gBallSpriteTemplates[];
+extern const u16 gBallItemIds[];
 
 #define POKEBALL_PLAYER_SENDOUT     0xFF
 #define POKEBALL_OPPONENT_SENDOUT   0xFE

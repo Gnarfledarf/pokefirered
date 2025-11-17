@@ -95,19 +95,19 @@ extern const u8 gOtherText_Exit[];
 extern const u8 gText_ThreeHyphens[];
 extern const u8 gText_SevenHyphens[];
 extern const u8 gText_NumberClear01[];
-extern const u8 gText_TimesStrVar1[];
+extern const u8 gText_xVar1[];
 extern const u8 gText_IsSelected[];
-extern const u8 gText_ThereIsNoPokemon[];
-extern const u8 gText_ItemCantBeHeld[];
+extern const u8 gText_NoPokemon[];
+extern const u8 gText_Var1CantBeHeld[];
 extern const u8 gText_TMCase[];
 extern const u8 gText_Close[];
 extern const u8 gText_TMCaseWillBePutAway[];
 extern const u8 gText_FontSmall[];
 extern const u8 gText_FontNormal[];
 extern const u8 gText_OhNoICantBuyThat[];
-extern const u8 gText_HowManyWouldYouLikeToSell[];
+extern const u8 gText_HowManyToSell[];
 extern const u8 gText_ICanPayThisMuch_WouldThatBeOkay[];
-extern const u8 gText_TurnedOverItemsWorthYen[];
+extern const u8 gText_TurnedOverVar1ForVar2[];
 extern const u8 gPokedudeText_TMTypes[];
 extern const u8 gPokedudeText_ReadTMDescription[];
 extern const u8 gFameCheckerText_Cancel[];
@@ -157,7 +157,7 @@ extern const u8 gString_Help[];
 extern const u8 gString_HelpSystem_ClearTo8[];
 
 extern const u8 gText_Var1IsSelected[];
-extern const u8 gOtherText_WhereShouldTheStrVar1BePlaced[];
+extern const u8 gText_MoveVar1Where[];
 extern const u8 gOtherText_Powder[];
 extern const u8 gText_NoMoreRoomInBag[];
 extern const u8 gText_WithdrawHowMany[];
@@ -226,6 +226,7 @@ extern const u8 gText_LinkStandby[];
 extern const u8 gText_BattleMenu[];
 extern const u8 gText_WhatWillPkmnDo[];
 extern const u8 gText_NewLine[];
+extern const u8 gText_Space2[];
 
 // battle_controller_pokedude
 extern const u8 Pokedude_Text_SpeedierBattlerGoesFirst[];
@@ -332,6 +333,7 @@ extern const u8 gText_EscapeFromHereAndReturnTo[];
 extern const u8 gText_PkmnCuredOfPoison[];
 extern const u8 gText_PkmnWokeUp2[];
 extern const u8 gText_PkmnBurnHealed[];
+extern const u8 gText_PkmnFrostbiteHealed[];
 extern const u8 gText_PkmnThawedOut[];
 extern const u8 gText_PkmnCuredOfParalysis[];
 extern const u8 gText_PkmnSnappedOutOfConfusion[];
@@ -457,9 +459,11 @@ extern const u8 gCreditsString_The_Royal_New_Zealand_Foundation_of_the_Blind_Gre
 extern const u8 gCreditsString_Graphic_Designer[];
 extern const u8 gCreditsString_Akira_Kinashi[];
 
+extern const u8 *const gPocketNamesStringsTable[];
+
 // berry_pouch
-extern const u8 gText_TheStrVar1CantBeHeldHere[];
-extern const u8 gText_TossOutHowManyStrVar1s[];
+extern const u8 gText_Var1CantBeHeldHere[];
+extern const u8 gText_TossHowManyVar1s[];
 extern const u8 gText_ThrewAwayStrVar2StrVar1s[];
 extern const u8 gText_ThrowAwayStrVar2OfThisItemQM[];
 extern const u8 gText_BerryPouch[];
@@ -628,6 +632,7 @@ extern const u8 gText_MenuOption[];
 extern const u8 gText_MenuExit[];
 extern const u8 gText_MenuRetire[];
 extern const u8 gText_MenuSafariStats[];
+extern const u8 gText_MenuDexNav[];
 extern const u8 gStartMenuDesc_Pokedex[];
 extern const u8 gStartMenuDesc_Pokemon[];
 extern const u8 gStartMenuDesc_Bag[];
@@ -941,6 +946,8 @@ extern const u8 gText_ButtonTypeLR[];
 extern const u8 gText_ButtonTypeLEqualsA[];
 extern const u8 gText_Option[];
 extern const u8 gText_FrameType[];
+extern const u8 gText_FrameTypeNumber[];
+extern const u8 gText_ButtonTypeNormal[];
 extern const u8 gTextJP_Type[];
 extern const u8 gText_PickSwitchCancel[];
 
@@ -1094,14 +1101,8 @@ extern const u8 gOtherText_Walk[];
 extern const u8 gOtherText_Check[];
 extern const u8 gOtherText_Open[];
 extern const u8 gOtherText_Deselect[];
-extern const u8 gText_Items2[];
-extern const u8 gText_PokeBalls2[];
-extern const u8 gText_KeyItems2[];
 extern const u8 gText_CloseBag[];
-extern const u8 gText_CantWriteMailHere[];
-extern const u8 gText_DepositHowManyStrVars1[];
-extern const u8 gText_DepositedStrVar2StrVar1s[];
-extern const u8 gText_NoRoomToStoreItems[];
+extern const u8 gText_CantWriteMail[];
 
 // union_room_battle
 extern const u8 gText_CommStandbyAwaitingOtherPlayer[];
@@ -1571,5 +1572,80 @@ extern const u8 gText_Speed[];
 // Map name pop-up
 extern const u8 gText_AM[];
 extern const u8 gText_PM[];
+
+// Switch Caught Mon into Party
+extern const u8 gText_CannotSendMonToBoxHM[];
+
+//Pokédex text
+extern const u8 gText_CryOf[];
+extern const u8 gText_SizeComparedTo[];
+extern const u8 gText_PokedexRegistration[];
+extern const u8 gText_NumberClear01[];
+extern const u8 gText_5MarksPokemon[];
+extern const u8 gText_UnkHeight[];
+extern const u8 gText_UnkHeightMetric[];
+extern const u8 gText_UnkWeight[];
+extern const u8 gText_UnkWeightMetric[];
+extern const u8 gText_HTHeight[];
+extern const u8 gText_WTWeight[];
+extern const u8 gText_SearchingPleaseWait[];
+extern const u8 gText_SearchCompleted[];
+extern const u8 gText_NoMatchingPkmnWereFound[];
+extern const u8 gText_SelectorArrow[];
+
+extern const u8 gText_Power[];
+extern const u8 gText_Accuracy2[];
+extern const u8 gText_Appeal[];
+extern const u8 gText_Jam[];
+
+
+// Pokédex strings
+extern const u8 gText_SearchForPkmnBasedOnParameters[];
+extern const u8 gText_SwitchPokedexListings[];
+extern const u8 gText_ReturnToPokedex[];
+extern const u8 gText_SelectPokedexMode[];
+extern const u8 gText_SelectPokedexListingMode[];
+extern const u8 gText_ListByFirstLetter[];
+extern const u8 gText_ListByBodyColor[];
+extern const u8 gText_ListByType[];
+extern const u8 gText_ExecuteSearchSwitch[];
+extern const u8 gText_DexKantoTitle[];
+extern const u8 gText_DexNatTitle[];
+extern const u8 gText_DexSortNumericalTitle[];
+extern const u8 gText_DexSortAtoZTitle[];
+extern const u8 gText_DexSortHeaviestTitle[];
+extern const u8 gText_DexSortLightestTitle[];
+extern const u8 gText_DexSortTallestTitle[];
+extern const u8 gText_DexSortSmallestTitle[];
+extern const u8 gText_DexSearchAlphaABC[];
+extern const u8 gText_DexSearchAlphaDEF[];
+extern const u8 gText_DexSearchAlphaGHI[];
+extern const u8 gText_DexSearchAlphaJKL[];
+extern const u8 gText_DexSearchAlphaMNO[];
+extern const u8 gText_DexSearchAlphaPQR[];
+extern const u8 gText_DexSearchAlphaSTU[];
+extern const u8 gText_DexSearchAlphaVWX[];
+extern const u8 gText_DexSearchAlphaYZ[];
+extern const u8 gText_DexSearchColorRed[];
+extern const u8 gText_DexSearchColorBlue[];
+extern const u8 gText_DexSearchColorYellow[];
+extern const u8 gText_DexSearchColorGreen[];
+extern const u8 gText_DexSearchColorBlack[];
+extern const u8 gText_DexSearchColorBrown[];
+extern const u8 gText_DexSearchColorPurple[];
+extern const u8 gText_DexSearchColorGray[];
+extern const u8 gText_DexSearchColorWhite[];
+extern const u8 gText_DexSearchColorPink[];
+extern const u8 gText_DexKantoDescription[];
+extern const u8 gText_DexNatDescription[];
+extern const u8 gText_DexSortNumericalDescription[];
+extern const u8 gText_DexSortAtoZDescription[];
+extern const u8 gText_DexSortHeaviestDescription[];
+extern const u8 gText_DexSortLightestDescription[];
+extern const u8 gText_DexSortTallestDescription[];
+extern const u8 gText_DexSortSmallestDescription[];
+extern const u8 gText_DexEmptyString[];
+extern const u8 gText_DexSearchDontSpecify[];
+extern const u8 gText_DexSearchTypeNone[];
 
 #endif //GUARD_STRINGS_H

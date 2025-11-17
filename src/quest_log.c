@@ -389,8 +389,10 @@ static void BackUpTrainerRematches(void)
         // 16 bits per var
         for (j = 0; j < 16; j++)
         {
+#if FREE_MATCH_CALL == FALSE
             if (gSaveBlock1Ptr->trainerRematches[16 * i + j])
                 vars[i] += (1 << j);
+#endif //FREE_MATCH_CALL
         }
         VarSet(VAR_QLBAK_TRAINER_REMATCHES + i, vars[i]);
     }
@@ -470,8 +472,8 @@ void TryStartQuestLogPlayback(u8 taskId)
 
 static void Task_BeginQuestLogPlayback(u8 taskId)
 {
-    gSaveBlock1Ptr->location.mapGroup = MAP_GROUP(ROUTE1);
-    gSaveBlock1Ptr->location.mapNum =  MAP_NUM(ROUTE1);
+    gSaveBlock1Ptr->location.mapGroup = MAP_GROUP(MAP_ROUTE1);
+    gSaveBlock1Ptr->location.mapNum =  MAP_NUM(MAP_ROUTE1);
     gSaveBlock1Ptr->location.warpId = WARP_ID_NONE;
     sCurrentSceneNum = 0;
     gDisableMapMusicChangeOnMapLoad = 1;
@@ -739,10 +741,12 @@ static void RestoreTrainerRematches(void)
         // 16 bits per var
         for (j = 0; j < 16; j++)
         {
+#if FREE_MATCH_CALL == FALSE
             if (vars[i] & 1)
                 gSaveBlock1Ptr->trainerRematches[16 * i + j] = 30;
             else
                 gSaveBlock1Ptr->trainerRematches[16 * i + j] = 0;
+#endif //FREE_MATCH_CALL
             vars[i] >>= 1;
         }
     }
@@ -1131,7 +1135,7 @@ static void Task_FinalScene_WaitFade(u8 taskId)
     if (ArePlayerFieldControlsLocked() != TRUE)
     {
         FreezeObjectEvents();
-        HandleEnforcedLookDirectionOnPlayerStopMoving();
+        PlayerFreeze();
         StopPlayerAvatar();
         LockPlayerFieldControls();
         task->func = Task_QuestLogScene_SavedGame;
@@ -1349,7 +1353,7 @@ void QL_UpdateObject(struct Sprite *sprite)
     // index 0 is reserved for player, index 1 is reserved for follower
     // other ObjectsEvents are at index localId + 1
     struct ObjectEvent *objectEvent = &gObjectEvents[sprite->data[0]];
-    if (objectEvent->localId == OBJ_EVENT_ID_PLAYER)
+    if (objectEvent->localId == LOCALID_PLAYER)
     {
         if (sMovementScripts[0][0] != MOVEMENT_ACTION_NONE)
         {

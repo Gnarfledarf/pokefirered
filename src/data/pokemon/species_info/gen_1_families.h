@@ -5397,9 +5397,16 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .height = 17,
         .weight = 423,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "It flies by using the power of\n"
             "moonlight to control gravity within\n"
-            "a radius of over 32 feet around it."),
+            "a radius of over 10 meters around it."
+        #else
+            "It flies by using the power of\n"
+            "moonlight to control gravity within\n"
+            "a radius of over 10 meters around it."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,
@@ -9921,10 +9928,18 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .height = 45,
         .weight = 1255,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "The volume of this Pokémon's acid\n"
             "has increased due to Mega Evolution,\n"
             "filling its mouth. If not careful,\n"
-            "the acid will overflow and spill out."),
+            "the acid will overflow and spill out."
+        #else
+            "The volume of this Pokémon's acid\n"
+            "has increased due to Mega Evolution,\n"
+            "filling its mouth. If not careful,\n"
+            "the acid will overflow and spill out."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,
@@ -13353,15 +13368,13 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .weight = 7400,
         .description = COMPOUND_STRING(
         #ifdef FIRERED
-            "The cells within its body, crystallized by\n"
-            "the energy produced from Mega Evolution,\n"
-            "are stronger than any mineral and able\n"
-            "to withstand any temperature."
+            "To protect itself from opponents' attacks,\n"
+            "it uses magnetism to control pieces of its\n"
+            "hard outer shell that have flaked off."
         #else
-            "The cells within its body, crystallized by\n"
-            "the energy produced from Mega Evolution,\n"
-            "are stronger than any mineral and able\n"
-            "to withstand any temperature."
+            "To protect itself from opponents' attacks,\n"
+            "it uses magnetism to control pieces of its\n"
+            "hard outer shell that have flaked off."
         #endif
         ),
         .pokemonScale = 256,
@@ -16861,10 +16874,18 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .height = 23,
         .weight = 800,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Its movements have become more\n"
             "humanlike. Whether it's simply\n"
             "trying to communicate or wants to\n"
-            "supplant humanity is unclear."),
+            "supplant humanity is unclear."
+        #else
+            "Its movements have become more\n"
+            "humanlike. Whether it's simply\n"
+            "trying to communicate or wants to\n"
+            "supplant humanity is unclear."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,
@@ -21751,10 +21772,18 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .height = 22,
         .weight = 2900,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Mega Evolution has excessively\n"
             "powered up this Pokémon's feelings\n"
             "of kindness. It finishes off its\n"
-            "opponents with mercy in its heart."),
+            "opponents with mercy in its heart."
+        #else
+            "Mega Evolution has excessively\n"
+            "powered up this Pokémon's feelings\n"
+            "of kindness. It finishes off its\n"
+            "opponents with mercy in its heart."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,

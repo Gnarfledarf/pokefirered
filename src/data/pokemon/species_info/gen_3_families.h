@@ -3140,15 +3140,13 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .weight = 484,
         .description = COMPOUND_STRING(
         #ifdef FIRERED
-            "By opening its heart, Mega Gardevoir\n"
-            "becomes able to use tremendous psychic\n"
-            "power. The red plate in its chest is said to\n"
-            "be a physical manifestation of its heart."
+            "When it opens the red plate on its chest\n"
+            "and unleashes its heart, its strongest\n"
+            "psychic power is released."
         #else
-            "By opening its heart, Mega Gardevoir\n"
-            "becomes able to use tremendous psychic\n"
-            "power. The red plate in its chest is said to\n"
-            "be a physical manifestation of its heart."
+            "When it opens the red plate on its chest\n"
+            "and unleashes its heart, its strongest\n"
+            "psychic power is released."
         #endif
         ),
         .pokemonScale = 256,
@@ -3302,15 +3300,15 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .weight = 564,
         .description = COMPOUND_STRING(
         #ifdef FIRERED
-            "Mega Gallade has a knightly appearance.\n"
-            "It can use its psychic power to reshape\n"
-            "both arms into blades simultaneously and\n"
-            "fight using a dual-wielding style."
+            "It gets power from the bond it has with\n"
+            "its Trainer. Mega Evolution has given it\n"
+            "plates to slice its enemies and a cape to\n"
+            "protect its body."
         #else
-            "Mega Gallade has a knightly appearance.\n"
-            "It can use its psychic power to reshape\n"
-            "both arms into blades simultaneously and\n"
-            "fight using a dual-wielding style."
+            "It gets power from the bond it has with\n"
+            "its Trainer. Mega Evolution has given it\n"
+            "plates to slice its enemies and a cape to\n"
+            "protect its body."
         #endif
         ),
         .pokemonScale = 259,
@@ -5031,9 +5029,6 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             "The jewel from its chest, which has grown\n"
             "gigantic due to the effects of Mega Evolution,\n"
             "can turn back any attack."
-            "When Celebi disappears deep in a forest,\n"
-            "it is said to leave behind an egg it\n"
-            "brought from the future."
         #else
             "Supporting a giant heavy jewel, it\n"
             "can't change direction very nimbly and\n"
@@ -5517,15 +5512,13 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .weight = 3950,
         .description = COMPOUND_STRING(
         #ifdef FIRERED
-            "When Aggron Mega Evolves into\n"
-            "Mega Aggron, the destructive ability of\n"
-            "its fearsome horns can turn a steel-clad\n"
-            "tank into so much scrap metal."
+            "Energy from Mega Evolution has turned\n"
+            "the iron inside this Pokémon into steel\n"
+            "armor that covers Mega Aggron's whole body."
         #else
-            "When Aggron Mega Evolves into\n"
-            "Mega Aggron, the destructive ability of\n"
-            "its fearsome horns can turn a steel-clad\n"
-            "tank into so much scrap metal."
+            "Energy from Mega Evolution has turned\n"
+            "the iron inside this Pokémon into steel\n"
+            "armor that covers Mega Aggron's whole body."
         #endif
         ),
         .pokemonScale = 256,
@@ -5777,15 +5770,13 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .weight = 315,
         .description = COMPOUND_STRING(
         #ifdef FIRERED
-            "It uses its amped-up willpower to create\n"
-            "additional arms for itself. The more it\n"
-            "has trained its spirit, the more realistic\n"
-            "and dexterous these arms become."
+            "Thanks to Mega Evolution, its mental power\n"
+            "is limitless. It conjures up arms imbued\n"
+            "with malice to defeat its enemies."
         #else
-            "It uses its amped-up willpower to create\n"
-            "additional arms for itself. The more it\n"
-            "has trained its spirit, the more realistic\n"
-            "and dexterous these arms become."
+            "Thanks to Mega Evolution, its mental power\n"
+            "is limitless. It conjures up arms imbued\n"
+            "with malice to defeat its enemies."
         #endif
         ),
         .pokemonScale = 298,
@@ -7474,15 +7465,13 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .weight = 3205,
         .description = COMPOUND_STRING(
         #ifdef FIRERED
-            "The humps on its back have transformed\n"
-            "into one large and very active volcano. It\n"
-            "has a deep hatred of water or any moisture\n"
-            "and has an explosive personality."
+            "When this Pokémon's rage reaches a boiling\n"
+            "point, the huge volcano in the hump on its\n"
+            "back erupts violently, spewing molten lava."
         #else
-            "The humps on its back have transformed\n"
-            "into one large and very active volcano. It\n"
-            "has a deep hatred of water or any moisture\n"
-            "and has an explosive personality."
+            "When this Pokémon's rage reaches a boiling\n"
+            "point, the huge volcano in the hump on its\n"
+            "back erupts violently, spewing molten lava."
         #endif
         ),
         .pokemonScale = 256,
@@ -8469,15 +8458,15 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .weight = 206,
         .description = COMPOUND_STRING(
         #ifdef FIRERED
-            "It sings with a voice that is even more\n"
-            "beautiful than before it Mega Evolved.\n"
-            "Its feathers became larger for protection\n"
-            "and glimmer with an iridescent sheen."
+            "Its down is so soft, it seems as if a\n"
+            "touch could melt it. But it's strong\n"
+            "enough that just a few strands could\n"
+            "be used to hoist a dump truck."
         #else
-            "It sings with a voice that is even more\n"
-            "beautiful than before it Mega Evolved.\n"
-            "Its feathers became larger for protection\n"
-            "and glimmer with an iridescent sheen."
+            "Its down is so soft, it seems as if a\n"
+            "touch could melt it. But it's strong\n"
+            "enough that just a few strands could\n"
+            "be used to hoist a dump truck."
         #endif
         ),
         .pokemonScale = 327,
@@ -11569,10 +11558,18 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .height = 26,
         .weight = 296,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "This Pokémon can use eerie cold\n"
             "air imbued with ghost energy to\n"
             "freeze even insubstantial things,\n"
-            "such as flames or the wind."),
+            "such as flames or the wind."
+        #else
+            "This Pokémon can use eerie cold\n"
+            "air imbued with ghost energy to\n"
+            "freeze even insubstantial things,\n"
+            "such as flames or the wind."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,

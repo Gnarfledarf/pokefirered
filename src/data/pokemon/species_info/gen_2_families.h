@@ -281,10 +281,18 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .height = 24,
         .weight = 2010,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "This Pokémon can fire a tremendously\n"
             "powerful Solar Beam from its four\n"
             "flowers. Another name for this is\n"
-            "Mega Sol Cannon."),
+            "Mega Sol Cannon."
+        #else
+            "This Pokémon can fire a tremendously\n"
+            "powerful Solar Beam from its four\n"
+            "flowers. Another name for this is\n"
+            "Mega Sol Cannon."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,
@@ -912,10 +920,18 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .height = 23,
         .weight = 1088,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "With its arms and hoodlike fin, this\n"
             "Pokémon forms a gigantic set of jaws\n"
             "with a bite 10 times as powerful\n"
-            "as Mega Feraligatr's actual jaws."),
+            "as Mega Feraligatr's actual jaws."
+        #else
+            "With its arms and hoodlike fin, this\n"
+            "Pokémon forms a gigantic set of jaws\n"
+            "with a bite 10 times as powerful\n"
+            "as Mega Feraligatr's actual jaws."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,
@@ -7877,10 +7893,18 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .height = 17,
         .weight = 404,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Due to the effects of Mega Evolution,\n"
             "its pincers have taken a more\n"
             "diabolical form, ripping anything\n"
-            "they pierce to shreds."),
+            "they pierce to shreds."
+        #else
+            "Due to the effects of Mega Evolution,\n"
+            "its pincers have taken a more\n"
+            "diabolical form, ripping anything\n"
+            "they pierce to shreds."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,

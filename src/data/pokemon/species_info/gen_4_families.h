@@ -5986,15 +5986,13 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .weight = 1850,
         .description = COMPOUND_STRING(
         #ifdef FIRERED
-            "The sprouts on Abomasnow's back grow into\n"
-            "great shafts of ice when it Mega Evolves.\n"
-            "Dislikes associating with others and\n"
-            "chooses to live quietly deep in mountains."
+            "The buds on its back have sprouted into\n"
+            "impressive icicles that can whip up\n"
+            "massive blizzards of −30 degrees Celsius."
         #else
-            "The sprouts on Abomasnow's back grow into\n"
-            "great shafts of ice when it Mega Evolves.\n"
-            "Dislikes associating with others and\n"
-            "chooses to live quietly deep in mountains."
+            "The buds on its back have sprouted into\n"
+            "impressive icicles that can whip up\n"
+            "massive blizzards of −30 degrees Celsius."
         #endif
         ),
         .pokemonScale = 256,

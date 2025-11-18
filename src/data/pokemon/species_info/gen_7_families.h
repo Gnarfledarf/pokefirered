@@ -5616,10 +5616,18 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .height = 3,
         .weight = 2405,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Drampa's cells have been\n"
             "invigorated, allowing it to regain\n"
             "its youth. It manipulates the\n"
-            "atmosphere to summon storms."),
+            "atmosphere to summon storms."
+        #else
+            "Drampa's cells have been\n"
+            "invigorated, allowing it to regain\n"
+            "its youth. It manipulates the\n"
+            "atmosphere to summon storms."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,

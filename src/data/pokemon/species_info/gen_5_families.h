@@ -587,10 +587,18 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 18,
         .weight = 1803,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Brandishing a blazing flame\n"
             "shaped like a serpentine spear,\n"
             "it rushes in to save its\n"
-            "imperiled allies."),
+            "imperiled allies."
+        #else
+            "Brandishing a blazing flame\n"
+            "shaped like a serpentine spear,\n"
+            "it rushes in to save its\n"
+            "imperiled allies."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,
@@ -3106,10 +3114,18 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 9,
         .weight = 600,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "If this Pokémon brings its arms and\n"
             "head together to form a streamlined\n"
             "shape and spins at high speeds,\n"
-            "it can destroy anything."),
+            "it can destroy anything."
+        #else
+            "If this Pokémon brings its arms and\n"
+            "head together to form a streamlined\n"
+            "shape and spins at high speeds,\n"
+            "it can destroy anything."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,
@@ -3264,15 +3280,13 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .weight = 320,
         .description = COMPOUND_STRING(
         #ifdef FIRERED
-            "Mega Audino emits a soothing pulse from\n"
-            "its body that reduces hostility in others.\n"
-            "Anything that comes into contact with its\n"
-            "second feelers will fall into a deep sleep."
+            "Anyone who touches the secondary feelers\n"
+            "that have sprouted from the base of its\n"
+            "throat will fall into a deep sleep."
         #else
-            "Mega Audino emits a soothing pulse from\n"
-            "its body that reduces hostility in others.\n"
-            "Anything that comes into contact with its\n"
-            "second feelers will fall into a deep sleep."
+            "Anyone who touches the secondary feelers\n"
+            "that have sprouted from the base of its\n"
+            "throat will fall into a deep sleep."
         #endif
         ),
         .pokemonScale = 320,
@@ -4454,9 +4468,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 32,
         .weight = 2305,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Its deadly venom gives off a faint\n"
             "glow. The venom affects Scolipede's\n"
-            "mind, honing its viciousness."),
+            "mind, honing its viciousness."
+        #else
+            "Its deadly venom gives off a faint\n"
+            "glow. The venom affects Scolipede's\n"
+            "mind, honing its viciousness."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,
@@ -6367,10 +6388,18 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 11,
         .weight = 310,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Mega Evolution has caused Scrafty's\n"
             "shed skin to turn white, growing\n"
             "tough and supple. Of course, this\n"
-            "Pokémon is still as feisty as ever."),
+            "Pokémon is still as feisty as ever."
+        #else
+            "Mega Evolution has caused Scrafty's\n"
+            "shed skin to turn white, growing\n"
+            "tough and supple. Of course, this\n"
+            "Pokémon is still as feisty as ever."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,
@@ -10717,10 +10746,18 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 30,
         .weight = 1800,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "It now generates 10 times the\n"
             "electricity it did before Mega\n"
             "Evolving. It discharges this energy\n"
-            "from its false Eelektrik made of mucus."),
+            "from its false Eelektrik made of mucus."
+        #else
+            "It now generates 10 times the\n"
+            "electricity it did before Mega\n"
+            "Evolving. It discharges this energy\n"
+            "from its false Eelektrik made of mucus."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,
@@ -11187,10 +11224,18 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 25,
         .weight = 696,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "One of its eyes is a window linking\n"
             "our world with the afterlife.\n"
             "This Pokémon draws in hatred and\n"
-            "converts it into power."),
+            "converts it into power."
+        #else
+            "One of its eyes is a window linking\n"
+            "our world with the afterlife.\n"
+            "This Pokémon draws in hatred and\n"
+            "converts it into power."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,

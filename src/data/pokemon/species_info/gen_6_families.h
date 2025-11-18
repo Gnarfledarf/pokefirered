@@ -259,9 +259,16 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .height = 16,
         .weight = 900,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "It has fortified armor and a\n"
             "will to defend at all costs.\n"
-            "Both are absurdly strong."),
+            "Both are absurdly strong."
+        #else
+            "It has fortified armor and a\n"
+            "will to defend at all costs.\n"
+            "Both are absurdly strong."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,
@@ -567,10 +574,18 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .height = 15,
         .weight = 390,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "It wields flaming branches to\n"
             "dazzle its opponents before\n"
             "incinerating them with a\n"
-            "huge fireball."),
+            "huge fireball."
+        #else
+            "It wields flaming branches to\n"
+            "dazzle its opponents before\n"
+            "incinerating them with a\n"
+            "huge fireball."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,
@@ -992,10 +1007,18 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .height = 15,
         .weight = 400,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "This Pokémon spins a giant\n"
             "shuriken at high speed to make it\n"
             "float, then clings to it upside\n"
-            "down to catch opponents unawares."),
+            "down to catch opponents unawares."
+        #else
+            "This Pokémon spins a giant\n"
+            "shuriken at high speed to make it\n"
+            "float, then clings to it upside\n"
+            "down to catch opponents unawares."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,
@@ -2167,10 +2190,18 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .height = 15,
         .weight = 933,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "This Pokémon spews flames hotter\n"
-            "than 18,000 degrees Fahrenheit.\n"
+            "than 10,000 degrees Celsius.\n"
             "It swings around its grand, blazing\n"
-            "mane as it protects its allies."),
+            "mane as it protects its allies."
+        #else
+            "This Pokémon spews flames hotter\n"
+            "than 10,000 degrees Celsius.\n"
+            "It swings around its grand, blazing\n"
+            "mane as it protects its allies."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,
@@ -2715,10 +2746,18 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         // height
         // weight
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "The Eternal Flower has absorbed\n"
             "all the energy from Mega\n"
             "Evolution. The flower now attacks\n"
-            "enemies on its own."),
+            "enemies on its own."
+        #else
+            "The Eternal Flower has absorbed\n"
+            "all the energy from Mega\n"
+            "Evolution. The flower now attacks\n"
+            "enemies on its own."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,
@@ -4190,10 +4229,18 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .height = 29,
         .weight = 698,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "It uses its colorful lights to\n"
             "overwrite the personality and\n"
             "memories of others-and to\n"
-            "control them."),
+            "control them."
+        #else
+            "It uses its colorful lights to\n"
+            "overwrite the personality and\n"
+            "memories of others-and to\n"
+            "control them."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,
@@ -4423,9 +4470,16 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .height = 22,
         .weight = 1000,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "It uses its many arms to toy\n"
             "with its opponents. This\n"
-            "keeps the head extremely busy."),
+            "keeps the head extremely busy."
+        #else
+            "It uses its many arms to toy\n"
+            "with its opponents. This\n"
+            "keeps the head extremely busy."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,
@@ -4655,10 +4709,18 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .height = 21,
         .weight = 1003,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "It spits a liquid that causes the\n"
             "regenerative power of cells to run\n"
             "wild. The liquid is deadly poison\n"
-            "to everything other than itself."),
+            "to everything other than itself."
+        #else
+            "It spits a liquid that causes the\n"
+            "regenerative power of cells to run\n"
+            "wild. The liquid is deadly poison\n"
+            "to everything other than itself."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,
@@ -5436,9 +5498,16 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .height = 10,
         .weight = 250,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Mega Evolution has pumped up all\n"
             "its muscles. Hawlucha flexes to\n"
-            "show off its strength."),
+            "show off its strength."
+        #else
+            "Mega Evolution has pumped up all\n"
+            "its muscles. Hawlucha flexes to\n"
+            "show off its strength."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,
@@ -7830,10 +7899,18 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .height = 77,
         .weight = 6100,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "In response to people's emotions\n"
             "during an unprecedented crisis,\n"
             "Zygarde Mega Evolves and calms the\n"
-            "situation with its unmatched power."),
+            "situation with its unmatched power."
+        #else
+            "In response to people's emotions\n"
+            "during an unprecedented crisis,\n"
+            "Zygarde Mega Evolves and calms the\n"
+            "situation with its unmatched power."
+        #endif
+        ),
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,
@@ -7988,15 +8065,15 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .weight = 278,
         .description = COMPOUND_STRING(
         #ifdef FIRERED
-            "The impurities upon its body's surface\n"
-            "have fallen away, sparkling so brilliantly\n"
-            "that cannot be observed directly.\n"
-            "It is known as “the Royal Pink Princes”."
+            "This Pokémon is also known as the\n"
+            "Royal Pink Princess. The dazzling,\n"
+            "sparkling diamond on its forehead\n"
+            "is a whopping 2,000 carats."
         #else
-            "The impurities upon its body's surface\n"
-            "have fallen away, sparkling so brilliantly\n"
-            "that cannot be observed directly.\n"
-            "It is known as “the Royal Pink Princes”."
+            "This Pokémon is also known as the\n"
+            "Royal Pink Princess. The dazzling,\n"
+            "sparkling diamond on its forehead\n"
+            "is a whopping 2,000 carats."
         #endif
         ),
         .pokemonScale = 365,

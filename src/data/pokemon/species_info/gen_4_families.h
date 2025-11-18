@@ -5988,11 +5988,11 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         #ifdef FIRERED
             "The buds on its back have sprouted into\n"
             "impressive icicles that can whip up\n"
-            "massive blizzards of −30 degrees Celsius."
+            "massive blizzards of -30 degrees Celsius."
         #else
             "The buds on its back have sprouted into\n"
             "impressive icicles that can whip up\n"
-            "massive blizzards of −30 degrees Celsius."
+            "massive blizzards of -30 degrees Celsius."
         #endif
         ),
         .pokemonScale = 256,

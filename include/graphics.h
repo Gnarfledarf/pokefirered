@@ -5446,7 +5446,7 @@ extern const u32 gBattleTextboxTiles[];
 extern const u16 gBattleTextboxPalette[];
 extern const u32 gBattleTextboxTilemap[];
 extern const u32 gBattleInterface_PartySummaryBar_Gfx[];
-extern const u8 gBattleInterface_Gfx[][32];
+extern const u8 gHealthboxElementsGfxTable[][32];
 extern const u16 gBattleInterface_Healthbox_Pal[];
 extern const u16 gBattleInterface_Healthbar_Pal[];
 extern const u16 gCategoryIcons_Pal[];
@@ -6534,5 +6534,30 @@ extern const u32 gBattleIcons_Gfx1[];
 extern const u32 gBattleIcons_Gfx2[];
 extern const u16 gBattleIcons_Pal1[];
 extern const u16 gBattleIcons_Pal2[];
+
+// Pokédex
+extern const u32 gPokedexInterface_Gfx[];
+extern const u16 gPokedexBgKanto_Pal[];
+extern const u32 gPokedexMenu_Gfx[];
+extern const u32 gPokedexList_Tilemap[];
+extern const u32 gPokedexListUnderlay_Tilemap[];
+extern const u32 gPokedexStartMenuMain_Tilemap[];
+extern const u32 gPokedexStartMenuSearchResults_Tilemap[];
+extern const u16 gPokedexSearchResults_Pal[];
+extern const u16 gPokedexBgNational_Pal[];
+extern const u32 gPokedexInfoScreen_Tilemap[];
+extern const u32 gPokedexCryScreen_Tilemap[];
+extern const u32 gPokedexSizeScreen_Tilemap[];
+extern const u32 gPokedexScreenSelectBarMain_Tilemap[];
+extern const u32 gPokedexScreenSelectBarSubmenu_Tilemap[];
+extern const u16 gPokedexCaughtScreen_Pal[];
+extern const u32 gPokedexSearchMenu_Gfx[];
+extern const u32 gPokedexSearchMenuKanto_Tilemap[];
+extern const u32 gPokedexSearchMenuNational_Tilemap[];
+extern const u16 gPokedexSearchMenu_Pal[];
+
+// Pokédex Area Screen
+extern const u32 gPokedexAreaScreenAreaUnknown_Gfx[];
+extern const u16 gPokedexAreaScreenAreaUnknown_Pal[];
 
 #endif //GUARD_GRAPHICS_H

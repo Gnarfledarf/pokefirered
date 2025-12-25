@@ -5,6 +5,8 @@
 #include <limits.h>
 #include "config/general.h" // we need to define config before gba headers as print stuff needs the functions nulled before defines.
 #include "gba/gba.h"
+#include "assertf.h"
+#include "gametypes.h"
 #include "siirtc.h"
 #include "fpmath.h"
 #include "metaprogram.h"
@@ -149,7 +151,7 @@ extern u8 gStringVar4[1000];
 
 #define ROUND_BITS_TO_BYTES(numBits) DIV_ROUND_UP(numBits, 8)
 
-#define DEX_FLAGS_NO ROUND_BITS_TO_BYTES(NUM_SPECIES)
+#define NUM_DEX_FLAG_BYTES ROUND_BITS_TO_BYTES(POKEMON_SLOTS_NUMBER)
 #define NUM_FLAG_BYTES ROUND_BITS_TO_BYTES(FLAGS_COUNT)
 #define NUM_ADDITIONAL_PHRASE_BYTES ROUND_BITS_TO_BYTES(NUM_ADDITIONAL_PHRASES)
 
@@ -763,7 +765,7 @@ struct MysteryGiftSave
     struct WonderCardMetadata cardMetadata;
     u16 questionnaireWords[NUM_QUESTIONNAIRE_WORDS];
     struct WonderNewsMetadata newsMetadata;
-    u32 trainerIds[2][5]; // Saved ids for 10 trainers, 5 each for battles and trades 
+    u32 trainerIds[2][5]; // Saved ids for 10 trainers, 5 each for battles and trades
 }; // 0x36C 0x348C
 
 struct TrainerTower
@@ -891,8 +893,8 @@ struct SaveBlock1
 #if FREE_MYSTERY_GIFT == FALSE
     /*0x3120*/ struct MysteryGiftSave mysteryGift;
 #endif //FREE_MYSTERY_GIFT
-    /*0x????*/ u8 dexSeen[DEX_FLAGS_NO];
-               u8 dexCaught[DEX_FLAGS_NO];
+    /*0x????*/ u8 dexSeen[NUM_DEX_FLAG_BYTES];
+               u8 dexCaught[NUM_DEX_FLAG_BYTES];
 #if FREE_MYSTERY_EVENT_BUFFERS == FALSE
     /*0x361C*/ struct RamScript ramScript;
 #endif //FREE_MYSTERY_EVENT_BUFFERS

@@ -5446,7 +5446,7 @@ extern const u32 gBattleTextboxTiles[];
 extern const u16 gBattleTextboxPalette[];
 extern const u32 gBattleTextboxTilemap[];
 extern const u32 gBattleInterface_PartySummaryBar_Gfx[];
-extern const u8 gBattleInterface_Gfx[][32];
+extern const u8 gHealthboxElementsGfxTable[][32];
 extern const u16 gBattleInterface_Healthbox_Pal[];
 extern const u16 gBattleInterface_Healthbar_Pal[];
 extern const u16 gCategoryIcons_Pal[];
@@ -6537,7 +6537,7 @@ extern const u16 gBattleIcons_Pal2[];
 
 // Pokédex
 extern const u32 gPokedexInterface_Gfx[];
-extern const u16 gPokedexBgHoenn_Pal[];
+extern const u16 gPokedexBgKanto_Pal[];
 extern const u32 gPokedexMenu_Gfx[];
 extern const u32 gPokedexList_Tilemap[];
 extern const u32 gPokedexListUnderlay_Tilemap[];
@@ -6552,7 +6552,7 @@ extern const u32 gPokedexScreenSelectBarMain_Tilemap[];
 extern const u32 gPokedexScreenSelectBarSubmenu_Tilemap[];
 extern const u16 gPokedexCaughtScreen_Pal[];
 extern const u32 gPokedexSearchMenu_Gfx[];
-extern const u32 gPokedexSearchMenuHoenn_Tilemap[];
+extern const u32 gPokedexSearchMenuKanto_Tilemap[];
 extern const u32 gPokedexSearchMenuNational_Tilemap[];
 extern const u16 gPokedexSearchMenu_Pal[];
 

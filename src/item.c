@@ -671,34 +671,6 @@ void CompactItemsInBagPocket(enum Pocket pocketId)
     }
 }
 
-static u32 GetSortIndex(u32 itemId)
-{
-    if (!IsItemHM(itemId))
-        return itemId;
-
-    return (itemId - (NUM_TECHNICAL_MACHINES + NUM_HIDDEN_MACHINES));
-}
-
-void SortBerriesOrTMHMs(enum Pocket pocketId)
-{
-    u16 i, j;
-
-    for (i = 0; i < gBagPockets[pocketId].capacity - 1; i++)
-    {
-        for (j = i + 1; j < gBagPockets[pocketId].capacity; j++)
-        {
-            if (GetBagItemQuantity(pocketId, i) != 0)
-            {
-                if (GetBagItemQuantity(pocketId, j) == 0)
-                    continue;
-                if (GetSortIndex(GetBagItemId(pocketId, i)) <= GetSortIndex(GetBagItemId(pocketId, j)))
-                    continue;
-            }
-            SwapItemSlots(pocketId, i, j);
-        }
-    }
-}
-
 u16 CountTotalItemQuantityInBag(u16 itemId)
 {
     u16 i;
@@ -751,8 +723,11 @@ void TrySetObtainedItemQuestLogEvent(u16 itemId)
 
 u16 SanitizeItemId(u16 itemId)
 {
-    if (itemId >= ITEMS_COUNT)
+    assertf(itemId < ITEMS_COUNT, "invalid item: %d", itemId)
+    {
         return ITEM_NONE;
+    }
+
     return itemId;
 }
 
@@ -920,19 +895,19 @@ bool32 IsHoldEffectChoice(enum HoldEffect holdEffect)
 
 bool32 IsItemTM(u16 itemId)
 {
-    itemId = SanitizeItemId(itemId);
-    return ITEM_TM01 <= itemId && itemId <= ITEM_TM100;
+    enum TMHMIndex index = GetItemTMHMIndex(SanitizeItemId(itemId));
+    return index > 0 && index <= NUM_TECHNICAL_MACHINES;
 }
 
 bool32 IsItemHM(u16 itemId)
 {
-    itemId = SanitizeItemId(itemId);
-    return ITEM_HM01 <= itemId && itemId <= ITEM_HM08;
+    return GetItemTMHMIndex(SanitizeItemId(itemId)) > NUM_TECHNICAL_MACHINES;
 }
 
 bool32 IsItemTMHM(u16 itemId)
 {
-    return IsItemTM(itemId) || IsItemHM(itemId);
+    enum TMHMIndex index = GetItemTMHMIndex(SanitizeItemId(itemId));
+    return index > 0 && index <= NUM_ALL_MACHINES;
 }
 
 bool32 IsItemBall(u16 itemId)

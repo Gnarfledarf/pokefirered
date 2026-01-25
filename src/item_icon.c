@@ -44,7 +44,7 @@ void CopyItemIconPicTo4x4Buffer(const void *src, void *dest)
 
 u8 AddItemIconSprite(u16 tilesTag, u16 paletteTag, u16 itemId)
 {
-    struct SpriteTemplate template;
+    struct SpriteTemplate *spriteTemplate;
     struct SpriteSheet spriteSheet;
     struct SpritePalette spritePalette;
     u8 spriteId;
@@ -63,12 +63,14 @@ u8 AddItemIconSprite(u16 tilesTag, u16 paletteTag, u16 itemId)
     spritePalette.tag = paletteTag;
     LoadSpritePalette(&spritePalette);
 
-    CpuCopy16(&gItemIconSpriteTemplate, &template, sizeof(struct SpriteTemplate));
-    template.tileTag = tilesTag;
-    template.paletteTag = paletteTag;
-    spriteId = CreateSprite(&template, 0, 0, 0);
+    spriteTemplate = Alloc(sizeof(*spriteTemplate));
+    CpuCopy16(&gItemIconSpriteTemplate, spriteTemplate, sizeof(*spriteTemplate));
+    spriteTemplate->tileTag = tilesTag;
+    spriteTemplate->paletteTag = paletteTag;
+    spriteId = CreateSprite(spriteTemplate, 0, 0, 0);
 
     FreeItemIconTemporaryBuffers();
+    Free(spriteTemplate);
 
     return spriteId;
 }
@@ -110,10 +112,10 @@ const void *GetItemIconPic(u16 itemId)
         return gItemIcon_ReturnToFieldArrow; // Use last icon, the "return to field" arrow
     if (itemId >= ITEMS_COUNT)
         return gItemsInfo[0].iconPic;
-    if (itemId >= ITEM_TM01 && itemId < ITEM_HM01 + NUM_HIDDEN_MACHINES)
+    if (gItemsInfo[itemId].pocket == POCKET_TM_HM)
     {
-        if (itemId < ITEM_TM01 + NUM_TECHNICAL_MACHINES)
-            return gItemIcon_TM;
+        if (GetItemTMHMIndex(itemId) > NUM_TECHNICAL_MACHINES)
+            return gItemIcon_HM;
         return gItemIcon_HM;
     }
 

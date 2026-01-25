@@ -35,6 +35,7 @@
 #include "battle_interface.h"
 #include "mon_markings.h"
 #include "pokemon_storage_system.h"
+#include "pokerus.h"
 #include "constants/battle_move_effects.h"
 #include "constants/sound.h"
 
@@ -370,13 +371,13 @@ static const struct OamData sMoveSelectionCursorOamData =
     .paletteNum = 0
 };
 
-static const union AnimCmd sMoveSelectionCursorOamAnim_Red[] = 
+static const union AnimCmd sMoveSelectionCursorOamAnim_Red[] =
 {
     ANIMCMD_FRAME(0, 20),
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd sMoveSelectionCursorOamAnim_Blue[] = 
+static const union AnimCmd sMoveSelectionCursorOamAnim_Blue[] =
 {
     ANIMCMD_FRAME(0x20, 20),
     ANIMCMD_JUMP(0),
@@ -403,49 +404,49 @@ static const struct OamData sStatusAilmentIconOamData = {
     .paletteNum = 0
 };
 
-static const union AnimCmd sStatusAilmentIconAnim_PSN[] = 
+static const union AnimCmd sStatusAilmentIconAnim_PSN[] =
 {
     ANIMCMD_FRAME(0, 20),
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd sStatusAilmentIconAnim_PRZ[] = 
+static const union AnimCmd sStatusAilmentIconAnim_PRZ[] =
 {
     ANIMCMD_FRAME(4, 20),
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd sStatusAilmentIconAnim_SLP[] = 
+static const union AnimCmd sStatusAilmentIconAnim_SLP[] =
 {
     ANIMCMD_FRAME(8, 20),
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd sStatusAilmentIconAnim_FRZ[] = 
+static const union AnimCmd sStatusAilmentIconAnim_FRZ[] =
 {
     ANIMCMD_FRAME(12, 20),
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd sStatusAilmentIconAnim_BRN[] = 
+static const union AnimCmd sStatusAilmentIconAnim_BRN[] =
 {
     ANIMCMD_FRAME(16, 20),
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd sStatusAilmentIconAnim_PKRS[] = 
+static const union AnimCmd sStatusAilmentIconAnim_PKRS[] =
 {
     ANIMCMD_FRAME(20, 20),
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd sStatusAilmentIconAnim_FNT[] = 
+static const union AnimCmd sStatusAilmentIconAnim_FNT[] =
 {
     ANIMCMD_FRAME(24, 20),
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd sStatusAilmentIconAnim_Blank[] = 
+static const union AnimCmd sStatusAilmentIconAnim_Blank[] =
 {
     ANIMCMD_FRAME(28, 20),
     ANIMCMD_JUMP(0),
@@ -478,73 +479,73 @@ static const struct OamData sHpOrExpBarOamData = {
     .paletteNum = 0
 };
 
-static const union AnimCmd sHpOrExpAnim_0[] = 
+static const union AnimCmd sHpOrExpAnim_0[] =
 {
     ANIMCMD_FRAME(0, 20),
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd sHpOrExpAnim_1[] = 
+static const union AnimCmd sHpOrExpAnim_1[] =
 {
     ANIMCMD_FRAME(1, 20),
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd sHpOrExpAnim_2[] = 
+static const union AnimCmd sHpOrExpAnim_2[] =
 {
     ANIMCMD_FRAME(2, 20),
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd sHpOrExpAnim_3[] = 
+static const union AnimCmd sHpOrExpAnim_3[] =
 {
     ANIMCMD_FRAME(3, 20),
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd sHpOrExpAnim_4[] = 
+static const union AnimCmd sHpOrExpAnim_4[] =
 {
     ANIMCMD_FRAME(4, 20),
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd sHpOrExpAnim_5[] = 
+static const union AnimCmd sHpOrExpAnim_5[] =
 {
     ANIMCMD_FRAME(5, 20),
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd sHpOrExpAnim_6[] = 
+static const union AnimCmd sHpOrExpAnim_6[] =
 {
     ANIMCMD_FRAME(6, 20),
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd sHpOrExpAnim_7[] = 
+static const union AnimCmd sHpOrExpAnim_7[] =
 {
     ANIMCMD_FRAME(7, 20),
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd sHpOrExpAnim_8[] = 
+static const union AnimCmd sHpOrExpAnim_8[] =
 {
     ANIMCMD_FRAME(8, 20),
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd sHpOrExpAnim_9[] = 
+static const union AnimCmd sHpOrExpAnim_9[] =
 {
     ANIMCMD_FRAME(9, 20),
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd sHpOrExpAnim_10[] = 
+static const union AnimCmd sHpOrExpAnim_10[] =
 {
     ANIMCMD_FRAME(10, 20),
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd sHpOrExpAnim_11[] = 
+static const union AnimCmd sHpOrExpAnim_11[] =
 {
     ANIMCMD_FRAME(11, 20),
     ANIMCMD_JUMP(0),
@@ -584,7 +585,7 @@ static const struct OamData sPokerusIconObjOamData = {
     .paletteNum = 0
 };
 
-static const union AnimCmd sPokerusIconObjAnim0[] = 
+static const union AnimCmd sPokerusIconObjAnim0[] =
 {
     ANIMCMD_FRAME(0, 20),
     ANIMCMD_JUMP(0),
@@ -614,7 +615,7 @@ static const struct OamData sStarObjOamData =
     .paletteNum = 0
 };
 
-static const union AnimCmd sStarObjAnim0[] = 
+static const union AnimCmd sStarObjAnim0[] =
 {
     ANIMCMD_FRAME(1, 20),
     ANIMCMD_JUMP(0),
@@ -633,14 +634,14 @@ static const u32 sBgTilemap_MovesPage[] = INCBIN_U32( "graphics/summary_screen/m
 static const u8 *const sEggHatchTimeTexts[] = {
     gText_PokeSum_EggHatch_LongTime,
     gText_PokeSum_EggHatch_SomeTime,
-    gText_PokeSum_EggHatch_Soon, 
+    gText_PokeSum_EggHatch_Soon,
     gText_PokeSum_EggHatch_AlmostReady
 };
 
 static const u8 *const sEggOriginTexts[] = {
-    gText_PokeSum_EggOrigin_DayCare,      
+    gText_PokeSum_EggOrigin_DayCare,
     gText_PokeSum_EggOrigin_Trade,
-    gText_PokeSum_EggOrigin_TravelingMan, 
+    gText_PokeSum_EggOrigin_TravelingMan,
     gText_PokeSum_EggOrigin_Trade,
     gText_PokeSum_EggOrigin_NicePlace,
     gText_PokeSum_EggOrigin_Spa,
@@ -654,7 +655,7 @@ static const u8 sPrintMoveTextColors[][3] = {
     {0, 5, 6}
 };
 
-static const struct BgTemplate sBgTempaltes[] = 
+static const struct BgTemplate sBgTempaltes[] =
 {
 	 {
 	 	.bg = 0,
@@ -746,7 +747,7 @@ static const struct WindowTemplate sWindowTemplates_Permanent_Bg1[] =
     }
 };
 
-static const struct WindowTemplate sWindowTemplates_Permanent_Bg2[] = 
+static const struct WindowTemplate sWindowTemplates_Permanent_Bg2[] =
 {
     {
         .bg = 2,
@@ -777,7 +778,7 @@ static const struct WindowTemplate sWindowTemplates_Permanent_Bg2[] =
     },
 };
 
-static const struct WindowTemplate sWindowTemplates_Info[] = 
+static const struct WindowTemplate sWindowTemplates_Info[] =
 {
     [POKESUM_WIN_INFO_3 - 3] = {
         .bg = 0,
@@ -817,7 +818,7 @@ static const struct WindowTemplate sWindowTemplates_Info[] =
     },
 };
 
-static const struct WindowTemplate sWindowTemplates_Skills[] = 
+static const struct WindowTemplate sWindowTemplates_Skills[] =
 {
     [POKESUM_WIN_SKILLS_3 - 3] = {
         .bg = 0,
@@ -857,7 +858,7 @@ static const struct WindowTemplate sWindowTemplates_Skills[] =
     },
 };
 
-static const struct WindowTemplate sWindowTemplates_Moves[] = 
+static const struct WindowTemplate sWindowTemplates_Moves[] =
 {
     [POKESUM_WIN_MOVES_3 - 3] = {
         .bg = 0,
@@ -897,7 +898,7 @@ static const struct WindowTemplate sWindowTemplates_Moves[] =
     },
 };
 
-static const struct WindowTemplate sWindowTemplates_Dummy[] = 
+static const struct WindowTemplate sWindowTemplates_Dummy[] =
 {
     {
         .bg = 255,
@@ -2399,52 +2400,46 @@ static const struct StatData sStatData[] = {
     [STAT_HP] =
     {
         .monDataStat            = MON_DATA_HP,
-        .monDataStat2           = MON_DATA_HP,
         .monDataEv              = MON_DATA_HP_EV,
         .monDataIv              = MON_DATA_HP_IV,
         .monDataHyperTrained    = MON_DATA_HYPER_TRAINED_HP,
         .pssStat                = PSS_STAT_HP,
     },
-    [STAT_ATK] = 
+    [STAT_ATK] =
     {
         .monDataStat            = MON_DATA_ATK,
-        .monDataStat2           = MON_DATA_ATK2,
         .monDataEv              = MON_DATA_ATK_EV,
         .monDataIv              = MON_DATA_ATK_IV,
         .monDataHyperTrained    = MON_DATA_HYPER_TRAINED_ATK,
         .pssStat                = PSS_STAT_ATK,
     },
-    [STAT_DEF] = 
+    [STAT_DEF] =
     {
         .monDataStat            = MON_DATA_DEF,
-        .monDataStat2           = MON_DATA_DEF2,
         .monDataEv              = MON_DATA_DEF_EV,
         .monDataIv              = MON_DATA_DEF_IV,
         .monDataHyperTrained    = MON_DATA_HYPER_TRAINED_DEF,
         .pssStat                = PSS_STAT_DEF,
     },
-    [STAT_SPATK] = 
+    [STAT_SPATK] =
     {
         .monDataStat            = MON_DATA_SPATK,
-        .monDataStat2           = MON_DATA_SPATK2,
         .monDataEv              = MON_DATA_SPATK_EV,
         .monDataIv              = MON_DATA_SPATK_IV,
         .monDataHyperTrained    = MON_DATA_HYPER_TRAINED_SPATK,
         .pssStat                = PSS_STAT_SPA,
     },
-    [STAT_SPDEF] = 
+    [STAT_SPDEF] =
     {
         .monDataStat            = MON_DATA_SPDEF,
-        .monDataStat2           = MON_DATA_SPDEF2,
         .monDataEv              = MON_DATA_SPDEF_EV,
         .monDataIv              = MON_DATA_SPDEF_IV,
         .monDataHyperTrained    = MON_DATA_HYPER_TRAINED_SPDEF,
         .pssStat                = PSS_STAT_SPD,
     },
-    [STAT_SPEED] = 
+    [STAT_SPEED] =
     {
         .monDataStat            = MON_DATA_SPEED,
-        .monDataStat2           = MON_DATA_SPEED2,
         .monDataEv              = MON_DATA_SPEED_EV,
         .monDataIv              = MON_DATA_SPEED_IV,
         .monDataHyperTrained    = MON_DATA_HYPER_TRAINED_SPEED,
@@ -2453,7 +2448,7 @@ static const struct StatData sStatData[] = {
 };
 
 static void SetStatXPos(u8 stat, u16 xpos)
-{    
+{
     switch (stat)
     {
         case STAT_HP:
@@ -2501,12 +2496,7 @@ static void ApplyNatureColor(u8 *str, u8 stat)
 static void BufferStatString(u8 stat)
 {
     u8 *dst = sMonSummaryScreen->summary.statValueStrBufs[sStatData[stat].pssStat];
-    u16 statValue;
-
-    if (sMonSummaryScreen->savedCallback == CB2_ReturnToTradeMenuFromSummary && sMonSummaryScreen->isEnemyParty == TRUE)
-        statValue = GetMonData(&sMonSummaryScreen->currentMon, sStatData[stat].monDataStat2);
-    else
-        statValue = GetMonData(&sMonSummaryScreen->currentMon, sStatData[stat].monDataStat);
+    u16 statValue = GetMonData(&sMonSummaryScreen->currentMon, sStatData[stat].monDataStat);
 
     ConvertIntToDecimalStringN(dst, statValue, STR_CONV_MODE_LEFT_ALIGN, 3);
     if (stat == STAT_HP)
@@ -2529,7 +2519,7 @@ static void BufferEVString(u8 stat)
     u16 statValue = GetMonData(&sMonSummaryScreen->currentMon, sStatData[stat].monDataEv);
     u8 *dst = sMonSummaryScreen->summary.statValueStrBufs[sStatData[stat].pssStat];
     u8 tmp[20];
-    
+
     ConvertIntToDecimalStringN(dst, statValue, STR_CONV_MODE_LEFT_ALIGN, 3);
     StringAppend(dst, gText_Slash);
     ConvertIntToDecimalStringN(tmp, MAX_PER_STAT_EVS, STR_CONV_MODE_LEFT_ALIGN, 3);
@@ -2625,7 +2615,7 @@ static void BufferMonSkills(void)
 
     sMonSummaryScreen->curMonStatusAilment = StatusToAilment(GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_STATUS));
     if (sMonSummaryScreen->curMonStatusAilment == AILMENT_NONE)
-        if (CheckPartyPokerus(&sMonSummaryScreen->currentMon, 0))
+        if (ShouldPokemonShowActivePokerus(&sMonSummaryScreen->currentMon))
             sMonSummaryScreen->curMonStatusAilment = AILMENT_PKRS;
 }
 
@@ -3952,7 +3942,10 @@ static u8 StatusToAilment(u32 status)
     if ((status & STATUS1_BURN) != 0)
         return AILMENT_BRN;
 
-    if (CheckPartyPokerus(&sMonSummaryScreen->currentMon, 0))
+    if ((status & STATUS1_FROSTBITE) != 0)
+        return AILMENT_FRB;
+
+    if (ShouldPokemonShowActivePokerus(&sMonSummaryScreen->currentMon))
         return AILMENT_PKRS;
 
     return AILMENT_NONE;
@@ -4235,7 +4228,7 @@ static u8 PokeSum_CanForgetSelectedMove(void)
 
     move = GetMonMoveBySlotId(&sMonSummaryScreen->currentMon, sMoveSelectionCursorPos);
 
-    if (IsMoveHM(move) == TRUE && sMonSummaryScreen->mode != PSS_MODE_FORGET_MOVE)
+    if (CannotForgetMove(move) == TRUE && sMonSummaryScreen->mode != PSS_MODE_FORGET_MOVE)
         return FALSE;
 
     return TRUE;
@@ -4577,8 +4570,7 @@ static void ShowOrHideBallIconObj(u8 invisible)
 
 static void DestroyBallIconObj(void)
 {
-    // Redundant, as DestroySpriteAndFreeResources could've been used.
-    DestroySpriteAndFreeResources_Ball(&gSprites[sMonSummaryScreen->ballIconSpriteId]);
+    DestroySpriteAndFreeResources(&gSprites[sMonSummaryScreen->ballIconSpriteId]);
 }
 
 static void PokeSum_CreateMonIconSprite(void)
@@ -5168,8 +5160,8 @@ static void DestroyPokerusIconObj(void)
 
 static void ShowPokerusIconObjIfHasOrHadPokerus(void)
 {
-    if (!CheckPartyPokerus(&sMonSummaryScreen->currentMon, 0)
-        && CheckPartyHasHadPokerus(&sMonSummaryScreen->currentMon, 0))
+    if (!ShouldPokemonShowActivePokerus(&sMonSummaryScreen->currentMon)
+        && CheckMonHasHadPokerus(&sMonSummaryScreen->currentMon))
         HideShowPokerusIcon(FALSE);
     else
         HideShowPokerusIcon(TRUE);
@@ -5177,8 +5169,8 @@ static void ShowPokerusIconObjIfHasOrHadPokerus(void)
 
 static void HideShowPokerusIcon(bool8 invisible)
 {
-    if (!CheckPartyPokerus(&sMonSummaryScreen->currentMon, 0)
-        && CheckPartyHasHadPokerus(&sMonSummaryScreen->currentMon, 0))
+    if (!ShouldPokemonShowActivePokerus(&sMonSummaryScreen->currentMon)
+        && CheckMonHasHadPokerus(&sMonSummaryScreen->currentMon))
     {
         sPokerusIconObj->sprite->invisible = invisible;
         return;

@@ -4,6 +4,8 @@
 #include "decompress.h"
 #include "dma3.h"
 #include "gpu_regs.h"
+#include "malloc.h"
+#include "menu.h"
 
 #define DISPCNT_ALL_BG_AND_MODE_BITS    (DISPCNT_BG_ALL_ON | 0x7)
 
@@ -572,9 +574,9 @@ u16 GetBgAttribute(u8 bg, u8 attributeId)
         case BG_ATTR_METRIC:
             switch (GetBgType(bg))
             {
-                case 0:
+                case BG_TYPE_NORMAL:
                     return GetBgMetricTextMode(bg, 0) * 0x800;
-                case 1:
+                case BG_TYPE_AFFINE:
                     return GetBgMetricAffineMode(bg, 0) * 0x100;
                 default:
                     return 0;
@@ -914,6 +916,14 @@ void CopyToBgTilemapBuffer(u8 bg, const void *src, u16 mode, u16 destOffset)
             DecompressDataWithHeaderWram(src, (void *)(sGpuBgConfigs2[bg].tilemap + (destOffset * 32)));
         }
     }
+}
+
+void DecompressAndCopyToBgTilemapBuffer(u32 bg, const u32 *src, u32 mode, u32 destOffset)
+{
+    void *buffer = malloc_and_decompress(src, NULL);
+
+    CopyToBgTilemapBuffer(bg, buffer, mode, destOffset);
+    Free(buffer);
 }
 
 void CopyBgTilemapBufferToVram(u8 bg)

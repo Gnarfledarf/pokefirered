@@ -1467,7 +1467,7 @@
 #define FLAG_WORLD_MAP_SEVEN_ISLAND_SEVAULT_CANYON_TANOBY_KEY       (SYS_FLAGS + 0xC1)
 #define FLAG_WORLD_MAP_BIRTH_ISLAND_EXTERIOR                        (SYS_FLAGS + 0xC2)
 
-#define FLAG_0x8C3                                                  (SYS_FLAGS + 0xC3)
+#define FLAG_RUNNING_SHOES_TOGGLE                                   (SYS_FLAGS + 0xC3)
 #define FLAG_0x8C4                                                  (SYS_FLAGS + 0xC4)
 #define FLAG_0x8C5                                                  (SYS_FLAGS + 0xC5)
 #define FLAG_0x8C6                                                  (SYS_FLAGS + 0xC6)
@@ -1551,7 +1551,7 @@
 #define TESTING_FLAGS_START                     0x5000
 #define TESTING_FLAG_SLEEP_CLAUSE               (TESTING_FLAGS_START + 0x0)
 #define TESTING_FLAG_INVERSE_BATTLE             (TESTING_FLAGS_START + 0x1)
-#define TESTING_FLAG_UNUSED_2                   (TESTING_FLAGS_START + 0x2)
+#define TESTING_FLAG_TRAINER_SLIDES             (TESTING_FLAGS_START + 0x2)
 #define TESTING_FLAG_UNUSED_3                   (TESTING_FLAGS_START + 0x3)
 #define TESTING_FLAG_UNUSED_4                   (TESTING_FLAGS_START + 0x4)
 #define TESTING_FLAG_UNUSED_5                   (TESTING_FLAGS_START + 0x5)

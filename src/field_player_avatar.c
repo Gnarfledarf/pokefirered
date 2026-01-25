@@ -32,6 +32,7 @@ static EWRAM_DATA struct ObjectEvent * sPlayerObjectPtr = NULL;
 static EWRAM_DATA u8 sTeleportSavedFacingDirection = DIR_NONE;
 EWRAM_DATA struct ObjectEvent gObjectEvents[OBJECT_EVENTS_COUNT] = {};
 EWRAM_DATA struct PlayerAvatar gPlayerAvatar = {};
+EWRAM_DATA bool8 gRunToggleBtnSet = FALSE;
 
 static u8 ObjectEventCB2_NoMovement2(struct ObjectEvent * object, struct Sprite *sprite);
 static bool8 TryUpdatePlayerSpinDirection(void);
@@ -520,23 +521,63 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
         return;
     }
 
-    if ((heldKeys & B_BUTTON) && FlagGet(FLAG_SYS_B_DASH)
+    if ((gRunToggleBtnSet || FlagGet(FLAG_RUNNING_SHOES_TOGGLE) || (heldKeys & B_BUTTON)) && FlagGet(FLAG_SYS_B_DASH)
         && !IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior))
     {
+        if (gRunToggleBtnSet)
+        {
+            gRunToggleBtnSet = FALSE;
+            if (FlagGet(FLAG_RUNNING_SHOES_TOGGLE) == FALSE)
+            {
+                FlagSet(FLAG_RUNNING_SHOES_TOGGLE);
+                if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
+                    PlayerRunSlow(direction);
+                else
+                    PlayerRun(direction);
+                    gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
+                return;
+            }
+            else
+            {
+                FlagClear(FLAG_RUNNING_SHOES_TOGGLE);
+                gRunToggleBtnSet = FALSE;
+                if (!(heldKeys & B_BUTTON))
+                {
+                    if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
+                        PlayerWalkSlow(direction);
+                    else
+                        PlayerWalkNormal(direction);
+                    return;
+                }
+                else
+                {
+                    if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
+                        PlayerRunSlow(direction);
+                    else
+                        PlayerRun(direction);
+                        gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
+                    return;
+                }
+                return;
+            } 
+        }
         if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
             PlayerRunSlow(direction);
         else
             PlayerRun(direction);
-        gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
+            gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
         return;
-    }
-    else if (FlagGet(DN_FLAG_SEARCHING) && (heldKeys & A_BUTTON))
-    {
-        gPlayerAvatar.creeping = TRUE;
-        PlayerWalkSlow(direction);
+    
+        if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
+            PlayerRunSlow(direction);
+        else
+            PlayerRun(direction);
+            gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
+        return;
     }
     else
     {
+        gRunToggleBtnSet = FALSE;
         if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
             PlayerWalkSlow(direction);
         else

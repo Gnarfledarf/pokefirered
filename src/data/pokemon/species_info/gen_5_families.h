@@ -30,10 +30,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 4,
         .weight = 40,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "This Pokémon brings victory.\n"
             "It is said that Trainers with Victini\n"
             "always win, regardless of the type\n"
-            "of encounter."),
+            "of encounter."
+        #else
+            "It creates an unlimited supply of\n"
+            "energy inside its body, which it\n"
+            "shares with those who touch it."
+        #endif
+        ),
         .pokemonScale = 491,
         .pokemonOffset = 16,
         .trainerScale = 256,
@@ -102,10 +109,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 81,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "It is very intelligent and calm.\n"
             "Being exposed to lots of sunlight makes\n"
-            "its movements swifter. When they are\n"
-            "not feeling well, their tails droop."),
+            "its movements swifter."
+        #else
+            "They photosynthesize by bathing their\n"
+            "tails in sunlight. When they are\n"
+            "not feeling well, their tails droop."
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 15,
         .trainerScale = 256,
@@ -171,10 +184,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 8,
         .weight = 160,
         .description = COMPOUND_STRING(
-            "When it gets dirty, its leaves can't be\n"
-            "used in photosynthesis, so it always keeps\n"
-            "clean. They avoid attacks by sinking into\n"
-            "the shadows of thick foliage."),
+        #ifdef FIRERED
+            "It moves along the ground as if sliding.\n"
+            "Its swift movements befuddle its foes,\n"
+            "and it then attacks with a vine whip."
+        #else
+            "They avoid attacks by sinking into the\n"
+            "shadows of thick foliage. They retaliate\n"
+            "with masterful whipping techniques."
+        #endif
+        ),
         .pokemonScale = 366,
         .pokemonOffset = 9,
         .trainerScale = 257,
@@ -243,10 +262,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 33,
         .weight = 630,
         .description = COMPOUND_STRING(
-            "They raise their heads to intimidate foes,\n"
-            "but only give it their all when fighting\n"
-            "powerful opponents who are not fazed\n"
-            "by the glare from its noble eyes."),
+        #ifdef FIRERED
+            "It can stop its opponents' movements with\n"
+            "just a glare. It takes in solar energy and\n"
+            "boosts it internally."
+        #else
+            "They raise their heads to intimidate\n"
+            "opponents but only give it their all\n"
+            "when fighting a powerful opponent."
+        #endif
+        ),
         .pokemonScale = 256,
         .pokemonOffset = 0,
         .trainerScale = 405,
@@ -314,10 +339,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 5,
         .weight = 99,
         .description = COMPOUND_STRING(
-            "It loves to eat roasted berries, but\n"
-            "sometimes it gets too excited and burns\n"
-            "them to a crisp. It blows fire through\n"
-            "its nose."),
+        #ifdef FIRERED
+            "It can deftly dodge its foe's attacks\n"
+            "while shooting fireballs from its nose.\n"
+            "It roasts berries before it eats them."
+        #else
+            "It blows fire through its nose.\n"
+            "When it catches a cold, the fire becomes\n"
+            "pitch-black smoke instead."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 15,
         .trainerScale = 256,
@@ -385,10 +416,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 10,
         .weight = 555,
         .description = COMPOUND_STRING(
-            "The more it eats, the more fuel it has\n"
-            "to make the fire in its stomach stronger.\n"
-            "When it is angered, the intensity of the\n"
-            "flame increases."),
+        #ifdef FIRERED
+            "When its internal fire flares up,\n"
+            "its movements grow sharper and faster.\n"
+            "When in trouble, it emits smoke."
+        #else
+            "Whatever it eats becomes fuel for the\n"
+            "flame in its stomach. When it is angered,\n"
+            "the intensity of the flame increases."
+        #endif
+        ),
         .pokemonScale = 305,
         .pokemonOffset = 8,
         .trainerScale = 257,
@@ -454,10 +491,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 16,
         .weight = 1500,
         .description = COMPOUND_STRING(
-            "It is adept at using many different moves.\n"
-            "It can throw a fire punch by setting its\n"
-            "fists on fire with its fiery chin.\n"
-            "It cares deeply about its friends."),
+        #ifdef FIRERED
+            "It can throw a fire punch by setting\n"
+            "its fists on fire with its fiery chin.\n"
+            "It cares deeply about its friends."
+        #else
+            "It has mastered fast and powerful\n"
+            "fighting moves. It grows a beard\n"
+            "of fire."
+        #endif
+        ),
         .pokemonScale = 259,
         .pokemonOffset = 1,
         .trainerScale = 296,
@@ -527,7 +570,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseSpDefense = 110,
         .types = MON_TYPES(TYPE_FIRE, TYPE_FIGHTING),
         .catchRate = 45,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 264 : 238,
+        .expYield = 264,
         .evYield_Attack = 3,
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 20,
@@ -538,52 +581,44 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .bodyColor = BODY_COLOR_RED,
         .noFlip = TRUE,
         .speciesName = _("Emboar"),
-        .cryId = CRY_EMBOAR, // CRY_EMBOAR_MEGA,
+    #if P_MODIFIED_MEGA_CRIES
+        .cryId = CRY_EMBOAR_MEGA,
+    #else
+        .cryId = CRY_EMBOAR,
+    #endif // P_MODIFIED_MEGA_CRIES
         .natDexNum = NATIONAL_DEX_EMBOAR,
         .categoryName = _("Fire Pig"),
         .height = 18,
         .weight = 1803,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Brandishing a blazing flame\n"
             "shaped like a serpentine spear,\n"
             "it rushes in to save its\n"
-            "imperiled allies."),
-        .frontPic = gMonFrontPic_CircledQuestionMark,
-        .frontPicSize = MON_COORDS_SIZE(40, 40),
-        .frontPicYOffset = 12,
-        .frontAnimFrames = sAnims_TwoFramePlaceHolder,
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_CircledQuestionMark,
-        .backPicSize = MON_COORDS_SIZE(40, 40),
-        .backPicYOffset = 12,
-        .backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_CircledQuestionMark,
-        .shinyPalette = gMonShinyPalette_CircledQuestionMark,
-        .iconSprite = gMonIcon_QuestionMark,
-        .iconPalIndex = 0,
+            "imperiled allies."
+        #else
+            "Brandishing a blazing flame\n"
+            "shaped like a serpentine spear,\n"
+            "it rushes in to save its\n"
+            "imperiled allies."
+        #endif
+        ),
+        //.frontPic = gMonFrontPic_CircledQuestionMark,
+        //.frontPicSize = MON_COORDS_SIZE(40, 40),
+        //.frontPicYOffset = 12,
+        //.frontAnimFrames = sAnims_TwoFramePlaceHolder,
+        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        //.backPic = gMonBackPic_CircledQuestionMark,
+        //.backPicSize = MON_COORDS_SIZE(40, 40),
+        //.backPicYOffset = 12,
+        //.backAnimId = BACK_ANIM_NONE,
+        //.palette = gMonPalette_CircledQuestionMark,
+        //.shinyPalette = gMonShinyPalette_CircledQuestionMark,
+        //.iconSprite = gMonIcon_QuestionMark,
+        //.iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        FOOTPRINT(QuestionMark)
-        SHADOW(-1, 0, SHADOW_SIZE_M)
-    #if OW_BATTLE_ONLY_FORMS
-        .overworldData = {
-            .tileTag = TAG_NONE,
-            .paletteTag = OBJ_EVENT_PAL_TAG_SUBSTITUTE,
-            .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
-            .size = 512,
-            .width = 32,
-            .height = 32,
-            .paletteSlot = PALSLOT_NPC_1,
-            .shadowSize = SHADOW_SIZE_M,
-            .inanimate = FALSE,
-            .compressed = COMP,
-            .tracks = TRACKS_FOOT,
-            .oam = &gObjectEventBaseOam_32x32,
-            .subspriteTables = sOamTables_32x32,
-            .anims = sAnimTable_Following,
-            .images = sPicTable_Substitute,
-            .affineAnims = gDummySpriteAffineAnimTable,
-        },
-    #endif //OW_BATTLE_ONLY_FORMS
+        FOOTPRINT(Emboar)
+        //SHADOW(-1, 0, SHADOW_SIZE_M)
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sEmboarLevelUpLearnset,
         .teachableLearnset = sEmboarTeachableLearnset,
@@ -620,10 +655,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 5,
         .weight = 59,
         .description = COMPOUND_STRING(
-            "The scalchop on its stomach isn't just\n"
-            "used for battle, it can be used to break\n"
-            "open hard berries as well. It is made\n"
-            "from the same element as its claws."),
+        #ifdef FIRERED
+            "It fights using the scalchop on its\n"
+            "stomach. In response to an attack,\n"
+            "it retaliates immediately by slashing."
+        #else
+            "The scalchop on its stomach is made from\n"
+            "the same elements as claws. It detaches\n"
+            "the scalchop for use as a blade."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 15,
         .trainerScale = 256,
@@ -693,10 +734,15 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 8,
         .weight = 245,
         .description = COMPOUND_STRING(
-            "Strict training and disclipine leads it\n"
-            "to master its flowing double-scalchop\n"
-            "technique. Scalchop techniques differ\n"
-            "from one Dewott to another."),
+        #ifdef FIRERED
+            "Strict training is how it learns its\n"
+            "flowing double-scalchop technique."
+        #else
+            "Scalchop techniques differ from one Dewott\n"
+            "to another. It never neglects maintaining\n"
+            "its scalchops."
+        #endif
+        ),
         .pokemonScale = 366,
         .pokemonOffset = 9,
         .trainerScale = 257,
@@ -764,10 +810,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 15,
         .weight = 946,
         .description = COMPOUND_STRING(
-            "One swing of the seamitars attached\n"
-            "to its armor can fell an opponent.\n"
-            "A simple glare from one of them is\n"
-            "enough to intimidate most enemies."),
+        #ifdef FIRERED
+            "One swing of the sword incorporated in\n"
+            "its armor can fell an opponent. A simple\n"
+            "glare from one of them quiets everybody."
+        #else
+            "Part of the armor on its anterior legs\n"
+            "becomes a giant sword. Its cry alone is\n"
+            "enough to intimidate most enemies."
+        #endif
+        ),
         .pokemonScale = 268,
         .pokemonOffset = 2,
         .trainerScale = 271,
@@ -816,7 +868,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseSpDefense = 65,
         .types = MON_TYPES(TYPE_WATER, TYPE_DARK),
         .catchRate = 45,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 264 : 238,
+        .expYield = 264,
         .evYield_Attack = 3,
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 20,
@@ -832,10 +884,18 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 15,
         .weight = 582,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Hard of heart and deft of blade,\n"
             "this rare form of Samurott is a\n"
             "product of the Pokémon's evolution in the\n"
-            "region of Hisui."),
+            "region of Hisui."
+        #else
+            "Hard of heart and deft of blade,\n"
+            "this rare form of Samurott is a\n"
+            "product of the Pokémon's evolution in the\n"
+            "region of Hisui."
+        #endif
+        ),
         .pokemonScale = 268,
         .pokemonOffset = 2,
         .trainerScale = 271,
@@ -900,10 +960,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 5,
         .weight = 116,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "Using food stored in cheek pouches,\n"
+            "they can keep watch for days. They use\n"
+            "their tails to communicate with others."
+        #else
             "Extremely cautious, they take shifts to\n"
             "maintain a constant watch of their nest.\n"
-            "Using food stored in cheek pouches,\n"
-            "they can keep watch for days."),
+            "They feel insecure without a lookout."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 14,
         .trainerScale = 256,
@@ -968,10 +1034,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 11,
         .weight = 270,
         .description = COMPOUND_STRING(
-            "Using luminescent matter, it makes its\n"
-            "eyes and body glow and stuns attacking\n"
-            "opponents. Keen eyesight lets them see\n"
-            "in the dark."),
+        #ifdef FIRERED
+            "When they see an enemy, their tails stand\n"
+            "high, and they spit the seeds of berries\n"
+            "stored in their cheek pouches."
+        #else
+            "They make the patterns on their bodies\n"
+            "shine in order to threaten predators.\n"
+            "Keen eyesight lets them see in the dark."
+        #endif
+        ),
         .pokemonScale = 320,
         .pokemonOffset = 7,
         .trainerScale = 256,
@@ -1041,10 +1113,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 4,
         .weight = 41,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "It faces strong opponents with great\n"
-            "courage. Because it doesn't yelp, it's\n"
-            "extremely popular with Trainers who live\n"
-            "in apartment buildings."),
+            "courage. But, when at a disadvantage in\n"
+            "a fight, this intelligent Pokémon flees."
+        #else
+            "The long hair around its face provides an\n"
+            "amazing radar that lets it sense subtle\n"
+            "changes in its surroundings."
+        #endif
+        ),
         .pokemonScale = 491,
         .pokemonOffset = 15,
         .trainerScale = 256,
@@ -1114,10 +1192,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 9,
         .weight = 147,
         .description = COMPOUND_STRING(
-            "Its dense black fur grows continuously.\n"
-            "The high cost of keeping its hard fur\n"
-            "properly groomed makes this a\n"
-            "troublesome Pokémon to train."),
+        #ifdef FIRERED
+            "It has black, cape-like fur that is\n"
+            "very hard and decreases the amount\n"
+            "of damage it receives."
+        #else
+            "It loyally follows its Trainer's orders.\n"
+            "For ages, they have helped Trainers\n"
+            "raise Pokémon."
+        #endif
+        ),
         .pokemonScale = 338,
         .pokemonOffset = 9,
         .trainerScale = 256,
@@ -1171,7 +1255,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .catchRate = 45,
     #if P_UPDATED_EXP_YIELDS >= GEN_8
         .expYield = 250,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_7
+    #elif P_UPDATED_EXP_YIELDS >= GEN_6
         .expYield = 225,
     #else
         .expYield = 221,
@@ -1191,10 +1275,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 12,
         .weight = 610,
         .description = COMPOUND_STRING(
-            "Intelligent, good-natured, and valiant,\n"
-            "there could be no concern that it would\n"
-            "ever attack people. Some parents even\n"
-            "trust it to babysit."),
+        #ifdef FIRERED
+            "It rescues people stranded by blizzards\n"
+            "in the mountains.\n"
+            "Its shaggy fur shields it from the cold."
+        #else
+            "This extremely wise Pokémon excels at\n"
+            "rescuing people stranded at sea or\n"
+            "in the mountains."
+        #endif
+        ),
         .pokemonScale = 282,
         .pokemonOffset = 4,
         .trainerScale = 256,
@@ -1262,10 +1352,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 4,
         .weight = 101,
         .description = COMPOUND_STRING(
-            "Their deceptively cute act is the\n"
-            "perfect ruse. They steal from people for\n"
-            "fun, but their victims can't help but\n"
-            "forgive them."),
+        #ifdef FIRERED
+            "They steal from people for fun, but their\n"
+            "victims can't help but forgive them.\n"
+            "Their deceptively cute act is perfect."
+        #else
+            "Its cute act is a ruse. When victims let\n"
+            "down their guard, they find their items\n"
+            "taken. It attacks with sharp claws."
+        #endif
+        ),
         .pokemonScale = 491,
         .pokemonOffset = 15,
         .trainerScale = 256,
@@ -1331,10 +1427,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 11,
         .weight = 375,
         .description = COMPOUND_STRING(
-            "Many Trainers are drawn to their\n"
-            "beautiful form and fur. These Pokémon\n"
-            "vanish and appear unexpectedly.\n"
-            "They run silently in the night."),
+        #ifdef FIRERED 
+            "These Pokémon vanish and appear\n"
+            "unexpectedly. Many Trainers are drawn\n"
+            "to their beautiful form and fur."
+        #else
+            "Stealthily, it sneaks up on its target,\n"
+            "striking from behind before its victim\n"
+            "has a chance to react."
+        #endif
+        ),
         .pokemonScale = 320,
         .pokemonOffset = 7,
         .trainerScale = 256,
@@ -1400,10 +1502,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 105,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "This Pokémon dwells deep in the forest.\n"
-            "It's good at finding berries and gathers\n"
-            "them from all over. It's kind enough to\n"
-            "share them with friends."),
+            "Eating a leaf from its head whisks\n"
+            "weariness away as if by magic."
+        #else
+            "It shares the leaf on its head with\n"
+            "weary-looking Pokémon. These leaves\n"
+            "are known to relieve stress."
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -1471,10 +1579,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 11,
         .weight = 305,
         .description = COMPOUND_STRING(
-            "Ill tempered, it attacks enemies by\n"
-            "swinging its barbed tail around wildly.\n"
-            "The leaf growing on its head is\n"
-            "very bitter."),
+        #ifdef FIRERED
+            "Ill tempered, it fights by swinging its\n"
+            "barbed tail around wildly. The leaf\n"
+            "growing on its head is very bitter."
+        #else
+            "It attacks enemies with strikes of\n"
+            "its thorn-covered tail.\n"
+            "This Pokémon is wild tempered."
+        #endif
+        ),
         .pokemonScale = 320,
         .pokemonOffset = 7,
         .trainerScale = 256,
@@ -1541,10 +1655,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 110,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "When it is angered, the temperature of\n"
+            "its head tuft reaches 300 degrees Celsius.\n"
+            "It uses its tuft to roast berries."
+        #else
+            "This Pokémon lives in caves in volcanoes.\n"
             "The fire within the tuft on its head can\n"
-            "reach up to 600ºF. Very intelligent,\n"
-            "it roasts berries before eating them.\n"
-            "It likes to help people."),
+            "reach 300 degrees Celsius."
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -1610,10 +1730,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 10,
         .weight = 280,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "It loves sweets because they become\n"
-            "energy for the fire burning inside its\n"
-            "body. It scatters embers from its head\n"
-            "and tail to sear its opponents."),
+            "energy for the fire burning inside\n"
+            "its body."
+        #else
+            "A flame burns inside its body.\n"
+            "It scatters embers from its head\n"
+            "and tail to sear its opponents."
+        #endif
+        ),
         .pokemonScale = 305,
         .pokemonOffset = 7,
         .trainerScale = 257,
@@ -1681,10 +1807,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 135,
         .description = COMPOUND_STRING(
-            "The water stored inside the tuft of its\n"
-            "head is rich in nutrients. It waters\n"
-            "plants using its tail, plants that\n"
-            "receive its water grow large."),
+        #ifdef FIRERED
+            "The water stored inside the tuft on\n"
+            "its head is full of nutrients.\n"
+            "Plants that receive its water grow large."
+        #else
+            "It does not thrive in dry environments.\n"
+            "It keeps itself damp by shooting water\n"
+            "stored in its head tuft from its tail."
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -1750,10 +1882,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 10,
         .weight = 290,
         .description = COMPOUND_STRING(
-            "It can shoot highly-pressurised water\n"
-            "from its tail with enough power to\n"
-            "break through a solid concrete wall.\n"
-            "It prefers places with clean water."),
+        #ifdef FIRERED
+            "The tuft on its head holds water. When\n"
+            "the level runs low, it replenishes the\n"
+            "tuft by siphoning up water with its tail."
+        #else
+            "The high-pressure water expelled from\n"
+            "its tail is so powerful, it can destroy\n"
+            "a concrete wall."
+        #endif
+        ),
         .pokemonScale = 305,
         .pokemonOffset = 7,
         .trainerScale = 257,
@@ -1818,10 +1956,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 233,
         .description = COMPOUND_STRING(
-            "This Pokémon appears before people\n"
-            "and Pokémon who are having nightmares\n"
-            "and eats those dreams. Munna always\n"
-            "float in the air. "),
+        #ifdef FIRERED
+            "Munna always float in the air.\n"
+            "People whose dreams are eaten by them\n"
+            "forget what the dreams had been about."
+        #else
+            "It eats the dreams of people and Pokémon.\n"
+            "When it eats a pleasant dream, it expels\n"
+            "pink-colored mist."
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 15,
         .trainerScale = 256,
@@ -1893,10 +2037,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 11,
         .weight = 605,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "The mist emanating from their foreheads\n"
             "is packed with the dreams of people and\n"
-            "Pokémon. It changes into different colors\n"
-            "depending on the dream that was eaten."),
+            "Pokémon."
+        #else
+            "With the mist from its forehead,\n"
+            "it can create shapes of things from\n"
+            "dreams it has eaten."
+        #endif
+        ),
         .pokemonScale = 320,
         .pokemonOffset = 7,
         .trainerScale = 256,
@@ -1965,10 +2115,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 3,
         .weight = 21,
         .description = COMPOUND_STRING(
-            "This very forgetful Pokémon will wait for\n"
-            "a new order from its Trainer even though\n"
-            "it already has one. Flocks often gather\n"
-            "in parks and plazas."),
+        #ifdef FIRERED
+            "Each follows its Trainer's orders as\n"
+            "best it can, but they sometimes fail\n"
+            "to understand complicated commands."
+        #else
+            "These Pokémon live in cities. They are\n"
+            "accustomed to people. Flocks often gather\n"
+            "in parks and plazas."
+        #endif
+        ),
         .pokemonScale = 530,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -2002,6 +2158,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_Pidove,
             gShinyOverworldPalette_Pidove
         )
+        .isSkyBattleBanned = B_SKY_BATTLE_STRICT_ELIGIBILITY,
         .levelUpLearnset = sPidoveLevelUpLearnset,
         .teachableLearnset = sPidoveTeachableLearnset,
         .eggMoveLearnset = sPidoveEggMoveLearnset,
@@ -2034,10 +2191,15 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 150,
         .description = COMPOUND_STRING(
-            "No matter where in the world it goes,\n"
-            "it knows where its nest is, so it can\n"
-            "always return to its Trainer's location\n"
-            "regardless of the distance."),
+        #ifdef FIRERED
+            "It can return to its Trainer's location\n"
+            "regardless of the distance separating them."
+        #else
+            "Many people believe that, deep in the\n"
+            "forest where Tranquill live, there is\n"
+            "a peaceful place where there is no war."
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -2088,7 +2250,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .catchRate = 45,
     #if P_UPDATED_EXP_YIELDS >= GEN_8
         .expYield = 244,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_7
+    #elif P_UPDATED_EXP_YIELDS >= GEN_6
         .expYield = 220,
     #else
         .expYield = 215,
@@ -2108,10 +2270,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 12,
         .weight = 290,
         .description = COMPOUND_STRING(
-            "Males have plumage on their heads.\n"
-            "The females' flying abilities surpass\n"
-            "those of the males. They will only let\n"
-            "themselves feel close to their Trainers."),
+        #ifdef FIRERED
+            "Males swing their head plumage to\n"
+            "threaten opponents. The females' flying\n"
+            "abilities surpass those of the males."
+        #else
+            "Males have plumage on their heads. They\n"
+            "will never let themselves feel close\n"
+            "to anyone other than their Trainers."
+        #endif
+        ),
         .pokemonScale = 282,
         .pokemonOffset = 4,
         .trainerScale = 256,
@@ -2196,10 +2364,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 8,
         .weight = 298,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Its mane shines when it discharges\n"
-            "electricity. They use the frequency and\n"
-            "rhythm of these flashes to communicate\n"
-            "with one another."),
+            "electricity. They use their flashing \n"
+            "manes to communicate with one another."
+        #else
+            "When thunderclouds cover the sky, it\n"
+            "will appear. It can catch lightning with\n"
+            "its mane and store the electricity."
+        #endif
+        ),
         .pokemonScale = 366,
         .pokemonOffset = 8,
         .trainerScale = 257,
@@ -2268,10 +2442,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 16,
         .weight = 795,
         .description = COMPOUND_STRING(
-            "When Zebstrika run at full speed, the\n"
-            "sound of thunder reverberates. It is\n"
-            "dangerous when it's angry as it shoots\n"
-            "lightning from its mane in all directions."),
+        #ifdef FIRERED
+            "They have lightning-like movements.\n"
+            "When Zebstrika run at full speed,\n"
+            "the sound of thunder reverberates."
+        #else
+            "This ill-tempered Pokémon is dangerous\n"
+            "because when it's angry, it shoots\n"
+            "lightning from its mane in all directions."
+        #endif
+        ),
         .pokemonScale = 259,
         .pokemonOffset = 1,
         .trainerScale = 296,
@@ -2343,10 +2523,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 4,
         .weight = 180,
         .description = COMPOUND_STRING(
-            "The hexagonal cavity is its ear.\n"
-            "It walks in the direction of sounds it\n"
-            "hears, but if the sounds cease, it panics\n"
-            "and topples over."),
+        #ifdef FIRERED
+            "Its ear is hexagonal in shape.\n"
+            "Compressed underground, its body\n"
+            "is as hard as steel."
+        #else
+            "They were discovered a hundred years\n"
+            "ago in an earthquake fissure.\n"
+            "Inside each one is an energy core."
+        #endif
+        ),
         .pokemonScale = 491,
         .pokemonOffset = 16,
         .trainerScale = 256,
@@ -2419,10 +2605,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 9,
         .weight = 1020,
         .description = COMPOUND_STRING(
-            "Its orange crystal is a mass of energy.\n"
-            "Just one crystal fragment would provide\n"
-            "enough fuel for a hundred dump trucks.\n"
-            "When it is healthy, its core sticks out."),
+        #ifdef FIRERED
+            "When it overflows with power, the orange\n"
+            "crystal on its body glows.\n"
+            "It looks for underground water in caves."
+        #else
+            "Because its energy was too great to be\n"
+            "contained, the energy leaked and formed\n"
+            "orange crystals."
+        #endif
+        ),
         .pokemonScale = 338,
         .pokemonOffset = 8,
         .trainerScale = 256,
@@ -2477,7 +2669,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .catchRate = 45,
     #if P_UPDATED_EXP_YIELDS >= GEN_8
         .expYield = 258,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_7
+    #elif P_UPDATED_EXP_YIELDS >= GEN_6
         .expYield = 232,
     #else
         .expYield = 227,
@@ -2503,10 +2695,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 17,
         .weight = 2600,
         .description = COMPOUND_STRING(
-            "The blasts of energy it makes from\n"
-            "sunbeams have terrifying power.\n"
-            "However, it's not able to fire its blasts\n"
-            "at night or on rainy days."),
+        #ifdef FIRERED
+            "Compressing the energy from its internal\n"
+            "core lets it fire off an attack capable\n"
+            "of blowing away a mountain."
+        #else
+            "The solar energy absorbed by its body's\n"
+            "orange crystals is magnified internally\n"
+            "and fired from its mouth."
+        #endif
+        ),
         .pokemonScale = 259,
         .pokemonOffset = 0,
         .trainerScale = 290,
@@ -2572,10 +2770,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 4,
         .weight = 21,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Its habitat is dark forests and caves.\n"
+            "It emits ultrasonic waves from its nose\n"
+            "to learn about its surroundings."
+        #else
             "Suction from its nostrils enables it\n"
             "to stick to cave walls during sleep.\n"
-            "It leaves a heart-shaped mark behind."),
+            "It leaves a heart-shaped mark behind."
+        #endif
+        ),
         .pokemonScale = 491,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -2658,10 +2862,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 9,
         .weight = 105,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "It emits sound waves of various\n"
+            "frequencies from its nose, including\n"
+            "some powerful enough to destroy rocks."
+        #else
             "Anyone who comes into contact with\n"
             "the ultrasonic waves emitted by a\n"
             "courting male experiences a positive\n"
-            "mood shift."),
+            "mood shift."
+        #endif
+        ),
         .pokemonScale = 338,
         .pokemonOffset = 8,
         .trainerScale = 256,
@@ -2732,10 +2943,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 3,
         .weight = 85,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "It can dig through the ground at a\n"
-            "speed of 30 mph by spinning its body.\n"
-            "It could give a car running aboveground\n"
-            "a good race."),
+            "speed of 50 km/h. It could give a car\n"
+            "running aboveground a good race.\n"
+        #else
+            "It makes its way swiftly through the\n"
+            "soil by putting both claws together\n"
+            "and rotating at high speed."
+        #endif
+        ),
         .pokemonScale = 530,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -2804,10 +3021,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 7,
         .weight = 404,
         .description = COMPOUND_STRING(
-            "More than 300 feet below the surface,\n"
+        #ifdef FIRERED
+            "It can help in tunnel construction.\n"
+            "Its drill has evolved into steel strong\n"
+            "enough to bore through iron plates."
+        #else
+            "More than 100 meters below the surface,\n"
             "they build mazelike nests. Their activity\n"
-            "can be destructive to subway tunnels,\n"
-            "but it can also help with construction."),
+            "can be destructive to subway tunnels."
+        #endif
+        ),
         .pokemonScale = 365,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -2870,52 +3093,44 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = TRUE,
         .speciesName = _("Excadrill"),
-        .cryId = CRY_EXCADRILL, // CRY_EXCADRILL_MEGA,
+    #if P_MODIFIED_MEGA_CRIES
+        .cryId = CRY_EXCADRILL_MEGA,
+    #else
+        .cryId = CRY_EXCADRILL,
+    #endif // P_MODIFIED_MEGA_CRIES
         .natDexNum = NATIONAL_DEX_EXCADRILL,
         .categoryName = _("Subterrene"),
         .height = 9,
         .weight = 600,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "If this Pokémon brings its arms and\n"
             "head together to form a streamlined\n"
             "shape and spins at high speeds,\n"
-            "it can destroy anything."),
-        .frontPic = gMonFrontPic_CircledQuestionMark,
-        .frontPicSize = MON_COORDS_SIZE(40, 40),
-        .frontPicYOffset = 12,
-        .frontAnimFrames = sAnims_TwoFramePlaceHolder,
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_CircledQuestionMark,
-        .backPicSize = MON_COORDS_SIZE(40, 40),
-        .backPicYOffset = 12,
-        .backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_CircledQuestionMark,
-        .shinyPalette = gMonShinyPalette_CircledQuestionMark,
-        .iconSprite = gMonIcon_QuestionMark,
-        .iconPalIndex = 0,
+            "it can destroy anything."
+        #else
+            "If this Pokémon brings its arms and\n"
+            "head together to form a streamlined\n"
+            "shape and spins at high speeds,\n"
+            "it can destroy anything."
+        #endif
+        ),
+        //.frontPic = gMonFrontPic_CircledQuestionMark,
+        //.frontPicSize = MON_COORDS_SIZE(40, 40),
+        //.frontPicYOffset = 12,
+        //.frontAnimFrames = sAnims_TwoFramePlaceHolder,
+        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        //.backPic = gMonBackPic_CircledQuestionMark,
+        //.backPicSize = MON_COORDS_SIZE(40, 40),
+        //.backPicYOffset = 12,
+        //.backAnimId = BACK_ANIM_NONE,
+        //.palette = gMonPalette_CircledQuestionMark,
+        //.shinyPalette = gMonShinyPalette_CircledQuestionMark,
+        //.iconSprite = gMonIcon_QuestionMark,
+        //.iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        FOOTPRINT(QuestionMark)
-        SHADOW(-1, 0, SHADOW_SIZE_M)
-    #if OW_BATTLE_ONLY_FORMS
-        .overworldData = {
-            .tileTag = TAG_NONE,
-            .paletteTag = OBJ_EVENT_PAL_TAG_SUBSTITUTE,
-            .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
-            .size = 512,
-            .width = 32,
-            .height = 32,
-            .paletteSlot = PALSLOT_NPC_1,
-            .shadowSize = SHADOW_SIZE_M,
-            .inanimate = FALSE,
-            .compressed = COMP,
-            .tracks = TRACKS_FOOT,
-            .oam = &gObjectEventBaseOam_32x32,
-            .subspriteTables = sOamTables_32x32,
-            .anims = sAnimTable_Following,
-            .images = sPicTable_Substitute,
-            .affineAnims = gDummySpriteAffineAnimTable,
-        },
-    #endif //OW_BATTLE_ONLY_FORMS
+        FOOTPRINT(Excadrill)
+        //SHADOW(-1, 0, SHADOW_SIZE_M)
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sExcadrillLevelUpLearnset,
         .teachableLearnset = sExcadrillTeachableLearnset,
@@ -2954,10 +3169,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 11,
         .weight = 310,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "It touches others with the feelers on\n"
+            "its ears, using the sound of their\n"
+            "heartbeats to tell how they are feeling."
+        #else
             "Its auditory sense is astounding.\n"
-            "Using the feelers on its ears, it can tell\n"
-            "how someone is feeling or when an egg\n"
-            "might hatch."),
+            "It has a radarlike ability to understand\n"
+            "its surroundings through slight sounds."
+        #endif
+        ),
         .pokemonScale = 320,
         .pokemonOffset = 7,
         .trainerScale = 256,
@@ -3021,16 +3242,26 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .abilities = { ABILITY_HEALER, ABILITY_HEALER, ABILITY_HEALER },
         .bodyColor = BODY_COLOR_WHITE,
         .speciesName = _("Audino"),
+    #if P_MODIFIED_MEGA_CRIES
         .cryId = CRY_AUDINO_MEGA,
+    #else
+        .cryId = CRY_AUDINO,
+    #endif // P_MODIFIED_MEGA_CRIES
         .natDexNum = NATIONAL_DEX_AUDINO,
         .categoryName = _("Hearing"),
         .height = 15,
         .weight = 320,
         .description = COMPOUND_STRING(
-            "Mega Audino emits a soothing pulse from\n"
-            "its body that reduces hostility in others.\n"
-            "Anything that comes into contact with its\n"
-            "second feelers will fall into a deep sleep."),
+        #ifdef FIRERED
+            "Anyone who touches the secondary feelers\n"
+            "that have sprouted from the base of its\n"
+            "throat will fall into a deep sleep."
+        #else
+            "Anyone who touches the secondary feelers\n"
+            "that have sprouted from the base of its\n"
+            "throat will fall into a deep sleep."
+        #endif
+        ),
         .pokemonScale = 320,
         .pokemonOffset = 7,
         .trainerScale = 256,
@@ -3099,10 +3330,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 125,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "It fights by swinging a piece of lumber\n"
+            "around. It is close to evolving when it\n"
+            "can handle the lumber without difficulty."
+        #else
             "These Pokémon appear at building\n"
             "sites and help out with construction.\n"
             "They always carry squared logs.\n"
-            "As they grow, they carry bigger logs."),
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 14,
         .trainerScale = 256,
@@ -3168,10 +3405,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 12,
         .weight = 400,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "This Pokémon is so muscular and strongly\n"
+            "built that even a group of wrestlers\n"
+            "could not make it budge an inch."
+        #else
             "They strengthen their bodies by carrying\n"
-            "steel beams. This Pokémon is so muscular\n"
-            "and strongly built that even a group of\n"
-            "wrestlers could not make it budge an inch."),
+            "steel beams. They show off their big\n"
+            "muscles to their friends."
+        #endif
+        ),
         .pokemonScale = 282,
         .pokemonOffset = 3,
         .trainerScale = 256,
@@ -3241,10 +3484,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 14,
         .weight = 870,
         .description = COMPOUND_STRING(
-            "They use concrete pillars as walking\n"
-            "canes. Rather than rely solely on force,\n"
-            "they master moves that utilize the\n"
-            "centrifugal force of spinning concrete."),
+        #ifdef FIRERED
+            "It is thought that Conkeldurr taught\n"
+            "humans how to make concrete more than\n"
+            "2,000 years ago."
+        #else
+            "They use concrete pillars as walking canes.\n"
+            "They know moves that enable them to swing\n"
+            "the pillars freely in battle."
+        #endif
+        ),
         .pokemonScale = 265,
         .pokemonOffset = 3,
         .trainerScale = 262,
@@ -3309,10 +3558,15 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 5,
         .weight = 45,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "They warn others of danger by vibrating\n"
+            "their cheeks to create a high-pitched sound."
+        #else
             "By vibrating its cheeks, it emits sound\n"
             "waves imperceptible to humans. It uses\n"
-            "the rhythm of these sounds to talk and\n"
-            "warns others of danger."),
+            "the rhythm of these sounds to talk."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 15,
         .trainerScale = 256,
@@ -3377,10 +3631,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 8,
         .weight = 170,
         .description = COMPOUND_STRING(
-            "It lives in the water and on land.\n"
+        #ifdef FIRERED
             "When they vibrate the bumps on their\n"
             "heads, they can make waves in water\n"
-            "or earthquake-like vibrations on land."),
+            "or earthquake-like vibrations on land."
+        #else
+            "It lives in the water and on land.\n"
+            "It uses its long, sticky tongue\n"
+            "to capture prey."
+        #endif
+        ),
         .pokemonScale = 366,
         .pokemonOffset = 10,
         .trainerScale = 257,
@@ -3433,7 +3693,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .catchRate = 45,
     #if P_UPDATED_EXP_YIELDS >= GEN_8
         .expYield = 255,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_7
+    #elif P_UPDATED_EXP_YIELDS >= GEN_6
         .expYield = 229,
     #else
         .expYield = 225,
@@ -3453,10 +3713,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 15,
         .weight = 620,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "They shoot paralyzing liquid from\n"
+            "their head bumps. They use vibration\n"
+            "to hurt their opponents."
+        #else
             "It increases the power of its punches\n"
             "by vibrating the bumps on its fists.\n"
-            "They can also shoot paralyzing liquid\n"
-            "from their head bumps."),
+            "It can turn a boulder to rubble with\n"
+            "one punch."
+        #endif
+        ),
         .pokemonScale = 268,
         .pokemonOffset = 2,
         .trainerScale = 271,
@@ -3527,10 +3794,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 13,
         .weight = 555,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "When it tightens its belt, it becomes\n"
             "stronger. Wild Throh use vines to weave\n"
-            "their own belts. It changes belts as it\n"
-            "gets more powerful."),
+            "their own belts."
+        #else
+            "When they encounter foes bigger than\n"
+            "themselves, they try to throw them.\n"
+            "They always travel in packs of five."
+        #endif
+        ),
         .pokemonScale = 272,
         .pokemonOffset = 7,
         .trainerScale = 256,
@@ -3599,10 +3872,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 14,
         .weight = 510,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "The sound of Sawk punching boulders\n"
-            "and trees can be heard all the way from\n"
-            "the mountains where they train.\n"
-            "Disturbing their training angers them."),
+            "and trees can be heard all the way\n"
+            "from the mountains where they train."
+        #else
+            "Tying their belts gets them pumped and\n"
+            "makes their punches more destructive.\n"
+            "Disturbing their training angers them."
+        #endif
+        ),
         .pokemonScale = 265,
         .pokemonOffset = 4,
         .trainerScale = 262,
@@ -3668,10 +3947,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 3,
         .weight = 25,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "Leavanny dress it in clothes they made\n"
+            "for it when it hatched. It hides its\n"
+            "head in its hood while it is sleeping."
+        #else
+            "This Pokémon makes clothes for itself.\n"
             "It chews up leaves and sews them with\n"
-            "sticky thread extruded from its mouth.\n"
-            "Since this Pokémon makes its own clothes,\n"
-            "it is a mascot for fashion designers."),
+            "sticky thread extruded from its mouth."
+        #endif
+        ),
         .pokemonScale = 530,
         .pokemonOffset = 15,
         .trainerScale = 256,
@@ -3740,10 +4025,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 5,
         .weight = 73,
         .description = COMPOUND_STRING(
-            "Forests where Swadloon live have\n"
-            "superb foliage because the nutrients\n"
-            "they make from fallen leaves nourish\n"
-            "the plant life."),
+        #ifdef FIRERED
+            "Forests where Swadloon live have superb\n"
+            "foliage because the nutrients they make\n"
+            "from fallen leaves nourish the plant life."
+        #else
+            "It protects itself from the cold by\n"
+            "wrapping up in leaves. It stays on the\n"
+            "move, eating leaves in forests."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 15,
         .trainerScale = 256,
@@ -3795,7 +4086,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .catchRate = 45,
     #if P_UPDATED_EXP_YIELDS >= GEN_8
         .expYield = 250,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_7
+    #elif P_UPDATED_EXP_YIELDS >= GEN_6
         .expYield = 225,
     #else
         .expYield = 221,
@@ -3816,10 +4107,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 12,
         .weight = 205,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "Upon finding a small Pokémon, it weaves\n"
+            "clothing for it from leaves, using the\n"
+            "cutters on its arms and sticky silk."
+        #else
             "It keeps its eggs warm with heat from\n"
-            "fermenting leaves. It also uses leaves to\n"
-            "weave warm wrappings for Sewaddle by\n"
-            "using the silk secreted from its mouth."),
+            "fermenting leaves. It also uses leaves\n"
+            "to weave warm wrappings for Sewaddle."
+        #endif
+        ),
         .pokemonScale = 282,
         .pokemonOffset = 3,
         .trainerScale = 256,
@@ -3890,10 +4187,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 4,
         .weight = 53,
         .description = COMPOUND_STRING(
-            "Using the feelers on its head and tail,\n"
-            "it picks up vibrations in the air to\n"
-            "determine its prey's location and state.\n"
-            "It is brutally aggressive."),
+        #ifdef FIRERED
+            "Its bite injects a potent poison,\n"
+            "enough to paralyze large bird Pokémon\n"
+            "that try to prey on it."
+        #else
+            "It discovers what is going on around it by\n"
+            "using the feelers on its head and tail.\n"
+            "It is brutally aggressive."
+        #endif
+        ),
         .pokemonScale = 491,
         .pokemonOffset = 16,
         .trainerScale = 256,
@@ -3968,10 +4271,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 12,
         .weight = 585,
         .description = COMPOUND_STRING(
-            "Storing energy for evolution, it sits.\n"
-            "But when attacked, it spins its body at\n"
-            "high speed like a wheel and then\n"
-            "crashes furiously into its opponent."),
+        #ifdef FIRERED
+            "Protected by a hard shell, it spins its\n"
+            "body like a wheel and crashes furiously\n"
+            "into its enemies."
+        #else
+            "It is usually motionless, but when\n"
+            "attacked, it rotates at high speed and\n"
+            "then crashes into its opponent."
+        #endif
+        ),
         .pokemonScale = 282,
         .pokemonOffset = 7,
         .trainerScale = 256,
@@ -4025,7 +4334,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .catchRate = 45,
     #if P_UPDATED_EXP_YIELDS >= GEN_8
         .expYield = 243,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_7
+    #elif P_UPDATED_EXP_YIELDS >= GEN_6
         .expYield = 218,
     #else
         .expYield = 214,
@@ -4050,10 +4359,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 25,
         .weight = 2005,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "With quick movements, it chases down\n"
             "its foes, attacking relentlessly with its\n"
-            "horns until it prevails. Then it finishes\n"
-            "them off with deadly poison."),
+            "horns until it prevails."
+        #else
+            "Highly aggressive, it uses the claws\n"
+            "near its neck to dig into its opponents\n"
+            "and poison them."
+        #endif
+        ),
         .pokemonScale = 257,
         .pokemonOffset = 2,
         .trainerScale = 423,
@@ -4103,13 +4418,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseSpDefense = 99,
         .types = MON_TYPES(TYPE_BUG, TYPE_POISON),
         .catchRate = 45,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
         .expYield = 243,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_7
-        .expYield = 218,
-    #else
-        .expYield = 214,
-    #endif
         .evYield_Speed = 3,
         .itemRare = ITEM_POISON_BARB,
         .genderRatio = PERCENT_FEMALE(50),
@@ -4120,51 +4429,42 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .abilities = { ABILITY_POISON_POINT, ABILITY_SWARM, ABILITY_SPEED_BOOST },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Scolipede"),
-        .cryId = CRY_SCOLIPEDE, // CRY_SCOLIPEDE_MEGA,
+    #if P_MODIFIED_MEGA_CRIES
+        .cryId = CRY_SCOLIPEDE_MEGA,
+    #else
+        .cryId = CRY_SCOLIPEDE,
+    #endif // P_MODIFIED_MEGA_CRIES
         .natDexNum = NATIONAL_DEX_SCOLIPEDE,
         .categoryName = _("Megapede"),
         .height = 32,
         .weight = 2305,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Its deadly venom gives off a faint\n"
             "glow. The venom affects Scolipede's\n"
-            "mind, honing its viciousness."),
-        .frontPic = gMonFrontPic_CircledQuestionMark,
-        .frontPicSize = MON_COORDS_SIZE(40, 40),
-        .frontPicYOffset = 12,
-        .frontAnimFrames = sAnims_TwoFramePlaceHolder,
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_CircledQuestionMark,
-        .backPicSize = MON_COORDS_SIZE(40, 40),
-        .backPicYOffset = 12,
-        .backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_CircledQuestionMark,
-        .shinyPalette = gMonShinyPalette_CircledQuestionMark,
-        .iconSprite = gMonIcon_QuestionMark,
-        .iconPalIndex = 0,
+            "mind, honing its viciousness."
+        #else
+            "Its deadly venom gives off a faint\n"
+            "glow. The venom affects Scolipede's\n"
+            "mind, honing its viciousness."
+        #endif
+        ),
+        //.frontPic = gMonFrontPic_CircledQuestionMark,
+        //.frontPicSize = MON_COORDS_SIZE(40, 40),
+        //.frontPicYOffset = 12,
+        //.frontAnimFrames = sAnims_TwoFramePlaceHolder,
+        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        //.backPic = gMonBackPic_CircledQuestionMark,
+        //.backPicSize = MON_COORDS_SIZE(40, 40),
+        //.backPicYOffset = 12,
+        //.backAnimId = BACK_ANIM_NONE,
+        //.palette = gMonPalette_CircledQuestionMark,
+        //.shinyPalette = gMonShinyPalette_CircledQuestionMark,
+        //.iconSprite = gMonIcon_QuestionMark,
+        //.iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        FOOTPRINT(QuestionMark)
-        SHADOW(-1, 0, SHADOW_SIZE_M)
-    #if OW_BATTLE_ONLY_FORMS
-        .overworldData = {
-            .tileTag = TAG_NONE,
-            .paletteTag = OBJ_EVENT_PAL_TAG_SUBSTITUTE,
-            .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
-            .size = 512,
-            .width = 32,
-            .height = 32,
-            .paletteSlot = PALSLOT_NPC_1,
-            .shadowSize = SHADOW_SIZE_M,
-            .inanimate = FALSE,
-            .compressed = COMP,
-            .tracks = TRACKS_FOOT,
-            .oam = &gObjectEventBaseOam_32x32,
-            .subspriteTables = sOamTables_32x32,
-            .anims = sAnimTable_Following,
-            .images = sPicTable_Substitute,
-            .affineAnims = gDummySpriteAffineAnimTable,
-        },
-    #endif //OW_BATTLE_ONLY_FORMS
+        FOOTPRINT(Scolipede)
+        //SHADOW(-1, 0, SHADOW_SIZE_M)
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sScolipedeLevelUpLearnset,
         .teachableLearnset = sScolipedeTeachableLearnset,
@@ -4175,11 +4475,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
 #endif //P_FAMILY_VENIPEDE
 
 #if P_FAMILY_COTTONEE
-#if P_UPDATED_TYPES >= GEN_6
-    #define COTTONEE_FAMILY_TYPES { TYPE_GRASS, TYPE_FAIRY }
-#else
-    #define COTTONEE_FAMILY_TYPES { TYPE_GRASS, TYPE_GRASS }
-#endif
+#define COTTONEE_FAMILY_TYPE2 (P_UPDATED_TYPES >= GEN_6 ? TYPE_FAIRY : TYPE_GRASS)
 
     [SPECIES_COTTONEE] =
     {
@@ -4189,7 +4485,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseSpeed     = 66,
         .baseSpAttack  = 37,
         .baseSpDefense = 50,
-        .types = COTTONEE_FAMILY_TYPES,
+        .types = MON_TYPES(TYPE_GRASS, COTTONEE_FAMILY_TYPE2),
         .catchRate = 190,
         .expYield = 56,
         .evYield_Speed = 1,
@@ -4208,10 +4504,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 3,
         .weight = 6,
         .description = COMPOUND_STRING(
-            "When it finds others of its kind, they all\n"
-            "stick together. When enough of them\n"
-            "have collected, the mass resembles a\n"
-            "cumulonimbus cloud."),
+        #ifdef FIRERED
+            "When attacked, it escapes by shooting\n"
+            "cotton from its body. The cotton serves\n"
+            "as a decoy to distract the attacker."
+        #else
+            "They go wherever the wind takes them.\n"
+            "On rainy days, their bodies are heavier,\n"
+            "so they take shelter beneath big trees."
+        #endif
+        ),
         .pokemonScale = 530,
         .pokemonOffset = 15,
         .trainerScale = 256,
@@ -4265,7 +4567,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseSpeed     = 116,
         .baseSpAttack  = 77,
         .baseSpDefense = 75,
-        .types = COTTONEE_FAMILY_TYPES,
+        .types = MON_TYPES(TYPE_GRASS, COTTONEE_FAMILY_TYPE2),
         .catchRate = 75,
         .expYield = 168,
         .evYield_Speed = 2,
@@ -4284,10 +4586,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 7,
         .weight = 66,
         .description = COMPOUND_STRING(
-            "It rides on the wind and slips into\n"
-            "people's homes. After it has turned a\n"
-            "room into a cotton-filled mess, it giggles\n"
-            "to itself and takes off."),
+        #ifdef FIRERED
+            "Like the wind, it can slip through any\n"
+            "gap, no matter how small.\n"
+            "It leaves balls of white fluff behind."
+        #else
+            "Riding whirlwinds, they appear.\n"
+            "These Pokémon sneak through gaps into\n"
+            "houses and cause all sorts of mischief."
+        #endif
+        ),
         .pokemonScale = 365,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -4354,10 +4662,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 5,
         .weight = 66,
         .description = COMPOUND_STRING(
-            "By pruning the leaves on its head with\n"
-            "regularity, this Pokémon can be grown\n"
-            "into a fine plump shape. These bitter\n"
-            "leaves refresh those who eat them."),
+        #ifdef FIRERED
+            "The leaves on its head are very bitter.\n"
+            "Eating one of these leaves is known to\n"
+            "refresh a tired body."
+        #else
+            "Since they prefer moist, nutrient-rich\n"
+            "soil, the areas where Petilil live are\n"
+            "known to be good for growing plants."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -4429,10 +4743,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 11,
         .weight = 163,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Even veteran Trainers face a challenge\n"
             "in getting its beautiful flower to bloom.\n"
-            "It withers away if a trainer does not\n"
-            "take good care of it."),
+            "This Pokémon is popular with celebrities."
+        #else
+            "The fragrance of the garland on its head\n"
+            "has a relaxing effect. It withers if a\n"
+            "Trainer does not take good care of it."
+        #endif
+        ),
         .pokemonScale = 320,
         .pokemonOffset = 7,
         .trainerScale = 256,
@@ -4501,10 +4821,18 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 12,
         .weight = 192,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Its well-developed legs are the result of\n"
             "a life spent on mountains covered in deep\n"
             "snow. The scent it exudes from its flower\n"
-            "crown heartens those in proximity."),
+            "crown heartens those in proximity."
+        #else
+            "Its well-developed legs are the result of\n"
+            "a life spent on mountains covered in deep\n"
+            "snow. The scent it exudes from its flower\n"
+            "crown heartens those in proximity."
+        #endif
+        ),
         .pokemonScale = 320,
         .pokemonOffset = 7,
         .trainerScale = 256,
@@ -4570,10 +4898,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 10,
         .weight = 180,
         .description = COMPOUND_STRING(
-            "It used to be a common food source. The\n"
-            "meat of red Basculin is on the fatty side\n"
-            "and it's more popular with the youth.\n"
-            "Its temperament is vicious and aggressive."),
+        #ifdef FIRERED
+            "Red and blue Basculin get along so poorly,\n"
+            "they'll start fighting instantly.\n"
+            "These Pokémon are very hostile."
+        #else
+            "Red and blue Basculin usually do not get\n"
+            "along, but sometimes members of one school\n"
+            "mingle with the other's school."
+        #endif
+        ),
         .pokemonScale = 316,
         .pokemonOffset = 7,
         .trainerScale = 257,
@@ -4637,10 +4971,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 10,
         .weight = 180,
         .description = COMPOUND_STRING(
-            "They form schools with others of the same\n"
-            "color. The greatest foe of a school of blue\n"
-            "Basculin is a school of red Basculin.\n"
-            "Its flavor is light and inoffensive."),
+        #ifdef FIRERED
+            "Even Basculin, which devours everything\n"
+            "it can with its huge jaws, is nothing\n"
+            "more than food to organisms stronger\n"
+            "than itself."
+        #else
+            "Some people call it “the thug of the lake”.\n"
+            "Whether the differences in color are\n"
+            "meaningful is not yet known."
+        #endif
+        ),
         .pokemonScale = 316,
         .pokemonOffset = 7,
         .trainerScale = 257,
@@ -4705,10 +5046,18 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 10,
         .weight = 180,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "They live in frigid seas, forming schools\n"
+            "and sharing food among themselves.\n"
+            "When the time comes, they return to the\n"
+            "river they were born in."
+        #else
             "While this ancient form of Basculin shares\n"
             "a vast array of qualities with other forms,\n"
             "it differs in several respects, including\n"
-            "demeanor, being much gentler than others."),
+            "demeanor, being much gentler than others."
+        #endif
+        ),
         .pokemonScale = 316,
         .pokemonOffset = 7,
         .trainerScale = 257,
@@ -4773,10 +5122,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 30,
         .weight = 1100,
         .description = COMPOUND_STRING(
-            "Clads itself in the souls of comrades that\n"
-            "perished before fulfilling their goals of\n"
-            "journeying upstream. No other species in\n"
-            "all Hisui's rivers is Basculegion's equal."),
+        #ifdef FIRERED
+            "This Pokémon is cloaked in the souls of\n"
+            "its comrades who perished during a\n"
+            "punishing journey to the river of\n"
+            "their birth."
+        #else
+            "It can jump with incredible power.\n"
+            "Parts of its body are tinged red by the\n"
+            "rage of its fallen friends."
+        #endif
+        ),
         .pokemonScale = 275,
         .pokemonOffset = 7,
         .trainerScale = 256,
@@ -4838,9 +5194,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 30,
         .weight = 1100,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "The souls of its comrades cloak its\n"
             "body and propel it effortlessly\n"
-            "through even raging rapids."),
+            "through even raging rapids."
+        #else
+            "It can afflict a target with terrifying\n"
+            "illusions that are under its control.\n"
+            "The deeper the sadness in its friends'\n"
+            "souls, the paler Basculegion becomes."
+        #endif
+        ),
         .pokemonScale = 275,
         .pokemonOffset = 7,
         .trainerScale = 256,
@@ -4906,10 +5270,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 7,
         .weight = 152,
         .description = COMPOUND_STRING(
-            "It conceals itself in the sand and\n"
-            "chomps down on the legs of any prey\n"
-            "that unwarily walk over it. Its favorite\n"
-            "food is Trapinch."),
+        #ifdef FIRERED
+            "They live buried in the sands of the\n"
+            "desert. The sun-warmed sands prevent\n"
+            "their body temperature from dropping."
+        #else
+            "It moves along below the sand's surface,\n"
+            "except for its nose and eyes. A dark\n"
+            "membrane shields its eyes from the sun."
+        #endif
+        ),
         .pokemonScale = 365,
         .pokemonOffset = 14,
         .trainerScale = 256,
@@ -4976,10 +5346,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 10,
         .weight = 334,
         .description = COMPOUND_STRING(
-            "They move in groups of a few individuals.\n"
-            "Thanks to the special membrane covering\n"
-            "its eyes, it can see its surroundings\n"
-            "clearly, even in the dead of night."),
+        #ifdef FIRERED
+            "They live in groups of a few individuals.\n"
+            "Protective membranes shield their eyes\n"
+            "from sandstorms."
+        #else
+            "The special membrane covering its eyes\n"
+            "can sense the heat of objects, so it can\n"
+            "see its surroundings even in darkness."
+        #endif
+        ),
         .pokemonScale = 305,
         .pokemonOffset = 7,
         .trainerScale = 257,
@@ -5029,7 +5405,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .catchRate = 45,
     #if P_UPDATED_EXP_YIELDS >= GEN_8
         .expYield = 260,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_7
+    #elif P_UPDATED_EXP_YIELDS >= GEN_6
         .expYield = 234,
     #else
         .expYield = 229,
@@ -5050,10 +5426,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 15,
         .weight = 963,
         .description = COMPOUND_STRING(
-            "Very violent Pokémon, they never allow\n"
-            "their prey to escape. Their jaws are so\n"
-            "powerful, they can crush the body of\n"
-            "an automobile."),
+        #ifdef FIRERED
+            "They never allow prey to escape.\n"
+            "Their jaws are so powerful, they can\n"
+            "crush the body of an automobile."
+        #else
+            "It can expand the focus of its eyes,\n"
+            "enabling it to see objects in the far\n"
+            "distance as if it were using binoculars."
+        #endif
+        ),
         .pokemonScale = 268,
         .pokemonOffset = 2,
         .trainerScale = 271,
@@ -5121,10 +5503,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 375,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "When its internal fire is burning, it\n"
             "cannot calm down and it runs around.\n"
-            "When the fire diminishes, it pulls its\n"
-            "limbs into its body and falls asleep."),
+            "When the fire diminishes, it falls asleep."
+        #else
+            "Darumaka's droppings are hot, so people\n"
+            "used to put them in their clothes to\n"
+            "keep themselves warm."
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 14,
         .trainerScale = 256,
@@ -5191,10 +5579,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 13,
         .weight = 929,
         .description = COMPOUND_STRING(
-            "When one is injured in a fierce battle,\n"
-            "it transforms into a stone statue.\n"
-            "Then it meditates and sharpens its\n"
-            "mind and fights on mentally."),
+        #ifdef FIRERED
+            "Its internal fire burns at 1,400 degrees\n"
+            "Celsius, making enough power that it can\n"
+            "destroy a dump truck with one punch."
+        #else
+            "This Pokémon's power level rises along\n"
+            "with the temperature of its fire, which\n"
+            "can reach 1,400 degrees Celsius."
+        #endif
+        ),
         .pokemonScale = 272,
         .pokemonOffset = 3,
         .trainerScale = 256,
@@ -5245,7 +5639,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseSpDefense = 105,
         .types = MON_TYPES(TYPE_FIRE, TYPE_PSYCHIC),
         .catchRate = 60,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_7) ? 189 : 168,
+        .expYield = 189,
         .evYield_SpAttack = 2,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
@@ -5261,9 +5655,15 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 13,
         .weight = 929,
         .description = COMPOUND_STRING(
-            "When wounded, it stops moving. It\n"
-            "goes as still as stone to meditate,\n"
-            "sharpening its mind and spirit."),
+        #ifdef FIRERED
+            "When weakened in battle, it transforms\n"
+            "into a stone statue. Then it sharpens\n"
+            "its mind and fights on mentally."
+        #else
+            "Through meditation, it calms its raging\n"
+            "spirit and hones its psychic powers."
+        #endif
+        ),
         .pokemonScale = 272,
         .pokemonOffset = 3,
         .trainerScale = 256,
@@ -5320,10 +5720,18 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 7,
         .weight = 400,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "It lived in snowy areas for so long\n"
+            "that its fire sac cooled off and atrophied.\n"
+            "It now has an organ that generates\n"
+            "cold instead."
+        #else
             "The colder they get, the more\n"
             "energetic they are. They freeze their\n"
             "breath to make snowballs, using them\n"
-            "as ammo for playful snowball fights."),
+            "as ammo for playful snowball fights."
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 14,
         .trainerScale = 256,
@@ -5387,10 +5795,18 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 17,
         .weight = 1200,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "On days when blizzards blow\n"
             "through, it comes down to where people\n"
             "live. It stashes food in the snowball on\n"
-            "its head, taking it home for later."),
+            "its head, taking it home for later."
+        #else
+            "Though it has a gentle disposition, it's\n"
+            "also very strong. It will quickly freeze\n"
+            "the snowball on its head before going\n"
+            "for a headbutt."
+        #endif
+        ),
         .pokemonScale = 272,
         .pokemonOffset = 3,
         .trainerScale = 256,
@@ -5437,7 +5853,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseSpDefense = 55,
         .types = MON_TYPES(TYPE_ICE, TYPE_FIRE),
         .catchRate = 60,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_7) ? 189 : 168,
+        .expYield = 189,
         .evYield_SpAttack = 2,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
@@ -5446,6 +5862,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
         .abilities = { ABILITY_GORILLA_TACTICS, ABILITY_NONE, ABILITY_ZEN_MODE },
         .bodyColor = BODY_COLOR_WHITE,
+        .noFlip = TRUE,
         .speciesName = _("Darmanitan"),
         .cryId = CRY_DARMANITAN,
         .natDexNum = NATIONAL_DEX_DARMANITAN,
@@ -5453,10 +5870,18 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 17,
         .weight = 1200,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "Anger has reignited its atrophied\n"
+            "flame sac. This Pokémon spews fire\n"
+            "everywhere as it rampages\n"
+            "indiscriminately."
+        #else
             "Darmanitan takes this form when\n"
             "enraged. It won't stop spewing flames\n"
             "until its rage has settled, even if\n"
-            "its body starts to melt."),
+            "its body starts to melt."
+        #endif
+        ),
         .pokemonScale = 272,
         .pokemonOffset = 3,
         .trainerScale = 256,
@@ -5514,10 +5939,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 10,
         .weight = 280,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "It uses an up-tempo song and dance to\n"
+            "drive away the bird Pokémon that prey\n"
+            "on its flower seeds."
+        #else
             "Arid regions are their habitat.\n"
-            "When it moves rhythmically, it makes a\n"
-            "sound similar to maracas, making the\n"
-            "surprised Pokémon flee."),
+            "They move rhythmically, making a\n"
+            "sound similar to maracas."
+        #endif
+        ),
         .pokemonScale = 305,
         .pokemonOffset = 6,
         .trainerScale = 257,
@@ -5589,10 +6020,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 3,
         .weight = 145,
         .description = COMPOUND_STRING(
-            "It makes a hole in a stone of a suitable\n"
-            "size. If that rock breaks, the Pokémon\n"
-            "remains agitated until it locates\n"
-            "a replacement."),
+        #ifdef FIRERED
+            "This Pokémon can easily melt holes\n"
+            "in hard rocks with a liquid secreted\n"
+            "from its mouth."
+        #else
+            "It makes a hole in a suitable rock.\n"
+            "If that rock breaks, the Pokémon remains\n"
+            "agitated until it locates a replacement."
+        #endif
+        ),
         .pokemonScale = 530,
         .pokemonOffset = 15,
         .trainerScale = 256,
@@ -5665,10 +6102,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 14,
         .weight = 2000,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Competing for territory, Crustle fight\n"
             "viciously. The one whose boulder is\n"
-            "broken is the loser of the battle and\n"
-            "begins to weaken."),
+            "broken is the loser of the battle."
+        #else
+            "It possesses legs of enormous strength,\n"
+            "enabling it to carry heavy slabs for\n"
+            "many days, even when crossing arid land."
+        #endif
+        ),
         .pokemonScale = 265,
         .pokemonOffset = 2,
         .trainerScale = 262,
@@ -5738,10 +6181,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 118,
         .description = COMPOUND_STRING(
-            "Its skin has a rubbery elasticity, so it\n"
-            "can reduce damage by defensively\n"
-            "pulling its skin up to its neck.\n"
-            "Its skull is massively thick."),
+        #ifdef FIRERED
+            "Its skin has a rubbery elasticity,\n"
+            "so it can reduce damage by defensively\n"
+            "pulling its skin up to its neck."
+        #else
+            "It immediately headbutts anyone\n"
+            "that makes eye contact with it.\n"
+            "Its skull is massively thick."
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 14,
         .trainerScale = 256,
@@ -5809,10 +6258,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 11,
         .weight = 300,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Groups of them beat up anything that\n"
-            "enters their territory. The one with the\n"
-            "biggest crest is the group leader, and\n"
-            "is the most respected."),
+            "enters their territory. Each can spit\n"
+            "acidic liquid from its mouth."
+        #else
+            "It can smash concrete blocks with its\n"
+            "kicking attacks. The one with the\n"
+            "biggest crest is the group leader."
+        #endif
+        ),
         .pokemonScale = 320,
         .pokemonOffset = 7,
         .trainerScale = 256,
@@ -5875,52 +6330,44 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .abilities = { ABILITY_SHED_SKIN, ABILITY_MOXIE, ABILITY_INTIMIDATE },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Scrafty"),
+    #if P_MODIFIED_MEGA_CRIES
+        .cryId = CRY_SCRAFTY_MEGA,
+    #else
         .cryId = CRY_SCRAFTY,
+    #endif // P_MODIFIED_MEGA_CRIES
         .natDexNum = NATIONAL_DEX_SCRAFTY,
         .categoryName = _("Hoodlum"),
         .height = 11,
         .weight = 310,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Mega Evolution has caused Scrafty's\n"
             "shed skin to turn white, growing\n"
             "tough and supple. Of course, this\n"
-            "Pokémon is still as feisty as ever."),
-        .frontPic = gMonFrontPic_CircledQuestionMark,
-        .frontPicSize = MON_COORDS_SIZE(40, 40),
-        .frontPicYOffset = 12,
-        .frontAnimFrames = sAnims_TwoFramePlaceHolder,
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_CircledQuestionMark,
-        .backPicSize = MON_COORDS_SIZE(40, 40),
-        .backPicYOffset = 12,
-        .backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_CircledQuestionMark,
-        .shinyPalette = gMonShinyPalette_CircledQuestionMark,
-        .iconSprite = gMonIcon_QuestionMark,
-        .iconPalIndex = 0,
+            "Pokémon is still as feisty as ever."
+        #else
+            "Mega Evolution has caused Scrafty's\n"
+            "shed skin to turn white, growing\n"
+            "tough and supple. Of course, this\n"
+            "Pokémon is still as feisty as ever."
+        #endif
+        ),
+        //.frontPic = gMonFrontPic_CircledQuestionMark,
+        //.frontPicSize = MON_COORDS_SIZE(40, 40),
+        //.frontPicYOffset = 12,
+        //.frontAnimFrames = sAnims_TwoFramePlaceHolder,
+        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        //.backPic = gMonBackPic_CircledQuestionMark,
+        //.backPicSize = MON_COORDS_SIZE(40, 40),
+        //.backPicYOffset = 12,
+        //.backAnimId = BACK_ANIM_NONE,
+        //.palette = gMonPalette_CircledQuestionMark,
+        //.shinyPalette = gMonShinyPalette_CircledQuestionMark,
+        //.iconSprite = gMonIcon_QuestionMark,
+        //.iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        FOOTPRINT(QuestionMark)
-        SHADOW(-1, 0, SHADOW_SIZE_M)
-    #if OW_BATTLE_ONLY_FORMS
-        .overworldData = {
-            .tileTag = TAG_NONE,
-            .paletteTag = OBJ_EVENT_PAL_TAG_SUBSTITUTE,
-            .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
-            .size = 512,
-            .width = 32,
-            .height = 32,
-            .paletteSlot = PALSLOT_NPC_1,
-            .shadowSize = SHADOW_SIZE_M,
-            .inanimate = FALSE,
-            .compressed = COMP,
-            .tracks = TRACKS_FOOT,
-            .oam = &gObjectEventBaseOam_32x32,
-            .subspriteTables = sOamTables_32x32,
-            .anims = sAnimTable_Following,
-            .images = sPicTable_Substitute,
-            .affineAnims = gDummySpriteAffineAnimTable,
-        },
-    #endif //OW_BATTLE_ONLY_FORMS
+        FOOTPRINT(Scrafty)
+        //SHADOW(-1, 0, SHADOW_SIZE_M)
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sScraftyLevelUpLearnset,
         .teachableLearnset = sScraftyTeachableLearnset,
@@ -5957,10 +6404,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 14,
         .weight = 140,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "They never vary the route they fly,\n"
+            "because their memories of guarding\n"
+            "an ancient city remain steadfast."
+        #else
             "The guardians of an ancient city, they\n"
-            "always fly the same route while keeping\n"
-            "watch for invaders. They use their\n"
-            "psychic power to attack enemies."),
+            "use their psychic power to attack enemies\n"
+            "that invade their territory."
+        #endif
+        ),
         .pokemonScale = 265,
         .pokemonOffset = 2,
         .trainerScale = 262,
@@ -6034,10 +6487,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 5,
         .weight = 15,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "Each of them carries a mask that used\n"
+            "to be its face when it was human.\n"
+            "Sometimes they look at it and cry."
+        #else
             "These Pokémon arose from the spirits\n"
             "of people interred in graves in past ages.\n"
-            "Each of them carries a mask that used\n"
-            "to be its face when it was human."),
+            "Each retains memories of its former life."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -6108,10 +6567,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 17,
         .weight = 765,
         .description = COMPOUND_STRING(
-            "Grave robbers who mistake them for\n"
-            "real coffins and get too close end up\n"
-            "trapped inside their bodies. Their bodies\n"
-            "are covered in pure gold."),
+        #ifdef FIRERED
+            "It has been said that they swallow those\n"
+            "who get too close and turn them into mummies.\n"
+            "They like to eat gold nuggets."
+        #else
+            "They pretend to be elaborate coffins\n"
+            "to teach lessons to grave robbers.\n"
+            "Their bodies are covered in pure gold."
+        #endif
+        ),
         .pokemonScale = 259,
         .pokemonOffset = 0,
         .trainerScale = 290,
@@ -6169,6 +6634,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MINERAL, EGG_GROUP_AMORPHOUS),
         .abilities = { ABILITY_WANDERING_SPIRIT, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_BLACK,
+        .noFlip = TRUE,
         .speciesName = _("Yamask"),
         .cryId = CRY_YAMASK,
         .natDexNum = NATIONAL_DEX_YAMASK,
@@ -6176,10 +6642,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 5,
         .weight = 15,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "A clay slab with cursed engravings\n"
             "took possession of a Yamask. The\n"
             "slab is said to be absorbing the\n"
-            "Yamask's dark power."),
+            "Yamask's dark power."
+        #else
+            "It's said that this Pokémon was formed\n"
+            "when an ancient clay tablet was drawn\n"
+            "to a vengeful spirit."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -6237,6 +6710,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MINERAL, EGG_GROUP_AMORPHOUS),
         .abilities = { ABILITY_WANDERING_SPIRIT, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_GRAY,
+        .noFlip = TRUE,
         .speciesName = _("Runerigus"),
         .cryId = CRY_RUNERIGUS,
         .natDexNum = NATIONAL_DEX_RUNERIGUS,
@@ -6244,9 +6718,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 16,
         .weight = 666,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "A powerful curse was woven into an ancient\n"
             "painting. After absorbing the spirit of\n"
-            "a Yamask, the painting began to move."),
+            "a Yamask, the painting began to move."
+        #else
+            "Never touch its shadowlike body, or\n"
+            "you'll be shown the horrific memories\n"
+            "behind the picture carved into it."
+        #endif
+        ),
         .pokemonScale = 259,
         .pokemonOffset = 1,
         .trainerScale = 296,
@@ -6310,10 +6791,15 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 7,
         .weight = 165,
         .description = COMPOUND_STRING(
-            "Reputed to be the ancestor of most\n"
-            "turtle Pokémon, it lived in warm seas\n"
-            "about a hundred million years ago.\n"
-            "It was restored from a fossil."),
+        #ifdef FIRERED
+            "Restored from a fossil, this Pokémon\n"
+            "can dive to depths beyond 1,000 meters."
+        #else
+            "About 100 million years ago, these\n"
+            "Pokémon swam in oceans. It is thought\n"
+            "they also went on land to attack prey."
+        #endif
+        ),
         .pokemonScale = 365,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -6380,10 +6866,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 12,
         .weight = 810,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "They can live both in the ocean and\n"
-            "on land. Incredible jaw strength enables\n"
-            "them to chew up steel beams and rocks\n"
-            "along with their prey."),
+            "on land. A slap from one of them is\n"
+            "enough to open a hole in the bottom\n"
+            "of a tanker."
+        #else
+            "Incredible jaw strength enables them\n"
+            "to chew up steel beams and rocks along\n"
+            "with their prey."
+        #endif
+        ),
         .pokemonScale = 282,
         .pokemonOffset = 4,
         .trainerScale = 256,
@@ -6456,10 +6949,15 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 5,
         .weight = 95,
         .description = COMPOUND_STRING(
-            "Said to be the ancestor of all bird\n"
-            "Pokémon, Archen itself could not actually\n"
-            "fly but moved by hopping from treetop\n"
-            "to treetop."),
+        #ifdef FIRERED
+            "Said to be an ancestor of bird Pokémon,\n"
+            "they were unable to fly and moved about\n"
+            "by hopping from one branch to another."
+        #else
+            "Revived from a fossil, this Pokémon is\n"
+            "to be the ancestor of all bird Pokémon."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -6493,6 +6991,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_Archen,
             gShinyOverworldPalette_Archen
         )
+        .isSkyBattleBanned = B_SKY_BATTLE_STRICT_ELIGIBILITY,
         .levelUpLearnset = sArchenLevelUpLearnset,
         .teachableLearnset = sArchenTeachableLearnset,
         .eggMoveLearnset = sArchenEggMoveLearnset,
@@ -6525,10 +7024,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 14,
         .weight = 320,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "They are intelligent and will cooperate\n"
-            "to catch prey. When one Archeops\n"
-            "had the prey cornered, another would\n"
-            "swoop on it."),
+            "to catch prey. From the ground, they\n"
+            "use a running start to take flight."
+        #else
+            "It runs better than it flies.\n"
+            "It catches prey by running at speeds\n"
+            "comparable to those of an automobile."
+        #endif
+        ),
         .pokemonScale = 265,
         .pokemonOffset = 2,
         .trainerScale = 262,
@@ -6601,10 +7106,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 310,
         .description = COMPOUND_STRING(
-            "It gorges on trash until its stomach\n"
-            "is full. Then it belches toxic gas.\n"
-            "An unlucky whiff of this gas will put\n"
-            "a person in the hospital."),
+        #ifdef FIRERED
+            "Inhaling the gas they belch will\n"
+            "make you sleep for a week.\n"
+            "They prefer unsanitary places."
+        #else
+            "The combination of garbage bags and\n"
+            "industrial waste caused the chemical\n"
+            "reaction that created this Pokémon."
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 14,
         .trainerScale = 256,
@@ -6673,10 +7184,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 19,
         .weight = 1073,
         .description = COMPOUND_STRING(
-            "Beware the poisonous liquid it shoots\n"
-            "from its right arm. If even a little of it\n"
-            "gets on you, you'll experience the full\n"
-            "effects of this unidentified toxin."),
+        #ifdef FIRERED
+            "It clenches opponents with its left arm\n"
+            "and finishes them off with foul-smelling\n"
+            "poison gas belched from its mouth."
+        #else
+            "They absorb garbage and make it part of\n"
+            "their bodies. They shoot a poisonous\n"
+            "liquid from their right-hand fingertips."
+        #endif
+        ),
         .pokemonScale = 256,
         .pokemonOffset = 1,
         .trainerScale = 326,
@@ -6806,10 +7323,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 7,
         .weight = 125,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "It changes into the forms of others to\n"
+            "surprise them. Apparently, it often\n"
+            "transforms into a silent child."
+        #else
             "To protect themselves from danger, they\n"
             "hide their true identities by transforming\n"
-            "into people and Pokémon. Apparently, it\n"
-            "often transforms into a silent child."),
+            "into people and Pokémon."
+        #endif
+        ),
         .pokemonScale = 365,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -6878,10 +7401,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 16,
         .weight = 811,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Bonds between these Pokémon are very\n"
             "strong. It protects the safety of its\n"
-            "pack by tricking its opponents. They\n"
-            "defend their lair with illusory scenery."),
+            "pack by tricking its opponents."
+        #else
+            "Each has the ability to fool a large\n"
+            "group of people simultaneously. They\n"
+            "protect their lair with illusory scenery."
+        #endif
+        ),
         .pokemonScale = 259,
         .pokemonOffset = 1,
         .trainerScale = 296,
@@ -6949,10 +7478,18 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 7,
         .weight = 125,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Derives power from resentment,\n"
             "which rises as energy atop its head and\n"
             "takes on the forms of foes. In this\n"
-            "way, Zorua vents lingering malice."),
+            "way, Zorua vents lingering malice."
+        #else
+            "Derives power from resentment,\n"
+            "which rises as energy atop its head and\n"
+            "takes on the forms of foes. In this\n"
+            "way, Zorua vents lingering malice."
+        #endif
+        ),
         .pokemonScale = 365,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -7008,6 +7545,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
         .abilities = { ABILITY_ILLUSION, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_GRAY,
+        .noFlip = TRUE,
         .speciesName = _("Zoroark"),
         .cryId = CRY_ZOROARK,
         .natDexNum = NATIONAL_DEX_ZOROARK,
@@ -7015,10 +7553,18 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 16,
         .weight = 730,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Heedless of its own safety,\n"
             "Zoroark attacks its nemeses with a bitter\n"
             "energy so intense, it lacerates\n"
-            "Zoroark's own body."),
+            "Zoroark's own body."
+        #else
+            "Heedless of its own safety,\n"
+            "Zoroark attacks its nemeses with a bitter\n"
+            "energy so intense, it lacerates\n"
+            "Zoroark's own body."
+        #endif
+        ),
         .pokemonScale = 259,
         .pokemonOffset = 1,
         .trainerScale = 296,
@@ -7083,10 +7629,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 4,
         .weight = 58,
         .description = COMPOUND_STRING(
-            "These Pokémon prefer a tidy habitat.\n"
+        #ifdef FIRERED
             "They greet one another by rubbing each\n"
             "other with their tails, which are always\n"
-            "kept well groomed and clean."),
+            "kept well groomed and clean."
+        #else
+            "These Pokémon prefer a tidy habitat.\n"
+            "They are always sweeping and dusting,\n"
+            "using their tails as brooms."
+        #endif
+        ),
         .pokemonScale = 491,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -7145,7 +7697,6 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
         .abilities = { ABILITY_CUTE_CHARM, ABILITY_TECHNICIAN, ABILITY_SKILL_LINK },
         .bodyColor = BODY_COLOR_GRAY,
-        .noFlip = TRUE,
         .speciesName = _("Cinccino"),
         .cryId = CRY_CINCCINO,
         .natDexNum = NATIONAL_DEX_CINCCINO,
@@ -7153,10 +7704,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 5,
         .weight = 75,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "Their white fur is coated in a special\n"
+            "oil that makes it easy for them to\n"
+            "deflect attacks."
+        #else
             "Their white fur feels amazing to touch.\n"
-            "Cinccino's body is coated in a special\n"
-            "oil that repels dust and helps it deflect\n"
-            "attacks, such as punches."),
+            "Their fur repels dust and prevents\n"
+            "static electricity from building up."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -7228,10 +7785,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 4,
         .weight = 58,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "Their ribbonlike feelers increase their\n"
+            "psychic power. They are always staring\n"
+            "at something."
+        #else
             "They intently observe both Trainers and\n"
-            "Pokémon. Apparently, Gothita are looking\n"
-            "at something that only they can see. Their\n"
-            "ribbonlike feelers increase their power."),
+            "Pokémon. Apparently, they are looking\n"
+            "at something that only Gothita can see."
+        #endif
+        ),
         .pokemonScale = 491,
         .pokemonOffset = 14,
         .trainerScale = 256,
@@ -7302,10 +7865,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 7,
         .weight = 180,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "They use hypnosis to control people\n"
+            "and Pokémon. Tales of Gothorita leading\n"
+            "people astray are told in every corner."
+        #else
             "Starlight is the source of their power.\n"
-            "They use hypnosis to control people and\n"
-            "Pokémon. Tales of Gothorita leading them\n"
-            "astray are told in every corner."),
+            "At night, they mark star positions by\n"
+            "using psychic power to float stones."
+        #endif
+        ),
         .pokemonScale = 365,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -7376,10 +7945,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 15,
         .weight = 440,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Starry skies thousands of light-years\n"
-            "away are visible in the space distorted by\n"
-            "their intense psychic power. When it learns\n"
-            "its Trainer's life span, it cries in sadness."),
+            "away are visible in the space distorted\n"
+            "by their intense psychic power."
+        #else
+            "They can predict the future from the\n"
+            "placement and movement of the stars.\n"
+            "They can see Trainers' life spans."
+        #endif
+        ),
         .pokemonScale = 268,
         .pokemonOffset = 2,
         .trainerScale = 271,
@@ -7447,10 +8022,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 3,
         .weight = 10,
         .description = COMPOUND_STRING(
-            "Because their bodies are enveloped\n"
-            "in a special liquid, they are fine in any\n"
-            "environment, no matter how severe. They\n"
-            "can use telepathy to talk with others."),
+        #ifdef FIRERED
+            "They drive away attackers by unleashing\n"
+            "psychic power. They can use telepathy\n"
+            "to talk with others."
+        #else   
+            "Because their bodies are enveloped in\n"
+            "a special liquid, they can survive\n"
+            "in any environment."
+        #endif
+        ),
         .pokemonScale = 530,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -7518,10 +8099,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 80,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "Since they have two divided brains,\n"
+            "at times they suddenly try to take\n"
+            "two different actions at once."
+        #else
             "When their brains, now divided in two,\n"
-            "are thinking the same thoughts,\n"
-            "these Pokémon exhibit their maximized\n"
-            "psychic power."),
+            "are thinking the same thoughts, these\n"
+            "Pokémon exhibit their maximum power."
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -7588,10 +8175,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 10,
         .weight = 201,
         .description = COMPOUND_STRING(
-            "They use psychic power to control their\n"
-            "arms, which are made of a special liquid.\n"
+        #ifdef FIRERED
             "When Reuniclus shake hands, a network\n"
-            "forms between their brains."),
+            "forms between their brains, increasing\n"
+            "their psychic power."
+        #else
+            "These remarkably intelligent Pokémon\n"
+            "fight by controlling arms that can\n"
+            "grip with rock-crushing power."
+        #endif
+        ),
         .pokemonScale = 305,
         .pokemonOffset = 7,
         .trainerScale = 257,
@@ -7660,10 +8253,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 5,
         .weight = 55,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "These bird Pokémon are excellent divers.\n"
-            "They are better at swimming than flying,\n"
-            "and they happily eat their favorite food,\n"
-            "peat moss, as they dive underwater."),
+            "They swim around in the water eating\n"
+            "their favorite food--peat moss."
+        #else
+            "When attacked, it uses its feathers\n"
+            "to splash water, escaping under cover\n"
+            "of the spray."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 14,
         .trainerScale = 256,
@@ -7701,6 +8300,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_Ducklett,
             gShinyOverworldPalette_Ducklett
         )
+        .isSkyBattleBanned = B_SKY_BATTLE_STRICT_ELIGIBILITY,
         .levelUpLearnset = sDucklettLevelUpLearnset,
         .teachableLearnset = sDucklettTeachableLearnset,
         .eggMoveLearnset = sDucklettEggMoveLearnset,
@@ -7733,10 +8333,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 13,
         .weight = 242,
         .description = COMPOUND_STRING(
-            "Despite their elegant appearance, they\n"
-            "can flap their wings strongly and fly for\n"
-            "thousands of miles. The one in the middle\n"
-            "is the leader of the flock."),
+        #ifdef FIRERED
+            "Swanna start to dance at dusk.\n"
+            "The one dancing in the middle is\n"
+            "the leader of the flock."
+        #else
+            "It administers sharp, powerful pecks\n"
+            "with its bill. It whips its long neck\n"
+            "to deliver forceful repeated strikes."
+        #endif
+        ),
         .pokemonScale = 272,
         .pokemonOffset = 3,
         .trainerScale = 256,
@@ -7806,10 +8412,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 4,
         .weight = 57,
         .description = COMPOUND_STRING(
-            "The temperature of their breath is -58ºF.\n"
-            "They create snow crystals and make snow\n"
-            "fall in the areas around them. Vanillite is\n"
-            "treasured by households in warm regions."),
+        #ifdef FIRERED
+            "The temperature of their breath is\n"
+            "-50 degrees Celsius. They create\n"
+            "snow crystals and make snow fall\n"
+            "in the areas around them."
+        #else
+            "This Pokémon formed from icicles bathed\n"
+            "in energy from the morning sun.\n"
+            "It sleeps buried in snow."
+        #endif
+        ),
         .pokemonScale = 491,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -7882,10 +8495,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 11,
         .weight = 410,
         .description = COMPOUND_STRING(
-            "Vanillish has existed since the Ice Age.\n"
-            "It controls particles of ice, freezes its\n"
-            "opponents, and then shatters them with\n"
-            "a headbutt."),
+        #ifdef FIRERED
+            "Snowy mountains are this Pokémon's habitat.\n"
+            "During an ancient ice age, they moved to\n"
+            "southern areas."
+        #else
+            "It conceals itself from enemy eyes by\n"
+            "creating many small ice particles and\n"
+            "hiding among them."
+        #endif
+        ),
         .pokemonScale = 320,
         .pokemonOffset = 7,
         .trainerScale = 256,
@@ -7948,6 +8567,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .abilities = { ABILITY_ICE_BODY, ABILITY_NONE, ABILITY_WEAK_ARMOR },
     #endif
         .bodyColor = BODY_COLOR_WHITE,
+        .noFlip = TRUE,
         .speciesName = _("Vanilluxe"),
         .cryId = CRY_VANILLUXE,
         .natDexNum = NATIONAL_DEX_VANILLUXE,
@@ -7955,10 +8575,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 13,
         .weight = 575,
         .description = COMPOUND_STRING(
-            "Each of its two heads has a brain, and\n"
-            "when they are in agreement, it attacks\n"
-            "its enemies by exhaling a violent blizzard.\n"
-            "It makes snow clouds inside its body."),
+        #ifdef FIRERED
+            "Swallowing large amounts of water,\n"
+            "they make snow clouds inside their\n"
+            "bodies and attack their foes with\n"
+            "violent blizzards."
+        #else
+            "If both heads get angry simultaneously,\n"
+            "this Pokémon expels a blizzard, burying\n"
+            "everything in snow."
+        #endif
+        ),
         .pokemonScale = 272,
         .pokemonOffset = 3,
         .trainerScale = 256,
@@ -8024,10 +8651,18 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 195,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "The color and scent of their fur\n"
+            "changes to match the mountain grass.\n"
+            "When they sense hostility, they hide\n"
+            "in the grass."
+        #else
             "Deerling have different scents\n"
-            "depending on the season. In early\n"
-            "spring, these Pokémon give off a\n"
-            "delicate, sweet, and calming scent."),
+            "depending on the season.\n"
+            "In early spring, these Pokémon give off\n"
+            "a delicate, sweet, and calming scent."
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 14,
         .trainerScale = 256,
@@ -8090,10 +8725,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 195,
         .description = COMPOUND_STRING(
-            "To prevent Deerling from entering\n"
-            "their fields, many farmers will have\n"
-            "several Lycanroc stand guard, as\n"
-            "they are its natural enemy."),
+        #ifdef FIRERED
+            "The turning of the seasons changes\n"
+            "the color and scent of this Pokémon's\n"
+            "fur. People use it to mark the seasons."
+        #else
+            "Deerling have different scents\n"
+            "depending on the season. When a\n"
+            "distinct grassy smell starts to waft\n"
+            "from one, you know that summer has begun."
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 14,
         .trainerScale = 256,
@@ -8156,10 +8798,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 195,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "Despite Deerling's adorable appearance,\n"
+            "farmers consider it a nuisance since it\n"
+            "loves plant shoots and will eat them all up."
+        #else
             "Deerling have different scents\n"
-            "depending on the season. In this form,\n"
-            "Deerling have a softly sweet scent\n"
-            "that lingers in the nose."),
+            "depending on the season.\n"
+            "In this form, Deerling have a softly\n"
+            "sweet scent that lingers in the nose."
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 14,
         .trainerScale = 256,
@@ -8222,10 +8871,18 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 195,
         .description = COMPOUND_STRING(
-            "Deerling's scent changes with the\n"
-            "seasons, but when the Pokémon is in\n"
+        #ifdef FIRERED
+            "This Pokémon will playfully headbutt\n"
+            "those it gets along well with.\n"
+            "It has antlers hidden under its flower,\n"
+            "so the headbutts are a little painful."
+        #else
+            "Deerling’s scent changes with the\n"
+            "seasons,but when the Pokémon is in\n"
             "its Winter Form, it has hardly any\n"
-            "scent at all."),
+            "scent at all."
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 14,
         .trainerScale = 256,
@@ -8288,10 +8945,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 19,
         .weight = 925,
         .description = COMPOUND_STRING(
-            "Some people call Sawsbuck the harbingers\n"
-            "of spring because the plants growing on\n"
-            "its horns change according to the season.\n"
-            "The leader possesses magnificent horns."),
+        #ifdef FIRERED
+            "They migrate according to the seasons,\n"
+            "so some people call Sawsbuck the\n"
+            "harbingers of spring."
+        #else
+            "It seems that a Sawsbuck with many flowers\n"
+            "on its antlers will grow at a slightly\n"
+            "slower pace because the flowers absorb the\n"
+            "Pokémon’s nutrients."
+        #endif
+        ),
         .pokemonScale = 256,
         .pokemonOffset = 1,
         .trainerScale = 326,
@@ -8352,10 +9016,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 19,
         .weight = 925,
         .description = COMPOUND_STRING(
-            "The thicker and larger the\n"
-            "branches and leaves on its antlers, the\n"
-            "more majestic the Sawsbuck is thought\n"
-            "to be."),
+        #ifdef FIRERED
+            "They migrate according to the seasons.\n"
+            "People can tell the season by looking\n"
+            "at Sawsbuck's horns."
+        #else
+            "This Pokémon's leaves can be made into\n"
+            "a black tea, the taste of which varies\n"
+            "depending on the region of origin."
+        #endif
+        ),
         .pokemonScale = 256,
         .pokemonOffset = 1,
         .trainerScale = 326,
@@ -8416,10 +9086,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 19,
         .weight = 925,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "The plants growing on its horns change\n"
+            "according to the season. The leaders of\n"
+            "the herd possess magnificent horns."
+        #else
             "Sawsbuck in their Autumn Form are\n"
             "known for having very short\n"
             "tempers. The males fight each other\n"
-            "incessantly."),
+            "incessantly."
+        #endif
+        ),
         .pokemonScale = 256,
         .pokemonOffset = 1,
         .trainerScale = 326,
@@ -8480,10 +9157,18 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 19,
         .weight = 925,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Though there are many enthusiasts\n"
             "for Sawsbuck as a species, this\n"
             "seasonal form in particular is not\n"
-            "very popular."),
+            "very popular."
+        #else
+            "It’s said that Sawsbuck are calm and\n"
+            "easy to tame during the season when\n"
+            "they take on this form, so it’s the\n"
+            "perfect time to make one your partner."
+        #endif
+        ),
         .pokemonScale = 256,
         .pokemonOffset = 1,
         .trainerScale = 326,
@@ -8547,10 +9232,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 4,
         .weight = 50,
         .description = COMPOUND_STRING(
-            "It glides using its cape-like membrane.\n"
-            "It grills berries and bug Pokémon with\n"
-            "electric shocks from the pouches on its\n"
-            "cheeks and makes a meal of them."),
+        #ifdef FIRERED
+            "The energy made in its cheeks' electric\n"
+            "pouches is stored inside its membrane\n"
+            "and released while it is gliding."
+        #else
+            "They live on treetops and glide using\n"
+            "the inside of a cape-like membrane\n"
+            "while discharging electricity."
+        #endif
+        ),
         .pokemonScale = 491,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -8619,10 +9310,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 5,
         .weight = 59,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "These mysterious Pokémon evolve when\n"
+            "they receive electrical stimulation while\n"
+            "they are in the same place as Shelmet."
+        #else
             "When they feel threatened, they spit an\n"
             "acidic liquid to drive attackers away.\n"
-            "For some reason they evolve while they\n"
-            "are in the same place as Shelmet."),
+            "This Pokémon targets Shelmet."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 15,
         .trainerScale = 256,
@@ -8687,10 +9384,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 10,
         .weight = 330,
         .description = COMPOUND_STRING(
-            "Wearing the shell covering they stole\n"
-            "from Shelmet, they defend themselves and\n"
-            "attack with two lances. The steel armor\n"
-            "protects their whole body."),
+        #ifdef FIRERED
+            "They fly around at high speed,\n"
+            "striking with their pointed spears.\n"
+            "Even when in trouble, they face\n"
+            "opponents bravely."
+        #else
+            "These Pokémon evolve by wearing the\n"
+            "shell covering of a Shelmet.\n"
+            "The steel armor protects their whole body."
+        #endif
+        ),
         .pokemonScale = 305,
         .pokemonOffset = 7,
         .trainerScale = 257,
@@ -8758,10 +9462,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 2,
         .weight = 10,
         .description = COMPOUND_STRING(
-            "It lures Pokémon in with its pattern that\n"
-            "looks just like a Poké Ball, then releases\n"
-            "its poison spores. Why it resembles a\n"
-            "Poké Ball is unknown."),
+        #ifdef FIRERED
+            "It lures people in with its Poké Ball\n"
+            "pattern, then releases poison spores.\n"
+            "Why it resembles a Poké Ball is unknown."
+        #else
+            "For some reason, this Pokémon resembles\n"
+            "a Poké Ball. They release poison spores\n"
+            "to repel those who try to catch them."
+        #endif
+        ),
         .pokemonScale = 682,
         .pokemonOffset = 24,
         .trainerScale = 256,
@@ -8832,10 +9542,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 105,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "It lures prey close by dancing and waving\n"
             "its arm caps, which resemble Poké Balls,\n"
-            "in a swaying motion, but very few Pokémon\n"
-            "are fooled by this."),
+            "in a swaying motion."
+        #else
+            "They show off their Poké Ball caps\n"
+            "to lure prey, but very few Pokémon\n"
+            "are fooled by this."
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -8904,10 +9620,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 12,
         .weight = 330,
         .description = COMPOUND_STRING(
-            "If its veil-like arms stun and wrap an\n"
-            "opponent, that foe will be dragged\n"
-            "five miles below the surface to its lair,\n"
-            "never to return."),
+        #ifdef FIRERED
+            "With its thin, veil-like arms wrapped\n"
+            "around the body of its opponent,\n"
+            "it sinks to the ocean floor."
+        #else
+            "They paralyze prey with poison,\n"
+            "then drag them down to their lairs,\n"
+            "8,000 meters below the surface."
+        #endif
+        ),
         .pokemonScale = 282,
         .pokemonOffset = 4,
         .trainerScale = 256,
@@ -8993,10 +9715,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 22,
         .weight = 1350,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "The fate of the ships and crew\n"
+            "that wander into Jellicent's habitat:\n"
+            "all sunken, all lost, all vanished."
+        #else
             "They propel themselves by expelling\n"
             "absorbed seawater from their bodies.\n"
-            "It's said there's a castle of ships\n"
-            "Jellicent have sunk on the seafloor."),
+            "Their favorite food is life energy."
+        #endif
+        ),
         .pokemonScale = 256,
         .pokemonOffset = 0,
         .trainerScale = 348,
@@ -9083,10 +9811,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 12,
         .weight = 316,
         .description = COMPOUND_STRING(
-            "When they find a wounded Pokémon,\n"
-            "they embrace it and bring it to shore.\n"
+        #ifdef FIRERED
             "The special membrane enveloping\n"
-            "Alomomola has the ability to heal wounds."),
+            "Alomomola has the ability\n"
+            "to heal wounds."
+        #else
+            "Floating in the open sea is how they live.\n"
+            "When they find a wounded Pokémon, they\n"
+            "embrace it and bring it to shore."
+        #endif
+        ),
         .pokemonScale = 282,
         .pokemonOffset = 4,
         .trainerScale = 256,
@@ -9153,10 +9887,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 1,
         .weight = 6,
         .description = COMPOUND_STRING(
-            "Since they can't generate their own\n"
-            "electricity, they attach themselves to\n"
-            "large-bodied Pokémon and absorb static\n"
-            "electricity, which they store in a pouch."),
+        #ifdef FIRERED
+            "Joltik that live in cities have learned\n"
+            "a technique for sucking electricity\n"
+            "from the outlets in houses."
+        #else
+            "They attach themselves to large-bodied\n"
+            "Pokémon and absorb static electricity,\n"
+            "which they store in an electric pouch."
+        #endif
+        ),
         .pokemonScale = 682,
         .pokemonOffset = 24,
         .trainerScale = 256,
@@ -9224,10 +9964,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 8,
         .weight = 143,
         .description = COMPOUND_STRING(
-            "It creates barriers from electrified silk\n"
-            "that stun foes. This works as a weapon as\n"
-            "well as a defense. While it is immobilized\n"
-            "by shock, they leisurely consume it."),
+        #ifdef FIRERED
+            "When attacked, they create an\n"
+            "electric barrier by spitting out\n"
+            "many electrically charged threads."
+        #else
+            "They employ an electrically charged web to\n"
+            "trap their prey. While it is immobilized\n"
+            "by shock, they leisurely consume it."
+        #endif
+        ),
         .pokemonScale = 366,
         .pokemonOffset = 10,
         .trainerScale = 257,
@@ -9299,10 +10045,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 188,
         .description = COMPOUND_STRING(
-            "It absorbs the iron it finds in the rock\n"
-            "while clinging to the ceiling of caves.\n"
+        #ifdef FIRERED
             "When threatened, it attacks by shooting\n"
-            "a barrage of spikes."),
+            "a barrage of spikes, which gives it a\n"
+            "chance to escape by rolling away."
+        #else
+            "They stick their spikes into cave walls\n"
+            "and absorb the minerals they find in\n"
+            "the rock."
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 14,
         .trainerScale = 256,
@@ -9375,10 +10127,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 10,
         .weight = 1100,
         .description = COMPOUND_STRING(
-            "It fights by swinging around its three\n"
-            "spiky feelers and shooting spikes.\n"
-            "A hit from these steel spikes can reduce\n"
-            "a boulder to rubble."),
+        #ifdef FIRERED
+            "It fights by swinging around its\n"
+            "three spiky feelers. A hit from\n"
+            "these steel spikes can reduce a\n"
+            "boulder to rubble."
+        #else
+            "They attach themselves to cave ceilings,\n"
+            "firing steel spikes at targets passing\n"
+            "beneath them."
+        #endif
+        ),
         .pokemonScale = 305,
         .pokemonOffset = 7,
         .trainerScale = 257,
@@ -9448,10 +10207,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 3,
         .weight = 210,
         .description = COMPOUND_STRING(
-            "Two bodies comprise a fixed pair.\n"
+        #ifdef FIRERED
             "The two minigears that mesh together\n"
-            "are predetermined. Each will rebound from\n"
-            "other minigears without meshing."),
+            "are predetermined. Each will rebound\n"
+            "from other minigears without meshing."
+        #else
+            "Interlocking two bodies and spinning\n"
+            "around generates the energy they need\n"
+            "to live."
+        #endif
+        ),
         .pokemonScale = 530,
         .pokemonOffset = 15,
         .trainerScale = 256,
@@ -9519,10 +10284,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 510,
         .description = COMPOUND_STRING(
-            "A minigear and big gear comprise its\n"
-            "body. Spinning minigears are rotated\n"
-            "at high speed and repeatedly fired away.\n"
-            "It is dangerous if the gears don't return."),
+        #ifdef FIRERED
+            "By changing the direction in which it\n"
+            "rotates, it communicates its feelings\n"
+            "to others. When angry, it rotates faster."
+        #else
+            "Spinning minigears are rotated at high\n"
+            "speed and repeatedly fired away.\n"
+            "It is dangerous if the gears don't return."
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -9590,10 +10361,15 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 810,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Its red core functions as an energy tank.\n"
-            "It is rotated at high speed for a rapid\n"
-            "energy charge. It fires the charged energy\n"
-            "through its spikes into an area."),
+            "It fires the charged energy through its\n"
+            "spikes into an area."
+        #else
+            "The gear with the red core is rotated\n"
+            "at high speed for a rapid energy charge."
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -9661,10 +10437,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 2,
         .weight = 3,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "While one alone doesn't have much power,\n"
+            "a chain of many Tynamo can be as\n"
+            "powerful as lightning."
+        #else
             "These Pokémon move in schools.\n"
-            "One alone can emit only a trickle of\n"
-            "electricity, so a group of them gathers\n"
-            "to unleash a powerful electric shock."),
+            "They have an electricity-generating organ,\n"
+            "so they discharge electricity if in danger."
+        #endif
+        ),
         .pokemonScale = 682,
         .pokemonOffset = 24,
         .trainerScale = 256,
@@ -9712,7 +10494,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_Tynamo,
             gShinyOverworldPalette_Tynamo
         )
-        .tmIlliterate = TRUE,
+        .teachingType = TM_ILLITERATE,
         .levelUpLearnset = sTynamoLevelUpLearnset,
         .teachableLearnset = sTynamoTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 39, SPECIES_EELEKTRIK}),
@@ -9744,10 +10526,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 12,
         .weight = 220,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "They coil around foes and shock them\n"
+            "with electricity-generating organs that\n"
+            "seem simply to be circular patterns."
+        #else
             "These Pokémon have a big appetite.\n"
-            "It wraps itself around its prey and\n"
-            "paralyzes it with electricity from the\n"
-            "round spots on its sides. Then it chomps."),
+            "When they spot their prey, they attack\n"
+            "it and paralyze it with electricity."
+        #endif
+        ),
         .pokemonScale = 282,
         .pokemonOffset = 4,
         .trainerScale = 256,
@@ -9815,10 +10603,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 21,
         .weight = 805,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "They crawl out of the ocean using their\n"
             "arms. They will attack prey on shore and\n"
-            "immediately drag it into the ocean, with\n"
-            "their sucker mouths."),
+            "immediately drag it into the ocean."
+        #else
+            "With their sucker mouths, they suck\n"
+            "in prey. Then they use their fangs\n"
+            "to shock the prey with electricity."
+        #endif
+        ),
         .pokemonScale = 256,
         .pokemonOffset = 1,
         .trainerScale = 365,
@@ -9873,7 +10667,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseSpDefense = 90,
         .types = MON_TYPES(TYPE_ELECTRIC),
         .catchRate = 30,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 258 : 232,
+        .expYield = 258 ,
         .evYield_Attack = 3,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
@@ -9883,52 +10677,44 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Eelektross"),
-        .cryId = CRY_EELEKTROSS, // CRY_EELEKTROSS_MEGA,
+    #if P_MODIFIED_MEGA_CRIES
+        .cryId = CRY_EELEKTROSS_MEGA,
+    #else
+        .cryId = CRY_EELEKTROSS,
+    #endif // P_MODIFIED_MEGA_CRIES
         .natDexNum = NATIONAL_DEX_EELEKTROSS,
         .categoryName = _("EleFish"),
         .height = 30,
         .weight = 1800,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "It now generates 10 times the\n"
             "electricity it did before Mega\n"
             "Evolving. It discharges this energy\n"
-            "from its false Eelektrik made of mucus."),
-        .frontPic = gMonFrontPic_CircledQuestionMark,
-        .frontPicSize = MON_COORDS_SIZE(40, 40),
-        .frontPicYOffset = 12,
-        .frontAnimFrames = sAnims_TwoFramePlaceHolder,
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_CircledQuestionMark,
-        .backPicSize = MON_COORDS_SIZE(40, 40),
-        .backPicYOffset = 12,
-        .backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_CircledQuestionMark,
-        .shinyPalette = gMonShinyPalette_CircledQuestionMark,
-        .iconSprite = gMonIcon_QuestionMark,
-        .iconPalIndex = 0,
+            "from its false Eelektrik made of mucus."
+        #else
+            "It now generates 10 times the\n"
+            "electricity it did before Mega\n"
+            "Evolving. It discharges this energy\n"
+            "from its false Eelektrik made of mucus."
+        #endif
+        ),
+        //.frontPic = gMonFrontPic_CircledQuestionMark,
+        //.frontPicSize = MON_COORDS_SIZE(40, 40),
+        //.frontPicYOffset = 12,
+        //.frontAnimFrames = sAnims_TwoFramePlaceHolder,
+        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        //.backPic = gMonBackPic_CircledQuestionMark,
+        //.backPicSize = MON_COORDS_SIZE(40, 40),
+        //.backPicYOffset = 12,
+        //.backAnimId = BACK_ANIM_NONE,
+        //.palette = gMonPalette_CircledQuestionMark,
+        //.shinyPalette = gMonShinyPalette_CircledQuestionMark,
+        //.iconSprite = gMonIcon_QuestionMark,
+        //.iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        FOOTPRINT(QuestionMark)
-        SHADOW(-1, 0, SHADOW_SIZE_M)
-    #if OW_BATTLE_ONLY_FORMS
-        .overworldData = {
-            .tileTag = TAG_NONE,
-            .paletteTag = OBJ_EVENT_PAL_TAG_SUBSTITUTE,
-            .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
-            .size = 512,
-            .width = 32,
-            .height = 32,
-            .paletteSlot = PALSLOT_NPC_1,
-            .shadowSize = SHADOW_SIZE_M,
-            .inanimate = FALSE,
-            .compressed = COMP,
-            .tracks = TRACKS_FOOT,
-            .oam = &gObjectEventBaseOam_32x32,
-            .subspriteTables = sOamTables_32x32,
-            .anims = sAnimTable_Following,
-            .images = sPicTable_Substitute,
-            .affineAnims = gDummySpriteAffineAnimTable,
-        },
-    #endif //OW_BATTLE_ONLY_FORMS
+        FOOTPRINT(Eelektross)
+        //SHADOW(-1, 0, SHADOW_SIZE_M)
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sEelektrossLevelUpLearnset,
         .teachableLearnset = sEelektrossTeachableLearnset,
@@ -9965,10 +10751,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 5,
         .weight = 90,
         .description = COMPOUND_STRING(
-            "It psychically squeezes the brain of\n"
-            "its foe, causing unendurable headaches.\n"
-            "Rumors of its origin are linked to a UFO\n"
-            "crash site in the desert 50 years ago."),
+        #ifdef FIRERED
+            "It uses its strong psychic power\n"
+            "to squeeze its opponent's brain,\n"
+            "causing unendurable headaches."
+        #else
+            "This Pokémon had never been seen until\n"
+            "it appeared from far in the desert\n"
+            "50 years ago."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -10039,10 +10831,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 10,
         .weight = 345,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "It can manipulate an opponent's memory.\n"
             "Apparently, it communicates by flashing\n"
-            "its three fingers, but those patterns\n"
-            "haven't been decoded. "),
+            "its three different-colored fingers."
+        #else
+            "It uses psychic power to control\n"
+            "an opponent's brain and tamper\n"
+            "with its memories."
+        #endif
+        ),
         .pokemonScale = 305,
         .pokemonOffset = 7,
         .trainerScale = 257,
@@ -10112,10 +10910,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 3,
         .weight = 31,
         .description = COMPOUND_STRING(
-            "While Litwick shines a light and pretends\n"
-            "to be a guide, it absorbs the life force of\n"
-            "any who follow it, which becomes the fuel\n"
-            "that it burns."),
+        #ifdef FIRERED
+            "Litwick shines a light that absorbs\n"
+            "the life energy of people and Pokémon,\n"
+            "which becomes the fuel that it burns."
+        #else
+            "While shining a light and pretending\n"
+            "to be a guide, it leeches off the\n"
+            "life force of any who follow it."
+        #endif
+        ),
         .pokemonScale = 530,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -10186,10 +10990,15 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 130,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "This ominous Pokémon is feared.\n"
             "Through cities it wanders, searching\n"
-            "for the spirits of the fallen. The spirits\n"
-            "it absorbs fuel its baleful fire."),
+            "for the spirits of the fallen."
+        #else
+            "It arrives near the moment of death\n"
+            "and steals spirit from the body."
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -10260,10 +11069,15 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 10,
         .weight = 343,
         .description = COMPOUND_STRING(
-            "Being consumed in Chandelure's flame burns\n"
-            "up the spirit, leaving the body behind.\n"
+        #ifdef FIRERED
+            "It absorbs a spirit, which it then burns.\n"
             "By waving the flames on its arms, it puts\n"
-            "its foes into a hypnotic trance."),
+            "its foes into a hypnotic trance."
+        #else
+            "Being consumed in Chandelure's flame burns\n"
+            "up the spirit, leaving the body behind."
+        #endif
+        ),
         .pokemonScale = 305,
         .pokemonOffset = 7,
         .trainerScale = 257,
@@ -10315,7 +11129,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseSpDefense = 110,
         .types = MON_TYPES(TYPE_GHOST, TYPE_FIRE),
         .catchRate = 45,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 260 : 234,
+        .expYield = 260,
         .evYield_SpAttack = 3,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
@@ -10324,53 +11138,46 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
         .abilities = { ABILITY_FLASH_FIRE, ABILITY_FLAME_BODY, ABILITY_INFILTRATOR },
         .bodyColor = BODY_COLOR_BLACK,
+        .noFlip = TRUE,
         .speciesName = _("Chandelure"),
-        .cryId = CRY_CHANDELURE, // CRY_CHANDELURE_MEGA,
+    #if P_MODIFIED_MEGA_CRIES
+        .cryId = CRY_CHANDELURE_MEGA,
+    #else
+        .cryId = CRY_CHANDELURE,
+    #endif // P_MODIFIED_MEGA_CRIES
         .natDexNum = NATIONAL_DEX_CHANDELURE,
         .categoryName = _("Luring"),
         .height = 25,
         .weight = 696,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "One of its eyes is a window linking\n"
             "our world with the afterlife.\n"
             "This Pokémon draws in hatred and\n"
-            "converts it into power."),
-        .frontPic = gMonFrontPic_CircledQuestionMark,
-        .frontPicSize = MON_COORDS_SIZE(40, 40),
-        .frontPicYOffset = 12,
-        .frontAnimFrames = sAnims_TwoFramePlaceHolder,
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_CircledQuestionMark,
-        .backPicSize = MON_COORDS_SIZE(40, 40),
-        .backPicYOffset = 12,
-        .backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_CircledQuestionMark,
-        .shinyPalette = gMonShinyPalette_CircledQuestionMark,
-        .iconSprite = gMonIcon_QuestionMark,
-        .iconPalIndex = 0,
+            "converts it into power."
+        #else
+            "One of its eyes is a window linking\n"
+            "our world with the afterlife.\n"
+            "This Pokémon draws in hatred and\n"
+            "converts it into power."
+        #endif
+        ),
+        //.frontPic = gMonFrontPic_CircledQuestionMark,
+        //.frontPicSize = MON_COORDS_SIZE(40, 40),
+        //.frontPicYOffset = 12,
+        //.frontAnimFrames = sAnims_TwoFramePlaceHolder,
+        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        //.backPic = gMonBackPic_CircledQuestionMark,
+        //.backPicSize = MON_COORDS_SIZE(40, 40),
+        //.backPicYOffset = 12,
+        //.backAnimId = BACK_ANIM_NONE,
+        //.palette = gMonPalette_CircledQuestionMark,
+        //.shinyPalette = gMonShinyPalette_CircledQuestionMark,
+        //.iconSprite = gMonIcon_QuestionMark,
+        //.iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        FOOTPRINT(QuestionMark)
-        SHADOW(-1, 0, SHADOW_SIZE_M)
-    #if OW_BATTLE_ONLY_FORMS
-        .overworldData = {
-            .tileTag = TAG_NONE,
-            .paletteTag = OBJ_EVENT_PAL_TAG_SUBSTITUTE,
-            .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
-            .size = 512,
-            .width = 32,
-            .height = 32,
-            .paletteSlot = PALSLOT_NPC_1,
-            .shadowSize = SHADOW_SIZE_M,
-            .inanimate = FALSE,
-            .compressed = COMP,
-            .tracks = TRACKS_FOOT,
-            .oam = &gObjectEventBaseOam_32x32,
-            .subspriteTables = sOamTables_32x32,
-            .anims = sAnimTable_Following,
-            .images = sPicTable_Substitute,
-            .affineAnims = gDummySpriteAffineAnimTable,
-        },
-    #endif //OW_BATTLE_ONLY_FORMS
+        FOOTPRINT(Chandelure)
+        //SHADOW(-1, 0, SHADOW_SIZE_M)
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sChandelureLevelUpLearnset,
         .teachableLearnset = sChandelureTeachableLearnset,
@@ -10407,10 +11214,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 180,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "They use their tusks to crush the\n"
+            "berries they eat. Repeated regrowth\n"
+            "makes their tusks strong and sharp."
+        #else
             "They mark their territory by leaving\n"
-            "gashes in trees with their tusks. If a\n"
-            "tusk breaks, a new one grows in quickly,\n"
-            "harder and sturdier than the last."),
+            "gashes in trees with their tusks.\n"
+            "If a tusk breaks, a new one grows\n"
+            "in quickly."
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -10475,10 +11289,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 10,
         .weight = 360,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "Since a broken tusk will not grow back,\n"
+            "they diligently sharpen their tusks on\n"
+            "river rocks after they've been fighting."
+        #else
             "Their tusks can shatter rocks.\n"
-            "A broken tusk will not grow back,\n"
-            "so it diligently sharpens its tusks on\n"
-            "river rocks after the end of a battle."),
+            "Territory battles between Fraxure\n"
+            "can be intensely violent."
+        #endif
+        ),
         .pokemonScale = 305,
         .pokemonOffset = 7,
         .trainerScale = 257,
@@ -10542,10 +11362,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 18,
         .weight = 1055,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "They are kind but can be relentless\n"
-            "when defending territory. Their sturdy\n"
-            "tusks will stay sharp even if used to cut\n"
-            "steel beams."),
+            "when defending territory.\n"
+            "They challenge foes with tusks that\n"
+            "can cut steel."
+        #else
+            "Their sturdy tusks will stay sharp\n"
+            "even if used to cut steel beams.\n"
+            "These Pokémon are covered in hard armor."
+        #endif
+        ),
         .pokemonScale = 267,
         .pokemonOffset = 2,
         .trainerScale = 286,
@@ -10616,10 +11443,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 5,
         .weight = 85,
         .description = COMPOUND_STRING(
-            "Its nose is always running.\n"
-            "Their snot is a barometer of health.\n"
-            "When healthy, their snot is sticky and\n"
-            "the power of their ice moves increases."),
+        #ifdef FIRERED
+            "When it is not feeling well, its\n"
+            "mucus gets watery and the power\n"
+            "of its Ice-type moves decreases."
+        #else
+            "Its nose is always running. It sniffs\n"
+            "the snot back up because the mucus\n"
+            "provides the raw material for its moves."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 15,
         .trainerScale = 256,
@@ -10689,10 +11522,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 26,
         .weight = 2600,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "It can make its breath freeze at will.\n"
+            "Very able in the water, it swims around\n"
+            "in northern seas and catches prey."
+        #else
             "It freezes its breath to create fangs\n"
             "and claws of ice to fight with.\n"
-            "Very able in the water, it swims around\n"
-            "in northern seas and catches prey."),
+            "Cold northern areas are its habitat."
+        #endif
+        ),
         .pokemonScale = 266,
         .pokemonOffset = 3,
         .trainerScale = 399,
@@ -10760,10 +11599,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 11,
         .weight = 1480,
         .description = COMPOUND_STRING(
-            "They are born in snow clouds. When\n"
-            "its body temperature goes up, it turns\n"
-            "into steam and vanishes. When its\n"
-            "temperature lowers, it returns to ice."),
+        #ifdef FIRERED
+            "When its body temperature goes up,\n"
+            "it turns into steam and vanishes.\n"
+            "When its temperature lowers,\n"
+            "it returns to ice."
+        #else
+            "They are born in snow clouds.\n"
+            "They use chains made of ice crystals\n"
+            "to capture prey."
+        #endif
+        ),
         .pokemonScale = 320,
         .pokemonOffset = 7,
         .trainerScale = 256,
@@ -10832,10 +11678,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 4,
         .weight = 77,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "When attacked, it defends itself by\n"
-            "closing the lid of its shell. It evolves\n"
-            "when bathed in an electric-like energy\n"
-            "along with Karrablast."),
+            "closing the lid of its shell.\n"
+            "It can spit a sticky, poisonous liquid."
+        #else
+            "It evolves when bathed in an electric-like\n"
+            "energy along with Karrablast.\n"
+            "The reason is still unknown."
+        #endif
+        ),
         .pokemonScale = 491,
         .pokemonOffset = 15,
         .trainerScale = 256,
@@ -10903,10 +11755,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 8,
         .weight = 253,
         .description = COMPOUND_STRING(
-            "When its body dries out, it weakens. So, to\n"
-            "prevent dehydration, it wraps itself in\n"
-            "layers of thin membrane. It is very light\n"
-            "and fights with ninja-like movements."),
+        #ifdef FIRERED
+            "When its body dries out, it weakens.\n"
+            "So, to prevent dehydration, it wraps\n"
+            "itself in many layers of thin membrane."
+        #else
+            "Having removed its heavy shell,\n"
+            "it becomes very light and can fight\n"
+            "with ninja-like movements."
+        #endif
+        ),
         .pokemonScale = 366,
         .pokemonOffset = 9,
         .trainerScale = 257,
@@ -10972,10 +11830,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 7,
         .weight = 110,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "Its skin is very hard, so it is unhurt\n"
+            "even if stepped on by sumo wrestlers.\n"
+            "It smiles when transmitting electricity."
+        #else
             "It conceals itself in the mud of the\n"
             "seashore. Then it waits. When prey touch\n"
-            "it, it delivers a jolt of electricity.\n"
-            "It smiles when transmitting electricity."),
+            "it, it delivers a jolt of electricity."
+        #endif
+        ),
         .pokemonScale = 365,
         .pokemonOffset = 14,
         .trainerScale = 256,
@@ -11034,6 +11898,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_AMORPHOUS),
         .abilities = { ABILITY_MIMICRY, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_GREEN,
+        .noFlip = TRUE,
         .speciesName = _("Stunfisk"),
         .cryId = CRY_STUNFISK,
         .natDexNum = NATIONAL_DEX_STUNFISK,
@@ -11041,10 +11906,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 7,
         .weight = 205,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "Living in mud with a high iron content\n"
+            "has given it a strong steel body."
+        #else
             "Its conspicuous lips lure prey in\n"
             "as it lies in wait in the mud. When\n"
             "prey gets close, Stunfisk clamps its\n"
-            "jagged steel fins down on them."),
+            "jagged steel fins down on them."
+        #endif
+        ),
         .pokemonScale = 365,
         .pokemonOffset = 14,
         .trainerScale = 256,
@@ -11110,10 +11981,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 9,
         .weight = 200,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "In fights, they dominate with onslaughts\n"
+            "of flowing, continuous attacks.\n"
+            "With their sharp claws, they cut enemies."
+        #else
             "They have mastered elegant combos.\n"
-            "As they concentrate, their battle moves\n"
-            "become swifter and more precise. What it\n"
-            "lacks in power, it makes up for in quantity."),
+            "As they concentrate, their battle\n"
+            "moves become swifter and more precise."
+        #endif
+        ),
         .pokemonScale = 338,
         .pokemonOffset = 10,
         .trainerScale = 256,
@@ -11178,10 +12055,15 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 14,
         .weight = 355,
         .description = COMPOUND_STRING(
-            "They use the long fur on their arms as\n"
-            "a whip to strike their opponents. Its arm\n"
-            "attacks come with such rapidity that they\n"
-            "cannot even be seen."),
+        #ifdef FIRERED
+            "It wields the fur on its arms like a whip.\n"
+            "Its arm attacks come with such rapidity\n"
+            "that they cannot even be seen."
+        #else
+            "They use the long fur on their arms\n"
+            "as a whip to strike their opponents."
+        #endif
+        ),
         .pokemonScale = 265,
         .pokemonOffset = 2,
         .trainerScale = 262,
@@ -11252,10 +12134,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 16,
         .weight = 1390,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "It warms its body by absorbing sunlight\n"
             "with its wings. When its body temperature\n"
-            "falls, it can no longer move. It uses its\n"
-            "sharp claws to catch prey."),
+            "falls, it can no longer move."
+        #else
+            "It races through narrow caves, using its\n"
+            "sharp claws to catch prey. The skin on\n"
+            "its face is harder than a rock."
+        #endif
+        ),
         .pokemonScale = 259,
         .pokemonOffset = 1,
         .trainerScale = 296,
@@ -11328,10 +12216,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 10,
         .weight = 920,
         .description = COMPOUND_STRING(
-            "These Pokémon are thought to have\n"
-            "been created by the science of an\n"
-            "ancient and mysterious civilization.\n"
-            "It's been active for thousands of years."),
+        #ifdef FIRERED
+            "The energy that burns inside it enables\n"
+            "it to move, but no one has yet been able\n"
+            "to identify this energy."
+        #else
+            "These Pokémon are thought to have been\n"
+            "created by the science of an ancient\n"
+            "and mysterious civilization."
+        #endif
+        ),
         .pokemonScale = 305,
         .pokemonOffset = 7,
         .trainerScale = 257,
@@ -11398,10 +12292,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 28,
         .weight = 3300,
         .description = COMPOUND_STRING(
-            "Golurk were created to protect people\n"
-            "and Pokémon by an ancient civilisation.\n"
+        #ifdef FIRERED
+            "It flies across the sky at Mach speeds.\n"
             "Removing the seal on its chest makes its\n"
-            "internal energy go out of control."),
+            "internal energy go out of control."
+        #else
+            "It is said that Golurk were ordered\n"
+            "to protect people and Pokémon by\n"
+            "the ancient people who made them."
+        #endif
+        ),
         .pokemonScale = 275,
         .pokemonOffset = 3,
         .trainerScale = 300,
@@ -11463,7 +12363,11 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = TRUE,
         .speciesName = _("Golurk"),
-        .cryId = CRY_GOLURK, //CRY_GOLURK_MEGA
+    #if P_MODIFIED_MEGA_CRIES
+        .cryId = CRY_GOLURK_MEGA,
+    #else
+        .cryId = CRY_GOLURK,
+    #endif // P_MODIFIED_MEGA_CRIES
         .natDexNum = NATIONAL_DEX_GOLURK,
         .categoryName = _("Automaton"),
         .height = 40,
@@ -11486,28 +12390,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .iconSprite = gMonIcon_QuestionMark,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        FOOTPRINT(QuestionMark)
+        FOOTPRINT(Golurk)
         SHADOW(-1, 0, SHADOW_SIZE_M)
-    #if OW_BATTLE_ONLY_FORMS
-        .overworldData = {
-            .tileTag = TAG_NONE,
-            .paletteTag = OBJ_EVENT_PAL_TAG_SUBSTITUTE,
-            .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
-            .size = 512,
-            .width = 32,
-            .height = 32,
-            .paletteSlot = PALSLOT_NPC_1,
-            .shadowSize = SHADOW_SIZE_M,
-            .inanimate = FALSE,
-            .compressed = COMP,
-            .tracks = TRACKS_FOOT,
-            .oam = &gObjectEventBaseOam_32x32,
-            .subspriteTables = sOamTables_32x32,
-            .anims = sAnimTable_Following,
-            .images = sPicTable_Substitute,
-            .affineAnims = gDummySpriteAffineAnimTable,
-        },
-    #endif //OW_BATTLE_ONLY_FORMS
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sGolurkLevelUpLearnset,
         .teachableLearnset = sGolurkTeachableLearnset,
@@ -11544,10 +12428,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 5,
         .weight = 102,
         .description = COMPOUND_STRING(
-            "Ignoring their injuries, groups attack by\n"
-            "sinking the blades that cover their bodies\n"
-            "into their prey. If battling dulls them, it\n"
-            "sharpens them on stones by the river."),
+        #ifdef FIRERED
+            "Blades comprise this Pokémon's entire body.\n"
+            "If battling dulls the blades, it sharpens\n"
+            "them on stones by the river."
+        #else
+            "They fight at Bisharp's command.\n"
+            "They cling to their prey and inflict\n"
+            "damage by sinking their blades into it."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 15,
         .trainerScale = 256,
@@ -11619,10 +12509,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 16,
         .weight = 700,
         .description = COMPOUND_STRING(
-            "This pitiless Pokémon commands a group\n"
-            "of Pawniard to hound prey into immobility.\n"
-            "It battles to become the boss, but will be\n"
-            "driven from the group if it loses."),
+        #ifdef FIRERED
+            "It leads a group of Pawniard.\n"
+            "It battles to become the boss, but\n"
+            "will be driven from the group if it loses."
+        #else
+            "Bisharp pursues prey in the company\n"
+            "of a large group of Pawniard.\n"
+            "Then Bisharp finishes off the prey."
+        #endif
+        ),
         .pokemonScale = 259,
         .pokemonOffset = 1,
         .trainerScale = 296,
@@ -11689,10 +12585,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 20,
         .weight = 1200,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "Only a Bisharp that stands above all\n"
+            "others in its vast army can evolve\n"
+            "into Kingambit."
+        #else
             "Though it commands a massive army\n"
             "in battle, it's not skilled at\n"
-            "devising complex strategies. It just uses\n"
-            "brute strength to keep pushing."),
+            "devising complex strategies. It just\n"
+            "uses brute strength to keep pushing."
+        #endif
+        ),
         .pokemonScale = 356,
         .pokemonOffset = 17,
         .trainerScale = 256,
@@ -11755,10 +12658,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 16,
         .weight = 946,
         .description = COMPOUND_STRING(
-            "Their fluffy fur absorbs damage, even\n"
-            "if they strike foes with a fierce headbutt.\n"
+        #ifdef FIRERED
+            "Their fluffy fur absorbs damage,\n"
+            "even if they strike foes with a\n"
+            "fierce headbutt."
+        #else
+            "They charge wildly and headbutt everything.\n"
             "Their headbutts have enough destructive\n"
-            "force to derail a train."),
+            "force to derail a train."
+        #endif
+        ),
         .pokemonScale = 259,
         .pokemonOffset = 1,
         .trainerScale = 296,
@@ -11825,10 +12734,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 5,
         .weight = 105,
         .description = COMPOUND_STRING(
-            "With its sharp claws, this Pokémon pierces\n"
-            "its prey, and then it pecks at them.\n"
-            "Although it also consumes berries, it's a\n"
-            "carnivore at heart."),
+        #ifdef FIRERED
+            "They crush berries with their talons.\n"
+            "They bravely stand up to any opponent,\n"
+            "no matter how strong it is."
+        #else
+            "They will challenge anything, even\n"
+            "strong opponents, without fear.\n"
+            "Their frequent fights help them\n"
+            "become stronger."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -11864,6 +12780,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_Rufflet,
             gShinyOverworldPalette_Rufflet
         )
+        .isSkyBattleBanned = B_SKY_BATTLE_STRICT_ELIGIBILITY,
         .levelUpLearnset = sRuffletLevelUpLearnset,
         .teachableLearnset = sRuffletTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 54, SPECIES_BRAVIARY, CONDITIONS({IF_NOT_REGION, REGION_HISUI})},
@@ -11896,10 +12813,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 15,
         .weight = 410,
         .description = COMPOUND_STRING(
-            "For the sake of its friends, this brave\n"
-            "warrior of the sky will not stop battling,\n"
-            "even if it is injured. One can carry a car\n"
-            "while flying."),
+        #ifdef FIRERED
+            "They fight for their friends without\n"
+            "any thought about danger to themselves.\n"
+            "One can carry a car while flying."
+        #else
+            "The more scars they have, the more\n"
+            "respect these brave soldiers of\n"
+            "the sky get from their peers."
+        #endif
+        ),
         .pokemonScale = 268,
         .pokemonOffset = 2,
         .trainerScale = 271,
@@ -11966,9 +12889,18 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 17,
         .weight = 434,
         .description = COMPOUND_STRING(
-            "Screaming a bloodcurdling battle\n"
-            "cry, this huge and ferocious bird\n"
-            "Pokémon goes out on the hunt."),
+        #ifdef FIRERED
+            "This huge and ferocious bird Pokémon\n"
+            "blasts lakes with shock waves,\n"
+            "then scoops up any prey that float\n"
+            "to the water's surface."
+        #else
+            "This huge and ferocious bird Pokémon\n"
+            "blasts lakes with shock waves,\n"
+            "then scoops up any prey that float\n"
+            "to the water's surface."
+        #endif
+        ),
         .pokemonScale = 268,
         .pokemonOffset = 2,
         .trainerScale = 271,
@@ -12034,10 +12966,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 5,
         .weight = 90,
         .description = COMPOUND_STRING(
-            "It can't fly yet and must wait until its\n"
-            "wings have developed more. They guard\n"
-            "their posteriors with bones that were\n"
-            "gathered by Mandibuzz."),
+        #ifdef FIRERED
+            "Its wings are too tiny to allow\n"
+            "it to fly. As the time approaches\n"
+            "for it to evolve, it discards the\n"
+            "bones it was wearing."
+        #else
+            "They tend to guard their posteriors\n"
+            "with suitable bones they have found.\n"
+            "They pursue weak Pokémon."
+        #endif
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -12071,6 +13010,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_Vullaby,
             gShinyOverworldPalette_Vullaby
         )
+        .isSkyBattleBanned = B_SKY_BATTLE_STRICT_ELIGIBILITY,
         .levelUpLearnset = sVullabyLevelUpLearnset,
         .teachableLearnset = sVullabyTeachableLearnset,
         .eggMoveLearnset = sVullabyEggMoveLearnset,
@@ -12103,10 +13043,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 12,
         .weight = 395,
         .description = COMPOUND_STRING(
-            "They adorn themselves beautifully with\n"
-            "bones. This is supposedly an effort to\n"
-            "attract males, but no male Mandibuzz\n"
-            "have ever been found."),
+        #ifdef FIRERED
+            "It makes a nest out of bones it finds.\n"
+            "It grabs weakened prey in its talons\n"
+            "and hauls it to its nest of bones."
+        #else
+            "Watching from the sky, they swoop to\n"
+            "strike weakened Pokémon on the ground.\n"
+            "They decorate themselves with bones."
+        #endif
+        ),
         .pokemonScale = 282,
         .pokemonOffset = 4,
         .trainerScale = 256,
@@ -12172,10 +13118,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 14,
         .weight = 580,
         .description = COMPOUND_STRING(
-            "It draws in air through its tail,\n"
-            "transforms it into fire, and uses it like\n"
-            "a tongue. They burn through Durant's steel\n"
-            "bodies and consume their insides."),
+        #ifdef FIRERED
+            "It breathes through a hole in its tail\n"
+            "while it burns with an internal fire.\n"
+            "Durant is its prey."
+        #else
+            "Using their very hot, flame-covered\n"
+            "tongues, they burn through Durant's\n"
+            "steel bodies and consume their insides."
+        #endif
+        ),
         .pokemonScale = 265,
         .pokemonOffset = 2,
         .trainerScale = 262,
@@ -12241,10 +13193,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 3,
         .weight = 330,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "They attack in groups, covering\n"
+            "themselves in steel armor to protect\n"
+            "themselves from Heatmor."
+        #else
             "Durant dig nests in mountains.\n"
-            "Individuals each play different roles in\n"
-            "driving Heatmor, their natural predator,\n"
-            "away from their colony."),
+            "They build their complicated,\n"
+            "interconnected tunnels into mazes."
+        #endif
+        ),
         .pokemonScale = 530,
         .pokemonOffset = 19,
         .trainerScale = 256,
@@ -12325,10 +13283,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 8,
         .weight = 173,
         .description = COMPOUND_STRING(
-            "Lacking sight, it's unaware of its\n"
-            "surroundings, so it bumps into things and\n"
-            "eats anything that moves. Approaching\n"
-            "it carelessly is dangerous."),
+        #ifdef FIRERED
+            "It tends to bite everything,\n"
+            "and it is not a picky eater.\n"
+            "Approaching it carelessly is dangerous."
+        #else
+            "They cannot see, so they tackle and\n"
+            "bite to learn about their surroundings.\n"
+            "Their bodies are covered in wounds."
+        #endif
+        ),
         .pokemonScale = 366,
         .pokemonOffset = 12,
         .trainerScale = 257,
@@ -12394,10 +13358,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 14,
         .weight = 500,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "After it has eaten up all the food in its\n"
-            "territory, it moves on to another area.\n"
-            "Whichever head eats more than the other\n"
-            "gets to be the leader."),
+            "territory, it moves to another area.\n"
+            "Its two heads do not get along."
+        #else
+            "Since their two heads do not get along\n"
+            "and compete with each other for food,\n"
+            "they always eat too much."
+        #endif
+        ),
         .pokemonScale = 265,
         .pokemonOffset = 3,
         .trainerScale = 262,
@@ -12461,10 +13431,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 18,
         .weight = 1600,
         .description = COMPOUND_STRING(
-            "This brutal Pokémon travels the skies on\n"
-            "its six wings. The heads on their arms do\n"
-            "not have brains. They use all three heads\n"
-            "to consume and destroy everything."),
+        #ifdef FIRERED
+            "This brutal Pokémon travels the skies\n"
+            "on its six wings. Anything that moves\n"
+            "seems like a foe to it, triggering\n"
+            "its attack."
+        #else
+            "The heads on their arms do not have brains.\n"
+            "They use all three heads to consume and\n"
+            "destroy everything."
+        #endif
+        ),
         .pokemonScale = 267,
         .pokemonOffset = 2,
         .trainerScale = 286,
@@ -12536,10 +13513,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 11,
         .weight = 288,
         .description = COMPOUND_STRING(
-            "This Pokémon was believed to have\n"
-            "been born from the sun. It spews fire from\n"
-            "its horns and encases itself in a cocoon\n"
-            "of fire when it evolves."),
+        #ifdef FIRERED
+            "This Pokémon was believed to have been\n"
+            "born from the sun. When it evolves,\n"
+            "its entire body is engulfed in flames."
+        #else
+            "The base of volcanoes is where they\n"
+            "make their homes. They shoot fire\n"
+            "from their five horns to repel\n"
+            "attacking enemies."
+        #endif
+        ),
         .pokemonScale = 320,
         .pokemonOffset = 10,
         .trainerScale = 256,
@@ -12615,10 +13599,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 16,
         .weight = 460,
         .description = COMPOUND_STRING(
-            "When volcanic ash darkened the\n"
-            "atmosphere, it appeared and saved Pokémon\n"
-            "from freezing, Volcarona's fire provided a\n"
-            "replacement for the sun."),
+        #ifdef FIRERED
+            "When volcanic ash darkened the atmosphere,\n"
+            "it is said that Volcarona's fire provided\n"
+            "a replacement for the sun."
+        #else
+            "A sea of fire engulfs the surroundings\n"
+            "of their battles, since they use their\n"
+            "six wings to scatter their ember scales."
+        #endif
+        ),
         .pokemonScale = 259,
         .pokemonOffset = 1,
         .trainerScale = 296,
@@ -12686,10 +13676,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 21,
         .weight = 2500,
         .description = COMPOUND_STRING(
-            "It has a body and heart of steel. This\n"
-            "legendary Pokémon battled against humans\n"
-            "to protect Pokémon. Its personality\n"
-            "is calm and composed."),
+        #ifdef FIRERED
+            "This legendary Pokémon battled against\n"
+            "humans to protect Pokémon.\n"
+            "Its personality is calm and composed."
+        #else
+            "It has a body and heart of steel.\n"
+            "Its glare is sufficient to make\n"
+            "even an unruly Pokémon obey it."
+        #endif
+        ),
         .pokemonScale = 256,
         .pokemonOffset = 0,
         .trainerScale = 365,
@@ -12723,7 +13719,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_Cobalion,
             gShinyOverworldPalette_Cobalion
         )
-        .isLegendary = TRUE,
+        .isSubLegendary = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sCobalionLevelUpLearnset,
         .teachableLearnset = sCobalionTeachableLearnset,
@@ -12757,10 +13753,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 19,
         .weight = 2600,
         .description = COMPOUND_STRING(
-            "Spoken of in legend, this Pokémon used\n"
-            "its phenomenal power to destroy a castle\n"
-            "in its effort to protect Pokémon that had\n"
-            "lost their homes in a war among humans."),
+        #ifdef FIRERED
+            "This Pokémon came to the defense of\n"
+            "Pokémon that had lost their homes\n"
+            "in a war among humans."
+        #else
+            "Its charge is strong enough to break\n"
+            "through a giant castle wall in one blow.\n"
+            "This Pokémon is spoken of in legends."
+        #endif
+        ),
         .pokemonScale = 256,
         .pokemonOffset = 1,
         .trainerScale = 336,
@@ -12798,7 +13800,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_Terrakion,
             gShinyOverworldPalette_Terrakion
         )
-        .isLegendary = TRUE,
+        .isSubLegendary = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sTerrakionLevelUpLearnset,
         .teachableLearnset = sTerrakionTeachableLearnset,
@@ -12832,10 +13834,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 20,
         .weight = 2000,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "This Pokémon fought humans in order\n"
+            "to protect its friends. Legends about\n"
+            "it continue to be passed down."            
+        #else
             "Its head sprouts horns as sharp as blades.\n"
-            "Legends say this Pokémon used\n"
-            "whirlwind-like movements to confound\n"
-            "and swiftly cut its opponents."),
+            "Using whirlwind-like movements, it\n"
+            "confounds and swiftly cuts opponents."
+        #endif
+        ),
         .pokemonScale = 261,
         .pokemonOffset = 1,
         .trainerScale = 344,
@@ -12868,7 +13876,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_Virizion,
             gShinyOverworldPalette_Virizion
         )
-        .isLegendary = TRUE,
+        .isSubLegendary = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sVirizionLevelUpLearnset,
         .teachableLearnset = sVirizionTeachableLearnset,
@@ -12902,10 +13910,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 15,
         .weight = 630,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "The lower half of its body is wrapped\n"
+            "in a cloud of energy.\n"
+            "It zooms through the sky at 300 km/h."
+        #else
             "Tornadus expels massive energy from\n"
             "its tail, causing severe storms.\n"
-            "Its power can blow entire houses away.\n"
-            "It zooms through the sky at 200 mph."),
+            "Its power is great enough to\n"
+            "blow houses away."
+        #endif
+        ),
         .pokemonScale = 268,
         .pokemonOffset = 2,
         .trainerScale = 271,
@@ -12959,7 +13974,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_TornadusIncarnate,
             gShinyOverworldPalette_TornadusIncarnate
         )
-        .isLegendary = TRUE,
+        .isSubLegendary = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sTornadusLevelUpLearnset,
         .teachableLearnset = sTornadusTeachableLearnset,
@@ -12993,10 +14008,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 14,
         .weight = 630,
         .description = COMPOUND_STRING(
-            "An example of what is known as a\n"
-            "“form change”. Tornadus has been\n"
-            "sighted crossing the ocean while in this\n"
-            "form."),
+        #ifdef FIRERED
+            "Some say this is its true form.\n"
+            "Tornadus has been sighted crossing\n"
+            "the ocean while in this form."
+        #else
+            "Some say this is its true form.\n"
+            "Tornadus has been sighted crossing\n"
+            "the ocean while in this form."
+        #endif
+        ),
         .pokemonScale = 268,
         .pokemonOffset = 2,
         .trainerScale = 271,
@@ -13032,7 +14053,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_TornadusTherian,
             gShinyOverworldPalette_TornadusTherian
         )
-        .isLegendary = TRUE,
+        .isSubLegendary = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sTornadusLevelUpLearnset,
         .teachableLearnset = sTornadusTeachableLearnset,
@@ -13068,10 +14089,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 15,
         .weight = 610,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "Countless charred remains mar the\n"
+            "landscape of places through which\n"
+            "Thundurus has passed."
+        #else
             "The spikes on its tail discharge immense\n"
-            "bolts of lightning. Countless charred\n"
-            "remains mar the landscape of places\n"
-            "through which Thundurus has passed."),
+            "bolts of lightning. It flies around the\n"
+            "Unova region firing off lightning bolts."
+        #endif
+        ),
         .pokemonScale = 268,
         .pokemonOffset = 2,
         .trainerScale = 271,
@@ -13125,7 +14152,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_ThundurusIncarnate,
             gShinyOverworldPalette_ThundurusIncarnate
         )
-        .isLegendary = TRUE,
+        .isSubLegendary = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sThundurusLevelUpLearnset,
         .teachableLearnset = sThundurusTeachableLearnset,
@@ -13159,10 +14186,18 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 30,
         .weight = 610,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "It pulverizes foes into nothingness\n"
             "with showers of devastatingly\n"
             "powerful lightning bolts launched\n"
-            "from the string of orbs on its tail."),
+            "from the string of orbs on its tail."
+        #else
+            "It pulverizes foes into nothingness\n"
+            "with showers of devastatingly\n"
+            "powerful lightning bolts launched\n"
+            "from the string of orbs on its tail."
+        #endif
+        ),
         .pokemonScale = 268,
         .pokemonOffset = 2,
         .trainerScale = 271,
@@ -13210,7 +14245,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_ThundurusTherian,
             gShinyOverworldPalette_ThundurusTherian
         )
-        .isLegendary = TRUE,
+        .isSubLegendary = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sThundurusLevelUpLearnset,
         .teachableLearnset = sThundurusTeachableLearnset,
@@ -13246,10 +14281,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 32,
         .weight = 3300,
         .description = COMPOUND_STRING(
-            "This Pokémon appears in legends. It\n"
-            "sends flames into the air from its tail,\n"
-            "burning up everything around it. It helps\n"
-            "those who want to build a world of truth."),
+        #ifdef FIRERED
+            "This Pokémon appears in legends.\n"
+            "It sends flames into the air from its\n"
+            "tail, burning up everything around it."
+        #else
+            "When Reshiram's tail flares, the heat\n"
+            "energy moves the atmosphere and changes\n"
+            "the world's weather."
+        #endif
+        ),
         .pokemonScale = 256,
         .pokemonOffset = 0,
         .trainerScale = 445,
@@ -13282,7 +14323,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_Reshiram,
             gShinyOverworldPalette_Reshiram
         )
-        .isLegendary = TRUE,
+        .isRestrictedLegendary = TRUE,
         .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sReshiramLevelUpLearnset,
@@ -13317,10 +14358,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 29,
         .weight = 3450,
         .description = COMPOUND_STRING(
-            "This legendary Pokémon can scorch the\n"
-            "world with lightning. It has a generator\n"
-            "that creates electricity in its tail. It\n"
-            "assists those with strong ideals."),
+        #ifdef FIRERED
+            "Concealing itself in lightning clouds,\n"
+            "it flies throughout the Unova region.\n"
+            "It creates electricity in its tail."
+        #else
+            "This Pokémon appears in legends.\n"
+            "In its tail, it has a giant generator\n"
+            "that creates electricity."
+        #endif
+        ),
         .pokemonScale = 275,
         .pokemonOffset = 2,
         .trainerScale = 412,
@@ -13353,7 +14400,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_Zekrom,
             gShinyOverworldPalette_Zekrom
         )
-        .isLegendary = TRUE,
+        .isRestrictedLegendary = TRUE,
         .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sZekromLevelUpLearnset,
@@ -13388,10 +14435,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 15,
         .weight = 680,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "Lands visited by Landorus grant such\n"
+            "bountiful crops that it has been hailed\n"
+            "as “The Guardian of the Fields”."
+        #else
             "The energy that comes pouring from its\n"
             "tail increases the nutrition in the soil,\n"
-            "granting bountiful crops. It has been\n"
-            "hailed as “The Guardian of the Fields.”"),
+            "making crops grow to great size."
+        #endif
+        ),
         .pokemonScale = 268,
         .pokemonOffset = 2,
         .trainerScale = 271,
@@ -13445,7 +14498,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_LandorusIncarnate,
             gShinyOverworldPalette_LandorusIncarnate
         )
-        .isLegendary = TRUE,
+        .isSubLegendary = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sLandorusLevelUpLearnset,
         .teachableLearnset = sLandorusTeachableLearnset,
@@ -13479,10 +14532,18 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 13,
         .weight = 680,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "Landorus soars through the sky in\n"
             "this form, bestowing plentiful\n"
-            "harvests upon the land and earning the\n"
-            "people's reverence."),
+            "harvests upon the land and earning\n"
+            "the people's reverence."
+        #else
+            "Landorus soars through the sky in\n"
+            "this form, bestowing plentiful\n"
+            "harvests upon the land and earning\n"
+            "the people's reverence."
+        #endif
+        ),
         .pokemonScale = 268,
         .pokemonOffset = 2,
         .trainerScale = 271,
@@ -13518,7 +14579,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_LandorusTherian,
             gShinyOverworldPalette_LandorusTherian
         )
-        .isLegendary = TRUE,
+        .isSubLegendary = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sLandorusLevelUpLearnset,
         .teachableLearnset = sLandorusTeachableLearnset,
@@ -13557,10 +14618,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 30,
         .weight = 3250,
         .description = COMPOUND_STRING(
-            "This legendary ice Pokémon waits for a\n"
-            "hero to fill in the missing parts of its\n"
-            "body with truth or ideals. Its body became\n"
-            "frozen when its energy leaked out."),
+        #ifdef FIRERED
+            "It generates a powerful, freezing energy\n"
+            "inside itself, but its body became\n"
+            "frozen when the energy leaked out."
+        #else
+            "It can produce ultracold air. Its body\n"
+            "is frozen. This legendary ice Pokémon\n"
+            "waits for a hero to fill in the missing\n"
+            "parts of its body with truth or ideals."
+        #endif
+        ),
         .pokemonScale = 275,
         .pokemonOffset = 7,
         .trainerScale = 356,
@@ -13595,7 +14663,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_Kyurem,
             gShinyOverworldPalette_Kyurem
         )
-        .isLegendary = TRUE,
+        .isRestrictedLegendary = TRUE,
         .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sKyuremLevelUpLearnset,
@@ -13614,13 +14682,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseSpDefense = 100,
         .types = MON_TYPES(TYPE_DRAGON, TYPE_ICE),
         .catchRate = 3,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 350,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_7
-        .expYield = 315,
-    #else
-        .expYield = 297,
-    #endif
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 350 : 315,
         .evYield_SpAttack = 3,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 120,
@@ -13637,10 +14699,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 36,
         .weight = 3250,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
             "The sameness of Reshiram's and\n"
             "Kyurem's genes allowed Kyurem to\n"
-            "absorb Reshiram. Kyurem can now use the\n"
-            "power of both fire and ice."),
+            "absorb Reshiram. Kyurem can now\n"
+            "use the power of both fire and ice."
+        #else
+            "It has foreseen that a world of truth\n"
+            "will arrive for people and Pokémon.\n"
+            "It strives to protect that future."
+        #endif
+        ),
         .pokemonScale = 275,
         .pokemonOffset = 7,
         .trainerScale = 356,
@@ -13673,7 +14742,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_KyuremWhite,
             gShinyOverworldPalette_KyuremWhite
         )
-        .isLegendary = TRUE,
+        .isRestrictedLegendary = TRUE,
         .cannotBeTraded = TRUE,
         .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
@@ -13692,13 +14761,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseSpDefense = 90,
         .types = MON_TYPES(TYPE_DRAGON, TYPE_ICE),
         .catchRate = 3,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 350,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_7
-        .expYield = 315,
-    #else
-        .expYield = 297,
-    #endif
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 350 : 315,
         .evYield_Attack = 3,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 120,
@@ -13715,10 +14778,18 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 33,
         .weight = 3250,
         .description = COMPOUND_STRING(
+        #ifdef FIRERED
+            "It's said that this Pokémon battles\n"
+            "in order to protect the ideal world\n"
+            "that will exist in the future\n"
+            "for people and Pokémon."
+        #else
             "The sameness of Zekrom's and\n"
-            "Kyurem's genes allowed Kyurem to absorb\n"
-            "Zekrom. Kyurem can now use the\n"
-            "power of both electricity and ice."),
+            "Kyurem's genes allowed Kyurem to\n"
+            "absorb Zekrom. Kyurem can now use\n"
+            "the power of both electricity and ice."
+        #endif
+        ),
         .pokemonScale = 275,
         .pokemonOffset = 7,
         .trainerScale = 356,
@@ -13751,7 +14822,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_KyuremBlack,
             gShinyOverworldPalette_KyuremBlack
         )
-        .isLegendary = TRUE,
+        .isRestrictedLegendary = TRUE,
         .cannotBeTraded = TRUE,
         .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
@@ -13789,10 +14860,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 14,
         .weight = 485,
         .description = COMPOUND_STRING(
-            "When it is resolute, its body fills with\n"
-            "power and it becomes swifter. It crosses\n"
-            "the world, running over the surfaces of\n"
-            "oceans and rivers."),
+        #ifdef FIRERED
+            "By blasting water from its hooves,\n"
+            "it can glide across water. It excels\n"
+            "at using leg moves while battling."
+        #else
+            "It crosses the world, running over\n"
+            "the surfaces of oceans and rivers.\n"
+            "It appears at scenic waterfronts."
+        #endif
+        ),
         .pokemonScale = 265,
         .pokemonOffset = 2,
         .trainerScale = 262,
@@ -13861,10 +14938,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 14,
         .weight = 485,
         .description = COMPOUND_STRING(
-            "The power that lay hidden in its\n"
-            "body now covers its horn, turning it\n"
-            "into a sword that can slice through\n"
-            "anything."),
+        #ifdef FIRERED
+            "When it is resolute, its body fills\n"
+            "with power and it becomes swifter.\n"
+            "Its jumps are then too fast to follow."
+        #else
+            "Keldeo has strengthened its resolve\n"
+            "for battle, filling its body with\n"
+            "power and changing its form."
+        #endif
+        ),
         .pokemonScale = 265,
         .pokemonOffset = 2,
         .trainerScale = 262,
@@ -13931,10 +15014,15 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 65,
         .description = COMPOUND_STRING(
-            "The melodies sung by Meloetta have the\n"
-            "power to make Pokémon that hear them\n"
-            "happy or sad. Many famous songs have been\n"
-            "inspired by the tunes that Meloetta plays."),
+        #ifdef FIRERED
+            "Its melodies are sung with a special\n"
+            "vocalization method that can control\n"
+            "the feelings of those who hear it."
+        #else
+            "Many famous songs have been inspired\n"
+            "by the melodies that Meloetta plays."
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -14013,9 +15101,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 65,
         .description = COMPOUND_STRING(
-            "Meloetta's melodies are sung with\n"
-            "a special vocalization method that can\n"
-            "control the feelings of those who hear it."),
+        #ifdef FIRERED
+            "The melodies sung by Meloetta\n"
+            "have the power to make Pokémon\n"
+            "that hear them happy or sad."
+        #else
+            "The melodies sung by Meloetta\n"
+            "have the power to make Pokémon\n"
+            "that hear them happy or sad."
+        #endif
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 12,
         .trainerScale = 256,

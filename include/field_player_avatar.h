@@ -71,4 +71,6 @@ u8 GetLeftSideStairsDirection(u8 direction);
 void SetPlayerAvatarFishing(u8 direction);
 bool32 MetatileAtCoordsIsWaterTile(s16 x, s16 y);
 
+extern bool8 gRunToggleBtnSet;
+
 #endif //GUARD_FIELD_PLAYER_AVATAR_H

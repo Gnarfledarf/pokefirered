@@ -160,6 +160,7 @@ void NewGameInitData(void)
     ResetTrainerTowerResults();
     ResetItemFlags();
     ResetDexNav();
+    FlagSet(FLAG_SYS_B_DASH);
 }
 
 static void ResetMiniGamesResults(void)

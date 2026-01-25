@@ -7,202 +7,411 @@ const u8 gFallbackPokedexText[] = _(
 
 // Gen 1 families
 const u8 gRaticateAlolaPokedexText[] = _(
-    "It forms a group of Rattata, which it \n"
-    "assumes command of. Each group\n"
-    "has its own territory, and disputes\n"
-    "over food happen often.");
+    #ifdef FIRERED
+        "It forms a group of Rattata, which it\n"
+        "assumes command of. Each group has\n"
+        "its own territory, and disputes over\n"
+        "food happen often."
+    #else
+        "This gourmet Pokémon is particular about\n"
+        "the taste and freshness of its food.\n"
+        "Restaurants where Alolan Raticate live\n"
+        "have a good reputation."
+    #endif
+    );
 
 const u8 gPichuPokedexText[] = _(
-    "It is still inept at retaining electricity.\n"
-    "When it is startled, it discharges power\n"
-    "accidentally. It gets better at holding\n"
-    "power as it grows older.");
+    #ifdef FIRERED
+        "Despite its small size, it can zap even\n"
+        "adult humans. However, if it does so, it\n"
+        "also surprises itself."
+    #else
+        "It is not yet skilled at storing\n"
+        "electricity. It may send out a jolt if\n"
+        "amused or startled."
+    #endif
+    );
 
 const u8 gPikachuPokedexText[] = _(
-    "It stores electricity in the electric sacs\n"
-    "on its cheeks. When it releases pent-up\n"
-    "energy in a burst, the electric power is\n"
-    "equal to a lightning bolt.");
+    #ifdef FIRERED
+        "It has small electric sacs on both its\n"
+        "cheeks. If threatened, it looses electric\n"
+        "charges from the sacs."
+    #else
+        "When several of these Pokémon gather,\n"
+        "their electricity can build and cause\n"
+        "lightning storms."
+    #endif
+    );
 
 const u8 gMarowakAlolaPokedexText[] = _(
-    "The cursed flames that light up the bone\n"
-    "carried by this Pokémon are said\n"
-    "to cause both mental and physical\n"
-    "pain that will never fade.");
+    #ifdef FIRERED
+        "The bones it possesses were once its\n"
+        "mother's. Its mother's regrets have become\n"
+        "like a vengeful spirit protecting this Pokémon."
+    #else
+        "Its custom is to mourn its lost companions.\n"
+        "Mounds of dirt by the side of the road mark\n"
+        "the graves of the Marowak."
+    #endif
+    );
 
 const u8 gEeveePokedexText[] = _(
-    "An Eevee has an unstable genetic makeup\n"
-    "that suddenly mutates due to its\n"
-    "environment. Radiation from various\n"
-    "Stones causes this Pokémon to evolve.");
+    #ifdef FIRERED
+        "An extremely rare Pokémon that may\n"
+        "evolve in a number of different ways\n"
+        "depending on stimuli."
+    #else
+        "Its genetic code is irregular. It may\n"
+        "mutate if it is exposed to radiation from\n"
+        "element Stones."
+    #endif
+    );
 
 // Gen 2 families
 const u8 gUnownPokedexText[] = _(
-    "This Pokémon is shaped like ancient text\n"
-    "characters. Although research is ongoing,\n"
-    "it is a mystery as to which came first,\n"
-    "the ancient writings or the various Unown.");
+    #ifdef FIRERED
+        "Its flat, thin body is always stuck on\n"
+        "walls. Its shape appears to have some\n"
+        "meaning."
+    #else
+        "Their shapes look like hieroglyphs on\n"
+        "ancient tablets. It is said that the two\n"
+        "are somehow related."
+    #endif
+    );
 
 // Gen 3 families
 const u8 gDeoxysNormalPokedexText[] = _(
-    "Deoxys emerged from a virus that came\n"
-    "from space. It is highly intelligent and\n"
-    "can shoot lasers from the crystalline\n"
-    "organ on its chest.");
+    #ifdef FIRERED
+        "The DNA of a space virus underwent a\n"
+        "sudden mutation upon exposure to a\n"
+        "laser beam and resulted in Deoxys."
+    #else
+        "Deoxys emerged from a virus that came\n"
+        "from space. It is highly intelligent and\n"
+        "can shoot lasers from the crystalline\n"
+        "organ on its chest."
+    #endif
+    );
 
 // Gen 4 families
 const u8 gMothimPokedexText[] = _(
-    "It does not keep a nest. While it\n"
-    "loves floral honey, it won't gather\n"
-    "any itself. Instead, it plots to steal\n"
-    "honey collected by Combee.");
+    #ifdef FIRERED
+        "It loves the honey of flowers and\n"
+        "steals honey collected by Combee."
+    #else
+        "It does not keep a nest. It flies\n"
+        "over fields and mountains in constant\n"
+        "search of floral honey."
+    #endif
+    );
 
 const u8 gArceusPokedexText[] = _(
-    "It is told in mythology that this Pokémon\n"
-    "emerged from an egg and shaped all there\n"
-    "is in this world, before the universe\n"
-    "even existed.");
+    #ifdef FIRERED
+        "It is described in mythology as the\n"
+        "Pokémon that shaped the universe with\n"
+        "its 1,000 arms."
+    #else
+        "It is told in mythology that this Pokémon\n"
+        "was born before the universe even existed."
+    #endif
+    );
 
 // Gen 5 families
 const u8 gGenesectPokedexText[] = _(
-    "Over 300 million years ago, it was\n"
-    "feared as the strongest of hunters.\n"
-    "Team Plasma altered it and attached\n"
-    "a cannon to its back.");
+    #ifdef FIRERED
+        "Over 300 million years ago, it was\n"
+        "feared as the strongest of hunters.\n"
+        "It has been modified by Team Plasma."
+    #else
+        "This ancient bug Pokémon was altered\n"
+        "by Team Plasma. They upgraded the\n"
+        "cannon on its back."
+    #endif
+    );
 
 // Gen 6 families
 const u8 gGreninjaPokedexText[] = _(
-    "It appears and vanishes with a ninja's\n"
-    "grace. It toys with its enemies using\n"
-    "swift movements, while slicing them with\n"
-    "throwing stars made of compressed water.");
+    #ifdef FIRERED
+        "It creates throwing stars out of\n"
+        "compressed water. When it spins\n"
+        "them and throws them at high speed,\n"
+        "these stars can split metal in two."
+    #else
+        "It appears and vanishes with a ninja's\n"
+        "grace. It toys with its enemies using\n"
+        "swift movements, while slicing them with\n"
+        "throwing stars of sharpest water."
+    #endif
+    );
 
 const u8 gScatterbugPokedexText[] = _(
-    "When under attack from bird Pokémon,\n"
-    "it spews a poisonous black powder that\n"
-    "causes paralysis on contact. Scatterbug\n"
-    "can live in any region or climate.");
+    #ifdef FIRERED
+        "When under attack from bird Pokémon,\n"
+        "it spews a poisonous black powder\n"
+        "that causes paralysis on contact."
+    #else
+        "The powder that covers its body regulates\n"
+        "its temperature, so it can live in any\n"
+        "region or climate."
+    #endif
+    );
 
 const u8 gSpewpaPokedexText[] = _(
-    "It lives hidden within thicket shadows.\n"
-    "When predators attack, it quickly bristles\n"
-    "the fur covering its body in an effort to\n"
-    "threaten them.");
+    #ifdef FIRERED
+        "It lives hidden within thicket shadows.\n"
+        "When predators attack, it quickly bristles\n"
+        "the fur covering its body in an effort to\n"
+        "threaten them."
+    #else
+        "The beaks of bird Pokémon can't begin to\n"
+        "scratch its stalwart body. To defend itself,\n"
+        "it spews powder."
+    #endif
+    );
 
 const u8 gFurfrouPokedexText[] = _(
-    "Trimming its fluffy fur not only makes\n"
-    "it more elegant but also increases the\n"
-    "swiftness of its movements. These\n"
-    "Pokémon were the guardians of kings.");
+    #ifdef FIRERED
+        "Trimming its fluffy fur not only makes\n"
+        "it more elegant but also increases the\n"
+        "swiftness of its movements."
+    #else
+        "Historically, in the Kalos region,\n"
+        "these Pokémon were the designated\n"
+        "guardians of the king."
+    #endif
+    );
 
 const u8 gXerneasPokedexText[] = _(
-    "Legends say that when the horns on\n"
-    "its head shine in seven colors, it is\n"
-    "sharing everlasting life. It slept for a\n"
-    "thousand years in the form of a tree");
+    #ifdef FIRERED
+        "Legends say it can share eternal life.\n"
+        "It slept for a thousand years in the form\n"
+        "of a tree before its revival."
+    #else
+        "When the horns on its head shine in\n"
+        "seven colors, it is said to be sharing\n"
+        "everlasting life."
+    #endif
+    );
 
 const u8 gZygarde50PokedexText[] = _(
-    "It's said to be monitoring the ecosystem\n"
-    "from deep in the caves where it lives.\n"
-    "There are rumors that even greater power\n"
-    "lies hidden within its cells.");
+    #ifdef FIRERED
+        "When the Kalos region's ecosystem falls\n"
+        "into disarray, it appears and reveals its\n"
+        "secret power."
+    #else
+        "It's hypothesized that it's monitoring\n"
+        "those who destroy the ecosystem from\n"
+        "deep in the cave where it lives."
+    #endif
+    );
 
 const u8 gZygarde10PokedexText[] = _(
-    "This is Zygarde when about 10% of\n"
-    "its pieces have been assembled. It\n"
-    "leaps at its opponent's chest and\n"
-    "sinks its sharp fangs into them.");
+    #ifdef FIRERED
+        "Its sharp fangs make short work of finishing\n"
+        "off its enemies, but it's unable to maintain\n"
+        "this body indefinitely. After a period of time,\n"
+        "it falls apart."
+    #else
+        "This is Zygarde's form when about 10% of its\n"
+        "cells have been gathered. It runs across the\n"
+        "land at speeds greater than 100 km/h."
+    #endif
+    );
 
 // Gen 7 families
 const u8 gGumshoosPokedexText[] = _(
-    "When it finds a trace of its prey, it\n"
-    "patiently stakes out the location...\n"
-    "but as it's diurnal, it's always snoozing\n"
-    "by nightfall.");
+    #ifdef FIRERED
+        "When it finds a trace of its prey, it\n"
+        "patiently stakes out the location...\n"
+        "but it's always snoozing by nightfall."
+    #else
+        "It adores having Rattata and Raticate\n"
+        "for dinner, but as it's diurnal, it\n"
+        "never encounters them. This Pokémon\n"
+        "boasts incredible patience."
+    #endif
+    );
 
 const u8 gVikavoltPokedexText[] = _(
-    "It concentrates electrical energy within\n"
-    "its large jaws and uses it to zap its foes.\n"
-    "It overwhelms bird Pokémon with shocking\n"
-    "beams of electrical energy.");
+    #ifdef FIRERED
+        "It zips around, on sharp lookout for an\n"
+        "opening. It concentrates electrical energy\n"
+        "within its large jaws and uses it to zap\n"
+        "its enemies."
+    #else
+        "It produces electricity via an electrical\n"
+        "organ in its abdomen. It overwhelms bird\n"
+        "Pokémon with shocking beams of electrical\n"
+        "energy."
+    #endif
+    );
 
 const u8 gRibombeePokedexText[] = _(
-    "Ribombee rolls up pollen into puffs.\n"
-    "It makes many different varieties, some\n"
-    "used as food and others used in battle.\n"
-    "They are sometimes sold as supplements.");
+    #ifdef FIRERED
+        "It rolls up pollen into puffs. It makes\n"
+        "many different varieties, some used as\n"
+        "food and others used in battle."
+    #else
+        "Some of Ribombee's pollen puffs are\n"
+        "highly nutritious. They are sometimes\n"
+        "sold as supplements."
+    #endif
+    );
 
 const u8 gRockruffPokedexText[] = _(
-    "This Pokémon has lived with people since\n"
-    "times long ago. It can sense when its\n"
-    "Trainer is in the dumps and will stick\n"
-    "close by its Trainer's side.");
+    #ifdef FIRERED
+        "It's considered to be a good Pokémon for\n"
+        "beginners because of its friendliness, but\n"
+        "its disposition grows rougher as it grows up."
+    #else
+        "This Pokémon has lived with people since\n"
+        "times long ago. It can sense when its\n"
+        "Trainer is in the dumps and will stick\n"
+        "close by its Trainer's side."
+    #endif
+    );
 
 const u8 gAraquanidPokedexText[] = _(
-    "Despite what its appearance suggests,\n"
-    "it cares for others. If it finds vulnerable,\n"
-    "weak Pokémon, it protectively brings\n"
-    "them into its water bubble.");
+    #ifdef FIRERED
+        "It delivers headbutts with the water bubble\n"
+        "on its head. Small Pokémon get sucked into\n"
+        "the bubble, where they drown."
+    #else
+        "Despite what its appearance suggests, it\n"
+        "cares for others. If it finds vulnerable,\n"
+        "weak Pokémon, it protectively brings them\n"
+        "into its water bubble."
+    #endif
+    );
 
 const u8 gLurantisPokedexText[] = _(
-    "It requires a lot of effort to maintain\n"
-    "Lurantis's vivid coloring, but some\n"
-    "collectors enjoy this work and treat it\n"
-    "as their hobby.");
+    #ifdef FIRERED
+        "It requires a lot of effort to maintain\n"
+        "Lurantis's vivid coloring, but some\n"
+        "collectors enjoy this work and treat\n"
+        "it as their hobby."
+    #else
+        "It fires beams from its sickle-shaped petals.\n"
+        "These beams are powerful enough to cleave\n"
+        "through thick metal plates."
+    #endif
+    );
 
 const u8 gSalazzlePokedexText[] = _(
-    "For some reason, only females have\n"
-    "been found. It creates a reverse harem of\n"
-    "male Salandit to live with. Its poisonous\n"
-    "gas is filled with pheromones.");
+    #ifdef FIRERED
+        "For some reason, only females have been\n"
+        "found. It creates a reverse harem of male\n"
+        "Salandit that it lives with."
+    #else
+        "Filled with pheromones, its poisonous gas\n"
+        "can be diluted to use in the production of\n"
+        "luscious perfumes."
+    #endif
+    );
 
 const u8 gSilvallyNormalPokedexText[] = _(
-    "Its trust in its partner awakens it.\n"
-    "This Pokémon is capable of changing its\n"
-    "type by equipping special memories, a\n"
-    "trait that is well displayed in battle.");
+    #ifdef FIRERED
+        "Its trust in its partner awakens it.\n"
+        "This Pokémon is capable of changing its\n"
+        "type, a flexibility that is well displayed\n"
+        "in battle."
+    #else
+        "Although its name was Type: Null at first,\n"
+        "the boy who evolved it into this form gave\n"
+        "it the name by which it is now known."
+    #endif
+    );
 
 const u8 gSilvallyMemoryPokedexText[] = _(
-    "Upon awakening, its RKS System is\n"
-    "activated. By employing specific\n"
-    "memories, this Pokémon can adapt its\n"
-    "type to confound its enemies.");
+    #ifdef FIRERED
+        "It destroyed its own control mask.\n"
+        "It has become capable of changing its\n"
+        "type by equipping special memories."
+    #else
+        "Upon awakening, its RKS System is\n"
+        "activated. By employing specific\n"
+        "memories, this Pokémon can adapt its\n"
+        "type to confound its enemies."
+    #endif
+    );
 
 const u8 gMiniorMeteorPokedexText[] = _(
-    "Originally making its home in the ozone\n"
-    "layer, it hurtles to the ground when the\n"
-    "shell encasing its body grows too heavy.\n"
-    "It was born from mutated nanoparticles.");
+    #ifdef FIRERED
+        "Originally making its home in the ozone\n"
+        "layer, it hurtles to the ground when the\n"
+        "shell encasing its body grows too heavy."
+    #else
+        "Strong impacts can knock it out of\n"
+        "its shell. This Pokémon was born\n"
+        "from mutated nanoparticles."
+    #endif
+    );
 
 const u8 gMiniorCorePokedexText[] = _(
-    "If its core stays exposed, it will\n"
-    "soon die off. It's possible that it\n"
-    "may survive if it's put into a Poké Ball\n"
-    "quickly enough.");
+    #ifdef FIRERED
+        "It eats dust in the atmosphere.\n"
+        "The composition of the dust determines\n"
+        "the color of its core."
+    #else
+        "If its core stays exposed, it will\n"
+        "soon die off. It's possible that it\n"
+        "may survive if it's put into a Poké Ball\n"
+        "quickly enough."
+    #endif
+    );
 
 const u8 gTogedemaruPokedexText[] = _(
-    "The spiny fur on its back is normally\n"
-    "at rest. When this Pokémon becomes\n"
-    "agitated, its fur stands on end and stabs\n"
-    "into its attackers.");
+    #ifdef FIRERED
+        "The spiny fur on its back is normally at\n"
+        "rest. When this Pokémon becomes agitated,\n"
+        "its fur stands on end and stabs into its\n"
+        "attackers."
+    #else
+        "The long hairs on its back act as lightning\n"
+        "rods. The bolts of lightning it attracts\n"
+        "are stored as energy in its electric sac."
+    #endif
+    );
 
 const u8 gMimikyuDisguisedPokedexText[] = _(
-    "A lonely Pokémon, it hides its terrifying\n"
-    "appearance beneath an old rag so it can\n"
-    "get closer to people and other Pokémon.\n"
-    "Its actual appearance is unknown.");
+    #ifdef FIRERED
+        "Its actual appearance is unknown. A scholar\n"
+        "who saw what was under its rag was overwhelmed\n"
+        "by terror and died from the shock."
+    #else
+        "A lonely Pokémon, it hides its terrifying\n"
+        "appearance beneath an old rag so it can\n"
+        "get closer to people and other Pokémon."
+    #endif
+    );
 
 const u8 gMimikyuBustedPokedexText[] = _(
-    "After going to all the effort of\n"
-    "disguising itself, its neck was\n"
-    "broken. Whatever is inside is probably\n"
-    "unharmed, but it's still feeling sad.");
+    #ifdef FIRERED
+        "After going to all the effort of\n"
+        "disguising itself, its neck was\n"
+        "broken. Whatever is inside is probably\n"
+        "unharmed, but it's still feeling sad."
+    #else
+        "If its neck is broken or its rag torn\n"
+        "during an attack, it works through the\n"
+        "night to patch it."
+    #endif
+    );
 
 const u8 gKommoOPokedexText[] = _(
-    "Its rigid scales function as offense and\n"
-    "defense. In the past, its scales were\n"
-    "processed and used to make weapons\n"
-    "and other valuable commodities.");
+    #ifdef FIRERED
+        "When it spots enemies, it threatens them\n"
+        "by jingling the scales on its tail. Weak\n"
+        "opponents will crack and flee in panic."
+    #else
+        "Its rigid scales function as offense \n"
+        "and defense. In the past, its scales\n"
+        "were processed and used to make\n"
+        "weapons and other commodities."
+    #endif
+    );
 
 // Gen 8 families
 const u8 gAlcremieVanillaCreamPokedexText[] = _(

@@ -59,6 +59,7 @@
 #include "trade.h"
 #include "trainer_pokemon_sprites.h"
 #include "union_room.h"
+#include "pokerus.h"
 #include "constants/abilities.h"
 #include "constants/battle.h"
 #include "constants/easy_chat.h"
@@ -365,7 +366,6 @@ static void UseSacredAsh(u8 taskId);
 static void CB2_ReturnToBerryPouchMenu(void);
 static void CB2_ReturnToTMCaseMenu(void);
 static void GiveItemOrMailToSelectedMon(u8 taskId);
-static void RemoveItemToGiveFromBag(u16 item);
 static void DisplayItemMustBeRemovedFirstMessage(u8 taskId);
 static void CB2_WriteMailToGiveMonFromBag(void);
 static void GiveItemToSelectedMon(u8 taskId);
@@ -1295,6 +1295,9 @@ void Task_HandleChooseMonInput(u8 taskId)
         case B_BUTTON: // also handles pressing A_BUTTON on Cancel
             HandleChooseMonCancel(taskId, slotPtr);
             break;
+        case SELECT_BUTTON: // Quick Swap
+            DestroyTask(taskId);
+            break;
         case START_BUTTON:
             if (sPartyMenuInternal->chooseMultiple)
             {
@@ -1526,6 +1529,22 @@ static void Task_HandleCancelChooseMonYesNoInput(u8 taskId)
     }
 }
 
+static bool8 IsInvalidPartyMenuActionType(u8 partyMenuType)
+{
+    return (partyMenuType == PARTY_ACTION_SEND_OUT
+         || partyMenuType == PARTY_ACTION_CANT_SWITCH
+         || partyMenuType == PARTY_ACTION_USE_ITEM
+         || partyMenuType == PARTY_ACTION_ABILITY_PREVENTS
+         || partyMenuType == PARTY_ACTION_GIVE_ITEM
+         || partyMenuType == PARTY_ACTION_GIVE_PC_ITEM
+         || partyMenuType == PARTY_ACTION_GIVE_MAILBOX_MAIL
+         || partyMenuType == PARTY_ACTION_SOFTBOILED
+         || partyMenuType == PARTY_ACTION_CHOOSE_AND_CLOSE
+         || partyMenuType == PARTY_ACTION_MOVE_TUTOR
+         || partyMenuType == PARTY_ACTION_MINIGAME
+         || partyMenuType == PARTY_ACTION_REUSABLE_ITEM);
+}
+
 static u16 PartyMenuButtonHandler(s8 *slotPtr)
 {
     s8 movementDir;
@@ -1561,6 +1580,21 @@ static u16 PartyMenuButtonHandler(s8 *slotPtr)
     }
     if (JOY_NEW(START_BUTTON))
         return START_BUTTON;
+
+        if (JOY_NEW(SELECT_BUTTON) && CalculatePlayerPartyCount() >= 2 && !IsInvalidPartyMenuActionType(gPartyMenu.action))
+    {
+        if (gPartyMenu.menuType != PARTY_MENU_TYPE_FIELD)
+            return 0;
+        if (*slotPtr == PARTY_SIZE + 1)
+            return 0;
+        if (gPartyMenu.action != PARTY_ACTION_SWITCH)
+        {
+            CreateTask(CursorCB_Switch, 1);
+            return SELECT_BUTTON;
+        }
+        return A_BUTTON; // Select is allowed to act as the A Button while CursorCB_Switch is active.
+    }
+
     if (movementDir)
     {
         UpdateCurrentPartySelection(slotPtr, movementDir);
@@ -2003,7 +2037,7 @@ u8 GetMonAilment(struct Pokemon *mon)
     ailment = GetAilmentFromStatus(GetMonData(mon, MON_DATA_STATUS));
     if (ailment != AILMENT_NONE)
         return ailment;
-    if (CheckPartyPokerus(mon, 0))
+    if (ShouldPokemonShowActivePokerus(mon))
         return AILMENT_PKRS;
     return AILMENT_NONE;
 }
@@ -5375,7 +5409,7 @@ void ItemUseCB_PPUp(u8 taskId, TaskFunc func)
     gTasks[taskId].func = Task_HandleRestoreWhichMoveInput;
 }
 
-u16 ItemIdToBattleMoveId(u16 item)
+enum Move ItemIdToBattleMoveId(enum Item item)
 {
     return (GetItemPocket(item) == POCKET_TM_HM) ? GetItemTMHMMoveId(item) : MOVE_NONE;
 }
@@ -6276,7 +6310,7 @@ static void GiveItemOrMailToSelectedMon(u8 taskId)
 {
     if (ItemIsMail(gPartyMenu.bagItem))
     {
-        RemoveItemToGiveFromBag(gPartyMenu.bagItem);
+        RemoveBagItem(gPartyMenu.bagItem, 1);
         sPartyMenuInternal->exitCallback = CB2_WriteMailToGiveMonFromBag;
         Task_ClosePartyMenu(taskId);
     }
@@ -6295,7 +6329,7 @@ static void GiveItemToSelectedMon(u8 taskId)
         item = gPartyMenu.bagItem;
         DisplayGaveHeldItemMessage(&gPlayerParty[gPartyMenu.slotId], item, FALSE, TRUE);
         GiveItemToMon(&gPlayerParty[gPartyMenu.slotId], item);
-        RemoveItemToGiveFromBag(item);
+        RemoveBagItem(item, 1);
         gTasks[taskId].func = Task_UpdateHeldItemSpriteAndClosePartyMenu;
     }
 }
@@ -6370,7 +6404,7 @@ static void Task_HandleSwitchItemsFromBagYesNoInput(u8 taskId)
     {
     case 0: // Yes, switch items
         item = gPartyMenu.bagItem;
-        RemoveItemToGiveFromBag(item);
+        RemoveBagItem(item, 1);
         if (AddBagItem(sPartyMenuItemId, 1) == FALSE)
         {
             ReturnGiveItemToBagOrPC(item);
@@ -6404,14 +6438,6 @@ static void DisplayItemMustBeRemovedFirstMessage(u8 taskId)
     DisplayPartyMenuMessage(gText_RemoveMailBeforeItem, TRUE);
     ScheduleBgCopyTilemapToVram(2);
     gTasks[taskId].func = Task_UpdateHeldItemSpriteAndClosePartyMenu;
-}
-
-static void RemoveItemToGiveFromBag(u16 item)
-{
-    if (gPartyMenu.action == PARTY_ACTION_GIVE_PC_ITEM)
-        RemovePCItem(item, 1);
-    else
-        RemoveBagItem(item, 1);
 }
 
 // Returns FALSE if there was no space to return the item

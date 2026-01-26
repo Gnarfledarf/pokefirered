@@ -144,9 +144,9 @@ const u8 *const gPokeblockWasTooXStringTable[] = {
 };
 
 static const u8 sText_Someones[] = _("someone's");
-static const u8 sText_Lanettes[] = _("Lanette's"); //no decapitalize until it is everywhere
-static const u8 sText_EnigmaBerry[] = _("Enigma Berry"); //no decapitalize until it is everywhere
-static const u8 sText_BerrySuffix[] = _(" Berry"); //no decapitalize until it is everywhere
+static const u8 sText_Lanettes[] = _("Lanette's");
+static const u8 sText_EnigmaBerry[] = _("Enigma Berry");
+static const u8 sText_BerrySuffix[] = _(" Berry");
 const u8 gText_EmptyString3[] = _("");
 
 // New battle strings.
@@ -161,7 +161,7 @@ const u8 gText_WhatWillPkmnDo[] = _("What will\n{B_BUFF1} do?");
 const u8 gText_WhatWillPkmnDo2[] = _("What will\n{B_PLAYER_NAME} do?");
 const u8 gText_WhatWillWallyDo[] = _("What will\nWally do?");
 const u8 gText_LinkStandby[] = _("{PAUSE 16}Link standby…");
-const u8 gText_BattleMenu[] = _("FIGHT{CLEAR_TO 56}BAG\nPOKéMON{CLEAR_TO 56}RUN");
+const u8 gText_BattleMenu[] = _("Fight{CLEAR_TO 56}Bag\nPokémon{CLEAR_TO 56}Run");
 const u8 gText_MoveInterfacePP[] = _("PP ");
 const u8 gText_MoveInterfaceType[] = _("Type/");
 const u8 gText_MoveInterfacePpType[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW DYNAMIC_COLOR4 DYNAMIC_COLOR5 DYNAMIC_COLOR6}PP\nType/");
@@ -209,7 +209,7 @@ const u8 gText_AFormerChampion[] = _("A former Champion!\p");
 const u8 gText_ThePreviousChampion[] = _("The previous Champion!\p");
 const u8 gText_TheUnbeatenChampion[] = _("The unbeaten Champion!\p");
 const u8 gText_PlayerMon1Name[] = _("{B_PLAYER_MON1_NAME}");
-const u8 gText_Vs[] = _("VS");
+const u8 gText_Vs[] = _("Vs");
 const u8 gText_OpponentMon1Name[] = _("{B_OPPONENT_MON1_NAME}");
 const u8 gText_Mind[] = _("Mind");
 const u8 gText_Skill[] = _("Skill");
@@ -232,9 +232,9 @@ static const u8 sText_PkmnBeganGrowlingDeeply[] = _("{B_SCR_NAME_WITH_PREFIX} be
 static const u8 sText_PkmnEagerForMore[] = _("{B_SCR_NAME_WITH_PREFIX} is eager for more!");
 static const u8 sText_RefIfNothingIsDecided[] = _("Referee: If nothing is decided in\n3 turns, we will go to judging!");
 static const u8 sText_RefThatsIt[] = _("Referee: That's it! We will now go to\njudging to determine the winner!");
-static const u8 sText_RefJudgeMind[] = _("Referee: Judging category 1, Mind!\nThe POKéMON showing the most guts!\p");
-static const u8 sText_RefJudgeSkill[] = _("Referee: Judging category 2, Skill!\nThe POKéMON using moves the best!\p");
-static const u8 sText_RefJudgeBody[] = _("Referee: Judging category 3, Body!\nThe POKéMON with the most vitality!\p");
+static const u8 sText_RefJudgeMind[] = _("Referee: Judging category 1, Mind!\nThe Pokémon showing the most guts!\p");
+static const u8 sText_RefJudgeSkill[] = _("Referee: Judging category 2, Skill!\nThe Pokémon using moves the best!\p");
+static const u8 sText_RefJudgeBody[] = _("Referee: Judging category 3, Body!\nThe Pokémon with the most vitality!\p");
 static const u8 sText_RefPlayerWon[] = _("Referee: Judgment: {B_BUFF1} to {B_BUFF2}!\nThe winner is {B_PLAYER_NAME}'s {B_PLAYER_MON1_NAME}!\p");
 static const u8 sText_RefOpponentWon[] = _("Referee: Judgment: {B_BUFF1} to {B_BUFF2}!\nThe winner is {B_TRAINER1_NAME}'s {B_OPPONENT_MON1_NAME}!\p");
 static const u8 sText_RefDraw[] = _("Referee: Judgment: 3 to 3!\nWe have a draw!\p");
@@ -277,7 +277,7 @@ const u8 gText_BattleTowerBan_Newline2[] = _("\n");
 const u8 gText_BattleTowerBan_Is1[] = _(" is");
 const u8 gText_BattleTowerBan_Is2[] = _(" is");
 const u8 gText_TimeBoard[] = _("Time Board");
-const u8 gText_XMinYZSec[] = _("{STR_VAR_1}MIN. {STR_VAR_2}.{STR_VAR_3}SEC.");
+const u8 gText_XMinYZSec[] = _("{STR_VAR_1}Min. {STR_VAR_2}.{STR_VAR_3}Sec.");
 
 
 const u8 *const gBattleStringsTable[STRINGID_COUNT] =
@@ -999,7 +999,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_THREWBAIT]                     = COMPOUND_STRING("{B_PLAYER_NAME} threw some Bait\nat the {B_OPPONENT_MON1_NAME}!"),
     [STRINGID_PKMNANGRY]                     = COMPOUND_STRING("{B_OPPONENT_MON1_NAME} is angry!"),
     [STRINGID_PKMNEATING]                    = COMPOUND_STRING("{B_OPPONENT_MON1_NAME} is eating!"),
-    [STRINGID_POKEDUDEUSED]                  = COMPOUND_STRING("The POKé Dude used\n{B_LAST_ITEM}!"),
+    [STRINGID_POKEDUDEUSED]                  = COMPOUND_STRING("The Poké Dude used\n{B_LAST_ITEM}!"),
     [STRINGID_TRAINER1MON2COMEBACK]          = COMPOUND_STRING("{B_TRAINER1_NAME}: {B_OPPONENT_MON2_NAME}, come back!"),
     [STRINGID_TRAINER1MON1AND2COMEBACK]      = COMPOUND_STRING("{B_TRAINER1_NAME}: {B_OPPONENT_MON1_NAME} and\n{B_OPPONENT_MON2_NAME}, come back!"),
 };

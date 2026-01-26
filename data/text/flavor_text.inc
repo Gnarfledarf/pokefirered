@@ -35,7 +35,7 @@ Text_PokemartSign::
 	.string "Pokémon Mart$"
 
 Text_PokecenterSign::
-	.string "Heal Your Pokémon!\n"
+	.string "Heal your Pokémon!\n"
 	.string "Pokémon Center$"
 
 Text_Indigo_UltimateGoal::

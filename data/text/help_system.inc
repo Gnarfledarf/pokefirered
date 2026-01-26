@@ -968,7 +968,7 @@ Help_Text_HowToUseBag2::
 	.string "   Pad to check the data headings:\n"
 	.string "   “Items”\n"
 	.string "   “Key Items”\n"
-	.string "   “POKé Balls”\n"
+	.string "   “Poké Balls”\n"
 	.string "   Press up or down to select an item.$"
 
 Help_Text_HowToReadPokedex::

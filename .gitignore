@@ -88,6 +88,8 @@ tools/compresSmol/compresSmolTilemap
 *.fastSmol
 *.smolTM
 *.ss*
+workspace.code-workspace
+*.ss*
 *.code-workspace
 __pycache__
 pokefirered-*.png

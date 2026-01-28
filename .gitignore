@@ -90,3 +90,4 @@ tools/compresSmol/compresSmolTilemap
 *.ss*
 *.code-workspace
 __pycache__
+pokefirered-*.png

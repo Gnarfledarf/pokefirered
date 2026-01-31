@@ -2082,3 +2082,4 @@ inline u32 GetSpriteHeight(struct Sprite *sprite)
 {
     return sOamDimensions[sprite->oam.shape][sprite->oam.size].height;
 }
+

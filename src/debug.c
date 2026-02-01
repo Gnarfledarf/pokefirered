@@ -2126,7 +2126,6 @@ static void DebugAction_Trainers_SetRematchReadiness(u8 taskId)
         gSaveBlock1Ptr->trainerRematches[sDebugMenuListData->data[1]] = TRUE;
 }
 
-void FillPartnerParty(u16 trainerId);
 static void DebugAction_Trainers_TryBattle(u8 taskId)
 {
     s32 trainer1Id = sDebugMenuListData->data[0];

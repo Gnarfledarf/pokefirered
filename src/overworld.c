@@ -3701,7 +3701,6 @@ static void CreateLinkPlayerSprite(u8 linkPlayerId, u8 gameVersion)
         sprite->data[0] = linkPlayerId;
         objEvent->triggerGroundEffectsOnMove = FALSE;
         objEvent->localId = OBJ_EVENT_ID_DYNAMIC_BASE + linkPlayerId;
-        SetUpShadow(objEvent);
     }
 }
 

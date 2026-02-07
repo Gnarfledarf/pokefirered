@@ -742,7 +742,7 @@ static void Task_TopMenuHandleInput(u8 taskId)
             {
                 PlaySE(SE_M_LOCK_ON);
             }
-            else if (cursorPos != sFameCheckerData->numUnlockedPersons - 1) // anything but Cancel
+            else if (cursorPos != sFameCheckerData->numUnlockedPersons - 1) // anything but CANCEL
             {
                 PlaySE(SE_M_LOCK_ON);
                 FillWindowPixelRect(FCWINDOWID_ICONDESC, PIXEL_FILL(0), 0, 0, 88, 32);
@@ -762,11 +762,11 @@ static void Task_TopMenuHandleInput(u8 taskId)
         else if (JOY_NEW(A_BUTTON))
         {
             cursorPos = ListMenu_ProcessInput(0);
-            if (cursorPos == sFameCheckerData->numUnlockedPersons - 1) // Cancel
+            if (cursorPos == sFameCheckerData->numUnlockedPersons - 1) // CANCEL
                 task->func = Task_StartToCloseFameChecker;
             else if (sFameCheckerData->inPickMode)
             {
-                if (!IsTextPrinterActive(2) && HasUnlockedAllFlavorTextsForCurrentPerson() == TRUE)
+                if (!IsTextPrinterActiveOnWindow(2) && HasUnlockedAllFlavorTextsForCurrentPerson() == TRUE)
                     GetPickModeText();
             }
             else if (sFameCheckerData->personHasUnlockedPanels)
@@ -862,7 +862,7 @@ static void Task_FlavorTextDisplayHandleInput(u8 taskId)
     s16 *data = gTasks[taskId].data;
 
     RunTextPrinters();
-    if (JOY_NEW(A_BUTTON) && !IsTextPrinterActive(2))
+    if (JOY_NEW(A_BUTTON) && !IsTextPrinterActiveOnWindow(2))
     {
         u8 spriteId = sFameCheckerData->spriteIds[data[1]];
         if (gSprites[spriteId].data[1] != 0xFF)

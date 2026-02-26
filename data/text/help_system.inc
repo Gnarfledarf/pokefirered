@@ -1678,6 +1678,12 @@ Help_Text_OwnMoveBug::
 Help_Text_OwnPokemonBug::
 	.string "Own Pokémon type: Bug$"
 
+Help_Text_OwnMoveFairy::
+	.string "Own move type: Fairy$"
+
+Help_Text_OwnPokemonFairy::
+	.string "Own Pokémon type: Fairy$"
+
 Help_Text_HowToUseTypeMatchupList::
 	.string "Depending on the matchup of the\n"
 	.string "move type and the target Pokémon's\l"
@@ -1690,11 +1696,11 @@ Help_Text_HowToUseTypeMatchupList::
 Help_Text_TypeMatchupOwnMoveDark::
 	.string "Effect on the opposing Pokémon:\p"
 	.string "   {CIRCLE_DOT}: Psychic, Ghost\p"
-	.string "   {TRIANGLE}: Fighting, Dark, Steel$"
+	.string "   {TRIANGLE}: Fighting, Dark, Fairy$"
 
 Help_Text_TypeMatchupOwnPokemonDark::
 	.string "Effect of foe's move on own Pokémon:\p"
-	.string "   {CIRCLE_DOT}: Fighting, Bug\p"
+	.string "   {CIRCLE_DOT}: Fighting, Bug, Fairy\p"
 	.string "   {TRIANGLE}: Ghost, Dark\p"
 	.string "   {BIG_MULT_X}: Psychic$"
 
@@ -1706,7 +1712,7 @@ Help_Text_TypeMatchupOwnMoveRock::
 Help_Text_TypeMatchupOwnPokemonRock::
 	.string "Effect of foe's move on own Pokémon:\p"
 	.string "   {CIRCLE_DOT}: Water, Grass, Fighting,\n"
-	.string "       Ground, Steel\p"
+	.string "        Ground, Steel\p"
 	.string "   {TRIANGLE}: Normal, Fire, Poison, Flying$"
 
 Help_Text_TypeMatchupOwnMovePsychic::
@@ -1723,19 +1729,20 @@ Help_Text_TypeMatchupOwnPokemonPsychic::
 Help_Text_TypeMatchupOwnMoveFighting::
 	.string "Effect on the opposing Pokémon:\p"
 	.string "   {CIRCLE_DOT}: Normal, Ice, Rock, Dark, Steel\p"
-	.string "   {TRIANGLE}: Poison, Flying, Psychic, Bug\p"
+	.string "   {TRIANGLE}: Poison, Flying, Psychic, Bug,\p"
+	.string "        Fairy\p"
 	.string "   {BIG_MULT_X}: Ghost$"
 
 Help_Text_TypeMatchupOwnPokemonFighting::
 	.string "Effect of foe's move on own Pokémon:\p"
-	.string "   {CIRCLE_DOT}: Flying, Psychic\p"
+	.string "   {CIRCLE_DOT}: Flying, Psychic, Fairy\p"
 	.string "   {TRIANGLE}: Bug, Rock, Dark$"
 
 Help_Text_TypeMatchupOwnMoveGrass::
 	.string "Effect on the opposing Pokémon:\p"
 	.string "   {CIRCLE_DOT}: Water, Ground, Rock\p"
 	.string "   {TRIANGLE}: Fire, Grass, Poison, Flying,\n"
-	.string "       Bug, Dragon, Steel$"
+	.string "        Bug, Dragon, Steel$"
 
 Help_Text_TypeMatchupOwnPokemonGrass::
 	.string "Effect of foe's move on own Pokémon:\p"
@@ -1745,7 +1752,7 @@ Help_Text_TypeMatchupOwnPokemonGrass::
 Help_Text_TypeMatchupOwnMoveGhost::
 	.string "Effect on the opposing Pokémon:\p"
 	.string "   {CIRCLE_DOT}: Psychic, Ghost\p"
-	.string "   {TRIANGLE}: Dark, Steel\p"
+	.string "   {TRIANGLE}: Dark\p"
 	.string "   {BIG_MULT_X}: Normal$"
 
 Help_Text_TypeMatchupOwnPokemonGhost::
@@ -1767,7 +1774,7 @@ Help_Text_TypeMatchupOwnPokemonIce::
 Help_Text_TypeMatchupOwnMoveGround::
 	.string "Effect on the opposing Pokémon:\p"
 	.string "   {CIRCLE_DOT}: Fire, Electric, Poison, Rock,\n"
-	.string "       Steel\p"
+	.string "        Steel\p"
 	.string "   {TRIANGLE}: Grass, Bug\n"
 	.string "   {BIG_MULT_X}: Flying$"
 
@@ -1790,23 +1797,25 @@ Help_Text_TypeMatchupOwnPokemonElectric::
 
 Help_Text_TypeMatchupOwnMovePoison::
 	.string "Effect on the opposing Pokémon:\p"
-	.string "   {CIRCLE_DOT}: Grass\p"
+	.string "   {CIRCLE_DOT}: Grass, Fairy\p"
 	.string "   {TRIANGLE}: Poison, Ground, Rock, Ghost\p"
 	.string "   {BIG_MULT_X}: Steel$"
 
 Help_Text_TypeMatchupOwnPokemonPoison::
 	.string "Effect of foe's move on own Pokémon:\p"
 	.string "   {CIRCLE_DOT}: Ground, Psychic\p"
-	.string "   {TRIANGLE}: Grass, Fighting, Poison, Bug$"
+	.string "   {TRIANGLE}: Grass, Fighting, Poison,\n"
+	.string "        Bug, Fairy$"
 
 Help_Text_TypeMatchupOwnMoveDragon::
 	.string "Effect on the opposing Pokémon:\p"
 	.string "   {CIRCLE_DOT}: Dragon\p"
-	.string "   {TRIANGLE}: Steel$"
+	.string "   {TRIANGLE}: Steel\p"
+	.string "   {BIG_MULT_X}: Fairy$"
 
 Help_Text_TypeMatchupOwnPokemonDragon::
 	.string "Effect of foe's move on own Pokémon:\p"
-	.string "   {CIRCLE_DOT}: Ice, Dragon\p"
+	.string "   {CIRCLE_DOT}: Ice, Dragon, Fairy\p"
 	.string "   {TRIANGLE}: Fire, Water, Electric, Grass$"
 
 Help_Text_TypeMatchupOwnMoveNormal::
@@ -1821,15 +1830,15 @@ Help_Text_TypeMatchupOwnPokemonNormal::
 
 Help_Text_TypeMatchupOwnMoveSteel::
 	.string "Effect on the opposing Pokémon:\p"
-	.string "   {CIRCLE_DOT}: Ice, Rock\p"
+	.string "   {CIRCLE_DOT}: Ice, Rock, Fairy\p"
 	.string "   {TRIANGLE}: Fire, Water, Electric, Steel$"
 
 Help_Text_TypeMatchupOwnPokemonSteel::
 	.string "Effect of foe's move on own Pokémon:\p"
 	.string "   {CIRCLE_DOT}: Fire, Fighting, Ground\n"
 	.string "   {TRIANGLE}: Normal, Grass, Ice, Flying,\l"
-	.string "       Psychic, Bug, Rock, Ghost,\l"
-	.string "       Dragon, Dark, Steel\l"
+	.string "        Psychic, Bug, Rock, Dragon,\l"
+	.string "        Fairy, Steel\l"
 	.string "   {BIG_MULT_X}: Poison$"
 
 Help_Text_TypeMatchupOwnMoveFlying::
@@ -1851,8 +1860,8 @@ Help_Text_TypeMatchupOwnMoveFire::
 Help_Text_TypeMatchupOwnPokemonFire::
 	.string "Effect of foe's move on own Pokémon:\p"
 	.string "   {CIRCLE_DOT}: Water, Ground, Rock\p"
-	.string "   {TRIANGLE}: Fire, Grass, Ice, Bug, Steel$"
-
+	.string "   {TRIANGLE}: Fire, Grass, Ice, Bug,\n"
+	.string "        Steel, Fairy$"
 Help_Text_TypeMatchupOwnMoveWater::
 	.string "Effect on the opposing Pokémon:\p"
 	.string "   {CIRCLE_DOT}: Fire, Ground, Rock\p"
@@ -1867,10 +1876,20 @@ Help_Text_TypeMatchupOwnMoveBug::
 	.string "Effect on the opposing Pokémon:\p"
 	.string "   {CIRCLE_DOT}: Grass, Psychic, Dark\p"
 	.string "   {TRIANGLE}: Fire, Fighting, Poison,\n"
-	.string "       Flying, Ghost, Steel$"
+	.string "        Flying, Ghost, Steel, Fairy$"
 
 Help_Text_TypeMatchupOwnPokemonBug::
 	.string "Effect of foe's move on own Pokémon:\p"
 	.string "   {CIRCLE_DOT}: Fire, Flying, Rock\p"
 	.string "   {TRIANGLE}: Grass, Fighting, Ground$"
 
+Help_Text_TypeMatchupOwnMoveFairy::
+	.string "Effect on the opposing Pokémon:\p"
+	.string "   {CIRCLE_DOT}: Fighting, Dragon, Dark\p"
+	.string "   {TRIANGLE}: Poison, Steel, Fire$"
+
+Help_Text_TypeMatchupOwnPokemonFairy::
+	.string "Effect of foe's move on own Pokémon:\p"
+	.string "   {CIRCLE_DOT}: Poison, Steel\p"
+	.string "   {TRIANGLE}: Fighting, Bug, Dark\p"
+	.string "   {BIG_MULT_X}: Dragon$"

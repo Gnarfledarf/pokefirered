@@ -3697,12 +3697,6 @@ static const struct BattleWindowText *const sBattleTextOnWindowsInfo[] =
     [B_WIN_TYPE_ARENA]  = sTextOnWindowsInfo_Arena
 };
 
-static const struct BattleWindowText *const sBattleTextOnWindowsInfo[] =
-{
-    [B_WIN_TYPE_NORMAL] = sTextOnWindowsInfo_Normal,
-    [B_WIN_TYPE_ARENA]  = sTextOnWindowsInfo_Arena
-};
-
 static const u8 sNpcTextColorToFont[] =
 {
     [NPC_TEXT_COLOR_MALE]    = FONT_MALE,

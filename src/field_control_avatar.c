@@ -34,6 +34,12 @@
 #include "constants/maps.h"
 #include "constants/metatile_behaviors.h"
 
+enum {
+    FLDPSN_NONE,
+    FLDPSN_PSN,
+    FLDPSN_FNT
+};
+
 #define SIGNPOST_POKECENTER 0
 #define SIGNPOST_POKEMART 1
 #define SIGNPOST_INDIGO_1 2

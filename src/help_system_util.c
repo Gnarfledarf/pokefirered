@@ -53,7 +53,7 @@ u8 RunHelpSystemCallback(void)
             return 0;
         if (JOY_NEW(R_BUTTON) && gHelpSystemToggleWithRButtonDisabled == TRUE)
             return 0;
-        if (JOY_NEW(L_BUTTON | R_BUTTON))
+        if (JOY_NEW(L_BUTTON))
         {
             if (gHelpSystemStatus == HELP_DISABLED_NO_SOUND)
                 return 0;
@@ -695,7 +695,7 @@ s32 HelpSystem_GetMenuInput(void)
         PlaySE(SE_SELECT);
         return -2;
     }
-    else if (JOY_NEW(L_BUTTON | R_BUTTON))
+    else if (JOY_NEW(L_BUTTON))
     {
         return -6;
     }

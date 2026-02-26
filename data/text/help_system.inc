@@ -48,7 +48,7 @@ Help_Text_DescExit::
 Help_Text_Greetings::
 	.string "Greetings! This is the Help System.\n"
 	.string "Call me up whenever and wherever you\l"
-	.string "need by pressing the L or R Button.\l"
+	.string "need by pressing the L Button.\l"
 	.string "The help messages change to suit the\l"
 	.string "situation, so check them often, please.$"
 
@@ -1411,10 +1411,10 @@ Help_Text_DefineSound::
 
 Help_Text_DefineButtonMode::
 	.string "Set to Help to display help messages\n"
-	.string "by pressing the L or R Button.\l"
+	.string "by pressing the L Button.\l"
 	.string "Set to “LR” to enable the switching\l"
 	.string "of the Pokédex pages and Bag Pockets\l"
-	.string "using the L and R Buttons.\l"
+	.string "using the L Buttons.\l"
 	.string "Set to “L=A” to make the L Button\l"
 	.string "work the same as the A Button.$"
 

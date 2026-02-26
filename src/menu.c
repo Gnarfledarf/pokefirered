@@ -1,14 +1,17 @@
 #include "global.h"
 #include "decompress.h"
 #include "gflib.h"
+#include "event_data.h"
 #include "field_specials.h"
 #include "field_weather.h"
 #include "graphics.h"
 #include "help_message.h"
 #include "menu.h"
 #include "menu_helpers.h"
+#include "pokedex.h"
 #include "pokemon_icon.h"
 #include "quest_log.h"
+#include "region_map.h"
 #include "script.h"
 #include "strings.h"
 #include "text_window.h"
@@ -397,9 +400,9 @@ void DisplayYesNoMenuDefaultYes(void)
     CreateYesNoMenuAtPos(&sYesNo_WindowTemplate, FONT_NORMAL, 0, 2, STD_WINDOW_BASE_TILE_NUM, STD_WINDOW_PALETTE_NUM, 0);
 }
 
-void DisplayYesNoMenuWithDefault(void)
+void DisplayYesNoMenuWithDefault(u8 initialCursorPos)
 {
-    CreateYesNoMenuAtPos(&sYesNo_WindowTemplate, FONT_NORMAL, 0, 2, STD_WINDOW_BASE_TILE_NUM, STD_WINDOW_PALETTE_NUM, 1);
+    CreateYesNoMenuAtPos(&sYesNo_WindowTemplate, FONT_NORMAL, 0, 2, STD_WINDOW_BASE_TILE_NUM, STD_WINDOW_PALETTE_NUM, initialCursorPos);
 }
 
 u8 AddStartMenuWindow(u8 height)
@@ -946,6 +949,115 @@ s8 Menu_ProcessInputNoWrapClearOnChoose(void)
     return result;
 }
 
+void PrintMenuActionGrid(u8 windowId, u8 fontId, u8 left, u8 top, u8 optionWidth, u8 horizontalCount, u8 verticalCount, const struct MenuAction *menuActions, const u8 *actionIds)
+{
+    u8 i;
+    u8 j;
+    struct TextPrinterTemplate printer;
+
+    printer.type = WINDOW_TEXT_PRINTER;
+    printer.windowId = windowId;
+    printer.fontId = fontId;
+    printer.color.foreground = GetFontAttribute(fontId, FONTATTR_COLOR_FOREGROUND);
+    printer.color.background = GetFontAttribute(fontId, FONTATTR_COLOR_BACKGROUND);
+    printer.color.shadow = GetFontAttribute(fontId, FONTATTR_COLOR_SHADOW);
+    printer.color.accent = GetFontAttribute(fontId, FONTATTR_COLOR_ACCENT);
+    printer.letterSpacing = GetFontAttribute(fontId, FONTATTR_LETTER_SPACING);
+    printer.lineSpacing = GetFontAttribute(fontId, FONTATTR_LINE_SPACING);
+
+    for (i = 0; i < verticalCount; i++)
+    {
+        for (j = 0; j < horizontalCount; j++)
+        {
+            printer.currentChar = menuActions[actionIds[(horizontalCount * i) + j]].text;
+            printer.x = (optionWidth * j) + left;
+            printer.y = (GetFontAttribute(fontId, FONTATTR_MAX_LETTER_HEIGHT) * i) + top;
+            printer.currentX = printer.x;
+            printer.currentY = printer.y;
+            AddTextPrinter(&printer, TEXT_SKIP_DRAW, NULL);
+        }
+    }
+
+    CopyWindowToVram(windowId, COPYWIN_GFX);
+}
+
+u8 InitMenuActionGrid(u8 windowId, u8 optionWidth, u8 columns, u8 rows, u8 initialCursorPos)
+{
+    s32 pos;
+
+    sMenu.left = 0;
+    sMenu.top = 1;
+    sMenu.minCursorPos = 0;
+    sMenu.maxCursorPos = (columns * rows) - 1;
+    sMenu.windowId = windowId;
+    sMenu.fontId = FONT_NORMAL;
+    sMenu.optionWidth = optionWidth;
+    sMenu.optionHeight = 16;
+    sMenu.columns = columns;
+    sMenu.rows = rows;
+
+    pos = initialCursorPos;
+
+    if (pos < 0 || pos > sMenu.maxCursorPos)
+        sMenu.cursorPos = 0;
+    else
+        sMenu.cursorPos = pos;
+
+    // Why call this when it's not gonna move?
+    ChangeMenuGridCursorPosition(MENU_CURSOR_DELTA_NONE, MENU_CURSOR_DELTA_NONE);
+    return sMenu.cursorPos;
+}
+// Erase cursor at old position, draw cursor at new position.
+static void MoveMenuGridCursor(u8 oldCursorPos, u8 newCursorPos)
+{
+    u8 cursorWidth = GetMenuCursorDimensionByFont(sMenu.fontId, 0);
+    u8 cursorHeight = GetMenuCursorDimensionByFont(sMenu.fontId, 1);
+
+    u8 xPos = (oldCursorPos % sMenu.columns) * sMenu.optionWidth + sMenu.left;
+    u8 yPos = (oldCursorPos / sMenu.columns) * sMenu.optionHeight + sMenu.top;
+    FillWindowPixelRect(sMenu.windowId, PIXEL_FILL(1), xPos, yPos, cursorWidth, cursorHeight);
+
+    xPos = (newCursorPos % sMenu.columns) * sMenu.optionWidth + sMenu.left;
+    yPos = (newCursorPos / sMenu.columns) * sMenu.optionHeight + sMenu.top;
+    AddTextPrinterParameterized(sMenu.windowId, sMenu.fontId, gText_SelectorArrow2, xPos, yPos, 0, 0);
+}
+
+u8 ChangeMenuGridCursorPosition(s8 deltaX, s8 deltaY)
+{
+    u8 oldPos = sMenu.cursorPos;
+
+    if (deltaX != 0)
+    {
+        if ((sMenu.cursorPos % sMenu.columns) + deltaX < 0)
+            sMenu.cursorPos += sMenu.columns - 1;
+        else if ((sMenu.cursorPos % sMenu.columns) + deltaX >= sMenu.columns)
+            sMenu.cursorPos = (sMenu.cursorPos / sMenu.columns) * sMenu.columns;
+        else
+            sMenu.cursorPos += deltaX;
+    }
+
+    if (deltaY != 0)
+    {
+        if ((sMenu.cursorPos / sMenu.columns) + deltaY < 0)
+            sMenu.cursorPos += sMenu.columns * (sMenu.rows - 1);
+        else if ((sMenu.cursorPos / sMenu.columns) + deltaY >= sMenu.rows)
+            sMenu.cursorPos -= sMenu.columns * (sMenu.rows - 1);
+        else
+            sMenu.cursorPos += (sMenu.columns * deltaY);
+    }
+
+    if (sMenu.cursorPos > sMenu.maxCursorPos)
+    {
+        sMenu.cursorPos = oldPos;
+        return sMenu.cursorPos;
+    }
+    else
+    {
+        MoveMenuGridCursor(oldPos, sMenu.cursorPos);
+        return sMenu.cursorPos;
+    }
+}
+
 u8 InitMenuInUpperLeftCorner(u8 windowId, u8 numChoices, u8 initialCursorPos, bool8 APressMuted)
 {
     s32 pos;
@@ -1477,6 +1589,50 @@ void BlitMenuInfoIcon(u8 windowId, u8 iconId, u16 x, u16 y)
     BlitBitmapRectToWindow(windowId, &gMenuInfoElements_Gfx[sMenuInfoIcons[iconId].offset * TILE_SIZE_4BPP], 0, 0, 128, 128, x, y, sMenuInfoIcons[iconId].width, sMenuInfoIcons[iconId].height);
 }
 
+void BufferSaveMenuText(enum SaveStat gameStatId, u8 *dest0, u8 color)
+{
+    int nBadges;
+    int flagId;
+
+    u8 *dest = dest0;
+    *dest++ = EXT_CTRL_CODE_BEGIN;
+    *dest++ = EXT_CTRL_CODE_COLOR;
+    *dest++ = color;
+    *dest++ = EXT_CTRL_CODE_BEGIN;
+    *dest++ = EXT_CTRL_CODE_SHADOW;
+    *dest++ = color + 1;
+    switch (gameStatId)
+    {
+    case SAVE_MENU_NAME:
+        dest = StringCopy(dest, gSaveBlock2Ptr->playerName);
+        break;
+    case SAVE_MENU_POKEDEX:
+        break;
+        if (IsNationalPokedexEnabled())
+            dest = ConvertIntToDecimalStringN(dest, GetNationalPokedexCount(FLAG_GET_CAUGHT), STR_CONV_MODE_LEFT_ALIGN, 4);
+        else
+            dest = ConvertIntToDecimalStringN(dest, GetKantoPokedexCount(FLAG_GET_CAUGHT), STR_CONV_MODE_LEFT_ALIGN, 3);
+        break;
+    case SAVE_MENU_TIME:
+        dest = ConvertIntToDecimalStringN(dest, gSaveBlock2Ptr->playTimeHours, STR_CONV_MODE_LEFT_ALIGN, 3);
+        *dest++ = CHAR_COLON;
+        dest = ConvertIntToDecimalStringN(dest, gSaveBlock2Ptr->playTimeMinutes, STR_CONV_MODE_LEADING_ZEROS, 2);
+        break;
+    case SAVE_MENU_LOCATION:
+        GetMapNameGeneric(dest, gMapHeader.regionMapSectionId);
+        break;
+    case SAVE_MENU_BADGES:
+        for (flagId = FLAG_BADGE01_GET, nBadges = 0; flagId < FLAG_BADGE01_GET + 8; flagId++)
+        {
+            if (FlagGet(flagId))
+                nBadges++;
+        }
+        *dest++ = nBadges + CHAR_0;
+        *dest++ = EOS;
+        break;
+    }
+}
+
 // BW map pop-ups
 u8 AddSecondaryPopUpWindow(void)
 {
@@ -1519,12 +1675,7 @@ void HBlankCB_DoublePopupWindow(void)
 void DrawHelpMessageWindowWithText(const u8 * text)
 {
     LoadHelpMessageWindowGfx(CreateHelpMessageWindow(), DLG_WINDOW_BASE_TILE_NUM, BG_PLTT_ID(DLG_WINDOW_PALETTE_NUM));
-    PrintTextOnHelpMessageWindow(text, 2);
-}
-
-void DestroyHelpMessageWindow_(void)
-{
-    DestroyHelpMessageWindow(2);
+    PrintTextOnHelpMessageWindow(text, COPYWIN_GFX);
 }
 
 void LoadSignPostWindowFrameGfx(void)

@@ -1,5 +1,6 @@
 #include "global.h"
 #include "gflib.h"
+#include "battle_pyramid.h"
 #include "io_reg.h"
 #include "battle_util.h"
 #include "cable_club.h"
@@ -59,6 +60,7 @@
 #include "wild_encounter.h"
 #include "constants/cable_club.h"
 #include "constants/event_objects.h"
+#include "constants/layouts.h"
 #include "constants/maps.h"
 #include "constants/region_map_sections.h"
 #include "constants/songs.h"
@@ -180,7 +182,7 @@ static void CameraCB_CreditsPan(struct CameraObject * camera);
 static void Task_OvwldCredits_FadeOut(u8 taskId);
 static void Task_OvwldCredits_WaitFade(u8 taskId);
 
-static void CB1_UpdateLinkState(void);
+static void CB1_OverworldLink(void);
 static void ResetAllMultiplayerState(void);
 static void ClearAllPlayerKeys(void);
 static void SetKeyInterceptCallback(KeyInterCB callback);
@@ -254,6 +256,14 @@ static const u16 sWhiteOutMoneyLossBadgeFlagIDs[] = {
     FLAG_BADGE06_GET,
     FLAG_BADGE07_GET,
     FLAG_BADGE08_GET
+};
+
+static const struct ScanlineEffectParams sFlashEffectParams =
+{
+    .dmaDest = &REG_WIN0H,
+    .dmaControl = (2 >> 1) | ((DMA_16BIT | DMA_DEST_RELOAD | DMA_SRC_INC | DMA_REPEAT | DMA_START_HBLANK | DMA_ENABLE) << 16),
+    .initState = 1,
+    .unused9 = 0
 };
 
 static void DoWhiteOut(void)
@@ -428,8 +438,10 @@ void SetGameStat(u8 statId, u32 statVal)
 
 static void LoadObjEventTemplatesFromHeader(void)
 {
-    u8 i, j;
-    for (i = 0, j = 0; i < gMapHeader.events->objectEventCount; i++)
+    // Clear map object templates
+    CpuFill32(0, gSaveBlock1Ptr->objectEventTemplates, sizeof(gSaveBlock1Ptr->objectEventTemplates));
+
+    for (u32 i = 0; i < gMapHeader.events->objectEventCount; i++)
     {
         if (gMapHeader.events->objectEvents[i].kind == OBJ_KIND_CLONE)
         {
@@ -439,20 +451,18 @@ static void LoadObjEventTemplatesFromHeader(void)
             u8 mapGroup = gMapHeader.events->objectEvents[i].targetMapGroup;
             const struct MapHeader * connectionMap = Overworld_GetMapHeaderByGroupAndId(mapGroup, mapNum);
 
-            gSaveBlock1Ptr->objectEventTemplates[j] = connectionMap->events->objectEvents[localId - 1];
-            gSaveBlock1Ptr->objectEventTemplates[j].localId = gMapHeader.events->objectEvents[i].localId;
-            gSaveBlock1Ptr->objectEventTemplates[j].x = gMapHeader.events->objectEvents[i].x;
-            gSaveBlock1Ptr->objectEventTemplates[j].y = gMapHeader.events->objectEvents[i].y;
-            gSaveBlock1Ptr->objectEventTemplates[j].targetLocalId = localId;
-            gSaveBlock1Ptr->objectEventTemplates[j].targetMapNum = mapNum;
-            gSaveBlock1Ptr->objectEventTemplates[j].targetMapGroup = mapGroup;
-            gSaveBlock1Ptr->objectEventTemplates[j].kind = OBJ_KIND_CLONE;
-            j++;
+            gSaveBlock1Ptr->objectEventTemplates[i] = connectionMap->events->objectEvents[localId - 1];
+            gSaveBlock1Ptr->objectEventTemplates[i].localId = gMapHeader.events->objectEvents[i].localId;
+            gSaveBlock1Ptr->objectEventTemplates[i].x = gMapHeader.events->objectEvents[i].x;
+            gSaveBlock1Ptr->objectEventTemplates[i].y = gMapHeader.events->objectEvents[i].y;
+            gSaveBlock1Ptr->objectEventTemplates[i].targetLocalId = localId;
+            gSaveBlock1Ptr->objectEventTemplates[i].targetMapNum = mapNum;
+            gSaveBlock1Ptr->objectEventTemplates[i].targetMapGroup = mapGroup;
+            gSaveBlock1Ptr->objectEventTemplates[i].kind = OBJ_KIND_CLONE;
         }
         else
         {
-            gSaveBlock1Ptr->objectEventTemplates[j] = gMapHeader.events->objectEvents[i];
-            j++;
+            gSaveBlock1Ptr->objectEventTemplates[i] = gMapHeader.events->objectEvents[i];
         }
     }
 }
@@ -812,7 +822,10 @@ static void LoadMapFromWarp(bool32 unused)
     bool8 isOutdoors;
 
     LoadCurrentMapData();
-    LoadObjEventTemplatesFromHeader();
+    if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_FLOOR)
+        LoadBattlePyramidObjectEventTemplates();
+    else
+        LoadObjEventTemplatesFromHeader();
     isOutdoors = IsMapTypeOutdoors(gMapHeader.mapType);
 
     TrySetMapSaveWarpStatus();
@@ -836,7 +849,10 @@ static void LoadMapFromWarp(bool32 unused)
     MoveAllRoamersToOtherLocationSets();
     gChainFishingDexNavStreak = 0;
     QL_ResetDefeatedWildMonRecord();
-    InitMap();
+    if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_FLOOR)
+        InitBattlePyramidMap(FALSE);
+    else
+        InitMap();
 }
 
 static void QL_LoadMapNormal(void)
@@ -1403,9 +1419,9 @@ static void ResetSafariZoneFlag_(void)
     ResetSafariZoneFlag();
 }
 
-bool32 IsUpdateLinkStateCBActive(void)
+bool32 IsOverworldLinkActive(void)
 {
-    if (gMain.callback1 == CB1_UpdateLinkState)
+    if (gMain.callback1 == CB1_OverworldLink)
         return TRUE;
     else
         return FALSE;
@@ -1788,7 +1804,7 @@ static void CB2_LoadMapOnReturnToFieldCableClub(void)
     if (LoadMapInStepsLink(&gMain.state))
     {
         SetFieldVBlankCallback();
-        SetMainCallback1(CB1_UpdateLinkState);
+        SetMainCallback1(CB1_OverworldLink);
         ResetAllMultiplayerState();
         SetMainCallback2(CB2_Overworld);
     }
@@ -1796,7 +1812,7 @@ static void CB2_LoadMapOnReturnToFieldCableClub(void)
 
 void CB2_ReturnToField(void)
 {
-    if (IsUpdateLinkStateCBActive() == TRUE)
+    if (IsOverworldLinkActive() == TRUE)
     {
         SetMainCallback2(CB2_ReturnToFieldLink);
     }
@@ -1826,7 +1842,7 @@ void CB2_ReturnToFieldFromMultiplayer(void)
 {
     FieldClearVBlankHBlankCallbacks();
     StopMapMusic();
-    SetMainCallback1(CB1_UpdateLinkState);
+    SetMainCallback1(CB1_OverworldLink);
     ResetAllMultiplayerState();
 
     if (gWirelessCommType != 0)
@@ -1880,11 +1896,19 @@ void CB2_ContinueSavedGame(void)
     StopMapMusic();
     ResetSafariZoneFlag_();
     LoadSaveblockMapHeader();
-    LoadSaveblockObjEventScripts();
+    if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_FLOOR)
+        LoadBattlePyramidFloorObjectEventScripts();
+    else
+        LoadSaveblockObjEventScripts();
+
     UnfreezeObjectEvents();
     DoTimeBasedEvents();
     Overworld_ResetStateOnContinue();
-    InitMapFromSavedGame();
+    if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_FLOOR)
+        InitBattlePyramidMap(TRUE);
+    else
+        InitMapFromSavedGame();
+
     PlayTimeCounter_Start();
     ScriptContext_Init();
     UnlockPlayerFieldControls();
@@ -1943,15 +1967,15 @@ static void VBlankCB_Field(void)
 static void InitCurrentFlashLevelScanlineEffect(void)
 {
     u8 flashLevel = GetFlashLevel();
-    if (flashLevel != 0)
+    if (InBattlePyramid_())
+    {
+        WriteBattlePyramidViewScanlineEffectBuffer();
+        ScanlineEffect_SetParams(sFlashEffectParams);
+    }
+    else if (flashLevel != 0)
     {
         WriteFlashScanlineEffectBuffer(flashLevel);
-        ScanlineEffect_SetParams((struct ScanlineEffectParams){
-            .dmaDest = &REG_WIN0H,
-            .dmaControl = (2 >> 1) | ((DMA_16BIT | DMA_DEST_RELOAD | DMA_SRC_INC | DMA_REPEAT | DMA_START_HBLANK | DMA_ENABLE) << 16),
-            .initState = 1,
-            .unused9 = 0
-        });
+        ScanlineEffect_SetParams(sFlashEffectParams);
     }
 }
 
@@ -2773,7 +2797,7 @@ static void (*const sMovementStatusHandler[])(struct LinkPlayerObjectEvent *, st
     [TRUE]  = MovementStatusHandler_TryAdvanceScript,
 };
 
-static void CB1_UpdateLinkState(void)
+static void CB1_OverworldLink(void)
 {
     if (gWirelessCommType == 0 || !IsRfuRecvQueueEmpty() || !IsSendingKeysToLink())
     {
@@ -2989,7 +3013,7 @@ static void UpdateHeldKeyCode(u16 key)
 
     if (gWirelessCommType != 0
         && GetLinkSendQueueLength() > 1
-        && IsUpdateLinkStateCBActive() == TRUE
+        && IsOverworldLinkActive() == TRUE
         && IsSendingKeysToLink() == TRUE)
     {
         switch (key)
@@ -3160,7 +3184,7 @@ static u16 KeyInterCB_WaitForPlayersToExit(u32 keyOrPlayerId)
 {
     // keyOrPlayerId could be any keycode. This callback does no sanity checking
     // on the size of the key. It's assuming that it is being called from
-    // CB1_UpdateLinkState.
+    // CB1_OverworldLink.
     if (sPlayerLinkStates[keyOrPlayerId] != PLAYER_LINK_STATE_EXITING_ROOM)
         CheckRfuKeepAliveTimer();
     if (AreAllPlayersInLinkState(PLAYER_LINK_STATE_EXITING_ROOM) == TRUE)
@@ -3377,7 +3401,7 @@ static void RunTerminateLinkScript(void)
 
 bool32 Overworld_LinkRecvQueueLengthMoreThan2(void)
 {
-    if (!IsUpdateLinkStateCBActive())
+    if (!IsOverworldLinkActive())
         return FALSE;
     if (GetLinkRecvQueueLength() >= 3)
         sReceivingFromLink = TRUE;
@@ -3392,7 +3416,7 @@ bool32 Overworld_RecvKeysFromLinkIsRunning(void)
 
     if (GetLinkRecvQueueLength() < 2)
         return FALSE;
-    else if (IsUpdateLinkStateCBActive() != TRUE)
+    else if (IsOverworldLinkActive() != TRUE)
         return FALSE;
     else if (IsSendingKeysToLink() != TRUE)
         return FALSE;
@@ -3416,7 +3440,7 @@ bool32 Overworld_SendKeysToLinkIsRunning(void)
 {
     if (GetLinkSendQueueLength() < 2)
         return FALSE;
-    else if (IsUpdateLinkStateCBActive() != TRUE)
+    else if (IsOverworldLinkActive() != TRUE)
         return FALSE;
     else if (IsSendingKeysToLink() != TRUE)
         return FALSE;

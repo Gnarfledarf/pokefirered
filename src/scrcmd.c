@@ -1,51 +1,57 @@
 #include "global.h"
-#include "gflib.h"
-#include "clock.h"
-#include "rtc.h"
-#include "script.h"
-#include "berry.h"
-#include "decompress.h"
-#include "mystery_event_script.h"
-#include "event_data.h"
-#include "event_scripts.h"
-#include "random.h"
-#include "item.h"
-#include "overworld.h"
-#include "field_screen_effect.h"
-#include "quest_log.h"
-#include "map_preview_screen.h"
-#include "fieldmap.h"
-#include "field_move.h"
-#include "field_weather.h"
-#include "field_tasks.h"
-#include "field_fadetransition.h"
-#include "field_player_avatar.h"
-#include "follower_npc.h"
-#include "script_movement.h"
-#include "event_object_movement.h"
-#include "event_object_lock.h"
-#include "field_message_box.h"
-#include "move.h"
-#include "script_menu.h"
-#include "trainer_see.h"
-#include "data.h"
-#include "field_specials.h"
-#include "list_menu.h"
-#include "constants/items.h"
-#include "script_pokemon_util.h"
-#include "pokemon_storage_system.h"
-#include "party_menu.h"
-#include "money.h"
-#include "coins.h"
 #include "battle_setup.h"
+#include "berry.h"
+#include "clock.h"
+#include "coins.h"
+#include "data.h"
+#include "decompress.h"
+#include "event_data.h"
+#include "event_object_lock.h"
+#include "event_object_movement.h"
+#include "event_scripts.h"
+#include "field_door.h"
+#include "field_effect.h"
+#include "field_fadetransition.h"
+#include "field_message_box.h"
+#include "field_move.h"
+#include "field_player_avatar.h"
+#include "field_screen_effect.h"
+#include "field_specials.h"
+#include "field_tasks.h"
+#include "field_weather.h"
+#include "fieldmap.h"
+#include "fieldmap.h"
+#include "follower_npc.h"
+#include "gpu_regs.h"
+#include "help_message.h"
+#include "item.h"
+#include "list_menu.h"
+#include "malloc.h"
+#include "map_preview_screen.h"
+#include "money.h"
+#include "move_relearner.h"
+#include "move.h"
+#include "mystery_event_script.h"
+#include "overworld.h"
+#include "palette.h"
+#include "party_menu.h"
+#include "pokemon_storage_system.h"
+#include "quest_log.h"
+#include "random.h"
+#include "rtc.h"
+#include "script_menu.h"
+#include "script_movement.h"
+#include "script_pokemon_util.h"
+#include "script.h"
 #include "shop.h"
 #include "slot_machine.h"
-#include "field_effect.h"
-#include "fieldmap.h"
-#include "field_door.h"
-#include "constants/event_objects.h"
+#include "sound.h"
+#include "string_util.h"
+#include "trainer_see.h"
 #include "constants/event_object_movement.h"
+#include "constants/event_objects.h"
 #include "constants/field_move.h"
+#include "constants/items.h"
 #include "constants/maps.h"
 #include "constants/sound.h"
 
@@ -676,12 +682,18 @@ bool8 ScrCmd_checkpcitem(struct ScriptContext * ctx)
     return FALSE;
 }
 
+static bool32 DecorationAdd(u16 decorId)
+{
+    return FALSE;
+}
+
 bool8 ScrCmd_adddecoration(struct ScriptContext * ctx)
 {
-    u32 UNUSED decorId = VarGet(ScriptReadHalfword(ctx));
+    u32 decorId = VarGet(ScriptReadHalfword(ctx));
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
 
+    gSpecialVar_Result = DecorationAdd(decorId);
     return FALSE;
 }
 
@@ -822,13 +834,13 @@ bool8 ScrCmd_fadescreenswapbuffers(struct ScriptContext *ctx)
     switch (mode)
     {
     case FADE_FROM_BLACK:
+        SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(0, 0));
+        break;
     case FADE_FROM_WHITE:
         // Restore last weather blend before fading in,
         // since BLDALPHA was modified by fade-out
-        SetGpuReg(
-            REG_OFFSET_BLDALPHA,
-            BLDALPHA_BLEND(gWeatherPtr->currBlendEVA, gWeatherPtr->currBlendEVB)
-        );
+        SetGpuReg(REG_OFFSET_BLDALPHA,
+                  BLDALPHA_BLEND(gWeatherPtr->currBlendEVA, gWeatherPtr->currBlendEVB));
         break;
     }
 
@@ -1574,7 +1586,7 @@ bool8 ScrCmd_lockall(struct ScriptContext * ctx)
 {
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
 
-    if (IsUpdateLinkStateCBActive())
+    if (IsOverworldLinkActive())
     {
         return FALSE;
     }
@@ -1590,7 +1602,7 @@ bool8 ScrCmd_lock(struct ScriptContext * ctx)
 {
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
 
-    if (IsUpdateLinkStateCBActive())
+    if (IsOverworldLinkActive())
     {
         return FALSE;
     }
@@ -1692,7 +1704,7 @@ bool8 ScrCmd_loadhelp(struct ScriptContext * ctx)
 bool8 ScrCmd_unloadhelp(struct ScriptContext * ctx)
 {
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
-    DestroyHelpMessageWindow_();
+    DestroyHelpMessageWindow(COPYWIN_GFX);
     return FALSE;
 }
 
@@ -2940,7 +2952,7 @@ bool8 ScrCmd_lockfortrainer(struct ScriptContext *ctx)
 {
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
 
-    if (IsUpdateLinkStateCBActive())
+    if (IsOverworldLinkActive())
     {
         return FALSE;
     }
@@ -3027,4 +3039,39 @@ bool8 ScrFunc_hidefollower(struct ScriptContext *ctx)
 
     // execute next script command with no delay
     return TRUE;
+}
+
+bool8 ScrCmd_setmoverelearnerstate(struct ScriptContext *ctx)
+{
+    enum MoveRelearnerStates state = VarGet(ScriptReadHalfword(ctx));
+
+    Script_RequestEffects(SCREFF_V1);
+
+    gMoveRelearnerState = state;
+    return FALSE;
+}
+
+bool8 ScrCmd_getmoverelearnerstate(struct ScriptContext *ctx)
+{
+    u32 varId = ScriptReadHalfword(ctx);
+
+    Script_RequestEffects(SCREFF_V1);
+    Script_RequestWriteVar(varId);
+
+    u16 *varPointer = GetVarPointer(varId);
+    *varPointer = gMoveRelearnerState;
+    return FALSE;
+}
+
+bool8 ScrCmd_istmrelearneractive(struct ScriptContext *ctx)
+{
+    const u8 *ptr = (const u8 *)ScriptReadWord(ctx);
+
+    Script_RequestEffects(SCREFF_V1);
+
+    if ((P_TM_MOVES_RELEARNER || P_ENABLE_MOVE_RELEARNERS)
+     && (P_ENABLE_ALL_TM_MOVES || IsBagPocketNonEmpty(POCKET_TM_HM)))
+        ScriptCall(ctx, ptr);
+
+    return FALSE;
 }

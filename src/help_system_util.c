@@ -10,7 +10,7 @@
 
 #define ZERO 0
 
-COMMON_DATA bool8 gHelpSystemEnabled = 0;
+COMMON_DATA enum HelpSystemStatus gHelpSystemStatus = 0;
 
 struct HelpSystemVideoState
 {
@@ -27,6 +27,7 @@ struct HelpSystemVideoState
 
 #define TILES_BACKUP_HEAP 0x2000
 
+static EWRAM_DATA ALIGNED(4) u8 gDecompressionBuffer[0x4000] = {0};
 static EWRAM_DATA u8 sMapTilesBackup[BG_CHAR_SIZE - TILES_BACKUP_HEAP] = {0};
 static EWRAM_DATA u8 (*sMapTilesBackupHeap)[TILES_BACKUP_HEAP] = NULL;
 EWRAM_DATA u8 gDisableHelpSystemVolumeReduce = 0;
@@ -54,7 +55,10 @@ u8 RunHelpSystemCallback(void)
             return 0;
         if (JOY_NEW(L_BUTTON | R_BUTTON))
         {
-            if (!HelpSystem_IsSinglePlayer() || !gHelpSystemEnabled)
+            if (gHelpSystemStatus == HELP_DISABLED_NO_SOUND)
+                return 0;
+
+            if (!HelpSystem_IsSinglePlayer() || gHelpSystemStatus == HELP_DISABLED)
             {
                 PlaySE(SE_HELP_ERROR);
                 return 0;

@@ -339,12 +339,12 @@ static void LinkOpponentHandleDrawTrainerPic(enum BattlerId battler)
 
 static void LinkOpponentHandleTrainerSlide(enum BattlerId battler)
 {
-    u32 trainerPicId;
+    enum TrainerPicID trainerPicId;
 
-    if (battler == B_POSITION_OPPONENT_LEFT)
-        trainerPicId = GetBattleTowerTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.opponentA);
+    if (GetBattlerPosition(battler) == B_POSITION_OPPONENT_LEFT)
+        trainerPicId = GetFrontierTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.opponentA);
     else
-        trainerPicId = GetBattleTowerTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.opponentB);
+        trainerPicId = GetFrontierTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.opponentB);
 
     BtlController_HandleTrainerSlide(battler, trainerPicId);
     BtlController_Complete(battler); // Possibly a bug, because execution should be completed after the slide in finishes. See Controller_WaitForTrainerPic.

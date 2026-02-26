@@ -468,7 +468,7 @@ static const u8 *const sCantTradeMonTexts[] = {
 };
 
 ALIGNED(4) const u8 gText_UR_TradeOfferRejected[] = _("Your trade offer was rejected.\p");
-ALIGNED(4) const u8 gText_UR_EggTrade[] = _("Egg TRADE");
+ALIGNED(4) const u8 gText_UR_EggTrade[] = _("Egg Trade");
 ALIGNED(4) const u8 gText_UR_ChooseJoinCancel[] = _("{DPAD_UPDOWN}Choose  {A_BUTTON}Join  {B_BUTTON}Cancel");
 ALIGNED(4) const u8 gText_UR_ChooseTrainer[] = _("Please choose a Trainer.");
 ALIGNED(4) static const u8 sText_ChooseTrainerSingleBattle[] = _("Please choose a Trainer for\na Single Battle.");
@@ -480,6 +480,8 @@ ALIGNED(4) static const u8 sText_ChooseTrainerToShareWonderNews[] = _("Please ch
 ALIGNED(4) static const u8 sText_ChooseLeaderPokemonJump[] = _("Jump with mini Pokémon!\nPlease choose the Leader.");
 ALIGNED(4) static const u8 sText_ChooseLeaderBerryCrush[] = _("Berry Crush!\nPlease choose the Leader.");
 ALIGNED(4) static const u8 sText_ChooseLeaderBerryPicking[] = _("Dodrio Berry-Picking!\nPlease choose the Leader.");
+ALIGNED(4) static const u8 sText_ChooseLeaderBattleTowerLv50[] = _("Battle Tower Level 50!\nPlease choose the Leader.");
+ALIGNED(4) static const u8 sText_ChooseLeaderBattleTowerOpenLv[] = _("Battle Tower Open Level!\nPlease choose the Leader.");
 
 const u8 *const gTexts_UR_ChooseTrainer[] = {
     [LINK_GROUP_SINGLE_BATTLE] = sText_ChooseTrainerSingleBattle,
@@ -490,7 +492,9 @@ const u8 *const gTexts_UR_ChooseTrainer[] = {
     [LINK_GROUP_BERRY_CRUSH]   = sText_ChooseLeaderBerryCrush,
     [LINK_GROUP_BERRY_PICKING] = sText_ChooseLeaderBerryPicking,
     [LINK_GROUP_WONDER_CARD]   = sText_ChooseTrainerToShareWonderCards,
-    [LINK_GROUP_WONDER_NEWS]   = sText_ChooseTrainerToShareWonderNews
+    [LINK_GROUP_WONDER_NEWS]   = sText_ChooseTrainerToShareWonderNews,
+    [LINK_GROUP_BATTLE_TOWER]      = sText_ChooseLeaderBattleTowerLv50,
+    [LINK_GROUP_BATTLE_TOWER_OPEN] = sText_ChooseLeaderBattleTowerOpenLv
 };
 
 ALIGNED(4) const u8 gText_UR_SearchingForWirelessSystemWait[] = _("Searching for a Wireless\nCommunication System. Wait...");

@@ -115,7 +115,7 @@ void AgbMain()
     InitHeap(gHeap, HEAP_SIZE);
 
     gSoftResetDisabled = FALSE;
-    gHelpSystemEnabled = FALSE;
+    gHelpSystemStatus = HELP_DISABLED;
 
     SetNotInSaveFailedScreen();
 
@@ -197,12 +197,8 @@ static void InitMainCallbacks(void)
 
 static void CallCallbacks(void)
 {
-#if !TESTING && DEBUG_BATTLE_MENU != TRUE // test framework not working with help system
-    if (!RunSaveFailedScreen() && !RunHelpSystemCallback())
-#else
 #if !TESTING
-    if (!RunSaveFailedScreen())
-#endif
+    if (!RunSaveFailedScreen() && !RunHelpSystemCallback())
 #endif
     {
         if (gMain.callback1)

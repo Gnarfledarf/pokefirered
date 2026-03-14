@@ -297,9 +297,9 @@ static const struct SpriteTemplate sSpriteTemplate_RedArrowCursor =
 };
 
 static const u16 sRedInterface_Pal[] = INCBIN_U16("graphics/interface/red_arrow.gbapal");
-static const u32 sScrollIndicator_Gfx[] = INCBIN_U32("graphics/interface/red_arrow_other.4bpp.lz");
-static const u32 sOutlineCursor_Gfx[] = INCBIN_U32("graphics/interface/selector_outline.4bpp.lz");
-static const u32 sArrowCursor_Gfx[] = INCBIN_U32("graphics/interface/red_arrow.4bpp.lz");
+static const u32 sScrollIndicator_Gfx[] = INCBIN_U32("graphics/interface/red_arrow_other.4bpp.smol");
+static const u32 sOutlineCursor_Gfx[] = INCBIN_U32("graphics/interface/selector_outline.4bpp.smol");
+static const u32 sArrowCursor_Gfx[] = INCBIN_U32("graphics/interface/red_arrow.4bpp.smol");
 
 // code
 static void ListMenuDummyTask(u8 taskId)
@@ -1211,7 +1211,7 @@ void ListMenuSetUpRedOutlineCursorSpriteOamTable(u16 rowWidth, u16 rowHeight, st
         {
             subsprites[id] = sSubsprite_RedOutline3;
             subsprites[id].x = i - 120;
-            subsprites[id].y = IS_FRLG ? 136 : -120;
+            subsprites[id].y = 136;
             id++;
 
             subsprites[id] = sSubsprite_RedOutline6;

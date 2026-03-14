@@ -1,0 +1,2419 @@
+
+=== TRAINER_LEADER_BROCK_2 ===
+Name: Brock
+Class: Leader
+Pic: Leader Brock
+Gender: Male
+Music: Male
+Items: Super Potion
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Geodude
+Level: 18
+Ability: Sturdy
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Defense Curl
+- Rock Tomb
+
+Onix
+Level: 21
+Ability: Sturdy
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Harden
+- Bind
+- Rock Tomb
+
+=== TRAINER_LEADER_BROCK_3 ===
+Name: Brock
+Class: Leader
+Pic: Leader Brock
+Gender: Male
+Music: Male
+Items: Super Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Geodude
+Level: 18
+Ability: Sturdy
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Defense Curl
+- Rock Tomb
+- Rock Throw
+
+Rhyhorn
+Level: 21
+Ability: Rock Head
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Horn Attack
+- Tail Whip
+- Smack Down
+- Rock Tomb
+
+Onix
+Level: 24
+Ability: Sturdy
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Rage
+- Screech
+- Bind
+- Rock Tomb
+
+=== TRAINER_LEADER_BROCK_4 ===
+Name: Brock
+Class: Leader
+Pic: Leader Brock
+Gender: Male
+Music: Male
+Items: Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Graveler
+Level: 25
+Ability: Sturdy
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Defense Curl
+- Rock Tomb
+- Magnitude
+
+Rhyhorn
+Level: 29
+Ability: Rock Head
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Stomp
+- Scary Face
+- Smack Down
+- Rock Tomb
+
+Onix
+Level: 30
+Ability: Sturdy
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Screech
+- Bind
+- Dragon Breath
+- Rock Tomb
+
+=== TRAINER_LEADER_BROCK_5 ===
+Name: Brock
+Class: Leader
+Pic: Leader Brock
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Graveler
+Level: 37
+Ability: Sturdy
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Magnitude
+- Self Destruct
+- Rollout
+- Rock Tomb
+
+Omanyte
+Level: 37
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Water Gun
+- Mud Shot
+- Bite
+- Rock Tomb
+
+Rhyhorn
+Level: 39
+Ability: Rock Head
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Chip Away
+- Bulldoze
+- Rock Blast
+- Rock Tomb
+
+Onix
+Level: 43
+Ability: Sturdy
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Screech
+- Slam
+- Rock Slide
+- Rock Tomb
+
+=== TRAINER_LEADER_BROCK_6 ===
+Name: Brock
+Class: Leader
+Pic: Leader Brock
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Graveler
+Level: 38
+Ability: Sturdy
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Defense Curl
+- Magnitude
+- Self Destruct
+- Rollout
+
+Omanyte
+Level: 40
+Ability: Shell Armor
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Brine
+- Mud Shot
+- Crunch
+- Rock Tomb
+
+Rhyhorn
+Level: 40
+Ability: Rock Head
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Take Down
+- Bulldoze
+- Rock Blast
+- Rock Tomb
+
+Onix
+Level: 43
+Ability: Sturdy
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Screech
+- High Horsepower
+- Rock Slide
+- Rock Tomb
+
+=== TRAINER_LEADER_BROCK_7 ===
+Name: Brock
+Class: Leader
+Pic: Leader Brock
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Graveler
+Level: 40
+Ability: Sturdy
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Defense Curl
+- Magnitude
+- Self Destruct
+- Rollout
+
+Omastar
+Level: 42
+Ability: Shell Armor
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Brine
+- Mud Shot
+- Crunch
+- Rock Tomb
+
+Rhydon
+Level: 42
+Ability: Rock Head
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bulldoze
+- Rock Blast
+- Hammer Arm
+- Rock Tomb
+
+Onix
+Level: 47
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Screech
+- High Horsepower
+- Rock Slide
+- Rock Tomb
+
+=== TRAINER_LEADER_MISTY_1 ===
+Name: Misty
+Class: Leader
+Pic: Leader Misty
+Gender: Male
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Staryu  
+Ability: Illuminate  
+Level: 12
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Tackle  
+- Harden
+
+Staryu 
+Ability: Illuminate
+Level: 14
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Tackle
+- Harden
+- Water Pulse  
+
+=== TRAINER_LEADER_MISTY_3 ===
+Name: Misty
+Class: Leader
+Pic: Leader Misty
+Gender: Male
+Music: Female
+Items: Super Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Psyduck (F)
+Ability: Swift Swim  
+Level: 21
+IVs: 1 HP / 1 Def / 0 SpA / 1 SpD / 1 Spe  
+- Confusion
+- Fury Swipes
+- Disable
+- Water Pulse
+
+Goldeen (F)  
+Ability: Water Veil  
+Level: 18
+IVs: 0 HP / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Horn Attack
+- Peck
+- Supersonic 
+- Water Pulse
+
+Starmie  
+Ability: Illuminate  
+Level: 24
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Psywave
+- Swift
+- Recover
+- Water Pulse
+
+=== TRAINER_LEADER_MISTY_4 ===
+Name: Misty
+Class: Leader
+Pic: Leader Misty
+Gender: Male
+Music: Female
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Psyduck (F)
+Ability: Swift Swim  
+Level: 29
+IVs: 1 HP / 1 Def / 0 SpA / 1 SpD / 1 Spe  
+- Confusion
+- Fury Swipes
+- Disable
+- Water Pulse
+
+Goldeen (F)  
+Ability: Water Veil  
+Level: 24
+IVs: 0 HP / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Horn Attack
+- Peck
+- Supersonic 
+- Water Pulse
+
+Starmie  
+Ability: Illuminate  
+Level: 29
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Psywave
+- Swift
+- Recover
+- Water Pulse
+
+=== TRAINER_LEADER_MISTY_5 ===
+Name: Misty
+Class: Leader
+Pic: Leader Misty
+Gender: Male
+Music: Female
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Psyduck (F)
+Ability: Swift Swim
+Level: 37
+IVs: 1 HP / 1 Def / 0 SpA / 1 SpD / 1 Spe
+- Confusion
+- Zen Headbutt
+- Disable
+- Water Pulse
+
+Vaporeon (F)
+Ability: Water Absorb
+Level: 39
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Aurora Beam
+- Bite
+- Haze
+- Water Pulse
+
+Seaking (F)
+Ability: Water Veil
+Level: 37
+IVs: 0 HP / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Horn Attack
+- Flail
+- Supersonic
+- Water Pulse
+
+Starmie
+Ability: Illuminate
+Level: 43
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Psybeam
+- Swift
+- Recover
+- Water Pulse
+
+=== TRAINER_LEADER_MISTY_6 ===
+Name: Misty
+Class: Leader
+Pic: Leader Misty
+Gender: Male
+Music: Female
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Golduck (F)
+Ability: Swift Swim
+Level: 38
+IVs: 1 HP / 1 Def / 0 SpA / 1 SpD / 1 Spe
+- Zen Headbutt
+- Power Gem
+- Disable
+- Water Pulse
+
+Vaporeon (F)
+Ability: Water Absorb
+Level: 39
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Aurora Beam
+- Bite
+- Haze
+- Water Pulse
+
+Seaking (F)
+Ability: Water Veil
+Level: 38
+IVs: 0 HP / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Waterfall
+- Horn Attack
+- Supersonic
+- Water Pulse
+
+Starmie
+Ability: Illuminate
+Level: 43
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Psybeam
+- Swift
+- Recover
+- Water Pulse
+
+=== TRAINER_LEADER_MISTY_7 ===
+Name: Misty
+Class: Leader
+Pic: Leader Misty
+Gender: Male
+Music: Female
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Golduck (F)
+Ability: Swift Swim
+Level: 42
+IVs: 1 HP / 1 Def / 0 SpA / 1 SpD / 1 Spe
+- Zen Headbutt
+- Power Gem
+- Disable
+- Water Pulse
+
+Vaporeon (F)
+Ability: Water Absorb
+Level: 40
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Aurora Beam
+- Bite
+- Haze
+- Water Pulse
+
+Seaking (F)
+Ability: Lightning Rod
+Level: 42
+IVs: 0 HP / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Waterfall
+- Horn Attack
+- Bounce
+- Supersonic
+
+Starmie
+Ability: Illuminate
+Level: 47
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Psybeam
+- Aqua Jet
+- Recover
+- Water Pulse
+
+=== TRAINER_LEADER_LT_SURGE_8 ===
+Name: Lt. Surge
+Class: Leader
+Pic: Leader Lt Surge
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Voltorb  
+Ability: Soundproof  
+Level: 12
+IVs: 1 HP / 0 Atk / 0 Def / 0 SpA / 1 SpD
+- Tackle
+- Charge
+
+Pikachu (M)  
+Ability: Static  
+Level: 14
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Quick Attack  
+- Growl
+- Shock Wave
+
+=== TRAINER_LEADER_LT_SURGE_2 ===
+Name: Lt. Surge
+Class: Leader
+Pic: Leader Lt Surge
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Voltorb  
+Ability: Soundproof
+Level: 18
+IVs: 1 HP / 0 Atk / 0 Def / 0 SpA / 1 SpD
+- Tackle
+- Screech
+- Shock Wave
+
+Raichu (M)
+Ability: Static
+Level: 21
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Quick Attack
+- Growl
+- Thunder Wave
+- Shock Wave
+
+=== TRAINER_LEADER_LT_SURGE_4 ===
+Name: Lt. Surge
+Class: Leader
+Pic: Leader Lt Surge
+Gender: Male
+Music: Male
+Items: Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Voltorb  
+Ability: Soundproof  
+Level: 29
+IVs: 1 HP / 0 Atk / 0 Def / 0 SpA / 1 SpD
+- Charge
+- Screech
+- Sonic Boom
+- Shock Wave
+
+Pikachu  
+Ability: Static  
+Level: 24
+- Quick Attack
+- Thunder Wave
+- Double Team
+- Shock Wave
+
+Raichu (M)  
+Ability: Static  
+Level: 29
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Slam
+- Nuzzle
+- Double Team
+- Shock Wave
+
+=== TRAINER_LEADER_LT_SURGE_5 ===
+Name: Lt. Surge
+Class: Leader
+Pic: Leader Lt Surge
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Electrode  
+Ability: Soundproof  
+Level: 39
+IVs: 1 HP / 0 Atk / 0 Def / 0 SpA / 1 SpD
+- Screech
+- Reflect
+- Self Destruct
+- Shock Wave
+
+Magneton  
+Ability: Sturdy  
+Level: 37
+IVs: 1 HP / 0 Atk / 1 Def / 0 SpA / 1 SpD / 0 Spe  
+- Supersonic
+- Metal Sound
+- Magnet Bomb
+- Shock Wave
+
+Pikachu  
+Ability: Static  
+Level: 37
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Quick Attack
+- Thunder Wave
+- Light Screen
+- Shock Wave
+
+Raichu (M)  
+Ability: Static  
+Level: 43
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Agility
+- Electro Ball
+- Slam
+- Shock Wave
+
+=== TRAINER_LEADER_LT_SURGE_6 ===
+Name: Lt. Surge
+Class: Leader
+Pic: Leader Lt Surge
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Electrode  
+Ability: Soundproof  
+Level: 39
+IVs: 1 HP / 0 Atk / 0 Def / 0 SpA / 1 SpD
+- Screech
+- Reflect
+- Explosion
+- Shock Wave
+
+Magneton  
+Ability: Sturdy  
+Level: 37
+IVs: 1 HP / 0 Atk / 1 Def / 0 SpA / 1 SpD / 0 Spe  
+- Supersonic
+- Metal Sound
+- Magnet Bomb
+- Shock Wave
+
+Electabuzz (M)  
+Ability: Static  
+Level: 38
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Body Slam
+- Low Kick
+- Light Screen
+- Shock Wave
+
+Raichu (M)  
+Ability: Static  
+Level: 43
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Agility
+- Nuzzle
+- Slam
+- Shock Wave
+
+=== TRAINER_LEADER_LT_SURGE_7 ===
+Name: Lt. Surge
+Class: Leader
+Pic: Leader Lt Surge
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Electrode  
+Ability: Aftermath  
+Level: 42  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Light Screen  
+- Reflect  
+- Explosion
+- Shock Wave
+
+Magneton  
+Ability: Analytic  
+Level: 40
+IVs: 1 HP / 0 Atk / 1 Def / 0 SpA / 1 SpD / 0 Spe  
+- Supersonic  
+- Mirror Shot
+- Tri Attack  
+- Shock Wave  
+
+Electabuzz (M)  
+Ability: Static  
+Level: 42
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Fire Punch
+- Low Kick
+- Light Screen
+- Shock Wave
+
+Raichu (M)  
+Ability: Static  
+Level: 47
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Quick Attack
+- Nuzzle
+- Iron Tail
+- Shock Wave
+
+=== TRAINER_LEADER_ERIKA_1 ===
+Name: Erika
+Class: Leader
+Pic: Leader Erika
+Gender: Male
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Bellsprout (F)
+Ability: Chlorophyll
+Level: 12
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Wrap
+- Growth
+
+Oddish (F)  
+Ability: Chlorophyll  
+Level: 14
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Absorb
+- Sweet Scent
+
+=== TRAINER_LEADER_ERIKA_2 ===
+Name: Erika
+Class: Leader
+Pic: Leader Erika
+Gender: Male
+Music: Female
+Items: Super Potion
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Bellsprout (F)
+Ability: Chlorophyll
+Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Wrap
+- Sleep Powder
+- Mega Drain
+
+Gloom (F)  
+Ability: Chlorophyll  
+Level: 21
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Sweet Scent
+- Stun Spore
+- Sleep Powder
+- Mega Drain
+
+=== TRAINER_LEADER_ERIKA_3 ===
+Name: Erika
+Class: Leader
+Pic: Leader Erika
+Gender: Male
+Music: Female
+Items: Super Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Weepinbell (F)
+Ability: Chlorophyll
+Level: 21
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Stun Spore
+- Acid
+- Poison Powder
+- Mega Drain
+
+Tangela (F)  
+Ability: Leaf Guard
+Level: 18 
+IVs: 1 HP / 0 Atk / 0 Def / 1 SpA / 1 Spe
+- Poison Powder
+- Constrict
+- Ingrain
+- Mega Drain
+
+Gloom (F)  
+Ability: Chlorophyll  
+Level: 24
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Sweet Scent
+- Sleep Powder
+- Acid
+- Mega Drain
+
+=== TRAINER_LEADER_ERIKA_5 ===
+Name: Erika
+Class: Leader
+Pic: Leader Erika
+Gender: Male
+Music: Female
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Tangela (F)  
+Ability: Leaf Guard
+Level: 37
+IVs: 1 HP / 0 Atk / 0 Def / 1 SpA / 1 Spe
+- Slam
+- Ingrain
+- Poison Powder
+- Giga Drain
+
+Victreebel (F)
+Ability: Chlorophyll
+Level: 39
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Acid
+- Body Slam
+- Stun Spore
+- Giga Drain
+
+Leafeon (F)  
+Ability: Chlorophyll  
+Level: 37 
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Razor Leaf
+- Bite
+- Grass Whistle
+- Synthesis
+
+Vileplume (F)
+Ability: Chlorophyll
+Level: 43
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Sleep Powder
+- Acid
+- Moonlight
+- Giga Drain
+
+=== TRAINER_LEADER_ERIKA_6 ===
+Name: Erika
+Class: Leader
+Pic: Leader Erika
+Gender: Male
+Music: Female
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Tangela (F)  
+Ability: Leaf Guard
+Level: 37
+IVs: 1 HP / 0 Atk / 0 Def / 1 SpA / 1 Spe
+- Slam
+- Ingrain
+- Poison Powder
+- Giga Drain
+
+Victreebel (F)
+Ability: Chlorophyll
+Level: 39
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Acid Spray
+- Body Slam
+- Stun Spore
+- Giga Drain
+
+Leafeon (F)  
+Ability: Chlorophyll  
+Level: 38
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Razor Leaf
+- Bite
+- Grass Whistle
+- Synthesis
+
+Vileplume (F)
+Ability: Chlorophyll
+Level: 43
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Sleep Powder
+- Sludge Bomb
+- Moonlight
+- Giga Drain
+
+=== TRAINER_LEADER_ERIKA_7 ===
+Name: Erika
+Class: Leader
+Pic: Leader Erika
+Gender: Male
+Music: Female
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Tangela (F)  
+Ability: Leaf Guard
+Level: 40
+IVs: 1 HP / 0 Atk / 0 Def / 1 SpA / 1 Spe
+- Slam
+- Ingrain
+- Knock Off
+- Giga Drain
+
+Victreebel (F)
+Ability: Chlorophyll
+Level: 42
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Acid Spray
+- Body Slam
+- Gastro Acid
+- Giga Drain
+
+Leafeon (F)  
+Ability: Chlorophyll  
+Level: 40
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Razor Leaf
+- Grass Whistle
+- Sunny Day
+- Synthesis
+
+Vileplume (F)
+Ability: Chlorophyll
+Level: 47
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Sludge Bomb
+- Petal Dance
+- Moonlight
+- Giga Drain
+
+=== TRAINER_LEADER_KOGA_1 ===
+Name: Koga
+Class: Leader
+Pic: Leader Koga
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Grimer (M)
+Ability: Stench
+Level: 12
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Pound
+- Harden
+
+Koffing (M)  
+Ability: Levitate  
+Level: 14
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Tackle
+- Smog  
+- Poison Gas
+
+=== TRAINER_LEADER_KOGA_2 ===
+Name: Koga
+Class: Leader
+Pic: Leader Koga
+Gender: Male
+Music: Male
+Items: Super Potion
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Grimer (M)
+Ability: Stench
+Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Pound
+- Harden
+- Mud Slap
+- Poison Gas
+
+Koffing (M)
+Ability: Levitate
+Level: 21
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Tackle
+- Smog  
+- Poison Gas
+- Assurance
+
+=== TRAINER_LEADER_KOGA_3 ===
+Name: Koga
+Class: Leader
+Pic: Leader Koga
+Gender: Male
+Music: Male
+Items: Super Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Grimer (M)
+Ability: Stench
+Level: 21
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Pound
+- Sludge
+- Mud Slap
+- Minimize
+
+Koffing (M)
+Ability: Levitate
+Level: 18
+IVs: 0 HP / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Tackle
+- Smog  
+- Poison Gas
+- Assurance
+
+Koffing (M)
+Ability: Levitate  
+Level: 24
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Tackle
+- Sludge  
+- Poison Gas
+- Assurance
+
+=== TRAINER_LEADER_KOGA_4 ===
+Name: Koga
+Class: Leader
+Pic: Leader Koga
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Koffing (M)
+Ability: Levitate  
+Level: 24
+IVs: 0 HP / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Tackle
+- Sludge
+- Assurance
+- Toxic
+
+Grimer (M)
+Ability: Stench  
+Level: 29
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Sludge
+- Screech
+- Mud Bomb
+- Toxic
+
+Koffing (M)
+Ability: Levitate  
+Level: 29
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Tackle
+- Sludge
+- Smokescreen
+- Toxic
+
+=== TRAINER_LEADER_KOGA_6 ===
+Name: Koga
+Class: Leader
+Pic: Leader Koga
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Koffing (M)
+Ability: Levitate
+Level: 37
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Self Destruct
+- Sludge
+- Smokescreen
+- Toxic
+
+Muk (M)
+Ability: Stench
+Level: 39
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Sludge
+- Mud Bomb
+- Acid Armor
+- Toxic
+
+Venomoth (M)
+Ability: Shield Dust  
+Level: 38
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Leech Life
+- Gust
+- Psybeam
+- Toxic
+
+Weezing (M)
+Ability: Levitate
+Level: 43
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Sludge Bomb
+- Assurance
+- Smokescreen
+- Toxic
+
+=== TRAINER_LEADER_KOGA_7 ===
+Name: Koga
+Class: Leader
+Pic: Leader Koga
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Koffing (M)
+Ability: Levitate
+Level: 40
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Self Destruct
+- Sludge
+- Smokescreen
+- Toxic
+
+Muk (M)
+Ability: Stench
+Level: 42
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Sludge Bomb
+- Mud Bomb
+- Acid Armor
+- Toxic
+
+Venomoth (M)
+Ability: Shield Dust  
+Level: 42
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Leech Life
+- Air Cutter
+- Psybeam
+- Toxic
+
+Weezing (M)
+Ability: Levitate
+Level: 47
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Sludge Bomb
+- Flamethrower
+- Smokescreen
+- Toxic
+
+=== TRAINER_LEADER_BLAINE_1 ===
+Name: Blaine
+Class: Leader
+Pic: Leader Blaine
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Growlithe (M)
+Ability: Flash Fire
+Level: 12
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bite
+- Roar
+
+Growlithe (M)
+Ability: Flash Fire
+Level: 14
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bite
+- Leer
+- Ember
+
+=== TRAINER_LEADER_BLAINE_2 ===
+Name: Blaine
+Class: Leader
+Pic: Leader Blaine
+Gender: Male
+Music: Male
+Items: Super Potion
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Growlithe (M)
+Ability: Flash Fire
+Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bite
+- Roar
+- Leer
+- Ember
+
+Arcanine (M)
+Ability: Flash Fire
+Level: 21
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bite
+- Roar
+- Leer
+- Flame Wheel
+
+=== TRAINER_LEADER_BLAINE_3 ===
+Name: Blaine
+Class: Leader
+Pic: Leader Blaine
+Gender: Male
+Music: Male
+Items: Super Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Vulpix (M)
+Ability: Flash Fire
+Level: 21
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Quick Attack
+- Disable
+- Tail Whip
+- Ember
+
+Growlithe (M)
+Ability: Flash Fire
+Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bite
+- Roar
+- Leer
+- Flame Wheel
+
+Arcanine (M)
+Ability: Flash Fire
+Level: 24
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bite
+- Odor Sleuth
+- Leer
+- Flame Wheel
+
+=== TRAINER_LEADER_BLAINE_4 ===
+Name: Blaine
+Class: Leader
+Pic: Leader Blaine
+Gender: Male
+Music: Male
+Items: Hyper Potion Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Vulpix (M)
+Ability: Flash Fire
+Level: 29
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Quick Attack
+- Disable
+- Hex
+- Fire Spin
+
+Growlithe (M)
+Ability: Intimidate
+Level: 24
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bite
+- Roar
+- Leer
+- Ember
+
+Arcanine (M)
+Ability: Intimidate
+Level: 29
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bite
+- Odor Sleuth
+- Take Down
+- Flame Wheel
+
+=== TRAINER_LEADER_BLAINE_5 ===
+Name: Blaine
+Class: Leader
+Pic: Leader Blaine
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Growlithe (M)
+Ability: Intimidate
+Level: 37
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bite
+- Roar
+- Take Down
+- Flame Wheel
+
+Ninetales (M)
+Ability: Flash Fire
+Level: 39
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Quick Attack
+- Disable
+- Hex
+- Fire Spin
+
+Ponyta (M)
+Ability: Flame Body
+Level: 37
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Stomp
+- Tail Whip
+- Fire Spin
+- Flame Wheel
+
+Arcanine (M)
+Ability: Intimidate
+Level: 43
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bite
+- Odor Sleuth
+- Take Down
+- Fire Fang
+
+=== TRAINER_LEADER_BLAINE_6 ===
+Name: Blaine
+Class: Leader
+Pic: Leader Blaine
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Growlithe (M)
+Ability: Intimidate
+Level: 37
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bite
+- Roar
+- Take Down
+- Fire Fang
+
+Ninetales (M)
+Ability: Flash Fire
+Level: 39
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Quick Attack
+- Disable
+- Hex
+- Fire Blast
+
+Ponyta (M)
+Ability: Flame Body
+Level: 38
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Stomp
+- Agility
+- Fire Spin
+- Fire Blast
+
+Arcanine (M)
+Ability: Intimidate
+Level: 43
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bite
+- Odor Sleuth
+- Take Down
+- Fire Blast
+
+=== TRAINER_LEADER_SABRINA_1 ===
+Name: Sabrina
+Class: Leader
+Pic: Leader Sabrina
+Gender: Male
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Abra (M)
+Ability: Synchronize
+Level: 12
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Stored Power
+
+Abra (M)
+Ability: Synchronize
+Level: 14
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Psywave
+- Calm Mind
+
+=== TRAINER_LEADER_SABRINA_2 ===
+Name: Sabrina
+Class: Leader
+Pic: Leader Sabrina
+Gender: Male
+Music: Female
+Items: Super Potion
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Abra (M)
+Ability: Synchronize
+Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Psywave
+- Calm Mind
+
+Kadabra (M)
+Ability: Synchronize
+Level: 21
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Kinesis
+- Confusion
+- Psywave
+- Mega Punch
+
+=== TRAINER_LEADER_SABRINA_3 ===
+Name: Sabrina
+Class: Leader
+Pic: Leader Sabrina
+Gender: Male
+Music: Female
+Items: Super Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Mr Mime (F)
+Ability: Soundproof
+Level: 21
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Barrier
+- Pound
+- Confusion
+- Reflect
+
+Abra (M)
+Ability: Synchronize
+Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Psywave
+- Calm Mind
+
+Kadabra (M)
+Ability: Synchronize
+Level: 24
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Kinesis
+- Confusion
+- Swift
+- Mega Punch
+
+=== TRAINER_LEADER_SABRINA_4 ===
+Name: Sabrina
+Class: Leader
+Pic: Leader Sabrina
+Gender: Male
+Music: Female
+Items: Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Mr Mime (F)
+Ability: Soundproof
+Level: 29
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Barrier
+- Confusion
+- Draining Kiss
+- Light Screen
+
+Abra (M)
+Ability: Synchronize
+Level: 24
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Confusion
+- Psywave
+- Calm Mind
+
+Kadabra (M)
+Ability: Synchronize
+Level: 29
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Kinesis
+- Confusion
+- Swift
+- Calm Mind
+
+=== TRAINER_LEADER_SABRINA_5 ===
+Name: Sabrina
+Class: Leader
+Pic: Leader Sabrina
+Gender: Male
+Music: Female
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Kadabra (M)
+Ability: Synchronize
+Level: 37
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Kinesis
+- Psybeam
+- Reflect
+- Calm Mind
+
+Espeon (F)
+Ability: Synchronize
+Level: 38
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Psybeam
+- Magical Leaf
+- Bite
+- Calm Mind
+
+Mr Mime (F)
+Ability: Soundproof
+Level: 37
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Barrier
+- Psybeam
+- Draining Kiss
+- Light Screen
+
+Alakazam (M)
+Ability: Synchronize
+Level: 43
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Psybeam
+- Recover
+- Future Sight
+- Calm Mind
+
+=== TRAINER_LEADER_SABRINA_7 ===
+Name: Sabrina
+Class: Leader
+Pic: Leader Sabrina
+Gender: Male
+Music: Female
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Kadabra (M)
+Ability: Synchronize
+Level: 42
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Psybeam
+- Shock Wave
+- Reflect
+- Calm Mind
+
+Espeon (F)
+Ability: Synchronize
+Level: 42
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Psybeam
+- Magical Leaf
+- Bite
+- Calm Mind
+
+Mr Mime (F)
+Ability: Soundproof
+Level: 40
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Psybeam
+- Draining Kiss
+- Baton Pass
+- Calm Mind
+
+Alakazam (M)
+Ability: Synchronize
+Level: 47
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Psychic
+- Tri Attack
+- Recover
+- Calm Mind
+
+
+=== TRAINER_LEADER_BROCK_8 ===
+Name: Brock
+Class: Leader
+Pic: Leader Brock
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Golem (M)  
+Ability: Sturdy  
+Level: 42  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Magnitude  
+- Steamroller  
+- Rock Slide  
+- Rock Polish
+
+Omastar (M)  
+Ability: Shell Armor  
+Level: 45  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Brine  
+- Mud Shot  
+- Crunch  
+- Rock Tomb
+
+Kabutops (M)  
+Ability: Weak Armor  
+Level: 44  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Aqua Jet  
+- Giga Drain  
+- Leech Life  
+- Rock Tomb
+
+Rhydon (M)  
+Ability: Rock Head  
+Level: 45  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Drill Run  
+- Rock Blast  
+- Hammer Arm  
+- Rock Tomb
+
+Onix (M)  
+Ability: Sturdy  
+Level: 50  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- High Horsepower  
+- Rock Slide  
+- Iron Tail  
+- Rock Tomb
+
+=== TRAINER_LEADER_BROCK_9 ===
+Name: Brock
+Class: Leader
+Pic: Leader Brock
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Golem (M) @ Custap Berry  
+Ability: Sturdy  
+Level: 59  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Stealth Rock
+- Earthquake
+- Stone Edge
+- Sucker Punch
+
+Omastar (M) @ White Herb
+Ability: Shell Armor  
+Level: 59  
+IVs: 1 HP / 0 Atk / 1 Def / 0 SpA / 1 SpD / 1 Spe  
+- Shell Smash
+- Hydro Pump
+- Ice Beam
+- Hidden Power
+
+Kabutops (M) @ Rindo Berry
+Ability: Weak Armor  
+Level: 57  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Aqua Jet
+- Liquidation
+- Stone Edge
+- Leech Life
+
+Aerodactyl (M) @ Charti Berry
+Ability: Rock Head
+Level: 59
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Head Smash
+- Brave Bird
+- Earthquake
+- Roost
+
+Rhyperior (M) @ Weakness Policy
+Ability: Solid Rock
+Level: 61
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Earthquake
+- Rock Blast
+- Hammer Arm
+- Supercell Slam
+
+Onix (M) @ Eviolite
+Ability: Sturdy
+Level: 63
+EVs: 252 Atk
+IVs: 0 HP / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Sandstorm
+- Rock Slide
+- Body Press
+- Dragon Tail
+
+=== TRAINER_LEADER_MISTY_8 ===
+Name: Misty
+Class: Leader
+Pic: Leader Misty
+Gender: Male
+Music: Female
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Golduck (F)  
+Ability: Swift Swim  
+Level: 42  
+IVs: 1 HP / 1 Def / 0 SpA / 1 SpD / 1 Spe  
+- Zen Headbutt  
+- Power Gem  
+- Psych Up  
+- Water Pulse  
+
+Vaporeon (F)
+Ability: Hydration
+Level: 45
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Ice Beam
+- Shadow Ball
+- Rain Dance
+- Water Pulse
+
+Blastoise (F)  
+Ability: Rain Dish  
+Level: 45  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Rain Dance  
+- Headbutt  
+- Bite  
+- Water Pulse  
+
+Seaking (F)  
+Ability: Lightning Rod  
+Level: 44  
+IVs: 0 HP / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Waterfall  
+- Bounce  
+- Drill Run  
+- Flail  
+
+Lapras (F)  
+Ability: Shell Armor  
+Level: 45  
+IVs: 1 HP / 0 Atk / 1 Def / 0 SpA / 1 SpD / 0 Spe  
+- Ice Beam  
+- Body Slam  
+- Rain Dance  
+- Water Pulse  
+
+Starmie  
+Ability: Illuminate  
+Level: 50  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Psychic  
+- Aqua Jet  
+- Recover  
+- Water Pulse  
+
+=== TRAINER_LEADER_MISTY_9 ===
+Name: Misty
+Class: Leader
+Pic: Leader Misty
+Gender: Male
+Music: Female
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Golduck (F) @ Damp Rock
+Ability: Swift Swim
+Level: 59
+EVs: 252 Spe
+IVs: 1 HP / 0 Atk / 1 Def / 0 SpA / 1 SpD
+- Rain Dance
+- Surf
+- Ice Beam
+- Hidden Power
+
+Vaporeon (F) @ Mystic Water
+Ability: Hydration
+Level: 59
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Hydro Pump
+- Flip Turn
+- Shadow Ball
+- Rest
+
+Seaking (F) @ Focus Sash  
+Ability: Lightning Rod  
+Level: 57  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Liquidation  
+- Megahorn  
+- Poison Jab  
+- Agility  
+
+Quagsire (F) @ Rindo Berry  
+Ability: Unaware  
+Level: 59  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Scald  
+- Earthquake  
+- Curse  
+- Recover  
+
+Lapras (F) @ Throat Spray  
+Ability: Shell Armor  
+Level: 61  
+IVs: 1 HP / 0 Atk / 1 Def / 0 SpA / 1 SpD / 0 Spe  
+- Sparkling Aria  
+- Freeze-Dry  
+- Alluring Voice  
+- Hidden Power
+
+Starmie @ Life Orb  
+Ability: Illuminate  
+Level: 63  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Hydro Pump  
+- Psychic  
+- Thunderbolt  
+- Recover
+
+=== TRAINER_LEADER_LT_SURGE_8 ===
+Name: Lt. Surge
+Class: Leader
+Pic: Leader Lt Surge
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Electrode  
+Ability: Soundproof  
+Level: 42
+IVs: 1 HP / 0 Atk / 0 Def / 0 SpA / 1 SpD
+- Light Screen
+- Reflect
+- Explosion
+- Shock Wave
+
+Jolteon
+Ability: Volt Absorb  
+Level: 45
+IVs: 1 HP / 0 Atk / 0 Def / 1 SpA / 1 SpD / 1 Spe
+- Pin Missile
+- Double Kick
+- Bite
+- Shock Wave
+
+Magneton
+Ability: Sturdy  
+Level: 44  
+IVs: 1 HP / 0 Atk / 1 Def / 0 SpA / 1 SpD / 0 Spe  
+- Supersonic  
+- Mirror Shot  
+- Tri Attack  
+- Shock Wave  
+
+Electabuzz (M)  
+Ability: Static  
+Level: 45  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Fire Punch
+- Low Kick
+- Light Screen
+- Shock Wave
+
+Raichu (M)  
+Ability: Static  
+Level: 50  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Quick Attack  
+- Nuzzle  
+- Surf  
+- Shock Wave
+
+=== TRAINER_LEADER_LT_SURGE_9 ===
+Name: Lt. Surge
+Class: Leader
+Pic: Leader Lt Surge
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Jolteon (M) @ Terrain Extender
+Ability: Volt Absorb
+Level: 59
+IVs: 1 HP / 0 Atk / 0 Def / 1 SpA / 1 SpD / 1 Spe
+- Electric Terrain
+- Volt Switch
+- Signal Beam
+- Hidden Power
+
+Electrode @ Damp Rock
+Ability: Soundproof
+Level: 59
+IVs: 1 HP / 0 Atk / 0 Def / 0 SpA / 1 SpD  
+- Rain Dance  
+- Thunder  
+- Foul Play  
+- Hidden Power  
+
+Magnezone @ Air Balloon  
+Ability: Magnet Pull  
+Level: 57  
+IVs: 1 HP / 0 Atk / 1 Def / 0 SpA / 1 SpD / 0 Spe  
+- Thunder  
+- Volt Switch  
+- Flash Cannon  
+- Hidden Power
+
+Ampharos (M) @ Ampharosite  
+Ability: Static  
+Level: 59  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Thunder  
+- Dragon Pulse  
+- Heal Bell  
+- Tail Glow  
+
+Electivire @ Expert Belt  
+Ability: Motor Drive  
+Level: 61  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Plasma Fists  
+- Earthquake  
+- Cross Chop  
+- Ice Punch 
+
+Raichu (M) @ Sitrus Berry
+Ability: Static
+Level: 63
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Nasty Plot
+- Thunder
+- Surf
+- Grass Knot
+
+=== TRAINER_LEADER_ERIKA_8 ===
+Name: Erika
+Class: Leader
+Pic: Leader Erika
+Gender: Male
+Music: Female
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Tangela (F)  
+Ability: Leaf Guard  
+Level: 42  
+IVs: 1 HP / 0 Atk / 0 Def / 1 SpA / 1 Spe 
+- Slam  
+- Ingrain  
+- Knock Off  
+- Giga Drain
+
+Leafeon (F)  
+Ability: Chlorophyll  
+Level: 45  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Leaf Blade  
+- Grass Whistle  
+- Sunny Day  
+- Synthesis  
+
+Exeggutor (F)  
+Ability: Harvest  
+Level: 44  
+IVs: 0 HP / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Psyshock  
+- Natural Gift  
+- Sleep Powder  
+- Giga Drain  
+
+Victreebel (F)  
+Ability: Chlorophyll  
+Level: 45  
+IVs: 0 HP / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Acid Spray
+- Body Slam  
+- Sunny Day
+- Giga Drain
+
+Vileplume (F)  
+Ability: Chlorophyll
+Level: 50  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Sludge Bomb  
+- Petal Dance  
+- Moonlight  
+- Giga Drain  
+
+=== TRAINER_LEADER_ERIKA_9 ===
+Name: Erika
+Class: Leader
+Pic: Leader Erika
+Gender: Male
+Music: Female
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Tangrowth @ Assault Vest  
+Ability: Regenerator  
+Level: 59  
+EVs: 4 HP / 252 SpD  
+IVs: 1 HP / 0 Atk / 0 Def / 1 SpA / 1 Spe  
+- Giga Drain
+- Knock Off
+- Earthquake
+- Hidden Power
+
+Leafeon (F) @ Heat Rock  
+Ability: Chlorophyll  
+Level: 59  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Solar Blade  
+- X-Scissor  
+- Return  
+- Sunny Day  
+
+Bellossom (F) @ Big Root  
+Ability: Chlorophyll  
+Level: 59  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Quiver Dance  
+- Giga Drain  
+- Moonblast  
+- Strength Sap  
+
+Exeggutor (F) @ Watmel Berry  
+Ability: Harvest  
+Level: 57  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Psyshock  
+- Natural Gift  
+- Sleep Powder  
+- Giga Drain  
+
+Victreebel (F) @ Focus Sash  
+Ability: Chlorophyll  
+Level: 61  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Leaf Blade  
+- Clear Smog  
+- Weather Ball  
+- Sucker Punch  
+
+Vileplume (F) @ Black Sludge  
+Ability: Effect Spore
+Level: 64  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Giga Drain  
+- Sludge Bomb  
+- Moonblast  
+- Strength Sap  
+
+=== TRAINER_LEADER_KOGA_8 ===
+Name: Koga
+Class: Leader
+Pic: Leader Koga
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Koffing  
+Ability: Levitate  
+Level: 42  
+IVs: 0 HP / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Sludge  
+- Smokescreen  
+- Self-Destruct  
+- Toxic  
+
+Muk  
+Ability: Stench  
+Level: 45  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Poison Jab  
+- Acid Armor  
+- Mud Bomb  
+- Toxic  
+
+Golbat  
+Ability: Inner Focus  
+Level: 44  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Wing Attack  
+- Bite  
+- Confuse Ray  
+- Toxic  
+
+Venomoth  
+Ability: Shield Dust  
+Level: 45  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Silver Wind  
+- Air Cutter  
+- Psybeam  
+- Toxic  
+
+Weezing  
+Ability: Levitate  
+Level: 50  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Sludge Bomb  
+- Flamethrower  
+- Haze  
+- Toxic  
+
+=== TRAINER_LEADER_KOGA_9 ===
+Name: Koga
+Class: Leader
+Pic: Leader Koga
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Ariados @ Focus Sash  
+Ability: Insomnia  
+Level: 59  
+EVs: 252 HP / 252 Spe  
+IVs: 0 Atk / 0 Def / 0 SpA / 0 SpD  
+- Sticky Web  
+- Toxic Spikes  
+- Megahorn  
+- Toxic Thread  
+
+Muk @ Leftovers  
+Ability: Sticky Hold  
+Level: 61  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Curse  
+- Poison Jab  
+- Knock Off  
+- Toxic  
+
+Crobat @ Sitrus Berry  
+Ability: Infiltrator  
+Level: 57  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Cross Poison  
+- Brave Bird  
+- Super Fang  
+- Roost  
+
+Venomoth @ Sitrus Berry  
+Ability: Tinted Lens  
+Level: 59  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Quiver Dance  
+- Bug Buzz  
+- Sludge Bomb  
+- Sleep Powder  
+
+Tentacruel @ Black Sludge  
+Ability: Clear Body  
+Level: 59  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Scald  
+- Acid Spray  
+- Ice Beam  
+- Haze  
+
+Weezing @ Air Balloon  
+Ability: Neutralizing Gas  
+Level: 63  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Sludge Bomb  
+- Thunderbolt  
+- Dark Pulse  
+- Toxic  
+
+=== TRAINER_LEADER_BLAINE_8 ===
+Name: Blaine
+Class: Leader
+Pic: Leader Blaine
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Growlithe (M)
+Ability: Intimidate
+Level: 42
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bite
+- Roar
+- Take Down
+- Fire Blast
+
+Magmar (M)
+Ability: Vital Spirit
+Level: 44
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Thunder Punch
+- Clear Smog
+- Confuse Ray
+- Fire Blast
+
+Rapidash (M)
+Ability: Flame Body
+Level: 44
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Stomp
+- Bounce
+- Smart Strike
+- Fire Blast
+
+Ninetales (M)
+Ability: Flash Fire
+Level: 45
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Will-O-Wisp
+- Hex
+- Spite
+- Fire Blast
+
+Arcanine (M)
+Ability: Intimidate
+Level: 50
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bite
+- Take Down
+- Play Rough
+- Fire Blast
+
+=== TRAINER_LEADER_BLAINE_9 ===
+Name: Blaine
+Class: Leader
+Pic: Leader Blaine
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Magcargo (M) @ Weakness Policy
+Ability: Magma Armor
+Level: 59
+EVs: 4 HP / 252 Atk / 252 SpD
+Calm Nature
+IVs: 0 Atk / 0 SpA / 0 Spe
+- Stealth Rock
+- Recover
+- Power Gem
+- Lava Plume
+
+Flareon (M) @ Zoom Lens
+Ability: Guts
+Level: 57
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Flare Blitz
+- Superpower
+- Zap Cannon
+- Scorching Sands
+
+Magmortar (M) @ Custap Berry
+Ability: Vital Spirit
+Level: 59
+IVs: 1 HP / 0 Atk / 1 Def / 0 SpA / 1 SpD / 1 Spe
+- Fire Blast
+- Thunderbolt
+- Psychic
+- Hidden Power
+
+Rapidash (M) @ Salac Berry  
+Ability: Flame Body  
+Level: 59  
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Flare Blitz  
+- High Horsepower  
+- Wild Charge  
+- Throat Chop  
+
+Ninetales (M) @ Heat Rock
+Ability: Drought
+Level: 61
+IVs: 1 HP / 0 Atk / 0 Def / 1 SpA / 1 SpD / 1 Spe
+- Nasty Plot
+- Fire Blast
+- Solar Beam
+- Hidden Power
+
+Arcanine (M) @ Sitrus Berry
+Ability: Intimidate
+Level: 63
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Flare Blitz
+- Extreme Speed
+- Play Rough
+- Close Combat
+
+=== TRAINER_LEADER_SABRINA_8 ===
+Name: Sabrina
+Class: Leader
+Pic: Leader Sabrina
+Gender: Male
+Music: Female
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Kadabra (M)
+Ability: Synchronize
+Level: 42
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Psybeam
+- Charge Beam
+- Reflect
+- Calm Mind
+
+Hypno (F)
+Ability: Inner Focus
+Level: 44
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Hypnosis
+- Dream Eater
+- Hex
+- Calm Mind
+
+Mr Mime (F)
+Ability: Soundproof
+Level: 45
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Psychic
+- Draining Kiss
+- Baton Pass
+- Calm Mind
+
+Espeon (F)
+Ability: Synchronize
+Level: 45
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Psybeam
+- Magical Leaf
+- Shadow Ball
+- Calm Mind
+
+Alakazam (M)
+Ability: Synchronize
+Level: 50
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Psychic
+- Focus Blast
+- Recover
+- Calm Mind
+
+=== TRAINER_LEADER_SABRINA_9 ===
+Name: Sabrina
+Class: Leader
+Pic: Leader Sabrina
+Gender: Male
+Music: Female
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Jynx @ Focus Sash
+Ability: Oblivious
+Level: 59
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Lovely Kiss
+- Psyshock
+- Ice Beam
+- Calm Mind
+
+Hypno (F) @ Salac Berry
+Ability: Inner Focus
+Level: 57
+IVs: 0 HP / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Hypnosis
+- Belly Drum
+- Zen Headbutt
+- Drain Punch
+
+Mr. Mime (F) @ Expert Belt
+Ability: Soundproof
+Level: 59
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Psychic
+- Dazzling Gleam
+- Mystical Fire
+- Encore
+
+Espeon (F) @ Terrain Extender
+Ability: Magic Bounce
+Level: 59
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Psychic
+- Signal Beam
+- Shadow Ball
+- Psychic Terrain
+
+Slowking (F) @ Assault Vest
+Ability: Regenerator
+Level: 61
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Scald
+- Psyshock
+- Future Sight
+- Fire Blast
+
+Alakazam (M) @ Alakazite
+Ability: Magic Guard
+Level: 63
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Psychic
+- Focus Blast
+- Energy Ball
+- Calm Mind

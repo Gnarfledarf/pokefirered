@@ -5810,6 +5810,7 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Squirtle
+Ability: Torrent
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
@@ -5825,6 +5826,7 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Bulbasaur
+Ability: Overgrow
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
@@ -5840,6 +5842,7 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Charmander
+Ability: Blaze
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Scratch
@@ -5855,12 +5858,14 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Pidgey
+Ability: Keen Eye
 Level: 9
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Tackle
 - Sand Attack
 
 Squirtle
+Ability: Torrent
 Level: 9
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Tackle
@@ -5876,12 +5881,14 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Pidgey
+Ability: Keen Eye
 Level: 9
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Tackle
 - Sand Attack
 
 Bulbasaur
+Ability: Overgrow
 Level: 9
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Tackle
@@ -5897,12 +5904,14 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Pidgey
+Ability: Keen Eye
 Level: 9
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Tackle
 - Sand Attack
 
 Charmander
+Ability: Blaze
 Level: 9
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Scratch
@@ -5918,6 +5927,7 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Pidgeotto
+Ability: Keen Eye
 Level: 17
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Tackle
@@ -5926,11 +5936,13 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Quick Attack
 
 Abra
+Ability: Synchronize
 Level: 16
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Teleport
 
 Rattata
+Ability: Run Away
 Level: 15
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Tackle
@@ -5938,12 +5950,13 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Quick Attack
 
 Squirtle
+Ability: Torrent
 Level: 18
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Tackle
-- Tail Whip
 - Withdraw
 - Water Gun
+- Rapid Spin
 
 === TRAINER_RIVAL_CERULEAN_BULBASAUR ===
 Name: Terry
@@ -5955,6 +5968,7 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Pidgeotto
+Ability: Keen Eye
 Level: 17
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Tackle
@@ -5963,11 +5977,13 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Quick Attack
 
 Abra
+Ability: Synchronize
 Level: 16
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Teleport
 
 Rattata
+Ability: Run Away
 Level: 15
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Tackle
@@ -5975,6 +5991,7 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Quick Attack
 
 Bulbasaur
+Ability: Overgrow
 Level: 18
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Sleep Powder
@@ -5992,6 +6009,7 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Pidgeotto
+Ability: Keen Eye
 Level: 17
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Tackle
@@ -6000,11 +6018,13 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Quick Attack
 
 Abra
+Ability: Synchronize
 Level: 16
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Teleport
 
 Rattata
+Ability: Run Away
 Level: 15
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Tackle
@@ -6012,12 +6032,13 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Quick Attack
 
 Charmander
+Ability: Blaze
 Level: 18
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Metal Claw
-- Ember
-- Growl
 - Scratch
+- Growl
+- Ember
+- Metal Claw
 
 === TRAINER_SCIENTIST_TED ===
 Name: Ted
@@ -6358,16 +6379,31 @@ Double Battle: No
 AI: Check Bad Move
 
 Onix
+Ability: Sturdy
 Level: 25
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Rock Throw
+- Brutal Swing
+- Rage
+- Harden
 
 Rhyhorn
+Ability: Rock Head
 Level: 24
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Smack Down
+- Stomp
+- Scary Face
+- Tail Whip
 
 Kangaskhan
+Ability: Scrappy
 Level: 29
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Fake Out
+- Mega Punch
+- Bite
+- Tail Whip
 
 === TRAINER_BOSS_GIOVANNI_2 ===
 Name: Giovanni
@@ -6379,20 +6415,40 @@ Double Battle: No
 AI: Check Bad Move
 
 Nidorino
+Ability: Poison Point
 Level: 37
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Horn Attack
+- Poison Sting
+- Helping Hand
+- Fury Attack
 
 Kangaskhan
+Ability: Scrappy
 Level: 35
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Fake Out
+- Chip Away
+- Bite
+- Metal Claw
 
 Rhyhorn
+Ability: Rock Head
 Level: 37
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Rock Blast
+- Bulldoze
+- Chip Away
+- Scary Face
 
 Nidoqueen
+Ability: Poison Point
 Level: 41
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Poison Fang
+- Body Slam
+- Double Kick
+- Tail Whip
 
 === TRAINER_LEADER_GIOVANNI ===
 Name: Giovanni
@@ -6404,44 +6460,49 @@ Items: Hyper Potion / Hyper Potion / Full Heal
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Rhyhorn
+Rhydon
+Ability: Rock Head
 Level: 45
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Take Down
 - Rock Blast
+- Take Down
 - Scary Face
 - Earthquake
 
 Dugtrio
+Ability: Arena Trap
 Level: 42
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Slash
 - Sand Tomb
-- Mud Slap
+- Night Slash
+- Aerial Ace
 - Earthquake
 
 Nidoqueen
+Ability: Poison Point
 Level: 44
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Body Slam
 - Double Kick
-- Poison Sting
+- Poison Jab
 - Earthquake
 
 Nidoking
+Ability: Poison Point
 Level: 45
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Thrash
 - Double Kick
-- Poison Sting
+- Poison Jab
 - Earthquake
 
-Rhyhorn
+Rhyperior (M)
+Ability: Rock Head
 Level: 50
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Take Down
 - Rock Blast
-- Scary Face
+- Double Edge
+- Hammer Arm
 - Earthquake
 
 === TRAINER_TEAM_ROCKET_GRUNT ===
@@ -8213,39 +8274,44 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 Mugshot: Purple
 
-Dewgong
+Dewgong (F)
+Ability: Thick Fat
 Level: 52
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Ice Beam
 - Surf
-- Hail
+- Snowscape
 - Safeguard
 
-Cloyster
+Cloyster (F)
+Ability: Shell Armor
 Level: 51
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Spikes
 - Protect
-- Hail
+- Snowscape
 - Dive
 
-Slowbro
+Glaceon (F)
+Ability: Snow Cloak
 Level: 52
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Ice Beam
-- Surf
-- Amnesia
-- Yawn
+- Blizzard
+- Shadow Ball
+- Snowscape
 
-Jynx
+Jynx (F)
+Ability: Oblivious
 Level: 54
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Ice Punch
-- Double Slap
+- Ice Beam
+- Psychic
 - Lovely Kiss
 - Attract
 
-Lapras @ Sitrus Berry
+Lapras (F) @ Sitrus Berry
+Ability: Shell Armor
 Level: 54
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Confuse Ray
@@ -8265,14 +8331,16 @@ AI: Check Bad Move / Try To Faint / Check Viability
 Mugshot: Green
 
 Onix
+Ability: Sturdy
 Level: 51
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Earthquake
 - Rock Tomb
 - Iron Tail
-- Roar
+- Dragon Tail
 
 Hitmonchan
+Ability: Iron Fist
 Level: 53
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Sky Uppercut
@@ -8281,6 +8349,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Counter
 
 Hitmonlee
+Ability: Limber
 Level: 53
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Mega Kick
@@ -8288,15 +8357,17 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Brick Break
 - Facade
 
-Onix
+Poliwrath (M)
+Ability: Water Absorb
 Level: 54
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Double Edge
-- Earthquake
-- Iron Tail
-- Sand Tomb
+- Waterfall
+- Brick Break
+- Mud Shot
+- Hypnosis
 
-Machamp @ Sitrus Berry
+Machamp (M) @ Sitrus Berry
+Ability: No Guard
 Level: 56
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Cross Chop
@@ -8315,23 +8386,26 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 Mugshot: Pink
 
-Gengar
+Gengar (F)
+Ability: Levitate
 Level: 54
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Shadow Punch
+- Phantom Force
 - Confuse Ray
 - Toxic
 - Double Team
 
-Golbat
+Annihilape (F)
+Ability: Inner Focus
 Level: 54
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Confuse Ray
-- Poison Fang
-- Air Cutter
-- Bite
+- Shadow Punch
+- Body Slam
+- Counter
+- Spite
 
-Haunter
+Haunter (F)
+Ability: Levitate
 Level: 53
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Hypnosis
@@ -8339,7 +8413,8 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Curse
 - Mean Look
 
-Arbok
+Arbok (F)
+Ability: Intimidate
 Level: 56
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Sludge Bomb
@@ -8347,7 +8422,8 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Iron Tail
 - Bite
 
-Gengar @ Sitrus Berry
+Gengar (F) @ Sitrus Berry
+Ability: Levitate
 Level: 58
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Shadow Ball
@@ -8367,22 +8443,25 @@ AI: Check Bad Move / Try To Faint / Check Viability
 Mugshot: Blue
 
 Gyarados
+Ability: Intimidate
 Level: 56
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Hyper Beam
-- Dragon Rage
-- Twister
-- Bite
+- Aqua Tail
+- Dragon Breath
+- Crunch
 
 Dragonair
+Ability: Shed Skin
 Level: 54
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Hyper Beam
 - Safeguard
-- Dragon Rage
+- Iron Tail
 - Outrage
 
 Dragonair
+Ability: Shed Skin
 Level: 54
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Hyper Beam
@@ -8391,20 +8470,22 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Outrage
 
 Aerodactyl
+Ability: Pressure
 Level: 58
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Hyper Beam
-- Ancient Power
+- Rock Slide
 - Wing Attack
 - Scary Face
 
 Dragonite @ Sitrus Berry
+Ability: Inner Focus
 Level: 60
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Hyper Beam
 - Safeguard
 - Outrage
-- Wing Attack
+- Hurricane
 
 === TRAINER_LEADER_BROCK ===
 Name: Brock
@@ -8415,13 +8496,15 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Geodude
+Geodude (M)
+Ability: Sturdy
 Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
 - Defense Curl
 
-Onix
+Onix (M)
+Ability: Sturdy
 Level: 14
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
@@ -8439,6 +8522,7 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Staryu
+Ability: Illuminate
 Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
@@ -8447,6 +8531,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Water Pulse
 
 Starmie
+Ability: Illuminate
 Level: 21
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Swift
@@ -8465,6 +8550,7 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Voltorb
+Ability: Soundproof
 Level: 21
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sonic Boom
@@ -8472,7 +8558,8 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Screech
 - Shock Wave
 
-Pikachu
+Pikachu (M)
+Ability: Static
 Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Quick Attack
@@ -8480,7 +8567,8 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Double Team
 - Shock Wave
 
-Raichu
+Raichu (M)
+Ability: Static
 Level: 24
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Quick Attack
@@ -8498,7 +8586,8 @@ Items: Hyper Potion / Full Heal
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Victreebel
+Victreebel (F)
+Ability: Chlorophyll
 Level: 29
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Stun Spore
@@ -8506,15 +8595,17 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Poison Powder
 - Giga Drain
 
-Tangela
+Tangela (F)  
+Ability: Leaf Guard
 Level: 24
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 1 HP / 0 Atk / 0 Def / 1 SpA / 1 Spe
 - Poison Powder
-- Constrict
+- Bind
 - Ingrain
 - Giga Drain
 
-Vileplume
+Vileplume (F)
+Ability: Chlorophyll
 Level: 29
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sleep Powder
@@ -8532,7 +8623,8 @@ Items: Hyper Potion / Hyper Potion / Full Heal
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Koffing
+Koffing (M)
+Ability: Levitate
 Level: 37
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Self Destruct
@@ -8540,23 +8632,26 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Smokescreen
 - Toxic
 
-Muk
+Muk (M)
+Ability: Stench
 Level: 39
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Minimize
 - Sludge
+- Mud Bomb
 - Acid Armor
 - Toxic
 
-Koffing
+Venomoth (M)
+Ability: Shield Dust  
 Level: 37
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Self Destruct
-- Sludge
-- Smokescreen
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe  
+- Struggle Bug
+- Gust
+- Psybeam
 - Toxic
 
-Weezing
+Weezing (M)
+Ability: Levitate
 Level: 43
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
@@ -8574,7 +8669,8 @@ Items: Hyper Potion / Hyper Potion / Full Heal
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Growlithe
+Growlithe (M)
+Ability: Intimidate
 Level: 42
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Bite
@@ -8582,27 +8678,30 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Take Down
 - Fire Blast
 
-Ponyta
+Ninetales (M)
+Ability: Flash Fire
 Level: 40
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Stomp
-- Bounce
-- Fire Spin
+- Quick Attack
+- Hex
+- Confuse Ray
 - Fire Blast
 
-Rapidash
+Rapidash (M)
+Ability: Flame Body
 Level: 42
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Stomp
 - Bounce
-- Fire Spin
+- Flame Charge
 - Fire Blast
 
-Arcanine
+Arcanine (M)
+Ability: Intimidate
 Level: 47
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Bite
-- Roar
+- Leer
 - Take Down
 - Fire Blast
 
@@ -8616,7 +8715,8 @@ Items: Hyper Potion / Hyper Potion / Full Heal
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Kadabra
+Kadabra (F)
+Ability: Synchronize
 Level: 38
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Psybeam
@@ -8624,23 +8724,26 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Future Sight
 - Calm Mind
 
-Mr Mime
+Mr Mime (F)
+Ability: Soundproof
 Level: 37
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Barrier
-- Psybeam
+- Draining Kiss
 - Baton Pass
 - Calm Mind
 
-Venomoth
+Espeon (F)
+Ability: Synchronize
 Level: 38
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Psybeam
-- Gust
-- Leech Life
-- Supersonic
+- Bite
+- Magical Leaf
+- Calm Mind
 
-Alakazam
+Alakazam (F)
+Ability: Synchronize
 Level: 43
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Psychic
@@ -8735,18 +8838,22 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Pidgeotto
+Ability: Keen Eye
 Level: 19
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Raticate
+Ability: Run Away
 Level: 16
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Kadabra
+Ability: Synchronize
 Level: 18
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Wartortle
+Ability: Torrent
 Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
@@ -8760,18 +8867,22 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Pidgeotto
+Ability: Keen Eye
 Level: 19
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Raticate
+Ability: Run Away
 Level: 16
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Kadabra
+Ability: Synchronize
 Level: 18
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Ivysaur
+Ability: Overgrow
 Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
@@ -8785,18 +8896,22 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Pidgeotto
+Ability: Keen Eye
 Level: 19
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Raticate
+Ability: Run Away
 Level: 16
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Kadabra
+Ability: Synchronize
 Level: 18
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Charmeleon
+Ability: Blaze
 Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
@@ -8810,22 +8925,27 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Pidgeotto
+Ability: Keen Eye
 Level: 25
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Growlithe
+Ability: Intimidate
 Level: 23
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Exeggcute
+Ability: Chlorophyll
 Level: 22
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Kadabra
+Ability: Chlorophyll
 Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Wartortle
+Ability: Torrent
 Level: 25
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
@@ -8839,22 +8959,27 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Pidgeotto
+Ability: Keen Eye
 Level: 25
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Gyarados
+Ability: Intimidate
 Level: 23
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Growlithe
+Ability: Intimidate
 Level: 22
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Kadabra
+Ability: Synchronize
 Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Ivysaur
+Ability: Overgrow
 Level: 25
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
@@ -8868,22 +8993,27 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Pidgeotto
+Ability: Keen Eye
 Level: 25
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Exeggcute
+Ability: Chlorophyll
 Level: 23
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Gyarados
+Ability: Intimidate
 Level: 22
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Kadabra
+Ability: Synchronize
 Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Charmeleon
+Ability: Blaze
 Level: 25
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
@@ -8897,22 +9027,27 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Pidgeot
+Ability: Keen Eye
 Level: 37
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Growlithe
+Ability: Intimidate
 Level: 38
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Exeggcute
+Ability: Chlorophyll
 Level: 35
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Alakazam
+Ability: Synchronize
 Level: 35
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Blastoise
+Ability: Torrent
 Level: 40
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
@@ -8926,22 +9061,27 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Pidgeot
+Ability: Keen Eye
 Level: 37
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Gyarados
+Ability: Intimidate
 Level: 38
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Growlithe
+Ability: Intimidate
 Level: 35
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Alakazam
+Ability: Synchronize
 Level: 35
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Venusaur
+Ability: Overgrow
 Level: 40
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
@@ -8955,22 +9095,27 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Pidgeot
+Ability: Keen Eye
 Level: 37
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Exeggcute
+Ability: Chlorophyll
 Level: 38
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Gyarados
+Ability: Intimidate
 Level: 35
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Alakazam
+Ability: Synchronize
 Level: 35
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Charizard
+Ability: Blaze
 Level: 40
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
@@ -8984,6 +9129,7 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Pidgeot
+Ability: Keen Eye
 Level: 47
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Feather Dance
@@ -8992,6 +9138,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Quick Attack
 
 Rhyhorn
+Ability: Rock Head
 Level: 45
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Take Down
@@ -9000,6 +9147,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Fury Attack
 
 Growlithe
+Ability: Intimidate
 Level: 45
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Flame Wheel
@@ -9008,6 +9156,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Agility
 
 Exeggcute
+Ability: Chlorophyll
 Level: 45
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Solar Beam
@@ -9016,6 +9165,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Stun Spore
 
 Alakazam
+Ability: Synchronize
 Level: 47
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Psychic
@@ -9024,6 +9174,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Disable
 
 Blastoise
+Ability: Torrent
 Level: 53
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Water Gun
@@ -9041,6 +9192,7 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Pidgeot
+Ability: Keen Eye
 Level: 47
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Feather Dance
@@ -9049,6 +9201,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Quick Attack
 
 Rhyhorn
+Ability: Rock Head
 Level: 45
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Take Down
@@ -9057,6 +9210,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Fury Attack
 
 Gyarados
+Ability: Intimidate
 Level: 45
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Hydro Pump
@@ -9065,6 +9219,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Rain Dance
 
 Growlithe
+Ability: Intimidate
 Level: 45
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Flame Wheel
@@ -9073,6 +9228,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Agility
 
 Alakazam
+Ability: Synchronize
 Level: 47
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Psychic
@@ -9081,6 +9237,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Disable
 
 Venusaur
+Ability: Overgrow
 Level: 53
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Razor Leaf
@@ -9098,6 +9255,7 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Pidgeot
+Ability: Keen Eye
 Level: 47
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Feather Dance
@@ -9106,6 +9264,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Quick Attack
 
 Rhyhorn
+Ability: Rock Head
 Level: 45
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Take Down
@@ -9114,6 +9273,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Fury Attack
 
 Exeggcute
+Ability: Chlorophyll
 Level: 45
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Solar Beam
@@ -9122,6 +9282,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Stun Spore
 
 Gyarados
+Ability: Intimidate
 Level: 45
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Hydro Pump
@@ -9130,6 +9291,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Rain Dance
 
 Alakazam
+Ability: Synchronize
 Level: 47
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Psychic
@@ -9138,6 +9300,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Disable
 
 Charizard
+Ability: Blaze
 Level: 53
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Flamethrower
@@ -9157,14 +9320,16 @@ AI: Check Bad Move / Try To Faint / Check Viability
 Mugshot: Yellow
 
 Pidgeot
+Ability: Keen Eye
 Level: 59
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Aerial Ace
 - Feather Dance
-- Sand Attack
+- Roost
 - Whirlwind
 
 Alakazam
+Ability: Synchronize
 Level: 57
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Psychic
@@ -9173,14 +9338,16 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Reflect
 
 Rhydon
+Ability: Rock Head
 Level: 59
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Take Down
+- Double Edge
 - Earthquake
 - Rock Tomb
 - Scary Face
 
 Arcanine
+Ability: Intimidate
 Level: 59
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Extreme Speed
@@ -9189,6 +9356,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Bite
 
 Exeggutor
+Ability: Chlorophyll
 Level: 61
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Giga Drain
@@ -9197,11 +9365,12 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Light Screen
 
 Blastoise @ Sitrus Berry
+Ability: Torrent
 Level: 63
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Hydro Pump
 - Rain Dance
-- Skull Bash
+- Flash Cannon
 - Bite
 
 === TRAINER_CHAMPION_FIRST_BULBASAUR ===
@@ -9216,14 +9385,16 @@ AI: Check Bad Move / Try To Faint / Check Viability
 Mugshot: Yellow
 
 Pidgeot
+Ability: Keen Eye
 Level: 59
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Aerial Ace
 - Feather Dance
-- Sand Attack
+- Roost
 - Whirlwind
 
 Alakazam
+Ability: Synchronize
 Level: 57
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Psychic
@@ -9232,22 +9403,25 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Reflect
 
 Rhydon
+Ability: Rock Head
 Level: 59
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Take Down
+- Double Edge
 - Earthquake
 - Rock Tomb
 - Scary Face
 
 Gyarados
+Ability: Intimidate
 Level: 59
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Hydro Pump
-- Dragon Rage
+- Dragon Rush
 - Bite
-- Thrash
+- Ice Fang
 
 Arcanine
+Ability: Intimidate
 Level: 61
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Extreme Speed
@@ -9256,6 +9430,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Bite
 
 Venusaur @ Sitrus Berry
+Ability: Overgrow
 Level: 63
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Solar Beam
@@ -9275,14 +9450,16 @@ AI: Check Bad Move / Try To Faint / Check Viability
 Mugshot: Yellow
 
 Pidgeot
+Ability: Keen Eye
 Level: 59
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Aerial Ace
 - Feather Dance
-- Sand Attack
+- Roost
 - Whirlwind
 
 Alakazam
+Ability: Synchronize
 Level: 57
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Psychic
@@ -9291,6 +9468,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Reflect
 
 Rhydon
+Ability: Rock Head
 Level: 59
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Take Down
@@ -9299,6 +9477,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Scary Face
 
 Exeggutor
+Ability: Chlorophyll
 Level: 59
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Giga Drain
@@ -9307,19 +9486,21 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Light Screen
 
 Gyarados
+Ability: Intimidate
 Level: 61
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Hydro Pump
-- Dragon Rage
+- Dragon Rush
 - Bite
-- Thrash
+- Ice Fang
 
 Charizard @ Sitrus Berry
+Ability: Blaze
 Level: 63
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Fire Blast
 - Aerial Ace
-- Slash
+- Dragon Claw
 - Fire Spin
 
 === TRAINER_CHANNELER_PATRICIA ===
@@ -15028,45 +15209,59 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 Mugshot: Purple
 
-Dewgong
-Level: 64
+Dewgong (F) @ Icy Rock
+Ability: Thick Fat
+Level: 64  
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Ice Beam
 - Surf
 - Signal Beam
-- Double Team
+- Snowscape
 
-Cloyster
+Cloyster (F) @ Wacan Berry
+Ability: Skill Link
 Level: 63
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Ice Beam
-- Surf
-- Supersonic
-- Rain Dance
+- Hydro Pump
+- Icicle Spear
+- Rock Blast
+- Spikes
 
-Piloswine
+Mamoswine (F) @ Wide Lens
+Ability: Thick Fat
 Level: 63
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Icicle Crash
 - Blizzard
 - Earthquake
-- Double Edge
-- Rock Slide
+- Superpower
 
-Jynx
+Jynx @ Focus Sash
+Ability: Oblivious
 Level: 66
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Ice Beam
-- Psychic
+- Psyshock
 - Lovely Kiss
 - Attract
 
-Lapras @ Cheri Berry
+Lapras (F) @ Fire Gem
+Ability: Shell Armor
 Level: 66
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Ice Beam
+IVs: 0 Atk / 30 SpA / 30 Spe
 - Surf
+- Freeze-Dry
 - Psychic
-- Thunder
+- Hidden Power
+
+Ninetales-Alola (F) @ Light Clay
+Ability: Snow Warning
+Level: 63
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Blizzard
+- Moonblast
+- Aurora Veil
+- Snowscape
 
 === TRAINER_ELITE_FOUR_BRUNO_2 ===
 Name: Bruno
@@ -15079,45 +15274,60 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 Mugshot: Green
 
-Steelix
+Hitmontop @ Assault Vest
+Ability: Intimidate
 Level: 65
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Earthquake
-- Iron Tail
-- Crunch
-- Rock Tomb
+- Triple Kick
+- Drill Run
+- Triple Axel
+- Rapid Spin
 
-Hitmonchan
+Hitmonchan @ Protective Pads
+Ability: Iron Fist
 Level: 65
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Sky Uppercut
 - Mach Punch
-- Rock Slide
-- Counter
+- Thunder Punch
+- Ice Punch
 
-Hitmonlee
+Hitmonlee @ Rowap Berry
+Ability: Unburden
 Level: 65
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Mega Kick
-- Foresight
+- High Jump Kick
+- Blaze Kick
 - Earthquake
 - Rock Slide
 
-Steelix
+Poliwrath (M) @ Sitrus Berry
+Ability: Water Absorb
 Level: 66
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Earthquake
-- Iron Tail
-- Crunch
-- Dragon Breath
+- Waterfall
+- Focus Blast
+- Circle Throw
+- Throat Chop
 
-Machamp @ Persim Berry
+Machamp (M) @ Aguav Berry
+Ability: No Guard
 Level: 68
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Adamant Nature
 - Cross Chop
-- Earthquake
-- Brick Break
-- Rock Slide
+- Heavy Slam
+- Knock Off
+- Dual Chop
+
+Primeape (M)
+Ability: Defiant
+Level: 65
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Close Combat
+- Acrobatics
+- U-turn
+- Gunk Shot
 
 === TRAINER_ELITE_FOUR_AGATHA_2 ===
 Name: Agatha
@@ -15130,45 +15340,58 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 Mugshot: Pink
 
-Gengar
+Banette (F) @ Custap Berry
+Ability: Cursed Body
 Level: 66
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Shadow Ball
-- Psychic
-- Confuse Ray
-- Hypnosis
+- Phantom Force
+- Knock Off
+- Will-O-Wisp
+- Taunt
 
-Crobat
+Typhlosion-Hisui (F) @ Blunder Policy
+Ability: Blaze
 Level: 66
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Sludge Bomb
-- Air Cutter
-- Shadow Ball
-- Confuse Ray
+- Lava Plume
+- Infernal Parade
+- Focus Blast
+- Temper Flare
 
-Misdreavus
+Mismagius (F) @ Expert Belt
+Ability: Levitate
 Level: 65
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Shadow Ball
-- Psychic
-- Thunderbolt
+- Dazzling Gleam
+- Magical Leaf
 - Attract
 
-Arbok
+Annihilape (F) @ Lum Berry
+Ability: Defiant
 Level: 68
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Sludge Bomb
-- Earthquake
-- Giga Drain
-- Double Team
+- Drain Punch
+- Rage Fist  
+- Acrobatics  
+- Ice Punch  
 
-Gengar @ Chesto Berry
+Gengar (F) @ Focus Sash
+Ability: Levitate
 Level: 70
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+IVs: 0 Atk
 - Shadow Ball
+- Sludge Wave
 - Psychic
-- Thunderbolt
-- Sludge Bomb
+- Confuse Ray
+
+Marowak-Alola (F) @ Thick Club
+Ability: Rock Head
+Level: 65
+- Flare Blitz
+- Shadow Bone
+- Bonemerang
+- Rock Slide
 
 === TRAINER_ELITE_FOUR_LANCE_2 ===
 Name: Lance
@@ -15181,45 +15404,50 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 Mugshot: Blue
 
-Gyarados
+Gyarados @ Wacan Berry
+Ability: Intimidate
 Level: 68
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Hyper Beam
-- Dragon Dance
+- Giga Impact
+- Waterfall
 - Earthquake
 - Thunder Wave
 
-Dragonite
+Dragonite @ Yache Berry
+Ability: Inner Focus
 Level: 66
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Hyper Beam
-- Earthquake
-- Dragon Claw
-- Flamethrower
-
-Kingdra
-Level: 66
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Hyper Beam
 - Dragon Dance
-- Surf
+- Dragon Rush
+- Fire Blast
+- Stomping Tantrum
+
+Kingdra @ Damp Rock
+Ability: Swift Swim
+Level: 66
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Draco Meteor
+- Flip Turn
 - Ice Beam
+- Rain Dance
 
 Aerodactyl
+Ability: Unnerve
 Level: 70
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Hyper Beam
-- Ancient Power
-- Aerial Ace
+- Stone Edge
+- Dual Wingbeat
 - Earthquake
+- Roost
 
-Dragonite @ Persim Berry
+Dragonite @ Lum Berry
+Ability: Multiscale
 Level: 72
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Hyper Beam
 - Outrage
-- Thunderbolt
-- Ice Beam
+- Thunder
+- Hurricane
 
 === TRAINER_CHAMPION_REMATCH_SQUIRTLE ===
 Name: Terry
@@ -15233,14 +15461,16 @@ AI: Check Bad Move / Try To Faint / Check Viability
 Mugshot: Yellow
 
 Heracross
+Ability: Guts
 Level: 72
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Megahorn
+- Close Combat
 - Earthquake
-- Counter
-- Rock Tomb
+- Aerial Ace
 
 Alakazam
+Ability: Magic Guard
 Level: 73
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Psychic
@@ -15249,22 +15479,25 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Reflect
 
 Tyranitar
+Ability: Unnerve
 Level: 72
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Rock Slide
 - Crunch
 - Earthquake
 - Thunderbolt
-- Aerial Ace
 
 Arcanine
+Ability: Intimidate
 Level: 73
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Extreme Speed
-- Overheat
-- Aerial Ace
+- Flare Blitz
+- Play Rough
 - Iron Tail
 
 Exeggutor
+Ability: Harvest
 Level: 73
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Giga Drain
@@ -15292,14 +15525,16 @@ AI: Check Bad Move / Try To Faint / Check Viability
 Mugshot: Yellow
 
 Heracross
+Ability: Guts
 Level: 72
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Megahorn
+- Close Combat
 - Earthquake
-- Counter
-- Rock Tomb
+- Aerial Ace
 
 Alakazam
+Ability: Magic Guard
 Level: 73
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Psychic
@@ -15308,30 +15543,34 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Reflect
 
 Tyranitar
+Ability: Unnerve
 Level: 72
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Rock Slide
 - Crunch
 - Earthquake
 - Thunderbolt
-- Aerial Ace
 
 Gyarados
+Ability: Intimidate
 Level: 73
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Hydro Pump
+- Aqua Tail
 - Dragon Dance
 - Earthquake
-- Hyper Beam
+- Giga Impact
 
 Arcanine
+Ability: Intimidate
 Level: 73
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Extreme Speed
-- Overheat
-- Aerial Ace
+- Flare Blitz
+- Play Rough
 - Iron Tail
 
 Venusaur @ Sitrus Berry
+Ability: Overgrow
 Level: 75
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Solar Beam
@@ -15351,14 +15590,16 @@ AI: Check Bad Move / Try To Faint / Check Viability
 Mugshot: Yellow
 
 Heracross
+Ability: Guts
 Level: 72
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Megahorn
+- Close Combat
 - Earthquake
-- Counter
-- Rock Tomb
+- Aerial Ace
 
 Alakazam
+Ability: Magic Guard
 Level: 73
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Psychic
@@ -15367,14 +15608,16 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Reflect
 
 Tyranitar
+Ability: Unnerve
 Level: 72
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Rock Slide
 - Crunch
 - Earthquake
 - Thunderbolt
-- Aerial Ace
 
 Exeggutor
+Ability: Harvest
 Level: 73
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Giga Drain
@@ -15382,20 +15625,23 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Sleep Powder
 - Light Screen
 
+
 Gyarados
+Ability: Intimidate
 Level: 73
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Hydro Pump
+- Aqua Tail
 - Dragon Dance
 - Earthquake
-- Hyper Beam
+- Giga Impact
 
 Charizard @ Sitrus Berry
+Ability: Blaze
 Level: 75
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Fire Blast
 - Dragon Claw
-- Aerial Ace
+- Air Slash
 - Earthquake
 
 === TRAINER_CUE_BALL_PAXTON ===

@@ -454,7 +454,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Charmander,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_FAST,
-        SHADOW(-2, 3, SHADOW_SIZE_S)
+        #ifdef FIRERED
+            SHADOW(-2, 3, SHADOW_SIZE_S)
+        #else
+            SHADOW(2, 3, SHADOW_SIZE_S)
+        #endif
         FOOTPRINT(Charmander)
         OVERWORLD(
             sPicTable_Charmander,
@@ -513,14 +517,25 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Charmeleon,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(56, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 8,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 25),
-            ANIMCMD_FRAME(0, 30),
-        ),
-        .frontAnimId = ANIM_BACK_AND_LUNGE,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(56, 56),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 8,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 30),
+            ),
+            .frontAnimId = ANIM_BACK_AND_LUNGE,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(56, 56),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 4,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 30),
+            ),
+            .frontAnimId = ANIM_BACK_AND_LUNGE,
+        #endif
         .backPic = gMonBackPic_Charmeleon,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(56, 48),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 8,
@@ -530,7 +545,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Charmeleon,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 5, SHADOW_SIZE_M)
+        #ifdef FIRERED
+            SHADOW(0, 5, SHADOW_SIZE_M)
+        #else
+            SHADOW(0, 9, SHADOW_SIZE_M)
+        #endif
         FOOTPRINT(Charmeleon)
         OVERWORLD(
             sPicTable_Charmeleon,
@@ -1295,7 +1314,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Caterpie,
         .iconPalIndex = 1,
         .pokemonJumpType = PKMN_JUMP_TYPE_FAST,
-        SHADOW(4, 1, SHADOW_SIZE_S)
+        #ifdef FIRERED
+            SHADOW(4, 1, SHADOW_SIZE_S)
+        #else
+            SHADOW(0, 1, SHADOW_SIZE_S)
+        #endif
         FOOTPRINT(Caterpie)
         OVERWORLD(
             sPicTable_Caterpie,
@@ -1602,19 +1625,35 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Weedle,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 32) : MON_COORDS_SIZE(40, 40),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 18 : 13,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 5),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 5),
-        ),
-        .frontAnimId = ANIM_H_SLIDE_SLOW,
-        .frontAnimDelay = 10,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 32) : MON_COORDS_SIZE(40, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 18 : 13,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 5),
+            ),
+            .frontAnimId = ANIM_H_SLIDE_SLOW,
+            .frontAnimDelay = 10,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 32) : MON_COORDS_SIZE(40, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 18 : 13,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 5),
+            ),
+            .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+            .frontAnimDelay = 10,
+        #endif
         .backPic = gMonBackPic_Weedle,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 48) : MON_COORDS_SIZE(56, 56),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 7,
@@ -1624,7 +1663,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Weedle,
         .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 1 : 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_FAST,
-        SHADOW(0, 0, SHADOW_SIZE_S)
+        #ifdef FIRERED
+            SHADOW(0, 0, SHADOW_SIZE_S)
+        #else
+            SHADOW(-2, 0, SHADOW_SIZE_S)
+        #endif
         FOOTPRINT(Weedle)
         OVERWORLD(
             sPicTable_Weedle,
@@ -1682,23 +1725,43 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Kakuna,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(32, 40) : MON_COORDS_SIZE(24, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 14 : 11,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 5),
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 5),
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 5),
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 20),
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 5),
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 5),
-        ),
-        .frontAnimId = ANIM_GLOW_ORANGE,
-        .frontAnimDelay = 20,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(32, 40) : MON_COORDS_SIZE(24, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 14 : 11,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 20),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+            ),
+            .frontAnimId = ANIM_GLOW_ORANGE,
+            .frontAnimDelay = 20,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(32, 40) : MON_COORDS_SIZE(24, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 14 : 11,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 20),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+            ),
+            .frontAnimId = ANIM_V_JUMPS_BIG,
+            .frontAnimDelay = 20,
+        #endif
         .backPic = gMonBackPic_Kakuna,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(32, 48) : MON_COORDS_SIZE(32, 40),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 12,
@@ -1776,19 +1839,35 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Beedrill,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 48) : MON_COORDS_SIZE(64, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 5,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 5),
-            ANIMCMD_FRAME(1, 35),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_H_VIBRATE : ANIM_ZIGZAG_SLOW,
-        .enemyMonElevation = P_GBA_STYLE_SPECIES_GFX ? 8 : 9,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 48) : MON_COORDS_SIZE(64, 56),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 5,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 35),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_H_VIBRATE : ANIM_ZIGZAG_SLOW,
+            .enemyMonElevation = P_GBA_STYLE_SPECIES_GFX ? 8 : 9,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 48) : MON_COORDS_SIZE(64, 56),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 5,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 35),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_H_VIBRATE : ANIM_CIRCULAR_STRETCH_TWICE,
+            .enemyMonElevation = P_GBA_STYLE_SPECIES_GFX ? 8 : 9,
+        #endif
         .backPic = gMonBackPic_Beedrill,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 48) : MON_COORDS_SIZE(64, 56),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 5,
@@ -1947,15 +2026,30 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Pidgey,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 40) : MON_COORDS_SIZE(40, 40),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 13 : 12,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 5),
-            ANIMCMD_FRAME(1, 25),
-            ANIMCMD_FRAME(0, 5),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SLIDE_SLOW : ANIM_V_STRETCH,
-        .enemyMonElevation = P_GBA_STYLE_SPECIES_GFX ? 16 : 0,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 40) : MON_COORDS_SIZE(40, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 13 : 12,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 5),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SLIDE_SLOW : ANIM_V_STRETCH,
+            .enemyMonElevation = P_GBA_STYLE_SPECIES_GFX ? 16 : 0,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 40) : MON_COORDS_SIZE(40, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 13 : 12,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 5),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SLIDE_SLOW : ANIM_H_SLIDE_SLOW,
+            .enemyMonElevation = P_GBA_STYLE_SPECIES_GFX ? 16 : 0,
+        #endif
         .backPic = gMonBackPic_Pidgey,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(56, 48),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 11,
@@ -1965,7 +2059,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Pidgey,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, -1, SHADOW_SIZE_S)
+        #ifdef FIRERED
+            SHADOW(-1, -1, SHADOW_SIZE_S)
+        #else
+            SHADOW(0, 0, SHADOW_SIZE_S)
+        #endif
         FOOTPRINT(Pidgey)
         OVERWORLD(
             sPicTable_Pidgey,
@@ -2027,17 +2125,33 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Pidgeotto,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(56, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 6,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 5),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 35),
-            ANIMCMD_FRAME(0, 5),
-        ),
-        .frontAnimId = ANIM_V_STRETCH,
-        .frontAnimDelay = 25,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(56, 56),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 6,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 35),
+                ANIMCMD_FRAME(0, 5),
+            ),
+            .frontAnimId = ANIM_V_STRETCH,
+            .frontAnimDelay = 25,
+            .enemyMonElevation = 0,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(60, 64),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 1,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 35),
+                ANIMCMD_FRAME(0, 5),
+            ),
+            .frontAnimId = ANIM_V_JUMPS_SMALL,
+            .frontAnimDelay = 25,
+            .enemyMonElevation = 8,
+        #endif
         .backPic = gMonBackPic_Pidgeotto,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 40) : MON_COORDS_SIZE(64, 56),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 12 : 6,
@@ -2047,7 +2161,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Pidgeotto,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-4, 6, SHADOW_SIZE_M)
+        #ifdef FIRERED
+            SHADOW(-4, 6, SHADOW_SIZE_M)
+        #else
+            SHADOW(2, 18, SHADOW_SIZE_M)
+        #endif
         FOOTPRINT(Pidgeotto)
         OVERWORLD(
             sPicTable_Pidgeotto,
@@ -2396,7 +2514,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .backPicSizeFemale = MON_COORDS_SIZE(64, 48),
 #endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
         .pokemonJumpType = PKMN_JUMP_TYPE_FAST,
-        SHADOW(0, 8, SHADOW_SIZE_L)
+        #ifdef FIRERED
+            SHADOW(0, 8, SHADOW_SIZE_L)
+        #else
+            SHADOW(3, 8, SHADOW_SIZE_L)
+        #endif
         FOOTPRINT(Raticate)
         OVERWORLD(
             sPicTable_Raticate,
@@ -2465,12 +2587,17 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .frontPic = gMonFrontPic_RattataAlola,
         .frontPicSize = MON_COORDS_SIZE(40, 48),
         .frontPicYOffset = 11,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 11),
+            ANIMCMD_FRAME(0, 11),
+            ANIMCMD_FRAME(1, 11),
+            ANIMCMD_FRAME(0, 1),
+        ),
+        .frontAnimId = ANIM_H_JUMPS,
         .backPic = gMonBackPic_RattataAlola,
         .backPicSize = MON_COORDS_SIZE(64, 56),
         .backPicYOffset = 7,
-        //.backAnimId = BACK_ANIM_NONE,
+        .backAnimId = BACK_ANIM_V_SHAKE_H_SLIDE,
         .palette = gMonPalette_RattataAlola,
         .shinyPalette = gMonShinyPalette_RattataAlola,
         .iconSprite = gMonIcon_RattataAlola,
@@ -2685,7 +2812,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Spearow,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 1, SHADOW_SIZE_S)
+        #ifdef FIRERED
+            SHADOW(-4, 1, SHADOW_SIZE_S)
+        #else
+            SHADOW(0, 1, SHADOW_SIZE_S)
+        #endif
         FOOTPRINT(Spearow)
         OVERWORLD(
             sPicTable_Spearow,
@@ -2827,18 +2958,33 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Ekans,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 40) : MON_COORDS_SIZE(48, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 12 : 10,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 8),
-            ANIMCMD_FRAME(0, 8),
-            ANIMCMD_FRAME(1, 8),
-            ANIMCMD_FRAME(0, 8),
-            ANIMCMD_FRAME(1, 40),
-            ANIMCMD_FRAME(0, 8),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_H_STRETCH : ANIM_V_STRETCH,
-        .frontAnimDelay = 30,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 40) : MON_COORDS_SIZE(48, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 12 : 10,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 8),
+                ANIMCMD_FRAME(0, 8),
+                ANIMCMD_FRAME(1, 8),
+                ANIMCMD_FRAME(0, 8),
+                ANIMCMD_FRAME(1, 40),
+                ANIMCMD_FRAME(0, 8),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_H_STRETCH : ANIM_V_STRETCH,
+            .frontAnimDelay = 30,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 40) : MON_COORDS_SIZE(48, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 12 : 10,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 8),
+                ANIMCMD_FRAME(0, 8),
+                ANIMCMD_FRAME(1, 8),
+                ANIMCMD_FRAME(0, 8),
+                ANIMCMD_FRAME(1, 40),
+                ANIMCMD_FRAME(0, 8),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_H_STRETCH : ANIM_V_JUMPS_SMALL,
+            .frontAnimDelay = 30,
+        #endif
         .backPic = gMonBackPic_Ekans,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(56, 48),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 10,
@@ -3129,16 +3275,29 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Pikachu,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(48, 48),
-        .frontPicYOffset = 9,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 60),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 1),
-        ),
-        .frontAnimId = ANIM_FLASH_YELLOW,
-        .frontAnimDelay = P_GBA_STYLE_SPECIES_GFX ? 0 : 25,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(48, 50),
+            .frontPicYOffset = 9,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 60),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 1),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_FLASH_YELLOW : ANIM_V_STRETCH,
+            .frontAnimDelay = P_GBA_STYLE_SPECIES_GFX ? 0 : 25,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(48, 48),
+            .frontPicYOffset = 9,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 60),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 1),
+            ),
+            .frontAnimId = ANIM_FLASH_YELLOW,
+            .frontAnimDelay = P_GBA_STYLE_SPECIES_GFX ? 0 : 25,
+        #endif
         .backPic = gMonBackPic_Pikachu,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(64, 56),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 7 : 4,
@@ -4208,16 +4367,29 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Raichu,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 3,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_STRETCH : ANIM_GROW_VIBRATE,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 3,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 15),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_STRETCH : ANIM_GROW_VIBRATE,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 3,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 15),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_STRETCH : ANIM_GROW_VIBRATE,
+        #endif
         .backPic = gMonBackPic_Raichu,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(64, 56),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 6,
@@ -4231,7 +4403,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .frontPicSizeFemale = MON_COORDS_SIZE(64, 64),
 #endif //P_GENDER_DIFFERENCES
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(2, 10, SHADOW_SIZE_M)
+        #ifdef FIRERED
+            SHADOW(-8, 10, SHADOW_SIZE_M)
+        #else
+            SHADOW(0, 10, SHADOW_SIZE_M)
+        #endif
         FOOTPRINT(Raichu)
         OVERWORLD(
             sPicTable_Raichu,
@@ -4493,16 +4669,29 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Sandshrew,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 40) : MON_COORDS_SIZE(48, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 14 : 11,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_SWING_CONCAVE_FAST_SHORT,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 40) : MON_COORDS_SIZE(48, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 14 : 11,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_SWING_CONCAVE_FAST_SHORT,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 40) : MON_COORDS_SIZE(48, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 14 : 11,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_H_JUMPS_V_STRETCH,
+        #endif
         .backPic = gMonBackPic_Sandshrew,
         .backPicSize = MON_COORDS_SIZE(48, 40),
         .backPicYOffset = 13,
@@ -4512,7 +4701,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Sandshrew,
         .iconPalIndex = 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_NORMAL,
-        SHADOW(0, 1, SHADOW_SIZE_M)
+        #ifdef FIRERED
+            SHADOW(0, 1, SHADOW_SIZE_M)
+        #else
+            SHADOW(3, 0, SHADOW_SIZE_M)
+        #endif
         FOOTPRINT(Sandshrew)
         OVERWORLD(
             sPicTable_Sandshrew,
@@ -4572,16 +4765,29 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Sandslash,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(64, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 6,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_STRETCH : ANIM_H_SHAKE,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(64, 56),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 6,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_STRETCH : ANIM_H_SHAKE,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(64, 56),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 6,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_STRETCH : ANIM_V_SHAKE_BACK,
+        #endif
         .backPic = gMonBackPic_Sandslash,
         .backPicSize = MON_COORDS_SIZE(64, 48),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 11,
@@ -5620,16 +5826,29 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Vulpix,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 40) : MON_COORDS_SIZE(56, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 12 : 11,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = ANIM_V_STRETCH,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 40) : MON_COORDS_SIZE(56, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 12 : 11,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 15),
+            ),
+            .frontAnimId = ANIM_V_STRETCH,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 40) : MON_COORDS_SIZE(56, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 12 : 7,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 15),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_ICONS ? ANIM_V_STRETCH : ANIM_CIRCULAR_STRETCH_TWICE,
+        #endif
         .backPic = gMonBackPic_Vulpix,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(64, 48),
         .backPicYOffset = 9,
@@ -5639,7 +5858,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Vulpix,
         .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 2 : 5,
         .pokemonJumpType = PKMN_JUMP_TYPE_NORMAL,
-        SHADOW(0, 2, SHADOW_SIZE_M)
+        #ifdef FIRERED
+            SHADOW(0, 2, SHADOW_SIZE_M)
+        #else
+            SHADOW(4, 5, SHADOW_SIZE_M)
+        #endif
         FOOTPRINT(Vulpix)
         OVERWORLD(
             sPicTable_Vulpix,
@@ -6234,7 +6457,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .backPicSizeFemale = MON_COORDS_SIZE(56, 56),
 #endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-4, 11, SHADOW_SIZE_S)
+        #ifdef FIRERED
+            SHADOW(-4, 11, SHADOW_SIZE_S)
+        #else
+            SHADOW(2, 11, SHADOW_SIZE_S)
+        #endif
         FOOTPRINT(Zubat)
         OVERWORLD(
             sPicTable_Zubat,
@@ -6504,18 +6731,33 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Oddish,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(32, 40) : MON_COORDS_SIZE(40, 40),
-        .frontPicYOffset = 15,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 11),
-            ANIMCMD_FRAME(1, 11),
-            ANIMCMD_FRAME(0, 11),
-            ANIMCMD_FRAME(1, 11),
-            ANIMCMD_FRAME(0, 11),
-            ANIMCMD_FRAME(1, 11),
-            ANIMCMD_FRAME(0, 6),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SQUISH_AND_BOUNCE : ANIM_V_JUMPS_H_JUMPS,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(32, 40) : MON_COORDS_SIZE(40, 40),
+            .frontPicYOffset = 15,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 11),
+                ANIMCMD_FRAME(1, 11),
+                ANIMCMD_FRAME(0, 11),
+                ANIMCMD_FRAME(1, 11),
+                ANIMCMD_FRAME(0, 11),
+                ANIMCMD_FRAME(1, 11),
+                ANIMCMD_FRAME(0, 6),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SQUISH_AND_BOUNCE : ANIM_V_JUMPS_H_JUMPS,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(32, 40) : MON_COORDS_SIZE(40, 40),
+            .frontPicYOffset = 15,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 11),
+                ANIMCMD_FRAME(1, 11),
+                ANIMCMD_FRAME(0, 11),
+                ANIMCMD_FRAME(1, 11),
+                ANIMCMD_FRAME(0, 11),
+                ANIMCMD_FRAME(1, 11),
+                ANIMCMD_FRAME(0, 6),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SQUISH_AND_BOUNCE : ANIM_V_JUMPS_H_JUMPS,
+        #endif
         .backPic = gMonBackPic_Oddish,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 48) : MON_COORDS_SIZE(48, 48),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 10,
@@ -6525,7 +6767,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Oddish,
         .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 1 : 4,
         .pokemonJumpType = PKMN_JUMP_TYPE_SLOW,
-        SHADOW(0, -2, SHADOW_SIZE_S)
+        #ifdef FIRERED
+            SHADOW(0, -2, SHADOW_SIZE_S)
+        #else
+            SHADOW(-1, -2, SHADOW_SIZE_S)
+        #endif
         FOOTPRINT(Oddish)
         OVERWORLD(
             sPicTable_Oddish,
@@ -6686,13 +6932,23 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Vileplume,
-        .frontPicSize = MON_COORDS_SIZE(56, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 6 : 7,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 38),
-            ANIMCMD_FRAME(0, 1),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_BOUNCE_ROTATE_TO_SIDES_SLOW : ANIM_V_SQUISH_AND_BOUNCE_SLOW,
+        #ifdef FIRERED
+            .frontPicSize = MON_COORDS_SIZE(56, 56),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 6 : 7,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 38),
+                ANIMCMD_FRAME(0, 1),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_BOUNCE_ROTATE_TO_SIDES_SLOW : ANIM_V_SQUISH_AND_BOUNCE_SLOW,
+        #else
+            .frontPicSize = MON_COORDS_SIZE(56, 56),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 6 : 7,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 38),
+                ANIMCMD_FRAME(0, 1),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_BOUNCE_ROTATE_TO_SIDES_SLOW : ANIM_H_SLIDE,
+        #endif
         .backPic = gMonBackPic_Vileplume,
         .backPicSize = MON_COORDS_SIZE(64, 56),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 7 : 6,
@@ -6708,7 +6964,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .backPicSizeFemale = MON_COORDS_SIZE(64, 56),
 #endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 7, SHADOW_SIZE_L)
+        #ifdef FIRERED
+            SHADOW(-1, 7, SHADOW_SIZE_L)
+        #else
+            SHADOW(5, 9, SHADOW_SIZE_L)
+        #endif
         FOOTPRINT(Vileplume)
         OVERWORLD(
             sPicTable_Vileplume,
@@ -6781,27 +7041,38 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Bellossom,
-        .frontPicSize = MON_COORDS_SIZE(32, 40),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 14 : 12,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 5),
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 5),
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 5),
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 5),
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 5),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_SWING_CONCAVE : ANIM_H_SLIDE_SLOW,
+        #ifdef FIRERED
+            .frontPicSize = MON_COORDS_SIZE(32, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 14 : 12,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_SWING_CONCAVE : ANIM_H_SLIDE_SLOW,
+        #else
+            .frontPicSize = MON_COORDS_SIZE(32, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 14 : 12,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 5),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_SWING_CONCAVE : ANIM_V_SQUISH_AND_BOUNCE,
+        #endif
         .backPic = gMonBackPic_Bellossom,
         .backPicSize = MON_COORDS_SIZE(48, 48),
         .backPicYOffset = 11,
@@ -6811,7 +7082,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Bellossom,
         .iconPalIndex = 1,
         .pokemonJumpType = PKMN_JUMP_TYPE_SLOW,
-        SHADOW(0, 0, SHADOW_SIZE_S)
+        #ifdef FIRERED
+            SHADOW(0, 0, SHADOW_SIZE_S)
+        #else
+            SHADOW(0, 0, SHADOW_SIZE_S)
+        #endif
         FOOTPRINT(Bellossom)
         OVERWORLD(
             sPicTable_Bellossom,
@@ -6907,7 +7182,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Paras,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_FAST,
-        SHADOW(7, -11, SHADOW_SIZE_M)
+        #ifdef FIRERED
+            SHADOW(7, -11, SHADOW_SIZE_M)
+        #else
+            SHADOW(4, -7, SHADOW_SIZE_M)
+        #endif
         FOOTPRINT(Paras)
         OVERWORLD(
             sPicTable_Paras,
@@ -7236,15 +7515,34 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Diglett,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 32) : MON_COORDS_SIZE(32, 32),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 18 : 17,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 25),
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 32) : MON_COORDS_SIZE(32, 32),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 18 : 17,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 25),
+                ANIMCMD_FRAME(1, 35),
+                ANIMCMD_FRAME(0, 5),
+            ),
+            .frontAnimId = ANIM_V_SHAKE,
+            .frontAnimDelay = 25,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 32) : MON_COORDS_SIZE(32, 32),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 18 : 17,
+            .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(1, 35),
-            ANIMCMD_FRAME(0, 5),
-        ),
-        .frontAnimId = ANIM_V_SHAKE,
-        .frontAnimDelay = 25,
+            ANIMCMD_FRAME(0, 10),
+            ANIMCMD_FRAME(1, 10),
+            ANIMCMD_FRAME(0, 10),
+            ANIMCMD_FRAME(1, 10),
+            ANIMCMD_FRAME(0, 10),
+            ANIMCMD_FRAME(1, 10),
+            ANIMCMD_FRAME(0, 10),
+            ANIMCMD_FRAME(1, 10),
+            ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_V_SHAKE,
+            .frontAnimDelay = 0,
+        #endif
         .backPic = gMonBackPic_Diglett,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 32) : MON_COORDS_SIZE(40, 40),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 16 : 14,
@@ -7320,22 +7618,41 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Dugtrio,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 40) : MON_COORDS_SIZE(48, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 13 : 11,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 35),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_H_SHAKE_SLOW,
-        .frontAnimDelay = 35,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 40) : MON_COORDS_SIZE(48, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 13 : 11,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 35),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_H_SHAKE_SLOW,
+            .frontAnimDelay = 35,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 40) : MON_COORDS_SIZE(48, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 13 : 11,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 35),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_H_SHAKE_SLOW,
+            .frontAnimDelay = 35,
+        #endif
         .backPic = gMonBackPic_Dugtrio,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(48, 32),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 17,
@@ -7405,10 +7722,34 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_DiglettAlola,
-        .frontPicSize = MON_COORDS_SIZE(32, 40),
-        .frontPicYOffset = 19,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        #ifdef FIRERED
+            .frontPicSize = MON_COORDS_SIZE(32, 40),
+            .frontPicYOffset = 19,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 25),
+                ANIMCMD_FRAME(1, 35),
+                ANIMCMD_FRAME(0, 5),
+            ),
+            .frontAnimId = ANIM_V_SHAKE,
+            .frontAnimDelay = 25,
+        #else
+            .frontPicSize = MON_COORDS_SIZE(32, 40),
+            .frontPicYOffset = 19,
+            .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 35),
+            ANIMCMD_FRAME(0, 10),
+            ANIMCMD_FRAME(1, 10),
+            ANIMCMD_FRAME(0, 10),
+            ANIMCMD_FRAME(1, 10),
+            ANIMCMD_FRAME(0, 10),
+            ANIMCMD_FRAME(1, 10),
+            ANIMCMD_FRAME(0, 10),
+            ANIMCMD_FRAME(1, 10),
+            ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_V_SHAKE,
+            .frontAnimDelay = 0,
+        #endif
         .backPic = gMonBackPic_DiglettAlola,
         .backPicSize = MON_COORDS_SIZE(40, 48),
         .backPicYOffset = 14,
@@ -7480,10 +7821,41 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_DugtrioAlola,
-        .frontPicSize = MON_COORDS_SIZE(48, 48),
-        .frontPicYOffset = 11,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        #ifdef FIRERED
+            .frontPicSize = MON_COORDS_SIZE(48, 48),
+            .frontPicYOffset = 11,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 35),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_H_SHAKE_SLOW,
+            .frontAnimDelay = 35,
+        #else
+            .frontPicSize = MON_COORDS_SIZE(48, 48),
+            .frontPicYOffset = 11,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 35),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_H_SHAKE_SLOW,
+            .frontAnimDelay = 35,
+        #endif
         .backPic = gMonBackPic_DugtrioAlola,
         .backPicSize = MON_COORDS_SIZE(64, 32),
         .backPicYOffset = 17,
@@ -7561,18 +7933,33 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Meowth,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 40) : MON_COORDS_SIZE(48, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 12 : 10,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 8),
-            ANIMCMD_FRAME(0, 8),
-            ANIMCMD_FRAME(1, 8),
-            ANIMCMD_FRAME(0, 17),
-            ANIMCMD_FRAME(1, 30),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_V_JUMPS_SMALL,
-        .frontAnimDelay = 40,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 40) : MON_COORDS_SIZE(48, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 12 : 10,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 8),
+                ANIMCMD_FRAME(0, 8),
+                ANIMCMD_FRAME(1, 8),
+                ANIMCMD_FRAME(0, 17),
+                ANIMCMD_FRAME(1, 30),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_V_JUMPS_SMALL,
+            .frontAnimDelay = 40,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 40) : MON_COORDS_SIZE(48, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 12 : 10,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 8),
+                ANIMCMD_FRAME(0, 8),
+                ANIMCMD_FRAME(1, 8),
+                ANIMCMD_FRAME(0, 17),
+                ANIMCMD_FRAME(1, 30),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_V_JUMPS_SMALL,
+            .frontAnimDelay = 40,
+        #endif
         .backPic = gMonBackPic_Meowth,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 40) : MON_COORDS_SIZE(56, 56),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 12 : 6,
@@ -7582,7 +7969,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Meowth,
         .iconPalIndex = 1,
         .pokemonJumpType = PKMN_JUMP_TYPE_NORMAL,
-        SHADOW(0, 3, SHADOW_SIZE_S)
+        #ifdef FIRERED
+            SHADOW(0, 3, SHADOW_SIZE_S)
+        #else
+            SHADOW(4, 5, SHADOW_SIZE_S)
+        #endif
         FOOTPRINT(Meowth)
         OVERWORLD(
             sPicTable_Meowth,
@@ -7647,14 +8038,25 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Persian,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(64, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 7 : 4,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 50),
-            ANIMCMD_FRAME(0, 20),
-        ),
-        .frontAnimId = ANIM_V_STRETCH,
-        .frontAnimDelay = 20,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(64, 56),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 7 : 4,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 50),
+                ANIMCMD_FRAME(0, 20),
+            ),
+            .frontAnimId = ANIM_V_STRETCH,
+            .frontAnimDelay = 20,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(64, 56),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 7 : 4,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 50),
+                ANIMCMD_FRAME(0, 20),
+            ),
+            .frontAnimId = ANIM_V_STRETCH,
+            .frontAnimDelay = 20,
+        #endif
         .backPic = gMonBackPic_Persian,
         .backPicSize = MON_COORDS_SIZE(64, 56),
         .backPicYOffset = 7,
@@ -7664,7 +8066,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Persian,
         .iconPalIndex = 1,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-2, 8, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #ifdef FIRERED
+            SHADOW(-2, 8, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #else
+            SHADOW(4, 8, SHADOW_SIZE_L)
+        #endif
         FOOTPRINT(Persian)
         OVERWORLD(
             sPicTable_Persian,
@@ -8475,18 +8881,33 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Growlithe,
-        .frontPicSize = MON_COORDS_SIZE(48, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 9,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 8),
-            ANIMCMD_FRAME(0, 8),
-            ANIMCMD_FRAME(1, 8),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_BACK_AND_LUNGE : ANIM_V_STRETCH,
-        .frontAnimDelay = 30,
+        #ifdef FIRERED
+            .frontPicSize = MON_COORDS_SIZE(48, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 9,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 8),
+                ANIMCMD_FRAME(0, 8),
+                ANIMCMD_FRAME(1, 8),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_BACK_AND_LUNGE : ANIM_V_STRETCH,
+            .frontAnimDelay = 30,
+        #else
+            .frontPicSize = MON_COORDS_SIZE(48, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 9,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 8),
+                ANIMCMD_FRAME(0, 8),
+                ANIMCMD_FRAME(1, 8),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_BACK_AND_LUNGE : ANIM_V_STRETCH,
+            .frontAnimDelay = 30,
+        #endif
         .backPic = gMonBackPic_Growlithe,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(48, 56),
         .backPicYOffset = 8,
@@ -8496,7 +8917,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Growlithe,
         .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 0 : 3,
         .pokemonJumpType = PKMN_JUMP_TYPE_FAST,
-        SHADOW(0, 4, SHADOW_SIZE_M)
+        #ifdef FIRERED
+            SHADOW(0, 4, SHADOW_SIZE_M)
+        #else
+            SHADOW(0, 4, SHADOW_SIZE_L)
+        #endif
         FOOTPRINT(Growlithe)
         OVERWORLD(
             sPicTable_Growlithe,
@@ -8555,14 +8980,25 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 312,
         .trainerOffset = 4,
         .frontPic = gMonFrontPic_Arcanine,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 2,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 38),
-            ANIMCMD_FRAME(0, 1),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_H_VIBRATE : ANIM_V_SHAKE,
-        .frontAnimDelay = P_GBA_STYLE_SPECIES_GFX ? 40 : 8,
+        #ifdef FIRERED
+            .frontPicSize = MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = 2,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 38),
+                ANIMCMD_FRAME(0, 1),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_H_VIBRATE : ANIM_V_SHAKE,
+            .frontAnimDelay = P_GBA_STYLE_SPECIES_GFX ? 40 : 8,
+        #else
+            .frontPicSize = MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = 2,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 38),
+                ANIMCMD_FRAME(0, 1),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_H_VIBRATE : ANIM_V_SHAKE,
+            .frontAnimDelay = P_GBA_STYLE_SPECIES_GFX ? 40 : 8,
+        #endif
         .backPic = gMonBackPic_Arcanine,
         .backPicSize = MON_COORDS_SIZE(64, 56),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 6 : 4,
@@ -8572,7 +9008,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Arcanine,
         .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 0 : 3,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-4, 11, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #ifdef FIRERED
+            SHADOW(-4, 11, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #else
+            SHADOW(-1, 12, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #endif
         FOOTPRINT(Arcanine)
         OVERWORLD(
             sPicTable_Arcanine,
@@ -8859,17 +9299,31 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Poliwhirl,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(64, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 9,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 25),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_H_JUMPS_V_STRETCH,
-        .frontAnimDelay = 5,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(64, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 9,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_H_JUMPS_V_STRETCH,
+            .frontAnimDelay = 5,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(64, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 9,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_H_JUMPS_V_STRETCH,
+            .frontAnimDelay = 5,
+        #endif
         .backPic = gMonBackPic_Poliwhirl,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 40) : MON_COORDS_SIZE(64, 40),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 12 : 13,
@@ -8879,7 +9333,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Poliwhirl,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 4, SHADOW_SIZE_M)
+        #ifdef FIRERED
+            SHADOW(-1, 4, SHADOW_SIZE_M)
+        #else
+            SHADOW(-1, 4, SHADOW_SIZE_L)
+        #endif
         FOOTPRINT(Poliwhirl)
         OVERWORLD(
             sPicTable_Poliwhirl,
@@ -9132,16 +9590,29 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Abra,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(56, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 10,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 7),
-            ANIMCMD_FRAME(1, 21),
-            ANIMCMD_FRAME(0, 13),
-            ANIMCMD_FRAME(1, 21),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_H_JUMPS : ANIM_H_VIBRATE,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(56, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 10,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 7),
+                ANIMCMD_FRAME(1, 21),
+                ANIMCMD_FRAME(0, 13),
+                ANIMCMD_FRAME(1, 21),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_H_JUMPS : ANIM_H_VIBRATE,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(56, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 10,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 7),
+                ANIMCMD_FRAME(1, 21),
+                ANIMCMD_FRAME(0, 13),
+                ANIMCMD_FRAME(1, 21),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_H_JUMPS : ANIM_H_VIBRATE,
+        #endif
         .backPic = gMonBackPic_Abra,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(56, 48),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 12,
@@ -9151,7 +9622,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Abra,
         .iconPalIndex = 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 0, SHADOW_SIZE_L)
+        #ifdef FIRERED
+            SHADOW(0, 0, SHADOW_SIZE_L)
+        #else
+            SHADOW(0, 0, SHADOW_SIZE_L)
+        #endif
         FOOTPRINT(Abra)
         OVERWORLD(
             sPicTable_Abra,
@@ -9316,14 +9791,25 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Alakazam,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 2,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 9),
-            ANIMCMD_FRAME(1, 54),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_STRETCH : ANIM_GROW_VIBRATE,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 2,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 9),
+                ANIMCMD_FRAME(1, 54),
+                ANIMCMD_FRAME(0, 15),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_STRETCH : ANIM_GROW_VIBRATE,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 2,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 9),
+                ANIMCMD_FRAME(1, 54),
+                ANIMCMD_FRAME(0, 15),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_STRETCH : ANIM_GROW_VIBRATE,
+        #endif
         .backPic = gMonBackPic_Alakazam,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(64, 56),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 5 : 6,
@@ -9339,7 +9825,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .backPicSizeFemale = MON_COORDS_SIZE(64, 56),
 #endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 9, SHADOW_SIZE_L)
+        #ifdef FIRERED
+            SHADOW(-1, 9, SHADOW_SIZE_L)
+        #else
+            SHADOW(2, 10, SHADOW_SIZE_L)
+        #endif
         FOOTPRINT(Alakazam)
         OVERWORLD(
             sPicTable_Alakazam,
@@ -9507,16 +9997,29 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Machop,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 48) : MON_COORDS_SIZE(48, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 8,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 6),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SQUISH_AND_BOUNCE : ANIM_V_STRETCH,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 48) : MON_COORDS_SIZE(48, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 8,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 6),
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SQUISH_AND_BOUNCE : ANIM_V_STRETCH,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 48) : MON_COORDS_SIZE(48, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 8,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 6),
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SQUISH_AND_BOUNCE : ANIM_V_STRETCH,
+        #endif
         .backPic = gMonBackPic_Machop,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 40) : MON_COORDS_SIZE(48, 56),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 12 : 6,
@@ -9526,7 +10029,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Machop,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 3, SHADOW_SIZE_S)
+        #ifdef FIRERED
+            SHADOW(0, 3, SHADOW_SIZE_S)
+        #else
+            SHADOW(-2, 4, SHADOW_SIZE_M)
+        #endif
         FOOTPRINT(Machop)
         OVERWORLD(
             sPicTable_Machop,
@@ -9823,14 +10330,25 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Bellsprout,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 40) : MON_COORDS_SIZE(40, 40),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 15 : 12,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 5),
-            ANIMCMD_FRAME(1, 25),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_STRETCH : ANIM_H_JUMPS,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 40) : MON_COORDS_SIZE(40, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 15 : 12,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_STRETCH : ANIM_H_JUMPS,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 40) : MON_COORDS_SIZE(40, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 15 : 9,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_STRETCH : ANIM_H_JUMPS,
+        #endif
         .backPic = gMonBackPic_Bellsprout,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(40, 48),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 11,
@@ -9840,7 +10358,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Bellsprout,
         .iconPalIndex = 1,
         .pokemonJumpType = PKMN_JUMP_TYPE_SLOW,
-        SHADOW(-2, 3, SHADOW_SIZE_S)
+        #ifdef FIRERED
+            SHADOW(-2, 3, SHADOW_SIZE_S)
+        #else
+            SHADOW(-3, 5, SHADOW_SIZE_M)
+        #endif
         FOOTPRINT(Bellsprout)
         OVERWORLD(
             sPicTable_Bellsprout,
@@ -10145,16 +10667,29 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Tentacool,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(32, 48) : MON_COORDS_SIZE(48, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 7,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 8),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 7),
-            ANIMCMD_FRAME(1, 11),
-            ANIMCMD_FRAME(0, 11),
-        ),
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(32, 48) : MON_COORDS_SIZE(48, 56),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 7,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 8),
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 7),
+                ANIMCMD_FRAME(1, 11),
+                ANIMCMD_FRAME(0, 11),
+            ),
+            .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(32, 48) : MON_COORDS_SIZE(48, 56),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 7,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 8),
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 7),
+                ANIMCMD_FRAME(1, 11),
+                ANIMCMD_FRAME(0, 11),
+            ),
+            .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        #endif
         .backPic = gMonBackPic_Tentacool,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 48) : MON_COORDS_SIZE(64, 48),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 9,
@@ -10164,7 +10699,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Tentacool,
         .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 2 : 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(1, 6, SHADOW_SIZE_M)
+        #ifdef FIRERED
+            SHADOW(1, 6, SHADOW_SIZE_M)
+        #else
+            SHADOW(5, 4, SHADOW_SIZE_M)
+        #endif
         FOOTPRINT(Tentacool)
         OVERWORLD(
             sPicTable_Tentacool,
@@ -10385,16 +10924,29 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Graveler,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(64, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 9,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 16),
-            ANIMCMD_FRAME(1, 16),
-            ANIMCMD_FRAME(0, 16),
-            ANIMCMD_FRAME(1, 16),
-            ANIMCMD_FRAME(0, 16),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_BOUNCE_ROTATE_TO_SIDES_SMALL : ANIM_V_SHAKE,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(64, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 9,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 16),
+                ANIMCMD_FRAME(1, 16),
+                ANIMCMD_FRAME(0, 16),
+                ANIMCMD_FRAME(1, 16),
+                ANIMCMD_FRAME(0, 16),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_BOUNCE_ROTATE_TO_SIDES_SMALL : ANIM_V_SHAKE,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(64, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 9,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 16),
+                ANIMCMD_FRAME(1, 16),
+                ANIMCMD_FRAME(0, 16),
+                ANIMCMD_FRAME(1, 16),
+                ANIMCMD_FRAME(0, 16),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_BOUNCE_ROTATE_TO_SIDES_SMALL : ANIM_V_SHAKE,
+        #endif
         .backPic = gMonBackPic_Graveler,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 40) : MON_COORDS_SIZE(64, 48),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 12 : 10,
@@ -10404,7 +10956,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Graveler,
         .iconPalIndex = 1,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 3, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #ifdef FIRERED
+            SHADOW(0, 3, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #else
+            SHADOW(0, 3, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #endif
         FOOTPRINT(Graveler)
         OVERWORLD(
             sPicTable_Graveler,
@@ -11876,23 +12432,43 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 293,
         .trainerOffset = 2,
         .frontPic = gMonFrontPic_Farfetchd,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(48, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 7,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 5),
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 5),
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 5),
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 5),
-        ),
-        .frontAnimId = ANIM_BOUNCE_ROTATE_TO_SIDES_SMALL,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(48, 56),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 7,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+            ),
+            .frontAnimId = ANIM_BOUNCE_ROTATE_TO_SIDES_SMALL,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(48, 56),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 7,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+            ),
+            .frontAnimId = ANIM_BOUNCE_ROTATE_TO_SIDES_SMALL,
+        #endif
         .backPic = gMonBackPic_Farfetchd,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(64, 48),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 9,
@@ -11902,7 +12478,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Farfetchd,
         .iconPalIndex = 1,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-3, 5, SHADOW_SIZE_M)
+        #ifdef FIRERED
+            SHADOW(-3, 5, SHADOW_SIZE_M)
+        #else
+            SHADOW(0, 5, SHADOW_SIZE_M)
+        #endif
         FOOTPRINT(Farfetchd)
         OVERWORLD(
             sPicTable_Farfetchd,
@@ -12115,16 +12695,29 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 257,
         .trainerOffset = -1,
         .frontPic = gMonFrontPic_Doduo,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 56) : MON_COORDS_SIZE(64, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 5 : 7,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 18),
-            ANIMCMD_FRAME(1, 18),
-            ANIMCMD_FRAME(0, 18),
-            ANIMCMD_FRAME(1, 18),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_H_SHAKE_SLOW,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 56) : MON_COORDS_SIZE(64, 56),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 5 : 7,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 18),
+                ANIMCMD_FRAME(1, 18),
+                ANIMCMD_FRAME(0, 18),
+                ANIMCMD_FRAME(1, 18),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_H_SHAKE_SLOW,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 56) : MON_COORDS_SIZE(64, 56),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 5 : 7,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 18),
+                ANIMCMD_FRAME(1, 18),
+                ANIMCMD_FRAME(0, 18),
+                ANIMCMD_FRAME(1, 18),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_H_SHAKE_SLOW,
+        #endif
         .backPic = gMonBackPic_Doduo,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(64, 56),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 6,
@@ -12140,7 +12733,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .backPicSizeFemale = MON_COORDS_SIZE(64, 56),
 #endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(6, 5, SHADOW_SIZE_M)
+        #ifdef FIRERED
+            SHADOW(6, 5, SHADOW_SIZE_M)
+        #else
+            SHADOW(3, 7, SHADOW_SIZE_M)
+        #endif
         FOOTPRINT(Doduo)
         OVERWORLD(
             sPicTable_Doduo,
@@ -12214,18 +12811,33 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 268,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Dodrio,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 12),
-            ANIMCMD_FRAME(1, 12),
-            ANIMCMD_FRAME(0, 12),
-            ANIMCMD_FRAME(1, 12),
-            ANIMCMD_FRAME(0, 12),
-            ANIMCMD_FRAME(1, 12),
-            ANIMCMD_FRAME(0, 8),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_LUNGE_GROW : ANIM_V_STRETCH,
+        #ifdef FIRERED
+            .frontPicSize = MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = 0,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 12),
+                ANIMCMD_FRAME(1, 12),
+                ANIMCMD_FRAME(0, 12),
+                ANIMCMD_FRAME(1, 12),
+                ANIMCMD_FRAME(0, 12),
+                ANIMCMD_FRAME(1, 12),
+                ANIMCMD_FRAME(0, 8),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_LUNGE_GROW : ANIM_V_STRETCH,
+        #else
+            .frontPicSize = MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = 0,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 12),
+                ANIMCMD_FRAME(1, 12),
+                ANIMCMD_FRAME(0, 12),
+                ANIMCMD_FRAME(1, 12),
+                ANIMCMD_FRAME(0, 12),
+                ANIMCMD_FRAME(1, 12),
+                ANIMCMD_FRAME(0, 8),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_LUNGE_GROW : ANIM_V_STRETCH,
+        #endif
         .backPic = gMonBackPic_Dodrio,
         .backPicSize = MON_COORDS_SIZE(64, 64),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 1 : 3,
@@ -12241,7 +12853,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .backPicSizeFemale = MON_COORDS_SIZE(64, 64),
 #endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(3, 12, SHADOW_SIZE_L)
+        #ifdef FIRERED
+            SHADOW(3, 12, SHADOW_SIZE_L)
+        #else
+            SHADOW(3, 13, SHADOW_SIZE_L)
+        #endif
         FOOTPRINT(Dodrio)
         OVERWORLD(
             sPicTable_Dodrio,
@@ -12783,15 +13399,27 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Shellder,
-        .frontPicSize = MON_COORDS_SIZE(40, 40),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 16 : 13,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 5),
-            ANIMCMD_FRAME(1, 45),
-            ANIMCMD_FRAME(0, 5),
-        ),
-        .frontAnimId = ANIM_TWIST,
+        #ifdef FIRERED
+            .frontPicSize = MON_COORDS_SIZE(40, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 16 : 13,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 45),
+                ANIMCMD_FRAME(0, 5),
+            ),
+            .frontAnimId = ANIM_TWIST,
+        #else
+            .frontPicSize = MON_COORDS_SIZE(40, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 16 : 13,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 45),
+                ANIMCMD_FRAME(0, 5),
+            ),
+            .frontAnimId = ANIM_TWIST,
+        #endif
         .frontAnimDelay = 20,
         .backPic = gMonBackPic_Shellder,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(48, 24),
@@ -12802,7 +13430,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Shellder,
         .iconPalIndex = 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_FAST,
-        SHADOW(0, -4, SHADOW_SIZE_S)
+        #ifdef FIRERED
+            SHADOW(0, -4, SHADOW_SIZE_S)
+        #else
+            SHADOW(2, -4, SHADOW_SIZE_M)
+        #endif
         FOOTPRINT(Shellder)
         OVERWORLD(
             sPicTable_Shellder,
@@ -13071,7 +13703,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
 #endif
 
 #if P_UPDATED_ABILITIES >= GEN_7
-    #define GENGAR_ABILITIES {ABILITY_CURSED_BODY, ABILITY_NONE, ABILITY_NONE}
+    #define GENGAR_ABILITIES {ABILITY_LEVITATE, ABILITY_CURSED_BODY, ABILITY_NONE}
 #else
     #define GENGAR_ABILITIES {ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE}
 #endif
@@ -13334,13 +13966,23 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 515,
         .trainerOffset = 14,
         .frontPic = gMonFrontPic_Onix,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 64) : MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 2 : 3,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 50),
-            ANIMCMD_FRAME(0, 30),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_RAPID_H_HOPS : ANIM_H_SHAKE,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 64) : MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 2 : 3,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 50),
+                ANIMCMD_FRAME(0, 30),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_RAPID_H_HOPS : ANIM_H_SHAKE,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 64) : MON_COORDS_SIZE(56, 64),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 2 : 2,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 50),
+                ANIMCMD_FRAME(0, 30),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_RAPID_H_HOPS : ANIM_RAPID_H_HOPS,
+        #endif
         .backPic = gMonBackPic_Onix,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 64) : MON_COORDS_SIZE(64, 64),
         .backPicYOffset = 0,
@@ -13413,17 +14055,31 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 516,
         .trainerOffset = 13,
         .frontPic = gMonFrontPic_Steelix,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 7),
-            ANIMCMD_FRAME(1, 21),
-            ANIMCMD_FRAME(0, 13),
-            ANIMCMD_FRAME(1, 21),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_H_SHAKE : ANIM_V_SHAKE,
-        .frontAnimDelay = 45,
+        #ifdef FIRERED
+            .frontPicSize = MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = 0,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 7),
+                ANIMCMD_FRAME(1, 21),
+                ANIMCMD_FRAME(0, 13),
+                ANIMCMD_FRAME(1, 21),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_H_SHAKE : ANIM_V_SHAKE,
+            .frontAnimDelay = 45,
+        #else
+            .frontPicSize = MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = 0,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 7),
+                ANIMCMD_FRAME(1, 21),
+                ANIMCMD_FRAME(0, 13),
+                ANIMCMD_FRAME(1, 21),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_H_SHAKE : ANIM_H_SHAKE,
+            .frontAnimDelay = 45,
+        #endif
         .backPic = gMonBackPic_Steelix,
         .backPicSize = MON_COORDS_SIZE(64, 64),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 0 : 2,
@@ -13439,7 +14095,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .backPicSizeFemale = MON_COORDS_SIZE(64, 64),
 #endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(2, 12, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #ifdef FIRERED
+            SHADOW(2, 12, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #else
+            SHADOW(2, 12, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #endif
         FOOTPRINT(Steelix)
         OVERWORLD(
             sPicTable_Steelix,
@@ -13675,19 +14335,35 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 257,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Hypno,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 3,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = ANIM_GROW_VIBRATE,
-        .frontAnimDelay = 40,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 3,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 15),
+            ),
+            .frontAnimId = ANIM_GROW_VIBRATE,
+            .frontAnimDelay = 40,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 3,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 15),
+            ),
+            .frontAnimId = ANIM_GROW_VIBRATE,
+            .frontAnimDelay = 40,
+        #endif
         .backPic = gMonBackPic_Hypno,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(64, 56),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 5,
@@ -13703,7 +14379,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .backPicSizeFemale = MON_COORDS_SIZE(64, 56),
 #endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-3, 9, SHADOW_SIZE_L)
+        #ifdef FIRERED
+            SHADOW(-3, 9, SHADOW_SIZE_L)
+        #else
+            SHADOW(0, 12, SHADOW_SIZE_L)
+        #endif
         FOOTPRINT(Hypno)
         OVERWORLD(
             sPicTable_Hypno,
@@ -13984,16 +14664,29 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Voltorb,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(32, 32) : MON_COORDS_SIZE(32, 40),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 19 : 15,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 4),
-            ANIMCMD_FRAME(1, 25),
-            ANIMCMD_FRAME(0, 4),
-            ANIMCMD_FRAME(1, 25),
-            ANIMCMD_FRAME(0, 4),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SQUISH_AND_BOUNCE : ANIM_SWING_CONCAVE,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(32, 32) : MON_COORDS_SIZE(32, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 19 : 15,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 4),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 4),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 4),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SQUISH_AND_BOUNCE : ANIM_SWING_CONCAVE,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(32, 32) : MON_COORDS_SIZE(32, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 19 : 14,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 4),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 4),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 4),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SQUISH_AND_BOUNCE : ANIM_SWING_CONCAVE,
+        #endif
         .enemyMonElevation = P_GBA_STYLE_SPECIES_GFX ? 10 : 0,
         .backPic = gMonBackPic_Voltorb,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 40) : MON_COORDS_SIZE(48, 40),
@@ -14004,7 +14697,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Voltorb,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, -2, SHADOW_SIZE_S)
+        #ifdef FIRERED
+            SHADOW(0, -2, SHADOW_SIZE_S)
+        #else
+            SHADOW(-1, -1, SHADOW_SIZE_S)
+        #endif
         FOOTPRINT(Voltorb)
         OVERWORLD(
             sPicTable_Voltorb,
@@ -14545,18 +15242,33 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Cubone,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 40) : MON_COORDS_SIZE(56, 40),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 15 : 13,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 6),
-            ANIMCMD_FRAME(0, 6),
-            ANIMCMD_LOOP(1),
-            ANIMCMD_FRAME(0, 12),
-            ANIMCMD_FRAME(1, 32),
-            ANIMCMD_FRAME(0, 1),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_BOUNCE_ROTATE_TO_SIDES_SMALL : ANIM_V_SQUISH_AND_BOUNCE,
-        .frontAnimDelay = P_GBA_STYLE_SPECIES_GFX ? 0 : 30,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 40) : MON_COORDS_SIZE(56, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 15 : 13,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 6),
+                ANIMCMD_FRAME(0, 6),
+                ANIMCMD_LOOP(1),
+                ANIMCMD_FRAME(0, 12),
+                ANIMCMD_FRAME(1, 32),
+                ANIMCMD_FRAME(0, 1),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_BOUNCE_ROTATE_TO_SIDES_SMALL : ANIM_V_SQUISH_AND_BOUNCE,
+            .frontAnimDelay = P_GBA_STYLE_SPECIES_GFX ? 0 : 30,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 40) : MON_COORDS_SIZE(56, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 15 : 13,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 6),
+                ANIMCMD_FRAME(0, 6),
+                ANIMCMD_LOOP(1),
+                ANIMCMD_FRAME(0, 12),
+                ANIMCMD_FRAME(1, 32),
+                ANIMCMD_FRAME(0, 1),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_BOUNCE_ROTATE_TO_SIDES_SMALL : ANIM_V_SQUISH_AND_BOUNCE,
+            .frontAnimDelay = P_GBA_STYLE_SPECIES_GFX ? 0 : 30,
+        #endif
         .backPic = gMonBackPic_Cubone,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(56, 48),
         .backPicYOffset = 10,
@@ -14566,7 +15278,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Cubone,
         .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 1 : 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_NORMAL,
-        SHADOW(1, 0, SHADOW_SIZE_S)
+        #ifdef FIRERED
+            SHADOW(1, 0, SHADOW_SIZE_S)
+        #else
+            SHADOW(0, 0, SHADOW_SIZE_S)
+        #endif
         FOOTPRINT(Cubone)
         OVERWORLD(
             sPicTable_Cubone,
@@ -14628,17 +15344,31 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Marowak,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(56, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 8,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 14),
-            ANIMCMD_FRAME(0, 14),
-            ANIMCMD_FRAME(1, 14),
-            ANIMCMD_FRAME(0, 14),
-            ANIMCMD_FRAME(1, 14),
-            ANIMCMD_FRAME(0, 14),
-        ),
-        .frontAnimId = ANIM_BOUNCE_ROTATE_TO_SIDES,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(56, 64),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 8,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 14),
+                ANIMCMD_FRAME(0, 14),
+                ANIMCMD_FRAME(1, 14),
+                ANIMCMD_FRAME(0, 14),
+                ANIMCMD_FRAME(1, 14),
+                ANIMCMD_FRAME(0, 14),
+            ),
+            .frontAnimId = ANIM_BOUNCE_ROTATE_TO_SIDES,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(56, 64),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 8,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 14),
+                ANIMCMD_FRAME(0, 14),
+                ANIMCMD_FRAME(1, 14),
+                ANIMCMD_FRAME(0, 14),
+                ANIMCMD_FRAME(1, 14),
+                ANIMCMD_FRAME(0, 14),
+            ),
+            .frontAnimId = ANIM_BOUNCE_ROTATE_TO_SIDES,
+        #endif
         .backPic = gMonBackPic_Marowak,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(48, 56),
         .backPicYOffset = 8,
@@ -14648,7 +15378,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Marowak,
         .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 1 : 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(6, 6, SHADOW_SIZE_M)
+        #ifdef FIRERED
+            SHADOW(6, 6, SHADOW_SIZE_M)
+        #else
+            SHADOW(10, 5, SHADOW_SIZE_M)
+        #endif
         FOOTPRINT(Marowak)
         OVERWORLD(
             sPicTable_Marowak,
@@ -14922,14 +15656,25 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 259,
         .trainerOffset = 1,
         .frontPic = gMonFrontPic_Hitmonlee,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 5,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 16),
-            ANIMCMD_FRAME(1, 18),
-            ANIMCMD_FRAME(0, 1),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_H_STRETCH : ANIM_H_JUMPS_V_STRETCH,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 5,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 16),
+                ANIMCMD_FRAME(1, 18),
+                ANIMCMD_FRAME(0, 1),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_H_STRETCH : ANIM_H_JUMPS_V_STRETCH,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(64, 56),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 4,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 16),
+                ANIMCMD_FRAME(1, 18),
+                ANIMCMD_FRAME(0, 1),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_H_STRETCH : ANIM_H_STRETCH,
+        #endif
         .backPic = gMonBackPic_Hitmonlee,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 40) : MON_COORDS_SIZE(64, 56),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 12 : 4,
@@ -14939,7 +15684,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Hitmonlee,
         .iconPalIndex = 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(2, 8, SHADOW_SIZE_M)
+        #ifdef FIRERED
+            SHADOW(2, 8, SHADOW_SIZE_M)
+        #else
+            SHADOW(2, 8, SHADOW_SIZE_M)
+        #endif
         FOOTPRINT(Hitmonlee)
         OVERWORLD(
             sPicTable_Hitmonlee,
@@ -14999,22 +15748,41 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 277,
         .trainerOffset = 2,
         .frontPic = gMonFrontPic_Hitmonchan,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(48, 64),
-        .frontPicYOffset = 4,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 17),
-            ANIMCMD_FRAME(1, 4),
-            ANIMCMD_FRAME(0, 4),
-            ANIMCMD_FRAME(1, 4),
-            ANIMCMD_FRAME(0, 4),
-            ANIMCMD_FRAME(1, 4),
-            ANIMCMD_FRAME(0, 4),
-            ANIMCMD_FRAME(1, 4),
-            ANIMCMD_FRAME(0, 4),
-            ANIMCMD_FRAME(1, 4),
-            ANIMCMD_FRAME(0, 4),
-        ),
-        .frontAnimId = ANIM_GROW_VIBRATE,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(48, 64),
+            .frontPicYOffset = 4,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 17),
+                ANIMCMD_FRAME(1, 4),
+                ANIMCMD_FRAME(0, 4),
+                ANIMCMD_FRAME(1, 4),
+                ANIMCMD_FRAME(0, 4),
+                ANIMCMD_FRAME(1, 4),
+                ANIMCMD_FRAME(0, 4),
+                ANIMCMD_FRAME(1, 4),
+                ANIMCMD_FRAME(0, 4),
+                ANIMCMD_FRAME(1, 4),
+                ANIMCMD_FRAME(0, 4),
+            ),
+            .frontAnimId = ANIM_GROW_VIBRATE,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(48, 56),
+            .frontPicYOffset = 4,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 17),
+                ANIMCMD_FRAME(1, 4),
+                ANIMCMD_FRAME(0, 4),
+                ANIMCMD_FRAME(1, 4),
+                ANIMCMD_FRAME(0, 4),
+                ANIMCMD_FRAME(1, 4),
+                ANIMCMD_FRAME(0, 4),
+                ANIMCMD_FRAME(1, 4),
+                ANIMCMD_FRAME(0, 4),
+                ANIMCMD_FRAME(1, 4),
+                ANIMCMD_FRAME(0, 4),
+            ),
+            .frontAnimId = ANIM_GROW_VIBRATE,
+        #endif
         .backPic = gMonBackPic_Hitmonchan,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 40) : MON_COORDS_SIZE(56, 56),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 12 : 6,
@@ -15024,7 +15792,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Hitmonchan,
         .iconPalIndex = 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(1, 9, SHADOW_SIZE_M)
+        #ifdef FIRERED
+            SHADOW(1, 9, SHADOW_SIZE_M)
+        #else
+            SHADOW(6, 8, SHADOW_SIZE_M)
+        #endif
         FOOTPRINT(Hitmonchan)
         OVERWORLD(
             sPicTable_Hitmonchan,
@@ -15085,16 +15857,29 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 257,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Hitmontop,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(64, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 5 : 7,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 12),
-            ANIMCMD_FRAME(1, 26),
-            ANIMCMD_FRAME(0, 14),
-            ANIMCMD_FRAME(1, 32),
-            ANIMCMD_FRAME(0, 1),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_H_VIBRATE : ANIM_SWING_CONCAVE,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(64, 56),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 5 : 7,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 12),
+                ANIMCMD_FRAME(1, 26),
+                ANIMCMD_FRAME(0, 14),
+                ANIMCMD_FRAME(1, 32),
+                ANIMCMD_FRAME(0, 1),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_H_VIBRATE : ANIM_SWING_CONCAVE,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(48, 56),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 5 : 5,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 12),
+                ANIMCMD_FRAME(1, 26),
+                ANIMCMD_FRAME(0, 14),
+                ANIMCMD_FRAME(1, 32),
+                ANIMCMD_FRAME(0, 1),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_H_VIBRATE : ANIM_H_VIBRATE,
+        #endif
         .backPic = gMonBackPic_Hitmontop,
         .backPicSize = MON_COORDS_SIZE(64, 56),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 5 : 6,
@@ -15569,16 +16354,29 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Rhyhorn,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(56, 40),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 12,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 11),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_V_SHAKE,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(56, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 12,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 11),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_V_SHAKE,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(56, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 12,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 11),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_V_SHAKE,
+        #endif
         .backPic = gMonBackPic_Rhyhorn,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 40) : MON_COORDS_SIZE(64, 48),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 12 : 11,
@@ -15594,7 +16392,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .backPicSizeFemale = MON_COORDS_SIZE(64, 48),
 #endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 0, SHADOW_SIZE_L)
+        #ifdef FIRERED
+            SHADOW(0, 0, SHADOW_SIZE_L)
+        #else
+            SHADOW(0, 2, SHADOW_SIZE_L)
+        #endif
         FOOTPRINT(Rhyhorn)
         OVERWORLD(
             sPicTable_Rhyhorn,
@@ -15925,14 +16727,25 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Chansey,
-        .frontPicSize = MON_COORDS_SIZE(56, 48),
-        .frontPicYOffset = 9,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 30),
-            ANIMCMD_FRAME(1, 30),
-            ANIMCMD_FRAME(0, 20),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SQUISH_AND_BOUNCE_SLOW : ANIM_V_SQUISH_AND_BOUNCE,
+        #ifdef FIRERED
+            .frontPicSize = MON_COORDS_SIZE(56, 48),
+            .frontPicYOffset = 9,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 30),
+                ANIMCMD_FRAME(1, 30),
+                ANIMCMD_FRAME(0, 20),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SQUISH_AND_BOUNCE_SLOW : ANIM_V_SQUISH_AND_BOUNCE,
+        #else
+            .frontPicSize = MON_COORDS_SIZE(56, 48),
+            .frontPicYOffset = 9,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 30),
+                ANIMCMD_FRAME(1, 30),
+                ANIMCMD_FRAME(0, 20),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SQUISH_AND_BOUNCE_SLOW : ANIM_V_SQUISH_AND_BOUNCE,
+        #endif
         .backPic = gMonBackPic_Chansey,
         .backPicSize = MON_COORDS_SIZE(64, 48),
         .backPicYOffset = 11,
@@ -15942,7 +16755,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Chansey,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(1, 4, SHADOW_SIZE_L)
+        #ifdef FIRERED
+            SHADOW(1, 4, SHADOW_SIZE_L)
+        #else
+            SHADOW(1, 6, SHADOW_SIZE_L)
+        #endif
         FOOTPRINT(Chansey)
         OVERWORLD(
             sPicTable_Chansey,
@@ -16090,14 +16907,25 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Tangela,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(48, 40),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 7 : 12,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 40),
-            ANIMCMD_FRAME(1, 24),
-            ANIMCMD_FRAME(0, 1),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_BOUNCE_ROTATE_TO_SIDES_SMALL : ANIM_H_JUMPS_V_STRETCH,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(48, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 7 : 12,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 40),
+                ANIMCMD_FRAME(1, 24),
+                ANIMCMD_FRAME(0, 1),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_BOUNCE_ROTATE_TO_SIDES_SMALL : ANIM_H_JUMPS_V_STRETCH,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(48, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 7 : 12,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 40),
+                ANIMCMD_FRAME(1, 24),
+                ANIMCMD_FRAME(0, 1),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_BOUNCE_ROTATE_TO_SIDES_SMALL : ANIM_H_JUMPS_V_STRETCH,
+        #endif
         .backPic = gMonBackPic_Tangela,
         .backPicSize = MON_COORDS_SIZE(64, 40),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 14 : 12,
@@ -16107,7 +16935,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Tangela,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 1, SHADOW_SIZE_M)
+        #ifdef FIRERED
+            SHADOW(-1, 1, SHADOW_SIZE_M)
+        #else
+            SHADOW(0, 4, SHADOW_SIZE_M)
+        #endif
         FOOTPRINT(Tangela)
         OVERWORLD(
             sPicTable_Tangela,
@@ -16345,8 +17177,13 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .frontPic = gMonFrontPic_KangaskhanMega,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
         .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 10),
+            ANIMCMD_FRAME(0, 10),
+            ANIMCMD_FRAME(1, 20),
+            ANIMCMD_FRAME(0, 10),
+        ),
+        .frontAnimId = ANIM_V_STRETCH,
         .backPic = gMonBackPic_KangaskhanMega,
         .backPicSize = MON_COORDS_SIZE(64, 56),
         .backPicYOffset = 6,
@@ -16426,16 +17263,29 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Horsea,
-        .frontPicSize = MON_COORDS_SIZE(32, 40),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 15 : 14,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 11),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_TWIST : ANIM_V_JUMPS_SMALL,
+        #ifdef FIRERED
+            .frontPicSize = MON_COORDS_SIZE(32, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 15 : 14,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 11),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_TWIST : ANIM_V_JUMPS_SMALL,
+        #else
+            .frontPicSize = MON_COORDS_SIZE(32, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 15 : 14,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 11),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_TWIST : ANIM_V_JUMPS_SMALL,
+        #endif
         .backPic = gMonBackPic_Horsea,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(48, 40),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 14,
@@ -16445,7 +17295,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Horsea,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 0, SHADOW_SIZE_S)
+        #ifdef FIRERED
+            SHADOW(0, 0, SHADOW_SIZE_S)
+        #else
+            SHADOW(-4, 0, SHADOW_SIZE_S)
+        #endif
         FOOTPRINT(Horsea)
         OVERWORLD(
             sPicTable_Horsea,
@@ -16869,16 +17723,29 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Staryu,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(40, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 11,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 11),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_TWIST_TWICE,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(40, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 11,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 11),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_TWIST_TWICE,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(40, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 11,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 11),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_TWIST_TWICE,
+        #endif
         .backPic = gMonBackPic_Staryu,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 40) : MON_COORDS_SIZE(56, 56),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 13 : 6,
@@ -16888,7 +17755,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Staryu,
         .iconPalIndex = 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 2, SHADOW_SIZE_M)
+        #ifdef FIRERED
+            SHADOW(-1, 2, SHADOW_SIZE_M)
+        #else
+            SHADOW(-5, 4, SHADOW_SIZE_M)
+        #endif
         FOOTPRINT(Staryu)
         OVERWORLD(
             sPicTable_Staryu,
@@ -17188,17 +18059,31 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_MrMime,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(56, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 6,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = ANIM_H_SLIDE_SLOW,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(56, 56),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 6,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 15),
+            ),
+            .frontAnimId = ANIM_H_SLIDE_SLOW,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(56, 56),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 6,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 15),
+            ),
+            .frontAnimId = ANIM_H_SLIDE_SLOW,
+        #endif
         .backPic = gMonBackPic_MrMime,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 40) : MON_COORDS_SIZE(64, 48),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 13 : 8,
@@ -17208,7 +18093,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_MrMime,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 7, SHADOW_SIZE_M)
+        #ifdef FIRERED
+            SHADOW(-1, 7, SHADOW_SIZE_M)
+        #else
+            SHADOW(0, 9, SHADOW_SIZE_L)
+        #endif
         FOOTPRINT(MrMime)
         OVERWORLD(
             sPicTable_MrMime,
@@ -17418,20 +18307,37 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 293,
         .trainerOffset = 2,
         .frontPic = gMonFrontPic_Scyther,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 64) : MON_COORDS_SIZE(56, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 0 : 1,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 5),
-            ANIMCMD_FRAME(1, 25),
-            ANIMCMD_FRAME(0, 5),
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 5),
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 5),
-        ),
-        .frontAnimId = ANIM_H_VIBRATE,
-        .frontAnimDelay = 10,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 64) : MON_COORDS_SIZE(56, 64),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 0 : 1,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+            ),
+            .frontAnimId = ANIM_H_VIBRATE,
+            .frontAnimDelay = 10,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 64) : MON_COORDS_SIZE(56, 64),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 0 : 1,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+                ANIMCMD_FRAME(1, 5),
+                ANIMCMD_FRAME(0, 5),
+            ),
+            .frontAnimId = ANIM_H_VIBRATE,
+            .frontAnimDelay = 10,
+        #endif
         .backPic = gMonBackPic_Scyther,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(64, 64),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 7 : 3,
@@ -17445,7 +18351,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .frontPicSizeFemale = MON_COORDS_SIZE(56, 64),
 #endif //P_GENDER_DIFFERENCES
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 7, SHADOW_SIZE_L)
+        #ifdef FIRERED
+            SHADOW(0, 7, SHADOW_SIZE_L)
+        #else
+            SHADOW(3, 7, SHADOW_SIZE_L)
+        #endif
         FOOTPRINT(Scyther)
         OVERWORLD(
             sPicTable_Scyther,
@@ -17527,15 +18437,27 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .pokemonOffset = 1,
         .trainerScale = 256,
         .trainerOffset = 0,
+        #ifdef FIRERED
         .frontPic = gMonFrontPic_Scizor,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 0 : 2,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 20),
-        ),
-        .frontAnimId = ANIM_H_VIBRATE,
-        .frontAnimDelay = 19,
+            .frontPicSize = MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 0 : 2,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 20),
+            ),
+            .frontAnimId = ANIM_H_VIBRATE,
+            .frontAnimDelay = 19,
+        #else
+        .frontPic = gMonFrontPic_Scizor,
+            .frontPicSize = MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 0 : 0,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 20),
+            ),
+            .frontAnimId = ANIM_H_VIBRATE,
+            .frontAnimDelay = 19,
+        #endif
         .backPic = gMonBackPic_Scizor,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(64, 56),
         .backPicYOffset = 4,
@@ -17549,7 +18471,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .frontPicSizeFemale = MON_COORDS_SIZE(64, 64),
 #endif //P_GENDER_DIFFERENCES
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(3, 9, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #ifdef FIRERED
+            SHADOW(3, 9, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #else
+            SHADOW(8, 14, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #endif
         FOOTPRINT(Scizor)
         OVERWORLD(
             sPicTable_Scizor,
@@ -17775,14 +18701,25 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Smoochum,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(24, 40) : MON_COORDS_SIZE(32, 40),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 15 : 13,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 20),
-        ),
-        .frontAnimId = ANIM_GROW_VIBRATE,
-        .frontAnimDelay = 40,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(24, 40) : MON_COORDS_SIZE(32, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 15 : 13,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 20),
+            ),
+            .frontAnimId = ANIM_GROW_VIBRATE,
+            .frontAnimDelay = 40,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(24, 40) : MON_COORDS_SIZE(24, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 15 : 15,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 20),
+            ),
+            .frontAnimId = ANIM_GROW_VIBRATE,
+            .frontAnimDelay = 40,
+        #endif
         .backPic = gMonBackPic_Smoochum,
         .backPicSize = MON_COORDS_SIZE(40, 48),
         .backPicYOffset = 9,
@@ -17855,16 +18792,29 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 300,
         .trainerOffset = 1,
         .frontPic = gMonFrontPic_Jynx,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(64, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 9,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 40),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 50),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_V_STRETCH,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(64, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 9,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 40),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 50),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_V_STRETCH,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(64, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 9,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 40),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 50),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_V_STRETCH,
+        #endif
         .backPic = gMonBackPic_Jynx,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 48) : MON_COORDS_SIZE(56, 64),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 3,
@@ -17874,7 +18824,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Jynx,
         .iconPalIndex = 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 3, SHADOW_SIZE_L)
+        #ifdef FIRERED
+            SHADOW(0, 3, SHADOW_SIZE_L)
+        #else
+            SHADOW(2, 8, SHADOW_SIZE_L)
+        #endif
         FOOTPRINT(Jynx)
         OVERWORLD(
             sPicTable_Jynx,
@@ -17935,14 +18889,25 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Elekid,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(48, 40),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 12,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 30),
-            ANIMCMD_FRAME(1, 30),
-            ANIMCMD_FRAME(0, 20),
-        ),
-        .frontAnimId = ANIM_FLASH_YELLOW,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(48, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 12,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 30),
+                ANIMCMD_FRAME(1, 30),
+                ANIMCMD_FRAME(0, 20),
+            ),
+            .frontAnimId = ANIM_FLASH_YELLOW,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(56, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 10,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 30),
+                ANIMCMD_FRAME(1, 30),
+                ANIMCMD_FRAME(0, 20),
+            ),
+            .frontAnimId = ANIM_FLASH_YELLOW,
+        #endif
         .backPic = gMonBackPic_Elekid,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(64, 48),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 10,
@@ -17952,7 +18917,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Elekid,
         .iconPalIndex = 1,
         .pokemonJumpType = PKMN_JUMP_TYPE_FAST,
-        SHADOW(-1, 1, SHADOW_SIZE_M)
+        #ifdef FIRERED
+            SHADOW(-1, 1, SHADOW_SIZE_M)
+        #else
+            SHADOW(3, 3, SHADOW_SIZE_S)
+        #endif
         FOOTPRINT(Elekid)
         OVERWORLD(
             sPicTable_Elekid,
@@ -18589,16 +19558,29 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Tauros,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 64) : MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 0 : 5,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 20),
-            ANIMCMD_FRAME(1, 25),
-            ANIMCMD_FRAME(0, 20),
-        ),
-        .frontAnimId = ANIM_V_SHAKE_TWICE,
-        .frontAnimDelay = 10,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 64) : MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 0 : 5,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 20),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 20),
+            ),
+            .frontAnimId = ANIM_V_SHAKE_TWICE,
+            .frontAnimDelay = 10,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 64) : MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 0 : 5,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 20),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 20),
+            ),
+            .frontAnimId = ANIM_V_SHAKE_TWICE,
+            .frontAnimDelay = 10,
+        #endif
         .backPic = gMonBackPic_Tauros,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 40) : MON_COORDS_SIZE(64, 48),
         .backPicYOffset = 13,
@@ -18608,7 +19590,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Tauros,
         .iconPalIndex = 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(1, 7, SHADOW_SIZE_L)
+        #ifdef FIRERED
+            SHADOW(1, 7, SHADOW_SIZE_L)
+        #else
+            SHADOW(1, 7, SHADOW_SIZE_L)
+        #endif
         FOOTPRINT(Tauros)
         OVERWORLD(
             sPicTable_Tauros,
@@ -18668,10 +19654,29 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_TaurosPaldeaCombat,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 5,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        /*.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,*/
+        #ifdef FIRERED
+            .frontPicSize = MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = 5,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 20),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 20),
+            ),
+            .frontAnimId = ANIM_V_SHAKE_TWICE,
+            .frontAnimDelay = 10,
+        #else
+            .frontPicSize = MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = 5,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 20),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 20),
+            ),
+            .frontAnimId = ANIM_V_SHAKE_TWICE,
+            .frontAnimDelay = 10,
+        #endif
         .backPic = gMonBackPic_TaurosPaldeaCombat,
         .backPicSize = MON_COORDS_SIZE(64, 48),
         .backPicYOffset = 9,
@@ -18681,7 +19686,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_TaurosPaldeaCombat,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(1, 7, SHADOW_SIZE_L)
+        #ifdef FIRERED
+            SHADOW(1, 7, SHADOW_SIZE_L)
+        #else
+            SHADOW(1, 7, SHADOW_SIZE_L)
+        #endif
         FOOTPRINT(Tauros)
         OVERWORLD(
             sPicTable_TaurosPaldeaCombat,
@@ -18742,10 +19751,29 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_TaurosPaldeaBlaze,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 5,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        /*.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,*/
+        #ifdef FIRERED
+            .frontPicSize = MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = 5,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 20),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 20),
+            ),
+            .frontAnimId = ANIM_V_SHAKE_TWICE,
+            .frontAnimDelay = 10,
+        #else
+            .frontPicSize = MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = 5,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 20),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 20),
+            ),
+            .frontAnimId = ANIM_V_SHAKE_TWICE,
+            .frontAnimDelay = 10,
+        #endif
         .backPic = gMonBackPic_TaurosPaldeaBlaze,
         .backPicSize = MON_COORDS_SIZE(64, 48),
         .backPicYOffset = 9,
@@ -18755,7 +19783,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_TaurosPaldeaBlaze,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(1, 7, SHADOW_SIZE_L)
+        #ifdef FIRERED
+            SHADOW(1, 7, SHADOW_SIZE_L)
+        #else
+            SHADOW(1, 7, SHADOW_SIZE_L)
+        #endif
         FOOTPRINT(Tauros)
         OVERWORLD(
             sPicTable_TaurosPaldeaBlaze,
@@ -18816,10 +19848,29 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_TaurosPaldeaAqua,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 5,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        /*.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,*/
+        #ifdef FIRERED
+            .frontPicSize = MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = 5,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 20),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 20),
+            ),
+            .frontAnimId = ANIM_V_SHAKE_TWICE,
+            .frontAnimDelay = 10,
+        #else
+            .frontPicSize = MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = 5,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 20),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 20),
+            ),
+            .frontAnimId = ANIM_V_SHAKE_TWICE,
+            .frontAnimDelay = 10,
+        #endif
         .backPic = gMonBackPic_TaurosPaldeaAqua,
         .backPicSize = MON_COORDS_SIZE(64, 48),
         .backPicYOffset = 9,
@@ -18829,7 +19880,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_TaurosPaldeaAqua,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(1, 7, SHADOW_SIZE_L)
+        #ifdef FIRERED
+            SHADOW(1, 7, SHADOW_SIZE_L)
+        #else
+            SHADOW(1, 7, SHADOW_SIZE_L)
+        #endif
         FOOTPRINT(Tauros)
         OVERWORLD(
             sPicTable_TaurosPaldeaAqua,
@@ -18985,14 +20040,25 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 481,
         .trainerOffset = 13,
         .frontPic = gMonFrontPic_Gyarados,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 2,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 8),
-            ANIMCMD_FRAME(1, 32),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_BOUNCE_ROTATE_TO_SIDES_SMALL,
+        #ifdef FIRERED
+            .frontPicSize = MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 2,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 8),
+                ANIMCMD_FRAME(1, 32),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_BOUNCE_ROTATE_TO_SIDES_SMALL,
+        #else
+            .frontPicSize = MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 2,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 8),
+                ANIMCMD_FRAME(1, 32),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_BOUNCE_ROTATE_TO_SIDES_SMALL,
+        #endif
         .backPic = gMonBackPic_Gyarados,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 64) : MON_COORDS_SIZE(64, 64),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 0 : 5,
@@ -19008,7 +20074,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .backPicSizeFemale = MON_COORDS_SIZE(64, 64),
 #endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(5, 9, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #ifdef FIRERED
+            SHADOW(5, 9, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #else
+            SHADOW(5, 13, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #endif
         FOOTPRINT(Gyarados)
         OVERWORLD(
             sPicTable_Gyarados,
@@ -19390,12 +20460,12 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .shinyPalette = gMonShinyPalette_Eevee,
         .iconSprite = gMonIcon_Eevee,
         .iconPalIndex = 2,
-#if P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .frontPicFemale = gMonFrontPic_EeveeF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(40, 48),
-        .backPicFemale = gMonBackPic_EeveeF,
-        .backPicSizeFemale = MON_COORDS_SIZE(56, 48),
-#endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
+//#if P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
+//        .frontPicFemale = gMonFrontPic_EeveeF,
+//        .frontPicSizeFemale = MON_COORDS_SIZE(40, 48),
+//        .backPicFemale = gMonBackPic_EeveeF,
+//        .backPicSizeFemale = MON_COORDS_SIZE(56, 48),
+//#endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
         .pokemonJumpType = PKMN_JUMP_TYPE_NORMAL,
         SHADOW(-2, 2, SHADOW_SIZE_S)
         FOOTPRINT(Eevee)
@@ -19408,13 +20478,13 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             gOverworldPalette_Eevee,
             gShinyOverworldPalette_Eevee
         )
-        OVERWORLD_FEMALE(
-            sPicTable_EeveeF,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following
-        )
+//        OVERWORLD_FEMALE(
+//            sPicTable_EeveeF,
+//            SIZE_32x32,
+//            SHADOW_SIZE_M,
+//            TRACKS_FOOT,
+//            sAnimTable_Following
+//        )
         .levelUpLearnset = sEeveeLevelUpLearnset,
         .teachableLearnset = sEeveeTeachableLearnset,
         .eggMoveLearnset = sEeveeEggMoveLearnset,
@@ -19545,16 +20615,16 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .shinyPalette = gMonShinyPalette_Eevee,
         .iconSprite = gMonIcon_EeveePartner,
         .iconPalIndex = 2,
-#if P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .frontPicFemale = gMonFrontPic_EeveeF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(40, 48),
-        .backPicFemale = gMonBackPic_EeveeF,
-        .backPicSizeFemale = MON_COORDS_SIZE(56, 48),
-    #if P_CUSTOM_GENDER_DIFF_ICONS == TRUE
-        .iconSpriteFemale = gMonIcon_EeveePartnerF,
-        .iconPalIndexFemale = 2,
-    #endif
-#endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
+//#if P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
+//        .frontPicFemale = gMonFrontPic_EeveeF,
+//        .frontPicSizeFemale = MON_COORDS_SIZE(40, 48),
+//        .backPicFemale = gMonBackPic_EeveeF,
+//        .backPicSizeFemale = MON_COORDS_SIZE(56, 48),
+//    #if P_CUSTOM_GENDER_DIFF_ICONS == TRUE
+//        .iconSpriteFemale = gMonIcon_EeveePartnerF,
+//        .iconPalIndexFemale = 2,
+//    #endif
+//#endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
         .pokemonJumpType = PKMN_JUMP_TYPE_NORMAL,
         SHADOW(-2, 2, SHADOW_SIZE_S)
         FOOTPRINT(Eevee)
@@ -19616,13 +20686,23 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Vaporeon,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(48, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 6 : 9,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 40),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_STRETCH : ANIM_GLOW_BLUE,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(48, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 6 : 9,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 40),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_STRETCH : ANIM_GLOW_BLUE,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(48, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 6 : 9,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 40),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_STRETCH : ANIM_GLOW_BLUE,
+        #endif
         .backPic = gMonBackPic_Vaporeon,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(64, 56),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 5,
@@ -19632,7 +20712,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Vaporeon,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-4, 3, SHADOW_SIZE_M)
+        #ifdef FIRERED
+            SHADOW(-4, 3, SHADOW_SIZE_M)
+        #else
+            SHADOW(2, 6, SHADOW_SIZE_M)
+        #endif
         FOOTPRINT(Vaporeon)
         OVERWORLD(
             sPicTable_Vaporeon,
@@ -19833,14 +20917,25 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Espeon,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(48, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 9,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 25),
-            ANIMCMD_FRAME(0, 20),
-        ),
-        .frontAnimId = ANIM_GROW_VIBRATE,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(48, 56),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 9,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 20),
+            ),
+            .frontAnimId = ANIM_GROW_VIBRATE,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(48, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 8,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 25),
+                ANIMCMD_FRAME(0, 20),
+            ),
+            .frontAnimId = ANIM_GROW_VIBRATE,
+        #endif
         .backPic = gMonBackPic_Espeon,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(64, 56),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 8,
@@ -19850,7 +20945,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Espeon,
         .iconPalIndex = 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(2, 4, SHADOW_SIZE_M)
+        #ifdef FIRERED
+            SHADOW(2, 4, SHADOW_SIZE_M)
+        #else
+            SHADOW(3, 6, SHADOW_SIZE_M)
+        #endif
         FOOTPRINT(Espeon)
         OVERWORLD(
             sPicTable_Espeon,
@@ -20463,19 +21562,35 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Omanyte,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(32, 40) : MON_COORDS_SIZE(40, 40),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 15 : 14,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 20),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_V_SLIDE_WOBBLE_SMALL,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(32, 40) : MON_COORDS_SIZE(40, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 15 : 14,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 20),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_V_SLIDE_WOBBLE_SMALL,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(32, 40) : MON_COORDS_SIZE(40, 40),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 15 : 14,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 20),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_V_SLIDE_WOBBLE_SMALL,
+        #endif
         .backPic = gMonBackPic_Omanyte,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(48, 40),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 12,
@@ -20485,7 +21600,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Omanyte,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_FAST,
-        SHADOW(-2, -2, SHADOW_SIZE_S)
+        #ifdef FIRERED
+            SHADOW(-2, -2, SHADOW_SIZE_S)
+        #else
+            SHADOW(-2, -1, SHADOW_SIZE_S)
+        #endif
         FOOTPRINT(Omanyte)
         OVERWORLD(
             sPicTable_Omanyte,
@@ -20625,19 +21744,35 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Kabuto,
-        .frontPicSize = MON_COORDS_SIZE(40, 32),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 17 : 16,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 8),
-            ANIMCMD_FRAME(0, 8),
-            ANIMCMD_FRAME(1, 8),
-            ANIMCMD_FRAME(0, 20),
-            ANIMCMD_FRAME(1, 8),
-            ANIMCMD_FRAME(0, 8),
-            ANIMCMD_FRAME(1, 8),
-            ANIMCMD_FRAME(0, 8),
-        ),
-        .frontAnimId = ANIM_H_SLIDE_WOBBLE,
+        #ifdef FIRERED
+            .frontPicSize = MON_COORDS_SIZE(40, 32),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 17 : 16,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 8),
+                ANIMCMD_FRAME(0, 8),
+                ANIMCMD_FRAME(1, 8),
+                ANIMCMD_FRAME(0, 20),
+                ANIMCMD_FRAME(1, 8),
+                ANIMCMD_FRAME(0, 8),
+                ANIMCMD_FRAME(1, 8),
+                ANIMCMD_FRAME(0, 8),
+            ),
+            .frontAnimId = ANIM_H_SLIDE_WOBBLE,
+        #else
+            .frontPicSize = MON_COORDS_SIZE(40, 32),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 17 : 16,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 8),
+                ANIMCMD_FRAME(0, 8),
+                ANIMCMD_FRAME(1, 8),
+                ANIMCMD_FRAME(0, 20),
+                ANIMCMD_FRAME(1, 8),
+                ANIMCMD_FRAME(0, 8),
+                ANIMCMD_FRAME(1, 8),
+                ANIMCMD_FRAME(0, 8),
+            ),
+            .frontAnimId = ANIM_H_SLIDE_WOBBLE,
+        #endif
         .backPic = gMonBackPic_Kabuto,
         .backPicSize = MON_COORDS_SIZE(48, 40),
         .backPicYOffset = 13,
@@ -20647,7 +21782,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Kabuto,
         .iconPalIndex = 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_FAST,
-        SHADOW(2, -3, SHADOW_SIZE_S)
+        #ifdef FIRERED
+            SHADOW(2, -3, SHADOW_SIZE_S)
+        #else
+            SHADOW(1, -2, SHADOW_SIZE_S)
+        #endif
         FOOTPRINT(Kabuto)
         OVERWORLD(
             sPicTable_Kabuto,
@@ -20711,15 +21850,27 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Kabutops,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 3 : 2,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_H_SHAKE,
+        #ifdef FIRERED
+            .frontPicSize = MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 3 : 2,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_H_SHAKE,
+        #else
+            .frontPicSize = MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 3 : 3,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = ANIM_H_SHAKE,
+        #endif
         .backPic = gMonBackPic_Kabutops,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(64, 56),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 5 : 6,
@@ -21688,14 +22839,25 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 386,
         .trainerOffset = 6,
         .frontPic = gMonFrontPic_Dratini,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 40) : MON_COORDS_SIZE(56, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 14 : 9,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 40) : MON_COORDS_SIZE(56, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 14 : 9,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 15),
+            ),
+            .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 40) : MON_COORDS_SIZE(56, 48),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 14 : 9,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(0, 15),
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 15),
+            ),
+            .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        #endif
         .backPic = gMonBackPic_Dratini,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(56, 48),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 8,
@@ -21705,7 +22867,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Dratini,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(3, 3, SHADOW_SIZE_L)
+        #ifdef FIRERED
+            SHADOW(3, 3, SHADOW_SIZE_L)
+        #else
+            SHADOW(-2, 5, SHADOW_SIZE_L)
+        #endif
         FOOTPRINT(Dratini)
         OVERWORLD(
             sPicTable_Dratini,
@@ -21764,15 +22930,27 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 411,
         .trainerOffset = 5,
         .frontPic = gMonFrontPic_Dragonair,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 6 : 1,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SHAKE : ANIM_GROW_VIBRATE,
+        #ifdef FIRERED
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 6 : 1,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SHAKE : ANIM_GROW_VIBRATE,
+        #else
+            .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 6 : 1,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 10),
+                ANIMCMD_FRAME(0, 10),
+                ANIMCMD_FRAME(1, 20),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SHAKE : ANIM_GROW_VIBRATE,
+        #endif
         .backPic = gMonBackPic_Dragonair,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 64) : MON_COORDS_SIZE(40, 56),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 0 : 4,
@@ -21782,7 +22960,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Dragonair,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 10, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #ifdef FIRERED
+            SHADOW(0, 10, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #else
+            SHADOW(-3, 9, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #endif
         FOOTPRINT(Dragonair)
         OVERWORLD(
             sPicTable_Dragonair,
@@ -21846,15 +23028,27 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 309,
         .trainerOffset = 4,
         .frontPic = gMonFrontPic_Dragonite,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 50),
-            ANIMCMD_FRAME(1, 30),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SLIDE_SLOW : ANIM_V_SHAKE,
-        .enemyMonElevation = P_GBA_STYLE_SPECIES_GFX ? 6 : 0,
+        #ifdef FIRERED
+            .frontPicSize = MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = 0,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 50),
+                ANIMCMD_FRAME(1, 30),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SLIDE_SLOW : ANIM_V_SHAKE,
+            .enemyMonElevation = P_GBA_STYLE_SPECIES_GFX ? 6 : 0,
+        #else
+            .frontPicSize = MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = 0,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 50),
+                ANIMCMD_FRAME(1, 30),
+                ANIMCMD_FRAME(0, 10),
+            ),
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SLIDE_SLOW : ANIM_V_SLIDE_SLOW,
+            .enemyMonElevation = P_GBA_STYLE_SPECIES_GFX ? 6 : 6,
+        #endif
         .backPic = gMonBackPic_Dragonite,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(64, 64),
         .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 6 : 1,
@@ -21864,7 +23058,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Dragonite,
         .iconPalIndex = 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 11, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #ifdef FIRERED
+            SHADOW(0, 11, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #else
+            SHADOW(0, 17, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #endif
         FOOTPRINT(Dragonite)
         OVERWORLD(
             sPicTable_Dragonite,
@@ -21998,13 +23196,23 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 309,
         .trainerOffset = 4,
         .frontPic = gMonFrontPic_Mewtwo,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 20),
-        ),
-        .frontAnimId = ANIM_GROW_VIBRATE,
+        #ifdef FIRERED
+            .frontPicSize = MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = 0,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 20),
+            ),
+            .frontAnimId = ANIM_GROW_VIBRATE,
+        #else
+            .frontPicSize = MON_COORDS_SIZE(64, 64),
+            .frontPicYOffset = 0,
+            .frontAnimFrames = ANIM_FRAMES(
+                ANIMCMD_FRAME(1, 15),
+                ANIMCMD_FRAME(0, 20),
+            ),
+            .frontAnimId = ANIM_GROW_VIBRATE,
+        #endif
         .backPic = gMonBackPic_Mewtwo,
         .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 64) : MON_COORDS_SIZE(64, 64),
         .backPicYOffset = 1,
@@ -22014,7 +23222,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .iconSprite = gMonIcon_Mewtwo,
         .iconPalIndex = 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(6, 12, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #ifdef FIRERED
+            SHADOW(6, 12, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #else
+            SHADOW(7, 13, SHADOW_SIZE_XL_BATTLE_ONLY)
+        #endif
         FOOTPRINT(Mewtwo)
         OVERWORLD(
             sPicTable_Mewtwo,

@@ -1215,11 +1215,11 @@ static const struct SpriteFrameImage sPicTable_Ditto[] = {
 static const struct SpriteFrameImage sPicTable_Eevee[] = {
     overworld_ascending_frames(gObjectEventPic_Eevee, 4, 4),
 };
-#if P_GENDER_DIFFERENCES
-static const struct SpriteFrameImage sPicTable_EeveeF[] = {
-    overworld_ascending_frames(gObjectEventPic_EeveeF, 4, 4),
-};
-#endif //P_GENDER_DIFFERENCES
+//#if P_GENDER_DIFFERENCES
+//static const struct SpriteFrameImage sPicTable_EeveeF[] = {
+//    overworld_ascending_frames(gObjectEventPic_EeveeF, 4, 4),
+//};
+//#endif //P_GENDER_DIFFERENCES
 #if P_GIGANTAMAX_FORMS
 /*static const struct SpriteFrameImage sPicTable_EeveeGmax[] = {
     overworld_ascending_frames(gObjectEventPic_EeveeGmax, 4, 4),

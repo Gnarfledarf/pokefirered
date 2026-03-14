@@ -7283,9 +7283,9 @@
                 "species": "SPECIES_FEAROW"
               },
               {
-                "min_level": 30,
-                "max_level": 30,
-                "species": "SPECIES_SPEAROW"
+                "min_level": 38,
+                "max_level": 38,
+                "species": "SPECIES_GROWLITHE_HISUI"
               },
               {
                 "min_level": 39,
@@ -7293,9 +7293,9 @@
                 "species": "SPECIES_RAPIDASH"
               },
               {
-                "min_level": 30,
-                "max_level": 30,
-                "species": "SPECIES_SPEAROW"
+                "min_level": 40,
+                "max_level": 40,
+                "species": "SPECIES_GROWLITHE_HISUI"
               },
               {
                 "min_level": 42,
@@ -8118,9 +8118,9 @@
                 "species": "SPECIES_GEODUDE"
               },
               {
-                "min_level": 36,
+                "min_level": 34,
                 "max_level": 36,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_DIGLETT_ALOLA"
               },
               {
                 "min_level": 34,
@@ -8155,7 +8155,7 @@
               {
                 "min_level": 42,
                 "max_level": 42,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_GRAVELER"
               },
               {
                 "min_level": 30,
@@ -8163,9 +8163,9 @@
                 "species": "SPECIES_SLUGMA"
               },
               {
-                "min_level": 42,
+                "min_level": 38,
                 "max_level": 42,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_DUGTRIO_ALOLA"
               },
               {
                 "min_level": 30,
@@ -8217,9 +8217,9 @@
                 "species": "SPECIES_GEODUDE"
               },
               {
-                "min_level": 36,
+                "min_level": 34,
                 "max_level": 36,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_DIGLETT_ALOLA"
               },
               {
                 "min_level": 34,
@@ -8254,7 +8254,7 @@
               {
                 "min_level": 42,
                 "max_level": 42,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_GRAVELER"
               },
               {
                 "min_level": 30,
@@ -8262,9 +8262,9 @@
                 "species": "SPECIES_SLUGMA"
               },
               {
-                "min_level": 42,
+                "min_level": 38,
                 "max_level": 42,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_DUGTRIO_ALOLA"
               },
               {
                 "min_level": 30,
@@ -8321,9 +8321,9 @@
                 "species": "SPECIES_SLUGMA"
               },
               {
-                "min_level": 42,
+                "min_level": 36,
                 "max_level": 42,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_DIGLETT_ALOLA"
               },
               {
                 "min_level": 24,
@@ -8361,9 +8361,9 @@
                 "species": "SPECIES_SLUGMA"
               },
               {
-                "min_level": 44,
+                "min_level": 40,
                 "max_level": 44,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_DUGTRIO_ALOLA"
               },
               {
                 "min_level": 22,
@@ -8420,9 +8420,9 @@
                 "species": "SPECIES_SLUGMA"
               },
               {
-                "min_level": 42,
+                "min_level": 36,
                 "max_level": 42,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_DIGLETT_ALOLA"
               },
               {
                 "min_level": 24,
@@ -8460,9 +8460,9 @@
                 "species": "SPECIES_SLUGMA"
               },
               {
-                "min_level": 44,
+                "min_level": 40,
                 "max_level": 44,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_DUGTRIO_ALOLA"
               },
               {
                 "min_level": 22,
@@ -8546,7 +8546,7 @@
               {
                 "min_level": 34,
                 "max_level": 34,
-                "species": "SPECIES_SLUGMA"
+                "species": "SPECIES_MAGCARGO"
               },
               {
                 "min_level": 36,
@@ -8561,7 +8561,7 @@
               {
                 "min_level": 36,
                 "max_level": 36,
-                "species": "SPECIES_SLUGMA"
+                "species": "SPECIES_MAGCARGO"
               },
               {
                 "min_level": 18,
@@ -8645,7 +8645,7 @@
               {
                 "min_level": 34,
                 "max_level": 34,
-                "species": "SPECIES_SLUGMA"
+                "species": "SPECIES_MAGCARGO"
               },
               {
                 "min_level": 36,
@@ -8660,7 +8660,7 @@
               {
                 "min_level": 36,
                 "max_level": 36,
-                "species": "SPECIES_SLUGMA"
+                "species": "SPECIES_MAGCARGO"
               },
               {
                 "min_level": 18,
@@ -8717,9 +8717,9 @@
                 "species": "SPECIES_SLUGMA"
               },
               {
-                "min_level": 42,
+                "min_level": 36,
                 "max_level": 42,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_DIGLETT_ALOLA"
               },
               {
                 "min_level": 24,
@@ -8749,7 +8749,7 @@
               {
                 "min_level": 44,
                 "max_level": 44,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_GRAVELER"
               },
               {
                 "min_level": 22,
@@ -8757,9 +8757,9 @@
                 "species": "SPECIES_SLUGMA"
               },
               {
-                "min_level": 44,
+                "min_level": 38,
                 "max_level": 44,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_DUGTRIO_ALOLA"
               },
               {
                 "min_level": 22,
@@ -8816,9 +8816,9 @@
                 "species": "SPECIES_SLUGMA"
               },
               {
-                "min_level": 42,
+                "min_level": 36,
                 "max_level": 42,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_DIGLETT_ALOLA"
               },
               {
                 "min_level": 24,
@@ -8848,7 +8848,7 @@
               {
                 "min_level": 44,
                 "max_level": 44,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_GRAVELER"
               },
               {
                 "min_level": 22,
@@ -8856,9 +8856,9 @@
                 "species": "SPECIES_SLUGMA"
               },
               {
-                "min_level": 44,
+                "min_level": 38,
                 "max_level": 44,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_DUGTRIO_ALOLA"
               },
               {
                 "min_level": 22,
@@ -8916,13 +8916,13 @@
               },
               {
                 "min_level": 34,
-                "max_level": 34,
-                "species": "SPECIES_GEODUDE"
+                "max_level": 36,
+                "species": "SPECIES_DIGLETT_ALOLA"
               },
               {
-                "min_level": 40,
+                "min_level": 37,
                 "max_level": 40,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_DIGLETT_ALOLA"
               },
               {
                 "min_level": 24,
@@ -8947,7 +8947,7 @@
               {
                 "min_level": 42,
                 "max_level": 42,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_GRAVELER"
               },
               {
                 "min_level": 30,
@@ -8955,9 +8955,9 @@
                 "species": "SPECIES_SLUGMA"
               },
               {
-                "min_level": 42,
+                "min_level": 38,
                 "max_level": 42,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_DUGTRIO_ALOLA"
               },
               {
                 "min_level": 30,
@@ -9015,13 +9015,13 @@
               },
               {
                 "min_level": 34,
-                "max_level": 34,
-                "species": "SPECIES_GEODUDE"
+                "max_level": 36,
+                "species": "SPECIES_DIGLETT_ALOLA"
               },
               {
-                "min_level": 40,
+                "min_level": 37,
                 "max_level": 40,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_DIGLETT_ALOLA"
               },
               {
                 "min_level": 24,
@@ -9046,7 +9046,7 @@
               {
                 "min_level": 42,
                 "max_level": 42,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_GRAVELER"
               },
               {
                 "min_level": 30,
@@ -9054,9 +9054,9 @@
                 "species": "SPECIES_SLUGMA"
               },
               {
-                "min_level": 42,
+                "min_level": 38,
                 "max_level": 42,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_DUGTRIO_ALOLA"
               },
               {
                 "min_level": 30,
@@ -9726,7 +9726,7 @@
               {
                 "min_level": 45,
                 "max_level": 45,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_VULPIX_ALOLA"
               },
               {
                 "min_level": 45,
@@ -9795,7 +9795,7 @@
               {
                 "min_level": 45,
                 "max_level": 45,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_SANDSHREW_ALOLA"
               },
               {
                 "min_level": 45,
@@ -9864,7 +9864,7 @@
               {
                 "min_level": 45,
                 "max_level": 45,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_VULPIX_ALOLA"
               },
               {
                 "min_level": 45,
@@ -9933,7 +9933,7 @@
               {
                 "min_level": 45,
                 "max_level": 45,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_SANDSHREW_ALOLA"
               },
               {
                 "min_level": 45,
@@ -10458,12 +10458,12 @@
               {
                 "min_level": 46,
                 "max_level": 46,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 43,
@@ -10473,12 +10473,12 @@
               {
                 "min_level": 38,
                 "max_level": 38,
-                "species": "SPECIES_GASTLY"
+                "species": "SPECIES_DUSCLOPS"
               },
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 50,
@@ -10527,12 +10527,12 @@
               {
                 "min_level": 46,
                 "max_level": 46,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 43,
@@ -10542,12 +10542,12 @@
               {
                 "min_level": 38,
                 "max_level": 38,
-                "species": "SPECIES_GASTLY"
+                "species": "SPECIES_BANETTE"
               },
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 50,
@@ -10576,7 +10576,7 @@
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM2",
           "base_label": "sFiveIslandLostCaveRoom2_FireRed",
           "land_mons": {
-            "encounter_rate": 2,
+            "encounter_rate": 1,
             "mons": [
               {
                 "min_level": 40,
@@ -10596,12 +10596,12 @@
               {
                 "min_level": 46,
                 "max_level": 46,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 43,
@@ -10611,12 +10611,12 @@
               {
                 "min_level": 38,
                 "max_level": 38,
-                "species": "SPECIES_GASTLY"
+                "species": "SPECIES_DUSCLOPS"
               },
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 50,
@@ -10645,7 +10645,7 @@
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM2",
           "base_label": "sFiveIslandLostCaveRoom2_LeafGreen",
           "land_mons": {
-            "encounter_rate": 2,
+            "encounter_rate": 1,
             "mons": [
               {
                 "min_level": 40,
@@ -10665,12 +10665,12 @@
               {
                 "min_level": 46,
                 "max_level": 46,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 43,
@@ -10680,12 +10680,12 @@
               {
                 "min_level": 38,
                 "max_level": 38,
-                "species": "SPECIES_GASTLY"
+                "species": "SPECIES_BANETTE"
               },
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 50,
@@ -10714,7 +10714,7 @@
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM3",
           "base_label": "sFiveIslandLostCaveRoom3_FireRed",
           "land_mons": {
-            "encounter_rate": 3,
+            "encounter_rate": 1,
             "mons": [
               {
                 "min_level": 40,
@@ -10734,12 +10734,12 @@
               {
                 "min_level": 46,
                 "max_level": 46,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 43,
@@ -10749,12 +10749,12 @@
               {
                 "min_level": 38,
                 "max_level": 38,
-                "species": "SPECIES_GASTLY"
+                "species": "SPECIES_DUSCLOPS"
               },
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 50,
@@ -10783,7 +10783,7 @@
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM3",
           "base_label": "sFiveIslandLostCaveRoom3_LeafGreen",
           "land_mons": {
-            "encounter_rate": 3,
+            "encounter_rate": 1,
             "mons": [
               {
                 "min_level": 40,
@@ -10803,12 +10803,12 @@
               {
                 "min_level": 46,
                 "max_level": 46,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 43,
@@ -10818,12 +10818,12 @@
               {
                 "min_level": 38,
                 "max_level": 38,
-                "species": "SPECIES_GASTLY"
+                "species": "SPECIES_BANETTE"
               },
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 50,
@@ -10852,7 +10852,7 @@
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM4",
           "base_label": "sFiveIslandLostCaveRoom4_FireRed",
           "land_mons": {
-            "encounter_rate": 4,
+            "encounter_rate": 1,
             "mons": [
               {
                 "min_level": 40,
@@ -10872,12 +10872,12 @@
               {
                 "min_level": 46,
                 "max_level": 46,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 43,
@@ -10887,12 +10887,12 @@
               {
                 "min_level": 38,
                 "max_level": 38,
-                "species": "SPECIES_GASTLY"
+                "species": "SPECIES_DUSCLOPS"
               },
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 50,
@@ -10921,7 +10921,7 @@
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM4",
           "base_label": "sFiveIslandLostCaveRoom4_LeafGreen",
           "land_mons": {
-            "encounter_rate": 4,
+            "encounter_rate": 1,
             "mons": [
               {
                 "min_level": 40,
@@ -10941,12 +10941,12 @@
               {
                 "min_level": 46,
                 "max_level": 46,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 43,
@@ -10956,12 +10956,12 @@
               {
                 "min_level": 38,
                 "max_level": 38,
-                "species": "SPECIES_GASTLY"
+                "species": "SPECIES_BANETTE"
               },
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 50,
@@ -10990,7 +10990,7 @@
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM5",
           "base_label": "sFiveIslandLostCaveRoom5_FireRed",
           "land_mons": {
-            "encounter_rate": 5,
+            "encounter_rate": 1,
             "mons": [
               {
                 "min_level": 40,
@@ -11010,12 +11010,12 @@
               {
                 "min_level": 46,
                 "max_level": 46,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 43,
@@ -11025,12 +11025,12 @@
               {
                 "min_level": 38,
                 "max_level": 38,
-                "species": "SPECIES_GASTLY"
+                "species": "SPECIES_DUSCLOPS"
               },
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 50,
@@ -11059,7 +11059,7 @@
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM5",
           "base_label": "sFiveIslandLostCaveRoom5_LeafGreen",
           "land_mons": {
-            "encounter_rate": 5,
+            "encounter_rate": 1,
             "mons": [
               {
                 "min_level": 40,
@@ -11079,12 +11079,12 @@
               {
                 "min_level": 46,
                 "max_level": 46,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 43,
@@ -11094,12 +11094,12 @@
               {
                 "min_level": 38,
                 "max_level": 38,
-                "species": "SPECIES_GASTLY"
+                "species": "SPECIES_BANETTE"
               },
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 50,
@@ -11128,7 +11128,7 @@
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM6",
           "base_label": "sFiveIslandLostCaveRoom6_FireRed",
           "land_mons": {
-            "encounter_rate": 6,
+            "encounter_rate": 1,
             "mons": [
               {
                 "min_level": 40,
@@ -11148,12 +11148,12 @@
               {
                 "min_level": 46,
                 "max_level": 46,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 43,
@@ -11163,12 +11163,12 @@
               {
                 "min_level": 38,
                 "max_level": 38,
-                "species": "SPECIES_GASTLY"
+                "species": "SPECIES_DUSCLOPS"
               },
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 50,
@@ -11197,7 +11197,7 @@
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM6",
           "base_label": "sFiveIslandLostCaveRoom6_LeafGreen",
           "land_mons": {
-            "encounter_rate": 6,
+            "encounter_rate": 1,
             "mons": [
               {
                 "min_level": 40,
@@ -11217,12 +11217,12 @@
               {
                 "min_level": 46,
                 "max_level": 46,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 43,
@@ -11232,12 +11232,12 @@
               {
                 "min_level": 38,
                 "max_level": 38,
-                "species": "SPECIES_GASTLY"
+                "species": "SPECIES_BANETTE"
               },
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 50,
@@ -11266,7 +11266,7 @@
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM7",
           "base_label": "sFiveIslandLostCaveRoom7_FireRed",
           "land_mons": {
-            "encounter_rate": 7,
+            "encounter_rate": 1,
             "mons": [
               {
                 "min_level": 40,
@@ -11286,12 +11286,12 @@
               {
                 "min_level": 46,
                 "max_level": 46,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 43,
@@ -11301,12 +11301,12 @@
               {
                 "min_level": 38,
                 "max_level": 38,
-                "species": "SPECIES_GASTLY"
+                "species": "SPECIES_DUSCLOPS"
               },
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 50,
@@ -11335,7 +11335,7 @@
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM7",
           "base_label": "sFiveIslandLostCaveRoom7_LeafGreen",
           "land_mons": {
-            "encounter_rate": 7,
+            "encounter_rate": 1,
             "mons": [
               {
                 "min_level": 40,
@@ -11355,12 +11355,12 @@
               {
                 "min_level": 46,
                 "max_level": 46,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 43,
@@ -11370,12 +11370,12 @@
               {
                 "min_level": 38,
                 "max_level": 38,
-                "species": "SPECIES_GASTLY"
+                "species": "SPECIES_BANETTE"
               },
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 50,
@@ -11404,7 +11404,7 @@
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM8",
           "base_label": "sFiveIslandLostCaveRoom8_FireRed",
           "land_mons": {
-            "encounter_rate": 8,
+            "encounter_rate": 1,
             "mons": [
               {
                 "min_level": 40,
@@ -11424,12 +11424,12 @@
               {
                 "min_level": 46,
                 "max_level": 46,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 43,
@@ -11439,12 +11439,12 @@
               {
                 "min_level": 38,
                 "max_level": 38,
-                "species": "SPECIES_GASTLY"
+                "species": "SPECIES_DUSCLOPS"
               },
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 50,
@@ -11473,7 +11473,7 @@
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM8",
           "base_label": "sFiveIslandLostCaveRoom8_LeafGreen",
           "land_mons": {
-            "encounter_rate": 8,
+            "encounter_rate": 1,
             "mons": [
               {
                 "min_level": 40,
@@ -11493,12 +11493,12 @@
               {
                 "min_level": 46,
                 "max_level": 46,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 43,
@@ -11508,12 +11508,12 @@
               {
                 "min_level": 38,
                 "max_level": 38,
-                "species": "SPECIES_GASTLY"
+                "species": "SPECIES_BANETTE"
               },
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 50,
@@ -11542,7 +11542,7 @@
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM9",
           "base_label": "sFiveIslandLostCaveRoom9_FireRed",
           "land_mons": {
-            "encounter_rate": 9,
+            "encounter_rate": 1,
             "mons": [
               {
                 "min_level": 40,
@@ -11562,12 +11562,12 @@
               {
                 "min_level": 46,
                 "max_level": 46,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 43,
@@ -11577,12 +11577,12 @@
               {
                 "min_level": 38,
                 "max_level": 38,
-                "species": "SPECIES_GASTLY"
+                "species": "SPECIES_DUSCLOPS"
               },
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 50,
@@ -11611,7 +11611,7 @@
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM9",
           "base_label": "sFiveIslandLostCaveRoom9_LeafGreen",
           "land_mons": {
-            "encounter_rate": 9,
+            "encounter_rate": 1,
             "mons": [
               {
                 "min_level": 40,
@@ -11631,12 +11631,12 @@
               {
                 "min_level": 46,
                 "max_level": 46,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 43,
@@ -11646,12 +11646,12 @@
               {
                 "min_level": 38,
                 "max_level": 38,
-                "species": "SPECIES_GASTLY"
+                "species": "SPECIES_BANETTE"
               },
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 50,
@@ -11680,7 +11680,7 @@
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM10",
           "base_label": "sFiveIslandLostCaveRoom10_FireRed",
           "land_mons": {
-            "encounter_rate": 10,
+            "encounter_rate": 1,
             "mons": [
               {
                 "min_level": 40,
@@ -11700,12 +11700,12 @@
               {
                 "min_level": 46,
                 "max_level": 46,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 43,
@@ -11715,12 +11715,12 @@
               {
                 "min_level": 38,
                 "max_level": 38,
-                "species": "SPECIES_GASTLY"
+                "species": "SPECIES_DUSCLOPS"
               },
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 50,
@@ -11749,7 +11749,7 @@
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM10",
           "base_label": "sFiveIslandLostCaveRoom10_LeafGreen",
           "land_mons": {
-            "encounter_rate": 10,
+            "encounter_rate": 1,
             "mons": [
               {
                 "min_level": 40,
@@ -11769,12 +11769,12 @@
               {
                 "min_level": 46,
                 "max_level": 46,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 43,
@@ -11784,12 +11784,12 @@
               {
                 "min_level": 38,
                 "max_level": 38,
-                "species": "SPECIES_GASTLY"
+                "species": "SPECIES_BANETTE"
               },
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 50,
@@ -11828,7 +11828,7 @@
               {
                 "min_level": 37,
                 "max_level": 37,
-                "species": "SPECIES_ZUBAT"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 44,
@@ -11843,7 +11843,7 @@
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_MAWILE"
               },
               {
                 "min_level": 15,
@@ -11858,12 +11858,12 @@
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSCLOPS"
               },
               {
                 "min_level": 50,
                 "max_level": 50,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 22,
@@ -11873,7 +11873,7 @@
               {
                 "min_level": 52,
                 "max_level": 52,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_BANETTE"
               },
               {
                 "min_level": 22,
@@ -11897,7 +11897,7 @@
               {
                 "min_level": 37,
                 "max_level": 37,
-                "species": "SPECIES_ZUBAT"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 44,
@@ -11912,7 +11912,7 @@
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_SABLEYE"
               },
               {
                 "min_level": 15,
@@ -11927,12 +11927,12 @@
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_BANETTE"
               },
               {
                 "min_level": 50,
                 "max_level": 50,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 22,
@@ -11942,7 +11942,7 @@
               {
                 "min_level": 52,
                 "max_level": 52,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSCLOPS"
               },
               {
                 "min_level": 22,
@@ -11966,7 +11966,7 @@
               {
                 "min_level": 37,
                 "max_level": 37,
-                "species": "SPECIES_ZUBAT"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 44,
@@ -11981,42 +11981,42 @@
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_SABLEYE"
               },
               {
                 "min_level": 15,
                 "max_level": 15,
-                "species": "SPECIES_MURKROW"
+                "species": "SPECIES_MISDREAVUS"
               },
               {
                 "min_level": 20,
                 "max_level": 20,
-                "species": "SPECIES_MURKROW"
+                "species": "SPECIES_MISDREAVUS"
               },
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_BANETTE"
               },
               {
                 "min_level": 50,
                 "max_level": 50,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 22,
                 "max_level": 22,
-                "species": "SPECIES_MURKROW"
+                "species": "SPECIES_MISDREAVUS"
               },
               {
                 "min_level": 52,
                 "max_level": 52,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSCLOPS"
               },
               {
                 "min_level": 22,
                 "max_level": 22,
-                "species": "SPECIES_MURKROW"
+                "species": "SPECIES_MISDREAVUS"
               }
             ]
           }
@@ -12035,7 +12035,7 @@
               {
                 "min_level": 37,
                 "max_level": 37,
-                "species": "SPECIES_ZUBAT"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 44,
@@ -12050,7 +12050,7 @@
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_SABLEYE"
               },
               {
                 "min_level": 15,
@@ -12065,12 +12065,12 @@
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_BANETTE"
               },
               {
                 "min_level": 50,
                 "max_level": 50,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 22,
@@ -12080,7 +12080,7 @@
               {
                 "min_level": 52,
                 "max_level": 52,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSCLOPS"
               },
               {
                 "min_level": 22,
@@ -12104,7 +12104,7 @@
               {
                 "min_level": 37,
                 "max_level": 37,
-                "species": "SPECIES_ZUBAT"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 44,
@@ -12119,42 +12119,42 @@
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_SABLEYE"
               },
               {
                 "min_level": 15,
                 "max_level": 15,
-                "species": "SPECIES_MURKROW"
+                "species": "SPECIES_MISDREAVUS"
               },
               {
                 "min_level": 20,
                 "max_level": 20,
-                "species": "SPECIES_MURKROW"
+                "species": "SPECIES_MISDREAVUS"
               },
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_BANETTE"
               },
               {
                 "min_level": 50,
                 "max_level": 50,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 22,
                 "max_level": 22,
-                "species": "SPECIES_MURKROW"
+                "species": "SPECIES_MISDREAVUS"
               },
               {
                 "min_level": 52,
                 "max_level": 52,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSCLOPS"
               },
               {
                 "min_level": 22,
                 "max_level": 22,
-                "species": "SPECIES_MURKROW"
+                "species": "SPECIES_MISDREAVUS"
               }
             ]
           }
@@ -12173,7 +12173,7 @@
               {
                 "min_level": 37,
                 "max_level": 37,
-                "species": "SPECIES_ZUBAT"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 44,
@@ -12188,7 +12188,7 @@
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_SABLEYE"
               },
               {
                 "min_level": 15,
@@ -12203,12 +12203,12 @@
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_BANETTE"
               },
               {
                 "min_level": 50,
                 "max_level": 50,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 22,
@@ -12218,7 +12218,7 @@
               {
                 "min_level": 52,
                 "max_level": 52,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSCLOPS"
               },
               {
                 "min_level": 22,
@@ -12242,7 +12242,7 @@
               {
                 "min_level": 37,
                 "max_level": 37,
-                "species": "SPECIES_ZUBAT"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 44,
@@ -12257,42 +12257,42 @@
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_SABLEYE"
               },
               {
                 "min_level": 15,
                 "max_level": 15,
-                "species": "SPECIES_MURKROW"
+                "species": "SPECIES_MISDREAVUS"
               },
               {
                 "min_level": 20,
                 "max_level": 20,
-                "species": "SPECIES_MURKROW"
+                "species": "SPECIES_MISDREAVUS"
               },
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_BANETTE"
               },
               {
                 "min_level": 50,
                 "max_level": 50,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 22,
                 "max_level": 22,
-                "species": "SPECIES_MURKROW"
+                "species": "SPECIES_MISDREAVUS"
               },
               {
                 "min_level": 52,
                 "max_level": 52,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSCLOPS"
               },
               {
                 "min_level": 22,
                 "max_level": 22,
-                "species": "SPECIES_MURKROW"
+                "species": "SPECIES_MISDREAVUS"
               }
             ]
           }
@@ -12311,7 +12311,7 @@
               {
                 "min_level": 37,
                 "max_level": 37,
-                "species": "SPECIES_ZUBAT"
+                "species": "SPECIES_SHUPPET"
               },
               {
                 "min_level": 44,
@@ -12326,7 +12326,7 @@
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_SABLEYE"
               },
               {
                 "min_level": 15,
@@ -12341,12 +12341,12 @@
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_BANETTE"
               },
               {
                 "min_level": 50,
                 "max_level": 50,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSKULL"
               },
               {
                 "min_level": 22,
@@ -12356,7 +12356,7 @@
               {
                 "min_level": 52,
                 "max_level": 52,
-                "species": "SPECIES_HAUNTER"
+                "species": "SPECIES_DUSCLOPS"
               },
               {
                 "min_level": 22,
@@ -14159,9 +14159,9 @@
             "encounter_rate": 21,
             "mons": [
               {
-                "min_level": 44,
+                "min_level": 38,
                 "max_level": 44,
-                "species": "SPECIES_PIDGEY"
+                "species": "SPECIES_MAREEP"
               },
               {
                 "min_level": 10,
@@ -14186,7 +14186,7 @@
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_MEOWTH"
+                "species": "SPECIES_SNUBBULL"
               },
               {
                 "min_level": 15,
@@ -14199,24 +14199,24 @@
                 "species": "SPECIES_PSYDUCK"
               },
               {
-                "min_level": 50,
+                "min_level": 42,
                 "max_level": 50,
-                "species": "SPECIES_PIDGEOTTO"
+                "species": "SPECIES_FLAAFFY"
               },
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_PERSIAN"
+                "species": "SPECIES_MILTANK"
               },
               {
                 "min_level": 50,
                 "max_level": 50,
-                "species": "SPECIES_PIDGEOTTO"
+                "species": "SPECIES_GRANBULL"
               },
               {
                 "min_level": 50,
                 "max_level": 50,
-                "species": "SPECIES_PERSIAN"
+                "species": "SPECIES_GRANBULL"
               }
             ]
           },
@@ -14313,9 +14313,9 @@
             "encounter_rate": 21,
             "mons": [
               {
-                "min_level": 44,
+                "min_level": 38,
                 "max_level": 44,
-                "species": "SPECIES_PIDGEY"
+                "species": "SPECIES_MAREEP"
               },
               {
                 "min_level": 10,
@@ -14340,7 +14340,7 @@
               {
                 "min_level": 41,
                 "max_level": 41,
-                "species": "SPECIES_MEOWTH"
+                "species": "SPECIES_SNUBBULL"
               },
               {
                 "min_level": 15,
@@ -14353,24 +14353,24 @@
                 "species": "SPECIES_SLOWPOKE"
               },
               {
-                "min_level": 50,
+                "min_level": 42,
                 "max_level": 50,
-                "species": "SPECIES_PIDGEOTTO"
+                "species": "SPECIES_FLAAFFY"
               },
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_PERSIAN"
+                "species": "SPECIES_MILTANK"
               },
               {
                 "min_level": 50,
                 "max_level": 50,
-                "species": "SPECIES_PIDGEOTTO"
+                "species": "SPECIES_GRANBULL"
               },
               {
                 "min_level": 50,
                 "max_level": 50,
-                "species": "SPECIES_PERSIAN"
+                "species": "SPECIES_GRANBULL"
               }
             ]
           },
@@ -14474,17 +14474,17 @@
               {
                 "min_level": 12,
                 "max_level": 12,
-                "species": "SPECIES_HOPPIP"
+                "species": "SPECIES_SUNKERN"
               },
               {
                 "min_level": 8,
                 "max_level": 8,
-                "species": "SPECIES_HOPPIP"
+                "species": "SPECIES_SUNKERN"
               },
               {
-                "min_level": 14,
+                "min_level": 13,
                 "max_level": 14,
-                "species": "SPECIES_HOPPIP"
+                "species": "SPECIES_SUNKERN"
               },
               {
                 "min_level": 10,
@@ -14628,17 +14628,17 @@
               {
                 "min_level": 12,
                 "max_level": 12,
-                "species": "SPECIES_HOPPIP"
+                "species": "SPECIES_SUNKERN"
               },
               {
                 "min_level": 8,
                 "max_level": 8,
-                "species": "SPECIES_HOPPIP"
+                "species": "SPECIES_SUNKERN"
               },
               {
-                "min_level": 14,
+                "min_level": 13,
                 "max_level": 14,
-                "species": "SPECIES_HOPPIP"
+                "species": "SPECIES_SUNKERN"
               },
               {
                 "min_level": 10,
@@ -15843,7 +15843,7 @@
               {
                 "min_level": 20,
                 "max_level": 35,
-                "species": "SPECIES_TENTACOOL"
+                "species": "SPECIES_MANTYKE"
               },
               {
                 "min_level": 35,
@@ -15957,7 +15957,7 @@
               {
                 "min_level": 50,
                 "max_level": 50,
-                "species": "SPECIES_FEAROW"
+                "species": "SPECIES_STANTLER"
               },
               {
                 "min_level": 41,
@@ -16026,7 +16026,7 @@
               {
                 "min_level": 50,
                 "max_level": 50,
-                "species": "SPECIES_FEAROW"
+                "species": "SPECIES_STANTLER"
               },
               {
                 "min_level": 41,
@@ -16065,7 +16065,7 @@
               {
                 "min_level": 46,
                 "max_level": 46,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_GEODUDE_ALOLA"
               },
               {
                 "min_level": 15,
@@ -16080,7 +16080,7 @@
               {
                 "min_level": 50,
                 "max_level": 50,
-                "species": "SPECIES_FEAROW"
+                "species": "SPECIES_GLIGAR"
               },
               {
                 "min_level": 52,
@@ -16130,27 +16130,27 @@
               {
                 "min_level": 25,
                 "max_level": 35,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_GEODUDE_ALOLA"
               },
               {
                 "min_level": 30,
                 "max_level": 45,
-                "species": "SPECIES_GRAVELER"
+                "species": "SPECIES_GRAVELER_ALOLA"
               },
               {
                 "min_level": 35,
                 "max_level": 50,
-                "species": "SPECIES_GRAVELER"
+                "species": "SPECIES_GRAVELER_ALOLA"
               },
               {
                 "min_level": 30,
                 "max_level": 40,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_GEODUDE_ALOLA"
               },
               {
                 "min_level": 30,
                 "max_level": 40,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_GEODUDE_ALOLA"
               }
             ]
           }
@@ -16164,7 +16164,7 @@
               {
                 "min_level": 46,
                 "max_level": 46,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_GEODUDE_ALOLA"
               },
               {
                 "min_level": 15,
@@ -16179,7 +16179,7 @@
               {
                 "min_level": 50,
                 "max_level": 50,
-                "species": "SPECIES_FEAROW"
+                "species": "SPECIES_TEDDIURSA"
               },
               {
                 "min_level": 52,
@@ -16229,27 +16229,27 @@
               {
                 "min_level": 25,
                 "max_level": 35,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_GEODUDE_ALOLA"
               },
               {
                 "min_level": 30,
                 "max_level": 45,
-                "species": "SPECIES_GRAVELER"
+                "species": "SPECIES_GRAVELER_ALOLA"
               },
               {
                 "min_level": 35,
                 "max_level": 50,
-                "species": "SPECIES_GRAVELER"
+                "species": "SPECIES_GRAVELER_ALOLA"
               },
               {
                 "min_level": 30,
                 "max_level": 40,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_GEODUDE_ALOLA"
               },
               {
                 "min_level": 30,
                 "max_level": 40,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_GEODUDE_ALOLA"
               }
             ]
           }
@@ -16357,7 +16357,7 @@
               {
                 "min_level": 20,
                 "max_level": 35,
-                "species": "SPECIES_TENTACOOL"
+                "species": "SPECIES_MANTYKE"
               },
               {
                 "min_level": 35,
@@ -18672,9 +18672,9 @@
                 "species": "SPECIES_ODDISH"
               },
               {
-                "min_level": 27,
-                "max_level": 27,
-                "species": "SPECIES_PIDGEY"
+                "min_level": 26,
+                "max_level": 31,
+                "species": "SPECIES_FARFETCHD"
               },
               {
                 "min_level": 23,
@@ -18826,9 +18826,9 @@
                 "species": "SPECIES_BELLSPROUT"
               },
               {
-                "min_level": 27,
-                "max_level": 27,
-                "species": "SPECIES_PIDGEY"
+                "min_level": 26,
+                "max_level": 31,
+                "species": "SPECIES_FARFETCHD"
               },
               {
                 "min_level": 23,
@@ -20356,7 +20356,7 @@
               {
                 "min_level": 28,
                 "max_level": 28,
-                "species": "SPECIES_TANGELA"
+                "species": "SPECIES_MR_MIME"
               }
             ]
           },
@@ -20510,7 +20510,7 @@
               {
                 "min_level": 28,
                 "max_level": 28,
-                "species": "SPECIES_TANGELA"
+                "species": "SPECIES_MR_MIME"
               }
             ]
           },
@@ -20664,7 +20664,7 @@
               {
                 "min_level": 28,
                 "max_level": 28,
-                "species": "SPECIES_TANGELA"
+                "species": "SPECIES_MR_MIME"
               }
             ]
           },
@@ -20818,7 +20818,7 @@
               {
                 "min_level": 28,
                 "max_level": 28,
-                "species": "SPECIES_TANGELA"
+                "species": "SPECIES_MR_MIME"
               }
             ]
           },
@@ -23583,17 +23583,17 @@
               {
                 "min_level": 15,
                 "max_level": 25,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_SURSKIT"
               },
               {
                 "min_level": 15,
                 "max_level": 25,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_SURSKIT"
               },
               {
                 "min_level": 15,
                 "max_level": 25,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_SURSKIT"
               }
             ]
           },
@@ -23672,17 +23672,17 @@
               {
                 "min_level": 15,
                 "max_level": 25,
-                "species": "SPECIES_MARILL"
+                "species": "SPECIES_SURSKIT"
               },
               {
                 "min_level": 15,
                 "max_level": 25,
-                "species": "SPECIES_MARILL"
+                "species": "SPECIES_SURSKIT"
               },
               {
                 "min_level": 15,
                 "max_level": 25,
-                "species": "SPECIES_MARILL"
+                "species": "SPECIES_SURSKIT"
               }
             ]
           },

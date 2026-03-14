@@ -8,3 +8,7 @@ Route2_EventScript_RouteSign::
 Route2_EventScript_DiglettsCaveSign::
 	msgbox Route2_Text_DiglettsCave, MSGBOX_SIGN
 	end
+
+Route2_EventScript_TestSign::
+	msgbox Route2_Text_TestSign, MSGBOX_SIGN
+	end

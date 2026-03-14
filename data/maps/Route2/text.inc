@@ -5,3 +5,6 @@ Route2_Text_RouteSign::
 Route2_Text_DiglettsCave::
     .string "Diglett's Cave$"
 
+Route2_Text_TestSign::
+    .string "Test sign\n"
+    .string "Bottom text$"

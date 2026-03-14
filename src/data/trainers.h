@@ -21,8 +21,6 @@
         .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 7
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
         .partySize = 0,
         .party = (const struct TrainerMon[])
         {
@@ -45,8 +43,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 16
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_LEADER_ARCHIE,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -58,6 +54,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 19
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -80,8 +77,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 29
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -93,6 +88,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 32
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -115,8 +111,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 42
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -128,6 +122,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 45
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -150,8 +145,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 55
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_AROMA_LADY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -163,6 +156,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 58
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -185,8 +179,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 68
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_RUIN_MANIAC,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -198,6 +190,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 71
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -220,8 +213,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 81
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_INTERVIEWER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -233,6 +224,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 84
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -255,8 +247,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 94
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_TUBER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -268,6 +258,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 97
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -290,8 +281,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 107
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_TUBER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -303,6 +292,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 110
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -325,8 +315,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 120
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_COOLTRAINER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -338,6 +326,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 123
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -360,8 +349,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 133
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_COOLTRAINER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -373,6 +360,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 136
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -395,8 +383,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 146
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_HEX_MANIAC,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -408,6 +394,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 149
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -430,8 +417,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 159
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_LADY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -443,6 +428,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 162
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -465,8 +451,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 172
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_BEAUTY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -478,6 +462,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 175
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -500,8 +485,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 185
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RICH_BOY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -513,6 +496,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 188
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -535,8 +519,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 198
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_POKEMANIAC,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -548,6 +530,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 201
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -570,8 +553,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 211
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_SWIMMER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -583,6 +564,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 214
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -605,8 +587,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 224
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_BLACK_BELT,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -618,6 +598,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 227
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -640,8 +621,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 237
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_GUITARIST,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -653,6 +632,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 240
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -675,8 +655,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 250
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_KINDLER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -688,6 +666,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 253
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -710,8 +689,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 263
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_CAMPER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -723,6 +700,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 266
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -745,8 +723,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 276
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_MANIAC,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -758,6 +734,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 279
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -780,8 +757,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 289
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_PSYCHIC_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -793,6 +768,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 292
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -815,8 +791,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 302
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_PSYCHIC_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -828,6 +802,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 305
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -850,8 +825,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 315
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_GENTLEMAN,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -863,6 +836,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 318
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -885,8 +859,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 328
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ELITE_FOUR_SIDNEY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -898,6 +870,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 331
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -920,8 +893,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 341
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ELITE_FOUR_PHOEBE,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -933,6 +904,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 344
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -955,8 +927,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 354
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_ROXANNE,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -968,6 +938,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 357
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -990,8 +961,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 367
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_BRAWLY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1003,6 +972,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 370
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1025,8 +995,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 380
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_TATE_AND_LIZA,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1038,6 +1006,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 383
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1060,8 +1029,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 393
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SCHOOL_KID_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1073,6 +1040,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 396
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1095,8 +1063,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 406
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SCHOOL_KID_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1108,6 +1074,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 409
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1130,8 +1097,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 419
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SR_AND_JR,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1143,6 +1108,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 422
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1165,8 +1131,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 432
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEFAN_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1178,6 +1142,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 435
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1200,8 +1165,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 445
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEFAN_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1213,6 +1176,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 448
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1235,8 +1199,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 458
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_EXPERT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1248,6 +1210,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 461
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1270,8 +1233,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 471
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_EXPERT_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1283,6 +1244,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 474
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1305,8 +1267,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 484
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_YOUNGSTER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1318,6 +1278,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 487
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1331,7 +1292,7 @@
 #line 492
         .trainerClass = TRAINER_CLASS_RS_CHAMPION,
 #line 493
-        .trainerPic = TRAINER_PIC_CHAMPION_STEVEN,
+        .trainerPic = TRAINER_PIC_STEVEN,
 #line 494
         .gender = TRAINER_GENDER_MALE,
 #line 495
@@ -1340,8 +1301,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 497
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHAMPION_STEVEN,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1353,6 +1312,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 500
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1375,8 +1335,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 510
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_FISHERMAN,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1388,6 +1346,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 513
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1410,8 +1369,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 523
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CYCLING_TRIATHLETE_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1423,6 +1380,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 526
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1445,8 +1403,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 536
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CYCLING_TRIATHLETE_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1458,6 +1414,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 539
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1480,8 +1437,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 549
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RUNNING_TRIATHLETE_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1493,6 +1448,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 552
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1515,8 +1471,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 562
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RUNNING_TRIATHLETE_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1528,6 +1482,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 565
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1550,8 +1505,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 575
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMING_TRIATHLETE_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1563,6 +1516,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 578
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1585,8 +1539,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 588
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMING_TRIATHLETE_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1598,6 +1550,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 591
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1620,8 +1573,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 601
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_DRAGON_TAMER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1633,6 +1584,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 604
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1655,8 +1607,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 614
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_BIRD_KEEPER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1668,6 +1618,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 617
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1690,8 +1641,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 627
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_NINJA_BOY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1703,6 +1652,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 630
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1725,8 +1675,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 640
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BATTLE_GIRL,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1738,6 +1686,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 643
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1760,8 +1709,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 653
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PARASOL_LADY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1773,6 +1720,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 656
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1795,8 +1743,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 666
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_SWIMMER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1808,6 +1754,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 669
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1830,8 +1777,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 679
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_PICNICKER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1843,6 +1788,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 682
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1865,8 +1811,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 692
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_TWINS,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1878,6 +1822,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 695
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1900,8 +1845,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 705
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_SAILOR,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1913,6 +1856,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 708
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1935,8 +1879,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 718
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_YOUNGSTER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1948,6 +1890,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 721
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1970,8 +1913,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 731
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_YOUNGSTER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1983,6 +1924,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 734
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2005,8 +1947,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 744
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COLLECTOR,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2018,6 +1958,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 747
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2040,8 +1981,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 757
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_WALLY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2053,6 +1992,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 760
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2066,7 +2006,7 @@
 #line 765
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER,
 #line 766
-        .trainerPic = TRAINER_PIC_RS_BRENDAN_1,
+        .trainerPic = TRAINER_PIC_RS_BRENDAN,
 #line 767
         .gender = TRAINER_GENDER_MALE,
 #line 768
@@ -2075,8 +2015,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 770
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_BRENDAN_1,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2088,6 +2026,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 773
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2101,7 +2040,7 @@
 #line 778
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER,
 #line 779
-        .trainerPic = TRAINER_PIC_RS_BRENDAN_1,
+        .trainerPic = TRAINER_PIC_RS_BRENDAN,
 #line 780
         .gender = TRAINER_GENDER_MALE,
 #line 781
@@ -2110,8 +2049,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 783
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_BRENDAN_1,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2123,6 +2060,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 786
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2136,7 +2074,7 @@
 #line 791
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER,
 #line 792
-        .trainerPic = TRAINER_PIC_RS_BRENDAN_1,
+        .trainerPic = TRAINER_PIC_RS_BRENDAN,
 #line 793
         .gender = TRAINER_GENDER_MALE,
 #line 794
@@ -2145,8 +2083,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 796
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_BRENDAN_1,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2158,6 +2094,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 799
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2171,7 +2108,7 @@
 #line 804
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER,
 #line 805
-        .trainerPic = TRAINER_PIC_RS_MAY_1,
+        .trainerPic = TRAINER_PIC_RS_MAY,
 #line 806
         .gender = TRAINER_GENDER_MALE,
 #line 807
@@ -2180,8 +2117,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 809
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_MAY_1,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2193,6 +2128,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 812
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2206,7 +2142,7 @@
 #line 817
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER,
 #line 818
-        .trainerPic = TRAINER_PIC_RS_MAY_1,
+        .trainerPic = TRAINER_PIC_RS_MAY,
 #line 819
         .gender = TRAINER_GENDER_MALE,
 #line 820
@@ -2215,8 +2151,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 822
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_MAY_1,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2228,6 +2162,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 825
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2241,7 +2176,7 @@
 #line 830
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER,
 #line 831
-        .trainerPic = TRAINER_PIC_RS_MAY_1,
+        .trainerPic = TRAINER_PIC_RS_MAY,
 #line 832
         .gender = TRAINER_GENDER_MALE,
 #line 833
@@ -2250,8 +2185,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 835
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_MAY_1,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2263,6 +2196,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 838
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2285,8 +2219,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 848
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_POKEMON_BREEDER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2298,6 +2230,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 851
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2320,8 +2253,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 861
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_POKEMON_BREEDER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2333,6 +2264,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 864
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2355,8 +2287,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 874
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_POKEMON_RANGER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2368,6 +2298,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 877
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2390,8 +2321,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 887
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_POKEMON_RANGER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2403,6 +2332,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 890
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2425,8 +2355,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 900
         .aiFlags = AI_FLAG_BASIC_TRAINER,
-#line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_LEADER_MAXIE,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -2438,6 +2366,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 903
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2449,6 +2378,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 907
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2460,6 +2390,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 911
             .lvl = 44,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2482,8 +2413,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 921
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2495,6 +2424,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 924
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2517,8 +2447,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 934
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2530,6 +2458,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 937
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2552,8 +2481,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 947
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_LASS,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2565,6 +2492,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 950
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2587,8 +2515,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 960
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_BUG_CATCHER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2600,6 +2526,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 963
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2622,8 +2549,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 973
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_HIKER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2635,6 +2560,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 976
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2657,8 +2583,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 986
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_YOUNG_COUPLE,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -2670,6 +2594,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 989
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2681,6 +2606,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 993
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2703,8 +2629,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 1003
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_OLD_COUPLE,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2716,6 +2640,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1006
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2738,8 +2663,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 1016
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_SIS_AND_BRO,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2751,6 +2674,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1019
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2773,8 +2697,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1029
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_ADMIN_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2786,6 +2708,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1032
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2808,8 +2731,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1042
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_ADMIN_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2821,6 +2742,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1045
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2843,8 +2765,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1055
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_ADMIN_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -2856,6 +2776,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 1058
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2867,6 +2788,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 1062
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2878,6 +2800,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 1066
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2900,8 +2823,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1076
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_ADMIN_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2913,6 +2834,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1079
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2935,8 +2857,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1089
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_WATTSON,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2948,6 +2868,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1092
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -2970,8 +2891,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1102
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_FLANNERY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2983,6 +2902,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1105
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3005,8 +2925,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1115
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_NORMAN,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -3018,6 +2936,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1118
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3040,8 +2959,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1128
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_WINONA,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -3053,6 +2970,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1131
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3075,8 +2993,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1141
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_WALLACE,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -3088,6 +3004,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1144
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3110,8 +3027,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1154
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ELITE_FOUR_GLACIA,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -3123,6 +3038,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1157
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3145,8 +3061,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1167
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ELITE_FOUR_DRAKE,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -3158,6 +3072,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1170
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3180,8 +3095,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1180
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -3193,6 +3106,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1183
             .lvl = 11,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3204,6 +3118,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1187
             .lvl = 11,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3226,8 +3141,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1197
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -3239,6 +3152,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1200
             .lvl = 14,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3261,8 +3175,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1210
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -3274,6 +3186,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1213
             .lvl = 10,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3285,6 +3198,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1217
             .lvl = 10,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3296,6 +3210,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1221
             .lvl = 10,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3318,8 +3233,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1231
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -3331,6 +3244,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1234
             .lvl = 14,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3342,6 +3256,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1238
             .lvl = 14,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3364,8 +3279,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1248
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -3377,6 +3290,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1251
             .lvl = 15,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3388,6 +3302,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1255
             .lvl = 15,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3410,8 +3325,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1265
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -3423,6 +3336,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1268
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3445,8 +3359,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1278
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -3458,6 +3370,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1281
             .lvl = 14,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3469,6 +3382,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1285
             .lvl = 14,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3491,8 +3405,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1295
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -3504,6 +3416,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1298
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3526,8 +3439,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1308
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -3539,6 +3450,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1311
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3561,8 +3473,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1321
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -3574,6 +3484,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1324
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3585,6 +3496,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1328
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3607,8 +3519,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1338
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -3620,6 +3530,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1341
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3631,6 +3542,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1345
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3642,6 +3554,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1349
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3664,8 +3577,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1359
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -3677,6 +3588,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1362
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3688,6 +3600,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1366
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3710,8 +3623,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1376
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -3723,6 +3634,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 1379
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3734,6 +3646,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 1383
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3756,8 +3669,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1393
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -3769,6 +3680,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1396
             .lvl = 6,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3780,6 +3692,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1400
             .lvl = 6,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3802,8 +3715,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1410
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -3815,6 +3726,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1413
             .lvl = 7,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3826,6 +3738,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1417
             .lvl = 7,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3837,6 +3750,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1421
             .lvl = 7,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3859,8 +3773,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1431
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -3872,6 +3784,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1434
             .lvl = 9,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3894,8 +3807,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1444
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -3907,6 +3818,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1447
             .lvl = 10,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3918,6 +3830,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1451
             .lvl = 10,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3929,6 +3842,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1455
             .lvl = 10,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3951,8 +3865,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1465
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -3964,6 +3876,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1468
             .lvl = 9,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3975,6 +3888,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1472
             .lvl = 9,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3986,6 +3900,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1476
             .lvl = 9,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -3997,6 +3912,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1480
             .lvl = 9,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4019,8 +3935,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1490
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -4032,6 +3946,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1493
             .lvl = 11,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4043,6 +3958,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1497
             .lvl = 11,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4065,8 +3981,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1507
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -4078,6 +3992,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1510
             .lvl = 11,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4089,6 +4004,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1514
             .lvl = 11,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4111,8 +4027,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1524
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -4124,6 +4038,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1527
             .lvl = 10,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4135,6 +4050,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1531
             .lvl = 10,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4146,6 +4062,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1535
             .lvl = 10,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4168,8 +4085,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1545
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -4181,6 +4096,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1548
             .lvl = 10,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4192,6 +4108,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1552
             .lvl = 10,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4203,6 +4120,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1556
             .lvl = 10,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4214,6 +4132,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1560
             .lvl = 10,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4236,8 +4155,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1570
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -4249,6 +4166,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1573
             .lvl = 16,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4260,6 +4178,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1577
             .lvl = 16,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4271,6 +4190,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1581
             .lvl = 16,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4293,8 +4213,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1591
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -4306,6 +4224,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1594
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4328,8 +4247,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1604
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -4341,6 +4258,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1607
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4352,6 +4270,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1611
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4363,6 +4282,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1615
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4385,8 +4305,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1625
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -4398,6 +4316,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1628
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4409,6 +4328,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1632
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4431,8 +4351,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1642
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -4444,6 +4362,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1645
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4455,6 +4374,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1649
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4466,6 +4386,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1653
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4488,8 +4409,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1663
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -4501,6 +4420,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1666
             .lvl = 9,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4512,6 +4432,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1670
             .lvl = 9,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4534,8 +4455,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1680
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -4547,6 +4466,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1683
             .lvl = 10,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4558,6 +4478,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1687
             .lvl = 10,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4580,8 +4501,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1697
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -4593,6 +4512,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1700
             .lvl = 14,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4615,8 +4535,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1710
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -4628,6 +4546,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1713
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4639,6 +4558,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1717
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4650,6 +4570,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1721
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4672,8 +4593,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1731
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -4685,6 +4604,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1734
             .lvl = 11,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4696,6 +4616,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1738
             .lvl = 11,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4718,8 +4639,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1748
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -4731,6 +4650,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1751
             .lvl = 14,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4753,8 +4673,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1761
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -4766,6 +4684,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1764
             .lvl = 16,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4777,6 +4696,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1768
             .lvl = 16,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4799,8 +4719,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1778
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -4812,6 +4730,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1781
             .lvl = 12,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4823,6 +4742,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1785
             .lvl = 12,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4834,6 +4754,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1789
             .lvl = 12,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4856,8 +4777,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1799
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -4869,6 +4788,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1802
             .lvl = 15,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4880,6 +4800,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1806
             .lvl = 15,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4902,8 +4823,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1816
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -4915,6 +4834,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1819
             .lvl = 13,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4926,6 +4846,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1823
             .lvl = 13,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4937,6 +4858,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1827
             .lvl = 13,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4959,8 +4881,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1837
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -4972,6 +4892,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1840
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -4983,6 +4904,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1844
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5005,8 +4927,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1854
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -5018,6 +4938,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1857
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5029,6 +4950,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1861
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5051,8 +4973,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1871
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -5064,6 +4984,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1874
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5075,6 +4996,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1878
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5097,8 +5019,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1888
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -5110,6 +5030,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1891
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5121,6 +5042,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1895
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5132,6 +5054,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1899
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5154,8 +5077,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1909
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -5167,6 +5088,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1912
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5178,6 +5100,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1916
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5189,6 +5112,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1920
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5200,6 +5124,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1924
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5211,6 +5136,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1928
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5233,8 +5159,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1938
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -5246,6 +5170,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1941
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5257,6 +5182,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1945
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5279,8 +5205,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1955
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -5292,6 +5216,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1958
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5303,6 +5228,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1962
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5325,8 +5251,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1972
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -5338,6 +5262,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1975
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5349,6 +5274,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1979
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5371,8 +5297,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 1989
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SAILOR,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -5384,6 +5308,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1992
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5395,6 +5320,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1996
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5417,8 +5343,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2006
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SAILOR,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -5430,6 +5354,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2009
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5441,6 +5366,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2013
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5463,8 +5389,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2023
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SAILOR,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -5476,6 +5400,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2026
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5498,8 +5423,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2036
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SAILOR,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -5511,6 +5434,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2039
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5522,6 +5446,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2043
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5533,6 +5458,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2047
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5555,8 +5481,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2057
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SAILOR,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -5568,6 +5492,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2060
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5579,6 +5504,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2064
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5601,8 +5527,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2074
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SAILOR,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -5614,6 +5538,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2077
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5625,6 +5550,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2081
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5636,6 +5562,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2085
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5658,8 +5585,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2095
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SAILOR,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -5671,6 +5596,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2098
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5693,8 +5619,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2108
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SAILOR,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -5706,6 +5630,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2111
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5717,6 +5642,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2115
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5739,8 +5665,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2125
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -5752,6 +5676,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2128
             .lvl = 10,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -5768,6 +5693,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2134
             .lvl = 11,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -5796,8 +5722,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2147
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -5809,6 +5733,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2150
             .lvl = 14,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5820,6 +5745,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2154
             .lvl = 14,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5842,8 +5768,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2164
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -5855,6 +5779,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2167
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5877,8 +5802,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2177
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -5890,6 +5813,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2180
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5912,8 +5836,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2190
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -5925,6 +5847,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2193
             .lvl = 16,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5936,6 +5859,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2197
             .lvl = 16,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5958,8 +5882,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2207
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -5971,6 +5893,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2210
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -5993,8 +5916,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2220
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -6006,6 +5927,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2223
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6017,6 +5939,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2227
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6039,8 +5962,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2237
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -6052,6 +5973,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2240
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6063,6 +5985,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2244
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6074,6 +5997,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2248
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6085,6 +6009,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2252
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6107,8 +6032,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2262
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -6120,6 +6043,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2265
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6142,8 +6066,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2275
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -6155,6 +6077,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2278
             .lvl = 16,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6166,6 +6089,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2282
             .lvl = 16,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6188,8 +6112,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2292
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -6201,6 +6123,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2295
             .lvl = 16,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6212,6 +6135,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2299
             .lvl = 16,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6223,6 +6147,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2303
             .lvl = 16,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6245,8 +6170,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2313
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -6258,6 +6181,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2316
             .lvl = 15,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6269,6 +6193,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2320
             .lvl = 15,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6291,8 +6216,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2330
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -6304,6 +6227,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2333
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6315,6 +6239,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2337
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6326,6 +6251,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2341
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6337,6 +6263,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2345
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6359,8 +6286,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2355
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -6372,6 +6297,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2358
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6394,8 +6320,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2368
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -6407,6 +6331,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2371
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6418,6 +6343,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2375
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6440,8 +6366,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2385
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -6453,6 +6377,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2388
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6464,6 +6389,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2392
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6486,8 +6412,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2402
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -6499,6 +6423,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2405
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6510,6 +6435,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2409
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6521,6 +6447,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2413
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6543,8 +6470,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2423
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -6556,6 +6481,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2426
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6567,6 +6493,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2430
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6589,8 +6516,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2440
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -6602,6 +6527,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2443
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6613,6 +6539,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2447
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6635,8 +6562,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2457
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -6648,6 +6573,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2460
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6659,6 +6585,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2464
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6670,6 +6597,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2468
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6681,6 +6609,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2472
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6692,6 +6621,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2476
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6714,8 +6644,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2486
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMANIAC,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -6727,6 +6655,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 2489
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6738,6 +6667,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 2493
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6760,8 +6690,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2503
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMANIAC,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -6773,6 +6701,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 2506
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6784,6 +6713,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 2510
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6806,8 +6736,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2520
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMANIAC,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -6819,6 +6747,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 2523
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6830,6 +6759,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 2527
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6841,6 +6771,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 2531
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6863,8 +6794,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2541
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMANIAC,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -6876,6 +6805,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 2544
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6887,6 +6817,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 2548
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6909,8 +6840,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2558
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMANIAC,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -6922,6 +6851,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 2561
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6944,8 +6874,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2571
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMANIAC,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -6957,6 +6885,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 2574
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6968,6 +6897,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 2578
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6979,6 +6909,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 2582
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7001,8 +6932,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2592
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMANIAC,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -7014,6 +6943,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 2595
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7025,6 +6955,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 2599
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7047,8 +6978,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2609
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SUPER_NERD,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -7060,6 +6989,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2612
             .lvl = 11,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7071,6 +7001,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2616
             .lvl = 11,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7093,8 +7024,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2626
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SUPER_NERD,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -7106,6 +7035,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2629
             .lvl = 12,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7117,6 +7047,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2633
             .lvl = 12,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7128,6 +7059,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2637
             .lvl = 12,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7150,8 +7082,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2647
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SUPER_NERD,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -7163,6 +7093,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2650
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -7181,6 +7112,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2658
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -7199,6 +7131,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2666
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -7217,6 +7150,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2674
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -7246,8 +7180,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2688
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SUPER_NERD,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -7259,6 +7191,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2691
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7270,6 +7203,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2695
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7281,6 +7215,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2699
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7303,8 +7238,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2709
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SUPER_NERD,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -7316,6 +7249,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2712
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -7345,8 +7279,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2726
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SUPER_NERD,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -7358,6 +7290,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2729
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7369,6 +7302,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2733
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7380,6 +7314,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2737
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7402,8 +7337,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2747
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SUPER_NERD,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -7415,6 +7348,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2750
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7426,6 +7360,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2754
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7437,6 +7372,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2758
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7448,6 +7384,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2762
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7470,8 +7407,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2772
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SUPER_NERD,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -7483,6 +7418,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2775
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7494,6 +7430,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2779
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7516,8 +7453,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2789
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SUPER_NERD,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -7529,6 +7464,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2792
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7540,6 +7476,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2796
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7551,6 +7488,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2800
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7573,8 +7511,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2810
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SUPER_NERD,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -7586,6 +7522,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2813
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7597,6 +7534,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2817
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7608,6 +7546,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2821
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7619,6 +7558,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2825
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7641,8 +7581,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2835
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SUPER_NERD,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -7654,6 +7592,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2838
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7676,8 +7615,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2848
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SUPER_NERD,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -7689,6 +7626,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2851
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7700,6 +7638,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2855
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7722,8 +7661,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2865
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -7735,6 +7672,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2868
             .lvl = 10,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7746,6 +7684,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2872
             .lvl = 10,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7757,6 +7696,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2876
             .lvl = 10,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7779,8 +7719,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2886
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -7792,6 +7730,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2889
             .lvl = 15,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7803,6 +7742,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2893
             .lvl = 15,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7825,8 +7765,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2903
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -7838,6 +7776,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2906
             .lvl = 13,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7849,6 +7788,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2910
             .lvl = 13,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7860,6 +7800,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2914
             .lvl = 13,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7871,6 +7812,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2918
             .lvl = 13,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7893,8 +7835,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2928
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -7906,6 +7846,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2931
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -7928,8 +7869,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2941
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -7941,6 +7880,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2944
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -7959,6 +7899,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2952
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -7988,8 +7929,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2966
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -8001,6 +7940,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2969
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8012,6 +7952,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2973
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8023,6 +7964,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2977
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8045,8 +7987,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 2987
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -8058,6 +7998,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2990
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8076,6 +8017,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2998
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8105,8 +8047,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3012
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -8118,6 +8058,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3015
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8129,6 +8070,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3019
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8151,8 +8093,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3029
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -8164,6 +8104,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3032
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8182,6 +8123,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3040
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8200,6 +8142,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3048
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8229,8 +8172,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3062
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -8242,6 +8183,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3065
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8271,8 +8213,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3079
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -8284,6 +8224,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3082
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8295,6 +8236,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3086
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8317,8 +8259,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3096
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -8330,6 +8270,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3099
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8341,6 +8282,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3103
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8352,6 +8294,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3107
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8363,6 +8306,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3111
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8385,8 +8329,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3121
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -8398,6 +8340,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3124
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8409,6 +8352,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3128
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8420,6 +8364,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3132
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8442,8 +8387,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3142
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -8455,6 +8398,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3145
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8473,6 +8417,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3153
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8502,8 +8447,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3167
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -8515,6 +8458,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3170
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8533,6 +8477,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3178
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8551,6 +8496,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3186
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8580,8 +8526,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3200
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -8593,6 +8537,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3203
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8611,6 +8556,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3211
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8640,8 +8586,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3225
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -8653,6 +8597,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3228
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8671,6 +8616,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3236
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8689,6 +8635,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3244
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8707,6 +8654,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3252
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8725,6 +8673,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3260
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8754,8 +8703,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3274
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -8767,6 +8714,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3277
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8785,6 +8733,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3285
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8803,6 +8752,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3293
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8832,8 +8782,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3307
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -8845,6 +8793,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3310
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8863,6 +8812,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3318
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8892,8 +8842,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3332
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -8905,6 +8853,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3335
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8927,8 +8876,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3345
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -8940,6 +8887,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3348
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8962,8 +8910,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3358
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -8975,6 +8921,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3361
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8993,6 +8940,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3369
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -9011,6 +8959,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3377
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -9040,8 +8989,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3391
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -9053,6 +9000,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3394
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9075,8 +9023,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3404
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -9088,6 +9034,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3407
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -9106,6 +9053,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3415
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -9135,8 +9083,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3429
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -9148,6 +9094,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3432
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -9166,6 +9113,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3440
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -9195,8 +9143,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3454
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -9208,6 +9154,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3457
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -9226,6 +9173,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3465
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -9244,6 +9192,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3473
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -9262,6 +9211,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3481
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -9280,6 +9230,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3489
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -9309,8 +9260,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3503
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -9322,6 +9271,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3506
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -9340,6 +9290,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3514
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -9358,6 +9309,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3522
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -9376,6 +9328,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3530
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -9405,8 +9358,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3544
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -9418,6 +9369,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3547
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -9436,6 +9388,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3555
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -9454,6 +9407,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3563
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -9483,8 +9437,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3577
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -9496,6 +9448,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3580
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -9514,6 +9467,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3588
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -9543,8 +9497,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3602
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BURGLAR,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -9556,6 +9508,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3605
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9567,6 +9520,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3609
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9589,8 +9543,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3619
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BURGLAR,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -9602,6 +9554,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3622
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9624,8 +9577,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3632
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BURGLAR,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -9637,6 +9588,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3635
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9648,6 +9600,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3639
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9659,6 +9612,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3643
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9681,8 +9635,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3653
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BURGLAR,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -9694,6 +9646,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3656
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9705,6 +9658,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3660
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9716,6 +9670,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3664
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9738,8 +9693,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3674
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BURGLAR,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -9751,6 +9704,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3677
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9773,8 +9727,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3687
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BURGLAR,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -9786,6 +9738,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3690
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9797,6 +9750,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3694
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9819,8 +9773,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3704
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BURGLAR,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -9832,6 +9784,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3707
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9843,6 +9796,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3711
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9865,8 +9819,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3721
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BURGLAR,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -9878,6 +9830,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3724
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9889,6 +9842,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3728
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9911,8 +9865,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3738
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BURGLAR,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -9924,6 +9876,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3741
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9946,8 +9899,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3751
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BURGLAR,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -9959,6 +9910,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3754
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9970,6 +9922,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3758
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9992,8 +9945,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3768
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ENGINEER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -10005,6 +9956,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3771
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10016,6 +9968,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3775
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10038,8 +9991,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3785
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ENGINEER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -10051,6 +10002,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3788
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10073,8 +10025,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3798
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ENGINEER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -10086,6 +10036,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3801
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10097,6 +10048,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3805
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10108,6 +10060,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3809
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10130,8 +10083,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3819
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_FISHERMAN,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -10143,6 +10094,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3822
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10154,6 +10106,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3826
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10165,6 +10118,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3830
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10187,8 +10141,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3840
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_FISHERMAN,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -10200,6 +10152,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3843
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10211,6 +10164,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3847
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10222,6 +10176,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3851
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10244,8 +10199,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3861
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_FISHERMAN,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -10257,6 +10210,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3864
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10268,6 +10222,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3868
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10279,6 +10234,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3872
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10301,8 +10257,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3882
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_FISHERMAN,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -10314,6 +10268,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3885
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10325,6 +10280,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3889
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10347,8 +10303,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3899
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_FISHERMAN,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -10360,6 +10314,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3902
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10382,8 +10337,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3912
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_FISHERMAN,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -10395,6 +10348,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3915
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10406,6 +10360,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3919
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10417,6 +10372,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3923
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10428,6 +10384,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3927
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10450,8 +10407,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3937
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_FISHERMAN,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -10463,6 +10418,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3940
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10474,6 +10430,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3944
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10485,6 +10442,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3948
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10496,6 +10454,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3952
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10518,8 +10477,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3962
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_FISHERMAN,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -10531,6 +10488,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3965
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10542,6 +10500,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3969
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10564,8 +10523,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 3979
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_FISHERMAN,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -10577,6 +10534,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3982
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10588,6 +10546,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3986
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10599,6 +10558,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3990
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10610,6 +10570,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3994
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10621,6 +10582,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3998
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10632,6 +10594,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4002
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10654,8 +10617,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4012
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_FISHERMAN,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -10667,6 +10628,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4015
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10678,6 +10640,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4019
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10700,8 +10663,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4029
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_FISHERMAN,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -10713,6 +10674,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4032
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10724,6 +10686,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4036
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10746,8 +10709,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4046
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -10759,6 +10720,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4049
             .lvl = 16,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10770,6 +10732,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4053
             .lvl = 16,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10792,8 +10755,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4063
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -10805,6 +10766,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4066
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10816,6 +10778,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4070
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10838,8 +10801,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4080
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -10851,6 +10812,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4083
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10862,6 +10824,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4087
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10873,6 +10836,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4091
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10895,8 +10859,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4101
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -10908,6 +10870,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4104
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10919,6 +10882,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4108
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10941,8 +10905,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4118
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -10954,6 +10916,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4121
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10965,6 +10928,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4125
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10976,6 +10940,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4129
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10987,6 +10952,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4133
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11009,8 +10975,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4143
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -11022,6 +10986,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4146
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11033,6 +10998,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4150
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11044,6 +11010,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4154
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11066,8 +11033,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4164
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -11079,6 +11044,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4167
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11090,6 +11056,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4171
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11112,8 +11079,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4181
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -11125,6 +11090,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4184
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11136,6 +11102,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4188
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11147,6 +11114,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4192
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11158,6 +11126,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4196
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11169,6 +11138,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4200
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11191,8 +11161,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4210
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -11204,6 +11172,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4213
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11215,6 +11184,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4217
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11237,8 +11207,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4227
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -11250,6 +11218,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4230
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11272,8 +11241,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4240
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -11285,6 +11252,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4243
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11296,6 +11264,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4247
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11307,6 +11276,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4251
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11318,6 +11288,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4255
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11340,8 +11311,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4265
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -11353,6 +11322,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4268
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11364,6 +11334,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4272
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11386,8 +11357,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4282
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -11399,6 +11368,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4285
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11421,8 +11391,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4295
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -11434,6 +11402,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4298
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11445,6 +11414,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4302
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11467,8 +11437,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4312
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -11480,6 +11448,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4315
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11491,6 +11460,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4319
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11502,6 +11472,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4323
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11524,8 +11495,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4333
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CUE_BALL,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -11537,6 +11506,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4336
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11548,6 +11518,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4340
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11559,6 +11530,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4344
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11581,8 +11553,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4354
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CUE_BALL,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -11594,6 +11564,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4357
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11605,6 +11576,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4361
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11627,8 +11599,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4371
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CUE_BALL,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -11640,6 +11610,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4374
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11651,6 +11622,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4378
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11673,8 +11645,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4388
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CUE_BALL,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -11686,6 +11656,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4391
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11697,6 +11668,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4395
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11719,8 +11691,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4405
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CUE_BALL,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -11732,6 +11702,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4408
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11743,6 +11714,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4412
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11765,8 +11737,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4422
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CUE_BALL,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -11778,6 +11748,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4425
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11800,8 +11771,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4435
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CUE_BALL,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -11813,6 +11782,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4438
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11824,6 +11794,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4442
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11835,6 +11806,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4446
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11846,6 +11818,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4450
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11868,8 +11841,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4460
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CUE_BALL,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -11881,6 +11852,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4463
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11892,6 +11864,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4467
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11914,8 +11887,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4477
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CUE_BALL,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -11927,6 +11898,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4480
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11938,6 +11910,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4484
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11949,6 +11922,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4488
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11971,8 +11945,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4498
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_GAMER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -11984,6 +11956,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4501
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11995,6 +11968,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4505
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12017,8 +11991,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4515
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_GAMER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -12030,6 +12002,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4518
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12041,6 +12014,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4522
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12063,8 +12037,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4532
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_GAMER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -12076,6 +12048,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4535
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12087,6 +12060,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4539
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12109,8 +12083,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4549
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_GAMER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -12122,6 +12094,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4552
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12133,6 +12106,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4556
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12155,8 +12129,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4566
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_GAMER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -12168,6 +12140,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4569
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12179,6 +12152,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4573
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12190,6 +12164,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4577
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12212,8 +12187,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4587
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_GAMER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -12225,6 +12198,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4590
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12247,8 +12221,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4600
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_GAMER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -12260,6 +12232,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4603
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12271,6 +12244,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4607
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12293,8 +12267,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4617
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BEAUTY,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -12306,6 +12278,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4620
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12317,6 +12290,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4624
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12328,6 +12302,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4628
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12339,6 +12314,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4632
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12361,8 +12337,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4642
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BEAUTY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -12374,6 +12348,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4645
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12385,6 +12360,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4649
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12407,8 +12383,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4659
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BEAUTY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -12420,6 +12394,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4662
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12442,8 +12417,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4672
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BEAUTY,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -12455,6 +12428,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4675
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12466,6 +12440,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4679
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12477,6 +12452,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4683
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12499,8 +12475,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4693
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BEAUTY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -12512,6 +12486,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4696
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12523,6 +12498,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4700
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12545,8 +12521,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4710
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -12558,6 +12532,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4713
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12580,8 +12555,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4723
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -12593,6 +12566,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4726
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12604,6 +12578,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4730
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12615,6 +12590,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4734
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12637,8 +12613,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4744
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -12650,6 +12624,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4747
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12661,6 +12636,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4751
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12683,8 +12659,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4761
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BEAUTY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -12696,6 +12670,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4764
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12707,6 +12682,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4768
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12729,8 +12705,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4778
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BEAUTY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -12742,6 +12716,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4781
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12753,6 +12728,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4785
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12775,8 +12751,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4795
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -12788,6 +12762,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4798
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12799,6 +12774,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4802
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12810,6 +12786,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4806
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12832,8 +12809,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4816
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -12845,6 +12820,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4819
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12856,6 +12832,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4823
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12867,6 +12844,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4827
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12878,6 +12856,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4831
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12889,6 +12868,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4835
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12911,8 +12891,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4845
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -12924,6 +12902,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4848
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12935,6 +12914,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4852
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12957,8 +12937,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4862
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -12970,6 +12948,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4865
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12981,6 +12960,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4869
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12992,6 +12972,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4873
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13014,8 +12995,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4883
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -13027,6 +13006,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4886
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13038,6 +13018,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4890
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13049,6 +13030,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4894
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13071,8 +13053,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4904
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_M,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -13084,6 +13064,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 4907
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13095,6 +13076,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 4911
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13106,6 +13088,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 4915
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13117,6 +13100,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 4919
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13139,8 +13123,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4929
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -13152,6 +13134,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 4932
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13163,6 +13146,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 4936
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13185,8 +13169,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4946
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -13198,6 +13180,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 4949
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13209,6 +13192,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 4953
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13220,6 +13204,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 4957
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13242,8 +13227,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4967
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -13255,6 +13238,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 4970
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13277,8 +13261,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 4980
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -13290,6 +13272,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4983
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13301,6 +13284,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4987
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13312,6 +13296,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4991
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13334,8 +13319,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5001
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -13347,6 +13330,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5004
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13358,6 +13342,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5008
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13380,8 +13365,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5018
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_JUGGLER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -13393,6 +13376,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5021
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13404,6 +13388,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5025
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13426,8 +13411,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5035
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_JUGGLER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -13439,6 +13422,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5038
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13450,6 +13434,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5042
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13461,6 +13446,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5046
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13472,6 +13458,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5050
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13494,8 +13481,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5060
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_JUGGLER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -13507,6 +13492,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5063
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13518,6 +13504,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5067
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13529,6 +13516,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5071
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13540,6 +13528,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5075
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13562,8 +13551,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5085
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_JUGGLER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -13575,6 +13562,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5088
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13586,6 +13574,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5092
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13608,8 +13597,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5102
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_JUGGLER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -13621,6 +13608,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5105
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -13650,8 +13638,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5119
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_JUGGLER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -13663,6 +13649,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5122
             .lvl = 46,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -13681,6 +13668,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5130
             .lvl = 46,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -13699,6 +13687,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5138
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -13717,6 +13706,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5146
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -13746,8 +13736,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5160
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_JUGGLER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -13759,6 +13747,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5163
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13781,8 +13770,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5173
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_JUGGLER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -13794,6 +13781,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5176
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13805,6 +13793,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5180
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13827,8 +13816,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5190
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_TAMER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -13840,6 +13827,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 5193
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13851,6 +13839,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 5197
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13873,8 +13862,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5207
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_TAMER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -13886,6 +13873,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 5210
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13897,6 +13885,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 5214
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13908,6 +13897,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 5218
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13930,8 +13920,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5228
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_TAMER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -13943,6 +13931,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 5231
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13965,8 +13954,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5241
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_TAMER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -13978,6 +13965,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 5244
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13989,6 +13977,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 5248
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14011,8 +14000,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5258
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_TAMER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -14024,6 +14011,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 5261
             .lvl = 44,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14035,6 +14023,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 5265
             .lvl = 44,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14057,8 +14046,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5275
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_TAMER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -14070,6 +14057,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 5278
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14081,6 +14069,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 5282
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14092,6 +14081,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 5286
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14103,6 +14093,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 5290
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14125,8 +14116,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5300
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -14138,6 +14127,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5303
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14149,6 +14139,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5307
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14171,8 +14162,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5317
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -14184,6 +14173,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5320
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14195,6 +14185,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5324
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14206,6 +14197,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5328
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14217,6 +14209,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5332
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14228,6 +14221,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5336
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14250,8 +14244,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5346
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -14263,6 +14255,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5349
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14274,6 +14267,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5353
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14285,6 +14279,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5357
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14296,6 +14291,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5361
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14318,8 +14314,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5371
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -14331,6 +14325,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5374
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14353,8 +14348,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5384
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -14366,6 +14359,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5387
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14377,6 +14371,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5391
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14399,8 +14394,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5401
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -14412,6 +14405,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5404
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14423,6 +14417,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5408
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14434,6 +14429,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5412
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14445,6 +14441,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5416
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14467,8 +14464,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5426
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -14480,6 +14475,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5429
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14491,6 +14487,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5433
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14502,6 +14499,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5437
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14524,8 +14522,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5447
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -14537,6 +14533,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5450
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14548,6 +14545,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5454
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14570,8 +14568,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5464
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -14583,6 +14579,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5467
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14605,8 +14602,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5477
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -14618,6 +14613,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5480
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14629,6 +14625,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5484
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14640,6 +14637,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5488
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14651,6 +14649,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5492
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14673,8 +14672,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5502
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -14686,6 +14683,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5505
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14697,6 +14695,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5509
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14708,6 +14707,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5513
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14730,8 +14730,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5523
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -14743,6 +14741,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5526
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14754,6 +14753,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5530
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14765,6 +14765,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5534
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14776,6 +14777,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5538
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14798,8 +14800,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5548
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -14811,6 +14811,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5551
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14822,6 +14823,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5555
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14844,8 +14846,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5565
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -14857,6 +14857,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5568
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14868,6 +14869,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5572
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14879,6 +14881,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5576
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14901,8 +14904,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5586
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -14914,6 +14915,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5589
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14925,6 +14927,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5593
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14936,6 +14939,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5597
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14947,6 +14951,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5601
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14969,8 +14974,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5611
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -14982,6 +14985,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5614
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14993,6 +14997,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5618
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15015,8 +15020,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5628
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -15028,6 +15031,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5631
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15039,6 +15043,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5635
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15050,6 +15055,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5639
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15072,8 +15078,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5649
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BLACK_BELT,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -15087,6 +15091,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5652
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15100,6 +15105,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5656
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15122,8 +15128,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5666
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BLACK_BELT,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -15137,6 +15141,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5669
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15150,6 +15155,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5673
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15163,6 +15169,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5677
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15185,8 +15192,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5687
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BLACK_BELT,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -15200,6 +15205,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5690
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15213,6 +15219,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5694
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15235,8 +15242,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5704
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BLACK_BELT,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -15250,6 +15255,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5707
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15272,8 +15278,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5717
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BLACK_BELT,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -15287,6 +15291,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5720
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15300,6 +15305,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5724
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15313,6 +15319,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5728
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15335,8 +15342,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5738
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BLACK_BELT,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -15350,6 +15355,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5741
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15363,6 +15369,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5745
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15385,8 +15392,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5755
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BLACK_BELT,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -15400,6 +15405,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5758
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15422,8 +15428,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5768
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BLACK_BELT,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -15437,6 +15441,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5771
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15450,6 +15455,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5775
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15463,6 +15469,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5779
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15485,8 +15492,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5789
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BLACK_BELT,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -15500,6 +15505,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5792
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15513,6 +15519,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5796
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15526,6 +15533,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5800
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15548,8 +15556,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5810
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RIVAL_EARLY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -15563,6 +15569,7 @@
             .ability = ABILITY_TORRENT,
 #line 5814
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -15590,8 +15597,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5826
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RIVAL_EARLY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -15605,6 +15610,7 @@
             .ability = ABILITY_OVERGROW,
 #line 5830
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -15632,8 +15638,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5842
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RIVAL_EARLY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -15647,6 +15651,7 @@
             .ability = ABILITY_BLAZE,
 #line 5846
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -15674,8 +15679,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5858
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RIVAL_EARLY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -15689,6 +15692,7 @@
             .ability = ABILITY_KEEN_EYE,
 #line 5862
             .lvl = 9,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -15707,6 +15711,7 @@
             .ability = ABILITY_TORRENT,
 #line 5869
             .lvl = 9,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -15734,8 +15739,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5881
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RIVAL_EARLY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -15749,6 +15752,7 @@
             .ability = ABILITY_KEEN_EYE,
 #line 5885
             .lvl = 9,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -15767,6 +15771,7 @@
             .ability = ABILITY_OVERGROW,
 #line 5892
             .lvl = 9,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -15794,8 +15799,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5904
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RIVAL_EARLY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -15809,6 +15812,7 @@
             .ability = ABILITY_KEEN_EYE,
 #line 5908
             .lvl = 9,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -15827,6 +15831,7 @@
             .ability = ABILITY_BLAZE,
 #line 5915
             .lvl = 9,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -15854,8 +15859,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5927
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RIVAL_EARLY,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -15869,6 +15872,7 @@
             .ability = ABILITY_KEEN_EYE,
 #line 5931
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -15889,6 +15893,7 @@
             .ability = ABILITY_SYNCHRONIZE,
 #line 5940
             .lvl = 16,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -15906,6 +15911,7 @@
             .ability = ABILITY_RUN_AWAY,
 #line 5946
             .lvl = 15,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -15925,6 +15931,7 @@
             .ability = ABILITY_TORRENT,
 #line 5954
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -15954,8 +15961,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5968
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RIVAL_EARLY,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -15969,6 +15974,7 @@
             .ability = ABILITY_KEEN_EYE,
 #line 5972
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -15989,6 +15995,7 @@
             .ability = ABILITY_SYNCHRONIZE,
 #line 5981
             .lvl = 16,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16006,6 +16013,7 @@
             .ability = ABILITY_RUN_AWAY,
 #line 5987
             .lvl = 15,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16025,6 +16033,7 @@
             .ability = ABILITY_OVERGROW,
 #line 5995
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16054,8 +16063,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6009
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RIVAL_EARLY,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -16069,6 +16076,7 @@
             .ability = ABILITY_KEEN_EYE,
 #line 6013
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16089,6 +16097,7 @@
             .ability = ABILITY_SYNCHRONIZE,
 #line 6022
             .lvl = 16,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16106,6 +16115,7 @@
             .ability = ABILITY_RUN_AWAY,
 #line 6028
             .lvl = 15,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16125,6 +16135,7 @@
             .ability = ABILITY_BLAZE,
 #line 6036
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16154,8 +16165,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6050
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SCIENTIST,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -16167,6 +16176,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6053
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16178,6 +16188,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6057
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16200,8 +16211,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6067
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SCIENTIST,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -16213,6 +16222,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6070
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16231,6 +16241,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6078
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16249,6 +16260,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6086
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16267,6 +16279,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6094
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16296,8 +16309,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6108
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SCIENTIST,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -16309,6 +16320,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6111
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16320,6 +16332,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6115
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16331,6 +16344,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6119
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16353,8 +16367,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6129
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SCIENTIST,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -16366,6 +16378,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6132
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16384,6 +16397,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6140
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16413,8 +16427,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6154
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SCIENTIST,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -16426,6 +16438,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6157
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16448,8 +16461,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6167
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SCIENTIST,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -16461,6 +16472,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6170
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16479,6 +16491,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6178
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16497,6 +16510,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6186
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16515,6 +16529,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6194
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16544,8 +16559,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6208
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SCIENTIST,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -16557,6 +16570,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6211
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16575,6 +16589,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6219
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16593,6 +16608,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6227
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16611,6 +16627,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6235
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16629,6 +16646,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6243
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16658,8 +16676,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6257
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SCIENTIST,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -16671,6 +16687,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6260
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16682,6 +16699,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6264
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16704,8 +16722,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6274
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SCIENTIST,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -16717,6 +16733,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6277
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16728,6 +16745,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6281
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16750,8 +16768,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6291
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SCIENTIST,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -16763,6 +16779,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6294
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16781,6 +16798,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6302
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16799,6 +16817,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6310
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16828,8 +16847,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6324
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SCIENTIST,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -16841,6 +16858,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6327
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16852,6 +16870,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6331
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16874,8 +16893,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6341
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SCIENTIST,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -16887,6 +16904,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6344
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16898,6 +16916,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6348
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16909,6 +16928,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6352
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16931,8 +16951,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6362
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SCIENTIST,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -16944,6 +16962,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6365
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16955,6 +16974,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6369
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16977,8 +16997,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6379
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_GIOVANNI,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -16992,6 +17010,7 @@
             .ability = ABILITY_STURDY,
 #line 6383
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -17012,6 +17031,7 @@
             .ability = ABILITY_ROCK_HEAD,
 #line 6392
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -17032,6 +17052,7 @@
             .ability = ABILITY_SCRAPPY,
 #line 6401
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -17061,8 +17082,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6415
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_GIOVANNI,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -17076,6 +17095,7 @@
             .ability = ABILITY_POISON_POINT,
 #line 6419
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -17096,6 +17116,7 @@
             .ability = ABILITY_SCRAPPY,
 #line 6428
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -17116,6 +17137,7 @@
             .ability = ABILITY_ROCK_HEAD,
 #line 6437
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -17136,6 +17158,7 @@
             .ability = ABILITY_POISON_POINT,
 #line 6446
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -17167,8 +17190,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6461
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_GIOVANNI,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -17182,6 +17203,7 @@
             .ability = ABILITY_ROCK_HEAD,
 #line 6465
             .lvl = 45,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -17202,6 +17224,7 @@
             .ability = ABILITY_ARENA_TRAP,
 #line 6474
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -17222,6 +17245,7 @@
             .ability = ABILITY_POISON_POINT,
 #line 6483
             .lvl = 44,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -17242,6 +17266,7 @@
             .ability = ABILITY_POISON_POINT,
 #line 6492
             .lvl = 45,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -17263,6 +17288,7 @@
             .ability = ABILITY_ROCK_HEAD,
 #line 6501
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -17292,8 +17318,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6515
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -17305,6 +17329,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6518
             .lvl = 13,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17316,6 +17341,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6522
             .lvl = 13,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17338,8 +17364,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6532
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -17351,6 +17375,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6535
             .lvl = 11,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17362,6 +17387,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6539
             .lvl = 11,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17373,6 +17399,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6543
             .lvl = 11,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17395,8 +17422,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6553
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -17408,6 +17433,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6556
             .lvl = 11,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17419,6 +17445,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6560
             .lvl = 11,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17441,8 +17468,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6570
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -17454,6 +17479,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6573
             .lvl = 13,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17465,6 +17491,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6577
             .lvl = 13,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17487,8 +17514,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6587
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -17500,6 +17525,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6590
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17511,6 +17537,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6594
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17533,8 +17560,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6604
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -17546,6 +17571,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6607
             .lvl = 15,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17557,6 +17583,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6611
             .lvl = 15,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17579,8 +17606,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6621
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -17592,6 +17617,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6624
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17603,6 +17629,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6628
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17625,8 +17652,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6638
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -17638,6 +17663,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6641
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17649,6 +17675,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6645
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17671,8 +17698,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6655
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -17684,6 +17709,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6658
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17695,6 +17721,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6662
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17717,8 +17744,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6672
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -17730,6 +17755,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6675
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -17748,6 +17774,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6683
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -17765,6 +17792,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6690
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -17793,8 +17821,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6703
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -17806,6 +17832,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6706
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17817,6 +17844,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6710
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17828,6 +17856,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6714
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17839,6 +17868,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6718
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17861,8 +17891,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6728
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -17874,6 +17902,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6731
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -17892,6 +17921,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6739
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -17921,8 +17951,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6753
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -17934,6 +17962,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6756
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -17952,6 +17981,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6764
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -17969,6 +17999,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6771
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -17987,6 +18018,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6779
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -18005,6 +18037,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6787
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -18034,8 +18067,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6801
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -18047,6 +18078,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6804
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18058,6 +18090,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6808
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18069,6 +18102,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6812
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18091,8 +18125,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6822
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -18104,6 +18136,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6825
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18115,6 +18148,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6829
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18137,8 +18171,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6839
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -18150,6 +18182,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6842
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18161,6 +18194,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6846
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18172,6 +18206,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6850
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18194,8 +18229,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6860
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -18207,6 +18240,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6863
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18218,6 +18252,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6867
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18229,6 +18264,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6871
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18251,8 +18287,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6881
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -18264,6 +18298,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6884
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18275,6 +18310,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6888
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18297,8 +18333,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6898
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -18310,6 +18344,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6901
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18321,6 +18356,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6905
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18332,6 +18368,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6909
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18354,8 +18391,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6919
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -18367,6 +18402,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6922
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18378,6 +18414,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6926
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18400,8 +18437,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6936
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -18413,6 +18448,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6939
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18424,6 +18460,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6943
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18435,6 +18472,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6947
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18446,6 +18484,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6951
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18468,8 +18507,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6961
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -18481,6 +18518,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6964
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18492,6 +18530,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6968
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18514,8 +18553,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6978
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -18527,6 +18564,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6981
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18538,6 +18576,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6985
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18560,8 +18599,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6995
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -18573,6 +18610,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6998
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18584,6 +18622,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7002
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18595,6 +18634,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7006
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18606,6 +18646,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7010
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18617,6 +18658,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7014
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18639,8 +18681,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7024
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -18652,6 +18692,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7027
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18663,6 +18704,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7031
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18674,6 +18716,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7035
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18696,8 +18739,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7045
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -18709,6 +18750,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7048
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18720,6 +18762,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7052
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18742,8 +18785,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7062
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -18755,6 +18796,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7065
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18766,6 +18808,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7069
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18777,6 +18820,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7073
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18799,8 +18843,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7083
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -18812,6 +18854,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7086
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18834,8 +18877,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7096
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -18847,6 +18888,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7099
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18869,8 +18911,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7109
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -18882,6 +18922,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7112
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18893,6 +18934,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7116
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18915,8 +18957,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7126
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -18928,6 +18968,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7129
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18939,6 +18980,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7133
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18950,6 +18992,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7137
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18972,8 +19015,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7147
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -18985,6 +19026,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7150
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -19003,6 +19045,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7158
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -19021,6 +19064,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7166
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -19039,6 +19083,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7174
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -19068,8 +19113,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7188
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -19081,6 +19124,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7191
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19092,6 +19136,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7195
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19114,8 +19159,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7205
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -19127,6 +19170,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7208
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19138,6 +19182,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7212
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19160,8 +19205,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7222
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -19173,6 +19216,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7225
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19184,6 +19228,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7229
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19195,6 +19240,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7233
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19206,6 +19252,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7237
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19228,8 +19275,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7247
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -19241,6 +19286,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7250
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19252,6 +19298,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7254
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19263,6 +19310,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7258
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19285,8 +19333,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7268
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -19298,6 +19344,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7271
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19309,6 +19356,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7275
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19320,6 +19368,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7279
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19342,8 +19391,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7289
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -19355,6 +19402,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7292
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19366,6 +19414,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7296
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19377,6 +19426,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7300
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19399,8 +19449,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7310
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -19412,6 +19460,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7313
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19434,8 +19483,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7323
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -19447,6 +19494,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7326
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19458,6 +19506,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7330
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19469,6 +19518,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7334
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19480,6 +19530,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7338
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19491,6 +19542,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7342
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19513,8 +19565,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7352
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -19526,6 +19576,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7355
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19537,6 +19588,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7359
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19548,6 +19600,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7363
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19572,8 +19625,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7374
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -19585,6 +19636,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7377
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -19603,6 +19655,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7385
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -19621,6 +19674,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7393
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -19639,6 +19693,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7401
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -19657,6 +19712,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7409
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -19688,8 +19744,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7424
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -19701,6 +19755,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7427
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -19719,6 +19774,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7435
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -19737,6 +19793,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7443
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -19755,6 +19812,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7451
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -19773,6 +19831,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7459
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -19804,8 +19863,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7474
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -19817,6 +19874,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7477
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -19835,6 +19893,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7485
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -19853,6 +19912,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7493
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -19871,6 +19931,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7501
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -19889,6 +19950,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7509
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -19920,8 +19982,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7524
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -19933,6 +19993,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7527
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -19951,6 +20012,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7535
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -19969,6 +20031,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7543
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -19987,6 +20050,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7551
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20005,6 +20069,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7559
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20036,8 +20101,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7574
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -20049,6 +20112,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7577
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20067,6 +20131,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7585
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20085,6 +20150,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7593
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20103,6 +20169,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7601
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20121,6 +20188,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7609
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20152,8 +20220,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7624
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -20165,6 +20231,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7627
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20183,6 +20250,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7635
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20201,6 +20269,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7643
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20219,6 +20288,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7651
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20237,6 +20307,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7659
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20268,8 +20339,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7674
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -20281,6 +20350,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7677
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20299,6 +20369,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7685
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20317,6 +20388,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7693
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20335,6 +20407,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7701
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20353,6 +20426,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7709
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20384,8 +20458,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7724
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -20397,6 +20469,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7727
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20415,6 +20488,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7735
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20433,6 +20507,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7743
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20451,6 +20526,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7751
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20469,6 +20545,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7759
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20500,8 +20577,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7774
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -20513,6 +20588,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7777
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20531,6 +20607,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7785
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20549,6 +20626,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7793
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20567,6 +20645,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7801
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20585,6 +20664,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7809
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20616,8 +20696,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7824
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -20629,6 +20707,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7827
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20647,6 +20726,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7835
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20665,6 +20745,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7843
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20683,6 +20764,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7851
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20701,6 +20783,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7859
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20732,8 +20815,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7874
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -20745,6 +20826,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7877
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20763,6 +20845,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7885
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20781,6 +20864,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7893
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20799,6 +20883,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7901
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20817,6 +20902,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7909
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20848,8 +20934,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7924
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -20861,6 +20945,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7927
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20879,6 +20964,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7935
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20897,6 +20983,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7943
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20915,6 +21002,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7951
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20933,6 +21021,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7959
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20964,8 +21053,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 7974
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -20977,6 +21064,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7977
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20995,6 +21083,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7985
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21013,6 +21102,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7993
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21031,6 +21121,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8001
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21049,6 +21140,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8009
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21080,8 +21172,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 8024
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -21093,6 +21183,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8027
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21111,6 +21202,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8035
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21129,6 +21221,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8043
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21147,6 +21240,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8051
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21165,6 +21259,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8059
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21196,8 +21291,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 8074
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -21209,6 +21302,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8077
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21227,6 +21321,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8085
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21245,6 +21340,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8093
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21263,6 +21359,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8101
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21281,6 +21378,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8109
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21312,8 +21410,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 8124
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -21325,6 +21421,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8127
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21343,6 +21440,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8135
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21361,6 +21459,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8143
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21379,6 +21478,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8151
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21397,6 +21497,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8159
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21428,8 +21529,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 8174
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -21441,6 +21540,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8177
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21459,6 +21559,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8185
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21477,6 +21578,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8193
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21495,6 +21597,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8201
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21513,6 +21616,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8209
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21544,8 +21648,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 8224
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -21557,6 +21659,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8227
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21575,6 +21678,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8235
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21593,6 +21697,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8243
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21611,6 +21716,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8251
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21629,6 +21735,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8259
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21662,8 +21769,6 @@
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
 #line 8275
         .mugshotColor = MUGSHOT_COLOR_PURPLE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ELITE_FOUR_LORELEI,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -21678,6 +21783,7 @@
             .ability = ABILITY_THICK_FAT,
 #line 8279
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21699,6 +21805,7 @@
             .ability = ABILITY_SHELL_ARMOR,
 #line 8288
             .lvl = 51,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21720,6 +21827,7 @@
             .ability = ABILITY_SNOW_CLOAK,
 #line 8297
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21741,6 +21849,7 @@
             .ability = ABILITY_OBLIVIOUS,
 #line 8306
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21764,6 +21873,7 @@
             .ability = ABILITY_SHELL_ARMOR,
 #line 8315
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21797,8 +21907,6 @@
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
 #line 8331
         .mugshotColor = MUGSHOT_COLOR_GREEN,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ELITE_FOUR_BRUNO,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -21812,6 +21920,7 @@
             .ability = ABILITY_STURDY,
 #line 8335
             .lvl = 51,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21832,6 +21941,7 @@
             .ability = ABILITY_IRON_FIST,
 #line 8344
             .lvl = 53,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21852,6 +21962,7 @@
             .ability = ABILITY_LIMBER,
 #line 8353
             .lvl = 53,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21873,6 +21984,7 @@
             .ability = ABILITY_WATER_ABSORB,
 #line 8362
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21896,6 +22008,7 @@
             .ability = ABILITY_NO_GUARD,
 #line 8371
             .lvl = 56,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21929,8 +22042,6 @@
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
 #line 8387
         .mugshotColor = MUGSHOT_COLOR_PINK,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ELITE_FOUR_AGATHA,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -21945,6 +22056,7 @@
             .ability = ABILITY_LEVITATE,
 #line 8391
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21966,6 +22078,7 @@
             .ability = ABILITY_INNER_FOCUS,
 #line 8400
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -21987,6 +22100,7 @@
             .ability = ABILITY_LEVITATE,
 #line 8409
             .lvl = 53,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22008,6 +22122,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 8418
             .lvl = 56,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22031,6 +22146,7 @@
             .ability = ABILITY_LEVITATE,
 #line 8427
             .lvl = 58,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22064,8 +22180,6 @@
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
 #line 8443
         .mugshotColor = MUGSHOT_COLOR_BLUE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ELITE_FOUR_LANCE,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -22079,6 +22193,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 8447
             .lvl = 56,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22099,6 +22214,7 @@
             .ability = ABILITY_SHED_SKIN,
 #line 8456
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22119,6 +22235,7 @@
             .ability = ABILITY_SHED_SKIN,
 #line 8465
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22139,6 +22256,7 @@
             .ability = ABILITY_PRESSURE,
 #line 8474
             .lvl = 58,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22161,6 +22279,7 @@
             .ability = ABILITY_INNER_FOCUS,
 #line 8483
             .lvl = 60,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22190,8 +22309,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 8497
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_BROCK,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -22206,6 +22323,7 @@
             .ability = ABILITY_STURDY,
 #line 8501
             .lvl = 12,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22225,6 +22343,7 @@
             .ability = ABILITY_STURDY,
 #line 8508
             .lvl = 14,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22255,8 +22374,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 8522
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_MISTY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -22270,6 +22387,7 @@
             .ability = ABILITY_ILLUMINATE,
 #line 8526
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22290,6 +22408,7 @@
             .ability = ABILITY_ILLUMINATE,
 #line 8535
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22321,8 +22440,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 8550
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_LT_SURGE,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -22336,6 +22453,7 @@
             .ability = ABILITY_SOUNDPROOF,
 #line 8554
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22357,6 +22475,7 @@
             .ability = ABILITY_STATIC,
 #line 8563
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22378,6 +22497,7 @@
             .ability = ABILITY_STATIC,
 #line 8572
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22409,8 +22529,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 8587
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_ERIKA,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -22425,6 +22543,7 @@
             .ability = ABILITY_CHLOROPHYLL,
 #line 8591
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22446,6 +22565,7 @@
             .ability = ABILITY_LEAF_GUARD,
 #line 8600
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22467,6 +22587,7 @@
             .ability = ABILITY_CHLOROPHYLL,
 #line 8609
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22498,8 +22619,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 8624
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_KOGA,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -22514,6 +22633,7 @@
             .ability = ABILITY_LEVITATE,
 #line 8628
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22535,6 +22655,7 @@
             .ability = ABILITY_STENCH,
 #line 8637
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22556,6 +22677,7 @@
             .ability = ABILITY_SHIELD_DUST,
 #line 8646
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22577,6 +22699,7 @@
             .ability = ABILITY_LEVITATE,
 #line 8655
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22608,8 +22731,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 8670
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_BLAINE,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -22624,6 +22745,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 8674
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22645,6 +22767,7 @@
             .ability = ABILITY_FLASH_FIRE,
 #line 8683
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22666,6 +22789,7 @@
             .ability = ABILITY_FLAME_BODY,
 #line 8692
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22687,6 +22811,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 8701
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22718,8 +22843,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 8716
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_SABRINA,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -22734,6 +22857,7 @@
             .ability = ABILITY_SYNCHRONIZE,
 #line 8720
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22755,6 +22879,7 @@
             .ability = ABILITY_SOUNDPROOF,
 #line 8729
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22776,6 +22901,7 @@
             .ability = ABILITY_SYNCHRONIZE,
 #line 8738
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22797,6 +22923,7 @@
             .ability = ABILITY_SYNCHRONIZE,
 #line 8747
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22826,8 +22953,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 8761
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_GENTLEMAN,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -22839,6 +22964,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 8764
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -22850,6 +22976,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 8768
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -22872,8 +22999,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 8778
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_GENTLEMAN,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -22885,6 +23010,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 8781
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -22896,6 +23022,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 8785
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -22918,8 +23045,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 8795
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_GENTLEMAN,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -22931,6 +23056,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 8798
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -22953,8 +23079,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 8808
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_GENTLEMAN,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -22966,6 +23090,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 8811
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -22988,8 +23113,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 8821
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_GENTLEMAN,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -23001,6 +23124,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 8824
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23012,6 +23136,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 8828
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23034,8 +23159,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 8838
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RIVAL_LATE,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -23049,6 +23172,7 @@
             .ability = ABILITY_KEEN_EYE,
 #line 8842
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23062,6 +23186,7 @@
             .ability = ABILITY_RUN_AWAY,
 #line 8847
             .lvl = 16,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23075,6 +23200,7 @@
             .ability = ABILITY_SYNCHRONIZE,
 #line 8852
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23088,6 +23214,7 @@
             .ability = ABILITY_TORRENT,
 #line 8857
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23110,8 +23237,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 8867
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RIVAL_LATE,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -23125,6 +23250,7 @@
             .ability = ABILITY_KEEN_EYE,
 #line 8871
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23138,6 +23264,7 @@
             .ability = ABILITY_RUN_AWAY,
 #line 8876
             .lvl = 16,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23151,6 +23278,7 @@
             .ability = ABILITY_SYNCHRONIZE,
 #line 8881
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23164,6 +23292,7 @@
             .ability = ABILITY_OVERGROW,
 #line 8886
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23186,8 +23315,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 8896
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RIVAL_LATE,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -23201,6 +23328,7 @@
             .ability = ABILITY_KEEN_EYE,
 #line 8900
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23214,6 +23342,7 @@
             .ability = ABILITY_RUN_AWAY,
 #line 8905
             .lvl = 16,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23227,6 +23356,7 @@
             .ability = ABILITY_SYNCHRONIZE,
 #line 8910
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23240,6 +23370,7 @@
             .ability = ABILITY_BLAZE,
 #line 8915
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23262,8 +23393,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 8925
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RIVAL_LATE,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -23277,6 +23406,7 @@
             .ability = ABILITY_KEEN_EYE,
 #line 8929
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23290,6 +23420,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 8934
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23303,6 +23434,7 @@
             .ability = ABILITY_CHLOROPHYLL,
 #line 8939
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23316,6 +23448,7 @@
             .ability = ABILITY_CHLOROPHYLL,
 #line 8944
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23329,6 +23462,7 @@
             .ability = ABILITY_TORRENT,
 #line 8949
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23351,8 +23485,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 8959
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RIVAL_LATE,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -23366,6 +23498,7 @@
             .ability = ABILITY_KEEN_EYE,
 #line 8963
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23379,6 +23512,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 8968
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23392,6 +23526,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 8973
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23405,6 +23540,7 @@
             .ability = ABILITY_SYNCHRONIZE,
 #line 8978
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23418,6 +23554,7 @@
             .ability = ABILITY_OVERGROW,
 #line 8983
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23440,8 +23577,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 8993
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RIVAL_LATE,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -23455,6 +23590,7 @@
             .ability = ABILITY_KEEN_EYE,
 #line 8997
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23468,6 +23604,7 @@
             .ability = ABILITY_CHLOROPHYLL,
 #line 9002
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23481,6 +23618,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 9007
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23494,6 +23632,7 @@
             .ability = ABILITY_SYNCHRONIZE,
 #line 9012
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23507,6 +23646,7 @@
             .ability = ABILITY_BLAZE,
 #line 9017
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23529,8 +23669,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9027
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RIVAL_LATE,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -23544,6 +23682,7 @@
             .ability = ABILITY_KEEN_EYE,
 #line 9031
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23557,6 +23696,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 9036
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23570,6 +23710,7 @@
             .ability = ABILITY_CHLOROPHYLL,
 #line 9041
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23583,6 +23724,7 @@
             .ability = ABILITY_SYNCHRONIZE,
 #line 9046
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23596,6 +23738,7 @@
             .ability = ABILITY_TORRENT,
 #line 9051
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23618,8 +23761,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9061
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RIVAL_LATE,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -23633,6 +23774,7 @@
             .ability = ABILITY_KEEN_EYE,
 #line 9065
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23646,6 +23788,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 9070
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23659,6 +23802,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 9075
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23672,6 +23816,7 @@
             .ability = ABILITY_SYNCHRONIZE,
 #line 9080
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23685,6 +23830,7 @@
             .ability = ABILITY_OVERGROW,
 #line 9085
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23707,8 +23853,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9095
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RIVAL_LATE,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -23722,6 +23866,7 @@
             .ability = ABILITY_KEEN_EYE,
 #line 9099
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23735,6 +23880,7 @@
             .ability = ABILITY_CHLOROPHYLL,
 #line 9104
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23748,6 +23894,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 9109
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23761,6 +23908,7 @@
             .ability = ABILITY_SYNCHRONIZE,
 #line 9114
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23774,6 +23922,7 @@
             .ability = ABILITY_BLAZE,
 #line 9119
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -23796,8 +23945,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9129
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RIVAL_LATE,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -23811,6 +23958,7 @@
             .ability = ABILITY_KEEN_EYE,
 #line 9133
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -23831,6 +23979,7 @@
             .ability = ABILITY_ROCK_HEAD,
 #line 9142
             .lvl = 45,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -23851,6 +24000,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 9151
             .lvl = 45,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -23871,6 +24021,7 @@
             .ability = ABILITY_CHLOROPHYLL,
 #line 9160
             .lvl = 45,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -23891,6 +24042,7 @@
             .ability = ABILITY_SYNCHRONIZE,
 #line 9169
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -23911,6 +24063,7 @@
             .ability = ABILITY_TORRENT,
 #line 9178
             .lvl = 53,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -23940,8 +24093,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9192
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RIVAL_LATE,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -23955,6 +24106,7 @@
             .ability = ABILITY_KEEN_EYE,
 #line 9196
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -23975,6 +24127,7 @@
             .ability = ABILITY_ROCK_HEAD,
 #line 9205
             .lvl = 45,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -23995,6 +24148,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 9214
             .lvl = 45,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24015,6 +24169,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 9223
             .lvl = 45,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24035,6 +24190,7 @@
             .ability = ABILITY_SYNCHRONIZE,
 #line 9232
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24055,6 +24211,7 @@
             .ability = ABILITY_OVERGROW,
 #line 9241
             .lvl = 53,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24084,8 +24241,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9255
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RIVAL_LATE,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -24099,6 +24254,7 @@
             .ability = ABILITY_KEEN_EYE,
 #line 9259
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24119,6 +24275,7 @@
             .ability = ABILITY_ROCK_HEAD,
 #line 9268
             .lvl = 45,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24139,6 +24296,7 @@
             .ability = ABILITY_CHLOROPHYLL,
 #line 9277
             .lvl = 45,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24159,6 +24317,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 9286
             .lvl = 45,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24179,6 +24338,7 @@
             .ability = ABILITY_SYNCHRONIZE,
 #line 9295
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24199,6 +24359,7 @@
             .ability = ABILITY_BLAZE,
 #line 9304
             .lvl = 53,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24232,8 +24393,6 @@
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
 #line 9320
         .mugshotColor = MUGSHOT_COLOR_YELLOW,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHAMPION_RIVAL,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -24247,6 +24406,7 @@
             .ability = ABILITY_KEEN_EYE,
 #line 9324
             .lvl = 59,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24267,6 +24427,7 @@
             .ability = ABILITY_SYNCHRONIZE,
 #line 9333
             .lvl = 57,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24287,6 +24448,7 @@
             .ability = ABILITY_ROCK_HEAD,
 #line 9342
             .lvl = 59,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24307,6 +24469,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 9351
             .lvl = 59,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24327,6 +24490,7 @@
             .ability = ABILITY_CHLOROPHYLL,
 #line 9360
             .lvl = 61,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24349,6 +24513,7 @@
             .ability = ABILITY_TORRENT,
 #line 9369
             .lvl = 63,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24382,8 +24547,6 @@
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
 #line 9385
         .mugshotColor = MUGSHOT_COLOR_YELLOW,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHAMPION_RIVAL,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -24397,6 +24560,7 @@
             .ability = ABILITY_KEEN_EYE,
 #line 9389
             .lvl = 59,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24417,6 +24581,7 @@
             .ability = ABILITY_SYNCHRONIZE,
 #line 9398
             .lvl = 57,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24437,6 +24602,7 @@
             .ability = ABILITY_ROCK_HEAD,
 #line 9407
             .lvl = 59,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24457,6 +24623,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 9416
             .lvl = 59,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24477,6 +24644,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 9425
             .lvl = 61,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24499,6 +24667,7 @@
             .ability = ABILITY_OVERGROW,
 #line 9434
             .lvl = 63,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24532,8 +24701,6 @@
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
 #line 9450
         .mugshotColor = MUGSHOT_COLOR_YELLOW,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHAMPION_RIVAL,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -24547,6 +24714,7 @@
             .ability = ABILITY_KEEN_EYE,
 #line 9454
             .lvl = 59,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24567,6 +24735,7 @@
             .ability = ABILITY_SYNCHRONIZE,
 #line 9463
             .lvl = 57,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24587,6 +24756,7 @@
             .ability = ABILITY_ROCK_HEAD,
 #line 9472
             .lvl = 59,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24607,6 +24777,7 @@
             .ability = ABILITY_CHLOROPHYLL,
 #line 9481
             .lvl = 59,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24627,6 +24798,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 9490
             .lvl = 61,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24649,6 +24821,7 @@
             .ability = ABILITY_BLAZE,
 #line 9499
             .lvl = 63,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24678,8 +24851,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9513
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHANNELER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -24691,6 +24862,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9516
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24713,8 +24885,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9526
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHANNELER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -24726,6 +24896,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9529
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24748,8 +24919,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9539
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHANNELER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -24761,6 +24930,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9542
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24783,8 +24953,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9552
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHANNELER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -24796,6 +24964,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9555
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24818,8 +24987,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9565
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHANNELER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -24831,6 +24998,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9568
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24842,6 +25010,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9572
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24864,8 +25033,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9582
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHANNELER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -24877,6 +25044,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9585
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24899,8 +25067,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9595
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHANNELER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -24912,6 +25078,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9598
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24934,8 +25101,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9608
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHANNELER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -24947,6 +25112,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9611
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24969,8 +25135,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9621
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHANNELER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -24982,6 +25146,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9624
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25004,8 +25169,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9634
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHANNELER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -25017,6 +25180,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9637
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25039,8 +25203,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9647
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHANNELER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -25052,6 +25214,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9650
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25063,6 +25226,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9654
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25074,6 +25238,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9658
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25096,8 +25261,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9668
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHANNELER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -25109,6 +25272,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9671
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25131,8 +25295,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9681
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHANNELER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -25144,6 +25306,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9684
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25166,8 +25329,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9694
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHANNELER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -25179,6 +25340,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9697
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25201,8 +25363,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9707
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHANNELER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -25214,6 +25374,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9710
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25236,8 +25397,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9720
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHANNELER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -25249,6 +25408,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9723
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25271,8 +25431,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9733
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHANNELER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -25284,6 +25442,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9736
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25306,8 +25465,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9746
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHANNELER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -25319,6 +25476,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9749
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25341,8 +25499,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9759
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHANNELER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -25354,6 +25510,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9762
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25365,6 +25522,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9766
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25376,6 +25534,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9770
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25398,8 +25557,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9780
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHANNELER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -25411,6 +25568,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9783
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25433,8 +25591,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9793
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHANNELER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -25446,6 +25602,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9796
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25468,8 +25625,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9806
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHANNELER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -25481,6 +25636,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9809
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25492,6 +25648,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9813
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25514,8 +25671,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9823
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHANNELER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -25527,6 +25682,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9826
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25549,8 +25705,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9836
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHANNELER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -25562,6 +25716,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9839
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25573,6 +25728,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9843
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25584,6 +25740,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9847
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25606,8 +25763,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9857
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -25619,6 +25774,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9860
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25630,6 +25786,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9864
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25652,8 +25809,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9874
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -25665,6 +25820,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9877
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25676,6 +25832,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9881
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25687,6 +25844,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9885
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25709,8 +25867,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9895
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -25722,6 +25878,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9898
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25733,6 +25890,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9902
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25744,6 +25902,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9906
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25755,6 +25914,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9910
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25766,6 +25926,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9914
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25788,8 +25949,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9924
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -25801,6 +25960,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9927
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25812,6 +25972,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9931
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25834,8 +25995,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9941
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -25847,6 +26006,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9944
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25858,6 +26018,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9948
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25869,6 +26030,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9952
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25880,6 +26042,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9956
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25902,8 +26065,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9966
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -25915,6 +26076,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9969
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -25933,6 +26095,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9977
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -25951,6 +26114,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9985
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -25980,8 +26144,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 9999
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -25993,6 +26155,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10002
             .lvl = 14,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26004,6 +26167,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10006
             .lvl = 14,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26026,8 +26190,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10016
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -26039,6 +26201,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10019
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26050,6 +26213,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10023
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26072,8 +26236,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10033
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -26085,6 +26247,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10036
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26096,6 +26259,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10040
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26107,6 +26271,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10044
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26129,8 +26294,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10054
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -26142,6 +26305,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10057
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26153,6 +26317,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10061
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26164,6 +26329,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10065
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26186,8 +26352,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10075
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -26199,6 +26363,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10078
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26210,6 +26375,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10082
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26221,6 +26387,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10086
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26232,6 +26399,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10090
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26254,8 +26422,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10100
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -26267,6 +26433,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10103
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26278,6 +26445,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10107
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26300,8 +26468,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10117
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -26313,6 +26479,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10120
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26324,6 +26491,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10124
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26346,8 +26514,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10134
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -26359,6 +26525,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10137
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26370,6 +26537,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10141
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26381,6 +26549,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10145
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26403,8 +26572,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10155
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -26416,6 +26583,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10158
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26427,6 +26595,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10162
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26438,6 +26607,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10166
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26460,8 +26630,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10176
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -26473,6 +26641,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10179
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26484,6 +26653,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10183
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26506,8 +26676,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10193
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -26519,6 +26687,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10196
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26541,8 +26710,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10206
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_GENTLEMAN,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -26554,6 +26721,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10209
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26576,8 +26744,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10219
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_GENTLEMAN,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -26589,6 +26755,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10222
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26600,6 +26767,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10226
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26622,8 +26790,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 10236
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_TWINS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -26635,6 +26801,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10239
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26646,6 +26813,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10243
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26668,8 +26836,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 10253
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOL_COUPLE,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -26681,6 +26847,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 10256
             .lvl = 45,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -26699,6 +26866,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 10264
             .lvl = 45,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -26728,8 +26896,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 10278
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNG_COUPLE,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -26741,6 +26907,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10281
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26752,6 +26919,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10285
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26774,8 +26942,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 10295
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_TWINS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -26787,6 +26953,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10298
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26798,6 +26965,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10302
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26820,8 +26988,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 10312
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CRUSH_KIN,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -26835,6 +27001,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 10315
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26848,6 +27015,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 10319
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26870,8 +27038,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 10329
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNG_COUPLE,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -26883,6 +27049,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10332
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26894,6 +27061,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10336
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26916,8 +27084,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 10346
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SIS_AND_BRO,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -26929,6 +27095,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10349
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26940,6 +27107,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10353
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26962,8 +27130,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 10363
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SIS_AND_BRO,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -26975,6 +27141,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10366
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26986,6 +27153,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10370
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27008,8 +27176,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10380
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -27021,6 +27187,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10383
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27043,8 +27210,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10393
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -27056,6 +27221,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10396
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27078,8 +27244,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10406
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -27091,6 +27255,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10409
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27113,8 +27278,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10419
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -27126,6 +27289,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10422
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27148,8 +27312,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10432
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -27161,6 +27323,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10435
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27183,8 +27346,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10445
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -27196,6 +27357,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10448
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27218,8 +27380,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10458
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -27231,6 +27391,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 10461
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27242,6 +27403,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 10465
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27264,8 +27426,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10475
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -27277,6 +27437,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 10478
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27288,6 +27449,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 10482
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27310,8 +27472,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10492
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -27323,6 +27483,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 10495
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27334,6 +27495,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 10499
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27356,8 +27518,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10509
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -27369,6 +27529,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 10512
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27380,6 +27541,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 10516
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27402,8 +27564,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10526
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -27415,6 +27575,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 10529
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27426,6 +27587,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 10533
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27448,8 +27610,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10543
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -27461,6 +27621,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 10546
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27472,6 +27633,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 10550
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27483,6 +27645,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 10554
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27505,8 +27668,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10564
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -27518,6 +27679,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 10567
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27529,6 +27691,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 10571
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27540,6 +27703,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 10575
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27562,8 +27726,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10585
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -27575,6 +27737,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 10588
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27586,6 +27749,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 10592
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27597,6 +27761,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 10596
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27619,8 +27784,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10606
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -27632,6 +27795,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 10609
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27643,6 +27807,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 10613
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27665,8 +27830,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10623
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -27678,6 +27841,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 10626
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27689,6 +27853,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 10630
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27711,8 +27876,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10640
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -27724,6 +27887,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 10643
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27735,6 +27899,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 10647
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27757,8 +27922,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10657
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -27770,6 +27933,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 10660
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27781,6 +27945,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 10664
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27803,8 +27968,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10674
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -27816,6 +27979,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 10677
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27827,6 +27991,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 10681
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27849,8 +28014,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10691
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PROFESSOR_OAK,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -27862,6 +28025,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10694
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27875,7 +28039,7 @@
 #line 10699
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 10700
-        .trainerPic = TRAINER_PIC_RS_BRENDAN_2,
+        .trainerPic = TRAINER_PIC_RS_BRENDAN,
 #line 10701
         .gender = TRAINER_GENDER_MALE,
 #line 10702
@@ -27884,8 +28048,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10704
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_BRENDAN_2,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -27897,6 +28059,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10707
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27910,7 +28073,7 @@
 #line 10712
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 10713
-        .trainerPic = TRAINER_PIC_RS_MAY_2,
+        .trainerPic = TRAINER_PIC_RS_MAY,
 #line 10714
         .gender = TRAINER_GENDER_MALE,
 #line 10715
@@ -27919,8 +28082,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10717
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RS_MAY_2,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -27932,6 +28093,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10720
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27954,8 +28116,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10730
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RED,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -27967,6 +28127,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10733
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -27989,8 +28150,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10743
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LEAF,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -28002,6 +28161,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10746
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28024,8 +28184,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10756
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -28037,6 +28195,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10759
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28048,6 +28207,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10763
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28070,8 +28230,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10773
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -28083,6 +28241,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 10776
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -28101,6 +28260,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 10784
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -28119,6 +28279,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 10792
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -28148,8 +28309,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10806
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CRUSH_GIRL,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -28163,6 +28322,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 10809
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28176,6 +28336,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 10813
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28198,8 +28359,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10823
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_TUBER_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -28211,6 +28370,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10826
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28222,6 +28382,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10830
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28233,6 +28394,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10834
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28255,8 +28417,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10844
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMON_BREEDER_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -28268,6 +28428,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 10847
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28279,6 +28440,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 10851
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28290,6 +28452,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 10855
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28314,8 +28477,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10866
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMON_RANGER_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -28327,6 +28488,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 10869
             .lvl = 51,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -28345,6 +28507,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 10877
             .lvl = 51,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -28376,8 +28539,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10892
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMON_RANGER_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -28389,6 +28550,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 10895
             .lvl = 51,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -28407,6 +28569,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 10903
             .lvl = 51,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -28436,8 +28599,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10917
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_AROMA_LADY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -28449,6 +28610,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10920
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28460,6 +28622,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10924
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28482,8 +28645,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10934
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RUIN_MANIAC,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -28495,6 +28656,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10937
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28506,6 +28668,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10941
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28517,6 +28680,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10945
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28541,8 +28705,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10956
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LADY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -28556,6 +28718,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10959
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28569,6 +28732,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10963
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28591,8 +28755,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10973
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PAINTER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -28604,6 +28766,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 10976
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -28633,8 +28796,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 10990
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -28646,6 +28807,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10993
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -28664,6 +28826,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11001
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -28693,8 +28856,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11015
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -28706,6 +28867,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11018
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -28735,8 +28897,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11032
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -28748,6 +28908,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11035
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28770,8 +28931,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11045
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -28783,6 +28942,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11048
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28805,8 +28965,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11058
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -28818,6 +28976,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11061
             .lvl = 7,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28829,6 +28988,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11065
             .lvl = 8,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28851,8 +29011,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11075
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -28864,6 +29022,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11078
             .lvl = 7,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28875,6 +29034,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11082
             .lvl = 7,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28886,6 +29046,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11086
             .lvl = 7,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28908,8 +29069,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 11096
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_TWINS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -28921,6 +29080,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 11099
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28932,6 +29092,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 11103
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28954,8 +29115,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11113
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -28967,6 +29126,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11116
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28978,6 +29138,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11120
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -28989,6 +29150,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11124
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29011,8 +29173,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11134
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -29024,6 +29184,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11137
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -29042,6 +29203,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11145
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -29060,6 +29222,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11153
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -29089,8 +29252,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11167
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -29102,6 +29263,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11170
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29113,6 +29275,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11174
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29135,8 +29298,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11184
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -29148,6 +29309,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11187
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29159,6 +29321,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11191
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29181,8 +29344,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11201
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -29194,6 +29355,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11204
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29205,6 +29367,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11208
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29216,6 +29379,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11212
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29227,6 +29391,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11216
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29249,8 +29414,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11226
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -29262,6 +29425,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11229
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29273,6 +29437,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11233
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29284,6 +29449,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11237
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29306,8 +29472,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11247
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -29319,6 +29483,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11250
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29330,6 +29495,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11254
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29341,6 +29507,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11258
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29363,8 +29530,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11268
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -29376,6 +29541,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11271
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29387,6 +29553,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11275
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29398,6 +29565,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11279
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29420,8 +29588,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11289
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -29433,6 +29599,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11292
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29444,6 +29611,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11296
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29468,8 +29636,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11307
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -29481,6 +29647,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 11310
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -29499,6 +29666,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 11318
             .lvl = 53,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -29517,6 +29685,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 11326
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -29548,8 +29717,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11341
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -29561,6 +29728,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 11344
             .lvl = 53,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -29579,6 +29747,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 11352
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -29597,6 +29766,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 11360
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -29626,8 +29796,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11374
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SCIENTIST,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -29639,6 +29807,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11377
             .lvl = 46,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -29657,6 +29826,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11385
             .lvl = 46,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -29675,6 +29845,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11393
             .lvl = 46,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -29693,6 +29864,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11401
             .lvl = 46,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -29711,6 +29883,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11409
             .lvl = 46,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -29740,8 +29913,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11423
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -29753,6 +29924,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11426
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29764,6 +29936,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11430
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29775,6 +29948,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11434
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29797,8 +29971,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11444
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -29810,6 +29982,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11447
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29821,6 +29994,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11451
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29843,8 +30017,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11461
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -29856,6 +30028,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11464
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29867,6 +30040,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11468
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29878,6 +30052,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11472
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29900,8 +30075,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11482
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -29913,6 +30086,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11485
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29935,8 +30109,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11495
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -29948,6 +30120,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11498
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29959,6 +30132,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11502
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29970,6 +30144,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11506
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -29992,8 +30167,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11516
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_FISHERMAN,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -30005,6 +30178,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11519
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30016,6 +30190,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11523
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30027,6 +30202,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11527
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30038,6 +30214,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11531
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30049,6 +30226,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11535
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30071,8 +30249,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11545
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CRUSH_GIRL,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -30086,6 +30262,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 11548
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30099,6 +30276,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 11552
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30121,8 +30299,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11562
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BLACK_BELT,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -30136,6 +30312,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 11565
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30149,6 +30326,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 11569
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30171,8 +30349,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11579
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BLACK_BELT,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -30186,6 +30362,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 11582
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30199,6 +30376,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 11586
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30221,8 +30399,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11596
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -30234,6 +30410,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11599
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30245,6 +30422,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11603
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30256,6 +30434,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11607
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30278,8 +30457,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11617
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -30291,6 +30468,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11620
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30302,6 +30480,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11624
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30313,6 +30492,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11628
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30324,6 +30504,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11632
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30346,8 +30527,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 11642
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CRUSH_KIN,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -30361,6 +30540,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 11645
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30374,6 +30554,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 11649
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30396,8 +30577,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11659
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_AROMA_LADY,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -30409,6 +30588,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11662
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30420,6 +30600,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11666
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30431,6 +30612,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11670
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30453,8 +30635,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11680
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_TUBER_F,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -30466,6 +30646,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11683
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30477,6 +30658,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11687
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30488,6 +30670,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11691
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30499,6 +30682,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11695
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30521,8 +30705,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 11705
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_TWINS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -30534,6 +30716,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11708
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30545,6 +30728,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11712
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30567,8 +30751,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11722
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -30580,6 +30762,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11725
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30602,8 +30785,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11735
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PAINTER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -30615,6 +30796,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 11738
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -30644,8 +30826,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11752
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PAINTER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -30657,6 +30837,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 11755
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -30688,8 +30869,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11770
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LADY,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -30703,6 +30882,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11773
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30716,6 +30896,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11777
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30729,6 +30910,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11781
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30751,8 +30933,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11791
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -30764,6 +30944,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11794
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30775,6 +30956,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11798
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30797,8 +30979,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11808
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -30810,6 +30990,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11811
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30821,6 +31002,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11815
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30832,6 +31014,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11819
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30854,8 +31037,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11829
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -30867,6 +31048,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11832
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30878,6 +31060,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11836
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30889,6 +31072,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11840
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30911,8 +31095,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11850
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -30924,6 +31106,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11853
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -30942,6 +31125,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11861
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -30971,8 +31155,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11875
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKET_GRUNT_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -30984,6 +31166,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 11878
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30995,6 +31178,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 11882
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31006,6 +31190,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 11886
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31028,8 +31213,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11896
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -31041,6 +31224,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11899
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31052,6 +31236,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11903
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31074,8 +31259,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11913
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -31087,6 +31270,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11916
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31098,6 +31282,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11920
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31120,8 +31305,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11930
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -31133,6 +31316,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11933
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31144,6 +31328,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11937
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31166,8 +31351,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11947
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_FISHERMAN,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -31179,6 +31362,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11950
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31190,6 +31374,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11954
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31212,8 +31397,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11964
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -31225,6 +31408,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11967
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31236,6 +31420,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11971
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31258,8 +31443,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 11981
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -31271,6 +31454,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11984
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31293,8 +31477,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 11994
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SIS_AND_BRO,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -31306,6 +31488,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 11997
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31317,6 +31500,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12001
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31339,8 +31523,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12011
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_AROMA_LADY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -31352,6 +31534,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12014
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31363,6 +31546,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12018
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31385,8 +31569,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12028
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -31398,6 +31580,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12031
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31420,8 +31603,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12041
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -31433,6 +31614,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12044
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31444,6 +31626,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12048
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31466,8 +31649,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 12058
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_TWINS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -31479,6 +31660,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12061
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31490,6 +31672,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12065
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31512,8 +31695,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12075
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -31525,6 +31706,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12078
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31536,6 +31718,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12082
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31558,8 +31741,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12092
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RUIN_MANIAC,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -31571,6 +31752,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12095
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31593,8 +31775,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12105
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RUIN_MANIAC,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -31606,6 +31786,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12108
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31617,6 +31798,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12112
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31639,8 +31821,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12122
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -31652,6 +31832,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12125
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31674,8 +31855,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12135
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMANIAC,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -31687,6 +31866,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 12138
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31698,6 +31878,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 12142
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31720,8 +31901,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12152
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -31733,6 +31912,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12155
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -31762,8 +31942,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12169
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -31775,6 +31953,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12172
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -31793,6 +31972,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12180
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -31811,6 +31991,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12188
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -31840,8 +32021,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12202
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_AROMA_LADY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -31853,6 +32032,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12205
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31864,6 +32044,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12209
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31886,8 +32067,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 12219
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNG_COUPLE,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -31899,6 +32078,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12222
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31910,6 +32090,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12226
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -31932,8 +32113,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12236
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_JUGGLER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -31945,6 +32124,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12239
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -31963,6 +32143,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12247
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -31981,6 +32162,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12255
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -31999,6 +32181,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12263
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -32028,8 +32211,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12277
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CRUSH_GIRL,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -32043,6 +32224,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 12280
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -32056,6 +32238,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 12284
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -32069,6 +32252,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 12288
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -32091,8 +32275,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12298
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CRUSH_GIRL,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -32106,6 +32288,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 12301
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -32119,6 +32302,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 12305
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -32141,8 +32325,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12315
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_TAMER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -32154,6 +32336,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 12318
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -32165,6 +32348,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 12322
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -32176,6 +32360,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 12326
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -32198,8 +32383,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12336
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMANIAC,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -32211,6 +32394,7 @@
             .iv = TRAINER_PARTY_IVS(10, 10, 10, 10, 10, 10),
 #line 12339
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -32222,6 +32406,7 @@
             .iv = TRAINER_PARTY_IVS(10, 10, 10, 10, 10, 10),
 #line 12343
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -32246,8 +32431,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12354
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMON_RANGER_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -32259,6 +32442,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12357
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -32277,6 +32461,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12365
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -32308,8 +32493,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12380
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMON_RANGER_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -32321,6 +32504,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12383
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -32339,6 +32523,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12391
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -32357,6 +32542,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12399
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -32388,8 +32574,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12414
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMON_RANGER_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -32401,6 +32585,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12417
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -32412,6 +32597,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12421
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -32423,6 +32609,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12425
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -32447,8 +32634,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12436
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMON_RANGER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -32460,6 +32645,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12439
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -32491,8 +32677,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12454
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -32504,6 +32688,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12457
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -32522,6 +32707,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12465
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -32540,6 +32726,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12473
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -32558,6 +32745,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12481
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -32576,6 +32764,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12489
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -32607,8 +32796,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12504
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -32620,6 +32807,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12507
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -32638,6 +32826,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12515
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -32656,6 +32845,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12523
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -32674,6 +32864,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12531
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -32692,6 +32883,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12539
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -32723,8 +32915,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 12554
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOL_COUPLE,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -32736,6 +32926,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12557
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -32754,6 +32945,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12565
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -32783,8 +32975,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12579
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RUIN_MANIAC,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -32796,6 +32986,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12582
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -32818,8 +33009,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12592
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RUIN_MANIAC,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -32831,6 +33020,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12595
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -32849,6 +33039,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12603
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -32867,6 +33058,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12611
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -32896,8 +33088,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12625
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PAINTER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -32909,6 +33099,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 12628
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -32938,8 +33129,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12642
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_GENTLEMAN,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -32951,6 +33140,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12645
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -32962,6 +33152,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12649
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -32986,8 +33177,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12660
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LADY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -33001,6 +33190,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12663
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -33021,6 +33211,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12671
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -33050,8 +33241,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12685
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RUIN_MANIAC,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -33063,6 +33252,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12688
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33074,6 +33264,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12692
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33085,6 +33276,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12696
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33107,8 +33299,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12706
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -33120,6 +33310,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12709
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33131,6 +33322,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12713
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33142,6 +33334,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 12717
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33164,8 +33357,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12727
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMON_BREEDER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -33177,6 +33368,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 12730
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33199,8 +33391,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12740
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMON_BREEDER_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -33212,6 +33402,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 12743
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33223,6 +33414,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 12747
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33234,6 +33426,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 12751
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33256,8 +33449,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12761
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -33269,6 +33460,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12764
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33291,8 +33483,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12774
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -33304,6 +33494,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12777
             .lvl = 45,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33315,6 +33506,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12781
             .lvl = 45,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33326,6 +33518,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12785
             .lvl = 46,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33337,6 +33530,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12789
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33359,8 +33553,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12799
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -33372,6 +33564,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12802
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33383,6 +33576,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12806
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33405,8 +33599,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12816
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -33418,6 +33610,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12819
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33429,6 +33622,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12823
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33440,6 +33634,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12827
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33462,8 +33657,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12837
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -33475,6 +33668,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12840
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33486,6 +33680,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12844
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33508,8 +33703,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12854
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -33521,6 +33714,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12857
             .lvl = 46,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33532,6 +33726,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12861
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33543,6 +33738,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12865
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33554,6 +33750,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12869
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33576,8 +33773,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12879
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -33589,6 +33784,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12882
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33611,8 +33807,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12892
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -33624,6 +33818,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12895
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33635,6 +33830,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12899
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33657,8 +33853,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12909
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -33670,6 +33864,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12912
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33681,6 +33876,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12916
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33692,6 +33888,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12920
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33714,8 +33911,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12930
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RUIN_MANIAC,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -33727,6 +33922,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12933
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33738,6 +33934,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12937
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33749,6 +33946,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 12941
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33771,8 +33969,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12951
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -33784,6 +33980,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 12954
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33795,6 +33992,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 12958
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33817,8 +34015,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12968
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -33830,6 +34026,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 12971
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33841,6 +34038,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 12975
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33863,8 +34061,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 12985
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -33876,6 +34072,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 12988
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33887,6 +34084,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 12992
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33909,8 +34107,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13002
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -33922,6 +34118,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 13005
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33944,8 +34141,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13015
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -33957,6 +34152,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13018
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -33979,8 +34175,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13028
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -33992,6 +34186,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 13031
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34014,8 +34209,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13041
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -34027,6 +34220,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 13044
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34038,6 +34232,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 13048
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34060,8 +34255,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13058
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -34073,6 +34266,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13061
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34084,6 +34278,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13065
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34106,8 +34301,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13075
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -34119,6 +34312,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 13078
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34130,6 +34324,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 13082
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34152,8 +34347,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13092
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -34165,6 +34358,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 13095
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34176,6 +34370,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 13099
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34187,6 +34382,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 13103
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34209,8 +34405,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13113
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -34222,6 +34416,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13116
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34233,6 +34428,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13120
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34244,6 +34440,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13124
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34266,8 +34463,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13134
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -34279,6 +34474,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13137
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34290,6 +34486,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13141
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34301,6 +34498,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13145
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34323,8 +34521,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13155
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -34336,6 +34532,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 13158
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34347,6 +34544,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 13162
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34358,6 +34556,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 13166
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34380,8 +34579,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13176
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -34393,6 +34590,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13179
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34404,6 +34602,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13183
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34415,6 +34614,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13187
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34437,8 +34637,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13197
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ENGINEER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -34450,6 +34648,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13200
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34461,6 +34660,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13204
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34472,6 +34672,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13208
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34494,8 +34695,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13218
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_GAMER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -34507,6 +34706,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13221
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34518,6 +34718,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13225
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34540,8 +34741,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13235
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -34553,6 +34752,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 13238
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34564,6 +34764,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 13242
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34586,8 +34787,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13252
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -34599,6 +34798,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13255
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34610,6 +34810,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13259
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34632,8 +34833,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13269
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -34645,6 +34844,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 13272
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34656,6 +34856,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 13276
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34678,8 +34879,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13286
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -34691,6 +34890,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 13289
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34713,8 +34913,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13299
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -34726,6 +34924,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13302
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34748,8 +34947,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13312
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -34761,6 +34958,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 13315
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34783,8 +34981,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13325
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -34796,6 +34992,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13328
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34807,6 +35004,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13332
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34829,8 +35027,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13342
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMANIAC,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -34842,6 +35038,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 13345
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34853,6 +35050,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 13349
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34875,8 +35073,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13359
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMANIAC,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -34888,6 +35084,7 @@
             .iv = TRAINER_PARTY_IVS(10, 10, 10, 10, 10, 10),
 #line 13362
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34899,6 +35096,7 @@
             .iv = TRAINER_PARTY_IVS(10, 10, 10, 10, 10, 10),
 #line 13366
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34921,8 +35119,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13376
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMANIAC,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -34934,6 +35130,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 13379
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34945,6 +35142,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 13383
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34967,8 +35165,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13393
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -34980,6 +35176,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13396
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -34991,6 +35188,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13400
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35013,8 +35211,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13410
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -35026,6 +35222,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 13413
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35037,6 +35234,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 13417
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35048,6 +35246,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 13421
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35059,6 +35258,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 13425
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35070,6 +35270,7 @@
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),
 #line 13429
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35092,8 +35293,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13439
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -35105,6 +35304,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13442
             .lvl = 46,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35116,6 +35316,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13446
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35127,6 +35328,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13450
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35138,6 +35340,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13454
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35149,6 +35352,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13458
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35171,8 +35375,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13468
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SUPER_NERD,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -35184,6 +35386,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13471
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35195,6 +35398,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13475
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35206,6 +35410,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13479
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35228,8 +35433,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13489
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_GAMER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -35241,6 +35444,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13492
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35252,6 +35456,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13496
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35274,8 +35479,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13506
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -35287,6 +35490,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13509
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35298,6 +35502,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13513
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35320,8 +35525,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13523
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_FISHERMAN,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -35333,6 +35536,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13526
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35344,6 +35548,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13530
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35355,6 +35560,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13534
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35366,6 +35572,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13538
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35388,8 +35595,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13548
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ROCKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -35401,6 +35606,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13551
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35412,6 +35618,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13555
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35434,8 +35641,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13565
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BEAUTY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -35447,6 +35652,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13568
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35458,6 +35664,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13572
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35480,8 +35687,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13582
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -35493,6 +35698,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13585
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35504,6 +35710,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13589
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35515,6 +35722,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13593
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35526,6 +35734,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13597
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35548,8 +35757,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13607
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -35561,6 +35768,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13610
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35572,6 +35780,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13614
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35583,6 +35792,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13618
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35594,6 +35804,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13622
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35616,8 +35827,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13632
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -35629,6 +35838,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13635
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35640,6 +35850,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13639
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35651,6 +35862,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13643
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35662,6 +35874,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13647
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35673,6 +35886,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13651
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35695,8 +35909,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13661
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -35708,6 +35920,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13664
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35719,6 +35932,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13668
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35730,6 +35944,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13672
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35741,6 +35956,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13676
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35752,6 +35968,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13680
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35774,8 +35991,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13690
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -35787,6 +36002,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 13693
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35798,6 +36014,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 13697
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35809,6 +36026,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 13701
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35820,6 +36038,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 13705
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35831,6 +36050,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 13709
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35853,8 +36073,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13719
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -35866,6 +36084,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13722
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35877,6 +36096,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13726
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35888,6 +36108,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13730
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35899,6 +36120,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13734
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35921,8 +36143,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13744
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -35934,6 +36154,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13747
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35945,6 +36166,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13751
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35967,8 +36189,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13761
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -35980,6 +36200,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13764
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -35991,6 +36212,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13768
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36013,8 +36235,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13778
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -36026,6 +36246,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13781
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36037,6 +36258,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13785
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36048,6 +36270,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13789
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36070,8 +36293,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13799
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -36083,6 +36304,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13802
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36094,6 +36316,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13806
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36105,6 +36328,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13810
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36127,8 +36351,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13820
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BEAUTY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -36140,6 +36362,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13823
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36151,6 +36374,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13827
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36173,8 +36397,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13837
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -36186,6 +36408,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13840
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36197,6 +36420,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13844
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36208,6 +36432,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13848
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36230,8 +36455,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13858
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -36243,6 +36466,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13861
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36254,6 +36478,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13865
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36265,6 +36490,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13869
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36287,8 +36513,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13879
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -36300,6 +36524,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13882
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36311,6 +36536,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 13886
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36333,8 +36559,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13896
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -36346,6 +36570,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13899
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36357,6 +36582,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13903
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36379,8 +36605,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13913
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -36392,6 +36616,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 13916
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36403,6 +36628,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 13920
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36425,8 +36651,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 13930
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CRUSH_KIN,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -36440,6 +36664,7 @@
             .iv = TRAINER_PARTY_IVS(13, 13, 13, 13, 13, 13),
 #line 13933
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36453,6 +36678,7 @@
             .iv = TRAINER_PARTY_IVS(13, 13, 13, 13, 13, 13),
 #line 13937
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36475,8 +36701,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 13947
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CRUSH_KIN,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -36490,6 +36714,7 @@
             .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
 #line 13950
             .lvl = 51,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36503,6 +36728,7 @@
             .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
 #line 13954
             .lvl = 51,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36525,8 +36751,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 13964
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CRUSH_KIN,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -36540,6 +36764,7 @@
             .iv = TRAINER_PARTY_IVS(20, 20, 20, 20, 20, 20),
 #line 13967
             .lvl = 56,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36553,6 +36778,7 @@
             .iv = TRAINER_PARTY_IVS(20, 20, 20, 20, 20, 20),
 #line 13971
             .lvl = 56,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36575,8 +36801,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 13981
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -36588,6 +36812,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13984
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36599,6 +36824,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13988
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36610,6 +36836,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 13992
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36632,8 +36859,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14002
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CUE_BALL,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -36645,6 +36870,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14005
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36656,6 +36882,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14009
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36678,8 +36905,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14019
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -36691,6 +36916,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14022
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36702,6 +36928,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14026
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36724,8 +36951,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14036
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CUE_BALL,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -36737,6 +36962,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14039
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36748,6 +36974,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14043
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36770,8 +36997,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14053
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CUE_BALL,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -36783,6 +37008,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14056
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36794,6 +37020,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14060
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36816,8 +37043,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14070
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -36829,6 +37054,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 14073
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36840,6 +37066,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 14077
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36851,6 +37078,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 14081
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36862,6 +37090,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 14085
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36884,8 +37113,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14095
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -36897,6 +37124,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14098
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36908,6 +37136,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14102
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36919,6 +37148,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14106
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36930,6 +37160,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14110
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36952,8 +37183,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14120
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -36965,6 +37194,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14123
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36976,6 +37206,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14127
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -36998,8 +37229,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14137
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -37011,6 +37240,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14140
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37022,6 +37252,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14144
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37033,6 +37264,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14148
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37044,6 +37276,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14152
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37066,8 +37299,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14162
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -37079,6 +37310,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14165
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37090,6 +37322,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14169
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37112,8 +37345,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14179
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -37125,6 +37356,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14182
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37136,6 +37368,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14186
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37158,8 +37391,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14196
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_FISHERMAN,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -37171,6 +37402,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14199
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37182,6 +37414,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14203
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37193,6 +37426,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14207
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37204,6 +37438,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14211
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37215,6 +37450,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14215
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37226,6 +37462,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14219
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37248,8 +37485,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14229
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -37261,6 +37496,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14232
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37283,8 +37519,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 14242
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SIS_AND_BRO,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -37296,6 +37530,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14245
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37307,6 +37542,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14249
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37329,8 +37565,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 14259
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SIS_AND_BRO,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -37342,6 +37576,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14262
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37353,6 +37588,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14266
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37375,8 +37611,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14276
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -37388,6 +37622,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14279
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37410,8 +37645,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14289
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CRUSH_GIRL,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -37425,6 +37658,7 @@
             .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
 #line 14292
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37438,6 +37672,7 @@
             .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
 #line 14296
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37460,8 +37695,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14306
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CRUSH_GIRL,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -37475,6 +37708,7 @@
             .iv = TRAINER_PARTY_IVS(20, 20, 20, 20, 20, 20),
 #line 14309
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37488,6 +37722,7 @@
             .iv = TRAINER_PARTY_IVS(20, 20, 20, 20, 20, 20),
 #line 14313
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37510,8 +37745,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14323
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CRUSH_GIRL,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -37525,6 +37758,7 @@
             .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
 #line 14326
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37538,6 +37772,7 @@
             .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
 #line 14330
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37560,8 +37795,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14340
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CRUSH_GIRL,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -37575,6 +37808,7 @@
             .iv = TRAINER_PARTY_IVS(20, 20, 20, 20, 20, 20),
 #line 14343
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37588,6 +37822,7 @@
             .iv = TRAINER_PARTY_IVS(20, 20, 20, 20, 20, 20),
 #line 14347
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37610,8 +37845,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14357
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BLACK_BELT,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -37625,6 +37858,7 @@
             .iv = TRAINER_PARTY_IVS(21, 21, 21, 21, 21, 21),
 #line 14360
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37638,6 +37872,7 @@
             .iv = TRAINER_PARTY_IVS(21, 21, 21, 21, 21, 21),
 #line 14364
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37660,8 +37895,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14374
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BLACK_BELT,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -37675,6 +37908,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 14377
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37688,6 +37922,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 14381
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37710,8 +37945,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14391
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BLACK_BELT,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -37725,6 +37958,7 @@
             .iv = TRAINER_PARTY_IVS(21, 21, 21, 21, 21, 21),
 #line 14394
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37738,6 +37972,7 @@
             .iv = TRAINER_PARTY_IVS(21, 21, 21, 21, 21, 21),
 #line 14398
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37760,8 +37995,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14408
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BLACK_BELT,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -37775,6 +38008,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 14411
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37788,6 +38022,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 14415
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37810,8 +38045,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 14425
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CRUSH_KIN,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -37825,6 +38058,7 @@
             .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
 #line 14428
             .lvl = 51,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37838,6 +38072,7 @@
             .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
 #line 14432
             .lvl = 51,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37860,8 +38095,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 14442
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CRUSH_KIN,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -37875,6 +38108,7 @@
             .iv = TRAINER_PARTY_IVS(20, 20, 20, 20, 20, 20),
 #line 14445
             .lvl = 56,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37888,6 +38122,7 @@
             .iv = TRAINER_PARTY_IVS(20, 20, 20, 20, 20, 20),
 #line 14449
             .lvl = 56,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37910,8 +38145,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14459
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_TUBER_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -37923,6 +38156,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14462
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37934,6 +38168,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14466
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37945,6 +38180,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14470
             .lvl = 47,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37967,8 +38203,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 14480
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_TWINS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -37980,6 +38214,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14483
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -37991,6 +38226,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 14487
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38013,8 +38249,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14497
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PAINTER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -38026,6 +38260,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14500
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -38055,8 +38290,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14514
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -38068,6 +38301,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14517
             .lvl = 53,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38079,6 +38313,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14521
             .lvl = 53,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38101,8 +38336,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14531
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMON_BREEDER_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -38114,6 +38347,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 14534
             .lvl = 53,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38125,6 +38359,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 14538
             .lvl = 53,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38136,6 +38371,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 14542
             .lvl = 53,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38158,8 +38394,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 14552
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNG_COUPLE,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -38171,6 +38405,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 14555
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38182,6 +38417,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 14559
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38204,8 +38440,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 14569
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_YOUNG_COUPLE,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -38217,6 +38451,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14572
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38228,6 +38463,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14576
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38250,8 +38486,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14586
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -38263,6 +38497,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14589
             .lvl = 53,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38274,6 +38509,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14593
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38296,8 +38532,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14603
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -38309,6 +38543,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14606
             .lvl = 53,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38320,6 +38555,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14610
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38342,8 +38578,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14620
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -38355,6 +38589,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14623
             .lvl = 53,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38366,6 +38601,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14627
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38388,8 +38624,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14637
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -38401,6 +38635,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14640
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38423,8 +38658,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14650
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -38436,6 +38669,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 14653
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -38454,6 +38688,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 14661
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -38472,6 +38707,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 14669
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -38501,8 +38737,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14683
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -38514,6 +38748,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14686
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38536,8 +38771,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14696
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -38549,6 +38782,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14699
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38560,6 +38794,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14703
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38582,8 +38817,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14713
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_RUIN_MANIAC,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -38595,6 +38828,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14716
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38606,6 +38840,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14720
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38628,8 +38863,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14730
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMANIAC,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -38641,6 +38874,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 14733
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38652,6 +38886,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 14737
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38674,8 +38909,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14747
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -38687,6 +38920,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 14750
             .lvl = 56,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -38716,8 +38950,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14764
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -38729,6 +38961,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 14767
             .lvl = 53,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -38747,6 +38980,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 14775
             .lvl = 53,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -38765,6 +38999,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 14783
             .lvl = 53,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -38794,8 +39029,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14797
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_JUGGLER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -38807,6 +39040,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14800
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38818,6 +39052,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14804
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38829,6 +39064,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14808
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38840,6 +39076,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 14812
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -38864,8 +39101,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14823
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMON_RANGER_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -38877,6 +39112,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 14826
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -38895,6 +39131,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 14834
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -38926,8 +39163,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14849
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMON_RANGER_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -38939,6 +39174,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 14852
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -38957,6 +39193,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 14860
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -38986,8 +39223,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14874
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CRUSH_GIRL,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -39001,6 +39236,7 @@
             .iv = TRAINER_PARTY_IVS(20, 20, 20, 20, 20, 20),
 #line 14877
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -39014,6 +39250,7 @@
             .iv = TRAINER_PARTY_IVS(20, 20, 20, 20, 20, 20),
 #line 14881
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -39027,6 +39264,7 @@
             .iv = TRAINER_PARTY_IVS(20, 20, 20, 20, 20, 20),
 #line 14885
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -39049,8 +39287,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14895
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_TAMER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -39062,6 +39298,7 @@
             .iv = TRAINER_PARTY_IVS(19, 19, 19, 19, 19, 19),
 #line 14898
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -39073,6 +39310,7 @@
             .iv = TRAINER_PARTY_IVS(19, 19, 19, 19, 19, 19),
 #line 14902
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -39084,6 +39322,7 @@
             .iv = TRAINER_PARTY_IVS(19, 19, 19, 19, 19, 19),
 #line 14906
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -39108,8 +39347,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14917
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMON_RANGER_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -39121,6 +39358,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 14920
             .lvl = 53,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -39139,6 +39377,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 14928
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -39157,6 +39396,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 14936
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -39188,8 +39428,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14951
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_POKEMON_RANGER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -39201,6 +39439,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 14954
             .lvl = 56,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -39232,8 +39471,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 14969
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -39245,6 +39482,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 14972
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -39263,6 +39501,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 14980
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -39281,6 +39520,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 14988
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -39299,6 +39539,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 14996
             .lvl = 52,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -39317,6 +39558,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 15004
             .lvl = 55,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -39348,8 +39590,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 15019
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -39361,6 +39601,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 15022
             .lvl = 53,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -39379,6 +39620,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 15030
             .lvl = 53,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -39397,6 +39639,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 15038
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -39415,6 +39658,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 15046
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -39433,6 +39677,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 15054
             .lvl = 56,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -39464,8 +39709,6 @@
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 15069
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-#line 0
-        .trainerBackPic = TRAINER_PIC_COOL_COUPLE,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -39477,6 +39720,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 15072
             .lvl = 57,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -39495,6 +39739,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 15080
             .lvl = 57,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -39524,8 +39769,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 15094
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -39537,6 +39780,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 15097
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -39548,6 +39792,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 15101
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -39559,6 +39804,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 15105
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -39581,8 +39827,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 15115
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -39594,6 +39838,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 15118
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -39605,6 +39850,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 15122
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -39616,6 +39862,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 15126
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -39638,8 +39885,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 15136
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -39651,6 +39896,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 15139
             .lvl = 51,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -39662,6 +39908,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 15143
             .lvl = 54,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -39673,6 +39920,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 15147
             .lvl = 51,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -39695,8 +39943,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 15157
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -39708,6 +39954,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 15160
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -39719,6 +39966,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 15164
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -39741,8 +39989,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 15174
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -39754,6 +40000,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 15177
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -39765,6 +40012,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 15181
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -39787,8 +40035,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 15191
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -39800,6 +40046,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 15194
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -39811,6 +40058,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 15198
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -39837,8 +40085,6 @@
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
 #line 15210
         .mugshotColor = MUGSHOT_COLOR_PURPLE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ELITE_FOUR_LORELEI,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -39855,6 +40101,7 @@
             .ability = ABILITY_THICK_FAT,
 #line 15214
             .lvl = 64,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -39878,6 +40125,7 @@
             .ability = ABILITY_SKILL_LINK,
 #line 15223
             .lvl = 63,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -39901,6 +40149,7 @@
             .ability = ABILITY_THICK_FAT,
 #line 15232
             .lvl = 63,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -39923,6 +40172,7 @@
             .ability = ABILITY_OBLIVIOUS,
 #line 15241
             .lvl = 66,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -39946,6 +40196,7 @@
             .ability = ABILITY_SHELL_ARMOR,
 #line 15250
             .lvl = 66,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -39969,6 +40220,7 @@
             .ability = ABILITY_SNOW_WARNING,
 #line 15259
             .lvl = 63,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40002,8 +40254,6 @@
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
 #line 15275
         .mugshotColor = MUGSHOT_COLOR_GREEN,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ELITE_FOUR_BRUNO,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -40019,6 +40269,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 15279
             .lvl = 65,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40041,6 +40292,7 @@
             .ability = ABILITY_IRON_FIST,
 #line 15288
             .lvl = 65,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40063,6 +40315,7 @@
             .ability = ABILITY_UNBURDEN,
 #line 15297
             .lvl = 65,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40086,6 +40339,7 @@
             .ability = ABILITY_WATER_ABSORB,
 #line 15306
             .lvl = 66,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40109,6 +40363,7 @@
             .ability = ABILITY_NO_GUARD,
 #line 15315
             .lvl = 68,
+            .ball = POKEBALL_COUNT,
 #line 15317
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -40131,6 +40386,7 @@
             .ability = ABILITY_DEFIANT,
 #line 15325
             .lvl = 65,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40164,8 +40420,6 @@
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
 #line 15341
         .mugshotColor = MUGSHOT_COLOR_PINK,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ELITE_FOUR_AGATHA,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -40182,6 +40436,7 @@
             .ability = ABILITY_CURSED_BODY,
 #line 15345
             .lvl = 66,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40205,6 +40460,7 @@
             .ability = ABILITY_BLAZE,
 #line 15354
             .lvl = 66,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40228,6 +40484,7 @@
             .ability = ABILITY_LEVITATE,
 #line 15363
             .lvl = 65,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40251,6 +40508,7 @@
             .ability = ABILITY_DEFIANT,
 #line 15372
             .lvl = 68,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40274,6 +40532,7 @@
             .ability = ABILITY_LEVITATE,
 #line 15381
             .lvl = 70,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40297,6 +40556,7 @@
             .ability = ABILITY_ROCK_HEAD,
 #line 15390
             .lvl = 65,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40330,8 +40590,6 @@
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
 #line 15405
         .mugshotColor = MUGSHOT_COLOR_BLUE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ELITE_FOUR_LANCE,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -40347,6 +40605,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 15409
             .lvl = 68,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40369,6 +40628,7 @@
             .ability = ABILITY_INNER_FOCUS,
 #line 15418
             .lvl = 66,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40391,6 +40651,7 @@
             .ability = ABILITY_SWIFT_SWIM,
 #line 15427
             .lvl = 66,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40411,6 +40672,7 @@
             .ability = ABILITY_UNNERVE,
 #line 15436
             .lvl = 70,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40433,6 +40695,7 @@
             .ability = ABILITY_MULTISCALE,
 #line 15445
             .lvl = 72,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40466,8 +40729,6 @@
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
 #line 15461
         .mugshotColor = MUGSHOT_COLOR_YELLOW,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHAMPION_RIVAL,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -40481,6 +40742,7 @@
             .ability = ABILITY_GUTS,
 #line 15465
             .lvl = 72,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40501,6 +40763,7 @@
             .ability = ABILITY_MAGIC_GUARD,
 #line 15474
             .lvl = 73,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40521,6 +40784,7 @@
             .ability = ABILITY_UNNERVE,
 #line 15483
             .lvl = 72,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40541,6 +40805,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 15492
             .lvl = 73,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40561,6 +40826,7 @@
             .ability = ABILITY_HARVEST,
 #line 15501
             .lvl = 73,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40581,6 +40847,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 15509
             .lvl = 75,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40614,8 +40881,6 @@
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
 #line 15525
         .mugshotColor = MUGSHOT_COLOR_YELLOW,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHAMPION_RIVAL,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -40629,6 +40894,7 @@
             .ability = ABILITY_GUTS,
 #line 15529
             .lvl = 72,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40649,6 +40915,7 @@
             .ability = ABILITY_MAGIC_GUARD,
 #line 15538
             .lvl = 73,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40669,6 +40936,7 @@
             .ability = ABILITY_UNNERVE,
 #line 15547
             .lvl = 72,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40689,6 +40957,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 15556
             .lvl = 73,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40709,6 +40978,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 15565
             .lvl = 73,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40731,6 +41001,7 @@
             .ability = ABILITY_OVERGROW,
 #line 15574
             .lvl = 75,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40764,8 +41035,6 @@
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
 #line 15590
         .mugshotColor = MUGSHOT_COLOR_YELLOW,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CHAMPION_RIVAL,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -40779,6 +41048,7 @@
             .ability = ABILITY_GUTS,
 #line 15594
             .lvl = 72,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40799,6 +41069,7 @@
             .ability = ABILITY_MAGIC_GUARD,
 #line 15603
             .lvl = 73,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40819,6 +41090,7 @@
             .ability = ABILITY_UNNERVE,
 #line 15612
             .lvl = 72,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40839,6 +41111,7 @@
             .ability = ABILITY_HARVEST,
 #line 15621
             .lvl = 73,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40859,6 +41132,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 15631
             .lvl = 73,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40881,6 +41155,7 @@
             .ability = ABILITY_BLAZE,
 #line 15640
             .lvl = 75,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -40910,8 +41185,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 15654
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_CUE_BALL,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -40923,6 +41196,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 15657
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -40934,6 +41208,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 15661
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -40956,8 +41231,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 15671
         .aiFlags = AI_FLAG_BASIC_TRAINER,
-#line 0
-        .trainerBackPic = TRAINER_PIC_SALON_MAIDEN_ANABEL,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -40969,6 +41242,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 15674
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -40991,8 +41265,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 15684
         .aiFlags = AI_FLAG_BASIC_TRAINER,
-#line 0
-        .trainerBackPic = TRAINER_PIC_DOME_ACE_TUCKER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -41004,6 +41276,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 15687
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -41026,8 +41299,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 15697
         .aiFlags = AI_FLAG_BASIC_TRAINER,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PALACE_MAVEN_SPENSER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -41039,6 +41310,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 15700
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -41061,8 +41333,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 15710
         .aiFlags = AI_FLAG_BASIC_TRAINER,
-#line 0
-        .trainerBackPic = TRAINER_PIC_ARENA_TYCOON_GRETA,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -41074,6 +41344,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 15713
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -41096,8 +41367,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 15723
         .aiFlags = AI_FLAG_BASIC_TRAINER,
-#line 0
-        .trainerBackPic = TRAINER_PIC_FACTORY_HEAD_NOLAND,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -41109,6 +41378,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 15726
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -41131,8 +41401,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 15736
         .aiFlags = AI_FLAG_BASIC_TRAINER,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PIKE_QUEEN_LUCY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -41144,6 +41412,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 15739
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -41166,8 +41435,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 15750
         .aiFlags = AI_FLAG_BASIC_TRAINER,
-#line 0
-        .trainerBackPic = TRAINER_PIC_PYRAMID_KING_BRANDON,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -41179,6 +41446,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 15753
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },

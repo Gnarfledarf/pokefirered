@@ -1,8 +1,7 @@
 #include "global.h"
-#include "gflib.h"
 #include "battle_pyramid.h"
-#include "io_reg.h"
 #include "battle_util.h"
+#include "bg.h"
 #include "cable_club.h"
 #include "clock.h"
 #include "credits.h"
@@ -14,8 +13,8 @@
 #include "fake_rtc.h"
 #include "field_camera.h"
 #include "field_control_avatar.h"
-#include "field_effect.h"
 #include "field_effect_helpers.h"
+#include "field_effect.h"
 #include "field_fadetransition.h"
 #include "field_message_box.h"
 #include "field_player_avatar.h"
@@ -26,14 +25,17 @@
 #include "fieldmap.h"
 #include "fldeff.h"
 #include "follower_npc.h"
+#include "gpu_regs.h"
 #include "heal_location.h"
 #include "help_system.h"
-#include "item.h"
+#include "io_reg.h"
 #include "item_icon.h"
-#include "link.h"
+#include "item.h"
 #include "link_rfu.h"
+#include "link.h"
 #include "load_save.h"
 #include "m4a.h"
+#include "malloc.h"
 #include "map_name_popup.h"
 #include "map_preview_screen.h"
 #include "menu.h"
@@ -41,9 +43,10 @@
 #include "money.h"
 #include "new_game.h"
 #include "overworld.h"
+#include "palette.h"
 #include "play_time.h"
-#include "quest_log.h"
 #include "quest_log_objects.h"
+#include "quest_log.h"
 #include "random.h"
 #include "renewable_hidden_items.h"
 #include "roamer.h"
@@ -51,9 +54,11 @@
 #include "safari_zone.h"
 #include "save_location.h"
 #include "scanline_effect.h"
-#include "script.h"
 #include "script_pokemon_util.h"
+#include "script.h"
+#include "sound.h"
 #include "start_menu.h"
+#include "string_util.h"
 #include "tileset_anims.h"
 #include "trainer_pokemon_sprites.h"
 #include "vs_seeker.h"
@@ -71,15 +76,20 @@
 #define PLAYER_LINK_STATE_READY 0x82
 #define PLAYER_LINK_STATE_EXITING_ROOM 0x83
 
-#define FACING_NONE 0
-#define FACING_UP 1
-#define FACING_DOWN 2
-#define FACING_LEFT 3
-#define FACING_RIGHT 4
-#define FACING_FORCED_UP 7
-#define FACING_FORCED_DOWN 8
-#define FACING_FORCED_LEFT 9
-#define FACING_FORCED_RIGHT 10
+enum FacingDirection
+{
+    FACING_NONE = 0,
+    FACING_UP = 1,
+    FACING_DOWN = 2,
+    FACING_LEFT = 3,
+    FACING_RIGHT = 4,
+    FACING_NONE_2 = 5,
+    FACING_NONE_3 = 6,
+    FACING_FORCED_UP = 7,
+    FACING_FORCED_DOWN = 8,
+    FACING_FORCED_LEFT = 9,
+    FACING_FORCED_RIGHT = 10,
+};
 
 typedef u16 (*KeyInterCB)(u32 key);
 
@@ -119,9 +129,9 @@ static EWRAM_DATA s16 sCreditsOverworld_CmdIndex = 0;
 
 EWRAM_DATA struct LinkPlayerObjectEvent gLinkPlayerObjectEvents[4] = {};
 
-COMMON_DATA u16 *gBGTilemapBuffers1 = NULL;
-COMMON_DATA u16 *gBGTilemapBuffers2 = NULL;
-COMMON_DATA u16 *gBGTilemapBuffers3 = NULL;
+COMMON_DATA u16 *gOverworldTilemapBuffer_Bg2 = NULL;
+COMMON_DATA u16 *gOverworldTilemapBuffer_Bg1 = NULL;
+COMMON_DATA u16 *gOverworldTilemapBuffer_Bg3 = NULL;
 COMMON_DATA void (*gFieldCallback)(void) = NULL;
 COMMON_DATA bool8 (*gFieldCallback2)(void) = NULL;
 COMMON_DATA u16 gHeldKeyCodeToSend = 0;
@@ -514,7 +524,7 @@ void SetObjEventTemplateMovementType(u8 localId, u8 movementType)
 
 static void InitMapView(void)
 {
-    move_tilemap_camera_to_upper_left_corner();
+    ResetFieldCamera();
     CopyMapTilesetsToVram(gMapHeader.mapLayout);
     LoadMapTilesetPalettes(gMapHeader.mapLayout);
     DrawWholeMapView();
@@ -1377,12 +1387,12 @@ static void InitOverworldBgs(void)
     SetBgAttribute(1, BG_ATTR_MOSAIC, TRUE);
     SetBgAttribute(2, BG_ATTR_MOSAIC, TRUE);
     SetBgAttribute(3, BG_ATTR_MOSAIC, TRUE);
-    gBGTilemapBuffers2 = AllocZeroed(BG_SCREEN_SIZE);
-    gBGTilemapBuffers1 = AllocZeroed(BG_SCREEN_SIZE);
-    gBGTilemapBuffers3 = AllocZeroed(BG_SCREEN_SIZE);
-    SetBgTilemapBuffer(1, gBGTilemapBuffers2);
-    SetBgTilemapBuffer(2, gBGTilemapBuffers1);
-    SetBgTilemapBuffer(3, gBGTilemapBuffers3);
+    gOverworldTilemapBuffer_Bg1 = AllocZeroed(BG_SCREEN_SIZE);
+    gOverworldTilemapBuffer_Bg2 = AllocZeroed(BG_SCREEN_SIZE);
+    gOverworldTilemapBuffer_Bg3 = AllocZeroed(BG_SCREEN_SIZE);
+    SetBgTilemapBuffer(1, gOverworldTilemapBuffer_Bg1);
+    SetBgTilemapBuffer(2, gOverworldTilemapBuffer_Bg2);
+    SetBgTilemapBuffer(3, gOverworldTilemapBuffer_Bg3);
     InitStandardTextBoxWindows();
     InitTextBoxGfxAndPrinters();
     InitFieldMessageBox();
@@ -1395,12 +1405,12 @@ static void InitOverworldBgs_NoResetHeap(void)
     SetBgAttribute(1, BG_ATTR_MOSAIC, TRUE);
     SetBgAttribute(2, BG_ATTR_MOSAIC, TRUE);
     SetBgAttribute(3, BG_ATTR_MOSAIC, TRUE);
-    gBGTilemapBuffers2 = AllocZeroed(BG_SCREEN_SIZE);
-    gBGTilemapBuffers1 = AllocZeroed(BG_SCREEN_SIZE);
-    gBGTilemapBuffers3 = AllocZeroed(BG_SCREEN_SIZE);
-    SetBgTilemapBuffer(1, gBGTilemapBuffers2);
-    SetBgTilemapBuffer(2, gBGTilemapBuffers1);
-    SetBgTilemapBuffer(3, gBGTilemapBuffers3);
+    gOverworldTilemapBuffer_Bg1 = AllocZeroed(BG_SCREEN_SIZE);
+    gOverworldTilemapBuffer_Bg2 = AllocZeroed(BG_SCREEN_SIZE);
+    gOverworldTilemapBuffer_Bg3 = AllocZeroed(BG_SCREEN_SIZE);
+    SetBgTilemapBuffer(1, gOverworldTilemapBuffer_Bg1);
+    SetBgTilemapBuffer(2, gOverworldTilemapBuffer_Bg2);
+    SetBgTilemapBuffer(3, gOverworldTilemapBuffer_Bg3);
     InitStandardTextBoxWindows();
     InitTextBoxGfxAndPrinters();
     InitFieldMessageBox();
@@ -1409,9 +1419,9 @@ static void InitOverworldBgs_NoResetHeap(void)
 void CleanupOverworldWindowsAndTilemaps(void)
 {
     FreeAllOverworldWindowBuffers();
-    Free(gBGTilemapBuffers3);
-    Free(gBGTilemapBuffers1);
-    Free(gBGTilemapBuffers2);
+    Free(gOverworldTilemapBuffer_Bg3);
+    Free(gOverworldTilemapBuffer_Bg2);
+    Free(gOverworldTilemapBuffer_Bg1);
 }
 
 static void ResetSafariZoneFlag_(void)
@@ -2012,7 +2022,7 @@ static bool32 LoadMapInStepsLink(u8 *state)
         (*state)++;
         break;
     case 5:
-        move_tilemap_camera_to_upper_left_corner();
+        ResetFieldCamera();
         (*state)++;
         break;
     case 6:
@@ -2098,7 +2108,7 @@ static bool32 LoadMapInStepsLocal(u8 *state, bool32 inLink)
         (*state)++;
         break;
     case 6:
-        move_tilemap_camera_to_upper_left_corner();
+        ResetFieldCamera();
         (*state)++;
         break;
     case 7:
@@ -2208,7 +2218,7 @@ static bool32 ReturnToFieldLink(u8 *state)
         (*state)++;
         break;
     case 4:
-        move_tilemap_camera_to_upper_left_corner();
+        ResetFieldCamera();
         (*state)++;
         break;
     case 5:
@@ -2501,7 +2511,7 @@ static bool32 LoadMap_QLPlayback(u8 *state)
         (*state)++;
         break;
     case 5:
-        move_tilemap_camera_to_upper_left_corner();
+        ResetFieldCamera();
         (*state)++;
         break;
     case 6:
@@ -2670,7 +2680,7 @@ static bool8 MapLdr_Credits(void)
         (*state)++;
         break;
     case 3:
-        move_tilemap_camera_to_upper_left_corner();
+        ResetFieldCamera();
         (*state)++;
         break;
     case 4:
@@ -2774,21 +2784,17 @@ static u8 (*const sLinkPlayerMovementModes[])(struct LinkPlayerObjectEvent *, st
 // These handlers return TRUE if the movement was scripted and successful, and FALSE otherwise.
 static bool8 (*const sLinkPlayerFacingHandlers[])(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8) =
 {
-    [DIR_NONE]  = FacingHandler_DoNothing,
-    [DIR_SOUTH] = FacingHandler_DpadMovement,
-    [DIR_NORTH] = FacingHandler_DpadMovement,
-    [DIR_WEST]  = FacingHandler_DpadMovement,
-    [DIR_EAST]  = FacingHandler_DpadMovement,
-};
-
-static bool8 (*const sUnusedLinkPlayerFacingHandlers[])(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8) =
-{
-    FacingHandler_DoNothing,
-    FacingHandler_DoNothing,
-    FacingHandler_ForcedFacingChange,
-    FacingHandler_ForcedFacingChange,
-    FacingHandler_ForcedFacingChange,
-    FacingHandler_ForcedFacingChange,
+    [FACING_NONE]  = FacingHandler_DoNothing,
+    [FACING_UP] = FacingHandler_DpadMovement,
+    [FACING_DOWN] = FacingHandler_DpadMovement,
+    [FACING_LEFT]  = FacingHandler_DpadMovement,
+    [FACING_RIGHT]  = FacingHandler_DpadMovement,
+    [FACING_NONE_2] = FacingHandler_DoNothing,
+    [FACING_NONE_3] = FacingHandler_DoNothing,
+    [FACING_FORCED_UP] = FacingHandler_ForcedFacingChange,
+    [FACING_FORCED_DOWN] = FacingHandler_ForcedFacingChange,
+    [FACING_FORCED_LEFT] = FacingHandler_ForcedFacingChange,
+    [FACING_FORCED_RIGHT] = FacingHandler_ForcedFacingChange,
 };
 
 // These handlers are run after an attempted movement.
@@ -3000,6 +3006,7 @@ static void UpdateAllLinkPlayers(u16 *keys, s32 selfId)
         HandleLinkPlayerKeyInput(i, key, &player, &setFacing);
         if (sPlayerLinkStates[i] == PLAYER_LINK_STATE_IDLE)
             setFacing = GetDirectionForDpadKey(key);
+
         SetPlayerFacingDirection(i, setFacing);
     }
 }
@@ -3488,7 +3495,7 @@ static void ZeroObjectEvent(struct ObjectEvent *objEvent)
 // conflict with the usual Event Object struct, thus the definitions.
 #define linkGender(obj) obj->singleMovementActive
 // not even one can reference *byte* aligned bitfield members...
-#define linkDirection(obj) ((u8 *)obj)[offsetof(typeof(*obj), fieldEffectSpriteId) - 1] // -> rangeX
+#define linkDirection(obj) ((u8 *)obj)[offsetof(typeof(*obj), range)] // -> rangeX
 
 static void SpawnLinkPlayerObjectEvent(u8 linkPlayerId, s16 x, s16 y, u8 gender)
 {

@@ -211,24 +211,10 @@ static const union AnimCmd sAnim_MonPic_1[] =
     ANIMCMD_END,
 };
 
-static const union AnimCmd sAnim_MonPic_2[] =
-{
-    ANIMCMD_FRAME(2, 0),
-    ANIMCMD_END,
-};
-
-static const union AnimCmd sAnim_MonPic_3[] =
-{
-    ANIMCMD_FRAME(3, 0),
-    ANIMCMD_END,
-};
-
-const union AnimCmd *const gAnims_MonPic[] =
+const union AnimCmd *const gAnims_MonPic[MAX_MON_PIC_FRAMES] =
 {
     sAnim_MonPic_0,
     sAnim_MonPic_1,
-    sAnim_MonPic_2,
-    sAnim_MonPic_3,
 };
 
 const union AnimCmd *const gAnims_Trainer[] ={
@@ -244,13 +230,6 @@ const union AnimCmd *const gAnims_Trainer[] ={
 const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] =
 {
 #include "data/trainers.h"
-};
-
-#include "data/partner_parties.h"
-
-const struct Trainer gBattlePartners[DIFFICULTY_COUNT][PARTNER_COUNT] =
-{
-#include "data/battle_partners.h"
 };
 
 #include "data/text/follower_messages.h"

@@ -1,14 +1,16 @@
 #include "global.h"
-#include "gflib.h"
-#include "link.h"
-#include "data.h"
-#include "scanline_effect.h"
-#include "help_system.h"
-#include "battle.h"
-#include "battle_interface.h"
 #include "battle_anim.h"
 #include "battle_controllers.h"
+#include "battle_interface.h"
+#include "battle.h"
+#include "data.h"
+#include "gpu_regs.h"
+#include "help_system.h"
+#include "link.h"
+#include "palette.h"
 #include "reshow_battle_screen.h"
+#include "scanline_effect.h"
+#include "trainer.h"
 
 static void CB2_ReshowBattleScreenAfterMenu(void);
 static void CB2_ReshowBlankBattleScreenAfterMenu(void);
@@ -96,6 +98,7 @@ static void CB2_ReshowBattleScreenAfterMenu(void)
     case 6:
         if (BattleLoadAllHealthBoxesGfx(gBattleScripting.reshowHelperState))
         {
+            LoadIndicatorSpritesGfx();
             gBattleScripting.reshowHelperState = 0;
         }
         else
@@ -299,9 +302,9 @@ static bool8 LoadBattlerSpriteGfx(u8 battler)
                 BattleLoadSubstituteOrMonSpriteGfx(battler, FALSE);
         }
         else if (gBattleTypeFlags & BATTLE_TYPE_SAFARI && battler == B_POSITION_PLAYER_LEFT) // Should be checking position, not battler.
-            DecompressTrainerBackPic(gSaveBlock2Ptr->playerGender, battler);
+            DecompressTrainerBackPic(GetPlayerTrainerPic(gSaveBlock2Ptr->playerGender, GAME_VERSION), battler);
         else if (gBattleTypeFlags & BATTLE_TYPE_CATCH_TUTORIAL && battler == B_POSITION_PLAYER_LEFT) // Should be checking position, not battler.
-            DecompressTrainerBackPic(TRAINER_BACK_PIC_OLD_MAN, battler);
+            DecompressTrainerBackPic(TRAINER_PIC_OLD_MAN, battler);
         else if (!gBattleSpritesDataPtr->battlerData[battler].behindSubstitute)
             BattleLoadMonSpriteGfx(&gPlayerParty[gBattlerPartyIndexes[battler]], battler);
         else
@@ -316,6 +319,7 @@ void CreateBattlerSprite(u32 battler)
     if (battler < gBattlersCount)
     {
         u8 posY;
+        enum BattlerPosition position = GetBattlerPosition(battler);
 
         if (IsGhostBattleWithoutScope())
             posY = GetGhostSpriteDefault_Y(battler);
@@ -323,35 +327,39 @@ void CreateBattlerSprite(u32 battler)
             posY = GetSubstituteSpriteDefault_Y(battler);
         else
             posY = GetBattlerSpriteDefault_Y(battler);
-        if (GetBattlerSide(battler) != B_SIDE_PLAYER)
+
+        if (!IsOnPlayerSide(battler))
         {
-            if (GetMonData(&gEnemyParty[gBattlerPartyIndexes[battler]], MON_DATA_HP) == 0)
+            struct Pokemon *mon = GetBattlerMon(battler);
+            if (GetMonData(mon, MON_DATA_HP) == 0)
                 return;
-            SetMultiuseSpriteTemplateToPokemon(GetMonData(&gEnemyParty[gBattlerPartyIndexes[battler]], MON_DATA_SPECIES), GetBattlerPosition(battler));
+            if (gBattleScripting.monCaught) // Don't create opponent sprite if it has been caught.
+                return;
+            u32 species = GetMonData(mon, MON_DATA_SPECIES);
+
+            SetMultiuseSpriteTemplateToPokemon(species, position);
             gBattlerSpriteIds[battler] = CreateSprite(&gMultiuseSpriteTemplate, GetBattlerSpriteCoord(battler, BATTLER_COORD_X_2), posY, GetBattlerSpriteSubpriority(battler));
             gSprites[gBattlerSpriteIds[battler]].oam.paletteNum = battler;
             gSprites[gBattlerSpriteIds[battler]].callback = SpriteCallbackDummy;
             gSprites[gBattlerSpriteIds[battler]].data[0] = battler;
-            gSprites[gBattlerSpriteIds[battler]].data[2] = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battler]], MON_DATA_SPECIES);
+            gSprites[gBattlerSpriteIds[battler]].data[2] = species;
             StartSpriteAnim(&gSprites[gBattlerSpriteIds[battler]], 0);
         }
         else if (gBattleTypeFlags & BATTLE_TYPE_SAFARI && battler == B_POSITION_PLAYER_LEFT)
         {
-            SetMultiuseSpriteTemplateToTrainerBack(gSaveBlock2Ptr->playerGender, GetBattlerPosition(B_POSITION_PLAYER_LEFT));
-            gBattlerSpriteIds[battler] = CreateSprite(&gMultiuseSpriteTemplate, 80,
-                                                      (8 - gTrainerBacksprites[gSaveBlock2Ptr->playerGender].coordinates.size) * 4 + 80,
-                                                      GetBattlerSpriteSubpriority(0));
-            gSprites[gBattlerSpriteIds[battler]].oam.paletteNum = battler;
+            enum TrainerPicID trainerPicId = GetPlayerTrainerPic(gSaveBlock2Ptr->playerGender, GAME_VERSION);
+
+            SetMultiuseSpriteTemplateToTrainerBack(trainerPicId, position);
+            gBattlerSpriteIds[battler] = CreateSprite(&gMultiuseSpriteTemplate, 80, (8 - GetTrainerBackPicCoords(trainerPicId)->size) * 4 + 80, GetBattlerSpriteSubpriority(0));
+            gSprites[gBattlerSpriteIds[battler]].oam.paletteNum = IndexOfSpritePaletteTag(trainerPicId);
             gSprites[gBattlerSpriteIds[battler]].callback = SpriteCallbackDummy;
             gSprites[gBattlerSpriteIds[battler]].data[0] = battler;
         }
         else if (gBattleTypeFlags & BATTLE_TYPE_CATCH_TUTORIAL && battler == B_POSITION_PLAYER_LEFT)
         {
-            SetMultiuseSpriteTemplateToTrainerBack(5, GetBattlerPosition(0));
-            gBattlerSpriteIds[battler] = CreateSprite(&gMultiuseSpriteTemplate, 80,
-                                                      (8 - gTrainerBacksprites[TRAINER_BACK_PIC_OLD_MAN].coordinates.size) * 4 + 80,
-                                                      GetBattlerSpriteSubpriority(0));
-            gSprites[gBattlerSpriteIds[battler]].oam.paletteNum = battler;
+            SetMultiuseSpriteTemplateToTrainerBack(TRAINER_PIC_OLD_MAN, GetBattlerPosition(0));
+            gBattlerSpriteIds[battler] = CreateSprite(&gMultiuseSpriteTemplate, 80, (8 - GetTrainerBackPicCoords(TRAINER_PIC_OLD_MAN)->size) * 4 + 80, GetBattlerSpriteSubpriority(0));
+            gSprites[gBattlerSpriteIds[battler]].oam.paletteNum = IndexOfSpritePaletteTag(TRAINER_PIC_OLD_MAN);
             gSprites[gBattlerSpriteIds[battler]].callback = SpriteCallbackDummy;
             gSprites[gBattlerSpriteIds[battler]].data[0] = battler;
         }

@@ -58,9 +58,9 @@ enum {
 extern struct WarpData gLastUsedWarp;
 extern struct LinkPlayerObjectEvent gLinkPlayerObjectEvents[4];
 
-extern u16 *gBGTilemapBuffers1;
-extern u16 *gBGTilemapBuffers2;
-extern u16 *gBGTilemapBuffers3;
+extern u16 *gOverworldTilemapBuffer_Bg2;
+extern u16 *gOverworldTilemapBuffer_Bg1;
+extern u16 *gOverworldTilemapBuffer_Bg3;
 extern u16 gHeldKeyCodeToSend;
 extern MainCallback gFieldCallback;
 extern bool8 (* gFieldCallback2)(void);
@@ -103,7 +103,7 @@ void Overworld_SetSavedMusic(u16);
 void Overworld_ChangeMusicToDefault(void);
 void Overworld_ChangeMusicTo(u16);
 
-bool32 IsUpdateLinkStateCBActive(void);
+bool32 IsOverworldLinkActive(void);
 
 void ClearLinkPlayerObjectEvents(void);
 const struct MapHeader *const Overworld_GetMapHeaderByGroupAndId(u16, u16);
@@ -189,7 +189,8 @@ void SetMainCallback1(MainCallback cb);
 void CB1_Overworld(void);
 void CB2_ReturnToFieldContinueScript(void);
 void UpdateTimeOfDay(void);
-bool8 MapHasNaturalLight(u8 mapType);
+bool32 MapHasNaturalLight(u8 mapType);
+bool32 CurrentMapHasShadows(void);
 void UpdateAltBgPalettes(u16 palettes);
 void UpdatePalettesWithTime(u32);
 u8 GetLastUsedWarpMapSectionId(void);

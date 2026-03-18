@@ -1,28 +1,29 @@
 #include "global.h"
 #include "battle.h"
-#include "data.h"
-#include "gflib.h"
 #include "berry.h"
+#include "data.h"
 #include "daycare.h"
 #include "event_data.h"
-#include "load_save.h"
 #include "item.h"
+#include "load_save.h"
 #include "overworld.h"
 #include "ow_synchronize.h"
 #include "party_menu.h"
 #include "pokedex.h"
-#include "pokemon.h"
 #include "pokemon_storage_system.h"
+#include "pokemon.h"
 #include "random.h"
-#include "script.h"
 #include "script_pokemon_util.h"
+#include "script.h"
+#include "string_util.h"
 #include "wild_encounter.h"
 #include "constants/abilities.h"
+#include "constants/battle_frontier.h"
 #include "constants/items.h"
 #include "constants/pokemon.h"
 
 static void CB2_ReturnFromChooseHalfParty(void);
-static void CB2_ReturnFromChooseBattleTowerParty(void);
+static void CB2_ReturnFromChooseBattleFrontierParty(void);
 static void HealPlayerBoxes(void);
 
 void HealPlayerParty(void)
@@ -154,7 +155,6 @@ static u32 ScriptGiveMonParameterized(u8 side, u8 slot, u16 species, u8 level, e
 {
     struct Pokemon mon;
     u32 i;
-    u16 targetSpecies;
     bool32 isShiny;
 
     u32 personality = GetMonPersonality(species, gender, nature, RANDOM_UNOWN_LETTER);
@@ -195,22 +195,38 @@ static u32 ScriptGiveMonParameterized(u8 side, u8 slot, u16 species, u8 level, e
     CalculateMonStats(&mon);
 
     // moves
+    bool32 all_default_flag = TRUE;
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
-        if (moves[i] == MOVE_NONE)
+        if (moves[i] != MOVE_DEFAULT)
+        {
+            all_default_flag = FALSE;
             break;
-        if (moves[i] < MOVES_COUNT)
-        {
-            SetMonMoveSlot(&mon, moves[i], i);
         }
-        else if (moves[i] == MOVE_DEFAULT)
+    }
+    if (all_default_flag)
+    {
+        GiveMonInitialMoveset(&mon);
+    }
+    else
+    {
+        for (i = 0; i < MAX_MON_MOVES; i++)
         {
-            GiveMonDefaultMove(&mon, i);
-            continue;
-        }
-        else
-        {
-            assertf(FALSE, "invalid move: %d", moves[i]) {}
+            if (moves[i] == MOVE_NONE)
+                break;
+            if (moves[i] < MOVES_COUNT)
+            {
+                SetMonMoveSlot(&mon, moves[i], i);
+            }
+            else if (moves[i] == MOVE_DEFAULT)
+            {
+                GiveMonDefaultMove(&mon, i);
+                continue;
+            }
+            else
+            {
+                assertf(FALSE, "invalid move: %d", moves[i]) {}
+            }
         }
     }
 
@@ -237,9 +253,7 @@ static u32 ScriptGiveMonParameterized(u8 side, u8 slot, u16 species, u8 level, e
     SetMonData(&mon, MON_DATA_HELD_ITEM, &item);
 
     // In case a mon with a form changing item is given. Eg: SPECIES_ARCEUS_NORMAL with ITEM_SPLASH_PLATE will transform into SPECIES_ARCEUS_WATER upon gifted.
-    targetSpecies = GetFormChangeTargetSpecies(&mon, FORM_CHANGE_ITEM_HOLD, 0);
-    if (targetSpecies != SPECIES_NONE)
-        SetMonData(&mon, MON_DATA_SPECIES, &targetSpecies);
+    TryFormChange(&mon, FORM_CHANGE_ITEM_HOLD);
 
     if (side == B_SIDE_PLAYER)
         return GiveScriptedMonToPlayer(&mon, slot);
@@ -290,17 +304,17 @@ u32 ScriptGiveMon(u16 species, u8 level, enum Item item)
 
 void ScrCmd_createmon(struct ScriptContext *ctx)
 {
-    u8 side           = ScriptReadByte(ctx);
-    u8 slot           = ScriptReadByte(ctx);
-    u16 species       = VarGet(ScriptReadHalfword(ctx));
-    u8 level          = VarGet(ScriptReadHalfword(ctx));
+    u8 side            = ScriptReadByte(ctx);
+    u8 slot            = ScriptReadByte(ctx);
+    u16 species        = VarGet(ScriptReadHalfword(ctx));
+    u8 level           = VarGet(ScriptReadHalfword(ctx));
 
-    u32 flags         = ScriptReadWord(ctx);
-    enum Item item    = PARSE_FLAG(0, ITEM_NONE);
-    u8 ball           = PARSE_FLAG(1, ITEM_POKE_BALL);
-    u8 nature         = PARSE_FLAG(2, NATURE_RANDOM);
-    u8 abilityNum     = PARSE_FLAG(3, NUM_ABILITY_PERSONALITY);
-    u8 gender         = PARSE_FLAG(4, MON_GENDER_RANDOM);
+    u32 flags          = ScriptReadWord(ctx);
+    enum Item item     = PARSE_FLAG(0, ITEM_NONE);
+    enum PokeBall ball = PARSE_FLAG(1, BALL_POKE);
+    u8 nature          = PARSE_FLAG(2, NATURE_RANDOM);
+    u8 abilityNum      = PARSE_FLAG(3, NUM_ABILITY_PERSONALITY);
+    u8 gender          = PARSE_FLAG(4, MON_GENDER_RANDOM);
 
     u32 i;
     u16 evs[NUM_STATS];
@@ -509,7 +523,7 @@ void ScriptSetMonMoveSlot(u8 monIndex, u16 move, u8 slot)
 void ChooseHalfPartyForBattle(void)
 {
     gMain.savedCallback = CB2_ReturnFromChooseHalfParty;
-//    VarSet(VAR_FRONTIER_FACILITY, FACILITY_MULTI_OR_EREADER);
+    VarSet(VAR_FRONTIER_FACILITY, FACILITY_MULTI_OR_EREADER);
     InitChooseMonsForBattle(CHOOSE_MONS_FOR_CABLE_CLUB_BATTLE);
 }
 
@@ -528,22 +542,20 @@ static void CB2_ReturnFromChooseHalfParty(void)
     SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
 }
 
-void ChooseBattleTowerPlayerParty(void)
+void ChoosePartyForBattleFrontier(void)
 {
-    gMain.savedCallback = CB2_ReturnFromChooseBattleTowerParty;
-    InitChooseMonsForBattle(CHOOSE_MONS_FOR_BATTLE_TOWER);
+    gMain.savedCallback = CB2_ReturnFromChooseBattleFrontierParty;
+    InitChooseMonsForBattle(gSpecialVar_0x8004 + 1);
 }
 
-static void CB2_ReturnFromChooseBattleTowerParty(void)
+static void CB2_ReturnFromChooseBattleFrontierParty(void)
 {
     switch (gSelectedOrderFromParty[0])
     {
     case 0:
-        LoadPlayerParty();
         gSpecialVar_Result = FALSE;
         break;
     default:
-        ReducePlayerPartyToSelectedMons();
         gSpecialVar_Result = TRUE;
         break;
     }
@@ -625,3 +637,17 @@ void Script_SetStatus1(struct ScriptContext *ctx)
         SetMonData(&gPlayerParty[slot], MON_DATA_STATUS, &status1);
     }
 }
+
+void Script_SetKO(struct ScriptContext *ctx)
+{
+    u32 slot = VarGet(ScriptReadHalfword(ctx));
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
+
+    if (slot < PARTY_SIZE)
+    {
+        u32 hp = 0;
+        SetMonData(&gPlayerParty[slot], MON_DATA_HP, &hp);
+    }
+}
+

@@ -1,14 +1,19 @@
 #include "global.h"
-#include "gflib.h"
-#include "task.h"
-#include "scanline_effect.h"
-#include "m4a.h"
+#include "bg.h"
 #include "dynamic_placeholder_text_util.h"
-#include "overworld.h"
-#include "strings.h"
-#include "menu.h"
+#include "gpu_regs.h"
 #include "librfu.h"
 #include "link_rfu.h"
+#include "m4a.h"
+#include "malloc.h"
+#include "menu.h"
+#include "overworld.h"
+#include "palette.h"
+#include "scanline_effect.h"
+#include "sound.h"
+#include "string_util.h"
+#include "strings.h"
+#include "task.h"
 #include "union_room.h"
 #include "constants/songs.h"
 #include "constants/union_room.h"
@@ -69,7 +74,7 @@ static const u16 sPalettes[][16] = {
     INCBIN_U16("graphics/wireless_status_screen/anim_12.gbapal"),
     INCBIN_U16("graphics/wireless_status_screen/anim_13.gbapal")
 };
-static const u32 sBgTiles_Gfx[] = INCBIN_U32("graphics/wireless_status_screen/bg.4bpp.lz");
+static const u32 sBgTiles_Gfx[] = INCBIN_U32("graphics/wireless_status_screen/bg.4bpp.smol");
 static const u16 sBgTiles_Tilemap[] = INCBIN_U16("graphics/wireless_status_screen/bg.bin");
 
 static const struct BgTemplate sBgTemplates[] = {
@@ -164,7 +169,9 @@ static const u8 sActivityGroupInfo[][3] = {
     {ACTIVITY_PLYRTALK | IN_UNION_ROOM,       GROUPTYPE_UNION,  1},
     {ACTIVITY_NPCTALK | IN_UNION_ROOM,        GROUPTYPE_UNION,  2},
     {ACTIVITY_ACCEPT | IN_UNION_ROOM,         GROUPTYPE_UNION,  1},
-    {ACTIVITY_DECLINE | IN_UNION_ROOM,        GROUPTYPE_UNION,  1}
+    {ACTIVITY_DECLINE | IN_UNION_ROOM,        GROUPTYPE_UNION,  1},
+    {ACTIVITY_BATTLE_TOWER,                  GROUPTYPE_BATTLE, 2},
+    {ACTIVITY_BATTLE_TOWER_OPEN,             GROUPTYPE_BATTLE, 2}
 };
 
 static void CB2_RunWirelessCommunicationScreen(void)
@@ -457,7 +464,7 @@ static bool32 UpdateCommunicationCounts(u32 * groupCounts, u32 * prevGroupCounts
 
     memcpy(groupCounts,     groupCountBuffer, sizeof(groupCountBuffer));
     memcpy(prevGroupCounts, groupCountBuffer, sizeof(groupCountBuffer));
-    
+
     groupCounts[GROUPTYPE_TOTAL] = groupCounts[GROUPTYPE_TRADE]
                                  + groupCounts[GROUPTYPE_BATTLE]
                                  + groupCounts[GROUPTYPE_UNION]

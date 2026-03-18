@@ -1,26 +1,31 @@
 #include "global.h"
-#include "gflib.h"
-#include "graphics.h"
-#include "m4a.h"
-#include "scanline_effect.h"
-#include "task.h"
-#include "event_data.h"
-#include "help_system.h"
-#include "overworld.h"
-#include "strings.h"
-#include "menu.h"
-#include "pokedex_screen.h"
+#include "bg.h"
 #include "data.h"
-#include "pokedex.h"
+#include "decompress.h"
+#include "event_data.h"
+#include "field_specials.h"
+#include "gpu_regs.h"
+#include "graphics.h"
+#include "help_system.h"
+#include "m4a.h"
+#include "malloc.h"
+#include "menu.h"
+#include "overworld.h"
+#include "palette.h"
+#include "pokedex_area_markers.h"
 #include "pokedex_emerald.h"
 #include "pokedex_plus_hgss.h"
+#include "pokedex_screen.h"
+#include "pokedex.h"
+#include "scanline_effect.h"
+#include "sound.h"
+#include "string_util.h"
+#include "strings.h"
+#include "task.h"
 #include "trainer_pokemon_sprites.h"
-#include "decompress.h"
+#include "config/pokedex_plus_hgss.h"
 #include "constants/songs.h"
 #include "constants/sound.h"
-#include "pokedex_area_markers.h"
-#include "field_specials.h"
-#include "config/pokedex_plus_hgss.h"
 
 #define TAG_AREA_MARKERS 2001
 
@@ -149,9 +154,9 @@ static u8* ConvertMonWeightToImperialString(u32 weight);
 static u8* ConvertMonWeightToMetricString(u32 weight);
 static u8* ConvertMeasurementToMetricString(u32 num, u32* index);
 
-const u32 sCategoryMonInfoBgTiles[] = INCBIN_U32("graphics/pokedex/mini_page.4bpp.lz");
-const u32 sKantoDexTiles[] = INCBIN_U32("graphics/pokedex/kanto_dex_bgtiles.4bpp.lz");
-const u32 sNatDexTiles[] = INCBIN_U32("graphics/pokedex/national_dex_bgtiles.4bpp.lz");
+const u32 sCategoryMonInfoBgTiles[] = INCBIN_U32("graphics/pokedex/mini_page.4bpp.smol");
+const u32 sKantoDexTiles[] = INCBIN_U32("graphics/pokedex/kanto_dex_bgtiles.4bpp.smol");
+const u32 sNatDexTiles[] = INCBIN_U32("graphics/pokedex/national_dex_bgtiles.4bpp.smol");
 const u16 sKantoDexPalette[0x100] = INCBIN_U16("graphics/pokedex/kanto_dex_bgpals.gbapal");
 
 const u16 sDexScreen_CategoryCursorPals[] = {
@@ -164,21 +169,21 @@ const u16 sDexScreen_CategoryCursorPals[] = {
 };
 
 const u16 sNationalDexPalette[0x100] = INCBIN_U16("graphics/pokedex/national_dex_bgpals.gbapal");
-const u32 sTopMenuIconTiles_Cave[] = INCBIN_U32("graphics/pokedex/cat_icon_cave.4bpp.lz");
-const u32 sTopMenuIconTiles_Urban[] = INCBIN_U32("graphics/pokedex/cat_icon_urban.4bpp.lz");
-const u32 sTopMenuSelectionIconTiles_Cancel[] = INCBIN_U32("graphics/pokedex/cat_icon_cancel.4bpp.lz");
-const u32 sTopMenuIconTiles_Forest[] = INCBIN_U32("graphics/pokedex/cat_icon_forest.4bpp.lz");
-const u32 sTopMenuIconTiles_Grassland[] = INCBIN_U32("graphics/pokedex/cat_icon_grassland.4bpp.lz");
-const u32 sTopMenuIconTiles_QuestionMark[] = INCBIN_U32("graphics/pokedex/cat_icon_qmark.4bpp.lz");
-const u32 sTopMenuIconTiles_Mountain[] = INCBIN_U32("graphics/pokedex/cat_icon_mountain.4bpp.lz");
-const u32 sTopMenuIconTiles_Rare[] = INCBIN_U32("graphics/pokedex/cat_icon_rare.4bpp.lz");
-const u32 sTopMenuIconTiles_Sea[] = INCBIN_U32("graphics/pokedex/cat_icon_sea.4bpp.lz");
-const u32 sTopMenuIconTiles_Numerical[] = INCBIN_U32("graphics/pokedex/cat_icon_numerical.4bpp.lz");
-const u32 sTopMenuIconTiles_RoughTerrain[] = INCBIN_U32("graphics/pokedex/cat_icon_rough_terrain.4bpp.lz");
-const u32 sTopMenuIconTiles_WatersEdge[] = INCBIN_U32("graphics/pokedex/cat_icon_waters_edge.4bpp.lz");
-const u32 sTopMenuIconTiles_Type[] = INCBIN_U32("graphics/pokedex/cat_icon_type.4bpp.lz");
-const u32 sTopMenuIconTiles_Lightest[] = INCBIN_U32("graphics/pokedex/cat_icon_lightest.4bpp.lz");
-const u32 sTopMenuIconTiles_Smallest[] = INCBIN_U32("graphics/pokedex/cat_icon_smallest.4bpp.lz");
+const u32 sTopMenuIconTiles_Cave[] = INCBIN_U32("graphics/pokedex/cat_icon_cave.4bpp.smol");
+const u32 sTopMenuIconTiles_Urban[] = INCBIN_U32("graphics/pokedex/cat_icon_urban.4bpp.smol");
+const u32 sTopMenuSelectionIconTiles_Cancel[] = INCBIN_U32("graphics/pokedex/cat_icon_cancel.4bpp.smol");
+const u32 sTopMenuIconTiles_Forest[] = INCBIN_U32("graphics/pokedex/cat_icon_forest.4bpp.smol");
+const u32 sTopMenuIconTiles_Grassland[] = INCBIN_U32("graphics/pokedex/cat_icon_grassland.4bpp.smol");
+const u32 sTopMenuIconTiles_QuestionMark[] = INCBIN_U32("graphics/pokedex/cat_icon_qmark.4bpp.smol");
+const u32 sTopMenuIconTiles_Mountain[] = INCBIN_U32("graphics/pokedex/cat_icon_mountain.4bpp.smol");
+const u32 sTopMenuIconTiles_Rare[] = INCBIN_U32("graphics/pokedex/cat_icon_rare.4bpp.smol");
+const u32 sTopMenuIconTiles_Sea[] = INCBIN_U32("graphics/pokedex/cat_icon_sea.4bpp.smol");
+const u32 sTopMenuIconTiles_Numerical[] = INCBIN_U32("graphics/pokedex/cat_icon_numerical.4bpp.smol");
+const u32 sTopMenuIconTiles_RoughTerrain[] = INCBIN_U32("graphics/pokedex/cat_icon_rough_terrain.4bpp.smol");
+const u32 sTopMenuIconTiles_WatersEdge[] = INCBIN_U32("graphics/pokedex/cat_icon_waters_edge.4bpp.smol");
+const u32 sTopMenuIconTiles_Type[] = INCBIN_U32("graphics/pokedex/cat_icon_type.4bpp.smol");
+const u32 sTopMenuIconTiles_Lightest[] = INCBIN_U32("graphics/pokedex/cat_icon_lightest.4bpp.smol");
+const u32 sTopMenuIconTiles_Smallest[] = INCBIN_U32("graphics/pokedex/cat_icon_smallest.4bpp.smol");
 const u16 sTopMenuIconPals_Cave[] = INCBIN_U16("graphics/pokedex/cat_icon_cave.gbapal");
 const u16 sTopMenuIconPals_Urban[] = INCBIN_U16("graphics/pokedex/cat_icon_urban.gbapal");
 const u16 sTopMenuSelectionIconPals_Cancel[] = INCBIN_U16("graphics/pokedex/cat_icon_cancel.gbapal");
@@ -195,14 +200,14 @@ const u16 sTopMenuIconPals_Type[] = INCBIN_U16("graphics/pokedex/cat_icon_type.g
 const u16 sTopMenuIconPals_Lightest[] = INCBIN_U16("graphics/pokedex/cat_icon_lightest.gbapal");
 const u16 sTopMenuIconPals_Smallest[] = INCBIN_U16("graphics/pokedex/cat_icon_smallest.gbapal");
 const u8 sDexScreen_CaughtIcon[] = INCBIN_U8("graphics/pokedex/caught_marker.4bpp");
-const u32 sTilemap_AreaMap_Kanto[] = INCBIN_U32("graphics/pokedex/map_kanto.4bpp.lz");
-const u32 sTilemap_AreaMap_OneIsland[] = INCBIN_U32("graphics/pokedex/map_one_island.4bpp.lz");
-const u32 sTilemap_AreaMap_TwoIsland[] = INCBIN_U32("graphics/pokedex/map_two_island.4bpp.lz");
-const u32 sTilemap_AreaMap_ThreeIsland[] = INCBIN_U32("graphics/pokedex/map_three_island.4bpp.lz");
-const u32 sTilemap_AreaMap_FourIsland[] = INCBIN_U32("graphics/pokedex/map_four_island.4bpp.lz");
-const u32 sTilemap_AreaMap_FiveIsland[] = INCBIN_U32("graphics/pokedex/map_five_island.4bpp.lz");
-const u32 sTilemap_AreaMap_SixIsland[] = INCBIN_U32("graphics/pokedex/map_six_island.4bpp.lz");
-const u32 sTilemap_AreaMap_SevenIsland[] = INCBIN_U32("graphics/pokedex/map_seven_island.4bpp.lz");
+const u32 sTilemap_AreaMap_Kanto[] = INCBIN_U32("graphics/pokedex/map_kanto.4bpp.smol");
+const u32 sTilemap_AreaMap_OneIsland[] = INCBIN_U32("graphics/pokedex/map_one_island.4bpp.smol");
+const u32 sTilemap_AreaMap_TwoIsland[] = INCBIN_U32("graphics/pokedex/map_two_island.4bpp.smol");
+const u32 sTilemap_AreaMap_ThreeIsland[] = INCBIN_U32("graphics/pokedex/map_three_island.4bpp.smol");
+const u32 sTilemap_AreaMap_FourIsland[] = INCBIN_U32("graphics/pokedex/map_four_island.4bpp.smol");
+const u32 sTilemap_AreaMap_FiveIsland[] = INCBIN_U32("graphics/pokedex/map_five_island.4bpp.smol");
+const u32 sTilemap_AreaMap_SixIsland[] = INCBIN_U32("graphics/pokedex/map_six_island.4bpp.smol");
+const u32 sTilemap_AreaMap_SevenIsland[] = INCBIN_U32("graphics/pokedex/map_seven_island.4bpp.smol");
 const u16 sBlitTiles_WideEllipse[] = INCBIN_U16("graphics/pokedex/blit_wide_ellipse.4bpp");
 
 #include "data/pokemon/pokedex_orders.h"
@@ -1507,7 +1512,10 @@ static u16 DexScreen_CountMonsInOrderedList(u8 orderIdx)
         u32 species;
         for (i = SPECIES_BULBASAUR; i < NUM_SPECIES; i++)
         {
-            species = SanitizeSpeciesId(i);
+            if (!IsSpeciesEnabled(i))
+                continue;
+            species = i;
+
             natDexNum = gSpeciesInfo[species].natDexNum;
             if (!natDexNum)
                 continue;
@@ -3017,14 +3025,15 @@ void DexScreen_PrintMonFlavorText(u8 windowId, u16 species, u8 x, u8 y)
     if (DexScreen_GetSetPokedexFlag(natDexNum, FLAG_GET_CAUGHT, FALSE))
     {
         printerTemplate.currentChar = gSpeciesInfo[species].description;
+        printerTemplate.type = WINDOW_TEXT_PRINTER;
         printerTemplate.windowId = windowId;
         printerTemplate.fontId = FONT_SMALL;
         printerTemplate.letterSpacing = 1;
         printerTemplate.lineSpacing = 0;
-        printerTemplate.unk = 0;
-        printerTemplate.fgColor = 1;
-        printerTemplate.bgColor = 0;
-        printerTemplate.shadowColor = 2;
+        printerTemplate.color.background = 0;
+        printerTemplate.color.foreground = 1;
+        printerTemplate.color.shadow = 2;
+        printerTemplate.color.accent = 0;
 
         length = GetStringWidth(FONT_SMALL, gSpeciesInfo[species].description, 0);
         xCenter = x + (240 - length) / 2;
@@ -3334,7 +3343,7 @@ static bool32 DexScreen_MonHasCategoryEntry(u16 species)
     u16 i, j, k;
     u16 natDexNum = SpeciesToNationalPokedexNum(species);
 
-    for (i = 0; i < NELEMS(gDexCategories); i++)
+    for (i = 0; i < ARRAY_COUNT(gDexCategories); i++)
     {
         for (j = 0; j < gDexCategories[i].count; j++)
         {
@@ -3485,12 +3494,27 @@ void DexScreen_InputHandler_StartToCry(void)
 }
 
 #define tState         data[0]
-#define tSpecies        data[1]
+#define tSpecies       data[1]
 #define tPalTimer      data[2]
 #define tMonSpriteId   data[3]
 #define tIsShiny       data[13]
 #define tPersonalityLo 14
 #define tPersonalityHi 15
+
+u8 DexScreen_RegisterMonToPokedex(u16 species)
+{
+    DexScreen_GetSetPokedexFlag(species, FLAG_SET_SEEN, TRUE);
+    DexScreen_GetSetPokedexFlag(species, FLAG_SET_CAUGHT, TRUE);
+
+    if ((!IsNationalPokedexEnabled() && !IsSpeciesInKantoDex(species)) || !DexScreen_MonHasCategoryEntry(species))
+        return CreateTask(Task_DexScreen_RegisterNonKantoMonBeforeNationalDex, 0);
+
+    DexScreen_LoadResources();
+    gTasks[sPokedexScreenData->taskId].func = Task_DexScreen_RegisterMonToPokedex;
+    DexScreen_LookUpCategoryBySpecies(species);
+
+    return sPokedexScreenData->taskId;
+}
 
 u8 DisplayCaughtMonDexPage(u16 species, bool32 isShiny, u32 personality)
 {
@@ -3505,14 +3529,7 @@ u8 DisplayCaughtMonDexPage(u16 species, bool32 isShiny, u32 personality)
     }
     else
     {
-        if ((!IsNationalPokedexEnabled() && !IsSpeciesInKantoDex(species)) || !DexScreen_MonHasCategoryEntry(species))
-            return CreateTask(Task_DexScreen_RegisterNonKantoMonBeforeNationalDex, 0);
-
-        DexScreen_LoadResources();
-        gTasks[sPokedexScreenData->taskId].func = Task_DexScreen_RegisterMonToPokedex;
-        DexScreen_LookUpCategoryBySpecies(species);
-
-        return sPokedexScreenData->taskId;
+        return DexScreen_RegisterMonToPokedex(species);
     }
 
     gTasks[taskId].tState = 0;

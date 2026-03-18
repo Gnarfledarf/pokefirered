@@ -1,11 +1,12 @@
 #include "global.h"
-#include "gflib.h"
-#include "trig.h"
-#include "random.h"
 #include "decompress.h"
-#include "task.h"
-#include "evolution_scene.h"
 #include "evolution_graphics.h"
+#include "evolution_scene.h"
+#include "palette.h"
+#include "random.h"
+#include "sound.h"
+#include "task.h"
+#include "trig.h"
 #include "constants/songs.h"
 
 static void SpriteCallbackDummy_EvoSparkles(struct Sprite *sprite);
@@ -30,7 +31,7 @@ static void PreEvoInvisible_PostEvoVisible_KillTask(u8 taskId);
 static void PreEvoVisible_PostEvoInvisible_KillTask(u8 taskId);
 
 static const u16 sEvolutionSparklesPalData[] = INCBIN_U16("graphics/evolution_scene/sparkle.gbapal");
-static const u32 sEvolutionSparklesTileData[] = INCBIN_U32("graphics/evolution_scene/sparkle.4bpp.lz");
+static const u32 sEvolutionSparklesTileData[] = INCBIN_U32("graphics/evolution_scene/sparkle.4bpp.smol");
 
 static const struct CompressedSpriteSheet sSpriteSheet_EvolutionSparkles[] = {
     { sEvolutionSparklesTileData, 0x20, 1001 },

@@ -48,7 +48,7 @@ Common_Movement_FaceRight::
 	face_right
 	step_end
 
-Common_Movement_FaceLeft:
+Common_Movement_FaceLeft::
 	face_left
 	step_end
 
@@ -56,7 +56,7 @@ Common_Movement_FaceDown::
 	face_down
 	step_end
 
-Common_Movement_FaceUp:
+Common_Movement_FaceUp::
 	face_up
 	step_end
 
@@ -156,3 +156,11 @@ Common_Movement_WalkRightFaster::
 Common_Movement_WalkLeftFaster::
     walk_faster_left
     step_end
+
+Common_Movement_WalkInPlaceDown:
+	walk_in_place_down
+	step_end
+
+Common_Movement_WalkInPlaceLeft:
+	walk_in_place_left
+	step_end

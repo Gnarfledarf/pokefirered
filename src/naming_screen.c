@@ -1,29 +1,34 @@
 #include "global.h"
-#include "decompress.h"
-#include "gflib.h"
+#include "bg.h"
 #include "data.h"
-#include "keyboard_text.h"
+#include "decompress.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "event_scripts.h"
 #include "field_effect.h"
 #include "field_player_avatar.h"
 #include "field_specials.h"
+#include "gpu_regs.h"
 #include "graphics.h"
 #include "help_system.h"
+#include "keyboard_text.h"
+#include "malloc.h"
 #include "menu.h"
-#include "overworld.h"
 #include "naming_screen.h"
+#include "overworld.h"
+#include "palette.h"
 #include "pokemon_icon.h"
 #include "pokemon_storage_system.h"
+#include "sound.h"
+#include "string_util.h"
 #include "strings.h"
 #include "task.h"
 #include "text_window.h"
 #include "trig.h"
 #include "constants/event_object_movement.h"
+#include "constants/event_objects.h"
 #include "constants/help_system.h"
 #include "constants/songs.h"
-#include "constants/event_objects.h"
 
 enum {
     INPUT_NONE,
@@ -751,7 +756,7 @@ static void DisplaySentToPCMessage(void)
 static bool8 MainState_WaitSentToPCMessage(void)
 {
     RunTextPrinters();
-    if (!IsTextPrinterActive(0) && JOY_NEW(A_BUTTON))
+    if (!IsTextPrinterActiveOnWindow(0) && JOY_NEW(A_BUTTON))
         sNamingScreen->state = STATE_FADE_OUT;
 
     return FALSE;
@@ -1923,12 +1928,12 @@ static void DrawTextEntry(void)
     PutWindowTilemap(sNamingScreen->windows[WIN_TEXT_ENTRY]);
 }
 
-struct TextColor   // Needed because of alignment
+struct NamingTextColor   // Needed because of alignment
 {
     u8 colors[3][4];
 };
 
-static const struct TextColor sTextColorStruct = {
+static const struct NamingTextColor sTextColorStruct = {
     {
         {TEXT_DYNAMIC_COLOR_4, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY},
         {TEXT_DYNAMIC_COLOR_5, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY},

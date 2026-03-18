@@ -1,16 +1,20 @@
 #include "global.h"
+#include "bg.h"
 #include "decompress.h"
-#include "gflib.h"
 #include "event_data.h"
 #include "event_scripts.h"
-#include "fldeff.h"
 #include "field_effect.h"
+#include "fldeff.h"
+#include "gpu_regs.h"
 #include "map_preview_screen.h"
 #include "overworld.h"
+#include "palette.h"
 #include "party_menu.h"
 #include "script.h"
-#include "constants/songs.h"
+#include "sound.h"
+#include "window.h"
 #include "constants/map_types.h"
+#include "constants/songs.h"
 
 struct FlashStruct
 {
@@ -160,8 +164,8 @@ static const u16 sCaveTransitionPalette_Black[] = INCBIN_U16("graphics/cave_tran
 
 static const u16 sCaveTransitionPalette_Enter[] = INCBIN_U16("graphics/cave_transition/enter.gbapal");
 static const u16 sCaveTransitionPalette_Exit[] = INCBIN_U16("graphics/cave_transition/exit.gbapal");
-static const u32 sCaveTransitionTilemap[] = INCBIN_U32("graphics/cave_transition/tilemap.bin.lz");
-static const u32 sCaveTransitionTiles[] = INCBIN_U32("graphics/cave_transition/tiles.4bpp.lz");
+static const u32 sCaveTransitionTilemap[] = INCBIN_U32("graphics/cave_transition/tilemap.bin.smolTM");
+static const u32 sCaveTransitionTiles[] = INCBIN_U32("graphics/cave_transition/tiles.4bpp.smol");
 
 bool32 FieldMove_SetUpFlash(void)
 {

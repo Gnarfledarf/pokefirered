@@ -1,42 +1,46 @@
 #include "global.h"
-#include "gflib.h"
-#include "graphics.h"
-#include "decompress.h"
-#include "pokemon.h"
-#include "pokemon_summary_screen.h"
-#include "help_system.h"
-#include "task.h"
-#include "menu_helpers.h"
-#include "link.h"
-#include "overworld.h"
-#include "constants/songs.h"
-#include "strings.h"
-#include "menu.h"
-#include "constants/items.h"
-#include "pokemon_sprite_visualizer.h"
-#include "data.h"
-#include "item.h"
-#include "constants/party_menu.h"
-#include "trade.h"
-#include "battle_main.h"
-#include "scanline_effect.h"
-#include "constants/moves.h"
-#include "dynamic_placeholder_text_util.h"
-#include "constants/region_map_sections.h"
-#include "region_map.h"
-#include "field_specials.h"
-#include "party_menu.h"
-#include "constants/battle.h"
-#include "event_data.h"
-#include "trainer_pokemon_sprites.h"
 #include "battle_anim.h"
+#include "battle_interface.h"
+#include "battle_main.h"
+#include "data.h"
+#include "decompress.h"
+#include "dynamic_placeholder_text_util.h"
+#include "event_data.h"
+#include "field_specials.h"
+#include "gpu_regs.h"
+#include "graphics.h"
+#include "help_system.h"
+#include "item.h"
+#include "link.h"
+#include "malloc.h"
+#include "menu_helpers.h"
+#include "menu.h"
+#include "mon_markings.h"
+#include "overworld.h"
+#include "palette.h"
+#include "party_menu.h"
 #include "pokeball.h"
 #include "pokemon_icon.h"
-#include "battle_interface.h"
-#include "mon_markings.h"
+#include "pokemon_sprite_visualizer.h"
 #include "pokemon_storage_system.h"
+#include "pokemon_summary_screen.h"
+#include "pokemon.h"
 #include "pokerus.h"
+#include "region_map.h"
+#include "scanline_effect.h"
+#include "sound.h"
+#include "string_util.h"
+#include "strings.h"
+#include "task.h"
+#include "trade.h"
+#include "trainer_pokemon_sprites.h"
 #include "constants/battle_move_effects.h"
+#include "constants/battle.h"
+#include "constants/items.h"
+#include "constants/moves.h"
+#include "constants/party_menu.h"
+#include "constants/region_map_sections.h"
+#include "constants/songs.h"
 #include "constants/sound.h"
 
 #define TAG_MOVE_TYPES 30002
@@ -330,10 +334,11 @@ static EWRAM_DATA struct HpBarObjs * sHpBarObjs = NULL;
 static EWRAM_DATA struct ExpBarObjs * sExpBarObjs = NULL;
 static EWRAM_DATA struct PokerusIconObj * sPokerusIconObj = NULL;
 static EWRAM_DATA struct ShinyStarObjData * sShinyStarObjData = NULL;
-static EWRAM_DATA u8 sLastViewedMonIndex = 0;
+EWRAM_DATA u8 gLastViewedMonIndex = 0;
 static EWRAM_DATA u8 sMoveSelectionCursorPos = 0;
 static EWRAM_DATA u8 sMoveSwapCursorPos = 0;
 static EWRAM_DATA struct MonPicBounceState * sMonPicBounceState = NULL;
+EWRAM_DATA MainCallback gInitialSummaryScreenCallback = NULL; // stores callback from the first time the screen is opened from the party or PC menu
 
 extern const u32 gSummaryScreen_PageSkills_Tilemap[];
 extern const u32 gSummaryScreen_PageMoves_Tilemap[];
@@ -352,8 +357,8 @@ static const u32 sTextHeaderPalette[] = INCBIN_U32("graphics/summary_screen/text
 static const u16 sMonMarkingSpritePalette[] = INCBIN_U16("graphics/summary_screen/marking.gbapal");
 static const u32 sTextMovesPalette[] = INCBIN_U32("graphics/summary_screen/text_moves.gbapal");
 static const u16 sMoveSelectionCursorPals[] = INCBIN_U16("graphics/summary_screen/move_selection_cursor.gbapal");
-static const u32 sMoveSelectionCursorTiles_Left[] = INCBIN_U32("graphics/summary_screen/move_selection_cursor_left.4bpp.lz");
-static const u32 sMoveSelectionCursorTiles_Right[] = INCBIN_U32("graphics/summary_screen/move_selection_cursor_right.4bpp.lz");
+static const u32 sMoveSelectionCursorTiles_Left[] = INCBIN_U32("graphics/summary_screen/move_selection_cursor_left.4bpp.smol");
+static const u32 sMoveSelectionCursorTiles_Right[] = INCBIN_U32("graphics/summary_screen/move_selection_cursor_right.4bpp.smol");
 
 static const struct OamData sMoveSelectionCursorOamData =
 {
@@ -597,7 +602,7 @@ static const union AnimCmd * const sPokerusIconObjAnimTable[] =
 };
 
 static const u16 sPokerusIconObjPal[] = INCBIN_U16("graphics/summary_screen/pokerus_cured.gbapal");
-static const u32 sPokerusIconObjTiles[] = INCBIN_U32("graphics/summary_screen/pokerus_cured.4bpp.lz");
+static const u32 sPokerusIconObjTiles[] = INCBIN_U32("graphics/summary_screen/pokerus_cured.4bpp.smol");
 
 static const struct OamData sStarObjOamData =
 {
@@ -627,9 +632,9 @@ static const union AnimCmd * const sStarObjAnimTable[] =
 };
 
 static const u16 sStarObjPal[] = INCBIN_U16( "graphics/summary_screen/shiny_star.gbapal");
-static const u32 sStarObjTiles[] = INCBIN_U32( "graphics/summary_screen/shiny_star.4bpp.lz");
-static const u32 sBgTilemap_MovesInfoPage[] = INCBIN_U32( "graphics/summary_screen/moves_info_page.bin.lz");
-static const u32 sBgTilemap_MovesPage[] = INCBIN_U32( "graphics/summary_screen/moves_page.bin.lz");
+static const u32 sStarObjTiles[] = INCBIN_U32( "graphics/summary_screen/shiny_star.4bpp.smol");
+static const u32 sBgTilemap_MovesInfoPage[] = INCBIN_U32( "graphics/summary_screen/moves_info_page.bin.smolTM");
+static const u32 sBgTilemap_MovesPage[] = INCBIN_U32( "graphics/summary_screen/moves_page.bin.smolTM");
 
 static const u8 *const sEggHatchTimeTexts[] = {
     gText_PokeSum_EggHatch_LongTime,
@@ -1191,17 +1196,7 @@ const struct SpriteTemplate gSpriteTemplate_MoveTypes =
     .callback = SpriteCallbackDummy
 };
 
-
-#define FREE_AND_SET_NULL_IF_SET(ptr) \
-{                                     \
-    if (ptr != NULL)                  \
-    {                                 \
-        free(ptr);                    \
-        (ptr) = NULL;                 \
-    }                                 \
-}
-
-void ShowPokemonSummaryScreen(struct Pokemon * party, u8 cursorPos, u8 lastIdx, MainCallback savedCallback, u8 mode)
+void ShowPokemonSummaryScreen(void *party, u8 cursorPos, u8 lastIdx, MainCallback savedCallback, u8 mode)
 {
     sMonSummaryScreen = AllocZeroed(sizeof(struct PokemonSummaryScreenData));
     sMonSkillsPrinterXpos = AllocZeroed(sizeof(struct Struct203B144));
@@ -1212,20 +1207,35 @@ void ShowPokemonSummaryScreen(struct Pokemon * party, u8 cursorPos, u8 lastIdx, 
         return;
     }
 
-    sLastViewedMonIndex = cursorPos;
-
     sMoveSelectionCursorPos = 0;
     sMoveSwapCursorPos = 0;
     sMonSummaryScreen->savedCallback = savedCallback;
-    sMonSummaryScreen->monList.mons = party;
+    if (gInitialSummaryScreenCallback == NULL)
+        gInitialSummaryScreenCallback = savedCallback;
 
     if (party == gEnemyParty)
         sMonSummaryScreen->isEnemyParty = TRUE;
     else
         sMonSummaryScreen->isEnemyParty = FALSE;
 
-    sMonSummaryScreen->lastIndex = lastIdx;
     sMonSummaryScreen->mode = mode;
+    if (cursorPos == PC_MON_CHOSEN)
+    {
+        sMonSummaryScreen->monList.boxMons = GetBoxedMonPtr(gSpecialVar_MonBoxId, 0);
+        gLastViewedMonIndex = gSpecialVar_MonBoxPos;
+        sMonSummaryScreen->lastIndex = IN_BOX_COUNT - 1;
+    }
+    else
+    {
+        sMonSummaryScreen->monList.mons = party;
+        gLastViewedMonIndex = cursorPos;
+        sMonSummaryScreen->lastIndex = lastIdx;
+    }
+
+    if (mode == PSS_MODE_BOX || cursorPos == PC_MON_CHOSEN)
+        sMonSummaryScreen->isBoxMon = TRUE;
+    else
+        sMonSummaryScreen->isBoxMon = FALSE;
 
     switch (sMonSummaryScreen->mode)
     {
@@ -1233,20 +1243,17 @@ void ShowPokemonSummaryScreen(struct Pokemon * party, u8 cursorPos, u8 lastIdx, 
     default:
         SetHelpContext(HELPCONTEXT_POKEMON_INFO);
         sMonSummaryScreen->curPageIndex = PSS_PAGE_INFO;
-        sMonSummaryScreen->isBoxMon = FALSE;
         sMonSummaryScreen->lockMovesFlag = FALSE;
         break;
     case PSS_MODE_BOX:
         SetHelpContext(HELPCONTEXT_POKEMON_INFO);
         sMonSummaryScreen->curPageIndex = PSS_PAGE_INFO;
-        sMonSummaryScreen->isBoxMon = TRUE;
         sMonSummaryScreen->lockMovesFlag = FALSE;
         break;
     case PSS_MODE_SELECT_MOVE:
     case PSS_MODE_FORGET_MOVE:
         SetHelpContext(HELPCONTEXT_POKEMON_MOVES);
         sMonSummaryScreen->curPageIndex = PSS_PAGE_MOVES_INFO;
-        sMonSummaryScreen->isBoxMon = FALSE;
         sMonSummaryScreen->lockMovesFlag = TRUE;
         break;
     }
@@ -1277,10 +1284,10 @@ void ShowPokemonSummaryScreen(struct Pokemon * party, u8 cursorPos, u8 lastIdx, 
     SetMainCallback2(CB2_SetUpPSS);
 }
 
-void ShowSelectMovePokemonSummaryScreen(struct Pokemon * party, u8 cursorPos, u8 lastIdx, MainCallback savedCallback, u16 a4)
+void ShowSelectMovePokemonSummaryScreen(struct Pokemon *party, u8 cursorPos, MainCallback savedCallback, u16 move)
 {
-    ShowPokemonSummaryScreen(party, cursorPos, lastIdx, savedCallback, PSS_MODE_SELECT_MOVE);
-    sMonSummaryScreen->moveIds[4] = a4;
+    ShowPokemonSummaryScreen(party, cursorPos, gPlayerPartyCount - 1, savedCallback, PSS_MODE_SELECT_MOVE);
+    sMonSummaryScreen->moveIds[4] = move;
 }
 
 static u8 PageFlipInputIsDisabled(u8 direction)
@@ -3430,6 +3437,8 @@ static void CommitStaticWindowTilemaps(void)
 
 static void Task_DestroyResourcesOnExit(u8 taskId)
 {
+    if (sMonSummaryScreen->savedCallback == gInitialSummaryScreenCallback)
+        gInitialSummaryScreenCallback = NULL;
     PokeSum_DestroySprites();
     FreeAllSpritePalettes();
 
@@ -3441,10 +3450,10 @@ static void Task_DestroyResourcesOnExit(u8 taskId)
     DestroyTask(taskId);
     SetMainCallback2(sMonSummaryScreen->savedCallback);
 
-    sLastViewedMonIndex = GetLastViewedMonIndex();
+    gLastViewedMonIndex = GetLastViewedMonIndex();
 
-    FREE_AND_SET_NULL_IF_SET(sMonSummaryScreen);
-    FREE_AND_SET_NULL_IF_SET(sMonSkillsPrinterXpos);
+    TRY_FREE_AND_SET_NULL(sMonSummaryScreen);
+    TRY_FREE_AND_SET_NULL(sMonSkillsPrinterXpos);
 }
 
 static void CB2_RunPokemonSummaryScreen(void)
@@ -3841,7 +3850,7 @@ static void PokeSum_PrintMonTypeIcons(void)
 
 u8 GetLastViewedMonIndex(void)
 {
-    return sLastViewedMonIndex;
+    return gLastViewedMonIndex;
 }
 
 u8 GetMoveSlotToReplace(void)
@@ -3856,10 +3865,10 @@ void SetPokemonSummaryScreenMode(u8 mode)
 
 static bool32 IsMultiBattlePartner(void)
 {
-    if (!IsUpdateLinkStateCBActive()
+    if (!IsOverworldLinkActive()
         && IsMultiBattle() == TRUE
         && gReceivedRemoteLinkPlayers == 1
-        && (sLastViewedMonIndex >= 4 || sLastViewedMonIndex == 1))
+        && (gLastViewedMonIndex >= 4 || gLastViewedMonIndex == 1))
         return TRUE;
 
     return FALSE;
@@ -4553,10 +4562,10 @@ static void PokeSum_DestroyMonPicSprite(void)
 
 static void CreateBallIconObj(void)
 {
-    u8 ballId = ItemIdToBallId(GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_POKEBALL));
+    enum PokeBall ball = ItemIdToBallId(GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_POKEBALL));
 
-    LoadBallGfx(ballId);
-    sMonSummaryScreen->ballIconSpriteId = CreateSprite(&gBallSpriteTemplates[ballId], 106, 88, 0);
+    LoadBallGfx(ball);
+    sMonSummaryScreen->ballIconSpriteId = CreateSprite(&gPokeBalls[ball].spriteTemplate, 106, 88, 0);
     gSprites[sMonSummaryScreen->ballIconSpriteId].callback = SpriteCallbackDummy;
     gSprites[sMonSummaryScreen->ballIconSpriteId].oam.priority = 0;
 
@@ -4657,8 +4666,8 @@ static void CreateMoveSelectionCursorObjs(u16 tileTag, u16 palTag)
 
     ShoworHideMoveSelectionCursor(TRUE);
 
-    FREE_AND_SET_NULL_IF_SET(gfxBufferPtrs[0]);
-    FREE_AND_SET_NULL_IF_SET(gfxBufferPtrs[1]);
+    TRY_FREE_AND_SET_NULL(gfxBufferPtrs[0]);
+    TRY_FREE_AND_SET_NULL(gfxBufferPtrs[1]);
 }
 
 static void ShoworHideMoveSelectionCursor(bool8 invisible)
@@ -4720,7 +4729,7 @@ static void DestroyMoveSelectionCursorObjs(void)
         if (sMoveSelectionCursorObjs[i]->sprite != NULL)
             DestroySpriteAndFreeResources(sMoveSelectionCursorObjs[i]->sprite);
 
-        FREE_AND_SET_NULL_IF_SET(sMoveSelectionCursorObjs[i]);
+        TRY_FREE_AND_SET_NULL(sMoveSelectionCursorObjs[i]);
     }
 }
 
@@ -4764,7 +4773,7 @@ static void CreateMonStatusIconObj(u16 tileTag, u16 palTag)
 
     ShowOrHideStatusIcon(TRUE);
     UpdateMonStatusIconObj();
-    FREE_AND_SET_NULL_IF_SET(gfxBufferPtr);
+    TRY_FREE_AND_SET_NULL(gfxBufferPtr);
 }
 
 static void DestroyMonStatusIconObj(void)
@@ -4772,7 +4781,7 @@ static void DestroyMonStatusIconObj(void)
     if (sStatusIcon->sprite != NULL)
         DestroySpriteAndFreeResources(sStatusIcon->sprite);
 
-    FREE_AND_SET_NULL_IF_SET(sStatusIcon);
+    TRY_FREE_AND_SET_NULL(sStatusIcon);
 }
 
 static void UpdateMonStatusIconObj(void)
@@ -4877,7 +4886,7 @@ static void CreateHpBarObjs(u16 tileTag, u16 palTag)
     UpdateHpBarObjs();
     ShowOrHideHpBarObjs(TRUE);
 
-    FREE_AND_SET_NULL_IF_SET(gfxBufferPtr);
+    TRY_FREE_AND_SET_NULL(gfxBufferPtr);
 }
 
 static void UpdateHpBarObjs(void)
@@ -4962,7 +4971,7 @@ static void DestroyHpBarObjs(void)
         if (sHpBarObjs->sprites[i] != NULL)
             DestroySpriteAndFreeResources(sHpBarObjs->sprites[i]);
 
-    FREE_AND_SET_NULL_IF_SET(sHpBarObjs);
+    TRY_FREE_AND_SET_NULL(sHpBarObjs);
 }
 
 static void ShowOrHideHpBarObjs(u8 invisible)
@@ -5019,7 +5028,7 @@ static void CreateExpBarObjs(u16 tileTag, u16 palTag)
     UpdateExpBarObjs();
     ShowOrHideExpBarObjs(TRUE);
 
-    FREE_AND_SET_NULL_IF_SET(gfxBufferPtr);
+    TRY_FREE_AND_SET_NULL(gfxBufferPtr);
 }
 
 static void UpdateExpBarObjs(void)
@@ -5095,7 +5104,7 @@ static void DestroyExpBarObjs(void)
         if (sExpBarObjs->sprites[i] != NULL)
             DestroySpriteAndFreeResources(sExpBarObjs->sprites[i]);
 
-    FREE_AND_SET_NULL_IF_SET(sExpBarObjs);
+    TRY_FREE_AND_SET_NULL(sExpBarObjs);
 }
 
 static void ShowOrHideExpBarObjs(u8 invisible)
@@ -5147,7 +5156,7 @@ static void CreatePokerusIconObj(u16 tileTag, u16 palTag)
     HideShowPokerusIcon(TRUE);
     ShowPokerusIconObjIfHasOrHadPokerus();
 
-    FREE_AND_SET_NULL_IF_SET(gfxBufferPtr);
+    TRY_FREE_AND_SET_NULL(gfxBufferPtr);
 }
 
 static void DestroyPokerusIconObj(void)
@@ -5155,7 +5164,7 @@ static void DestroyPokerusIconObj(void)
     if (sPokerusIconObj->sprite != NULL)
         DestroySpriteAndFreeResources(sPokerusIconObj->sprite);
 
-    FREE_AND_SET_NULL_IF_SET(sPokerusIconObj);
+    TRY_FREE_AND_SET_NULL(sPokerusIconObj);
 }
 
 static void ShowPokerusIconObjIfHasOrHadPokerus(void)
@@ -5231,7 +5240,7 @@ static void CreateShinyStarObj(u16 tileTag, u16 palTag)
     HideShowShinyStar(TRUE);
     ShowShinyStarObjIfMonShiny();
 
-    FREE_AND_SET_NULL_IF_SET(gfxBufferPtr);
+    TRY_FREE_AND_SET_NULL(gfxBufferPtr);
 }
 
 static void DestroyShinyStarObj(void)
@@ -5239,7 +5248,7 @@ static void DestroyShinyStarObj(void)
     if (sShinyStarObjData->sprite != NULL)
         DestroySpriteAndFreeResources(sShinyStarObjData->sprite);
 
-    FREE_AND_SET_NULL_IF_SET(sShinyStarObjData);
+    TRY_FREE_AND_SET_NULL(sShinyStarObjData);
 }
 
 static void HideShowShinyStar(bool8 invisible)
@@ -5366,7 +5375,7 @@ static void PokeSum_SeekToNextMon(u8 taskId, s8 direction)
     }
     else
     {
-        if (IsUpdateLinkStateCBActive() == FALSE
+        if (IsOverworldLinkActive() == FALSE
             && gReceivedRemoteLinkPlayers == 1
             && IsMultiBattle() == TRUE)
             scrollResult = SeekToNextMonInMultiParty(direction);
@@ -5377,7 +5386,7 @@ static void PokeSum_SeekToNextMon(u8 taskId, s8 direction)
     if (scrollResult == -1)
         return;
 
-    sLastViewedMonIndex = scrollResult;
+    gLastViewedMonIndex = scrollResult;
     CreateTask(Task_PokeSum_SwitchDisplayedPokemon, 0);
     sMonSummaryScreen->switchMonTaskState = 0;
 }
@@ -5389,22 +5398,22 @@ static s8 SeekToNextMonInSingleParty(s8 direction)
 
     if (sMonSummaryScreen->curPageIndex == 0)
     {
-        if (direction == -1 && sLastViewedMonIndex == 0)
+        if (direction == -1 && gLastViewedMonIndex == 0)
             return -1;
-        else if (direction == 1 && sLastViewedMonIndex >= sMonSummaryScreen->lastIndex)
+        else if (direction == 1 && gLastViewedMonIndex >= sMonSummaryScreen->lastIndex)
             return -1;
         else
-            return sLastViewedMonIndex + direction;
+            return gLastViewedMonIndex + direction;
     }
 
     while (TRUE)
     {
         seekDelta += direction;
-        if (0 > sLastViewedMonIndex + seekDelta || sLastViewedMonIndex + seekDelta > sMonSummaryScreen->lastIndex)
+        if (0 > gLastViewedMonIndex + seekDelta || gLastViewedMonIndex + seekDelta > sMonSummaryScreen->lastIndex)
             return -1;
 
-        if (GetMonData(&partyMons[sLastViewedMonIndex + seekDelta], MON_DATA_IS_EGG) == 0)
-            return sLastViewedMonIndex + seekDelta;
+        if (GetMonData(&partyMons[gLastViewedMonIndex + seekDelta], MON_DATA_IS_EGG) == 0)
+            return gLastViewedMonIndex + seekDelta;
     }
 
     return -1;

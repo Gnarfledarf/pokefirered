@@ -1,7 +1,8 @@
 #include "global.h"
-#include "gflib.h"
 #include "decompress.h"
 #include "graphics.h"
+#include "malloc.h"
+#include "palette.h"
 #include "union_room_chat.h"
 
 enum {
@@ -28,10 +29,10 @@ static void SpriteCB_TextEntryCursor(struct Sprite *sprite);
 static void SpriteCB_CharacterSelectCursor(struct Sprite *sprite);
 
 static const u16 sUnionRoomChatInterfacePal[] = INCBIN_U16("graphics/union_room_chat/objects.gbapal");
-static const u32 sSelectorCursor_Gfx[] = INCBIN_U32("graphics/union_room_chat/selector_cursor.4bpp.lz");
-static const u32 sTextEntryCursor_Gfx[] = INCBIN_U32("graphics/union_room_chat/text_entry_cursor.4bpp.lz");
-static const u32 sCharacterSelectCursor_Gfx[] = INCBIN_U32("graphics/union_room_chat/character_select_cursor.4bpp.lz");
-static const u32 sRButton_Gfx[] = INCBIN_U32("graphics/union_room_chat/r_button.4bpp.lz");
+static const u32 sSelectorCursor_Gfx[] = INCBIN_U32("graphics/union_room_chat/selector_cursor.4bpp.smol");
+static const u32 sTextEntryCursor_Gfx[] = INCBIN_U32("graphics/union_room_chat/text_entry_cursor.4bpp.smol");
+static const u32 sCharacterSelectCursor_Gfx[] = INCBIN_U32("graphics/union_room_chat/character_select_cursor.4bpp.smol");
+static const u32 sRButton_Gfx[] = INCBIN_U32("graphics/union_room_chat/r_button.4bpp.smol");
 
 static const struct CompressedSpriteSheet sSpriteSheets[] = {
     {

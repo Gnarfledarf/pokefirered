@@ -1,34 +1,44 @@
 #include "global.h"
-#include "gflib.h"
-#include "battle.h"
+#include "apprentice.h"
 #include "battle_controllers.h"
 #include "battle_main.h"
+#include "battle_pike.h"
+#include "battle_pyramid_bag.h"
+#include "battle_pyramid.h"
+#include "battle.h"
 #include "berry_pouch.h"
 #include "decompress.h"
-#include "event_scripts.h"
+#include "event_data.h"
 #include "event_object_movement.h"
+#include "event_scripts.h"
 #include "field_player_avatar.h"
+#include "field_specials.h"
+#include "gpu_regs.h"
 #include "graphics.h"
 #include "help_system.h"
 #include "international_string_util.h"
-#include "item.h"
 #include "item_icon.h"
-#include "item_menu.h"
 #include "item_menu_icons.h"
+#include "item_menu.h"
 #include "item_use.h"
+#include "item.h"
 #include "link.h"
 #include "list_menu.h"
 #include "load_save.h"
 #include "mail.h"
+#include "malloc.h"
 #include "map_name_popup.h"
 #include "menu.h"
 #include "money.h"
 #include "overworld.h"
+#include "palette.h"
 #include "party_menu.h"
 #include "pokemon_storage_system.h"
 #include "scanline_effect.h"
 #include "script.h"
 #include "shop.h"
+#include "sound.h"
+#include "string_util.h"
 #include "strings.h"
 #include "teachy_tv.h"
 #include "text_window.h"
@@ -160,6 +170,7 @@ static void SellItem(u8 taskId);
 static void WaitAfterItemSell(u8 taskId);
 static void TryDepositItem(u8 taskId);
 static void Task_ChooseHowManyToDeposit(u8 taskId);
+static void CB2_ApprenticeExitBagMenu(void);
 static void UpdatePocketItemLists(void);
 static void InitPocketListPositions(void);
 static void InitPocketScrollPositions(void);
@@ -265,12 +276,12 @@ static const struct ListMenuTemplate sItemListMenu =
 };
 
 static const struct MenuAction sItemMenuActions[] = {
-    [ACTION_USE] = {gOtherText_Use, {.void_u8 = ItemMenu_UseOutOfBattle}},
-    [ACTION_TOSS] = {gOtherText_Toss, {.void_u8 = ItemMenu_Toss}},
+    [ACTION_USE] = {gMenuText_Use, {.void_u8 = ItemMenu_UseOutOfBattle}},
+    [ACTION_TOSS] = {gMenuText_Toss, {.void_u8 = ItemMenu_Toss}},
     [ACTION_REGISTER] = {gOtherText_Register, {.void_u8 = ItemMenu_Register}},
-    [ACTION_GIVE] = {gOtherText_Give, {.void_u8 = ItemMenu_Give}},
+    [ACTION_GIVE] = {gMenuText_Give, {.void_u8 = ItemMenu_Give}},
     [ACTION_CANCEL] = {gFameCheckerText_Cancel, {.void_u8 = ItemMenu_Cancel}},
-    [ACTION_BATTLE_USE] = {gOtherText_Use, {.void_u8 = ItemMenu_UseInBattle}},
+    [ACTION_BATTLE_USE] = {gMenuText_Use, {.void_u8 = ItemMenu_UseInBattle}},
     [ACTION_CHECK] = {gOtherText_Check, {.void_u8 = ItemMenu_UseOutOfBattle}},
     [ACTION_OPEN] = {gOtherText_Open, {.void_u8 = ItemMenu_UseOutOfBattle}},
     [ACTION_OPEN_BERRIES] = {gOtherText_Open, {.void_u8 = ItemMenu_UseInBattle}},
@@ -645,7 +656,10 @@ void CB2_BagMenuFromStartMenu(void)
 
 void CB2_BagMenuFromBattle(void)
 {
-    GoToBagMenu(ITEMMENULOCATION_BATTLE, POCKETS_COUNT_NO_CASES, CB2_SetUpReshowBattleScreenAfterMenu2);
+    if (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE)
+        GoToBagMenu(ITEMMENULOCATION_BATTLE, POCKETS_COUNT_NO_CASES, CB2_SetUpReshowBattleScreenAfterMenu2);
+    else
+        GoToBattlePyramidBagMenu(PYRAMIDBAG_LOC_BATTLE, CB2_SetUpReshowBattleScreenAfterMenu2);
 }
 
 static void ReturnToBagMenuFromSubmenu_PCBox(void)
@@ -1763,7 +1777,7 @@ static void AskTossItems(u8 taskId)
     s16 *data = gTasks[taskId].data;
 
     ConvertIntToDecimalStringN(gStringVar2, tItemCount, STR_CONV_MODE_LEFT_ALIGN, 3);
-    StringExpandPlaceholders(gStringVar4, gText_ThrowAwayStrVar2OfThisItemQM);
+    StringExpandPlaceholders(gStringVar4, gText_ConfirmTossItems);
     BagMenu_Print(BagMenu_AddWindow(ITEMWIN_ASKTOSS), FONT_NORMAL, gStringVar4, 0, 2, 1, 0, 0, 1);
     BagMenu_YesNo(taskId, ITEMWIN_YESNO_LOW, &sYesNoTossFunctions);
 }
@@ -1840,9 +1854,12 @@ static void ConfirmToss(u8 taskId)
     BagMenu_RemoveWindow(ITEMWIN_ASKTOSS);
     CopyItemName(gSpecialVar_ItemId, gStringVar1);
     ConvertIntToDecimalStringN(gStringVar2, tItemCount, STR_CONV_MODE_LEFT_ALIGN, MAX_ITEM_DIGITS);
-    StringExpandPlaceholders(gStringVar4, gText_ThrewAwayStrVar2StrVar1s);
+    StringExpandPlaceholders(gStringVar4, gText_ThrewAwayVar2Var1s);
     BagMenu_Print(BagMenu_AddWindow(ITEMWIN_TOSSED), FONT_NORMAL, gStringVar4, 0, 2, 1, 0, 0, COLORID_BLACK_CURSOR);
-    gTasks[taskId].func = Task_TossItemFromBag;
+    if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || FlagGet(FLAG_STORING_ITEMS_IN_PYRAMID_BAG) == TRUE)
+        gTasks[taskId].func = Task_RemoveItemFromBag;
+    else
+        gTasks[taskId].func = Task_TossItemFromBag;
 }
 
 static void Task_RemoveItemFromBag(u8 taskId)
@@ -2030,7 +2047,7 @@ static void Task_ItemContext_GiveToPC(u8 taskId)
 bool8 UseRegisteredKeyItemOnField(void)
 {
     u8 taskId;
-    if (InUnionRoom() == TRUE)
+    if (InUnionRoom() == TRUE || CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || InBattlePike() || InMultiPartnerRoom() == TRUE)
         return FALSE;
     HideMapNamePopUpWindow();
     ChangeBgY(0, 0, 0);
@@ -2317,7 +2334,7 @@ static void PrepareBagForTutorial(void)
         sBackupPlayerBag->scrollPosition[i] = gBagPosition.scrollPosition[i];
     }
     memset(gSaveBlock1Ptr->bag.items, 0, sizeof(gSaveBlock1Ptr->bag.items));
-    memset(gSaveBlock1Ptr->bag.pokeBalls, 0, sizeof(gSaveBlock1Ptr->bag.pokeBalls));
+    memset(gSaveBlock1Ptr->bag.keyItems, 0, sizeof(gSaveBlock1Ptr->bag.keyItems));
     memset(gSaveBlock1Ptr->bag.pokeBalls, 0, sizeof(gSaveBlock1Ptr->bag.pokeBalls));
     gSaveBlock1Ptr->registeredItem = ITEM_NONE;
     ResetBagScrollPositions();
@@ -3063,3 +3080,15 @@ static s32 CompareItemsByIndex(enum Pocket pocketId, struct ItemSlot item1, stru
     return 0; // Cannot have multiple stacks of indexed items
 }
 
+void ApprenticeOpenBagMenu(void)
+{
+    GoToBagMenu(ITEMMENULOCATION_APPRENTICE, POCKETS_COUNT, CB2_ApprenticeExitBagMenu);
+    gSpecialVar_0x8005 = ITEM_NONE;
+    gSpecialVar_Result = FALSE;
+}
+
+static void CB2_ApprenticeExitBagMenu(void)
+{
+    gFieldCallback = Apprentice_ScriptContext_Enable;
+    SetMainCallback2(CB2_ReturnToField);
+}

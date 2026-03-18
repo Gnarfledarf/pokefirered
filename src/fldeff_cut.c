@@ -1,22 +1,23 @@
 #include "global.h"
-#include "gflib.h"
 #include "event_object_lock.h"
 #include "event_object_movement.h"
 #include "event_scripts.h"
-#include "fieldmap.h"
 #include "field_camera.h"
-#include "field_specials.h"
-#include "fldeff.h"
 #include "field_effect.h"
 #include "field_player_avatar.h"
+#include "field_specials.h"
+#include "fieldmap.h"
+#include "fldeff.h"
+#include "malloc.h"
 #include "metatile_behavior.h"
 #include "overworld.h"
 #include "party_menu.h"
 #include "script.h"
+#include "sound.h"
 #include "trig.h"
 #include "constants/event_objects.h"
-#include "constants/songs.h"
 #include "constants/metatile_labels.h"
+#include "constants/songs.h"
 
 #define CUT_GRASS_SPRITE_COUNT 8
 #define CUT_SIDE 3
@@ -97,7 +98,7 @@ static const struct SpriteFrameImage sSpriteFrameImages_FldEff_CutGrass[] = {
 };
 
 const struct SpritePalette gFldEffPalette_CutGrass = {
-    .data = gFieldEffectPal_CutGrass, 
+    .data = gFieldEffectPal_CutGrass,
     .tag = 4096
 };
 
@@ -135,11 +136,11 @@ bool32 FieldMove_SetUpCut(void)
         gPostMenuFieldCallback = FieldCallback_CutTree;
         return TRUE;
     }
-    
+
     else
     {
         PlayerGetDestCoords(&gPlayerFacingPosition.x, &gPlayerFacingPosition.y);
-    
+
         for (i = 0; i < CUT_SIDE; i++)
         {
             y = gPlayerFacingPosition.y - 1 + i;
@@ -282,7 +283,7 @@ static void SpriteCallback_CutGrass_Cleanup(struct Sprite *sprite)
     }
     FieldEffectStop(&gSprites[sCutGrassSpriteArrayPtr[0]], FLDEFF_CUT_GRASS);
     Free(sCutGrassSpriteArrayPtr);
-    ClearPlayerHeldMovementAndUnfreezeObjectEvents();
+    ScriptUnfreezeObjectEvents();
     UnlockPlayerFieldControls();
 }
 

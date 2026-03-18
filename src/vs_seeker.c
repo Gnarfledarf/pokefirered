@@ -1,30 +1,31 @@
 #include "global.h"
-#include "gflib.h"
-#include "constants/songs.h"
-#include "task.h"
-#include "event_object_movement.h"
-#include "menu.h"
-#include "item_use.h"
-#include "event_scripts.h"
-#include "event_data.h"
-#include "script.h"
-#include "event_object_lock.h"
-#include "field_specials.h"
-#include "item.h"
-#include "item_menu.h"
-#include "field_effect.h"
-#include "script_movement.h"
-#include "battle.h"
 #include "battle_setup.h"
-#include "random.h"
+#include "battle.h"
+#include "event_data.h"
+#include "event_object_lock.h"
+#include "event_object_movement.h"
+#include "event_scripts.h"
+#include "field_effect.h"
 #include "field_player_avatar.h"
+#include "field_specials.h"
+#include "item_menu.h"
+#include "item_use.h"
+#include "item.h"
+#include "malloc.h"
+#include "menu.h"
+#include "random.h"
+#include "script_movement.h"
+#include "script.h"
+#include "sound.h"
+#include "task.h"
 #include "vs_seeker.h"
 #include "constants/event_object_movement.h"
 #include "constants/event_objects.h"
-#include "constants/maps.h"
 #include "constants/items.h"
+#include "constants/maps.h"
 #include "constants/quest_log.h"
 #include "constants/script_commands.h"
+#include "constants/songs.h"
 #include "constants/trainer_types.h"
 #include "constants/vs_seeker.h"
 
@@ -32,7 +33,6 @@
 // Each rematch is unavailable until the player has progressed to a certain point in the story (see TryGetRematchTrainerIdGivenGameState).
 // A list of the trainer ids for each party is in sRematches. If a party doesn't update for a progression point it will have SKIP instead,
 // and that trainer id will be ignored.
-#define MAX_REMATCH_PARTIES 6
 #define SKIP 0xFFFF
 
 #define NO_REMATCH_LOCALID LOCALID_PLAYER
@@ -57,13 +57,6 @@ typedef enum
     VSSEEKER_RESPONSE_UNFOUGHT_TRAINERS,
     VSSEEKER_RESPONSE_FOUND_REMATCHES
 } VsSeekerResponseCode;
-
-struct RematchData
-{
-    u16 trainerIDs[MAX_REMATCH_PARTIES];
-    u16 mapGroup; // unused
-    u16 mapNum; // unused
-};
 
 struct VsSeekerTrainerInfo
 {
@@ -126,7 +119,7 @@ static void StartAllRespondantIdleMovements(void);
 static bool8 ObjectEventIdIsSane(u8 objectEventId);
 static u8 GetRandomFaceDirectionMovementType();
 
-static const struct RematchData sRematches[] =
+const struct RematchData sRematches[REMATCH_TRAINER_COUNT] =
 {
     [REMATCH_YOUNGSTER_BEN] =
     {
@@ -1731,7 +1724,7 @@ static void Task_VsSeeker_3(u8 taskId)
             if (sVsSeeker->responseCode == VSSEEKER_RESPONSE_FOUND_REMATCHES)
                 StartAllRespondantIdleMovements();
             ClearDialogWindowAndFrame(0, TRUE);
-            ClearPlayerHeldMovementAndUnfreezeObjectEvents();
+            ScriptUnfreezeObjectEvents();
             UnlockPlayerFieldControls();
             DestroyTask(taskId);
         }

@@ -8,6 +8,15 @@ enum StringConvertMode
     STR_CONV_MODE_LEADING_ZEROS
 };
 
+enum TextColorType
+{
+    TEXT_COLOR_TYPE_FOREGROUND = 0,
+    TEXT_COLOR_TYPE_SHADOW,
+    TEXT_COLOR_TYPE_HIGHLIGHT, // do not use, only kept for compatibility
+    TEXT_COLOR_TYPE_ACCENT,
+    TEXT_COLOR_TYPE_BACKGROUND,
+};
+
 u8 *StringCopy_Nickname(u8 *dest, const u8 *src);
 u8 *StringGet_Nickname(u8 *str);
 u8 *StringCopy_PlayerName(u8 *dest, const u8 *src);
@@ -37,5 +46,6 @@ u8 GetExtCtrlCodeLength(u8 code);
 s32 StringCompareWithoutExtCtrlCodes(const u8 *str1, const u8 *str2);
 void ConvertInternationalString(u8 *s, u8 language);
 void StripExtCtrlCodes(u8 *str);
+bool32 DoesStringProperlyTerminate(const u8 *str, u32 last);
 
 #endif // GUARD_STRING_UTIL_H

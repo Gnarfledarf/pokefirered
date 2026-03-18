@@ -1,9 +1,10 @@
 #include "global.h"
-#include "gflib.h"
 #include "battle.h"
 #include "event_data.h"
 #include "event_scripts.h"
 #include "random.h"
+#include "string_util.h"
+#include "constants/characters.h"
 #include "constants/trainer_fan_club.h"
 
 struct TrainerFanClub
@@ -271,7 +272,7 @@ void Script_BufferFanClubTrainerName(void)
         break;
     }
 #if FREE_LINK_BATTLE_RECORDS == FALSE
-    BufferFanClubTrainerName(&gSaveBlock2Ptr->linkBattleRecords, whichLinkTrainer, whichNPCTrainer);
+    BufferFanClubTrainerName(&gSaveBlock3Ptr->linkBattleRecords, whichLinkTrainer, whichNPCTrainer);
 #else
     BufferFanClubTrainerName(whichLinkTrainer, whichNPCTrainer);
 #endif //FREE_LINK_BATTLE_RECORDS

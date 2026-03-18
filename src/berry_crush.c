@@ -1,34 +1,38 @@
 #include "global.h"
-#include "gflib.h"
 #include "battle_anim.h"
-#include "berry.h"
 #include "berry_crush.h"
 #include "berry_pouch.h"
 #include "berry_powder.h"
+#include "berry.h"
 #include "decompress.h"
 #include "digit_obj_util.h"
 #include "dynamic_placeholder_text_util.h"
+#include "gpu_regs.h"
 #include "graphics.h"
-#include "item.h"
-#include "item_menu.h"
 #include "item_icon.h"
-#include "link.h"
+#include "item_menu.h"
+#include "item.h"
 #include "link_rfu.h"
+#include "link.h"
 #include "list_menu.h"
+#include "malloc.h"
 #include "math_util.h"
 #include "menu.h"
 #include "minigame_countdown.h"
 #include "overworld.h"
+#include "palette.h"
 #include "random.h"
 #include "save.h"
 #include "scanline_effect.h"
 #include "script.h"
+#include "sound.h"
+#include "string_util.h"
 #include "strings.h"
 #include "task.h"
 #include "text_window.h"
 #include "trig.h"
-#include "constants/songs.h"
 #include "constants/items.h"
+#include "constants/songs.h"
 
 #define MAX_TIME (10 * 60 * 60) // Timer can go up to 9:59:59
 
@@ -646,14 +650,14 @@ static const u16 sBerryCrushCorePal[] = INCBIN_U16("graphics/berry_crush/crusher
 static const u16 sBerryCrushImpactAndSparklesPal[] = INCBIN_U16("graphics/berry_crush/impact.gbapal");
 static const u16 sBerryCrushTimerPal[] = INCBIN_U16("graphics/berry_crush/timer_digits.gbapal");
 
-static const u32 sBerryCrushCoreTiles[] = INCBIN_U32("graphics/berry_crush/crusher_base.4bpp.lz");
-static const u32 sBerryCrushImpactTiles[] = INCBIN_U32("graphics/berry_crush/impact.4bpp.lz");
-static const u32 sBerryCrushPowderSparklesTiles[] = INCBIN_U32("graphics/berry_crush/sparkle.4bpp.lz");
-static const u32 sBerryCrushTimerTiles[] = INCBIN_U32("graphics/berry_crush/timer_digits.4bpp.lz");
+static const u32 sBerryCrushCoreTiles[] = INCBIN_U32("graphics/berry_crush/crusher_base.4bpp.smol");
+static const u32 sBerryCrushImpactTiles[] = INCBIN_U32("graphics/berry_crush/impact.4bpp.smol");
+static const u32 sBerryCrushPowderSparklesTiles[] = INCBIN_U32("graphics/berry_crush/sparkle.4bpp.smol");
+static const u32 sBerryCrushTimerTiles[] = INCBIN_U32("graphics/berry_crush/timer_digits.4bpp.smol");
 
-static const u32 sCrusherTop_Tilemap[] = INCBIN_U32("graphics/berry_crush/crusher_top.bin.lz");
-static const u32 sContainerCap_Tilemap[] = INCBIN_U32("graphics/berry_crush/container_cap.bin.lz");
-static const u32 sBg_Tilemap[] = INCBIN_U32("graphics/berry_crush/bg.bin.lz");
+static const u32 sCrusherTop_Tilemap[] = INCBIN_U32("graphics/berry_crush/crusher_top.bin.smolTM");
+static const u32 sContainerCap_Tilemap[] = INCBIN_U32("graphics/berry_crush/container_cap.bin.smolTM");
+static const u32 sBg_Tilemap[] = INCBIN_U32("graphics/berry_crush/bg.bin.smolTM");
 
 // Takes the number of players - 2 and a player id and returns the
 // index into sPlayerCoords where that player should be seated
@@ -1270,7 +1274,7 @@ static u32 Cmd_PrintMessage(struct BerryCrushGame * game, u8 *args)
         CopyWindowToVram(0, COPYWIN_FULL);
         break;
     case 1:
-        if (!IsTextPrinterActive(0))
+        if (!IsTextPrinterActiveOnWindow(0))
         {
             if (keys == 0)
                 ++game->cmdState;
@@ -2366,7 +2370,7 @@ static u32 Cmd_StopGame(struct BerryCrushGame * game, u8 *args)
         CopyWindowToVram(0, COPYWIN_FULL);
         break;
     case 1:
-        if (IsTextPrinterActive(0))
+        if (IsTextPrinterActiveOnWindow(0))
             return 0;
         game->gfx.counter = 120;
         break;

@@ -1,5 +1,5 @@
-#ifndef GUARD_CONSTANTS_FIELD_EFFECTS_H 
-#define GUARD_CONSTANTS_FIELD_EFFECTS_H 
+#ifndef GUARD_CONSTANTS_FIELD_EFFECTS_H
+#define GUARD_CONSTANTS_FIELD_EFFECTS_H
 
 
 enum FieldEffect
@@ -51,7 +51,7 @@ enum FieldEffect
     FLDEFF_HOT_SPRINGS_WATER,
     FLDEFF_USE_WATERFALL,
     FLDEFF_USE_DIVE,
-    FLDEFF_POKEBALL,
+    FLDEFF_POKEBALL_TRAIL,
     FLDEFF_X_ICON,
     FLDEFF_NOP_47,
     FLDEFF_NOP_48,
@@ -97,5 +97,11 @@ enum FieldEffect
 #define FLDEFF_PAL_TAG_ASH                0x100D
 #define FLDEFF_PAL_TAG_SMALL_SPARKLE      0x100F
 #define FLDEFF_PAL_TAG_CAVE_DUST          0x1012
+
+// tile tags, for field effects that may have many copies on screen at once
+#define FLDEFF_TILE_TAG_SHADOW_SMALL        0x1400
+#define FLDEFF_TILE_TAG_SHADOW_MEDIUM       0x1401
+#define FLDEFF_TILE_TAG_SHADOW_LARGE        0x1402
+#define FLDEFF_TILE_TAG_SHADOW_EXTRA_LARGE  0x1403
 
 #endif // GUARD_CONSTANTS_FIELD_EFFECTS_H

@@ -1,31 +1,32 @@
 #include "global.h"
-#include "gflib.h"
 #include "bike.h"
 #include "event_data.h"
 #include "event_object_movement.h"
-#include "fieldmap.h"
 #include "field_camera.h"
 #include "field_control_avatar.h"
-#include "field_effect.h"
 #include "field_effect_helpers.h"
+#include "field_effect.h"
 #include "field_player_avatar.h"
+#include "fieldmap.h"
+#include "follower_npc.h"
 #include "help_system.h"
 #include "menu.h"
 #include "metatile_behavior.h"
 #include "overworld.h"
 #include "party_menu.h"
-#include "quest_log.h"
 #include "quest_log_player.h"
+#include "quest_log.h"
 #include "random.h"
 #include "script.h"
+#include "sound.h"
 #include "strings.h"
 #include "wild_encounter.h"
 #include "constants/abilities.h"
 #include "constants/event_object_movement.h"
 #include "constants/event_objects.h"
-#include "constants/songs.h"
 #include "constants/metatile_behaviors.h"
 #include "constants/moves.h"
+#include "constants/songs.h"
 #include "constants/trainer_types.h"
 
 static EWRAM_DATA struct ObjectEvent * sPlayerObjectPtr = NULL;
@@ -130,8 +131,16 @@ void player_step(u8 direction, u16 newKeys, u16 heldKeys)
             DoPlayerAvatarTransition();
             if (!TryDoMetatileBehaviorForcedMovement())
             {
-                MovePlayerAvatarUsingKeypadInput(direction, newKeys, heldKeys);
-                PlayerAllowForcedMovementIfMovingSameDirection();
+                if (GetFollowerNPCData(FNPC_DATA_FORCED_MOVEMENT) != FNPC_FORCED_NONE)
+                {
+                    gPlayerAvatar.preventStep = TRUE;
+                    CreateTask(Task_MoveNPCFollowerAfterForcedMovement, 1);
+                }
+                else
+                {
+                    MovePlayerAvatarUsingKeypadInput(direction, newKeys, heldKeys);
+                    PlayerAllowForcedMovementIfMovingSameDirection();
+                }
             }
         }
     }
@@ -299,22 +308,29 @@ static u8 DoForcedMovement(u8 direction, MovementAction movementAction)
         ForcedMovement_None();
         if (collision < COLLISION_STOP_SURFING)
         {
-            return 0;
+            return FALSE;
         }
         else
         {
             if (collision == COLLISION_LEDGE_JUMP)
+            {
+                SetFollowerNPCData(FNPC_DATA_FORCED_MOVEMENT, FNPC_FORCED_NONE);
                 PlayerJumpLedge(direction);
+            }
+
             playerAvatar->flags |= PLAYER_AVATAR_FLAG_FORCED;
             playerAvatar->runningState = MOVING;
-            return 1;
+            return TRUE;
         }
     }
     else
     {
+        if (PlayerHasFollowerNPC() && GetFollowerNPCData(FNPC_DATA_FORCED_MOVEMENT) != FNPC_FORCED_STAY)
+            SetFollowerNPCData(FNPC_DATA_FORCED_MOVEMENT, FNPC_FORCED_FOLLOW);
+
         playerAvatar->runningState = MOVING;
         movementAction(direction);
-        return 1;
+        return TRUE;
     }
 }
 
@@ -504,7 +520,7 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
         }
         return;
     }
-    
+
     gPlayerAvatar.creeping = FALSE;
     if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
     {
@@ -522,7 +538,8 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
     }
 
     if ((gRunToggleBtnSet || FlagGet(FLAG_RUNNING_SHOES_TOGGLE) || (heldKeys & B_BUTTON)) && FlagGet(FLAG_SYS_B_DASH)
-        && !IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior))
+        && !IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior)
+        && !FollowerNPCComingThroughDoor())
     {
         if (gRunToggleBtnSet)
         {
@@ -667,7 +684,7 @@ static bool8 CanStopSurfing(s16 x, s16 y, u8 direction)
 {
     if ((gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
         && MapGridGetElevationAt(x, y) == 3
-        && GetObjectEventIdByPosition(x, y, 3) == OBJECT_EVENTS_COUNT)
+        && (GetObjectEventIdByPosition(x, y, 3) == OBJECT_EVENTS_COUNT || GetObjectEventIdByPosition(x, y, 3) == GetFollowerNPCObjectId()))
     {
         QuestLogRecordPlayerAvatarGfxTransitionWithDuration(sQuestLogSurfDismountActionIds[direction], 16);
         CreateStopSurfingTask(direction);
@@ -951,7 +968,7 @@ void PlayerRunSlow(u8 direction)
 void PlayerOnBikeCollide(u8 direction)
 {
     PlayCollisionSoundIfNotFacingWarp(direction);
-    PlayerSetAnimId(GetWalkInPlaceNormalMovementAction(direction), 2);
+    PlayerSetAnimId(GetWalkInPlaceNormalMovementAction(direction), COPY_MOVE_WALK);
 }
 
 void PlayerNotOnBikeCollide(u8 direction)
@@ -1318,6 +1335,7 @@ void InitPlayerAvatar(s16 x, s16 y, u8 direction, u8 gender)
     gPlayerAvatar.spriteId = objectEvent->spriteId;
     gPlayerAvatar.gender = gender;
     SetPlayerAvatarStateMask(PLAYER_AVATAR_FLAG_CONTROLLABLE | PLAYER_AVATAR_FLAG_ON_FOOT);
+    CreateFollowerNPCAvatar();
 }
 
 void SetPlayerInvisibility(bool8 invisible)
@@ -1590,6 +1608,7 @@ static void CreateStopSurfingTask(u8 direction)
     taskId = CreateTask(Task_StopSurfingInit, 0xFF);
     gTasks[taskId].data[0] = direction;
     Task_StopSurfingInit(taskId);
+    PrepareFollowerNPCDismountSurf();
 }
 
 void CreateStopSurfingTask_NoMusicChange(u8 direction)
@@ -1711,7 +1730,7 @@ static void Task_TeleportWarpOutPlayerAnim(u8 taskId)
         tDeltaY = 1;
         tYdeflection = (u16)(sprite->y + sprite->y2) * 16;
         sprite->y2 = 0;
-        CameraObjectReset2();
+        CameraObjectFreeze();
         object->fixedPriority = TRUE;
         sprite->oam.priority = 0;
         sprite->subpriority = 0;
@@ -1762,7 +1781,7 @@ static void Task_TeleportWarpInPlayerAnim(u8 taskId)
         tSubpriority = sprite->subpriority;
         tYdeflection = -((u16)sprite->y2 + 32) * 16;
         sprite->y2 = 0;
-        CameraObjectReset2();
+        CameraObjectFreeze();
         object->fixedPriority = TRUE;
         sprite->oam.priority = 1;
         sprite->subpriority = 0;
@@ -1798,7 +1817,7 @@ static void Task_TeleportWarpInPlayerAnim(u8 taskId)
             object->fixedPriority = 0;
             sprite->oam.priority = tPriority;
             sprite->subpriority = tSubpriority;
-            CameraObjectReset1();
+            CameraObjectReset();
             DestroyTask(taskId);
         }
         break;

@@ -1,16 +1,18 @@
 #include "global.h"
-#include "gflib.h"
+#include "event_object_movement.h"
+#include "event_scripts.h"
+#include "field_fadetransition.h"
 #include "field_screen_effect.h"
+#include "gpu_regs.h"
+#include "heal_location.h"
+#include "menu.h"
 #include "overworld.h"
+#include "palette.h"
 #include "scanline_effect.h"
 #include "script.h"
-#include "task.h"
+#include "string_util.h"
 #include "strings.h"
-#include "menu.h"
-#include "heal_location.h"
-#include "event_object_movement.h"
-#include "field_fadetransition.h"
-#include "event_scripts.h"
+#include "task.h"
 #include "constants/heal_locations.h"
 #include "constants/maps.h"
 
@@ -367,7 +369,7 @@ static bool8 PrintWhiteOutRecoveryMessage(u8 taskId, const u8 *text, u8 x, u8 y)
         break;
     case 1:
         RunTextPrinters();
-        if (!IsTextPrinterActive(windowId))
+        if (!IsTextPrinterActiveOnWindow(windowId))
         {
             gTasks[taskId].tPrintState = 0;
             return TRUE;
@@ -452,4 +454,10 @@ void FieldCB_RushInjuredPokemonToCenter(void)
     palette_bg_faded_fill_black();
     taskId = CreateTask(Task_RushInjuredPokemonToCenter, 10);
     gTasks[taskId].tState = 0;
+}
+
+void WriteBattlePyramidViewScanlineEffectBuffer(void)
+{
+    SetFlashScanlineEffectWindowBoundaries(&gScanlineEffectRegBuffers[0][0], DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2, gSaveBlock2Ptr->frontier.pyramidLightRadius);
+    CpuFastSet(&gScanlineEffectRegBuffers[0], &gScanlineEffectRegBuffers[1], 480);
 }

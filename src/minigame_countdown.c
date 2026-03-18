@@ -1,6 +1,6 @@
 #include "global.h"
-#include "gflib.h"
 #include "decompress.h"
+#include "sound.h"
 #include "task.h"
 #include "trig.h"
 #include "constants/songs.h"
@@ -211,7 +211,7 @@ static void SpriteCB_Start(struct Sprite *sprite)
 }
 
 static const u16 sSpritePal_321Start[] = INCBIN_U16("graphics/misc/minigame_countdown.gbapal");
-static const u16 sSpriteSheet_321Start[] = INCBIN_U16("graphics/misc/minigame_countdown.4bpp.lz");
+static const u16 sSpriteSheet_321Start[] = INCBIN_U16("graphics/misc/minigame_countdown.4bpp.smol");
 
 static void Load321StartGfx(u16 tilesTag, u16 palTag)
 {

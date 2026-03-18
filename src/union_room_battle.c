@@ -1,10 +1,12 @@
 #include "global.h"
-#include "gflib.h"
-#include "battle.h"
 #include "battle_setup.h"
+#include "battle.h"
+#include "gpu_regs.h"
 #include "link.h"
+#include "malloc.h"
 #include "menu.h"
 #include "overworld.h"
+#include "palette.h"
 #include "party_menu.h"
 #include "strings.h"
 #include "text_window.h"
@@ -82,7 +84,7 @@ static bool32 UnionRoomBattle_PrintTextOnWindow0(s16 * state, const u8 * str, s3
         (*state)++;
         break;
     case 1:
-        if (!IsTextPrinterActive(0))
+        if (!IsTextPrinterActiveOnWindow(0))
         {
             *state = 0;
             return TRUE;

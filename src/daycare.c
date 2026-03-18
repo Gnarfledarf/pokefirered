@@ -1,40 +1,45 @@
 #include "global.h"
-#include "pokemon.h"
-#include "gflib.h"
-#include "data.h"
 #include "battle.h"
-#include "constants/items.h"
-#include "daycare.h"
-#include "mail.h"
-#include "pokemon_storage_system.h"
-#include "event_data.h"
-#include "random.h"
-#include "constants/moves.h"
 #include "caps.h"
-#include "menu.h"
-#include "script.h"
-#include "strings.h"
-#include "party_menu.h"
+#include "data.h"
+#include "daycare.h"
+#include "decompress.h"
+#include "event_data.h"
+#include "field_fadetransition.h"
+#include "gpu_regs.h"
+#include "graphics.h"
+#include "help_system.h"
 #include "item.h"
 #include "list_menu.h"
-#include "overworld.h"
-#include "pokedex.h"
-#include "decompress.h"
-#include "constants/songs.h"
-#include "text_window.h"
-#include "trig.h"
 #include "m4a.h"
-#include "graphics.h"
-#include "scanline_effect.h"
+#include "mail.h"
+#include "malloc.h"
+#include "menu.h"
 #include "naming_screen.h"
-#include "help_system.h"
-#include "field_fadetransition.h"
+#include "overworld.h"
+#include "palette.h"
+#include "party_menu.h"
+#include "pokedex.h"
+#include "pokemon_storage_system.h"
+#include "pokemon.h"
+#include "random.h"
 #include "regions.h"
+#include "scanline_effect.h"
+#include "script.h"
+#include "sound.h"
+#include "string_util.h"
+#include "strings.h"
+#include "text_window.h"
+#include "text.h"
 #include "trade.h"
+#include "trig.h"
 #include "constants/abilities.h"
 #include "constants/daycare.h"
 #include "constants/hold_effects.h"
+#include "constants/items.h"
+#include "constants/moves.h"
 #include "constants/region_map_sections.h"
+#include "constants/songs.h"
 
 #define IS_DITTO(species) (gSpeciesInfo[species].eggGroups[0] == EGG_GROUP_DITTO || gSpeciesInfo[species].eggGroups[1] == EGG_GROUP_DITTO)
 // Combination of RSE's Day-Care (re-used on Four Island), FRLG's Day-Care, and egg_hatch.c
@@ -396,7 +401,7 @@ u8 *GetMonNicknameVanilla(struct Pokemon *mon, u8 *dest)
     return StringCopyN(dest, nickname, VANILLA_POKEMON_NAME_LENGTH);
 }
 
-static u8 *DayCare_GetBoxMonNickname(struct BoxPokemon *mon, u8 *dest)
+u8 *GetBoxMonNickname(struct BoxPokemon *mon, u8 *dest)
 {
     u8 nickname[POKEMON_NAME_LENGTH * 2];
 
@@ -615,7 +620,7 @@ static u16 TakeSelectedPokemonFromDaycare(struct DaycareMon *daycareMon)
     u32 experience;
     struct Pokemon pokemon;
 
-    DayCare_GetBoxMonNickname(&daycareMon->mon, gStringVar1);
+    GetBoxMonNickname(&daycareMon->mon, gStringVar1);
     species = GetBoxMonData(&daycareMon->mon, MON_DATA_SPECIES);
     BoxMonToMon(&daycareMon->mon, &pokemon);
 
@@ -677,7 +682,7 @@ static u8 GetNumLevelsGainedForDaycareMon(struct DaycareMon *daycareMon)
 {
     u8 numLevelsGained = GetNumLevelsGainedFromSteps(daycareMon);
     ConvertIntToDecimalStringN(gStringVar2, numLevelsGained, STR_CONV_MODE_LEFT_ALIGN, 2);
-    DayCare_GetBoxMonNickname(&daycareMon->mon, gStringVar1);
+    GetBoxMonNickname(&daycareMon->mon, gStringVar1);
     return numLevelsGained;
 }
 
@@ -686,7 +691,7 @@ static u32 GetDaycareCostForSelectedMon(struct DaycareMon *daycareMon)
     u32 cost;
 
     u8 numLevelsGained = GetNumLevelsGainedFromSteps(daycareMon);
-    DayCare_GetBoxMonNickname(&daycareMon->mon, gStringVar1);
+    GetBoxMonNickname(&daycareMon->mon, gStringVar1);
     cost = 100 + 100 * numLevelsGained;
     ConvertIntToDecimalStringN(gStringVar2, cost, STR_CONV_MODE_LEFT_ALIGN, 5);
     return cost;
@@ -1468,20 +1473,20 @@ static void _GetDaycareMonNicknames(struct DayCare *daycare)
     u8 text[12];
     if (GetBoxMonData(&daycare->mons[0].mon, MON_DATA_SPECIES) != SPECIES_NONE)
     {
-        DayCare_GetBoxMonNickname(&daycare->mons[0].mon, gStringVar1);
+        GetBoxMonNickname(&daycare->mons[0].mon, gStringVar1);
         GetBoxMonData(&daycare->mons[0].mon, MON_DATA_OT_NAME, text);
         StringCopy(gStringVar3, text);
     }
 
     if (GetBoxMonData(&daycare->mons[1].mon, MON_DATA_SPECIES) != SPECIES_NONE)
     {
-        DayCare_GetBoxMonNickname(&daycare->mons[1].mon, gStringVar2);
+        GetBoxMonNickname(&daycare->mons[1].mon, gStringVar2);
     }
 }
 
 u16 GetSelectedMonNicknameAndSpecies(void)
 {
-    DayCare_GetBoxMonNickname(&gPlayerParty[GetCursorSelectionMonId()].box, gStringVar1);
+    GetBoxMonNickname(&gPlayerParty[GetCursorSelectionMonId()].box, gStringVar1);
     return GetBoxMonData(&gPlayerParty[GetCursorSelectionMonId()].box, MON_DATA_SPECIES);
 }
 
@@ -1671,7 +1676,7 @@ static void UNUSED GetDaycareLevelMenuText(struct DayCare *daycare, u8 *dest)
     *dest = EOS;
     for (i = 0; i < DAYCARE_MON_COUNT; i++)
     {
-        DayCare_GetBoxMonNickname(&daycare->mons[i].mon, monNames[i]);
+        GetBoxMonNickname(&daycare->mons[i].mon, monNames[i]);
         AppendMonGenderSymbol(monNames[i], &daycare->mons[i].mon);
     }
 
@@ -1704,19 +1709,20 @@ static void DaycareAddTextPrinter(u8 windowId, const u8 *text, u32 x, u32 y)
     struct TextPrinterTemplate printer;
 
     printer.currentChar = text;
+    printer.type = WINDOW_TEXT_PRINTER;
     printer.windowId = windowId;
     printer.fontId = FONT_NORMAL_COPY_2;
     printer.x = x;
     printer.y = y;
     printer.currentX = x;
     printer.currentY = y;
-    printer.unk = 0;
     gTextFlags.useAlternateDownArrow = 0;
     printer.letterSpacing = 1;
     printer.lineSpacing = 1;
-    printer.fgColor = 2;
-    printer.bgColor = 1;
-    printer.shadowColor = 3;
+    printer.color.accent = 1;
+    printer.color.foreground = 2;
+    printer.color.background = 1;
+    printer.color.shadow = 3;
 
     AddTextPrinter(&printer, 0xFF, NULL);
 }
@@ -1725,7 +1731,7 @@ static void DaycarePrintMonNickname(struct DayCare *daycare, u8 windowId, u32 da
 {
     u8 nickname[POKEMON_NAME_LENGTH * 2];
 
-    DayCare_GetBoxMonNickname(&daycare->mons[daycareSlotId].mon, nickname);
+    GetBoxMonNickname(&daycare->mons[daycareSlotId].mon, nickname);
     AppendMonGenderSymbol(nickname, &daycare->mons[daycareSlotId].mon);
     DaycareAddTextPrinter(windowId, nickname, 8, y);
 }
@@ -1941,7 +1947,7 @@ static bool8 BufferDayCareMonReceivedMail(struct DayCare *daycare, u8 daycareId)
     u8 nick[0x20];
     struct DaycareMon *daycareMon = &daycare->mons[daycareId];
 
-    DayCare_GetBoxMonNickname(&daycareMon->mon, nick);
+    GetBoxMonNickname(&daycareMon->mon, nick);
     if (daycareMon->mail.message.itemId != ITEM_NONE
         && (StringCompare(nick, daycareMon->mail.monName) != 0
             || StringCompare(gSaveBlock2Ptr->playerName, daycareMon->mail.OT_name) != 0))
@@ -2208,7 +2214,7 @@ static void CB2_EggHatch_1(void)
         sEggHatchData->CB2_state++;
         break;
     case 9:
-        if (!IsTextPrinterActive(sEggHatchData->windowId))
+        if (!IsTextPrinterActiveOnWindow(sEggHatchData->windowId))
         {
             LoadUserWindowBorderGfx_(sEggHatchData->windowId, 0x140, BG_PLTT_ID(14));
             CreateYesNoMenuAtPos(&sYesNoWinTemplate, FONT_NORMAL_COPY_2, 0, 2, 0x140, 14, 0);

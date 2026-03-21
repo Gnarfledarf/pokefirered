@@ -277,6 +277,8 @@ static bool32 IsSpeciesOnMap(const struct WildPokemonHeader * data, u32 headerId
         return TRUE;
     if (IsSpeciesInEncounterTable(data->encounterTypes[season][timeOfDay].rockSmashMonsInfo, species, ROCK_WILD_COUNT))
         return TRUE;
+    if (IsSpeciesInEncounterTable(data->encounterTypes[season][timeOfDay].headbuttMonsInfo, species, HEADBUTT_WILD_COUNT))
+        return TRUE;
 
     return FALSE;
 }

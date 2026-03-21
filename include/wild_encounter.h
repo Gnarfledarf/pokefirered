@@ -10,7 +10,8 @@ enum WildPokemonArea
     WILD_AREA_WATER,
     WILD_AREA_ROCKS,
     WILD_AREA_FISHING,
-    WILD_AREA_HIDDEN
+    WILD_AREA_HIDDEN,
+    WILD_AREA_HEADBUTT
 };
 
 #define LAND_WILD_COUNT     12
@@ -18,6 +19,7 @@ enum WildPokemonArea
 #define ROCK_WILD_COUNT     5
 #define FISH_WILD_COUNT     10
 #define HIDDEN_WILD_COUNT   3
+#define HEADBUTT_WILD_COUNT 10
 
 #define NUM_ALTERING_CAVE_TABLES 9
 
@@ -44,6 +46,7 @@ struct WildEncounterTypes
     const struct WildPokemonInfo *rockSmashMonsInfo;
     const struct WildPokemonInfo *fishingMonsInfo;
     const struct WildPokemonInfo *hiddenMonsInfo;
+    const struct WildPokemonInfo *headbuttMonsInfo;
 };
 
 struct WildPokemonHeader
@@ -76,6 +79,7 @@ void CreateWildMon(u16 species, u8 level, u8 unownSlot);
 u16 GetCurrentMapWildMonHeaderId(void);
 u8 ChooseWildMonIndex_Land(void);
 u8 ChooseWildMonIndex_WaterRock(void);
+u8 ChooseWildMonIndex_Headbutt(void);
 u8 ChooseHiddenMonIndex(void);
 bool32 MapHasNoEncounterData(void);
 void GetSeasonAndTimeOfDayForEncounters(u32 headerId, enum WildPokemonArea area, enum Season *season, enum TimeOfDay *timeOfDay);

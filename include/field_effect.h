@@ -162,5 +162,6 @@ u32 FldEff_SnowTracksSlither(void);
 u32 FldEff_SnowTracksBug(void);
 u32 FldEff_SnowTracksSpot(void);
 u32 FldEff_CaveDust(void);
+u32 FldEff_UseHeadbutt(void);
 
 #endif //GUARD_FIELD_EFFECTS_H

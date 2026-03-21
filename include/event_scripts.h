@@ -832,6 +832,7 @@ extern const u8 Help_Text_TypeMatchupOwnPokemonFairy[];
 extern const u8 EventScript_FldEffStrength[];
 extern const u8 EventScript_FailSweetScent[];
 extern const u8 EventScript_FldEffRockSmash[];
+extern const u8 EventScript_UseHeadbutt[];
 
 extern const u8 SafariZone_EventScript_TimesUp[];
 extern const u8 SafariZone_EventScript_RetirePrompt[];
@@ -946,6 +947,7 @@ extern const u8 EventScript_Indigo_HighestAuthority[];
 extern const u8 EventScript_PokemartSign[];
 extern const u8 EventScript_PokecenterSign[];
 extern const u8 EventScript_CurrentTooFast[];
+extern const u8 EventScript_Headbutt[];
 extern const u8 EventScript_UseSurf[];
 extern const u8 EventScript_Waterfall[];
 extern const u8 EventScript_CantUseWaterfall[];

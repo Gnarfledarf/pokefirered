@@ -679,6 +679,8 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
         MsgSetSignpost();
         return EventScript_PokecenterSign;
     }
+    if (MetatileBehavior_IsHeadbuttTree(metatileBehavior) == TRUE)
+        return EventScript_Headbutt;
     return NULL;
 }
 

@@ -91,7 +91,7 @@ const struct FieldMoveInfo gFieldMovesInfo[FIELD_MOVE_COUNT] =
     },
     [FIELD_MOVE_WHIRLPOOL] =
     {
-        .defaultSpecies = SPECIES_SHELLDER,
+        .defaultSpecies = SPECIES_POLIWHIRL,
         .isUnlockedFunc = NULL,
         .moveId = MOVE_NONE,
         .partyMessageId = PARTY_MSG_CANT_USE_HERE,
@@ -101,7 +101,7 @@ const struct FieldMoveInfo gFieldMovesInfo[FIELD_MOVE_COUNT] =
     },
     [FIELD_MOVE_DIVE] =
     {
-        .defaultSpecies = SPECIES_SEEL,
+        .defaultSpecies = SPECIES_LAPRAS,
         .isUnlockedFunc = NULL,
         .moveId = MOVE_NONE,
         .partyMessageId = PARTY_MSG_CANT_USE_HERE,
@@ -111,7 +111,7 @@ const struct FieldMoveInfo gFieldMovesInfo[FIELD_MOVE_COUNT] =
     },
     [FIELD_MOVE_DEFOG] =
     {
-        .defaultSpecies = SPECIES_BUTTERFREE,
+        .defaultSpecies = SPECIES_FEAROW,
         .isUnlockedFunc = NULL,
         .moveId = MOVE_NONE,
         .partyMessageId = PARTY_MSG_CANT_USE_HERE,
@@ -121,7 +121,7 @@ const struct FieldMoveInfo gFieldMovesInfo[FIELD_MOVE_COUNT] =
     },
     [FIELD_MOVE_ROCK_CLIMB] =
     {
-        .defaultSpecies = SPECIES_SANDSHREW,
+        .defaultSpecies = SPECIES_SANDSLASH,
         .isUnlockedFunc = NULL,
         .moveId = MOVE_NONE,
         .partyMessageId = PARTY_MSG_CANT_USE_HERE,
@@ -171,13 +171,31 @@ const struct FieldMoveInfo gFieldMovesInfo[FIELD_MOVE_COUNT] =
     },
     [FIELD_MOVE_SWEET_SCENT] =
     {
+    #ifdef FIRERED
         .defaultSpecies = SPECIES_ODDISH,
+    #else
+        SPECIES_BELLSPROUT,
+    #endif
         .isUnlockedFunc = NULL,
         .moveId = MOVE_SWEET_SCENT,
         .partyMessageId = PARTY_MSG_CANT_USE_HERE,
         .description = COMPOUND_STRING("Lure wild Pokémon."),
         .setUpFunc = FieldMove_SetUpSweetScent,
         .questLogText = COMPOUND_STRING("{STR_VAR_1} used Sweet Scent to attract\nwild Pokémon."),
+    },
+    [FIELD_MOVE_HEADBUTT] =
+    {
+    #ifdef FIRERED
+        .defaultSpecies = SPECIES_PSYDUCK,
+    #else
+        SPECIES_SLOWPOKE,
+    #endif
+        .isUnlockedFunc = NULL,
+        .moveId = MOVE_HEADBUTT,
+        .partyMessageId = PARTY_MSG_CANT_USE_HERE,
+        .description = COMPOUND_STRING("Find Pokémon in trees."),
+        .setUpFunc = FieldMove_SetUpHeadbutt,
+        .questLogText = COMPOUND_STRING("{STR_VAR_1} used Headbutt to find\nwild Pokémon."),
     },
 };
 

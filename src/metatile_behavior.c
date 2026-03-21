@@ -448,14 +448,6 @@ bool8 MetatileBehavior_IsFootprints(u8 metatileBehavior) { return FALSE; }
 bool8 MetatileBehavior_IsBridge(u8 metatileBehavior) { return FALSE; }
 bool8 MetatileBehavior_GetBridgeType(u8 metatileBehavior) { return FALSE; }
 
-bool8 MetatileBehavior_IsUnused01(u8 metatileBehavior)
-{
-    if (metatileBehavior == MB_UNUSED_01)
-        return TRUE;
-    else
-        return FALSE;
-}
-
 bool8 MetatileBehavior_UnusedIsTallGrass(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_TALL_GRASS)
@@ -1114,6 +1106,14 @@ bool8 MetatileBehavior_IsSidewaysStairsLeftSideAny(u8 metatileBehavior)
 bool8 MetatileBehavior_IsBattlePyramidWarp(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_BATTLE_PYRAMID_WARP)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsHeadbuttTree(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_HEADBUTT)
         return TRUE;
     else
         return FALSE;

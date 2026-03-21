@@ -157,6 +157,7 @@ static const u32 (*const sFieldEffectFuncs[FLDEFF_COUNT]) (void) =
     [FLDEFF_SNOW_TRACKS_BUG]              = FldEff_SnowTracksBug,
     [FLDEFF_SNOW_TRACKS_SPOT]             = FldEff_SnowTracksSpot,
     [FLDEFF_CAVE_DUST]                    = FldEff_CaveDust,
+    [FLDEFF_USE_HEADBUTT]                 = FldEff_UseHeadbutt,
 };
 static const struct OamData sNewGameOakOamAttributes = {
     .y = 0,

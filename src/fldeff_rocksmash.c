@@ -23,19 +23,6 @@ static void StartRockSmashFieldEffect(void);
 
 EWRAM_DATA struct MapPosition gPlayerFacingPosition = {};
 
-bool8 CheckObjectGraphicsInFrontOfPlayer(u16 graphicsId)
-{
-    u8 mapObjId;
-
-    GetXYCoordsOneStepInFrontOfPlayer(&gPlayerFacingPosition.x, &gPlayerFacingPosition.y);
-    gPlayerFacingPosition.elevation = PlayerGetElevation();
-    mapObjId = GetObjectEventIdByPosition(gPlayerFacingPosition.x, gPlayerFacingPosition.y, gPlayerFacingPosition.elevation);
-    if (gObjectEvents[mapObjId].graphicsId != graphicsId)
-        return FALSE;
-    gSpecialVar_LastTalked = gObjectEvents[mapObjId].localId;
-    return TRUE;
-}
-
 u8 CreateFieldEffectShowMon(void)
 {
     GetXYCoordsOneStepInFrontOfPlayer(&gPlayerFacingPosition.x, &gPlayerFacingPosition.y);

@@ -204,6 +204,30 @@ static u8 ChooseWildMonIndex_Fishing(u8 rod)
     return wildMonIndex;
 }
 
+u8 ChooseWildMonIndex_Headbutt(void)
+{
+    u8 wildMonIndex = 0;
+    bool8 swap = FALSE;
+    u8 rand = Random() % ENCOUNTER_CHANCE_HEADBUTT_MONS_TOTAL;
+
+    if (rand < ENCOUNTER_CHANCE_HEADBUTT_MONS_SLOT_0)
+        wildMonIndex = 0;
+    else if (rand >= ENCOUNTER_CHANCE_HEADBUTT_MONS_SLOT_0 && rand < ENCOUNTER_CHANCE_HEADBUTT_MONS_SLOT_1)
+        wildMonIndex = 1;
+    else if (rand >= ENCOUNTER_CHANCE_HEADBUTT_MONS_SLOT_1 && rand < ENCOUNTER_CHANCE_HEADBUTT_MONS_SLOT_2)
+        wildMonIndex = 2;
+    else
+        wildMonIndex = 3;
+
+    if (LURE_STEP_COUNT != 0 && (Random() % 10 < 2))
+        swap = TRUE;
+
+    if (swap)
+        wildMonIndex = 3 - wildMonIndex;
+
+    return wildMonIndex;
+}
+
 static u8 ChooseWildMonLevel(const struct WildPokemon *wildPokemon, u8 wildMonIndex, u8 area)
 {
     u8 min;
@@ -328,6 +352,9 @@ void GetSeasonAndTimeOfDayForEncounters(u32 headerId, enum WildPokemonArea area,
         case WILD_AREA_HIDDEN:
             wildMonInfo = gWildMonHeaders[headerId].encounterTypes[*season][*timeOfDay].hiddenMonsInfo;
             break;
+        case WILD_AREA_HEADBUTT:
+            wildMonInfo = gWildMonHeaders[headerId].encounterTypes[*season][*timeOfDay].headbuttMonsInfo;
+            break;
         }
 
         if (wildMonInfo != NULL)
@@ -422,6 +449,9 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo * wildMonInfo, u8 a
         break;
     case WILD_AREA_ROCKS:
         wildMonIndex = ChooseWildMonIndex_WaterRock();
+        break;
+    case WILD_AREA_HEADBUTT:
+        wildMonIndex = ChooseWildMonIndex_Headbutt();
         break;
     }
 
@@ -695,6 +725,27 @@ void RockSmashWildEncounter(void)
     else if (WildEncounterCheck(gWildMonHeaders[headerId].encounterTypes[season][timeOfDay].rockSmashMonsInfo->encounterRate, TRUE) != TRUE)
         gSpecialVar_Result = FALSE;
     else if (TryGenerateWildMon(gWildMonHeaders[headerId].encounterTypes[season][timeOfDay].rockSmashMonsInfo, WILD_AREA_ROCKS, WILD_CHECK_REPEL) == TRUE)
+    {
+        BattleSetup_StartWildBattle();
+        gSpecialVar_Result = TRUE;
+    }
+    else
+        gSpecialVar_Result = FALSE;
+}
+
+void HeadbuttWildEncounter(void)
+{
+    u16 headerId = GetCurrentMapWildMonHeaderId();
+    enum Season season;
+    enum TimeOfDay timeOfDay;
+    GetSeasonAndTimeOfDayForEncounters(headerId, WILD_AREA_HEADBUTT, &season, &timeOfDay);
+    if (headerId == HEADER_NONE)
+        gSpecialVar_Result = FALSE;
+    else if (gWildMonHeaders[headerId].encounterTypes[season][timeOfDay].headbuttMonsInfo == NULL)
+        gSpecialVar_Result = FALSE;
+    else if (WildEncounterCheck(gWildMonHeaders[headerId].encounterTypes[season][timeOfDay].headbuttMonsInfo->encounterRate, TRUE) != TRUE)
+        gSpecialVar_Result = FALSE;
+    else if (TryGenerateWildMon(gWildMonHeaders[headerId].encounterTypes[season][timeOfDay].headbuttMonsInfo, WILD_AREA_HEADBUTT, WILD_CHECK_REPEL) == TRUE)
     {
         BattleSetup_StartWildBattle();
         gSpecialVar_Result = TRUE;
@@ -989,6 +1040,9 @@ static u8 GetMaxLevelOfSpeciesInWildTable(const struct WildPokemon *wildMon, u16
         break;
     case WILD_AREA_ROCKS:
         numMon = ROCK_WILD_COUNT;
+        break;
+    case WILD_AREA_HEADBUTT:
+        numMon = HEADBUTT_WILD_COUNT;
         break;
     }
 

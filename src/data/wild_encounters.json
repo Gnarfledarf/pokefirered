@@ -25879,12 +25879,12 @@
               {
                 "min_level": 39,
                 "max_level": 44,
-                "species": "SPECIES_SNOVER"
+                "species": "SPECIES_CASTFORM"
               },
               {
                 "min_level": 38,
                 "max_level": 43,
-                "species": "SPECIES_VOLTORB_HISUI"
+                "species": "SPECIES_SUDOWOODO"
               },
               {
                 "min_level": 44,
@@ -25894,7 +25894,7 @@
               {
                 "min_level": 42,
                 "max_level": 49,
-                "species": "SPECIES_CASTFORM"
+                "species": "SPECIES_RAICHU_ALOLA"
               },
               {
                 "min_level": 41,
@@ -25953,53 +25953,53 @@
             "mons": [
               {
                 "min_level": 5,
-                "max_level": 5,
+                "max_level": 10,
                 "species": "SPECIES_QWILFISH_HISUI"
               },
               {
                 "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_NONE"
+                "max_level": 10,
+                "species": "SPECIES_QWILFISH_HISUI"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_NONE"
+                "min_level": 30,
+                "max_level": 35,
+                "species": "SPECIES_QWILFISH_HISUI"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_NONE"
+                "min_level": 30,
+                "max_level": 35,
+                "species": "SPECIES_TOTODILE"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_NONE"
+                "min_level": 30,
+                "max_level": 35,
+                "species": "SPECIES_MUDKIP"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_NONE"
+                "min_level": 35,
+                "max_level": 45,
+                "species": "SPECIES_SQUIRTLE"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_NONE"
+                "min_level": 35,
+                "max_level": 45,
+                "species": "SPECIES_PIPLUP"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_NONE"
+                "min_level": 35,
+                "max_level": 45,
+                "species": "SPECIES_POLITOED"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_NONE"
+                "min_level": 35,
+                "max_level": 45,
+                "species": "SPECIES_MILOTIC"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_NONE"
+                "min_level": 35,
+                "max_level": 45,
+                "species": "SPECIES_MILOTIC"
               }
             ]
           }
@@ -26565,12 +26565,12 @@
               {
                 "min_level": 38,
                 "max_level": 44,
-                "species": "SPECIES_RATTATA_ALOLA"
+                "species": "SPECIES_SNOVER"
               },
               {
                 "min_level": 38,
                 "max_level": 44,
-                "species": "SPECIES_MEOWTH_ALOLA"
+                "species": "SPECIES_VOLTORB_HISUI"
               },
               {
                 "min_level": 40,
@@ -26585,42 +26585,97 @@
               {
                 "min_level": 39,
                 "max_level": 44,
-                "species": "SPECIES_SNOVER"
+                "species": "SPECIES_CASTFORM"
               },
               {
                 "min_level": 38,
                 "max_level": 43,
-                "species": "SPECIES_VOLTORB_HISUI"
+                "species": "SPECIES_SUDOWOODO"
               },
               {
                 "min_level": 44,
                 "max_level": 48,
-                "species": "SPECIES_EXEGGUTOR_ALOLA"
+                "species": "SPECIES_RAICHU_ALOLA"
               },
               {
                 "min_level": 42,
                 "max_level": 49,
-                "species": "SPECIES_CASTFORM"
+                "species": "SPECIES_RAICHU_ALOLA"
               },
               {
                 "min_level": 41,
                 "max_level": 45,
-                "species": "SPECIES_GROWLITHE_HISUI"
-              },
-              {
-                "min_level": 41,
-                "max_level": 45,
-                "species": "SPECIES_SNEASEL_HISUI"
-              },
-              {
-                "min_level": 41,
-                "max_level": 45,
-                "species": "SPECIES_GROWLITHE_HISUI"
+                "species": "SPECIES_KECLEON"
               },
               {
                 "min_level": 41,
                 "max_level": 45,
                 "species": "SPECIES_SNEASEL_HISUI"
+              },
+              {
+                "min_level": 41,
+                "max_level": 45,
+                "species": "SPECIES_KECLEON"
+              },
+              {
+                "min_level": 41,
+                "max_level": 45,
+                "species": "SPECIES_SNEASEL_HISUI"
+              }
+            ]
+          },
+          "fishing_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 5,
+                "max_level": 10,
+                "species": "SPECIES_QWILFISH_HISUI"
+              },
+              {
+                "min_level": 5,
+                "max_level": 10,
+                "species": "SPECIES_QWILFISH_HISUI"
+              },
+              {
+                "min_level": 30,
+                "max_level": 35,
+                "species": "SPECIES_QWILFISH_HISUI"
+              },
+              {
+                "min_level": 30,
+                "max_level": 35,
+                "species": "SPECIES_TOTODILE"
+              },
+              {
+                "min_level": 30,
+                "max_level": 35,
+                "species": "SPECIES_MUDKIP"
+              },
+              {
+                "min_level": 35,
+                "max_level": 45,
+                "species": "SPECIES_SQUIRTLE"
+              },
+              {
+                "min_level": 35,
+                "max_level": 45,
+                "species": "SPECIES_PIPLUP"
+              },
+              {
+                "min_level": 35,
+                "max_level": 45,
+                "species": "SPECIES_SLOWKING"
+              },
+              {
+                "min_level": 35,
+                "max_level": 45,
+                "species": "SPECIES_MILOTIC"
+              },
+              {
+                "min_level": 35,
+                "max_level": 45,
+                "species": "SPECIES_MILOTIC"
               }
             ]
           }

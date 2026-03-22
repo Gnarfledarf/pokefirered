@@ -438,3 +438,7 @@ Text_WantToHeadbutt::
 Text_CantHeadbuttTree::
 	.string "There's a large, formidable tree.\n"
 	.string "It looks like it can be headbutted!$"
+
+Text_WantToHeadbutt_Sudowoodo::
+	.string "It's a strange looking tree.\n"
+	.string "Would you like to use Headbutt?$"

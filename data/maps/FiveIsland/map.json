@@ -56,10 +56,10 @@
     },
     {
       "type": "clone",
-      "graphics_id": "OBJ_EVENT_GFX_CUT_TREE",
+      "graphics_id": "OBJ_EVENT_GFX_SUDOWOODO",
       "x": 32,
       "y": 9,
-      "target_local_id": "LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE",
+      "target_local_id": "LOCALID_FIVE_ISLAND_MEADOW_SUDOWOODO",
       "target_map": "MAP_FIVE_ISLAND_MEADOW"
     }
   ],

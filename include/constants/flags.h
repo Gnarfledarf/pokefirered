@@ -808,8 +808,8 @@
 #define FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER             0x30B
 #define FLAG_0x30C               0x30C
 #define FLAG_0x30D               0x30D
-#define FLAG_0x30E               0x30E
-#define FLAG_0x30F               0x30F
+#define FLAG_HIDE_FIVE_ISLAND_MEADOW_SUDOWOODO            0x30E
+#define FLAG_DEFEATED_FIVE_ISLAND_MEADOW_SUDOWOODO        0x30F
 #define FLAG_0x310               0x310
 #define FLAG_0x311               0x311
 #define FLAG_0x312               0x312

@@ -13386,7 +13386,7 @@
             ]
           },
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 31,
@@ -13570,7 +13570,7 @@
             ]
           },
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 31,
@@ -15465,7 +15465,7 @@
             ]
           },
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 36,
@@ -15584,7 +15584,7 @@
             ]
           },
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 36,
@@ -17447,7 +17447,7 @@
             ]
           },
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 6,
@@ -17546,7 +17546,7 @@
             ]
           },
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 6,
@@ -17730,7 +17730,7 @@
             ]
           },
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 10,
@@ -17914,7 +17914,7 @@
             ]
           },
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 10,
@@ -18519,7 +18519,7 @@
             ]
           },
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 19,
@@ -18618,7 +18618,7 @@
             ]
           },
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 19,
@@ -18717,7 +18717,7 @@
             ]
           },
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 18,
@@ -18816,7 +18816,7 @@
             ]
           },
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 18,
@@ -21197,7 +21197,7 @@
             ]
           },
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 20,
@@ -21296,7 +21296,7 @@
             ]
           },
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 20,
@@ -24869,7 +24869,7 @@
             ]
           },
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 25,
@@ -24988,7 +24988,7 @@
             ]
           },
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 25,
@@ -25285,7 +25285,7 @@
             ]
           },
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 32,
@@ -25404,7 +25404,7 @@
             ]
           },
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 32,
@@ -25523,7 +25523,7 @@
             ]
           },
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 5,
@@ -25642,7 +25642,7 @@
             ]
           },
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 5,
@@ -27512,7 +27512,7 @@
           "map": "MAP_SAFFRON_CITY",
           "base_label": "sSaffronCity_FireRed",
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 19,
@@ -27546,7 +27546,7 @@
           "map": "MAP_SAFFRON_CITY",
           "base_label": "sSaffronCity_LeafGreen",
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 19,
@@ -27580,7 +27580,7 @@
           "map": "MAP_PEWTER_CITY",
           "base_label": "sPewterCity_FireRed",
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 3,
@@ -27614,7 +27614,7 @@
           "map": "MAP_PEWTER_CITY",
           "base_label": "sPewterCity_LeafGreen",
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 3,
@@ -27648,7 +27648,7 @@
           "map": "MAP_TWO_ISLAND",
           "base_label": "sTwoIsland_FireRed",
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 30,
@@ -27682,7 +27682,7 @@
           "map": "MAP_TWO_ISLAND",
           "base_label": "sTwoIsland_LeafGreen",
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 30,

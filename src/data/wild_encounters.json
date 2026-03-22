@@ -9320,7 +9320,7 @@
             ]
           },
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 37,
@@ -9504,7 +9504,7 @@
             ]
           },
           "headbutt_mons": {
-            "encounter_rate": 1,
+            "encounter_rate": 100,
             "mons": [
               {
                 "min_level": 37,

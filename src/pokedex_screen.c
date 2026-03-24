@@ -354,7 +354,7 @@ static const struct ListMenuTemplate sListMenuTemplate_KantoDexModeSelect = {
     .items = sListMenuItems_KantoDexModeSelect,
     .moveCursorFunc = MoveCursorFunc_DexModeSelect,
     .itemPrintFunc = ItemPrintFunc_DexModeSelect,
-    .totalItems = NELEMS(sListMenuItems_KantoDexModeSelect),
+    .totalItems = ARRAY_COUNT(sListMenuItems_KantoDexModeSelect),
     .maxShowed = 9,
     .windowId = 0,
     .header_X = 0,
@@ -398,7 +398,7 @@ static const struct ListMenuTemplate sListMenuTemplate_NatDexModeSelect = {
     .items = sListMenuItems_NatDexModeSelect,
     .moveCursorFunc = MoveCursorFunc_DexModeSelect,
     .itemPrintFunc = ItemPrintFunc_DexModeSelect,
-    .totalItems = NELEMS(sListMenuItems_NatDexModeSelect),
+    .totalItems = ARRAY_COUNT(sListMenuItems_NatDexModeSelect),
     .maxShowed = 9,
     .windowId = 0,
     .header_X = 0,
@@ -915,7 +915,7 @@ void DexScreen_LoadResources(void)
     ResetTasks();
     ScanlineEffect_Stop();
     ResetBgsAndClearDma3BusyFlags(TRUE);
-    InitBgsFromTemplates(0, sBgTemplates, NELEMS(sBgTemplates));
+    InitBgsFromTemplates(0, sBgTemplates, ARRAY_COUNT(sBgTemplates));
     SetBgTilemapBuffer(3, (u16 *)Alloc(BG_SCREEN_SIZE));
     SetBgTilemapBuffer(2, (u16 *)Alloc(BG_SCREEN_SIZE));
     SetBgTilemapBuffer(1, (u16 *)Alloc(BG_SCREEN_SIZE));
@@ -2296,7 +2296,7 @@ static u32 DexScreen_GetDefaultPersonality(int species)
 
 static void DexScreen_LoadMonPicInWindow(u8 windowId, u16 species, u16 paletteOffset)
 {
-    LoadMonPicInWindow(species, FALSE, DexScreen_GetDefaultPersonality(species), TRUE, paletteOffset >> 4, windowId);
+    LoadMonFrontPicInWindow(species, FALSE, DexScreen_GetDefaultPersonality(species), paletteOffset >> 4, windowId);
 }
 
 static void DexScreen_PrintMonDexNo(u8 windowId, u8 fontId, u16 species, u8 x, u8 y, bool32 allowNationalDex)
@@ -3278,14 +3278,14 @@ u8 DexScreen_DrawMonAreaPage(void)
 
     if (monIsCaught)
     {
-        sPokedexScreenData->windowIds[14] = CreateMonPicSprite(species, FALSE, DexScreen_GetDefaultPersonality(species), TRUE, 40, 104, 0, 0xFFFF);
+        sPokedexScreenData->windowIds[14] = CreateMonFrontPicSprite(species, FALSE, DexScreen_GetDefaultPersonality(species), 40, 104, 0, TAG_NONE);
         gSprites[sPokedexScreenData->windowIds[14]].oam.paletteNum = 2;
         gSprites[sPokedexScreenData->windowIds[14]].oam.affineMode = ST_OAM_AFFINE_NORMAL;
         gSprites[sPokedexScreenData->windowIds[14]].oam.matrixNum = 2;
         gSprites[sPokedexScreenData->windowIds[14]].oam.priority = 1;
         gSprites[sPokedexScreenData->windowIds[14]].y2 = gSpeciesInfo[species].pokemonOffset;
         SetOamMatrix(2, gSpeciesInfo[species].pokemonScale, 0, 0, gSpeciesInfo[species].pokemonScale);
-        sPokedexScreenData->windowIds[15] = CreateTrainerPicSprite(PlayerGenderToFrontTrainerPicId(gSaveBlock2Ptr->playerGender), 1, 80, 104, 0, 0xFFFF);
+        sPokedexScreenData->windowIds[15] = CreateTrainerFrontPicSprite(PlayerGenderToFrontTrainerPicId(gSaveBlock2Ptr->playerGender), 80, 104, 0);
         gSprites[sPokedexScreenData->windowIds[15]].oam.paletteNum = 2;
         gSprites[sPokedexScreenData->windowIds[15]].oam.affineMode = ST_OAM_AFFINE_NORMAL;
         gSprites[sPokedexScreenData->windowIds[15]].oam.matrixNum = 1;
@@ -3452,7 +3452,7 @@ static u8 DexScreen_LookUpCategoryBySpecies(u16 species)
     int i, j, k, categoryCount, categoryPageCount, posInPage;
     u16 dexSpecies;
 
-    for (i = 0; i < NELEMS(gDexCategories); i++)
+    for (i = 0; i < ARRAY_COUNT(gDexCategories); i++)
     {
         categoryCount = gDexCategories[i].count;
         for (j = 0; j < categoryCount; j++)

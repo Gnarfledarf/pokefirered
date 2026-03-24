@@ -78,8 +78,7 @@
       "flag": "0"
     },
     {
-      "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_BLACKBELT",
+      "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
       "x": 37,
       "y": 32,
       "elevation": 0,
@@ -303,8 +302,7 @@
       "flag": "0"
     },
     {
-      "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_BLACKBELT",
+      "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
       "x": 33,
       "y": 14,
       "elevation": 0,

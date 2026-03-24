@@ -76,19 +76,19 @@
 #define PLAYER_LINK_STATE_READY 0x82
 #define PLAYER_LINK_STATE_EXITING_ROOM 0x83
 
-enum FacingDirection
+enum LinkFacing
 {
-    FACING_NONE = 0,
-    FACING_UP = 1,
-    FACING_DOWN = 2,
-    FACING_LEFT = 3,
-    FACING_RIGHT = 4,
-    FACING_NONE_2 = 5,
-    FACING_NONE_3 = 6,
-    FACING_FORCED_UP = 7,
-    FACING_FORCED_DOWN = 8,
-    FACING_FORCED_LEFT = 9,
-    FACING_FORCED_RIGHT = 10,
+    FACING_NONE,
+    FACING_UP,
+    FACING_DOWN,
+    FACING_LEFT,
+    FACING_RIGHT,
+    FACING_UNUSED1,
+    FACING_UNUSED2,
+    FACING_FORCED_UP,
+    FACING_FORCED_DOWN,
+    FACING_FORCED_LEFT,
+    FACING_FORCED_RIGHT,
 };
 
 typedef u16 (*KeyInterCB)(u32 key);
@@ -227,7 +227,7 @@ static void GetLinkPlayerCoords(u8 linkPlayerId, s16 *x, s16 *y);
 static u8 GetLinkPlayerFacingDirection(u8 linkPlayerId);
 static u8 GetLinkPlayerElevation(u8 linkPlayerId);
 static u8 GetLinkPlayerIdAt(s16 x, s16 y);
-static void CreateLinkPlayerSprite(u8 i, u8 version);
+static void CreateLinkPlayerSprite(u8 i, enum GameVersion version);
 static u8 MovementEventModeCB_Normal(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8);
 static u8 MovementEventModeCB_Ignored(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8);
 static u8 MovementEventModeCB_Normal_2(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8);
@@ -308,7 +308,7 @@ static u8 CountBadgesForOverworldWhiteOutLossCalculation(void)
 {
     int i;
     u8 nbadges = 0;
-    for (i = 0; i < NELEMS(sWhiteOutMoneyLossBadgeFlagIDs); i++)
+    for (i = 0; i < ARRAY_COUNT(sWhiteOutMoneyLossBadgeFlagIDs); i++)
     {
         if (FlagGet(sWhiteOutMoneyLossBadgeFlagIDs[i]))
             nbadges++;
@@ -1383,7 +1383,7 @@ static void InitOverworldBgs(void)
     MoveSaveBlocks_ResetHeap_();
     ResetScreenForMapLoad();
     ResetBgsAndClearDma3BusyFlags(FALSE);
-    InitBgsFromTemplates(0, sOverworldBgTemplates, NELEMS(sOverworldBgTemplates));
+    InitBgsFromTemplates(0, sOverworldBgTemplates, ARRAY_COUNT(sOverworldBgTemplates));
     SetBgAttribute(1, BG_ATTR_MOSAIC, TRUE);
     SetBgAttribute(2, BG_ATTR_MOSAIC, TRUE);
     SetBgAttribute(3, BG_ATTR_MOSAIC, TRUE);
@@ -1401,7 +1401,7 @@ static void InitOverworldBgs(void)
 static void InitOverworldBgs_NoResetHeap(void)
 {
     ResetBgsAndClearDma3BusyFlags(FALSE);
-    InitBgsFromTemplates(0, sOverworldBgTemplates, NELEMS(sOverworldBgTemplates));
+    InitBgsFromTemplates(0, sOverworldBgTemplates, ARRAY_COUNT(sOverworldBgTemplates));
     SetBgAttribute(1, BG_ATTR_MOSAIC, TRUE);
     SetBgAttribute(2, BG_ATTR_MOSAIC, TRUE);
     SetBgAttribute(3, BG_ATTR_MOSAIC, TRUE);
@@ -2784,16 +2784,16 @@ static u8 (*const sLinkPlayerMovementModes[])(struct LinkPlayerObjectEvent *, st
 // These handlers return TRUE if the movement was scripted and successful, and FALSE otherwise.
 static bool8 (*const sLinkPlayerFacingHandlers[])(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8) =
 {
-    [FACING_NONE]  = FacingHandler_DoNothing,
-    [FACING_UP] = FacingHandler_DpadMovement,
-    [FACING_DOWN] = FacingHandler_DpadMovement,
-    [FACING_LEFT]  = FacingHandler_DpadMovement,
-    [FACING_RIGHT]  = FacingHandler_DpadMovement,
-    [FACING_NONE_2] = FacingHandler_DoNothing,
-    [FACING_NONE_3] = FacingHandler_DoNothing,
-    [FACING_FORCED_UP] = FacingHandler_ForcedFacingChange,
-    [FACING_FORCED_DOWN] = FacingHandler_ForcedFacingChange,
-    [FACING_FORCED_LEFT] = FacingHandler_ForcedFacingChange,
+    [FACING_NONE]         = FacingHandler_DoNothing,
+    [FACING_UP]           = FacingHandler_DpadMovement,
+    [FACING_DOWN]         = FacingHandler_DpadMovement,
+    [FACING_LEFT]         = FacingHandler_DpadMovement,
+    [FACING_RIGHT]        = FacingHandler_DpadMovement,
+    [FACING_UNUSED1]      = FacingHandler_DoNothing,
+    [FACING_UNUSED2]      = FacingHandler_DoNothing,
+    [FACING_FORCED_UP]    = FacingHandler_ForcedFacingChange,
+    [FACING_FORCED_DOWN]  = FacingHandler_ForcedFacingChange,
+    [FACING_FORCED_LEFT]  = FacingHandler_ForcedFacingChange,
     [FACING_FORCED_RIGHT] = FacingHandler_ForcedFacingChange,
 };
 
@@ -3290,7 +3290,8 @@ static bool32 CanCableClubPlayerPressStart(struct CableClubPlayer *player)
 static const u8 *TryGetTileEventScript(struct CableClubPlayer *player)
 {
     if (player->movementMode != MOVEMENT_MODE_SCRIPTED)
-        return FACING_NONE;
+        return NULL;
+
     return GetCoordEventScriptAtMapPosition(&player->pos);
 }
 
@@ -3312,7 +3313,7 @@ static const u8 *TryInteractWithPlayer(struct CableClubPlayer *player)
     u8 linkPlayerId;
 
     if (player->movementMode != MOVEMENT_MODE_FREE && player->movementMode != MOVEMENT_MODE_SCRIPTED)
-        return FACING_NONE;
+        return NULL;
 
     otherPlayerPos = player->pos;
     otherPlayerPos.x += gDirectionToVectors[player->facing].x;
@@ -3707,7 +3708,7 @@ static bool8 LinkPlayerDetectCollision(u8 selfObjEventId, u8 a2, s16 x, s16 y)
     return MapGridGetCollisionAt(x, y);
 }
 
-static void CreateLinkPlayerSprite(u8 linkPlayerId, u8 gameVersion)
+static void CreateLinkPlayerSprite(u8 linkPlayerId, enum GameVersion gameVersion)
 {
     struct LinkPlayerObjectEvent *linkPlayerObjEvent = &gLinkPlayerObjectEvents[linkPlayerId];
     u8 objEventId = linkPlayerObjEvent->objEventId;

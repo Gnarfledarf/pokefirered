@@ -339,20 +339,20 @@ static const u8 sFameCheckerArrayNpcGraphicsIds[] = {
     OBJ_EVENT_GFX_BRUNO,
     OBJ_EVENT_GFX_BRUNO,
     OBJ_EVENT_GFX_CLIPBOARD,
-    OBJ_EVENT_GFX_BLACKBELT,
+    OBJ_EVENT_GFX_BLACK_BELT,
     OBJ_EVENT_GFX_BEAUTY,
-    OBJ_EVENT_GFX_BLACKBELT,
+    OBJ_EVENT_GFX_BLACK_BELT,
     // AGATHA
     OBJ_EVENT_GFX_AGATHA,
-    OBJ_EVENT_GFX_BLACKBELT,
-    OBJ_EVENT_GFX_BLACKBELT,
+    OBJ_EVENT_GFX_BLACK_BELT,
+    OBJ_EVENT_GFX_BLACK_BELT,
     OBJ_EVENT_GFX_CLIPBOARD,
     OBJ_EVENT_GFX_AGATHA,
     OBJ_EVENT_GFX_OLD_WOMAN,
     // LANCE
     OBJ_EVENT_GFX_LANCE,
     OBJ_EVENT_GFX_LANCE,
-    OBJ_EVENT_GFX_BATTLE_GIRL,
+    OBJ_EVENT_GFX_CRUSH_GIRL,
     OBJ_EVENT_GFX_WOMAN_1,
     OBJ_EVENT_GFX_CLIPBOARD,
     OBJ_EVENT_GFX_COOLTRAINER_M,
@@ -655,7 +655,7 @@ static void MainCB2_LoadFameChecker(void)
             sBg1TilemapBuffer = AllocZeroed(BG_SCREEN_SIZE * 2); // 512x256
             sBg2TilemapBuffer = AllocZeroed(BG_SCREEN_SIZE);     // 256x256
             ResetBgsAndClearDma3BusyFlags(0);
-            InitBgsFromTemplates(0, sUIBgTemplates, NELEMS(sUIBgTemplates));
+            InitBgsFromTemplates(0, sUIBgTemplates, ARRAY_COUNT(sUIBgTemplates));
             SetBgTilemapBuffer(3, sBg3TilemapBuffer);
             SetBgTilemapBuffer(2, sBg2TilemapBuffer);
             SetBgTilemapBuffer(1, sBg1TilemapBuffer);
@@ -1370,7 +1370,7 @@ static u8 CreatePersonPicSprite(u8 fcPersonIdx)
     }
     else
     {
-        spriteId = CreateTrainerPicSprite(sFameCheckerTrainerPicIdxs[fcPersonIdx], TRUE, PERSON_X, PERSON_Y, PERSON_PAL_NUM, TAG_NONE);
+        spriteId = CreateTrainerFrontPicSprite(sFameCheckerTrainerPicIdxs[fcPersonIdx], PERSON_X, PERSON_Y, PERSON_PAL_NUM);
     }
     gSprites[spriteId].callback = SpriteCB_FCSpinningPokeball;
     if (gSaveBlock1Ptr->fameChecker[fcPersonIdx].pickState == FCPICKSTATE_SILHOUETTE)

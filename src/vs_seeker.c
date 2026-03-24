@@ -1921,7 +1921,7 @@ static bool8 ShouldTryRematchBattleInternal(const struct RematchData *vsSeekerDa
 
     if (rematchIdx == -1)
         return FALSE;
-    if (rematchIdx >= 0 && rematchIdx < NELEMS(sRematches))
+    if (rematchIdx >= 0 && rematchIdx < ARRAY_COUNT(sRematches))
     {
         if (IsThisTrainerRematchable(gSpecialVar_LastTalked))
             return TRUE;
@@ -1952,7 +1952,7 @@ static int LookupVsSeekerOpponentInArray(const struct RematchData * array, u16 t
 {
     int i, j;
 
-    for (i = 0; i < NELEMS(sRematches); i++)
+    for (i = 0; i < ARRAY_COUNT(sRematches); i++)
     {
         for (j = 0; j < MAX_REMATCH_PARTIES; j++)
         {
@@ -1994,7 +1994,7 @@ static bool8 IsTrainerReadyForRematchInternal(const struct RematchData * array, 
 
     if (rematchTrainerIdx == -1)
         return FALSE;
-    if (rematchTrainerIdx >= NELEMS(sRematches))
+    if (rematchTrainerIdx >= ARRAY_COUNT(sRematches))
         return FALSE;
     if (!IsThisTrainerRematchable(gSpecialVar_LastTalked))
         return FALSE;
@@ -2040,7 +2040,7 @@ static u8 GetRunningBehaviorFromGraphicsId(u16 graphicsId)
         case OBJ_EVENT_GFX_BUG_CATCHER:
         case OBJ_EVENT_GFX_LASS:
         case OBJ_EVENT_GFX_WOMAN_1:
-        case OBJ_EVENT_GFX_BATTLE_GIRL:
+        case OBJ_EVENT_GFX_CRUSH_GIRL:
         case OBJ_EVENT_GFX_MAN:
         case OBJ_EVENT_GFX_ROCKER:
         case OBJ_EVENT_GFX_WOMAN_2:
@@ -2053,7 +2053,7 @@ static u8 GetRunningBehaviorFromGraphicsId(u16 graphicsId)
         case OBJ_EVENT_GFX_COOLTRAINER_F:
         case OBJ_EVENT_GFX_SWIMMER_M_LAND:
         case OBJ_EVENT_GFX_SWIMMER_F_LAND:
-        case OBJ_EVENT_GFX_BLACKBELT:
+        case OBJ_EVENT_GFX_BLACK_BELT:
         case OBJ_EVENT_GFX_HIKER:
         case OBJ_EVENT_GFX_SAILOR:
             return MOVEMENT_TYPE_RAISE_HAND_AND_JUMP;
@@ -2112,7 +2112,7 @@ static int GetRematchIdx(const struct RematchData * vsSeekerData, u16 trainerFla
 {
     int i;
 
-    for (i = 0; i < NELEMS(sRematches); i++)
+    for (i = 0; i < ARRAY_COUNT(sRematches); i++)
     {
         if (vsSeekerData[i].trainerIDs[0] == trainerFlagIdx)
             return i;
@@ -2135,7 +2135,7 @@ static void ClearAllTrainerRematchStates(void)
 #if FREE_MATCH_CALL == FALSE
    u8 i;
 
-   for (i = 0; i < NELEMS(gSaveBlock1Ptr->trainerRematches); i++)
+   for (i = 0; i < ARRAY_COUNT(gSaveBlock1Ptr->trainerRematches); i++)
       gSaveBlock1Ptr->trainerRematches[i] = 0;
 #endif //FREE_MATCH_CALL
 }
@@ -2163,7 +2163,7 @@ static u8 GetNextAvailableRematchTrainer(const struct RematchData * vsSeekerData
 {
     int i, j;
 
-    for (i = 0; i < NELEMS(sRematches); i++)
+    for (i = 0; i < ARRAY_COUNT(sRematches); i++)
     {
         if (vsSeekerData[i].trainerIDs[0] == trainerFlagNo)
         {

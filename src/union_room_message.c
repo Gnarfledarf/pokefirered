@@ -518,21 +518,15 @@ ALIGNED(4) const u8 gText_UR_Greetings[] = _("Greetings");
 ALIGNED(4) const u8 gText_UR_Exit[] = _("Exit");
 
 ALIGNED(4) const u8 gText_UR_Exit2[] = _("Exit");
-ALIGNED(4) const u8 gText_UR_Info[] = _("Info");
 ALIGNED(4) const u8 gText_UR_NameWantedOfferLv[] = _("Name{CLEAR_TO 0x3C}Wanted{CLEAR_TO 0x6E}Offer{CLEAR_TO 0xC6}Lv.");
 
-ALIGNED(4) const u8 gText_UR_SingleBattle[] = _("Single Battle");
-ALIGNED(4) const u8 gText_UR_DoubleBattle[] = _("Double Battle");
-ALIGNED(4) const u8 gText_UR_MultiBattle[] = _("Multi Battle");
 ALIGNED(4) const u8 gText_UR_PokemonTrades[] = _("Pokémon Trades");
 ALIGNED(4) const u8 gText_UR_Chat[] = _("Chat");
 ALIGNED(4) const u8 gText_UR_Cards[] = _("Cards");
 ALIGNED(4) const u8 gText_UR_WonderCards[] = _("Wonder Cards");
 ALIGNED(4) const u8 gText_UR_WonderNews[] = _("Wonder News");
-ALIGNED(4) const u8 gText_UR_PokemonJump[] = _("Pokémon Jump");
-ALIGNED(4) const u8 gText_UR_BerryCrush[] = _("Berry Crush");
 ALIGNED(4) const u8 gText_UR_BerryPicking[] = _("Berry-Picking");
-ALIGNED(4) const u8 gText_UR_Search[] = _("SEARCH");
+ALIGNED(4) const u8 gText_UR_Search[] = _("Search");
 ALIGNED(4) const u8 gText_UR_SpinTrade[] = _("ぐるぐるこうかん");
 ALIGNED(4) const u8 gText_UR_ItemTrade[] = _("アイテムトレード");
 

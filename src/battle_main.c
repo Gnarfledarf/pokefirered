@@ -309,7 +309,7 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_INTERVIEWER]         = { _("Interviewer"), 12 },
     [TRAINER_CLASS_RS_TUBER_F]          = { _("Tuber"), 1 },
     [TRAINER_CLASS_RS_TUBER_M]          = { _("Tuber"), 1 },
-    [TRAINER_CLASS_RS_COOLTRAINER]      = { _("Cooltrainer"), 12, BALL_ULTRA },
+    [TRAINER_CLASS_RS_COOLTRAINER]      = { _("Ace Trainer"), 12, BALL_ULTRA },
     [TRAINER_CLASS_HEX_MANIAC]          = { _("Hex Maniac"), 6 },
     [TRAINER_CLASS_RS_LADY]             = { _("Lady"), 50 },
     [TRAINER_CLASS_RS_BEAUTY]           = { _("Beauty"), 20 },
@@ -386,7 +386,7 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_BOSS]                = { _("Boss"), 25 },
     [TRAINER_CLASS_LEADER]              = { _("Leader"), 25 },
     [TRAINER_CLASS_TEAM_ROCKET]         = { _("Team Rocket"), 8 },
-    [TRAINER_CLASS_COOLTRAINER]         = { _("Cooltrainer"), 9, BALL_ULTRA },
+    [TRAINER_CLASS_COOLTRAINER]         = { _("Ace Trainer"), 9, BALL_ULTRA },
     [TRAINER_CLASS_ELITE_FOUR]          = { _("Elite Four"), 25, BALL_ULTRA },
     [TRAINER_CLASS_GENTLEMAN]           = { _("Gentleman"), 18, BALL_LUXURY },
     [TRAINER_CLASS_RIVAL_LATE]          = { _("Rival"), 9 },
@@ -2546,7 +2546,7 @@ u32 GetBattleBgTemplateData(u8 arrayId, u8 caseId)
 //     case STATE_ASK_RECORD:
 //         if (!gPaletteFade.active)
 //         {
-//             // "Would you like to record your battle on your FRONTIER PASS?"
+//             // "Would you like to record your battle on your Frontier Pass?"
 //             BattlePutTextOnWindow(gText_RecordBattleToPass, B_WIN_MSG);
 //             gBattleCommunication[MULTIUSE_STATE]++;
 //         }

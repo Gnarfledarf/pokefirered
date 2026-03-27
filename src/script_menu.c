@@ -68,7 +68,7 @@ static void Task_HandleMultichoiceInput(u8 taskId);
 static void Task_HandleScrollingMultichoiceInput(u8 taskId);
 static void Task_HandleYesNoInput(u8 taskId);
 
-static const u8 sText_MultiLink[] = _("MULTI-LINK");
+static const u8 sText_MultiLink[] = _("Multi-LINK");
 static const u8 sText_Opponent[] = _("OPPONENT");
 static const u8 sText_Tourney_Tree[] = _("TOURNEY TREE");
 static const u8 sText_ReadyToStart[] = _("READY TO START");
@@ -84,12 +84,12 @@ static const u8 sText_FreshWater[] = _("FRESH WATER");
 static const u8 sText_SodaPop[] = _("SODA POP");
 static const u8 sText_Lemonade[] = _("LEMONADE");
 static const u8 sText_Vermilion[] = _("VERMILION");
-static const u8 sText_OneIsland[] = _("ONE ISLAND");
-static const u8 sText_TwoIsland[] = _("TWO ISLAND");
-static const u8 sText_ThreeIsland[] = _("THREE ISLAND");
+static const u8 sText_OneIsland[] = _("ONE Island");
+static const u8 sText_TwoIsland[] = _("TWO Island");
+static const u8 sText_ThreeIsland[] = _("THREE Island");
 static const u8 sText_SeviiIslands[] = _("SEVII ISLANDS");
 static const u8 sText_NavelRock[] = _("NAVEL ROCK");
-static const u8 sText_BirthIsland[] = _("BIRTH ISLAND");
+static const u8 sText_BirthIsland[] = _("BIRTH Island");
 static const u8 sText_Retire[] = _("RETIRE");
 static const u8 sText_Other[] = _("OTHER");
 static const u8 sText_NoThanks[] = _("NO THANKS");
@@ -463,8 +463,8 @@ static const struct MenuAction sMultichoiceList_SeagallopVermilion[] = {
 };
 
 static const struct MenuAction sMultichoiceList_JoinOrLead[] = {
-    {COMPOUND_STRING("JOIN GROUP")},
-    {COMPOUND_STRING("BECOME LEADER")},
+    {COMPOUND_STRING("Join Group")},
+    {COMPOUND_STRING("Become Leader")},
     {gOtherText_Exit}
 };
 
@@ -482,7 +482,7 @@ static const struct MenuAction sMultichoiceList_FrontierRules[] =
     {COMPOUND_STRING("LV. 50")},
     {COMPOUND_STRING("OPEN LEVEL")},
     {COMPOUND_STRING("{PKMN} TYPE & NO.")},
-    {COMPOUND_STRING("HOLD ITEMS")},
+    {COMPOUND_STRING("HOLD Items")},
     {gText_Exit},
 };
 
@@ -490,7 +490,7 @@ static const struct MenuAction sMultichoiceList_FrontierPassInfo[] =
 {
     {COMPOUND_STRING("SYMBOLS")},
     {COMPOUND_STRING("RECORD")},
-    {COMPOUND_STRING("BATTLE PTS")},
+    {COMPOUND_STRING("Battle PTS")},
     {gText_Exit},
 };
 
@@ -549,7 +549,7 @@ static const struct MenuAction sMultichoiceList_GoOnRetire[] =
 
 static const struct MenuAction sMultichoiceList_BattleArenaRules[] =
 {
-    {COMPOUND_STRING("BATTLE RULES")},
+    {COMPOUND_STRING("Battle RULES")},
     {COMPOUND_STRING("JUDGE: MIND")},
     {COMPOUND_STRING("JUDGE: SKILL")},
     {COMPOUND_STRING("JUDGE: BODY")},
@@ -585,43 +585,43 @@ static const struct MenuAction sMultichoiceList_TourneyNoRecord[] =
 
 static const struct MenuAction sMultichoiceList_BattlePalaceRules[] =
 {
-    {COMPOUND_STRING("BATTLE BASICS")},
-    {COMPOUND_STRING("POKéMON NATURE")},
-    {COMPOUND_STRING("POKéMON MOVES")},
-    {COMPOUND_STRING("UNDERPOWERED")},
-    {COMPOUND_STRING("WHEN IN DANGER")},
+    {COMPOUND_STRING("Battle Basics")},
+    {COMPOUND_STRING("Pokémon Nature")},
+    {COMPOUND_STRING("Pokémon Moves")},
+    {COMPOUND_STRING("Underpowered")},
+    {COMPOUND_STRING("When in Danger")},
     {gText_Exit},
 };
 
 static const struct MenuAction sMultichoiceList_BattlePyramidRules[] =
 {
-    {COMPOUND_STRING("PYRAMID: POKéMON")},
-    {COMPOUND_STRING("PYRAMID: TRAINERS")},
-    {COMPOUND_STRING("PYRAMID: MAZE")},
-    {COMPOUND_STRING("BATTLE BAG")},
+    {COMPOUND_STRING("Pyramid: Pokémon")},
+    {COMPOUND_STRING("Pyramid: Trainers")},
+    {COMPOUND_STRING("Pyramid: Maze")},
+    {COMPOUND_STRING("Battle Bag")},
     {gText_Exit},
 };
 
 static const struct MenuAction sMultichoiceList_BattlePikeRules[] =
 {
-    {COMPOUND_STRING("POKéNAV AND BAG")},
-    {COMPOUND_STRING("HELD ITEMS")},
-    {COMPOUND_STRING("POKéMON ORDER")},
+    {COMPOUND_STRING("PokéNav and Bag")},
+    {COMPOUND_STRING("Held Items")},
+    {COMPOUND_STRING("Pokémon Order")},
     {gText_Exit},
 };
 
 static const struct MenuAction sMultichoiceList_FrontierItemChoose[] =
 {
-    {COMPOUND_STRING("BATTLE BAG")},
-    {COMPOUND_STRING("HELD ITEM")},
+    {COMPOUND_STRING("Battle Bag")},
+    {COMPOUND_STRING("Held Item")},
     {gText_Exit},
 };
 
 static const struct MenuAction sMultichoiceList_BattleTowerRules[] =
 {
-    {COMPOUND_STRING("TOWER INFO")},
-    {COMPOUND_STRING("BATTLE {PKMN}")},
-    {COMPOUND_STRING("BATTLE SALON")},
+    {COMPOUND_STRING("Tower Info")},
+    {COMPOUND_STRING("Battle {PKMN}")},
+    {COMPOUND_STRING("Battle Salon")},
     {sText_MultiLink},
     {gText_Exit},
 };
@@ -636,8 +636,8 @@ static const struct MenuAction sMultichoiceList_BattleTowerFeelings[] =
 
 static const struct MenuAction sMultichoiceList_LinkLeader[] =
 {
-    {COMPOUND_STRING("JOIN GROUP")},
-    {COMPOUND_STRING("BECOME LEADER")},
+    {COMPOUND_STRING("Join Group")},
+    {COMPOUND_STRING("Become Leader")},
     {gText_Exit},
 };
 
@@ -742,14 +742,14 @@ const u8 *const gStdStrings[] = {
     [STDSTRING_VOLCANO_BADGE]    = gText_VolcanoBadge,
     [STDSTRING_EARTH_BADGE]      = gText_EarthBadge,
     [STDSTRING_COINS]            = gText_Coins,
-    [STDSTRING_ITEMS_POCKET]     = COMPOUND_STRING("ITEMS POCKET"),
-    [STDSTRING_KEY_ITEMS_POCKET] = COMPOUND_STRING("KEY ITEMS POCKET"),
-    [STDSTRING_POKEBALLS_POCKET] = COMPOUND_STRING("POKé BALLS POCKET"),
+    [STDSTRING_ITEMS_POCKET]     = COMPOUND_STRING("Items Pocket"),
+    [STDSTRING_KEY_ITEMS_POCKET] = COMPOUND_STRING("Key Items Pocket"),
+    [STDSTRING_POKEBALLS_POCKET] = COMPOUND_STRING("Poké Balls Pocket"),
     [STDSTRING_TM_CASE]          = gText_TMCase,
     [STDSTRING_BERRY_POUCH]      = gText_BerryPouch,
     [STDSTRING_SINGLE]           = gOtherText_Single,
     [STDSTRING_DOUBLE]           = gOtherText_Double,
-    [STDSTRING_MULTI]            = COMPOUND_STRING("MULTI"),
+    [STDSTRING_MULTI]            = COMPOUND_STRING("Multi"),
     [STDSTRING_MULTI_LINK]       = sText_MultiLink,
     [STDSTRING_BATTLE_DOME]      = gText_BattleDome,
     [STDSTRING_BATTLE_FACTORY]   = gText_BattleFactory,
@@ -821,10 +821,10 @@ static const u8 *const sSeagallopDestStrings[] = {
     [SEAGALLOP_ONE_ISLAND]     = sText_OneIsland,
     [SEAGALLOP_TWO_ISLAND]     = sText_TwoIsland,
     [SEAGALLOP_THREE_ISLAND]   = sText_ThreeIsland,
-    [SEAGALLOP_FOUR_ISLAND]    = COMPOUND_STRING("FOUR ISLAND"),
-    [SEAGALLOP_FIVE_ISLAND]    = COMPOUND_STRING("FIVE ISLAND"),
-    [SEAGALLOP_SIX_ISLAND]     = COMPOUND_STRING("SIX ISLAND"),
-    [SEAGALLOP_SEVEN_ISLAND]   = COMPOUND_STRING("SEVEN ISLAND"),
+    [SEAGALLOP_FOUR_ISLAND]    = COMPOUND_STRING("Four Island"),
+    [SEAGALLOP_FIVE_ISLAND]    = COMPOUND_STRING("Five Island"),
+    [SEAGALLOP_SIX_ISLAND]     = COMPOUND_STRING("Six Island"),
+    [SEAGALLOP_SEVEN_ISLAND]   = COMPOUND_STRING("Seven Island"),
 };
 
 bool8 ScriptMenu_MultichoiceDynamic(u8 left, u8 top, u8 argc, struct ListMenuItem *items, bool8 ignoreBPress, u8 maxBeforeScroll, u32 initialRow, u32 callbackSet)

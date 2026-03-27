@@ -2729,7 +2729,7 @@
     FRONTIER_MON_SLAKING_4,     \
     -1
 
-// Cooltrainer M uses Latios, Cooltrainer F uses Latias
+// Ace Trainer M uses Latios, Ace Trainer F uses Latias
 #define FRONTIER_MONS_COOLTRAINER_2C(lati)  \
     FRONTIER_MON_GENGAR_1,      \
     FRONTIER_MON_URSARING_1,    \

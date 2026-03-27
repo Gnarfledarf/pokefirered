@@ -872,11 +872,11 @@ struct {
     const u8 *text;
     const u8 *desc;
 } static const sMainMenuTexts[OPTIONS_COUNT] = {
-    [OPTION_WITHDRAW]   = {COMPOUND_STRING("WITHDRAW POKéMON"), COMPOUND_STRING("You can withdraw a POKéMON if you\nhave any in a BOX.")},
-    [OPTION_DEPOSIT]    = {COMPOUND_STRING("DEPOSIT POKéMON"),  COMPOUND_STRING("You can deposit your party\nPOKéMON in any BOX.")},
-    [OPTION_MOVE_MONS]  = {COMPOUND_STRING("MOVE POKéMON"),     COMPOUND_STRING("You can move POKéMON that are\nstored in any BOX.")},
-    [OPTION_MOVE_ITEMS] = {COMPOUND_STRING("MOVE ITEMS"),       COMPOUND_STRING("You can move items held by any\nPOKéMON in a BOX or your party.")},
-    [OPTION_EXIT]       = {COMPOUND_STRING("SEE YA!"),          COMPOUND_STRING("See you later!")}
+    [OPTION_WITHDRAW]   = {COMPOUND_STRING("Withdraw Pokémon"), COMPOUND_STRING("You can withdraw a Pokémon if you\nhave any in a Box.")},
+    [OPTION_DEPOSIT]    = {COMPOUND_STRING("Deposit Pokémon"),  COMPOUND_STRING("You can deposit your party\nPokémon in any Box.")},
+    [OPTION_MOVE_MONS]  = {COMPOUND_STRING("Move Pokémon"),     COMPOUND_STRING("You can move Pokémon that are\nstored in any Box.")},
+    [OPTION_MOVE_ITEMS] = {COMPOUND_STRING("Move Items"),       COMPOUND_STRING("You can move items held by any\nPokémon in a Box or your party.")},
+    [OPTION_EXIT]       = {COMPOUND_STRING("See ya!"),          COMPOUND_STRING("See you later!")}
 };
 
 static const struct WindowTemplate sWindowTemplate_MainMenu = {

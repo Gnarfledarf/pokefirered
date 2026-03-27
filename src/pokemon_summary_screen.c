@@ -663,11 +663,11 @@ enum EggOrigin
 
 static const u8 *const sEggOriginTexts[] =
 {
-    [EGG_ORIGIN_DAYCARE]       = COMPOUND_STRING("An odd POKéMON EGG found by the\nDAY-CARE couple."),
-    [EGG_ORIGIN_TRADE]         = COMPOUND_STRING("A peculiar POKéMON EGG obtained\nin a trade."),
-    [EGG_ORIGIN_TRAVELING_MAN] = COMPOUND_STRING("An odd POKéMON EGG obtained from\nthe traveling man."),
-    [EGG_ORIGIN_NICE_PLACE]    = COMPOUND_STRING("A wondrously peculiar POKéMON EGG\nobtained at a nice place."),
-    [EGG_ORIGIN_SPA]           = COMPOUND_STRING("An odd POKéMON EGG obtained from\nan old woman at the SPA."),
+    [EGG_ORIGIN_DAYCARE]       = COMPOUND_STRING("An odd Pokémon Egg found by the\nDay-Care couple."),
+    [EGG_ORIGIN_TRADE]         = COMPOUND_STRING("A peculiar Pokémon Egg obtained\nin a trade."),
+    [EGG_ORIGIN_TRAVELING_MAN] = COMPOUND_STRING("An odd Pokémon Egg obtained from\nthe traveling man."),
+    [EGG_ORIGIN_NICE_PLACE]    = COMPOUND_STRING("A wondrously peculiar Pokémon Egg\nobtained at a nice place."),
+    [EGG_ORIGIN_SPA]           = COMPOUND_STRING("An odd Pokémon Egg obtained from\nan old woman at the Spa."),
 };
 
 static const u8 sPrintMoveTextColors[][3] = {

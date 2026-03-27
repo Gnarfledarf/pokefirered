@@ -112,8 +112,8 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_RS_COOLTRAINER_M ===
 Name: PH
-Class: RS Cooltrainer
-Pic: RS Cooltrainer M
+Class: RS Ace Trainer
+Pic: RS Ace Trainer M
 Gender: Male
 Music: Cool
 Double Battle: No
@@ -125,8 +125,8 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RS_COOLTRAINER_F ===
 Name: PH
-Class: RS Cooltrainer
-Pic: RS Cooltrainer F
+Class: RS Ace Trainer
+Pic: RS Ace Trainer F
 Gender: Male
 Music: Cool
 Double Battle: No
@@ -7365,8 +7365,8 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_COOLTRAINER_SAMUEL ===
 Name: Samuel
-Class: Cooltrainer
-Pic: Cooltrainer M
+Class: Ace Trainer
+Pic: Ace Trainer M
 Gender: Male
 Music: Cool
 Items: Super Potion
@@ -7415,8 +7415,8 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_COOLTRAINER_GEORGE ===
 Name: George
-Class: Cooltrainer
-Pic: Cooltrainer M
+Class: Ace Trainer
+Pic: Ace Trainer M
 Gender: Male
 Music: Cool
 Items: Hyper Potion
@@ -7465,8 +7465,8 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_COOLTRAINER_COLBY ===
 Name: Colby
-Class: Cooltrainer
-Pic: Cooltrainer M
+Class: Ace Trainer
+Pic: Ace Trainer M
 Gender: Male
 Music: Cool
 Items: Hyper Potion
@@ -7515,8 +7515,8 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_COOLTRAINER_PAUL ===
 Name: Paul
-Class: Cooltrainer
-Pic: Cooltrainer M
+Class: Ace Trainer
+Pic: Ace Trainer M
 Gender: Male
 Music: Cool
 Items: Full Restore
@@ -7565,8 +7565,8 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_COOLTRAINER_ROLANDO ===
 Name: Rolando
-Class: Cooltrainer
-Pic: Cooltrainer M
+Class: Ace Trainer
+Pic: Ace Trainer M
 Gender: Male
 Music: Cool
 Items: Hyper Potion
@@ -7615,8 +7615,8 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_COOLTRAINER_GILBERT ===
 Name: Gilbert
-Class: Cooltrainer
-Pic: Cooltrainer M
+Class: Ace Trainer
+Pic: Ace Trainer M
 Gender: Male
 Music: Cool
 Items: Hyper Potion
@@ -7665,8 +7665,8 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_COOLTRAINER_OWEN ===
 Name: Owen
-Class: Cooltrainer
-Pic: Cooltrainer M
+Class: Ace Trainer
+Pic: Ace Trainer M
 Gender: Male
 Music: Cool
 Items: Hyper Potion
@@ -7715,8 +7715,8 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_COOLTRAINER_BERKE ===
 Name: Berke
-Class: Cooltrainer
-Pic: Cooltrainer M
+Class: Ace Trainer
+Pic: Ace Trainer M
 Gender: Male
 Music: Cool
 Items: Full Restore
@@ -7765,8 +7765,8 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_COOLTRAINER_YUJI ===
 Name: Yuji
-Class: Cooltrainer
-Pic: Cooltrainer M
+Class: Ace Trainer
+Pic: Ace Trainer M
 Gender: Male
 Music: Cool
 Items: Hyper Potion
@@ -7815,8 +7815,8 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_COOLTRAINER_WARREN ===
 Name: Warren
-Class: Cooltrainer
-Pic: Cooltrainer M
+Class: Ace Trainer
+Pic: Ace Trainer M
 Gender: Male
 Music: Cool
 Items: Hyper Potion
@@ -7865,8 +7865,8 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_COOLTRAINER_MARY ===
 Name: Mary
-Class: Cooltrainer
-Pic: Cooltrainer F
+Class: Ace Trainer
+Pic: Ace Trainer F
 Gender: Male
 Music: Cool
 Items: Super Potion
@@ -7915,8 +7915,8 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_COOLTRAINER_CAROLINE ===
 Name: Caroline
-Class: Cooltrainer
-Pic: Cooltrainer F
+Class: Ace Trainer
+Pic: Ace Trainer F
 Gender: Male
 Music: Cool
 Items: Hyper Potion
@@ -7965,8 +7965,8 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_COOLTRAINER_ALEXA ===
 Name: Alexa
-Class: Cooltrainer
-Pic: Cooltrainer F
+Class: Ace Trainer
+Pic: Ace Trainer F
 Gender: Male
 Music: Cool
 Items: Full Restore
@@ -8015,8 +8015,8 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_COOLTRAINER_SHANNON ===
 Name: Shannon
-Class: Cooltrainer
-Pic: Cooltrainer F
+Class: Ace Trainer
+Pic: Ace Trainer F
 Gender: Male
 Music: Cool
 Items: Full Restore
@@ -8065,8 +8065,8 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_COOLTRAINER_NAOMI ===
 Name: Naomi
-Class: Cooltrainer
-Pic: Cooltrainer F
+Class: Ace Trainer
+Pic: Ace Trainer F
 Gender: Male
 Music: Cool
 Items: Hyper Potion
@@ -8115,8 +8115,8 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_COOLTRAINER_BROOKE ===
 Name: Brooke
-Class: Cooltrainer
-Pic: Cooltrainer F
+Class: Ace Trainer
+Pic: Ace Trainer F
 Gender: Male
 Music: Cool
 Items: Full Restore
@@ -8165,8 +8165,8 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_COOLTRAINER_AUSTINA ===
 Name: Austina
-Class: Cooltrainer
-Pic: Cooltrainer F
+Class: Ace Trainer
+Pic: Ace Trainer F
 Gender: Male
 Music: Cool
 Items: Full Restore
@@ -8215,8 +8215,8 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_COOLTRAINER_JULIE ===
 Name: Julie
-Class: Cooltrainer
-Pic: Cooltrainer F
+Class: Ace Trainer
+Pic: Ace Trainer F
 Gender: Male
 Music: Cool
 Items: Hyper Potion
@@ -12445,8 +12445,8 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_COOLTRAINER_LEROY ===
 Name: Leroy
-Class: Cooltrainer
-Pic: Cooltrainer M
+Class: Ace Trainer
+Pic: Ace Trainer M
 Gender: Male
 Music: Cool
 Items: Full Restore
@@ -12495,8 +12495,8 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_COOLTRAINER_MICHELLE ===
 Name: Michelle
-Class: Cooltrainer
-Pic: Cooltrainer F
+Class: Ace Trainer
+Pic: Ace Trainer F
 Gender: Male
 Music: Cool
 Items: Hyper Potion
@@ -14960,8 +14960,8 @@ IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
 
 === TRAINER_COOLTRAINER_LEROY_2 ===
 Name: Leroy
-Class: Cooltrainer
-Pic: Cooltrainer M
+Class: Ace Trainer
+Pic: Ace Trainer M
 Gender: Male
 Music: Cool
 Items: Full Restore
@@ -15010,8 +15010,8 @@ IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
 
 === TRAINER_COOLTRAINER_MICHELLE_2 ===
 Name: Michelle
-Class: Cooltrainer
-Pic: Cooltrainer F
+Class: Ace Trainer
+Pic: Ace Trainer F
 Gender: Male
 Music: Cool
 Items: Hyper Potion

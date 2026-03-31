@@ -129,10 +129,10 @@ static const struct MenuAction sMultichoiceList_YesNo[] = {
 };
 
 static const struct MenuAction sMultichoiceList_TrainerCardIconTint[] = {
-    { COMPOUND_STRING("NORMAL") },
-    { COMPOUND_STRING("BLACK") },
+    { COMPOUND_STRING("Normal") },
+    { COMPOUND_STRING("Black") },
     { gText_Pink },
-    { COMPOUND_STRING("SEPIA") }
+    { COMPOUND_STRING("Sepia") }
 };
 
 static const struct MenuAction sMultichoiceList_HOF_Quit[] = {
@@ -239,33 +239,33 @@ static const struct MenuAction sMultichoiceList_DomeAmber[] = {
 };
 
 static const struct MenuAction sMultichoiceList_CeladonVendingMachine[] = {
-    { COMPOUND_STRING("FRESH WATER{CLEAR_TO 0x57}{FONT_SMALL}¥200") },
-    { COMPOUND_STRING("SODA POP{CLEAR_TO 0x57}{FONT_SMALL}¥300") },
-    { COMPOUND_STRING("LEMONADE{CLEAR_TO 0x57}{FONT_SMALL}¥350") },
+    { COMPOUND_STRING("Fresh Water{CLEAR_TO 0x57}{FONT_SMALL}¥200") },
+    { COMPOUND_STRING("Soda Pop{CLEAR_TO 0x57}{FONT_SMALL}¥300") },
+    { COMPOUND_STRING("Lemonade{CLEAR_TO 0x57}{FONT_SMALL}¥350") },
     { gOtherText_Exit }
 };
 
 static const struct MenuAction sMultichoiceList_GameCornerTMPrizes[] = {
-    { COMPOUND_STRING("TM13{CLEAR_TO 0x48}{FONT_SMALL}4,000 COINS") },
-    { COMPOUND_STRING("TM23{CLEAR_TO 0x48}{FONT_SMALL}3,500 COINS") },
-    { COMPOUND_STRING("TM24{CLEAR_TO 0x48}{FONT_SMALL}4,000 COINS") },
-    { COMPOUND_STRING("TM30{CLEAR_TO 0x48}{FONT_SMALL}4,500 COINS") },
-    { COMPOUND_STRING("TM35{CLEAR_TO 0x48}{FONT_SMALL}4,000 COINS") },
+    { COMPOUND_STRING("TM13{CLEAR_TO 0x48}{FONT_SMALL}4,000 Coins") },
+    { COMPOUND_STRING("TM23{CLEAR_TO 0x48}{FONT_SMALL}3,500 Coins") },
+    { COMPOUND_STRING("TM24{CLEAR_TO 0x48}{FONT_SMALL}4,000 Coins") },
+    { COMPOUND_STRING("TM30{CLEAR_TO 0x48}{FONT_SMALL}4,500 Coins") },
+    { COMPOUND_STRING("TM35{CLEAR_TO 0x48}{FONT_SMALL}4,000 Coins") },
     { sText_NoThanks }
 };
 
 static const struct MenuAction sMultichoiceList_GameCornerBattleItemPrizes[] = {
-    { COMPOUND_STRING("SMOKE BALL{CLEAR_TO 0x5A}{FONT_SMALL}800 COINS") },
-    { COMPOUND_STRING("MIRACLE SEED{CLEAR_TO 0x50}{FONT_SMALL}1,000 COINS") },
-    { COMPOUND_STRING("CHARCOAL{CLEAR_TO 0x50}{FONT_SMALL}1,000 COINS") },
-    { COMPOUND_STRING("MYSTIC WATER{CLEAR_TO 0x50}{FONT_SMALL}1,000 COINS") },
-    { COMPOUND_STRING("YELLOW FLUTE{CLEAR_TO 0x50}{FONT_SMALL}1,600 COINS") },
+    { COMPOUND_STRING("Smoke Ball{CLEAR_TO 0x5A}{FONT_SMALL}800 Coins") },
+    { COMPOUND_STRING("Miracle Seed{CLEAR_TO 0x50}{FONT_SMALL}1,000 Coins") },
+    { COMPOUND_STRING("Charcoal{CLEAR_TO 0x50}{FONT_SMALL}1,000 Coins") },
+    { COMPOUND_STRING("Mystic Water{CLEAR_TO 0x50}{FONT_SMALL}1,000 Coins") },
+    { COMPOUND_STRING("Yellow Flute{CLEAR_TO 0x50}{FONT_SMALL}1,600 Coins") },
     { sText_NoThanks }
 };
 
 static const struct MenuAction sMultichoiceList_GameCornerCoinPurchaseCounter[] = {
-    { COMPOUND_STRING("{FONT_SMALL} 50 COINS{CLEAR_TO 0x45}¥1,000") },
-    { COMPOUND_STRING("{FONT_SMALL}500 COINS{CLEAR_TO 0x40}¥10,000") },
+    { COMPOUND_STRING("{FONT_SMALL} 50 Coins{CLEAR_TO 0x45}¥1,000") },
+    { COMPOUND_STRING("{FONT_SMALL}500 Coins{CLEAR_TO 0x40}¥10,000") },
     { gOtherText_Exit }
 };
 
@@ -319,31 +319,31 @@ static const struct MenuAction sMultichoiceList_ThirstyGirlFreshWaterSodaPopLemo
 };
 
 static const struct MenuAction sMultichoiceList_Eeveelutions[] = {
-    { COMPOUND_STRING("EEVEE") },
-    { COMPOUND_STRING("FLAREON") },
-    { COMPOUND_STRING("JOLTEON") },
-    { COMPOUND_STRING("VAPOREON") },
+    { COMPOUND_STRING("Eevee") },
+    { COMPOUND_STRING("Flareon") },
+    { COMPOUND_STRING("Jolteon") },
+    { COMPOUND_STRING("Vaporeon") },
     { COMPOUND_STRING("Quit looking.") }
 };
 
 static const struct MenuAction sMultichoiceList_BikeShop[] = {
-    { COMPOUND_STRING("BICYCLE{CLEAR_TO 0x49}{FONT_SMALL}¥1,000,000") },
+    { COMPOUND_STRING("Bicycle{CLEAR_TO 0x49}{FONT_SMALL}¥1,000,000") },
     { sText_NoThanks }
 };
 
 static const struct MenuAction sMultichoiceList_GameCornerPokemonPrizes[] = {
 #if defined(FIRERED)
-    { COMPOUND_STRING("ABRA{CLEAR_TO 0x55}{FONT_SMALL} 180 COINS") },
-    { COMPOUND_STRING("CLEFAIRY{CLEAR_TO 0x55}{FONT_SMALL} 500 COINS") },
-    { COMPOUND_STRING("DRATINI{CLEAR_TO 0x4B}{FONT_SMALL} 2,800 COINS") },
-    { COMPOUND_STRING("SCYTHER{CLEAR_TO 0x4B}{FONT_SMALL} 5,500 COINS") },
-    { COMPOUND_STRING("PORYGON{CLEAR_TO 0x4B}{FONT_SMALL} 9,999 COINS") },
+    { COMPOUND_STRING("Abra{CLEAR_TO 0x55}{FONT_SMALL} 180 Coins") },
+    { COMPOUND_STRING("Clefairy{CLEAR_TO 0x55}{FONT_SMALL} 500 Coins") },
+    { COMPOUND_STRING("Dratini{CLEAR_TO 0x4B}{FONT_SMALL} 2,800 Coins") },
+    { COMPOUND_STRING("Scyther{CLEAR_TO 0x4B}{FONT_SMALL} 5,500 Coins") },
+    { COMPOUND_STRING("Porygon{CLEAR_TO 0x4B}{FONT_SMALL} 9,999 Coins") },
 #elif defined(LEAFGREEN)
-    { COMPOUND_STRING("ABRA{CLEAR_TO 0x55}{FONT_SMALL} 120 COINS") },
-    { COMPOUND_STRING("CLEFAIRY{CLEAR_TO 0x55}{FONT_SMALL} 750 COINS") },
-    { COMPOUND_STRING("PINSIR{CLEAR_TO 0x4B}{FONT_SMALL} 2,500 COINS") },
-    { COMPOUND_STRING("DRATINI{CLEAR_TO 0x4B}{FONT_SMALL} 4,600 COINS") },
-    { COMPOUND_STRING("PORYGON{CLEAR_TO 0x4B}{FONT_SMALL} 6,500 COINS") },
+    { COMPOUND_STRING("Abra{CLEAR_TO 0x55}{FONT_SMALL} 120 Coins") },
+    { COMPOUND_STRING("Clefairy{CLEAR_TO 0x55}{FONT_SMALL} 750 Coins") },
+    { COMPOUND_STRING("Pinsir{CLEAR_TO 0x4B}{FONT_SMALL} 2,500 Coins") },
+    { COMPOUND_STRING("Dratini{CLEAR_TO 0x4B}{FONT_SMALL} 4,600 Coins") },
+    { COMPOUND_STRING("Porygon{CLEAR_TO 0x4B}{FONT_SMALL} 6,500 Coins") },
 #endif
     { sText_NoThanks }
 };
@@ -362,9 +362,9 @@ static const struct MenuAction sMultichoiceList_RocketHideoutElevator[] = {
 };
 
 static const struct MenuAction sMultichoiceList_LinkedDirectUnion[] = {
-    { COMPOUND_STRING("LINKED GAME PLAY") },
-    { COMPOUND_STRING("DIRECT CORNER") },
-    { COMPOUND_STRING("UNION ROOM") },
+    { COMPOUND_STRING("Linked Game Play") },
+    { COMPOUND_STRING("Direct Corner") },
+    { COMPOUND_STRING("Union Room") },
     { sText_Quit }
 };
 
@@ -401,13 +401,13 @@ static const struct MenuAction sMultichoiceList_TradeColosseum_2[] = {
 
 static const struct MenuAction sMultichoiceList_PokejumpDodrio[] = {
     { gText_PokemonJump },
-    { COMPOUND_STRING("DODRIO BERRY-PICKING") },
+    { COMPOUND_STRING("Dodrio Berry-Picking") },
     { gOtherText_Exit }
 };
 
 static const struct MenuAction sMultichoiceList_Mushrooms[] = {
-    {COMPOUND_STRING("2 TINYMUSHROOMS")},
-    {COMPOUND_STRING("1 BIG MUSHROOM")},
+    {COMPOUND_STRING("2 Tiny Mushrooms")},
+    {COMPOUND_STRING("1 Big Mushroom")},
 };
 
 static const struct MenuAction sMultichoiceList_SeviiNavel[] = {
@@ -478,19 +478,19 @@ static const struct MenuAction sMultichoiceList_TrainerTowerMode[] = {
 
 static const struct MenuAction sMultichoiceList_FrontierRules[] =
 {
-    {COMPOUND_STRING("TWO STYLES")},
+    {COMPOUND_STRING("Two Styles")},
     {COMPOUND_STRING("LV. 50")},
-    {COMPOUND_STRING("OPEN LEVEL")},
-    {COMPOUND_STRING("{PKMN} TYPE & NO.")},
-    {COMPOUND_STRING("HOLD Items")},
+    {COMPOUND_STRING("Open Level")},
+    {COMPOUND_STRING("{PKMN} Type & No.")},
+    {COMPOUND_STRING("Hold Items")},
     {gText_Exit},
 };
 
 static const struct MenuAction sMultichoiceList_FrontierPassInfo[] =
 {
-    {COMPOUND_STRING("SYMBOLS")},
-    {COMPOUND_STRING("RECORD")},
-    {COMPOUND_STRING("Battle PTS")},
+    {COMPOUND_STRING("Symbols")},
+    {COMPOUND_STRING("Record")},
+    {COMPOUND_STRING("Battle Pts.")},
     {gText_Exit},
 };
 
@@ -511,11 +511,11 @@ static const struct MenuAction sMultichoiceList_LevelMode[] =
 
 static const struct MenuAction sMultichoiceList_BattleFactoryRules[] =
 {
-    {COMPOUND_STRING("BASIC RULES")},
-    {COMPOUND_STRING("SWAP: PARTNER")},
-    {COMPOUND_STRING("SWAP: NUMBER")},
-    {COMPOUND_STRING("SWAP: NOTES")},
-    {COMPOUND_STRING("OPEN LEVEL")},
+    {COMPOUND_STRING("Basic Rules")},
+    {COMPOUND_STRING("Swap: Partner")},
+    {COMPOUND_STRING("Swap: Number")},
+    {COMPOUND_STRING("Swap: Notes")},
+    {COMPOUND_STRING("Open Level")},
     {gText_Exit},
 };
 
@@ -549,18 +549,18 @@ static const struct MenuAction sMultichoiceList_GoOnRetire[] =
 
 static const struct MenuAction sMultichoiceList_BattleArenaRules[] =
 {
-    {COMPOUND_STRING("Battle RULES")},
-    {COMPOUND_STRING("JUDGE: MIND")},
-    {COMPOUND_STRING("JUDGE: SKILL")},
-    {COMPOUND_STRING("JUDGE: BODY")},
+    {COMPOUND_STRING("Battle Rules")},
+    {COMPOUND_STRING("Judge: Mind")},
+    {COMPOUND_STRING("Judge: Skill")},
+    {COMPOUND_STRING("Judge: Body")},
     {gText_Exit},
 };
 
 static const struct MenuAction sMultichoiceList_BattleDomeRules[] =
 {
-    {COMPOUND_STRING("MATCHUP")},
-    {COMPOUND_STRING("TOURNEY TREE")},
-    {COMPOUND_STRING("DOUBLE KO")},
+    {COMPOUND_STRING("Matchup")},
+    {COMPOUND_STRING("Tourney Tree")},
+    {COMPOUND_STRING("Double KO")},
     {gText_Exit},
 };
 

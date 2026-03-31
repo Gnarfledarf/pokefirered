@@ -7643,7 +7643,7 @@ static const u8 *const sMenuTexts[] = {
     [MENU_TEXT_POKECENTER] = gPCText_Pokecenter,
     [MENU_TEXT_MACHINE]    = gPCText_Machine,
     [MENU_TEXT_SIMPLE]     = gPCText_Simple,
-    [MENU_SELECT]          = COMPOUND_STRING("SELECT"),
+    [MENU_SELECT]          = COMPOUND_STRING("Select"),
 };
 
 static void SetMenuText(u8 textId)

@@ -439,7 +439,7 @@ static const struct EasyChatScreenTemplate sEasyChatScreenTemplates[] = {
         .frameId = FRAMEID_GENERAL_2x3,
         .titleText = COMPOUND_STRING("Apprentice's phrase"),
         .instructionsText1 = COMPOUND_STRING("Find words which fit"),
-        .instructionsText2 = COMPOUND_STRING("the TRAINER's image."),
+        .instructionsText2 = COMPOUND_STRING("the Trainer's image."),
         .confirmText1 = COMPOUND_STRING("Apprentice's phrase:"),
         .confirmText2 = gText_IsAsShownOkay,
     },

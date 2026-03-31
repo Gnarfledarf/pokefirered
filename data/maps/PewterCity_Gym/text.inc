@@ -46,7 +46,7 @@ PewterCity_Gym_Text_ExplainTM39::
     .string "So, when you use one, pick the\n"
     .string "Pokémon carefully.\p"
     .string "Anyways…\n"
-    .string "TM39 contains Rock TOMB.\p"
+    .string "TM39 contains Rock Tomb.\p"
     .string "It hurls boulders at the foe and\n"
     .string "lowers its Speed.$"
 

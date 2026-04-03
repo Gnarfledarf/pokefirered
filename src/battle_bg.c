@@ -942,7 +942,7 @@ static u8 GetBattleEnvironmentOverride(void)
     }
     else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
     {
-        u32 trainerClass = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA);
+        enum TrainerClassID trainerClass = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA);
         if (trainerClass == TRAINER_CLASS_LEADER)
             return BATTLE_ENVIRONMENT_LEADER;
         else if (trainerClass == TRAINER_CLASS_CHAMPION)
@@ -1353,13 +1353,9 @@ void DrawBattleEntryBackground(void)
         }
 
         if (GetCurrentMapBattleScene() == MAP_BATTLE_SCENE_NORMAL)
-        {
             LoadBattleEnvironmentEntryGfx(gBattleEnvironment);
-        }
         else
-        {
             LoadBattleEnvironmentEntryGfx(BATTLE_ENVIRONMENT_BUILDING);
-        }
     }
 }
 

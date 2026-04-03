@@ -115,11 +115,11 @@ static u8 MovementType_RaiseHandAndJump_Callback(struct ObjectEvent *, struct Sp
 static u8 MovementType_RaiseHandAndSwim_Callback(struct ObjectEvent *, struct Sprite *);
 static void QuestLogObjectEventExecHeldMovementAction(struct ObjectEvent *, struct Sprite *);
 static void VirtualObject_UpdateAnim(struct Sprite *sprite);
-static u32 LoadDynamicFollowerPalette(u32 species, bool32 shiny, bool32 female);
+static u32 LoadDynamicFollowerPalette(enum Species species, bool32 shiny, bool32 female);
 static void CopyObjectGraphicsInfoToSpriteTemplate_WithMovementType(u16 graphicsId, u16 movementType, struct SpriteTemplate *spriteTemplate, const struct SubspriteTable **subspriteTables);
 
 static u16 GetGraphicsIdForMon(u32 species, bool32 shiny, bool32 female);
-static u16 GetUnownSpecies(struct Pokemon *mon);
+static enum Species GetUnownSpecies(struct Pokemon *mon);
 
 void MovementType_None(struct Sprite *);
 static void MovementType_LookAround(struct Sprite *);
@@ -1960,7 +1960,7 @@ static void CopyObjectGraphicsInfoToSpriteTemplate_WithMovementType(u16 graphics
 // also can write palette tag to the template
 static u32 LoadDynamicFollowerPaletteFromGraphicsId(u16 graphicsId, struct SpriteTemplate *template)
 {
-    u16 species = graphicsId & OBJ_EVENT_MON_SPECIES_MASK;
+    enum Species species = graphicsId & OBJ_EVENT_MON_SPECIES_MASK;
     bool32 shiny = graphicsId & OBJ_EVENT_MON_SHINY;
     bool32 female = graphicsId & OBJ_EVENT_MON_FEMALE;
     u8 paletteNum = LoadDynamicFollowerPalette(species, shiny, female);
@@ -2102,7 +2102,7 @@ struct ObjectEvent *GetFollowerObject(void)
 }
 
 // Return graphicsInfo for a pokemon species & form
-const struct ObjectEventGraphicsInfo *SpeciesToGraphicsInfo(u32 species, bool32 shiny, bool32 female)
+const struct ObjectEventGraphicsInfo *SpeciesToGraphicsInfo(enum Species species, bool32 shiny, bool32 female)
 {
     const struct ObjectEventGraphicsInfo *graphicsInfo = NULL;
 #if OW_POKEMON_OBJECT_EVENTS
@@ -2137,7 +2137,7 @@ const struct ObjectEventGraphicsInfo *SpeciesToGraphicsInfo(u32 species, bool32 
 }
 
 // Find, or load, the palette for the specified pokemon info
-static u32 LoadDynamicFollowerPalette(u32 species, bool32 shiny, bool32 female)
+static u32 LoadDynamicFollowerPalette(enum Species species, bool32 shiny, bool32 female)
 {
     u32 paletteNum;
     // Use standalone palette, unless entry is OOB or NULL (fallback to front-sprite-based)
@@ -2271,13 +2271,12 @@ static void RefreshFollowerGraphics(struct ObjectEvent *objEvent)
     }
 }
 
-u16 GetOverworldWeatherSpecies(u16 species)
+enum Species GetOverworldWeatherSpecies(enum Species species)
 {
-    u32 i;
-    u32 weather = GetCurrentWeather();
+    enum Weather weather = GetCurrentWeather();
     const struct FormChange *formChanges = GetSpeciesFormChanges(species);
 
-    for (i = 0; formChanges != NULL && formChanges[i].method != FORM_CHANGE_TERMINATOR; i++)
+    for (u32 i = 0; formChanges != NULL && formChanges[i].method != FORM_CHANGE_TERMINATOR; i++)
     {
         // Unlike other form change checks, we don't do the "species != formChanges[i].targetSpecies" check
         if (formChanges[i].method == FORM_CHANGE_OVERWORLD_WEATHER)
@@ -2291,7 +2290,7 @@ u16 GetOverworldWeatherSpecies(u16 species)
     return species;
 }
 
-static bool8 GetMonInfo(struct Pokemon *mon, u32 *species, bool32 *shiny, bool32 *female)
+static bool8 GetMonInfo(struct Pokemon *mon, enum Species *species, bool32 *shiny, bool32 *female)
 {
     if (!mon)
     {
@@ -2316,7 +2315,7 @@ static bool8 GetMonInfo(struct Pokemon *mon, u32 *species, bool32 *shiny, bool32
 }
 
 // Retrieve graphic information about the following pokemon, if any
-static bool8 GetFollowerInfo(u32 *species, bool32 *shiny, bool32 *female)
+static bool8 GetFollowerInfo(enum Species *species, bool32 *shiny, bool32 *female)
 {
     return GetMonInfo(GetFirstLiveMon(), species, shiny, female);
 }
@@ -2326,7 +2325,7 @@ void UpdateFollowingPokemon(void)
 {
     struct ObjectEvent *objEvent = GetFollowerObject();
     struct Sprite *sprite;
-    u32 species;
+    enum Species species;
     bool32 shiny;
     bool32 female;
     // Don't spawn follower if:
@@ -2400,7 +2399,7 @@ bool32 IsFollowerVisible(void)
             || MetatileBehavior_IsForcedMovementTile(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior));
 }
 
-static bool8 SpeciesHasType(u16 species, u8 type)
+static bool8 SpeciesHasType(enum Species species, enum Type type)
 {
     return gSpeciesInfo[species].types[0] == type || gSpeciesInfo[species].types[1] == type;
 }
@@ -10495,12 +10494,12 @@ void ObjectEventUpdateElevation(struct ObjectEvent *objEvent, struct Sprite *spr
 
 void SetObjectSubpriorityByElevation(u8 elevation, struct Sprite *sprite, u8 subpriority)
 {
-    s32 tmp = sprite->centerToCornerVecY;
-    u32 tmpa = *(u16 *)&sprite->y;
-    u32 tmpb = *(u16 *)&gSpriteCoordOffsetY;
-    s32 tmp2 = (tmpa - tmp) + tmpb;
-    u16 tmp3 = (0x10 - ((((u32)tmp2 + 8) & 0xFF) >> 4)) * 2;
-    sprite->subpriority = tmp3 + sElevationToSubpriority[elevation] + subpriority;
+    u16 y;
+
+    y = (sprite->y - sprite->centerToCornerVecY + gSpriteCoordOffsetY + 8) & 0xFF;
+    y = (16 - (y >> 4)) << 1;
+
+    sprite->subpriority = sElevationToSubpriority[elevation] + y + subpriority;
 }
 
 static void ObjectEventUpdateSubpriority(struct ObjectEvent *objEvent, struct Sprite *sprite)
@@ -11661,7 +11660,7 @@ static u16 GetGraphicsIdForMon(u32 species, bool32 shiny, bool32 female)
     return graphicsId;
 }
 
-static u16 GetUnownSpecies(struct Pokemon *mon)
+static enum Species GetUnownSpecies(struct Pokemon *mon)
 {
     u32 form = GET_UNOWN_LETTER(mon->box.personality);
     if (form == 0)
@@ -11747,6 +11746,41 @@ bool8 MovementAction_SurfStillRight_Step1(struct ObjectEvent *objectEvent, struc
     if (UpdateMovementNormal(objectEvent, sprite))
     {
         sprite->sActionFuncId = 2;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+// fast diagonal
+bool8 MovementAction_WalkFastDiagonalUpLeft_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    InitMovementNormal(objectEvent, sprite, DIR_NORTHWEST, 1);
+    return MovementAction_WalkFastDiagonal_Step1(objectEvent, sprite);
+}
+
+bool8 MovementAction_WalkFastDiagonalUpRight_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    InitMovementNormal(objectEvent, sprite, DIR_NORTHEAST, 1);
+    return MovementAction_WalkFastDiagonal_Step1(objectEvent, sprite);
+}
+
+bool8 MovementAction_WalkFastDiagonalDownLeft_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    InitMovementNormal(objectEvent, sprite, DIR_SOUTHWEST, 1);
+    return MovementAction_WalkFastDiagonal_Step1(objectEvent, sprite);
+}
+
+bool8 MovementAction_WalkFastDiagonalDownRight_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    InitMovementNormal(objectEvent, sprite, DIR_SOUTHEAST, 1);
+    return MovementAction_WalkFastDiagonal_Step1(objectEvent, sprite);
+}
+
+bool8 MovementAction_WalkFastDiagonal_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (UpdateMovementNormal(objectEvent, sprite))
+    {
+        sprite->data[2] = 2;
         return TRUE;
     }
     return FALSE;

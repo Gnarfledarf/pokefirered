@@ -63,6 +63,22 @@ EventScript_ExplosionTaught::
 	release
 	end
 
+Route4_EventScript_WaterGunTutor::
+	lock
+	faceplayer
+	move_tutor MOVE_WATER_GUN, Text_WaterGunTeach, Text_WaterGunWhichMon, EventScript_WaterGunDeclined, EventScript_WaterGunTaught, FLAG_TUTOR_WATER_GUN
+	end
+
+EventScript_WaterGunDeclined::
+	msgbox Text_WaterGunDeclined
+	release
+	end
+
+EventScript_WaterGunTaught::
+	msgbox Text_WaterGunTaught
+	release
+	end
+
 Route4_EventScript_MegaPunchTutor::
 	lock
 	faceplayer

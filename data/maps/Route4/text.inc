@@ -22,6 +22,22 @@ Route4_Text_RouteSign::
     .string "Route 4\n"
     .string "Mt. Moon - Cerulean City$"
 
+Text_WaterGunTeach::
+    .string "Water Gun!\n"
+    .string "Let me teach it to your Pokémon!$"
+
+Text_WaterGunDeclined::
+    .string "No worries! I'll wait here\n"
+    .string "until you've changed your mind.$"
+
+Text_WaterGunWhichMon::
+    .string "Great!\n"
+    .string "Which Pokémon should I teach?$"
+
+Text_WaterGunTaught::
+    .string "Now the Pokémon of Mt. Moon should\n"
+    .string "pose no trouble at all!$"
+
 Text_MegaPunchTeach::
     .string "A punch of roaring ferocity!\p"
     .string "Packed with destructive power!\p"
@@ -77,3 +93,9 @@ Route4_Text_PeopleLikeAndRespectBrock::
     .string "People like and respect him.\p"
     .string "I want to become a Gym Leader\n"
     .string "like him.$"
+
+Route4_Text_ShouldGetBadgeFromBrock::
+    .string "Have you been to Pewter City?\n"
+    .string "If you're serious about being a\p"
+    .string "Trainer, you should try to take on\n"
+    .string "the Gym Leader Brock!$"

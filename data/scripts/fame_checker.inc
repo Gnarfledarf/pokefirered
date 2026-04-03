@@ -38,8 +38,14 @@ FourIsland_PokemonCenter_1F_EventScript_PokemonJournal::
 Route4_EventScript_Boy::
 	lock
 	faceplayer
+	goto_if_unset FLAG_BADGE01_GET, Route4_EventScript_Boy2
 	famechecker FAMECHECKER_BROCK, 3
 	msgbox Route4_Text_PeopleLikeAndRespectBrock
+	release
+	end
+
+Route4_EventScript_Boy2::
+	msgbox Route4_Text_ShouldGetBadgeFromBrock
 	release
 	end
 

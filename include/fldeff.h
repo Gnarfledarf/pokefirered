@@ -25,6 +25,7 @@ bool32 FieldMove_SetUpTeleport(void);
 bool32 FieldMove_SetUpSoftBoiled(void);
 bool32 FieldMove_SetUpSweetScent(void);
 bool32 SetUpFieldMove_RockClimb(void);
+bool32 SetUpFieldMove_Defog(void);
 bool32 FieldMove_SetUpHeadbutt(void);
 
 // flash

@@ -914,7 +914,7 @@ extern const u8 EventScript_CancelMessageBox[];
 extern const u8 PalletTown_PlayersHouse_2F_EventScript_PC[];
 extern const u8 EventScript_HiddenItemScript[];
 extern const u8 EventScript_PC[];
-extern const u8 EventScript_WallTownMap[];
+extern const u8 EventScript_RegionMap[];
 extern const u8 EventScript_Bookshelf[];
 extern const u8 EventScript_PokeMartShelf[];
 extern const u8 EventScript_Food[];
@@ -957,6 +957,7 @@ extern const u8 EventScript_FieldPoison[];
 extern const u8 EventScript_EggHatch[];
 extern const u8 EventScript_DoFallWarp[];
 extern const u8 EventScript_UseRockClimb[];
+extern const u8 EventScript_UseDefog[];
 
 // overworld
 

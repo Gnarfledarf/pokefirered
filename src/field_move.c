@@ -17,6 +17,9 @@ static bool32 FieldMove_IsUnlockedWaterfall(void);
 #if OW_ROCK_CLIMB_FIELD_MOVE == TRUE
 static bool32 FieldMove_IsUnlockedRockClimb(void);
 #endif
+#if OW_DEFOG_FIELD_MOVE == TRUE
+static bool32 IsFieldMoveUnlocked_Defog(void);
+#endif
 
 static const u8 sText_ShareHp[] = _("Share HP.");
 
@@ -112,19 +115,9 @@ const struct FieldMoveInfo gFieldMovesInfo[FIELD_MOVE_COUNT] =
         .setUpFunc = NULL,
         .questLogText = COMPOUND_STRING("N/A"),
     },
-    [FIELD_MOVE_DEFOG] =
-    {
-        .defaultSpecies = SPECIES_FEAROW,
-        .isUnlockedFunc = NULL,
-        .moveId = MOVE_NONE,
-        .partyMessageId = PARTY_MSG_CANT_USE_HERE,
-        .description = COMPOUND_STRING("N/A"),
-        .setUpFunc = NULL,
-        .questLogText = COMPOUND_STRING("N/A"),
-    },
-#if OW_ROCK_CLIMB_FIELD_MOVE == TRUE
     [FIELD_MOVE_ROCK_CLIMB] =
     {
+#if OW_ROCK_CLIMB_FIELD_MOVE == TRUE
         .defaultSpecies = SPECIES_SANDSLASH,
         .isUnlockedFunc = FieldMove_IsUnlockedRockClimb,
         .moveId = MOVE_ROCK_CLIMB,
@@ -132,8 +125,8 @@ const struct FieldMoveInfo gFieldMovesInfo[FIELD_MOVE_COUNT] =
         .description = COMPOUND_STRING("Climb a cliff."),
         .setUpFunc = SetUpFieldMove_RockClimb,
         .questLogText = COMPOUND_STRING("{STR_VAR_1} used the Hidden Move\nRock Climb to climb a steep cliff."),
-    },
 #endif
+    },
     [FIELD_MOVE_TELEPORT] =
     {
         .defaultSpecies = SPECIES_ABRA,
@@ -187,6 +180,18 @@ const struct FieldMoveInfo gFieldMovesInfo[FIELD_MOVE_COUNT] =
         .description = COMPOUND_STRING("Lure wild Pokémon."),
         .setUpFunc = FieldMove_SetUpSweetScent,
         .questLogText = COMPOUND_STRING("{STR_VAR_1} used Sweet Scent to attract\nwild Pokémon."),
+    },
+    [FIELD_MOVE_DEFOG] =
+    {
+#if OW_DEFOG_FIELD_MOVE == TRUE
+        .defaultSpecies = SPECIES_FEAROW,
+        .isUnlockedFunc = IsFieldMoveUnlocked_Defog,
+        .moveId = MOVE_DEFOG,
+        .partyMessageId = PARTY_MSG_CANT_USE_HERE,
+        .description = COMPOUND_STRING("Clear the fog."),
+        .setUpFunc = SetUpFieldMove_Defog,
+        .questLogText = COMPOUND_STRING("{STR_VAR_1} used the Hidden Move\nDefog and cleared the fog."),
+#endif
     },
     [FIELD_MOVE_HEADBUTT] =
     {
@@ -260,6 +265,13 @@ static bool32 FieldMove_IsUnlockedWaterfall(void)
 
 #if OW_ROCK_CLIMB_FIELD_MOVE == TRUE
 static bool32 FieldMove_IsUnlockedRockClimb(void)
+{
+    return TRUE;
+}
+#endif
+
+#if OW_DEFOG_FIELD_MOVE == TRUE
+static bool32 IsFieldMoveUnlocked_Defog(void)
 {
     return TRUE;
 }

@@ -1046,11 +1046,11 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_RocketGruntM, gTrainerPalette_RocketGruntM, TRAINER_PIC_SIZE),
     },
-    [TRAINER_PIC_COOLTRAINER_M] =
+    [TRAINER_PIC_ACE_TRAINER_M] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_CooltrainerM, gTrainerPalette_CooltrainerM, TRAINER_PIC_SIZE),
     },
-    [TRAINER_PIC_COOLTRAINER_F] =
+    [TRAINER_PIC_ACE_TRAINER_F] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_CooltrainerF, gTrainerPalette_CooltrainerF, TRAINER_PIC_SIZE),
     },

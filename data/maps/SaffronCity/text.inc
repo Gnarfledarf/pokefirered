@@ -76,7 +76,7 @@ SaffronCity_Text_GymSign::
 
 SaffronCity_Text_FullHealCuresStatus::
     .string "Trainer Tips\p"
-    .string "FULL HEAL cures all ailments like\n"
+    .string "Full Heal cures all ailments like\n"
     .string "burns, paralysis, poisoning,\l"
     .string "freezing, and sleep.\p"
     .string "It costs a bit more, but it's more\n"
@@ -101,7 +101,7 @@ SaffronCity_Text_SilphsLatestProduct::
 
 SaffronCity_Text_TrainerFanClubSign::
     .string "Pokémon Trainer Fan Club\p"
-    .string "Many TRAINERS have scribbled their\n"
+    .string "Many Trainers have scribbled their\n"
     .string "names on this sign.$"
 
 SaffronCity_Text_HowCanClubNotRecognizeLance::

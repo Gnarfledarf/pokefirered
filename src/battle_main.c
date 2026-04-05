@@ -382,7 +382,7 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_BOSS]                = { _("Boss"), 25 },
     [TRAINER_CLASS_LEADER]              = { _("Leader"), 25 },
     [TRAINER_CLASS_TEAM_ROCKET]         = { _("Team Rocket"), 8 },
-    [TRAINER_CLASS_COOLTRAINER]         = { _("Ace Trainer"), 9, BALL_ULTRA },
+    [TRAINER_CLASS_ACE_TRAINER]         = { _("Ace Trainer"), 9, BALL_ULTRA },
     [TRAINER_CLASS_ELITE_FOUR]          = { _("Elite Four"), 25, BALL_ULTRA },
     [TRAINER_CLASS_GENTLEMAN]           = { _("Gentleman"), 18, BALL_LUXURY },
     [TRAINER_CLASS_RIVAL_LATE]          = { _("Rival"), 9 },
@@ -5440,7 +5440,7 @@ static void HandleEndTurn_BattleWon(void)
             break;
         case TRAINER_CLASS_BOSS:
         case TRAINER_CLASS_TEAM_ROCKET:
-        case TRAINER_CLASS_COOLTRAINER:
+        case TRAINER_CLASS_ACE_TRAINER:
         case TRAINER_CLASS_ELITE_FOUR:
         case TRAINER_CLASS_GENTLEMAN:
         default:

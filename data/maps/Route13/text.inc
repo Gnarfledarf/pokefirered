@@ -115,7 +115,7 @@ Route13_Text_RobertPostBattle::
 Route13_Text_LookToLeftOfThatPost::
     .string "Trainer Tips\p"
     .string "Look, look!\n"
-    .string "Look to the left of that post!$"
+    .string "Look to the east of that post!$"
 
 Route13_Text_SelectToSwitchItems::
     .string "Trainer Tips\p"

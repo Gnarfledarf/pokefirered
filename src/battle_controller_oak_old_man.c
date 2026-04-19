@@ -267,7 +267,7 @@ static void SimulateInputChooseAction(enum BattlerId battler)
 
 static void CompleteOnInactiveTextPrinter(enum BattlerId battler)
 {
-    if (!IsTextPrinterActiveOnWindow(0))
+    if (!IsTextPrinterActiveOnWindow(B_WIN_MSG))
         OakOldManBufferExecCompleted(battler);
 }
 
@@ -523,7 +523,7 @@ static void PrintOakTextWithMainBgDarkened(enum BattlerId battler, const u8 *tex
     switch (gBattleStruct->simulatedInputState[0])
     {
     case 0:
-        if (!IsTextPrinterActiveOnWindow(0))
+        if (!IsTextPrinterActiveOnWindow(B_WIN_MSG))
         {
             gBattleStruct->simulatedInputState[3] = delay;
             ++gBattleStruct->simulatedInputState[0];
@@ -766,7 +766,7 @@ static void OakOldManHandleChooseAction(enum BattlerId battler)
     s32 i;
 
     gBattlerControllerFuncs[battler] = HandleChooseActionAfterDma3;
-    BattlePutTextOnWindow(gText_EmptyString3, B_WIN_MSG);
+    BattlePutTextOnWindow(gText_EmptyString, B_WIN_MSG);
     BattlePutTextOnWindow(gText_BattleMenu, B_WIN_ACTION_MENU);
     for (i = 0; i < MAX_MON_MOVES; ++i)
         ActionSelectionDestroyCursorAt((u8)i);
@@ -864,7 +864,7 @@ static void OakOldManHandleIntroTrainerBallThrow(enum BattlerId battler)
 {
     if (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE)
     {
-        const u16 *trainerPal = GetTrainerBackPicPalette(gSaveBlock2Ptr->playerGender);
+        const u16 *trainerPal = GetTrainerBackPicPalette(GetPlayerTrainerPic(gSaveBlock2Ptr->playerGender, GAME_VERSION));
         BtlController_HandleIntroTrainerBallThrow(battler, 0xD6F8, trainerPal, 31, Intro_TryShinyAnimShowHealthbox);
     }
     else

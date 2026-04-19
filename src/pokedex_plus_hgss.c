@@ -43,6 +43,7 @@
 #include "text_window.h"
 #include "trainer_pokemon_sprites.h"
 #include "trig.h"
+#include "type_icon_sprite.h"
 #include "window.h"
 #include "constants/abilities.h"
 #include "constants/form_change_types.h"
@@ -230,6 +231,11 @@ static const u8 sText_FORMS_Buttons_Submenu_PE[] = _("{DPAD_ANY}FORMs {A_BUTTON}
 static const u8 sText_FORMS_Buttons_Submenu_Decapped_PE[] = _("{START_BUTTON}Evos");
 static const u8 sText_FORMS_NONE[] = _("{STR_VAR_1} has no alternate forms.");
 static const u8 sText_PlusSymbol[] = _("+");
+
+static const u8 sText_Power[] = _("POWER");
+static const u8 sText_Accuracy2[] = _("ACCURACY");
+static const u8 sText_Appeal[] = _("APPEAL");
+static const u8 sText_Jam[] = _("JAM");
 
 // static .rodata graphics
 
@@ -4344,9 +4350,10 @@ static void SetTypeIconPosAndPal(u8 typeId, u8 x, u8 y, u8 spriteArrayId)
     sprite = &gSprites[sPokedexView->typeIconSpriteIds[spriteArrayId]];
     StartSpriteAnim(sprite, typeId);
     if (typeId < NUMBER_OF_MON_TYPES)
-        sprite->oam.paletteNum = gTypesInfo[typeId].palette;
+        sprite->oam.paletteNum = IndexOfSpritePaletteTag(gTypesInfo[typeId].paletteTag);
     else
-        sprite->oam.paletteNum = gTypesInfo[0].palette; // gContestCategoryInfo[typeId - NUMBER_OF_MON_TYPES].palette;
+        sprite->oam.paletteNum = IndexOfSpritePaletteTag(gTypesInfo[TYPE_NONE].paletteTag);
+
     sprite->x = x + 16;
     sprite->y = y + 8;
     SetSpriteInvisibility(spriteArrayId, FALSE);
@@ -4386,12 +4393,19 @@ static void CreateTypeIconSprites(void)
 {
     u8 i;
 
-    LoadCompressedSpriteSheet(&gSpriteSheet_MoveTypes);
-    LoadPalette(gMoveTypes_Pal, 0x1D0, 0x60);
+    InitTypeIconGfx();
+
     for (i = 0; i < 2; i++)
     {
         if (sPokedexView->typeIconSpriteIds[i] == 0xFF)
-            sPokedexView->typeIconSpriteIds[i] = CreateSprite(&gSpriteTemplate_MoveTypes, 10, 10, 2);
+        {
+            struct Sprite *sprite;
+
+            sPokedexView->typeIconSpriteIds[i] = CreateTypeIconSprite();
+            sprite = &gSprites[sPokedexView->typeIconSpriteIds[i]];
+            sprite->x = 10;
+            sprite->y = 10;
+        }
 
         SetSpriteInvisibility(i, TRUE);
     }
@@ -4855,7 +4869,6 @@ static void Task_LoadStatsScreen(u8 taskId)
         sPokedexView->typeIconSpriteIds[1] = 0xFF;
         CreateTypeIconSprites();
         sPokedexView->categoryIconSpriteId = 0xFF;
-        LoadPalette(gMoveTypes_Pal, 0x1D0, 0x60);
         LoadCompressedSpriteSheet(&gSpriteSheet_CategoryIcons);
         LoadSpritePalette(&gSpritePal_CategoryIcons);
         gMain.state++;
@@ -5292,13 +5305,13 @@ static void PrintStatsScreen_Moves_BottomText(u8 taskId)
     u8 moves_y = 3;
     if (gTasks[taskId].data[5] == 0)
     {
-        PrintStatsScreenTextSmall(WIN_STATS_MOVES_BOTTOM, gText_Power,  moves_x, moves_y);
-        PrintStatsScreenTextSmall(WIN_STATS_MOVES_BOTTOM, gText_Accuracy2,  moves_x + 66, moves_y);
+        PrintStatsScreenTextSmall(WIN_STATS_MOVES_BOTTOM, sText_Power,  moves_x, moves_y);
+        PrintStatsScreenTextSmall(WIN_STATS_MOVES_BOTTOM, sText_Accuracy2,  moves_x + 66, moves_y);
     }
     else
     {
-        PrintStatsScreenTextSmall(WIN_STATS_MOVES_BOTTOM, gText_Appeal,  moves_x, moves_y);
-        PrintStatsScreenTextSmall(WIN_STATS_MOVES_BOTTOM, gText_Jam,  moves_x + 66, moves_y);
+        PrintStatsScreenTextSmall(WIN_STATS_MOVES_BOTTOM, sText_Appeal,  moves_x, moves_y);
+        PrintStatsScreenTextSmall(WIN_STATS_MOVES_BOTTOM, sText_Jam,  moves_x + 66, moves_y);
     }
 }
 
@@ -8807,7 +8820,7 @@ static void EraseSelectorArrow(u32 y)
 
 static void PrintSelectorArrow(u32 y)
 {
-    PrintSearchText(gText_SelectorArrow2, 144, y * 16 + 9);
+    PrintSearchText(gText_SelectorArrow, 144, y * 16 + 9);
 }
 
 static void PrintSearchParameterTitle(u32 y, const u8 *str)

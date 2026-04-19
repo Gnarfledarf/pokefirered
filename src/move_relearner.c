@@ -1,6 +1,8 @@
 #include "global.h"
+#include "battle_main.h"
 #include "bg.h"
 #include "data.h"
+#include "decompress.h"
 #include "event_data.h"
 #include "field_fadetransition.h"
 #include "gpu_regs.h"
@@ -23,6 +25,7 @@
 #include "task.h"
 #include "text_window.h"
 #include "trig.h"
+#include "type_icon_sprite.h"
 #include "constants/move_relearner.h"
 #include "constants/moves.h"
 #include "constants/songs.h"
@@ -156,11 +159,25 @@ static u32 GetRelearnerLevelUpMoves(struct BoxPokemon *mon, u16 *moves);
 static u32 GetRelearnerEggMoves(struct BoxPokemon *mon, u16 *moves);
 static u32 GetRelearnerTMMoves(struct BoxPokemon *mon, u16 *moves);
 static u32 GetRelearnerTutorMoves(struct BoxPokemon *mon, u16 *moves);
+static void Relearner_CreateTypeIconSprite(void);
+static void UpdateTypeIconSprite(enum Type type);
+static void HideTypeIcon(void);
+static void DestroyTypeIconSprites(void);
 
 struct RelearnType
 {
     bool32 (*hasMoveToRelearn)(struct BoxPokemon*);
 };
+
+static const u8 sText_TeachWhichMoveToMon[] = _("Teach which {STR_VAR_3} to\n{STR_VAR_1}?");
+static const u8 sText_TeachMoveQues[] = _("Teach {STR_VAR_2}?");
+static const u8 sText_MonLearnedMove[] = _("{STR_VAR_1} learned\n{STR_VAR_2}.");
+static const u8 sText_MonIsTryingToLearnMove[] = _("{STR_VAR_1} is trying to learn\n{STR_VAR_2}.\pBut {STR_VAR_1} can't learn more\nthan four moves.\pDelete an older move to make\nroom for {STR_VAR_2}?");
+static const u8 sText_StopLearningMove[] = _("Stop learning {STR_VAR_2}?");
+static const u8 sText_1_2_and_Poof[] = _("{PAUSE 0x20}1, {PAUSE 0x0F}2, and {PAUSE 0x0F}‥ {PAUSE 0x0F}‥ {PAUSE 0x0F}‥ {PAUSE 0x0F}{PLAY_SE SE_BALL_BOUNCE_1}Poof!\p");
+static const u8 sText_MonForgotOldMoveAndMonLearnedNewMove[] = _("{STR_VAR_1} forgot {STR_VAR_3}.\pAnd‥\p{STR_VAR_1}\nlearned {STR_VAR_2}.");
+static const u8 sText_GiveUpTryingToTeachNewMove[] = _("Give up trying to teach a new\nmove to {STR_VAR_1}?");
+static const u8 sText_WhichMoveShouldBeForgotten[] = _("Which move should be forgotten?\p");
 
 static EWRAM_DATA struct
 {
@@ -177,6 +194,7 @@ static EWRAM_DATA struct
     u8 numToShowAtOnce;
     u8 moveSlot;
     u8 partyMon;
+    u8 typeIconSpriteId;
 } *sMoveRelearnerStruct = NULL;
 
 static const u8 sTextColors[][3] =
@@ -392,7 +410,8 @@ static void InitMoveRelearnerWindows(void)
 
 void CB2_InitLearnMove(void)
 {
-    SetGpuReg(REG_OFFSET_DISPCNT, 0);
+    if (!P_USE_TYPE_ICON_SPRITES)
+        SetGpuReg(REG_OFFSET_DISPCNT, 0);
 
     ResetSpriteData();
     FreeAllSpritePalettes();
@@ -400,6 +419,7 @@ void CB2_InitLearnMove(void)
     sMoveRelearnerStruct = AllocZeroed(sizeof(*sMoveRelearnerStruct));
     sMoveRelearnerStruct->state = MENU_STATE_FADE_TO_BLACK;
     sMoveRelearnerStruct->partyMon = gSpecialVar_0x8004;
+    sMoveRelearnerStruct->typeIconSpriteId = 0xFF;
     SetVBlankCallback(VBlankCB_MoveRelearner);
 
     InitMoveRelearnerBackgroundLayers();
@@ -435,6 +455,7 @@ void CB2_InitLearnMove(void)
         }
     }
 
+    Relearner_CreateTypeIconSprite();
     CreateLearnableMovesList();
 
     RunTasks();
@@ -446,10 +467,14 @@ void CB2_InitLearnMove(void)
 
 static void CB2_InitLearnMoveReturnFromSelectMove(void)
 {
-    SetGpuReg(REG_OFFSET_DISPCNT, 0);
+    if (!P_USE_TYPE_ICON_SPRITES)
+        SetGpuReg(REG_OFFSET_DISPCNT, 0);
+
     ResetSpriteData();
     FreeAllSpritePalettes();
     ResetTasks();
+
+    Relearner_CreateTypeIconSprite();
     CreateLearnableMovesList();
     sMoveRelearnerStruct->partyMon = gSpecialVar_0x8004;
     sMoveRelearnerStruct->moveSlot = gSpecialVar_0x8005;
@@ -552,7 +577,7 @@ static void DoMoveRelearnerMain(void)
 
                 if (GiveMoveToBoxMon(boxmon, GetCurrentSelectedMove()) != MON_HAS_MAX_MOVES)
                 {
-                    PrintMessageWithPlaceholders(gText_MonLearnedMove);
+                    PrintMessageWithPlaceholders(sText_MonLearnedMove);
                     gSpecialVar_0x8004 = TRUE;
                     sMoveRelearnerStruct->state = MENU_STATE_PRINT_TEXT_THEN_FANFARE;
                 }
@@ -586,7 +611,7 @@ static void DoMoveRelearnerMain(void)
         }
         break;
     case MENU_STATE_PRINT_TRYING_TO_LEARN_PROMPT:
-        PrintMessageWithPlaceholders(gText_MonIsTryingToLearnMove);
+        PrintMessageWithPlaceholders(sText_MonIsTryingToLearnMove);
         sMoveRelearnerStruct->state = MENU_STATE_WAIT_FOR_TRYING_TO_LEARN;
         break;
     case MENU_STATE_WAIT_FOR_TRYING_TO_LEARN:
@@ -597,7 +622,7 @@ static void DoMoveRelearnerMain(void)
         switch (YesNoMenuProcessInput())
         {
         case 0:
-            PrintMessageWithPlaceholders(gText_WhichMoveShouldBeForgotten);
+            PrintMessageWithPlaceholders(sText_WhichMoveShouldBeForgotten);
             sMoveRelearnerStruct->state = MENU_STATE_PRINT_WHICH_MOVE_PROMPT;
             break;
         case 1:
@@ -607,7 +632,7 @@ static void DoMoveRelearnerMain(void)
         }
         break;
     case MENU_STATE_PRINT_STOP_TEACHING:
-        PrintMessageWithPlaceholders(gText_StopLearningMove);
+        PrintMessageWithPlaceholders(sText_StopLearningMove);
         sMoveRelearnerStruct->state = MENU_STATE_WAIT_FOR_STOP_TEACHING;
         break;
     case MENU_STATE_WAIT_FOR_STOP_TEACHING:
@@ -671,6 +696,7 @@ static void DoMoveRelearnerMain(void)
             {
                 SetMainCallback2(CB2_ReturnToField);
             }
+            DestroyTypeIconSprites();
             FreeAllWindowBuffers();
             Free(sMoveRelearnerStruct);
             gRelearnMode = RELEARN_MODE_NONE;
@@ -679,6 +705,7 @@ static void DoMoveRelearnerMain(void)
     case MENU_STATE_RETURN_TO_PARTY_MENU:
         if (!gPaletteFade.active)
         {
+            DestroyTypeIconSprites();
             FreeAllWindowBuffers();
             Free(sMoveRelearnerStruct);
             SetMainCallback2(CB2_ReturnToPartyMenuFromSummaryScreen);
@@ -721,14 +748,14 @@ static void DoMoveRelearnerMain(void)
 
                 StringCopy(gStringVar3, GetMoveName(move));
                 StringCopy(gStringVar2, GetMoveName(GetCurrentSelectedMove()));
-                PrintMessageWithPlaceholders(gText_1_2_and_Poof);
+                PrintMessageWithPlaceholders(sText_1_2_and_Poof);
                 sMoveRelearnerStruct->state = MENU_STATE_DOUBLE_FANFARE_FORGOT_MOVE;
                 gSpecialVar_0x8004 = TRUE;
             }
         }
         break;
     case MENU_STATE_DOUBLE_FANFARE_FORGOT_MOVE:
-        PrintMessageWithPlaceholders(gText_MonForgotOldMoveAndMonLearnedNewMove);
+        PrintMessageWithPlaceholders(sText_MonForgotOldMoveAndMonLearnedNewMove);
         RemoveRelearnerTMFromBag(GetCurrentSelectedMove());
         sMoveRelearnerStruct->state = MENU_STATE_PRINT_TEXT_THEN_FANFARE;
         PlayFanfare(MUS_LEVEL_UP);
@@ -759,7 +786,7 @@ static void DrawWindowTextBorders(void)
 
 static void ShowTeachMoveText(void)
 {
-    StringExpandPlaceholders(gStringVar4, gText_TeachWhichMoveToMon);
+    StringExpandPlaceholders(gStringVar4, sText_TeachWhichMoveToMon);
     MoveRelearnerPrintMessage(gStringVar4, 0);
     PutWindowTilemap(RELEARNER_WIN_MESSAGE_BOX);
     CopyWindowToVram(RELEARNER_WIN_MESSAGE_BOX, COPYWIN_FULL);
@@ -807,7 +834,7 @@ static void CreateLearnableMovesList(void)
         sMoveRelearnerStruct->menuItems[i].name = GetMoveName(sMoveRelearnerStruct->movesToLearn[i]);
         sMoveRelearnerStruct->menuItems[i].id = sMoveRelearnerStruct->movesToLearn[i];
     }
-    sMoveRelearnerStruct->menuItems[i].name = gFameCheckerText_Cancel;
+    sMoveRelearnerStruct->menuItems[i].name = gText_Cancel;
     sMoveRelearnerStruct->menuItems[i].id = LIST_CANCEL;
     sMoveRelearnerStruct->numMenuChoices++;
     sMoveRelearnerStruct->numToShowAtOnce = LoadMoveRelearnerMovesList(sMoveRelearnerStruct->menuItems, sMoveRelearnerStruct->numMenuChoices);
@@ -825,7 +852,7 @@ static void HandleInput(void)
         case LIST_CANCEL:
             PlaySE(SE_SELECT);
             sMoveRelearnerStruct->state = MENU_STATE_PRINT_GIVE_UP_PROMPT;
-            PrintMessageWithPlaceholders(gText_GiveUpTryingToTeachNewMove);
+            PrintMessageWithPlaceholders(sText_GiveUpTryingToTeachNewMove);
             break;
         default:
             PlaySE(SE_SELECT);
@@ -833,11 +860,11 @@ static void HandleInput(void)
             {
                 sMoveRelearnerStruct->state = MENU_STATE_PRINT_TEACH_MOVE_PROMPT;
                 StringCopy(gStringVar2, GetMoveName(GetCurrentSelectedMove()));
-                PrintMessageWithPlaceholders(gText_TeachMoveQues);
+                PrintMessageWithPlaceholders(sText_TeachMoveQues);
             }
             else
             {
-                PrintMessageWithPlaceholders(gText_GiveUpTryingToTeachNewMove);
+                PrintMessageWithPlaceholders(sText_GiveUpTryingToTeachNewMove);
                 sMoveRelearnerStruct->state = MENU_STATE_PRINT_GIVE_UP_PROMPT;
             }
             break;
@@ -870,8 +897,12 @@ static void PrintMoveInfo(enum Move move)
     u8 buffer[50];
     u16 power = GetMovePower(move);
     u16 accuracy = GetMoveAccuracy(move);
+    enum Type moveType = GetMoveType(move);
 
-    BlitMenuInfoIcon(RELEARNER_WIN_MOVE_TYPE, GetMoveType(move) + 1, 1, 4);
+    if (P_USE_TYPE_ICON_SPRITES)
+        UpdateTypeIconSprite(moveType);
+    else
+        BlitMenuTypeIcon(RELEARNER_WIN_MOVE_TYPE, moveType, 1, 4);
 
     FillWindowPixelBuffer(RELEARNER_WIN_MOVE_PP, PIXEL_FILL(colors[0]));
     FillWindowPixelBuffer(RELEARNER_WIN_MOVE_POW_ACC, PIXEL_FILL(colors[0]));
@@ -918,6 +949,7 @@ static void PrintMoveInfoHandleCancel_CopyToVram(void)
         FillWindowPixelBuffer(RELEARNER_WIN_MOVE_POW_ACC, PIXEL_FILL(0));
         FillWindowPixelBuffer(RELEARNER_WIN_MOVE_PP, PIXEL_FILL(0));
         FillWindowPixelBuffer(RELEARNER_WIN_MOVE_DESC, PIXEL_FILL(0));
+        HideTypeIcon();
     }
 
     CopyWindowToVram(RELEARNER_WIN_MOVE_TYPE, COPYWIN_GFX);
@@ -1251,4 +1283,45 @@ static bool32 HasRelearnerTutorMoves(struct BoxPokemon *boxMon)
     }
 
     return FALSE;
+}
+
+static void Relearner_CreateTypeIconSprite(void)
+{
+    if (!P_USE_TYPE_ICON_SPRITES)
+        return;
+
+    InitTypeIconGfx();
+    sMoveRelearnerStruct->typeIconSpriteId = CreateTypeIconSprite();
+}
+
+static void UpdateTypeIconSprite(enum Type type)
+{
+    if (!P_USE_TYPE_ICON_SPRITES)
+        return;
+
+    ShowTypeIcon(&gSprites[sMoveRelearnerStruct->typeIconSpriteId], type, 57, 10);
+}
+
+static void HideTypeIcon(void)
+{
+    if (!P_USE_TYPE_ICON_SPRITES)
+        return;
+
+    gSprites[sMoveRelearnerStruct->typeIconSpriteId].invisible = TRUE;
+}
+
+static void DestroyTypeIconSprites(void)
+{
+    if (!P_USE_TYPE_ICON_SPRITES)
+        return;
+
+    if (sMoveRelearnerStruct->typeIconSpriteId != 0xFF)
+    {
+        DestroySprite(&gSprites[sMoveRelearnerStruct->typeIconSpriteId]);
+        sMoveRelearnerStruct->typeIconSpriteId = 0xFF;
+    }
+
+    FreeSpritePaletteByTag(TAG_MOVE_TYPES_1);
+    FreeSpritePaletteByTag(TAG_MOVE_TYPES_2);
+    FreeSpritePaletteByTag(TAG_MOVE_TYPES_3);
 }

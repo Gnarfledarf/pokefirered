@@ -431,8 +431,7 @@ Text_LooksLikeNothingHere::
 EventScript_UseDefog::
 	goto_if_questlog EventScript_ReleaseEnd
 	lockall
-	bufferpartymonnick STR_VAR_1, VAR_RESULT
-	buffermovename STR_VAR_2, MOVE_DEFOG
+	checkfieldmoveusable FIELD_MOVE_DEFOG
 	msgbox Text_MonUsedMove, MSGBOX_DEFAULT
 	closemessage
 	isfollowerfieldmoveuser VAR_0x8004

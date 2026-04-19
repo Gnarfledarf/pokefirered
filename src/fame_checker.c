@@ -19,6 +19,7 @@
 #include "strings.h"
 #include "task.h"
 #include "text_window.h"
+#include "text.h"
 #include "trainer_pokemon_sprites.h"
 #include "constants/event_objects.h"
 #include "constants/songs.h"
@@ -119,6 +120,15 @@ static void Task_FCOpenOrCloseInfoBox(u8 taskId);
 static void UpdateInfoBoxTilemap(u8 bg, s16 state);
 static void PlaceListMenuCursor(bool8 isActive);
 
+static const u8 sFameCheckerText_MainScreenUI[] = _("{START_BUTTON}PICK {DPAD_UPDOWN}SELECT {A_BUTTON}OK");
+static const u8 sFameCheckerText_PickScreenUI[] = _("{START_BUTTON}PICK {DPAD_UPDOWN}SELECT {B_BUTTON}CANCEL");
+static const u8 sFameCheckerText_FlavorTextUI[] = _("{DPAD_ANY}PICK {A_BUTTON}READ {B_BUTTON}CANCEL");
+static const u8 sFameCheckerOakName[] = _("OAK");
+static const u8 sFameCheckerDaisyName[] = _("DAISY");
+static const u8 sFameCheckerMrFujiName[] = _("FUJI");
+static const u8 sFameCheckerText_FameCheckerWillBeClosed[] = _("The FAME CHECKER will be closed.");
+static const u8 sFameCheckerText_ClearTextbox[] = _("\n                              ");
+
 static const u16 sFameCheckerTilemap[] = INCBIN_U16("graphics/fame_checker/tilemap1.bin");
 static const u8 sQuestionMarkSpriteGfx[] = INCBIN_U8("graphics/fame_checker/question_mark.4bpp");
 static const u8 sSpinningPokeballSpriteGfx[] = INCBIN_U8("graphics/fame_checker/spinning_pokeball.4bpp");
@@ -165,10 +175,10 @@ static const u16 sTrainerIdxs[] = {
 };
 
 static const u8 *const sNonTrainerNamePointers[] = {
-    gFameCheckerOakName,
-    gFameCheckerDaisyName,
-    gFameCheckerBillName,
-    gFameCheckerMrFujiName
+    sFameCheckerOakName,
+    sFameCheckerDaisyName,
+    gText_Bill,
+    sFameCheckerMrFujiName
 };
 
 static const u8 sFameCheckerTrainerPicIdxs[] = {
@@ -771,7 +781,7 @@ static void Task_TopMenuHandleInput(u8 taskId)
                 task->func = Task_StartToCloseFameChecker;
             else if (sFameCheckerData->inPickMode)
             {
-                if (!IsTextPrinterActiveOnWindow(2) && HasUnlockedAllFlavorTextsForCurrentPerson() == TRUE)
+                if (!IsTextPrinterActiveOnWindow(FCWINDOWID_MSGBOX) && HasUnlockedAllFlavorTextsForCurrentPerson() == TRUE)
                     GetPickModeText();
             }
             else if (sFameCheckerData->personHasUnlockedPanels)
@@ -825,7 +835,7 @@ static bool8 TryExitPickMode(u8 taskId)
 
 static void MessageBoxPrintEmptyText(void)
 {
-    AddTextPrinterParameterized2(FCWINDOWID_MSGBOX, FONT_NORMAL, gFameCheckerText_ClearTextbox, 0, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+    AddTextPrinterParameterized2(FCWINDOWID_MSGBOX, FONT_NORMAL, sFameCheckerText_ClearTextbox, 0, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
 }
 
 static void Task_EnterPickMode(u8 taskId)
@@ -867,7 +877,7 @@ static void Task_FlavorTextDisplayHandleInput(u8 taskId)
     s16 *data = gTasks[taskId].data;
 
     RunTextPrinters();
-    if (JOY_NEW(A_BUTTON) && !IsTextPrinterActiveOnWindow(2))
+    if (JOY_NEW(A_BUTTON) && !IsTextPrinterActiveOnWindow(FCWINDOWID_MSGBOX))
     {
         u8 spriteId = sFameCheckerData->spriteIds[data[1]];
         if (gSprites[spriteId].data[1] != 0xFF)
@@ -876,6 +886,7 @@ static void Task_FlavorTextDisplayHandleInput(u8 taskId)
     if (JOY_NEW(B_BUTTON))
     {
         u8 i;
+        DeactivateSingleTextPrinter(FCWINDOWID_MSGBOX, WINDOW_TEXT_PRINTER);
         PlaySE(SE_SELECT);
         for (i = 0; i < 6; i++)
             SetMessageSelectorIconObjMode(sFameCheckerData->spriteIds[i], ST_OAM_OBJ_NORMAL);
@@ -891,6 +902,7 @@ static void Task_FlavorTextDisplayHandleInput(u8 taskId)
     }
     else if (JOY_NEW(DPAD_UP) || JOY_NEW(DPAD_DOWN))
     {
+        DeactivateSingleTextPrinter(FCWINDOWID_MSGBOX, WINDOW_TEXT_PRINTER);
         if (task->data[1] >= 3)
         {
             task->data[1] -= 3;
@@ -904,6 +916,7 @@ static void Task_FlavorTextDisplayHandleInput(u8 taskId)
     }
     else if (JOY_NEW(DPAD_LEFT))
     {
+        DeactivateSingleTextPrinter(FCWINDOWID_MSGBOX, WINDOW_TEXT_PRINTER);
         if (task->data[1] == 0 || task->data[1] % 3 == 0)
         {
             task->data[1] += 2;
@@ -917,6 +930,7 @@ static void Task_FlavorTextDisplayHandleInput(u8 taskId)
     }
     else if (JOY_NEW(DPAD_RIGHT))
     {
+        DeactivateSingleTextPrinter(FCWINDOWID_MSGBOX, WINDOW_TEXT_PRINTER);
         if ((task->data[1] + 1) % 3 == 0)
         {
             task->data[1] -= 2;
@@ -1077,12 +1091,12 @@ static u8 AdjustGiovanniIndexIfBeatenInGym(u8 a0)
 static void PrintUIHelp(u8 state)
 {
     s32 width;
-    const u8 * src = gFameCheckerText_MainScreenUI;
+    const u8 * src = sFameCheckerText_MainScreenUI;
     if (state != 0)
     {
-        src = gFameCheckerText_FlavorTextUI;
+        src = sFameCheckerText_FlavorTextUI;
         if (state == 1)
-            src = gFameCheckerText_PickScreenUI;
+            src = sFameCheckerText_PickScreenUI;
     }
     width = GetStringWidth(FONT_SMALL, src, 0);
     FillWindowPixelRect(FCWINDOWID_UIHELP, PIXEL_FILL(0), 0, 0, 0xc0, 0x10);
@@ -1520,7 +1534,7 @@ static void Task_SwitchToPickMode(u8 taskId)
 static void PrintCancelDescription(void)
 {
     FillWindowPixelRect(FCWINDOWID_MSGBOX, PIXEL_FILL(1), 0, 0, 0xd0, 0x20);
-    AddTextPrinterParameterized2(FCWINDOWID_MSGBOX, FONT_NORMAL, gFameCheckerText_FameCheckerWillBeClosed, 0, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+    AddTextPrinterParameterized2(FCWINDOWID_MSGBOX, FONT_NORMAL, sFameCheckerText_FameCheckerWillBeClosed, 0, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
     FC_PutWindowTilemapAndCopyWindowToVramMode3(FCWINDOWID_MSGBOX);
 }
 
@@ -1570,7 +1584,7 @@ static u8 FC_PopulateListMenu(void)
             nitems++;
         }
     }
-    sListMenuItems[nitems].name = gFameCheckerText_Cancel;
+    sListMenuItems[nitems].name = gText_Cancel;
     sListMenuItems[nitems].id = nitems;
     sFameCheckerData->unlockedPersons[nitems] = 0xFF;
     nitems++;
@@ -1736,7 +1750,7 @@ static void PlaceListMenuCursor(bool8 isActive)
 {
     u16 cursorY = ListMenuGetYCoordForPrintingArrowCursor(sFameCheckerData->listMenuTaskId);
     if (isActive == TRUE)
-        AddTextPrinterParameterized4(FCWINDOWID_LIST, FONT_NORMAL, 0, cursorY, 0, 0, sTextColor_DkGrey, 0, gText_SelectorArrow2);
+        AddTextPrinterParameterized4(FCWINDOWID_LIST, FONT_NORMAL, 0, cursorY, 0, 0, sTextColor_DkGrey, 0, gText_SelectorArrow);
     else
-        AddTextPrinterParameterized4(FCWINDOWID_LIST, FONT_NORMAL, 0, cursorY, 0, 0, sTextColor_White, 0, gText_SelectorArrow2);
+        AddTextPrinterParameterized4(FCWINDOWID_LIST, FONT_NORMAL, 0, cursorY, 0, 0, sTextColor_White, 0, gText_SelectorArrow);
 }

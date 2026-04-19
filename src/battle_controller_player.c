@@ -1597,7 +1597,7 @@ static void Task_CreateLevelUpVerticalStripes(u8 taskId)
     switch (data[15])
     {
     case 0:
-        if (!IsTextPrinterActiveOnWindow(0))
+        if (!IsTextPrinterActiveOnWindow(B_WIN_MSG))
         {
             if (!isOnBg2)
             {
@@ -1884,7 +1884,7 @@ static void MoveSelectionDisplayMoveDescription(enum BattlerId battler)
     StringAppend(gDisplayedStringBattle, acc_start);
     StringAppend(gDisplayedStringBattle, acc_desc);
     StringAppend(gDisplayedStringBattle, acc_num);
-    StringAppend(gDisplayedStringBattle, gText_NewLine);
+    StringAppend(gDisplayedStringBattle, gText_Newline);
     StringAppend(gDisplayedStringBattle, GetMoveDescription(move));
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_DESCRIPTION);
 

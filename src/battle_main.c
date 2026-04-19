@@ -62,6 +62,7 @@
 #include "text.h"
 #include "trainer_pools.h"
 #include "trig.h"
+#include "type_icon_sprite.h"
 #include "util.h"
 #include "vs_seeker.h"
 #include "wild_encounter.h"
@@ -3944,7 +3945,7 @@ static void TryDoEventsBeforeFirstTurn(void)
         }
         TurnValuesCleanUp(FALSE);
         memset(&gSpecialStatuses, 0, sizeof(gSpecialStatuses));
-        BattlePutTextOnWindow(gText_EmptyString3, B_WIN_MSG);
+        BattlePutTextOnWindow(gText_EmptyString, B_WIN_MSG);
         AssignUsableGimmicks();
         gBattleMainFunc = HandleTurnActionSelectionState;
         ResetSentPokesToOpponentValue();
@@ -4052,7 +4053,7 @@ void BattleTurnPassed(void)
 
     gFieldStatuses &= ~STATUS_FIELD_ION_DELUGE;
 
-    BattlePutTextOnWindow(gText_EmptyString3, B_WIN_MSG);
+    BattlePutTextOnWindow(gText_EmptyString, B_WIN_MSG);
     AssignUsableGimmicks();
     SetShellSideArmCategory();
     SetAiLogicDataForTurn(gAiLogicData); // get assumed abilities, hold effects, etc of all battlers
@@ -5769,11 +5770,7 @@ static void ReturnFromBattleToOverworld(void)
         UpdateRoamerHPStatus(&gEnemyParty[0]);
         ZeroEnemyPartyMons();
 
-#ifndef BUGFIX
-        if ((gBattleOutcome & B_OUTCOME_WON) || gBattleOutcome == B_OUTCOME_CAUGHT)
-#else
-        if ((gBattleOutcome == B_OUTCOME_WON) || gBattleOutcome == B_OUTCOME_CAUGHT) // Bug: When Roar is used by roamer, gBattleOutcome is B_OUTCOME_PLAYER_TELEPORTED (5).
-#endif                                                                               // & with B_OUTCOME_WON (1) will return TRUE and deactivates the roamer.
+        if ((gBattleOutcome == B_OUTCOME_WON) || gBattleOutcome == B_OUTCOME_CAUGHT || gBattleOutcome == B_OUTCOME_DREW)
             SetRoamerInactive(gEncounteredRoamerIndex);
     }
 
@@ -5841,6 +5838,9 @@ enum Type TrySetAteType(enum Move move, enum BattlerId battlerAtk, enum Ability 
     case ABILITY_GALVANIZE:
         ateType = TYPE_ELECTRIC;
         break;
+    case ABILITY_DRAGONIZE:
+        ateType = TYPE_DRAGON;
+        break;
     default:
         ateType = TYPE_NONE;
         break;
@@ -5889,22 +5889,23 @@ enum Type GetDynamicMoveType(struct Pokemon *mon, enum Move move, enum BattlerId
     case EFFECT_WEATHER_BALL:
         if (state == MON_IN_BATTLE)
         {
-            if (HasWeatherEffect())
-            {
-                if (gBattleWeather & B_WEATHER_RAIN && holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA)
-                    return TYPE_WATER;
-                else if (gBattleWeather & B_WEATHER_SANDSTORM)
-                    return TYPE_ROCK;
-                else if (gBattleWeather & B_WEATHER_SUN && holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA)
-                    return TYPE_FIRE;
-                else if (gBattleWeather & B_WEATHER_ICY_ANY)
-                    return TYPE_ICE;
-                else
-                    return moveType;
-            }
+            u32 weather =  GetAttackerWeather(holdEffect, ability, GetWeather());
+            if (weather & B_WEATHER_SUN)
+                return TYPE_FIRE;
+            else if (weather & B_WEATHER_RAIN)
+                return TYPE_WATER;
+            else if (weather & B_WEATHER_SANDSTORM)
+                return TYPE_ROCK;
+            else if (weather & B_WEATHER_ICY_ANY)
+                return TYPE_ICE;
+            else
+                return moveType;
         }
         else
         {
+            if (ability == ABILITY_MEGA_SOL)
+                return TYPE_FIRE;
+
             switch (gWeatherPtr->currWeather)
             {
             case WEATHER_DROUGHT:

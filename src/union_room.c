@@ -3859,7 +3859,7 @@ static void PrintGroupMemberOnWindow(u8 windowId, u8 x, u8 y, struct RfuPlayer *
     u8 uname[30];
 
     ConvertIntToDecimalStringN(gStringVar4, id + 1, STR_CONV_MODE_LEADING_ZEROS, 2);
-    StringAppend(gStringVar4, gText_UR_Colon);
+    StringAppend(gStringVar4, gText_Colon);
     PrintUnionRoomText(windowId, FONT_SMALL, gStringVar4, x, y, UR_COLOR_DEFAULT);
     x += 18;
     activity = player->rfu.data.activity;
@@ -3999,7 +3999,7 @@ static void TradeBoardPrintItemInfo(u8 windowId, u8 y, struct RfuGameData * data
     }
     else
     {
-        BlitMenuInfoIcon(windowId, type + 1, 68, y);
+        BlitMenuTypeIcon(windowId, type, 68, y);
         PrintUnionRoomText(windowId, FONT_NORMAL, gSpeciesInfo[species].speciesName, 118, y, colorIdx);
         ConvertIntToDecimalStringN(levelStr, level, STR_CONV_MODE_LEFT_ALIGN, 3);
         PrintUnionRoomText(windowId, FONT_NORMAL, levelStr, GetStringRightAlignXOffset(2, levelStr, 218), y, colorIdx);

@@ -1,18 +1,16 @@
-const u8 gTeachyTvString_TeachBattle[] = _("Teach me how to battle.");
-const u8 gTeachyTvString_StatusProblems[] = _("What are status problems?");
-const u8 gTeachyTvString_TypeMatchups[] = _("What are type matchups?");
-const u8 gTeachyTvString_CatchPkmn[] = _("I want to catch Pokémon.");
-const u8 gTeachyTvString_AboutTMs[] = _("Teach me about TMs.");
-const u8 gTeachyTvString_RegisterItem[] = _("How do I register an item?");
-const u8 gTeachyTvString_Cancel[] = _("Cancel");
-const u8 gTeachyTvText_PokedudeSaysHello[] = _(
-    "Hey, all you Trainers out there!\n"
+static const u8 sTeachyTvString_TeachBattle[] = _("Teach me how to battle.");
+static const u8 sTeachyTvString_StatusProblems[] = _("What are status problems?");
+static const u8 sTeachyTvString_TypeMatchups[] = _("What are type matchups?");
+static const u8 sTeachyTvString_CatchPkmn[] = _("I want to catch Pokémon.");
+
+static const u8 sTeachyTvText_PokedudeSaysHello[] = _(
+    "Hey, all you TRAINERS out there!\n"
     "HELLO, TRAINERS!\p"
     "……… ……… ………\p"
     "Come on, let me hear you!\n"
     "HELLO, TRAINERS!\l"
     "It's me, the Poké Dude!\p");
-const u8 gTeachyTvText_BattleScript1[] = _(
+static const u8 sTeachyTvText_BattleScript1[] = _(
     "Today, the Poké Dude's here to\n"
     "tell you about how you can battle\l"
     "Pokémon!\p"
@@ -27,7 +25,7 @@ const u8 gTeachyTvText_BattleScript1[] = _(
     "All righty, here goes!\p"
     "Keep your eyes glued to the super\n"
     "Poké Dude Show!");
-const u8 gTeachyTvText_BattleScript2[] = _(
+static const u8 sTeachyTvText_BattleScript2[] = _(
     "Well, did you get that?\p"
     "Even if your own Pokémon's HP\n"
     "falls to zero, and it becomes\l"
@@ -37,7 +35,7 @@ const u8 gTeachyTvText_BattleScript2[] = _(
     "All righty, be seeing you!\p"
     "Remember, Trainers, a good deed\n"
     "a day brings happiness to stay!");
-const u8 gTeachyTvText_StatusScript1[] = _(
+static const u8 sTeachyTvText_StatusScript1[] = _(
     "Today, the Poké Dude's here to\n"
     "tell you about status problems!\p"
     "Status problems include poisoning,\n"
@@ -54,7 +52,7 @@ const u8 gTeachyTvText_StatusScript1[] = _(
     "All righty, here goes!\p"
     "Keep your eyes glued to the super\n"
     "Poké Dude Show!");
-const u8 gTeachyTvText_StatusScript2[] = _(
+static const u8 sTeachyTvText_StatusScript2[] = _(
     "Poisoning or paralysis don't go\n"
     "away after a battle.\p"
     "If a Pokémon is poisoned, it loses\n"
@@ -67,7 +65,7 @@ const u8 gTeachyTvText_StatusScript2[] = _(
     "All righty, be seeing you!\p"
     "Remember, Trainers, a good deed\n"
     "a day brings happiness to stay!");
-const u8 gTeachyTvText_MatchupsScript1[] = _(
+static const u8 sTeachyTvText_MatchupsScript1[] = _(
     "Does everyone know about type\n"
     "matchups?\p"
     "Pokémon and their moves all\n"
@@ -89,7 +87,7 @@ const u8 gTeachyTvText_MatchupsScript1[] = _(
     "All righty, here goes!\p"
     "Keep your eyes glued to the super\n"
     "Poké Dude Show!");
-const u8 gTeachyTvText_MatchupsScript2[] = _(
+static const u8 sTeachyTvText_MatchupsScript2[] = _(
     "Is it possible to launch an attack\n"
     "that will inflict heavy damage?\p"
     "Does the opposing Pokémon pose\n"
@@ -104,7 +102,7 @@ const u8 gTeachyTvText_MatchupsScript2[] = _(
     "up perfectly!\p"
     "Remember, a good deed a day\n"
     "brings happiness to stay!");
-const u8 gTeachyTvText_CatchingScript1[] = _(
+static const u8 sTeachyTvText_CatchingScript1[] = _(
     "Today, the Poké Dude's going to\n"
     "show you how to catch Pokémon!\p"
     "Just imagine… A groovy Pokémon\n"
@@ -118,7 +116,7 @@ const u8 gTeachyTvText_CatchingScript1[] = _(
     "All righty, here goes!\p"
     "Keep your eyes glued to the super\n"
     "Poké Dude Show!");
-const u8 gTeachyTvText_CatchingScript2[] = _(
+static const u8 sTeachyTvText_CatchingScript2[] = _(
     "If your first Poké Ball fails to\n"
     "catch the Pokémon, don't give up!\p"
     "Keep throwing Poké Balls…\n"
@@ -126,7 +124,7 @@ const u8 gTeachyTvText_CatchingScript2[] = _(
     "All righty, be seeing you!\p"
     "Remember, Trainers, a good deed\n"
     "a day brings happiness to stay!");
-const u8 gTeachyTvText_TMsScript1[] = _(
+static const u8 sTeachyTvText_TMsScript1[] = _(
     "Hey, everyone!\n"
     "Do you all have TMs?\p"
     "A TM, Technical Machine, is an\n"
@@ -160,12 +158,12 @@ const u8 gPokedudeText_ReadTMDescription[] = _(
     "bird or fish Pokémon can learn.\p"
     "So, try using it on Pokémon with\n"
     "arms that can throw punches!");
-const u8 gTeachyTvText_TMsScript2[] = _(
+static const u8 sTeachyTvText_TMsScript2[] = _(
     "Wow, I talked a lot today!\n"
     "All righty, be seeing you!\p"
     "Remember, Trainers, a good deed\n"
     "a day brings happiness to stay!");
-const u8 gTeachyTvText_RegisterScript1[] = _(
+static const u8 sTeachyTvText_RegisterScript1[] = _(
     "A Trainer's Bag has a bunch of\n"
     "nifty, convenient features!\p"
     "Take stuff in the Key Items\n"
@@ -179,7 +177,7 @@ const u8 gTeachyTvText_RegisterScript1[] = _(
     "All righty, here goes!\p"
     "Keep your eyes glued to the sorta\n"
     "super Poké Dude Show!");
-const u8 gTeachyTvText_RegisterScript2[] = _(
+static const u8 sTeachyTvText_RegisterScript2[] = _(
     "And now, your Teachy TV is\n"
     "registered.\p"
     "How do you use it?\n"

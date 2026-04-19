@@ -450,7 +450,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
                 "\ncritical-hit ratio."),
         #endif
         .effect = EFFECT_TWO_TURNS_ATTACK,
-        .power = 80,
+        .power = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 130 : 80,
         .type = TYPE_NORMAL,
         .accuracy = B_UPDATED_MOVE_DATA >= GEN_3 ? 100 : 75,
         #if B_UPDATED_MOVE_DATA >= GEN_4
@@ -620,7 +620,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .effect = EFFECT_SEMI_INVULNERABLE,
         .power = B_UPDATED_MOVE_DATA >= GEN_4 ? 90 : 70,
         .type = TYPE_FLYING,
-        .accuracy = 95,
+        .accuracy = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 100 : 95,
         .pp = 15,
         .target = TARGET_SELECTED,
         .priority = 0,
@@ -1849,9 +1849,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "A reckless body\nslam that "
             "also\nhurts the user."),
         .effect = EFFECT_RECOIL,
-        .power = 80,
+        .power = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 105 : 80,
         .type = TYPE_FIGHTING,
-        .accuracy = 80,
+        .accuracy = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 100 : 80,
         .pp = B_UPDATED_MOVE_DATA >= GEN_6 ? 20 : 25,
         .target = TARGET_SELECTED,
         .priority = 0,
@@ -2537,7 +2537,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .effect = EFFECT_NON_VOLATILE_STATUS,
         .power = 0,
         .type = TYPE_POISON,
-        .accuracy = B_UPDATED_MOVE_DATA >= GEN_5 ? 90 : 85,
+        #if B_UPDATED_MOVE_DATA == GEN_CUSTOM || B_UPDATED_MOVE_DATA <= GEN_4
+            .accuracy = 85,
+        #else
+            .accuracy = B_UPDATED_MOVE_DATA >= GEN_5 ? 90 : 85,
+        #endif
         .pp = 10,
         .target = TARGET_SELECTED,
         .priority = 0,
@@ -2635,8 +2639,12 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Meditate"),
         .description = COMPOUND_STRING(
             "Meditates in a\npeaceful "
-            "fashion\nto raise Attack."),
-        .effect = EFFECT_ATTACK_UP,
+        #if B_UPDATED_MOVE_DATA == GEN_CUSTOM
+        "fashion to\nraise Attack, Sp.\nAtk. and accuracy."),
+        #else
+        "fashion\nto raise Attack."),
+        #endif
+        .effect = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? EFFECT_MEDITATE : EFFECT_ATTACK_UP,
         .power = 0,
         .type = TYPE_PSYCHIC,
         .accuracy = 0,
@@ -2871,9 +2879,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(
             "Recovers up to\nhalf the "
             "user's\nmaximum HP."),
-        #if B_UPDATED_MOVE_DATA >= GEN_9
+        #if B_UPDATED_MOVE_DATA == GEN_9
             .pp = 5,
-        #elif B_UPDATED_MOVE_DATA >= GEN_4
+        #elif B_UPDATED_MOVE_DATA == GEN_CUSTOM || B_UPDATED_MOVE_DATA >= GEN_4
             .pp = 10,
         #else
             .pp = 20,
@@ -3365,7 +3373,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 30 : 20,
         .type = TYPE_POISON,
-        .accuracy = 70,
+        .accuracy = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 85 : 70,
         .pp = 20,
         .target = TARGET_SELECTED,
         .priority = 0,
@@ -3596,7 +3604,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Constrict"),
         .description = COMPOUND_STRING(
             "Constricts to\ninflict pain. "
+        #if B_UPDATED_MOVE_DATA == GEN_CUSTOM
+            "\nLowers Speed."),
+        #else
             "May\nlower Speed."),
+        #endif
         .effect = EFFECT_HIT,
         .power = 10,
         .type = TYPE_NORMAL,
@@ -3606,9 +3618,15 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
-        .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_SPD_MINUS_1,
-            .chance = B_UPDATED_MOVE_DATA >= GEN_2 ? 10 : 33,
+        #if B_UPDATED_MOVE_DATA == GEN_CUSTOM
+            .additionalEffects = ADDITIONAL_EFFECTS({
+                .moveEffect = MOVE_EFFECT_SPD_MINUS_1,
+                .chance = 100,
+        #else
+            .additionalEffects = ADDITIONAL_EFFECTS({
+                .moveEffect = MOVE_EFFECT_SPD_MINUS_1,
+                .chance = B_UPDATED_MOVE_DATA >= GEN_2 ? 10 : 33,
+        #endif
         }),
         .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_WORSEN_CONDITION_OF_PREV_MONS : CONTEST_EFFECT_STARTLE_PREV_MON,
         .contestCategory = CONTEST_CATEGORY_TOUGH,
@@ -3677,7 +3695,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = 0,
         .type = TYPE_NORMAL,
         .accuracy = 0,
-        .pp = B_UPDATED_MOVE_DATA >= GEN_9 ? 5 : 10,
+        .pp = B_UPDATED_MOVE_DATA == GEN_9 ? 5 : 10,
         .target = TARGET_USER,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
@@ -3935,13 +3953,17 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .zMove = { .effect = Z_EFFECT_RECOVER_HP },
         .ignoresProtect = TRUE,
         .ignoresSubstitute = B_UPDATED_MOVE_FLAGS < GEN_5,
-        .mirrorMoveBanned = TRUE,
-        .mimicBanned = TRUE,
-        .metronomeBanned = B_UPDATED_MOVE_FLAGS >= GEN_5,
-        .copycatBanned = B_UPDATED_MOVE_FLAGS >= GEN_5,
-        .instructBanned = TRUE,
-        .encoreBanned = TRUE,
-        .assistBanned = B_UPDATED_MOVE_FLAGS >= GEN_5,
+        #if B_UPDATED_MOVE_FLAGS == GEN_CUSTOM
+            .encoreBanned = TRUE,
+        #else
+            .mirrorMoveBanned = TRUE,
+            .mimicBanned = TRUE,
+            .metronomeBanned = B_UPDATED_MOVE_FLAGS >= GEN_5,
+            .copycatBanned = B_UPDATED_MOVE_FLAGS >= GEN_5,
+            .instructBanned = TRUE,
+            .encoreBanned = TRUE,
+            .assistBanned = B_UPDATED_MOVE_FLAGS >= GEN_5,
+        #endif
         .contestEffect = CONTEST_EFFECT_REPETITION_NOT_BORING,
         .contestCategory = CONTEST_CATEGORY_SMART,
         .contestComboStarterId = 0,
@@ -3957,7 +3979,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "An attack using\nbubbles. "
             "May lower\nthe foe's Speed."),
         .effect = EFFECT_HIT,
-        .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 40 : 20,
+        #if B_UPDATED_MOVE_DATA == GEN_CUSTOM
+            .power = 30,
+        #else
+            .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 40 : 20,
+        #endif
         .type = TYPE_WATER,
         .accuracy = 100,
         .pp = 30,
@@ -4239,7 +4265,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = 0,
         .type = TYPE_PSYCHIC,
         .accuracy = 0,
-        .pp = B_UPDATED_MOVE_DATA >= GEN_9 ? 5 : 10,
+        .pp = B_UPDATED_MOVE_DATA == GEN_9 ? 5 : 10,
         .target = TARGET_USER,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
@@ -4401,7 +4427,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         #if B_UPDATED_MOVE_DATA >= GEN_2
             .additionalEffects = ADDITIONAL_EFFECTS({
                 .moveEffect = MOVE_EFFECT_TRI_ATTACK,
-                .chance = 20,
+                .chance = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 40 : 20,
             }),
         #endif
         .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_QUALITY_DEPENDS_ON_TIMING : CONTEST_EFFECT_STARTLE_PREV_MONS,
@@ -4444,7 +4470,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Slashes with\nclaws, etc. Has "
             "a\nhigh critical-hit\nratio."),
         .effect = EFFECT_HIT,
-        .power = 70,
+        .power = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 80 : 70,
         .type = TYPE_NORMAL,
         .accuracy = 100,
         .criticalHitStage = B_UPDATED_MOVE_DATA >= GEN_3 ? 1 : 2,
@@ -4601,7 +4627,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "While attacking,\nit may "
             "steal the\nfoe's held item."),
         .effect = EFFECT_STEAL_ITEM,
-        .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 60 : 40,
+        #if B_UPDATED_MOVE_DATA == GEN_CUSTOM || B_UPDATED_MOVE_DATA <= GEN_5
+            .power = 40,
+        #else
+            .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 60 : 40,
+        #endif
         .type = TYPE_DARK,
         .accuracy = 100,
         .pp = B_UPDATED_MOVE_DATA >= GEN_6 ? 25 : 10,
@@ -4611,7 +4641,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .makesContact = TRUE,
         .ignoresKingsRock = (B_UPDATED_MOVE_FLAGS == GEN_3 || B_UPDATED_MOVE_FLAGS == GEN_4),
         .meFirstBanned = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS <= GEN_9,
         .copycatBanned = TRUE,
         .assistBanned = TRUE,
         .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_APPEAL_AS_GOOD_AS_PREV_ONE : CONTEST_EFFECT_APPEAL_AS_GOOD_AS_PREV_ONES,
@@ -5290,10 +5320,12 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .zMove = { .effect = Z_EFFECT_FOLLOW_ME },
         .ignoresProtect = TRUE,
         .ignoresSubstitute = TRUE,
-        .mirrorMoveBanned = TRUE,
-        .metronomeBanned = TRUE,
-        .copycatBanned = TRUE,
-        .assistBanned = TRUE,
+        #if B_UPDATED_MOVE_FLAGS != GEN_9
+            .mirrorMoveBanned = TRUE,
+            .metronomeBanned = TRUE,
+            .copycatBanned = TRUE,
+            .assistBanned = TRUE,
+        #endif
         .contestEffect = CONTEST_EFFECT_GREAT_APPEAL_BUT_NO_MORE_MOVES, //C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_QUICKLY_GROW_BORED :
         .contestCategory = CONTEST_CATEGORY_SMART,
         .contestComboStarterId = 0,
@@ -5364,7 +5396,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = 0,
         .type = TYPE_FIGHTING,
         .accuracy = 0,
-        .pp = 5,
+        .pp = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 10 : 5,
         .target = TARGET_USER,
         #if B_UPDATED_MOVE_DATA >= GEN_5
             .priority = 4,
@@ -5537,10 +5569,12 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .argument = { .protectMethod = PROTECT_NONE },
         .zMove = { .effect = Z_EFFECT_RESET_STATS },
         .ignoresProtect = TRUE,
-        .mirrorMoveBanned = TRUE,
-        .metronomeBanned = TRUE,
-        .copycatBanned = TRUE,
-        .assistBanned = TRUE,
+        #if B_UPDATED_MOVE_FLAGS != GEN_9
+            .mirrorMoveBanned = TRUE,
+            .metronomeBanned = TRUE,
+            .copycatBanned = TRUE,
+            .assistBanned = TRUE,
+        #endif
         .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_NEXT_APPEAL_LATER : CONTEST_EFFECT_AVOID_STARTLE_ONCE,
         .contestCategory = CONTEST_CATEGORY_TOUGH,
         .contestComboStarterId = COMBO_STARTER_ENDURE,
@@ -5654,7 +5688,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = 0,
         .type = TYPE_NORMAL,
         .accuracy = 0,
-        .pp = B_UPDATED_MOVE_DATA >= GEN_9 ? 5 : 10,
+        .pp = B_UPDATED_MOVE_DATA == GEN_9 ? 5 : 10,
         .target = TARGET_USER,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
@@ -5746,7 +5780,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_DEF_PLUS_1,
             .self = TRUE,
-            .chance = 10,
+            .chance = B_UPDATED_MOVE_DATA ? 30 : 10,
         }),
         .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_AFFECTED_BY_PREV_APPEAL : CONTEST_EFFECT_BETTER_IF_SAME_TYPE,
         .contestCategory = CONTEST_CATEGORY_COOL,
@@ -6626,7 +6660,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .ignoresProtect = TRUE,
         .ignoresSubstitute = TRUE,
         .mirrorMoveBanned = TRUE,
-        .snatchAffected = B_UPDATED_MOVE_FLAGS < GEN_5,
+        .snatchAffected = (B_UPDATED_MOVE_FLAGS == GEN_CUSTOM || B_UPDATED_MOVE_FLAGS < GEN_5),
         .contestEffect = CONTEST_EFFECT_BETTER_IF_SAME_TYPE,
         .contestCategory = CONTEST_CATEGORY_SMART,
         .contestComboStarterId = 0,
@@ -6748,7 +6782,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Rock Smash"),
         .description = COMPOUND_STRING(
             "A rock-crushing\nattack "
+        #if B_UPDATED_MOVE_DATA == GEN_CUSTOM
+            "that \nlowers Defense."),
+        #else
             "that may\nlower Defense."),
+        #endif
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_4 ? 40 : 20,
         .type = TYPE_FIGHTING,
@@ -6760,7 +6798,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .makesContact = TRUE,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_DEF_MINUS_1,
-            .chance = 50,
+            .chance = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 100 : 50,
         }),
         .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_HIGHLY_APPEALING : CONTEST_EFFECT_BETTER_WITH_GOOD_CONDITION,
         .contestCategory = CONTEST_CATEGORY_TOUGH,
@@ -7178,7 +7216,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Powerful against\nparalyzed "
             "foes,\nbut also heals\nthem."),
         .effect = EFFECT_DOUBLE_POWER_ON_ARG_STATUS,
-        .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 70 : 60,
+        #if B_UPDATED_MOVE_DATA == GEN_CUSTOM
+            .power = 85,
+        #else
+            .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 70 : 60,
+        #endif
         .type = TYPE_NORMAL,
         .accuracy = 100,
         .pp = 10,
@@ -7241,14 +7283,16 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
         .ignoresProtect = TRUE,
-        .mirrorMoveBanned = TRUE,
-        .metronomeBanned = B_UPDATED_MOVE_FLAGS >= GEN_5,
-        .copycatBanned = TRUE,
-        .sleepTalkBanned = TRUE,
-        .instructBanned = TRUE,
-        .encoreBanned = (B_UPDATED_MOVE_FLAGS >= GEN_7 || B_UPDATED_MOVE_FLAGS < GEN_3),
-        .assistBanned = B_UPDATED_MOVE_FLAGS >= GEN_6,
-        .mimicBanned = TRUE,
+        #if B_UPDATED_MOVE_FLAGS != GEN_CUSTOM
+            .mirrorMoveBanned = TRUE,
+            .metronomeBanned = B_UPDATED_MOVE_FLAGS >= GEN_5,
+            .copycatBanned = TRUE,
+            .sleepTalkBanned = TRUE,
+            .instructBanned = TRUE,
+            .encoreBanned = (B_UPDATED_MOVE_FLAGS >= GEN_7 || B_UPDATED_MOVE_FLAGS < GEN_3),
+            .assistBanned = B_UPDATED_MOVE_FLAGS >= GEN_6,
+            .mimicBanned = TRUE,
+        #endif
         .contestEffect = CONTEST_EFFECT_BETTER_WHEN_AUDIENCE_EXCITED,
         .contestCategory = CONTEST_CATEGORY_BEAUTY,
         .contestComboStarterId = 0,
@@ -7818,9 +7862,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .mirrorMoveBanned = TRUE,
         .ignoresSubstitute = TRUE,
         .forcePressure = TRUE,
-        .metronomeBanned = TRUE,
-        .copycatBanned = TRUE,
-        .assistBanned = TRUE,
+        #if B_UPDATED_MOVE_FLAGS != GEN_9
+            .metronomeBanned = TRUE,
+            .copycatBanned = TRUE,
+            .assistBanned = TRUE,
+        #endif
         .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_APPEAL_AS_GOOD_AS_PREV_ONE : CONTEST_EFFECT_BADLY_STARTLE_MONS_WITH_GOOD_APPEALS,
         .contestCategory = CONTEST_CATEGORY_SMART,
         .contestComboStarterId = 0,
@@ -7972,7 +8018,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = (B_UPDATED_MOVE_DATA >= GEN_9) ? 95 : 70,
         .type = TYPE_PSYCHIC,
         .accuracy = 100,
-        .pp = 5,
+        .pp = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 10: 5,
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
@@ -7998,14 +8044,14 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = (B_UPDATED_MOVE_DATA >= GEN_9) ? 95 : 70,
         .type = TYPE_PSYCHIC,
         .accuracy = 100,
-        .pp = 5,
+        .pp = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 10 : 5,
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .ballisticMove = TRUE,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_SP_ATK_MINUS_1,
-            .chance = 50,
+            .chance = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 100 : 50,
         }),
         .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_BADLY_STARTLE_MONS_WITH_GOOD_APPEALS : CONTEST_EFFECT_BADLY_STARTLE_FRONT_MON,
         .contestCategory = CONTEST_CATEGORY_SMART,
@@ -8160,7 +8206,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
-        .minimizeDoubleDamage = B_UPDATED_MOVE_FLAGS < GEN_4,
+        .minimizeDoubleDamage = (B_UPDATED_MOVE_FLAGS == GEN_CUSTOM || B_UPDATED_MOVE_FLAGS < GEN_4),
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_FLINCH,
             .chance = 30,
@@ -8183,7 +8229,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = 0,
         .type = TYPE_NORMAL,
         .accuracy = 0,
-        .pp = B_UPDATED_MOVE_DATA >= GEN_9 ? 5 : 10,
+        .pp = B_UPDATED_MOVE_DATA == GEN_9 ? 5 : 10,
         .target = TARGET_USER,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
@@ -8374,7 +8420,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
-        .minimizeDoubleDamage = B_UPDATED_MOVE_FLAGS < GEN_4,
+        .minimizeDoubleDamage = (B_UPDATED_MOVE_FLAGS == GEN_CUSTOM || B_UPDATED_MOVE_FLAGS < GEN_4),
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_FLINCH,
             .chance = 30,
@@ -8783,7 +8829,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
-        .minimizeDoubleDamage = B_UPDATED_MOVE_FLAGS < GEN_4,
+        .minimizeDoubleDamage = (B_UPDATED_MOVE_FLAGS == GEN_CUSTOM || B_UPDATED_MOVE_FLAGS < GEN_4),
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_FLINCH,
             .chance = 10,
@@ -8802,7 +8848,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(
             "An uppercut thrown\nas if "
             "leaping into\nthe sky."),
-        .effect = EFFECT_HIT,
+        .effect = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? EFFECT_SUPER_EFFECTIVE_ON_ARG : EFFECT_HIT,
         .power = 85,
         .type = TYPE_FIGHTING,
         .accuracy = 90,
@@ -8810,6 +8856,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
+        #if B_UPDATED_MOVE_DATA == GEN_CUSTOM
+            .argument = { .type = TYPE_FLYING },
+        #endif
         .makesContact = TRUE,
         .punchingMove = TRUE,
         .damagesAirborne = TRUE,
@@ -9221,10 +9270,12 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = B_UPDATED_MOVE_DATA >= GEN_4,
-        .meFirstBanned = TRUE,
-        .metronomeBanned = TRUE,
-        .copycatBanned = TRUE,
-        .assistBanned = TRUE,
+        #if B_UPDATED_MOVE_FLAGS != GEN_9
+            .meFirstBanned = TRUE,
+            .metronomeBanned = TRUE,
+            .copycatBanned = TRUE,
+            .assistBanned = TRUE,
+        #endif
         .contestEffect = CONTEST_EFFECT_APPEAL_AS_GOOD_AS_PREV_ONES,
         .contestCategory = CONTEST_CATEGORY_CUTE,
         .contestComboStarterId = COMBO_STARTER_COVET,
@@ -9246,7 +9297,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "\nslightly hurts the\nuser."),
         #endif
         .effect = EFFECT_RECOIL,
-        .power = 120,
+        .power = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 150 : 120,
         .type = TYPE_ELECTRIC,
         .accuracy = 100,
         .pp = 15,
@@ -9528,7 +9579,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = 0,
         .type = TYPE_FLYING,
         .accuracy = 0,
-        .pp = B_UPDATED_MOVE_DATA >= GEN_9 ? 5 : 10,
+        .pp = B_UPDATED_MOVE_DATA == GEN_9 ? 5 : 10,
         .target = TARGET_USER,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
@@ -9942,7 +9993,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 60 : 50,
         .type = TYPE_DARK,
         .accuracy = 100,
-        .pp = 10,
+        .pp = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 15 : 10,
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
@@ -10344,7 +10395,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = B_UPDATED_MOVE_DATA >= GEN_7 ? 70 : 80,
         .type = TYPE_DARK,
         .accuracy = 100,
-        .pp = 5,
+        .pp = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 10 : 5,
         .target = TARGET_SELECTED,
         .priority = 1,
         .category = DAMAGE_CATEGORY_PHYSICAL,
@@ -10518,7 +10569,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Attacks with an\naura blast "
             "that\ncannot be evaded."),
         .effect = EFFECT_HIT,
-        .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 80 : 90,
+        #if B_UPDATED_MOVE_DATA == GEN_CUSTOM
+            .power = 90,
+        #else
+            .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 80 : 90,
+        #endif
         .type = TYPE_FIGHTING,
         .accuracy = 0,
         .pp = 20,
@@ -12139,7 +12194,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Crush Grip"),
         .description = sWringOutDescription,
         .effect = EFFECT_POWER_BASED_ON_TARGET_HP,
-        .power = 120,
+        .power = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 160 : 120,
         .type = TYPE_NORMAL,
         .accuracy = 100,
         .pp = 5,
@@ -12161,7 +12216,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Traps the foe in a\nvortex "
             "of fire for\n"BINDING_TURNS" turns."),
         .effect = EFFECT_HIT,
-        .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 100 : 120,
+        #if B_UPDATED_MOVE_DATA == GEN_CUSTOM || B_UPDATED_MOVE_DATA <= GEN_5
+            .power = 120,
+        #else
+            .power = 100,
+        #endif
         .type = TYPE_FIRE,
         .accuracy = B_UPDATED_MOVE_DATA >= GEN_5 ? 75 : 70,
         .pp = 5,
@@ -12188,7 +12247,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .effect = EFFECT_DARK_VOID,
         .power = 0,
         .type = TYPE_DARK,
-        .accuracy = B_UPDATED_MOVE_DATA >= GEN_7 ? 50 : 80,
+        #if B_UPDATED_MOVE_DATA == GEN_CUSTOM || B_UPDATED_MOVE_DATA <= GEN_6
+            .accuracy = 80,
+        #else
+            .accuracy = 50,
+        #endif
         .pp = 10,
         .target = TARGET_BOTH,
         .priority = 0,
@@ -12270,7 +12333,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
         .ignoresProtect = TRUE,
-        .minimizeDoubleDamage = B_UPDATED_MOVE_FLAGS == GEN_6,
+        .minimizeDoubleDamage = (B_UPDATED_MOVE_FLAGS == GEN_CUSTOM || B_UPDATED_MOVE_FLAGS == GEN_6),
         .sleepTalkBanned = TRUE,
         .instructBanned = TRUE,
         .assistBanned = B_UPDATED_MOVE_FLAGS >= GEN_6,
@@ -12578,7 +12641,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 60 : 40,
         .type = TYPE_FIGHTING,
         .accuracy = 100,
-        .pp = 10,
+        .pp = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 15 : 10,
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
@@ -12814,7 +12877,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Attacks the foe's\nlegs "
             "lowering its\nSpeed."),
         .effect = EFFECT_HIT,
-        .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 65 : 60,
+        #if B_UPDATED_MOVE_DATA == GEN_CUSTOM || B_UPDATED_MOVE_DATA <= GEN_5
+            .power = 60,
+        #else
+            .power = 65,
+        #endif
         .type = TYPE_FIGHTING,
         .accuracy = 100,
         .pp = 20,
@@ -13629,7 +13696,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 60 : 40,
         .type = TYPE_ICE,
         .accuracy = 90,
-        .pp = 10,
+        .pp = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 15 : 10,
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
@@ -13720,14 +13787,14 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "An electrical\ntackle that "
             "also\nhurts the user."),
         .effect = EFFECT_RECOIL,
-        .power = 90,
+        .power = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 120 : 90,
         .type = TYPE_ELECTRIC,
         .accuracy = 100,
         .pp = 15,
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
-        .argument = { .recoilPercentage = 25 },
+        .argument = { .recoilPercentage = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 33 : 25 },
         .makesContact = TRUE,
         .contestEffect = CONTEST_EFFECT_USER_MORE_EASILY_STARTLED,
         .contestCategory = CONTEST_CATEGORY_TOUGH,
@@ -14151,15 +14218,21 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "The type varies\nwith the "
             "kind of\nDrive held."),
         .effect = EFFECT_CHANGE_TYPE_ON_ITEM,
-        .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 120 : 85,
+        #if B_UPDATED_MOVE_DATA == GEN_CUSTOM
+            .power = 140,
+        #elif B_UPDATED_MOVE_DATA >= GEN_6
+            .power = 120,
+        #else
+            .power = 85,
+        #endif
         .type = TYPE_NORMAL,
         .accuracy = 100,
-        .pp = 5,
+        .pp = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 10 : 5,
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .argument = { .holdEffect = HOLD_EFFECT_DRIVE },
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .contestEffect = CONTEST_EFFECT_BETTER_WITH_GOOD_CONDITION,
         .contestCategory = CONTEST_CATEGORY_COOL,
         .contestComboStarterId = 0,
@@ -14174,7 +14247,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Attacks with an\nancient "
             "song. May\ninduce sleep."),
         .effect = EFFECT_HIT,
-        .power = 75,
+        .power = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 95 : 75,
         .type = TYPE_NORMAL,
         .accuracy = 100,
         .pp = 10,
@@ -14184,7 +14257,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .argument = { .status = STATUS1_SLEEP },
         .ignoresSubstitute = B_UPDATED_MOVE_FLAGS >= GEN_6,
         .soundMove = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_SLEEP,
             .chance = 10,
@@ -14211,7 +14284,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .slicingMove = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .contestEffect = CONTEST_EFFECT_REPETITION_NOT_BORING,
         .contestCategory = CONTEST_CATEGORY_BEAUTIFUL,
         .contestComboStarterId = 0,
@@ -14396,7 +14469,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_SPECIAL,
         .ignoresSubstitute = B_UPDATED_MOVE_FLAGS >= GEN_6,
         .soundMove = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_SP_ATK_MINUS_1,
             .chance = 100,
@@ -14449,7 +14522,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .zMove = { .powerOverride = 220 },
         .makesContact = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_V_CREATE,
             .self = TRUE,
@@ -14677,7 +14750,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .ignoresProtect = TRUE,
         .makesContact = TRUE,
-        .minimizeDoubleDamage = B_UPDATED_MOVE_FLAGS < GEN_7,
+        .minimizeDoubleDamage = (B_UPDATED_MOVE_FLAGS == GEN_CUSTOM || B_UPDATED_MOVE_FLAGS < GEN_7),
         .sleepTalkBanned = TRUE,
         .instructBanned = TRUE,
         .assistBanned = TRUE,
@@ -15293,7 +15366,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_BOTH,
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = B_UPDATED_MOVE_DATA >= GEN_7 ? MOVE_EFFECT_DEF_PLUS_2:  MOVE_EFFECT_DEF_PLUS_1,
             .self = TRUE,
@@ -15321,7 +15394,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .thawsUser = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_BURN,
             .chance = 30,
@@ -15347,7 +15420,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_SPECIAL,
         .ignoresProtect = TRUE,
         .ignoresSubstitute = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_FEINT,
         }),
@@ -15671,13 +15744,17 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_STATUS,
         .zMove = { .effect = Z_EFFECT_ALL_STATS_UP_1 },
         .ignoresProtect = TRUE,
-        .mirrorMoveBanned = TRUE,
-        .metronomeBanned = TRUE,
-        .mimicBanned = TRUE,
-        .copycatBanned = TRUE,
-        .sleepTalkBanned = TRUE,
-        .instructBanned = TRUE,
-        .assistBanned = TRUE,
+        #if B_UPDATED_MOVE_FLAGS != GEN_CUSTOM
+            .metronomeBanned = TRUE,
+        #else
+            .mirrorMoveBanned = TRUE,
+            .metronomeBanned = TRUE,
+            .mimicBanned = TRUE,
+            .copycatBanned = TRUE,
+            .sleepTalkBanned = TRUE,
+            .instructBanned = TRUE,
+            .assistBanned = TRUE,
+        #endif
         .contestEffect = CONTEST_EFFECT_EXCITE_AUDIENCE_IN_ANY_CONTEST,
         .contestCategory = CONTEST_CATEGORY_CUTE,
         .contestComboStarterId = COMBO_STARTER_CELEBRATE,
@@ -15702,12 +15779,16 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .zMove = { .effect = Z_EFFECT_ALL_STATS_UP_1 },
         .ignoresProtect = TRUE,
         .ignoresSubstitute = TRUE,
-        .metronomeBanned = TRUE,
-        .mimicBanned = TRUE,
-        .copycatBanned = TRUE,
-        .sleepTalkBanned = TRUE,
-        .instructBanned = TRUE,
-        .assistBanned = TRUE,
+        #if B_UPDATED_MOVE_FLAGS != GEN_CUSTOM
+            .metronomeBanned = TRUE,
+        #else
+            .metronomeBanned = TRUE,
+            .mimicBanned = TRUE,
+            .copycatBanned = TRUE,
+            .sleepTalkBanned = TRUE,
+            .instructBanned = TRUE,
+            .assistBanned = TRUE,
+        #endif
         .contestEffect = CONTEST_EFFECT_AVOID_STARTLE,
         .contestCategory = CONTEST_CATEGORY_CUTE,
         .contestComboStarterId = 0,
@@ -15875,7 +15956,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .damagesAirborne = TRUE,
         .ignoreTypeIfFlyingAndUngrounded = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .skyBattleBanned = TRUE,
         .contestEffect = CONTEST_EFFECT_STARTLE_MONS_SAME_TYPE_APPEAL,
         .contestCategory = CONTEST_CATEGORY_BEAUTIFUL,
@@ -15898,7 +15979,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_BOTH,
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .skyBattleBanned = TRUE,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_PREVENT_ESCAPE,
@@ -15947,7 +16028,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .argument = { .recoilPercentage = 50 },
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .contestEffect = CONTEST_EFFECT_USER_MORE_EASILY_STARTLED,
         .contestCategory = CONTEST_CATEGORY_BEAUTY,
         .contestComboStarterId = 0,
@@ -15970,7 +16051,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .pulseMove = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .contestEffect = CONTEST_EFFECT_BETTER_IF_FIRST, //CONTEST_EFFECT_EXCITES_AUDIENCE_MORE_IF_FIRST
         .contestCategory = CONTEST_CATEGORY_BEAUTY,
         .contestComboStarterId = 0,
@@ -15992,7 +16073,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_BOTH,
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .skyBattleBanned = TRUE,
         .contestEffect = CONTEST_EFFECT_BETTER_IF_LAST, //CONTEST_EFFECT_EXCITES_AUDIENCE_MORE_IF_LAST
         .contestCategory = CONTEST_CATEGORY_COOL,
@@ -16014,7 +16095,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_DEF_SPDEF_DOWN,
             .self = TRUE,
@@ -16066,7 +16147,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = 0,
         .type = TYPE_GROUND,
         .accuracy = 0,
-        .pp = B_UPDATED_MOVE_DATA >= GEN_9 ? 5 : 10,
+        .pp = B_UPDATED_MOVE_DATA == GEN_9 ? 5 : 10,
         .target = TARGET_USER,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
@@ -16188,11 +16269,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Sings with\nbubbles. Cures "
             "\nburns on contact."),
         .effect = EFFECT_HIT,
-        .power = 90,
+        .power = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 95 : 90,
         .type = TYPE_WATER,
         .accuracy = 100,
         .pp = 10,
-        .target = TARGET_FOES_AND_ALLY,
+        .target = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? TARGET_BOTH : TARGET_FOES_AND_ALLY,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .argument = { .status = STATUS1_BURN },
@@ -17002,7 +17083,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_SP_ATK_MINUS_2,
             .self = TRUE,
@@ -17182,7 +17263,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         }),
         .ignoresSubstitute = TRUE,
         .makesContact = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .contestEffect = CONTEST_EFFECT_APPEAL_AS_GOOD_AS_PREV_ONES,
         .contestCategory = CONTEST_CATEGORY_SMART,
         .contestComboStarterId = 0,
@@ -17206,7 +17287,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
         .ignoresTargetAbility = TRUE,
-        .metronomeBanned = B_UPDATED_MOVE_FLAGS >= GEN_8,
+        #if B_UPDATED_MOVE_FLAGS != GEN_CUSTOM
+            .metronomeBanned = B_UPDATED_MOVE_FLAGS >= GEN_8,
+        #endif
         .contestEffect = CONTEST_EFFECT_STARTLE_MONS_SAME_TYPE_APPEAL,
         .contestCategory = CONTEST_CATEGORY_COOL,
         .contestComboStarterId = 0,
@@ -17229,7 +17312,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .ignoresTargetAbility = TRUE,
-        .metronomeBanned = B_UPDATED_MOVE_FLAGS >= GEN_8,
+        #if B_UPDATED_MOVE_FLAGS != GEN_CUSTOM
+            .metronomeBanned = B_UPDATED_MOVE_FLAGS >= GEN_8,
+        #endif
         .contestEffect = CONTEST_EFFECT_STARTLE_MONS_SAME_TYPE_APPEAL,
         .contestCategory = CONTEST_CATEGORY_SMART,
         .contestComboStarterId = 0,
@@ -17302,7 +17387,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .argument = { .damagePercentage = 50 },
-        .metronomeBanned = B_UPDATED_MOVE_FLAGS >= GEN_8,
+        #if B_UPDATED_MOVE_FLAGS != GEN_CUSTOM
+            .metronomeBanned = B_UPDATED_MOVE_FLAGS >= GEN_8,
+        #endif
         .contestEffect = CONTEST_EFFECT_BADLY_STARTLE_MONS_WITH_GOOD_APPEALS,
         .contestCategory = CONTEST_CATEGORY_CUTE,
         .contestComboStarterId = 0,
@@ -17347,7 +17434,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_FOES_AND_ALLY,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .dampBanned = TRUE,
         .contestEffect = CONTEST_EFFECT_USER_MORE_EASILY_STARTLED,
         .contestCategory = CONTEST_CATEGORY_BEAUTY,
@@ -17372,7 +17459,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
         .punchingMove = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .contestEffect = CONTEST_EFFECT_WORSEN_CONDITION_OF_PREV_MONS,
         .contestCategory = CONTEST_CATEGORY_COOL,
         .contestComboStarterId = 0,
@@ -17398,7 +17485,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .ignoresTargetAbility = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .contestEffect = CONTEST_EFFECT_BETTER_IF_SAME_TYPE,
         .contestCategory = CONTEST_CATEGORY_SMART,
         .contestComboStarterId = 0,
@@ -18059,7 +18146,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .mirrorMoveBanned = TRUE,
         .soundMove = TRUE,
         .danceMove = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .contestEffect = CONTEST_EFFECT_IMPROVE_CONDITION_PREVENT_NERVOUSNESS,
         .contestCategory = CONTEST_CATEGORY_TOUGH,
         .contestComboStarterId = 0,
@@ -18082,7 +18169,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .skyBattleBanned = B_EXTRAPOLATED_MOVE_FLAGS,
         .contestEffect = CONTEST_EFFECT_BETTER_IF_SAME_TYPE,
         .contestCategory = CONTEST_CATEGORY_BEAUTY,
@@ -18156,7 +18243,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .skyBattleBanned = B_EXTRAPOLATED_MOVE_FLAGS,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_WRAP,
@@ -18292,7 +18379,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_ATK_MINUS_1,
             .chance = 100,
@@ -18475,7 +18562,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .ignoresSubstitute = TRUE,
         .mirrorMoveBanned = TRUE,
         .healingMove = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .contestEffect = CONTEST_EFFECT_QUALITY_DEPENDS_ON_TIMING,
         .contestCategory = CONTEST_CATEGORY_CUTE,
         .contestComboStarterId = 0,
@@ -18599,7 +18686,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .contestEffect = CONTEST_EFFECT_USER_MORE_EASILY_STARTLED,
         .contestCategory = CONTEST_CATEGORY_BEAUTY,
         .contestComboStarterId = 0,
@@ -19160,7 +19247,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_WRAP,
             .multistring.wrapped = B_MSG_WRAPPED_THUNDER_CAGE,
@@ -19186,7 +19273,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_BOTH,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_USER_MORE_EASILY_STARTLED : CONTEST_EFFECT_BETTER_WHEN_LATER,
         .contestCategory = CONTEST_CATEGORY_COOL,
         .contestComboStarterId = 0,
@@ -19365,7 +19452,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .makesContact = TRUE,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_DIRE_CLAW,
-            .chance = 50,
+            .chance = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 30 : 50,
         }),
         .battleAnimScript = gBattleAnimMove_DireClaw,
     },
@@ -19409,8 +19496,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_STATUS,
         .snatchAffected = TRUE,
         .ignoresProtect = TRUE,
-        .mirrorMoveBanned = TRUE,
-        .metronomeBanned = TRUE,
+        #if B_UPDATED_MOVE_FLAGS != GEN_CUSTOM
+            .mirrorMoveBanned = TRUE,
+            .metronomeBanned = TRUE,
+        #endif
         .battleAnimScript = gBattleAnimMove_PowerShift,
 },
 
@@ -19451,7 +19540,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .windMove = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
+        .alwaysHitsInRain = B_UPDATED_MOVE_FLAGS == GEN_CUSTOM,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_ATK_MINUS_1,
             .chance = 30,
@@ -19466,7 +19556,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "A mysterious power\nstrikes, "
             "raising\nthe user's Sp.\nAtk."),
         .effect = EFFECT_HIT,
-        .power = 70,
+        .power = B_UPDATED_MOVE_DATA ? 80 : 70,
         .type = TYPE_PSYCHIC,
         .accuracy = 90,
         .pp = 10,
@@ -19495,7 +19585,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_RANDOM,
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_THRASH,
             .self = TRUE,
@@ -19553,10 +19643,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Giant chunks of\nice damage "
             "the\nfoe. It may\nflinch."),
         .effect = EFFECT_HIT,
-        .power = 100,
+        .power = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 130 : 100,
         .type = TYPE_ICE,
         .accuracy = 85,
-        .pp = B_UPDATED_MOVE_DATA >= GEN_9 ? 10 : 5,
+        .pp = B_UPDATED_MOVE_DATA == GEN_9 ? 10 : 5,
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
@@ -19897,6 +19987,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
+        .metronomeBanned = TRUE,
         .forcePressure = TRUE,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_TERA_BLAST,
@@ -20237,8 +20328,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
         .ignoresProtect = TRUE,
-        .mirrorMoveBanned = TRUE,
-        .metronomeBanned = TRUE,
+        #if B_UPDATED_MOVE_FLAGS != GEN_CUSTOM
+            .mirrorMoveBanned = TRUE,
+            .metronomeBanned = TRUE,
+        #endif
         .battleAnimScript = gBattleAnimMove_Doodle,
     },
 
@@ -20259,8 +20352,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .zMove = { .effect = Z_EFFECT_RECOVER_HP },
         .snatchAffected = TRUE,
         .ignoresProtect = TRUE,
-        .mirrorMoveBanned = TRUE,
-        .metronomeBanned = TRUE,
+        #if B_UPDATED_MOVE_FLAGS != GEN_CUSTOM
+            .mirrorMoveBanned = TRUE,
+            .metronomeBanned = TRUE,
+        #endif
         .battleAnimScript = gBattleAnimMove_FilletAway,
     },
 
@@ -20290,7 +20385,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Rigged bouquet.\nAlways gets "
             "a\ncritical hit,\nnever missing."),
         .effect = EFFECT_HIT,
-        .power = 70,
+        .power = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 60 : 70,
         .type = TYPE_GRASS,
         .accuracy = 0,
         .pp = 10,
@@ -20320,7 +20415,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_SP_ATK_PLUS_1,
             .self = TRUE,
-            .chance = 100,
+            .chance = B_UPDATED_MOVE_DATA == GEN_CUSTOM ? 50 : 100,
         }),
         .battleAnimScript = gBattleAnimMove_TorchSong,
     },
@@ -20368,7 +20463,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             .preAttackEffect = TRUE,
         }),
         .makesContact = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .battleAnimScript = gBattleAnimMove_RagingBull,
     },
 
@@ -20473,8 +20568,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_STATUS,
         .zMove = { .effect = Z_EFFECT_RESET_STATS },
         .ignoresProtect = TRUE,
-        .mirrorMoveBanned = TRUE,
-        .metronomeBanned = TRUE,
+        #if B_UPDATED_MOVE_FLAGS != GEN_CUSTOM
+            .mirrorMoveBanned = TRUE,
+            .metronomeBanned = TRUE,
+        #endif
         .battleAnimScript = gBattleAnimMove_ShedTail,
     },
 
@@ -20500,8 +20597,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_STATUS,
         .zMove = { .effect = Z_EFFECT_SPD_UP_1 },
         .ignoresProtect = TRUE,
-        .mirrorMoveBanned = TRUE,
-        .metronomeBanned = TRUE,
+        #if B_UPDATED_MOVE_FLAGS != GEN_CUSTOM
+            .mirrorMoveBanned = TRUE,
+            .metronomeBanned = TRUE,
+        #endif
         .argument = { .weatherType = (B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_HAIL) ? BATTLE_WEATHER_HAIL : BATTLE_WEATHER_SNOW },
         .battleAnimScript = gBattleAnimMove_ChillyReception,
     },
@@ -20521,8 +20620,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
         .ignoresProtect = TRUE,
-        .mirrorMoveBanned = TRUE,
-        .metronomeBanned = TRUE,
+        #if B_UPDATED_MOVE_FLAGS != GEN_CUSTOM
+            .mirrorMoveBanned = TRUE,
+            .metronomeBanned = TRUE,
+        #endif
         .battleAnimScript = gBattleAnimMove_TidyUp,
     },
 
@@ -20549,8 +20650,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .argument = { .weatherType = (B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_HAIL) ? BATTLE_WEATHER_HAIL : BATTLE_WEATHER_SNOW },
         .zMove = { .effect = Z_EFFECT_SPD_UP_1 },
         .ignoresProtect = TRUE,
-        .mirrorMoveBanned = TRUE,
-        .metronomeBanned = TRUE,
+        #if B_UPDATED_MOVE_FLAGS != GEN_CUSTOM
+            .mirrorMoveBanned = TRUE,
+            .metronomeBanned = TRUE,
+        #endif
         .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_BADLY_STARTLE_MONS_WITH_GOOD_APPEALS : CONTEST_EFFECT_BADLY_STARTLE_PREV_MONS,
         .contestCategory = CONTEST_CATEGORY_BEAUTY,
         .contestComboStarterId = 0,
@@ -20573,7 +20676,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_SPD_MINUS_1,
             .chance = 100,
@@ -20596,7 +20699,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_SPD_PLUS_1,
             .self = TRUE,
@@ -20622,7 +20725,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_ATK_MINUS_1,
             .chance = 100,
@@ -20649,7 +20752,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
         .ignoresProtect = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .battleAnimScript = gBattleAnimMove_HyperDrill,
     },
 
@@ -20668,7 +20771,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .strikeCount = 2,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .battleAnimScript = gBattleAnimMove_TwinBeam,
     },
 
@@ -20688,7 +20791,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
         .punchingMove = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .battleAnimScript = gBattleAnimMove_RageFist,
     },
 
@@ -20706,7 +20809,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_DEF_SPDEF_DOWN,
             .self = TRUE,
@@ -20753,7 +20856,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
-        .metronomeBanned = TRUE,
+        .metronomeBanned = B_UPDATED_MOVE_FLAGS != GEN_CUSTOM,
         .argument = { .type = TYPE_ELECTRIC },
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_REMOVE_ARG_TYPE,
@@ -20799,8 +20902,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             .reflectDamage.damageCategories = 1u << DAMAGE_CATEGORY_PHYSICAL | 1u << DAMAGE_CATEGORY_SPECIAL,
         },
         .makesContact = TRUE,
-        .meFirstBanned = TRUE,
-        .metronomeBanned = TRUE,
+        #if B_UPDATED_MOVE_FLAGS != GEN_CUSTOM
+            .meFirstBanned = TRUE,
+            .metronomeBanned = TRUE,
+        #endif
         .contestEffect = CONTEST_EFFECT_BETTER_IF_LAST,
         .contestComboStarterId = 0,
         .contestComboMoves = {0},
@@ -21133,6 +21238,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
+        .metronomeBanned = TRUE,
         .assistBanned = TRUE,
         .copycatBanned = TRUE,
         .mimicBanned = TRUE,

@@ -1167,6 +1167,14 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .encourageEncore = TRUE,
     },
 
+    [EFFECT_MEDITATE] =
+    {
+        .battleScript = BattleScript_EffectMeditate,
+        .battleTvScore = 1,
+        .battleFactoryStyle = FACTORY_STYLE_PREPARATION,
+        .encourageEncore = TRUE,
+    },
+
     [EFFECT_DRAGON_DANCE] =
     {
         .battleScript = BattleScript_EffectDragonDance,

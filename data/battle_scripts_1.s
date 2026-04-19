@@ -3994,6 +3994,36 @@ BattleScript_CalmMindTrySpDef::
 BattleScript_CalmMindEnd::
 	goto BattleScript_MoveEnd
 
+BattleScript_EffectMeditate::
+	attackcanceler
+BattleScript_MeditateTryToRaiseStats::
+	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_ATK, MAX_STAT_STAGE, BattleScript_MeditateDoMoveAnim
+	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_SPATK, MAX_STAT_STAGE, BattleScript_MeditateDoMoveAnim
+	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_ACC, MAX_STAT_STAGE, BattleScript_CantRaiseMultipleStats
+BattleScript_MeditateDoMoveAnim::
+	attackanimation
+	waitanimation
+BattleScript_MeditateStatRaise::
+	setstatchanger STAT_ATK, 1, FALSE
+	statbuffchange BS_ATTACKER, STAT_CHANGE_ALLOW_PTR, BattleScript_MeditateTrySpAtk, BIT_SPATK | BIT_ACC
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_CHANGE, BattleScript_MeditateTrySpAtk
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_MeditateTrySpAtk::
+	setstatchanger STAT_SPATK, 1, FALSE
+	statbuffchange BS_ATTACKER, STAT_CHANGE_ALLOW_PTR, BattleScript_MeditateEnd, BIT_ACC
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_CHANGE, BattleScript_MeditateTryAcc
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_MeditateTryAcc::
+	setstatchanger STAT_ACC, 1, FALSE
+	statbuffchange BS_ATTACKER, STAT_CHANGE_ALLOW_PTR, BattleScript_MeditateEnd
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_CHANGE, BattleScript_MeditateEnd
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_MeditateEnd::
+	goto BattleScript_MoveEnd
+
 BattleScript_CantRaiseMultipleStats::
 	pause B_WAIT_TIME_SHORT
 	setmoveresultflags MOVE_RESULT_FAILED

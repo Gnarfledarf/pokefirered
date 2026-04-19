@@ -1548,6 +1548,20 @@ static s32 AI_CheckBadMove(enum BattlerId battlerAtk, enum BattlerId battlerDef,
             ADJUST_SCORE(-10);
         }
         break;
+    case EFFECT_MEDITATE:
+        if (aiData->abilities[battlerAtk] != ABILITY_CONTRARY)
+        {
+            if (gBattleMons[battlerAtk].statStages[STAT_ATK] >= MAX_STAT_STAGE
+              && gBattleMons[battlerAtk].statStages[STAT_SPATK] >= MAX_STAT_STAGE
+              && (gBattleMons[battlerAtk].statStages[STAT_ACC] >= MAX_STAT_STAGE || !HasDamagingMove(battlerAtk)))
+                ADJUST_SCORE(-10);
+            break;
+        }
+        else
+        {
+            ADJUST_SCORE(-10);
+        }
+        break;
     case EFFECT_CHARGE:
         if (gBattleMons[battlerAtk].volatiles.chargeTimer > 0)
             ADJUST_SCORE(-20);

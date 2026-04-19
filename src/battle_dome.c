@@ -4089,6 +4089,7 @@ static bool32 IsDomeComboMove(enum Move move)
     case EFFECT_CHARGE:
     case EFFECT_BULK_UP:
     case EFFECT_ATTACK_ACCURACY_UP:
+    case EFFECT_MEDITATE:
     case EFFECT_FILLET_AWAY:
     // Others
     case EFFECT_FOCUS_ENERGY:

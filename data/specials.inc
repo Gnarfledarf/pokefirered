@@ -501,4 +501,5 @@ gSpecials::
 	def_special HasMovesToRelearn
 	def_special CanTeachMoveBoxMon
 	def_special HeadbuttWildEncounter
+	def_special GetCurrentBadgeCount
 gSpecialsEnd::

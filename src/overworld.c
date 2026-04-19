@@ -3977,3 +3977,15 @@ static void DestroyItemIconSprite(void)
         DestroySprite(&gSprites[sItemIconSpriteId2]);
     }
 }
+
+u32 GetCurrentBadgeCount(void)
+{
+    u32 badgeCount = 0;
+    for (u32 flag = FLAG_BADGE01_GET; flag < FLAG_BADGE01_GET + NUM_BADGES; flag++)
+    {
+        if (FlagGet(flag))
+            badgeCount++;
+    }
+    gSpecialVar_Result = badgeCount;
+    return badgeCount;
+}

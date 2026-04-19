@@ -8268,8 +8268,8 @@ const struct ItemInfo gItemsInfo[] =
         .price = (I_PRICE >= GEN_7) ? 1000 : 500,
         .holdEffect = HOLD_EFFECT_THICK_CLUB,
         .description = COMPOUND_STRING(
-            "A hold item that  "
-            "raises Cubone\nor "
+            "A hold item that "
+            "raises Cubone's\nor "
             "Marowak's Attack."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_HELD_ITEM,

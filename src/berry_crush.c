@@ -1,34 +1,39 @@
 #include "global.h"
-#include "gflib.h"
 #include "battle_anim.h"
-#include "berry.h"
 #include "berry_crush.h"
 #include "berry_pouch.h"
 #include "berry_powder.h"
+#include "berry.h"
+#include "bg.h"
 #include "decompress.h"
 #include "digit_obj_util.h"
 #include "dynamic_placeholder_text_util.h"
+#include "gpu_regs.h"
 #include "graphics.h"
-#include "item.h"
-#include "item_menu.h"
 #include "item_icon.h"
-#include "link.h"
+#include "item_menu.h"
+#include "item.h"
 #include "link_rfu.h"
+#include "link.h"
 #include "list_menu.h"
+#include "malloc.h"
 #include "math_util.h"
 #include "menu.h"
 #include "minigame_countdown.h"
 #include "overworld.h"
+#include "palette.h"
 #include "random.h"
 #include "save.h"
 #include "scanline_effect.h"
 #include "script.h"
+#include "sound.h"
+#include "string_util.h"
 #include "strings.h"
 #include "task.h"
 #include "text_window.h"
 #include "trig.h"
-#include "constants/songs.h"
 #include "constants/items.h"
+#include "constants/songs.h"
 
 #define MAX_TIME (10 * 60 * 60) // Timer can go up to 9:59:59
 
@@ -410,16 +415,22 @@ static void ResetCrusherPos(struct BerryCrushGame *game);
 static void HideTimer(struct BerryCrushGame_Gfx *gfx);
 static void SpriteCB_DropBerryIntoCrusher(struct Sprite *sprite);
 
-static const u8 sBitTable[] = {
-    1 << 0,
-    1 << 1,
-    1 << 2,
-    1 << 3,
-    1 << 4,
-    1 << 5,
-    1 << 6,
-    1 << 7,
-};
+static const u8 sText_1_ClrBluShdwLtBlu_Dynamic0[] = _("1. {COLOR BLUE}{SHADOW LIGHT_BLUE}{DYNAMIC 0x00}");
+static const u8 sText_1_Dynamic0[] = _("1. {DYNAMIC 0x00}");
+static const u8 sText_TimeColon[] = _("Time:");
+static const u8 sText_PressingSpeed[] = _("Pressing Speed:");
+static const u8 sText_Silkiness[] = _("Silkiness:");
+static const u8 sText_StrVar1[] = _("{STR_VAR_1}");
+static const u8 sText_SpaceMin[] = _("min.");
+static const u8 sText_XDotY2[] = _("{STR_VAR_1}.{STR_VAR_2}");
+static const u8 sText_SpaceSec[] = _("sec.");
+static const u8 sText_XDotY3[] = _("{STR_VAR_1}.{STR_VAR_2}");
+static const u8 sText_TimesPerSec[] = _("Times/sec.");
+static const u8 sText_Var1Percent[] = _("{STR_VAR_1}%");
+static const u8 sText_PressesRankings[] = _("No. of Presses Rankings");
+static const u8 sText_CrushingResults[] = _("Crushing Results");
+static const u8 sText_PressingSpeedRankings[] = _("Pressing-Speed Rankings");
+static const u8 sText_Var1Players[] = _("{STR_VAR_1} PLAYERS");
 
 // Additional A presses are counted depending on the number of players
 // The bonus of 5 is unobtainable
@@ -444,15 +455,15 @@ const u8 sVibrationData[MAX_RFU_PLAYERS][4] = {
 };
 
 static const u8 *const sMessages[] = {
-    [MSG_PICK_BERRY]   = gText_BerryCrush_AreYouReady,
-    [MSG_WAIT_PICK]    = gText_BerryCrush_WaitForOthersToChooseBerry,
-    [MSG_POWDER]       = gText_BerryCrush_GainedXUnitsOfPowder,
-    [MSG_SAVING]       = gText_BerryCrush_RecordingGameResults,
-    [MSG_PLAY_AGAIN]   = gText_BerryCrush_WantToPlayAgain,
-    [MSG_NO_BERRIES]   = gText_BerryCrush_NoBerries,
-    [MSG_DROPPED]      = gText_BerryCrush_MemberDroppedOut,
-    [MSG_TIMES_UP]     = gText_BerryCrush_TimeUp,
-    [MSG_COMM_STANDBY] = gText_BerryCrush_CommunicationStandby
+    [MSG_PICK_BERRY]   = COMPOUND_STRING("Are you ready to BERRY-CRUSH?\nPlease pick a BERRY for use.\p"),
+    [MSG_WAIT_PICK]    = COMPOUND_STRING("Please wait while each member\nchooses a BERRY."),
+    [MSG_POWDER]       = COMPOUND_STRING("{PAUSE_MUSIC}{PLAY_BGM MUS_LEVEL_UP}You ended up with {STR_VAR_1} units of\nsilky-smooth BERRY POWDER.{RESUME_MUSIC}\pYour total amount of BERRY POWDER\nis {STR_VAR_2}.\p"),
+    [MSG_SAVING]       = COMPOUND_STRING("Recording your game results in the\nsave file.\nPlease wait."),
+    [MSG_PLAY_AGAIN]   = COMPOUND_STRING("Want to play BERRY CRUSH again?"),
+    [MSG_NO_BERRIES]   = COMPOUND_STRING("You have no BERRIES.\nThe game will be canceled."),
+    [MSG_DROPPED]      = COMPOUND_STRING("A member dropped out.\nThe game will be canceled."),
+    [MSG_TIMES_UP]     = COMPOUND_STRING("Time's up.\pGood BERRY POWDER could not be\nmade…\p"),
+    [MSG_COMM_STANDBY] = gText_CommunicationStandby,
 };
 
 static u32 (*const sBerryCrushCommands[])(struct BerryCrushGame * berryCrushGame, u8 *args) = {
@@ -646,14 +657,14 @@ static const u16 sBerryCrushCorePal[] = INCBIN_U16("graphics/berry_crush/crusher
 static const u16 sBerryCrushImpactAndSparklesPal[] = INCBIN_U16("graphics/berry_crush/impact.gbapal");
 static const u16 sBerryCrushTimerPal[] = INCBIN_U16("graphics/berry_crush/timer_digits.gbapal");
 
-static const u32 sBerryCrushCoreTiles[] = INCBIN_U32("graphics/berry_crush/crusher_base.4bpp.lz");
-static const u32 sBerryCrushImpactTiles[] = INCBIN_U32("graphics/berry_crush/impact.4bpp.lz");
-static const u32 sBerryCrushPowderSparklesTiles[] = INCBIN_U32("graphics/berry_crush/sparkle.4bpp.lz");
-static const u32 sBerryCrushTimerTiles[] = INCBIN_U32("graphics/berry_crush/timer_digits.4bpp.lz");
+static const u32 sBerryCrushCoreTiles[] = INCBIN_U32("graphics/berry_crush/crusher_base.4bpp.smol");
+static const u32 sBerryCrushImpactTiles[] = INCBIN_U32("graphics/berry_crush/impact.4bpp.smol");
+static const u32 sBerryCrushPowderSparklesTiles[] = INCBIN_U32("graphics/berry_crush/sparkle.4bpp.smol");
+static const u32 sBerryCrushTimerTiles[] = INCBIN_U32("graphics/berry_crush/timer_digits.4bpp.smol");
 
-static const u32 sCrusherTop_Tilemap[] = INCBIN_U32("graphics/berry_crush/crusher_top.bin.lz");
-static const u32 sContainerCap_Tilemap[] = INCBIN_U32("graphics/berry_crush/container_cap.bin.lz");
-static const u32 sBg_Tilemap[] = INCBIN_U32("graphics/berry_crush/bg.bin.lz");
+static const u32 sCrusherTop_Tilemap[] = INCBIN_U32("graphics/berry_crush/crusher_top.bin.smolTM");
+static const u32 sContainerCap_Tilemap[] = INCBIN_U32("graphics/berry_crush/container_cap.bin.smolTM");
+static const u32 sBg_Tilemap[] = INCBIN_U32("graphics/berry_crush/bg.bin.smolTM");
 
 // Takes the number of players - 2 and a player id and returns the
 // index into sPlayerCoords where that player should be seated
@@ -929,14 +940,15 @@ static const struct DigitObjUtilTemplate sDigitObjTemplates[] = {
     }
 };
 
-static const u8 *const sBCRankingHeaders[] = {
-    [RESULTS_PAGE_PRESSES]  = gText_SpaceTimes2,
-    [RESULTS_PAGE_RANDOM]   = gText_XDotY,
-    [RESULTS_PAGE_CRUSHING] = gText_StrVar1Berry,
+static const u8 *const sBCRankingHeaders[] =
+{
+    [RESULTS_PAGE_PRESSES]  = COMPOUND_STRING(" times"),
+    [RESULTS_PAGE_RANDOM]   = COMPOUND_STRING("{STR_VAR_1}.{STR_VAR_2}"),
+    [RESULTS_PAGE_CRUSHING] = COMPOUND_STRING("{STR_VAR_1} BERRY"),
 
-    [RESULTS_PAGE_NEATNESS + NUM_RESULTS_PAGES]    = gText_NeatnessRankings,
-    [RESULTS_PAGE_COOPERATIVE + NUM_RESULTS_PAGES] = gText_CooperativeRankings,
-    [RESULTS_PAGE_POWER + NUM_RESULTS_PAGES]       = gText_PressingPowerRankings
+    [RESULTS_PAGE_NEATNESS + NUM_RESULTS_PAGES]    = COMPOUND_STRING("Neatness Rankings"),
+    [RESULTS_PAGE_COOPERATIVE + NUM_RESULTS_PAGES] = COMPOUND_STRING("Cooperative Rankings"),
+    [RESULTS_PAGE_POWER + NUM_RESULTS_PAGES]       = COMPOUND_STRING("Pressing-Power Rankings"),
 };
 
 static struct BerryCrushGame *GetBerryCrushGame(void)
@@ -1148,7 +1160,7 @@ static void RunOrScheduleCommand(u16 command, u8 runMode, u8 *args)
 {
     struct BerryCrushGame * game = GetBerryCrushGame();
 
-    if (command >= NELEMS(sBerryCrushCommands))
+    if (command >= ARRAY_COUNT(sBerryCrushCommands))
         command = CMD_NONE;
     switch (runMode)
     {
@@ -1156,7 +1168,7 @@ static void RunOrScheduleCommand(u16 command, u8 runMode, u8 *args)
         // Call now and set followup to game->nextCmd
         if (command != CMD_NONE)
             sBerryCrushCommands[command](game, args);
-        if (game->nextCmd >= NELEMS(sBerryCrushCommands))
+        if (game->nextCmd >= ARRAY_COUNT(sBerryCrushCommands))
             game->nextCmd = CMD_NONE;
         game->cmdCallback = sBerryCrushCommands[game->nextCmd];
         break;
@@ -1270,7 +1282,7 @@ static u32 Cmd_PrintMessage(struct BerryCrushGame * game, u8 *args)
         CopyWindowToVram(0, COPYWIN_FULL);
         break;
     case 1:
-        if (!IsTextPrinterActive(0))
+        if (!IsTextPrinterActiveOnWindow(0))
         {
             if (keys == 0)
                 ++game->cmdState;
@@ -1566,7 +1578,7 @@ static void HandlePartnerInput(struct BerryCrushGame * game)
 
         if (linkState->pushedAButton)
         {
-            game->localState.playerPressedAFlags |= sBitTable[i];
+            game->localState.playerPressedAFlags |= (1u << i);
             game->players[i].inputState = 1;
             ++game->players[i].numAPresses;
             ++numPlayersPressed;
@@ -2215,7 +2227,7 @@ static u32 Cmd_SaveGame(struct BerryCrushGame * game, u8 *args)
         if (!IsLinkTaskFinished())
             return 0;
         DrawDialogueFrame(0, FALSE);
-        AddTextPrinterParameterized2(0, FONT_NORMAL, gText_SavingDontTurnOffThePower2, 0, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+        AddTextPrinterParameterized2(0, FONT_NORMAL, gText_SavingDontTurnOffThePower, 0, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
         CopyWindowToVram(0, COPYWIN_FULL);
         CreateTask(Task_LinkFullSave, 0);
         break;
@@ -2366,7 +2378,7 @@ static u32 Cmd_StopGame(struct BerryCrushGame * game, u8 *args)
         CopyWindowToVram(0, COPYWIN_FULL);
         break;
     case 1:
-        if (IsTextPrinterActive(0))
+        if (IsTextPrinterActiveOnWindow(0))
             return 0;
         game->gfx.counter = 120;
         break;
@@ -2507,7 +2519,7 @@ static s32 ShowGameDisplay(void)
         break;
     case 3:
         ResetBgsAndClearDma3BusyFlags(FALSE);
-        InitBgsFromTemplates(0, sBgTemplates, NELEMS(sBgTemplates));
+        InitBgsFromTemplates(0, sBgTemplates, ARRAY_COUNT(sBgTemplates));
         SetBgTilemapBuffer(1, game->gfx.bgBuffers[0]);
         SetBgTilemapBuffer(2, game->gfx.bgBuffers[2]);
         SetBgTilemapBuffer(3, game->gfx.bgBuffers[3]);
@@ -2796,8 +2808,8 @@ static void UpdateInputEffects(struct BerryCrushGame * game, struct BerryCrushGa
 
             gfx->impactSprites[i]->invisible = FALSE;
             gfx->impactSprites[i]->animPaused = FALSE;
-            gfx->impactSprites[i]->x2 = sImpactCoords[(flags % (NELEMS(sImpactCoords) + 1)) - 1][0];
-            gfx->impactSprites[i]->y2 = sImpactCoords[(flags % (NELEMS(sImpactCoords) + 1)) - 1][1];
+            gfx->impactSprites[i]->x2 = sImpactCoords[(flags % (ARRAY_COUNT(sImpactCoords) + 1)) - 1][0];
+            gfx->impactSprites[i]->y2 = sImpactCoords[(flags % (ARRAY_COUNT(sImpactCoords) + 1)) - 1][1];
 #undef flags
         }
     }
@@ -2859,7 +2871,7 @@ static bool32 AreEffectsFinished(struct BerryCrushGame * game, struct BerryCrush
             return FALSE;
     }
 
-    for (i = 0; i < NELEMS(gfx->sparkleSprites); i++)
+    for (i = 0; i < ARRAY_COUNT(gfx->sparkleSprites); i++)
     {
         if (!gfx->sparkleSprites[i]->invisible)
             return FALSE;
@@ -2954,9 +2966,9 @@ static void PrintResultsText(struct BerryCrushGame * game, u8 command, u8 x, u8 
             break;
         }
         if (linkPlayerId == game->localId)
-            StringCopy(gStringVar3, gText_1_ClrBluShdwLtBlu_Dynamic0);
+            StringCopy(gStringVar3, sText_1_ClrBluShdwLtBlu_Dynamic0);
         else
-            StringCopy(gStringVar3, gText_1_Dynamic0);
+            StringCopy(gStringVar3, sText_1_Dynamic0);
         gStringVar3[0] = linkIdToPrint + CHAR_1;
         DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, game->players[linkPlayerId].name);
         DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringVar4, gStringVar3);
@@ -2973,37 +2985,37 @@ static void printCrushingResults(struct BerryCrushGame * game)
     u8 y = GetWindowAttribute(game->gfx.resultsWindowId, WINDOW_HEIGHT) * 8 - 42;
 
     FramesToMinSec(&game->gfx, players->time);
-    AddTextPrinterParameterized3(game->gfx.resultsWindowId, FONT_NORMAL, 2, y, sBerryCrushTextColorTable[COLORID_GRAY], 0, gText_TimeColon);
+    AddTextPrinterParameterized3(game->gfx.resultsWindowId, FONT_NORMAL, 2, y, sBerryCrushTextColorTable[COLORID_GRAY], 0, sText_TimeColon);
 
-    x = 190 - (u8)GetStringWidth(FONT_NORMAL, gText_SpaceSec, 0);
-    AddTextPrinterParameterized3(game->gfx.resultsWindowId, FONT_NORMAL, x, y, sBerryCrushTextColorTable[COLORID_GRAY], 0, gText_SpaceSec);
+    x = 190 - (u8)GetStringWidth(FONT_NORMAL, sText_SpaceSec, 0);
+    AddTextPrinterParameterized3(game->gfx.resultsWindowId, FONT_NORMAL, x, y, sBerryCrushTextColorTable[COLORID_GRAY], 0, sText_SpaceSec);
 
     x -= 32;
     ConvertIntToDecimalStringN(gStringVar1, game->gfx.secondsInt, STR_CONV_MODE_LEADING_ZEROS, 2);
     ConvertIntToDecimalStringN(gStringVar2, game->gfx.secondsFrac, STR_CONV_MODE_LEADING_ZEROS, 2);
-    StringExpandPlaceholders(gStringVar4, gText_XDotY2);
+    StringExpandPlaceholders(gStringVar4, sText_XDotY2);
     AddTextPrinterParameterized3(game->gfx.resultsWindowId, FONT_NORMAL, x, y, sBerryCrushTextColorTable[COLORID_GRAY], 0, gStringVar4);
 
-    x -= (u8)GetStringWidth(FONT_NORMAL, gText_SpaceMin, 0) + 3;
-    AddTextPrinterParameterized3(game->gfx.resultsWindowId, FONT_NORMAL, x, y, sBerryCrushTextColorTable[COLORID_GRAY], 0, gText_SpaceMin);
+    x -= (u8)GetStringWidth(FONT_NORMAL, sText_SpaceMin, 0) + 3;
+    AddTextPrinterParameterized3(game->gfx.resultsWindowId, FONT_NORMAL, x, y, sBerryCrushTextColorTable[COLORID_GRAY], 0, sText_SpaceMin);
 
     x -= 9;
     ConvertIntToDecimalStringN(gStringVar1, game->gfx.minutes, STR_CONV_MODE_LEADING_ZEROS, 1);
-    StringExpandPlaceholders(gStringVar4, gText_StrVar1);
+    StringExpandPlaceholders(gStringVar4, sText_StrVar1);
     AddTextPrinterParameterized3(game->gfx.resultsWindowId, FONT_NORMAL, x, y, sBerryCrushTextColorTable[COLORID_GRAY], 0, gStringVar4);
 
     y += 14;
-    AddTextPrinterParameterized3(game->gfx.resultsWindowId, FONT_NORMAL, 2, y, sBerryCrushTextColorTable[COLORID_GRAY], 0, gText_PressingSpeed);
+    AddTextPrinterParameterized3(game->gfx.resultsWindowId, FONT_NORMAL, 2, y, sBerryCrushTextColorTable[COLORID_GRAY], 0, sText_PressingSpeed);
 
-    x = 190 - (u8)GetStringWidth(FONT_NORMAL, gText_TimesPerSec, 0);
-    AddTextPrinterParameterized3(game->gfx.resultsWindowId, FONT_NORMAL_COPY_2, x, y, sBerryCrushTextColorTable[COLORID_GRAY], 0, gText_TimesPerSec);
+    x = 190 - (u8)GetStringWidth(FONT_NORMAL, sText_TimesPerSec, 0);
+    AddTextPrinterParameterized3(game->gfx.resultsWindowId, FONT_NORMAL_COPY_2, x, y, sBerryCrushTextColorTable[COLORID_GRAY], 0, sText_TimesPerSec);
 
     for (i = 0; i < 8; ++i)
         if (((u8)game->pressingSpeed >> (7 - i)) & 1)
             score += *(i + sPressingSpeedConversionTable); // It's accessed in a different way here for unknown reason
     ConvertIntToDecimalStringN(gStringVar1, game->pressingSpeed >> 8, STR_CONV_MODE_RIGHT_ALIGN, 3);
     ConvertIntToDecimalStringN(gStringVar2, score / 1000000, STR_CONV_MODE_LEADING_ZEROS, 2);
-    StringExpandPlaceholders(gStringVar4, gText_XDotY3);
+    StringExpandPlaceholders(gStringVar4, sText_XDotY3);
     x -= 38;
     if (game->newRecord)
         AddTextPrinterParameterized3(game->gfx.resultsWindowId, FONT_NORMAL, x, y, sBerryCrushTextColorTable[COLORID_RED], 0, gStringVar4);
@@ -3011,10 +3023,10 @@ static void printCrushingResults(struct BerryCrushGame * game)
         AddTextPrinterParameterized3(game->gfx.resultsWindowId, FONT_NORMAL, x, y, sBerryCrushTextColorTable[COLORID_GRAY], 0, gStringVar4);
 
     y += 14;
-    AddTextPrinterParameterized3(game->gfx.resultsWindowId, FONT_NORMAL, 2, y, sBerryCrushTextColorTable[COLORID_GRAY], 0, gText_Silkiness);
+    AddTextPrinterParameterized3(game->gfx.resultsWindowId, FONT_NORMAL, 2, y, sBerryCrushTextColorTable[COLORID_GRAY], 0, sText_Silkiness);
 
     ConvertIntToDecimalStringN(gStringVar1, players->silkiness, STR_CONV_MODE_RIGHT_ALIGN, 3);
-    StringExpandPlaceholders(gStringVar4, gText_Var1Percent);
+    StringExpandPlaceholders(gStringVar4, sText_Var1Percent);
     x = 190 - (u8)GetStringWidth(FONT_NORMAL, gStringVar4, 0);
     AddTextPrinterParameterized3(game->gfx.resultsWindowId, FONT_NORMAL, x, y, sBerryCrushTextColorTable[COLORID_GRAY], 0, gStringVar4);
 }
@@ -3050,7 +3062,7 @@ static bool32 OpenResultsWindow(struct BerryCrushGame * game, struct BerryCrushG
         switch (game->gameState)
         {
         case STATE_RESULTS_PRESSES:
-            PrintTextCentered(spriteManager->resultsWindowId, 22, COLORID_BLUE, gText_PressesRankings);
+            PrintTextCentered(spriteManager->resultsWindowId, 22, COLORID_BLUE, sText_PressesRankings);
             PrintResultsText(game, RESULTS_PAGE_PRESSES, 0xB0, 8 * sResultsWindowHeights[0][playerCountMinus2] - game->playerCount * 14);
             spriteManager->resultsState = 5;
             return FALSE;
@@ -3060,7 +3072,7 @@ static bool32 OpenResultsWindow(struct BerryCrushGame * game, struct BerryCrushG
             spriteManager->resultsState = 5;
             return FALSE;
         case STATE_RESULTS_CRUSHING:
-            PrintTextCentered(spriteManager->resultsWindowId, 24, COLORID_BLUE, gText_CrushingResults);
+            PrintTextCentered(spriteManager->resultsWindowId, 24, COLORID_BLUE, sText_CrushingResults);
             PrintResultsText(game, RESULTS_PAGE_CRUSHING, 0xC0, 0x10);
             break;
         }
@@ -3105,7 +3117,7 @@ static void Task_ShowBerryCrushRankings(u8 taskId)
         DrawStdFrameWithCustomTileAndPalette(tWindowId, 0, 0x21D, 13);
         break;
     case 1:
-        xPos = 96 - GetStringWidth(FONT_NORMAL, gText_BerryCrush2, -1) / 2u;
+        xPos = 96 - GetStringWidth(FONT_NORMAL, gText_BerryCrush, -1) / 2u;
         AddTextPrinterParameterized3(
             tWindowId,
             FONT_NORMAL,
@@ -3113,9 +3125,9 @@ static void Task_ShowBerryCrushRankings(u8 taskId)
             2,
             sBerryCrushTextColorTable[COLORID_BLUE],
             0,
-            gText_BerryCrush2
+            gText_BerryCrush
         );
-        xPos = 96 - GetStringWidth(FONT_NORMAL, gText_PressingSpeedRankings, -1) / 2u;
+        xPos = 96 - GetStringWidth(FONT_NORMAL, sText_PressingSpeedRankings, -1) / 2u;
         AddTextPrinterParameterized3(
             tWindowId,
             FONT_NORMAL,
@@ -3123,13 +3135,13 @@ static void Task_ShowBerryCrushRankings(u8 taskId)
             18,
             sBerryCrushTextColorTable[COLORID_BLUE],
             0,
-            gText_PressingSpeedRankings
+            sText_PressingSpeedRankings
         );
         yPos = 42;
         for (i = 0; i < 4; ++i)
         {
             ConvertIntToDecimalStringN(gStringVar1, i + 2, STR_CONV_MODE_LEFT_ALIGN, 1);
-            StringExpandPlaceholders(gStringVar4, gText_Var1Players);
+            StringExpandPlaceholders(gStringVar4, sText_Var1Players);
             AddTextPrinterParameterized3(
                 tWindowId,
                 FONT_NORMAL,
@@ -3146,9 +3158,9 @@ static void Task_ShowBerryCrushRankings(u8 taskId)
             }
             ConvertIntToDecimalStringN(gStringVar1, (u16)tPressingSpeeds(i) >> 8, STR_CONV_MODE_RIGHT_ALIGN, 3);
             ConvertIntToDecimalStringN(gStringVar2, score / 1000000, STR_CONV_MODE_LEADING_ZEROS, 2);
-            str = StringExpandPlaceholders(gStringVar4, gText_XDotY3);
+            str = StringExpandPlaceholders(gStringVar4, sText_XDotY3);
             *str++ = CHAR_SPACE;
-            StringCopy(str, gText_TimesPerSec);
+            StringCopy(str, sText_TimesPerSec);
             xPos = 192 - (u8)GetStringWidth(FONT_NORMAL_COPY_2, gStringVar4, 0);
             AddTextPrinterParameterized3(
                 tWindowId,
@@ -3294,7 +3306,7 @@ static void CreateGameSprites(struct BerryCrushGame * game)
     game->vibration = 0;
     gSpriteCoordOffsetX = 0;
     gSpriteCoordOffsetY = CRUSHER_START_Y;
-    for (i = 0; i < NELEMS(sSpriteSheets) - 1; ++i)
+    for (i = 0; i < ARRAY_COUNT(sSpriteSheets) - 1; ++i)
         LoadCompressedSpriteSheet(&sSpriteSheets[i]);
     LoadSpritePalettes(sSpritePals);
 
@@ -3322,7 +3334,7 @@ static void CreateGameSprites(struct BerryCrushGame * game)
     }
 
     // Create sprites for sparkle effect
-    for (i = 0; i < NELEMS(game->gfx.sparkleSprites); ++i)
+    for (i = 0; i < ARRAY_COUNT(game->gfx.sparkleSprites); ++i)
     {
         spriteId = CreateSprite(
             &sSpriteTemplate_BerryCrushPowderSparkles,
@@ -3338,7 +3350,7 @@ static void CreateGameSprites(struct BerryCrushGame * game)
     }
 
     // Create sprites for timer
-    for (i = 0; i < NELEMS(game->gfx.timerSprites); ++i)
+    for (i = 0; i < ARRAY_COUNT(game->gfx.timerSprites); ++i)
     {
         spriteId = CreateSprite(
             &sSpriteTemplate_BerryCrushTimer,
@@ -3370,12 +3382,12 @@ static void DestroyGameSprites(struct BerryCrushGame * game)
     FreeSpritePaletteByTag(TAG_TIMER_DIGITS);
     FreeSpritePaletteByTag(PALTAG_EFFECT);
     FreeSpritePaletteByTag(TAG_CRUSHER_BASE);
-    for (; i < NELEMS(game->gfx.timerSprites); ++i)
+    for (; i < ARRAY_COUNT(game->gfx.timerSprites); ++i)
         DestroySprite(game->gfx.timerSprites[i]);
     DigitObjUtil_DeletePrinter(2);
     DigitObjUtil_DeletePrinter(1);
     DigitObjUtil_DeletePrinter(0);
-    for (i = 0; i < NELEMS(game->gfx.sparkleSprites); ++i)
+    for (i = 0; i < ARRAY_COUNT(game->gfx.sparkleSprites); ++i)
         DestroySprite(game->gfx.sparkleSprites[i]);
     for (i = 0; i < game->playerCount; ++i)
         DestroySprite(game->gfx.impactSprites[i]);
@@ -3397,7 +3409,7 @@ static void SpriteCB_Sparkle_End(struct Sprite *sprite)
     u8 r1 = 0;
     SpriteCallback r5 = SpriteCallbackDummy;
 
-    for (; r1 < NELEMS(sprite->data); ++r1)
+    for (; r1 < ARRAY_COUNT(sprite->data); ++r1)
         sprite->data[r1] = 0;
     sprite->x2 = 0;
     sprite->y2 = 0;

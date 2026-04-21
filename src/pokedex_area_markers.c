@@ -1,10 +1,13 @@
 #include "global.h"
-#include "gflib.h"
+#include "bg.h"
 #include "decompress.h"
-#include "task.h"
-#include "wild_pokemon_area.h"
+#include "gpu_regs.h"
+#include "malloc.h"
+#include "palette.h"
 #include "pokedex_area_markers.h"
 #include "pokedex.h"
+#include "task.h"
+#include "wild_pokemon_area.h"
 
 /*
     Controls the red ellipse markers that appear on the pokedex maps to show where a species is found.
@@ -36,7 +39,7 @@ enum {
 };
 
 static const u16 sMarkerPal[] = INCBIN_U16("graphics/pokedex/area_markers/marker.gbapal");
-static const u32 sMarkerTiles[] = INCBIN_U32("graphics/pokedex/area_markers/marker.4bpp.lz");
+static const u32 sMarkerTiles[] = INCBIN_U32("graphics/pokedex/area_markers/marker.4bpp.smol");
 
 static const struct Subsprite sSubsprite_Circular = {
     .size = SPRITE_SIZE(8x8),
@@ -188,7 +191,7 @@ static void Task_ShowAreaMarkers(u8 taskId)
     gSprites[data->spriteId].invisible = FALSE;
 }
 
-u8 CreatePokedexAreaMarkers(u16 species, u16 tilesTag, u8 palIdx, u8 y)
+u8 CreatePokedexAreaMarkers(enum Species species, u16 tilesTag, u8 palIdx, u8 y)
 {
     struct SpriteTemplate spriteTemplate;
     struct CompressedSpriteSheet spriteSheet;

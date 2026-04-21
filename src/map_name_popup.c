@@ -1,15 +1,25 @@
 #include "global.h"
-#include "gflib.h"
-#include "task.h"
+#include "battle_pyramid.h"
 #include "event_data.h"
-#include "text_window.h"
+#include "gpu_regs.h"
+#include "map_name_popup_emerald.h"
+#include "palette.h"
 #include "quest_log.h"
 #include "region_map.h"
+#include "string_util.h"
 #include "strings.h"
-#include "map_name_popup_expansion.h"
+#include "task.h"
+#include "text_window.h"
+#include "text.h"
+#include "window.h"
+#include "constants/battle_frontier.h"
+#include "constants/battle_pyramid.h"
+#include "constants/characters.h"
+#include "constants/layouts.h"
 
 #define FLOOR_ROOFTOP 127
 
+static void ShowMapNamePopupFRLG(bool32 palIntoFadedBuffer);
 static void Task_MapNamePopup(u8 taskId);
 static u16 MapNamePopupCreateWindow(bool32 palIntoFadedBuffer);
 static void MapNamePopupPrintMapNameOnWindow(u16 windowId);
@@ -25,36 +35,60 @@ static u8 *MapNamePopupAppendFloorNum(u8 *dest, s8 flags);
 #define tWindowDestroyed    data[7]
 #define tPalIntoFadedBuffer data[8]
 
+
+static const u8 sText_PyramidFloor1[] = _("PYRAMID FLOOR 1");
+static const u8 sText_PyramidFloor2[] = _("PYRAMID FLOOR 2");
+static const u8 sText_PyramidFloor3[] = _("PYRAMID FLOOR 3");
+static const u8 sText_PyramidFloor4[] = _("PYRAMID FLOOR 4");
+static const u8 sText_PyramidFloor5[] = _("PYRAMID FLOOR 5");
+static const u8 sText_PyramidFloor6[] = _("PYRAMID FLOOR 6");
+static const u8 sText_PyramidFloor7[] = _("PYRAMID FLOOR 7");
+static const u8 sText_Pyramid[] = _("PYRAMID");
+
+static const u8 *const sBattlePyramid_MapHeaderStrings[FRONTIER_STAGES_PER_CHALLENGE + 1] =
+{
+    sText_PyramidFloor1,
+    sText_PyramidFloor2,
+    sText_PyramidFloor3,
+    sText_PyramidFloor4,
+    sText_PyramidFloor5,
+    sText_PyramidFloor6,
+    sText_PyramidFloor7,
+    sText_Pyramid,
+};
+
 void ShowMapNamePopup(bool32 palIntoFadedBuffer)
 {
-    u8 taskId;
     if (QL_IS_PLAYBACK_STATE)
         return;
 
-    if (OW_POPUP_GENERATION >= GEN_4)
-    {
-        ShowMapNamePopupExpansion();
+    if (FlagGet(FLAG_DONT_SHOW_MAP_NAME_POPUP))
         return;
-    }
 
-    if (FlagGet(FLAG_DONT_SHOW_MAP_NAME_POPUP) != TRUE && !QL_IS_PLAYBACK_STATE)
+    if (OW_MAP_POPUP_EMERALD)
+        ShowMapNamePopupEmerald();
+    else
+        ShowMapNamePopupFRLG(palIntoFadedBuffer);
+}
+
+static void ShowMapNamePopupFRLG(bool32 palIntoFadedBuffer)
+{
+    u8 taskId = FindTaskIdByFunc(Task_MapNamePopup);
+
+    if (taskId == TASK_NONE)
     {
-        taskId = FindTaskIdByFunc(Task_MapNamePopup);
-        if (taskId == TASK_NONE)
-        {
-            taskId = CreateTask(Task_MapNamePopup, 90);
-            ChangeBgX(0,  0x0000, 0);
-            ChangeBgY(0, -0x1081, 0);
-            gTasks[taskId].tState = 0;
-            gTasks[taskId].tPos = 0;
-            gTasks[taskId].tPalIntoFadedBuffer = palIntoFadedBuffer;
-        }
-        else
-        {
-            if (gTasks[taskId].tState != 4)
-                gTasks[taskId].tState = 4;
-            gTasks[taskId].tReshow = TRUE;
-        }
+        taskId = CreateTask(Task_MapNamePopup, 90);
+        ChangeBgX(0,  0x0000, 0);
+        ChangeBgY(0, -0x1081, 0);
+        gTasks[taskId].tState = 0;
+        gTasks[taskId].tPos = 0;
+        gTasks[taskId].tPalIntoFadedBuffer = palIntoFadedBuffer;
+    }
+    else
+    {
+        if (gTasks[taskId].tState != 4)
+            gTasks[taskId].tState = 4;
+        gTasks[taskId].tReshow = TRUE;
     }
 }
 
@@ -141,9 +175,9 @@ void HideMapNamePopUpWindow(void)
     u8 taskId;
     s16 *data;
 
-    if (OW_POPUP_GENERATION >= GEN_4)
+    if (OW_MAP_POPUP_EMERALD)
     {
-        HideMapNamePopUpExpansionWindow();
+        HideMapNamePopUpEmeraldWindow();
         return;
     }
 
@@ -208,11 +242,29 @@ static void MapNamePopupPrintMapNameOnWindow(u16 windowId)
     u8 mapName[25];
     u32 maxWidth = 112;
     u32 xpos;
-    u8 *ptr = GetMapName(mapName, gMapHeader.regionMapSectionId, 0);
-    if (gMapHeader.floorNum != 0)
+
+
+    if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
     {
-        ptr = MapNamePopupAppendFloorNum(ptr, gMapHeader.floorNum);
-        maxWidth = gMapHeader.floorNum != FLOOR_ROOFTOP ? 152 : 176;
+        const u8 *ptr;
+        if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_TOP)
+        {
+            ptr = sBattlePyramid_MapHeaderStrings[FRONTIER_STAGES_PER_CHALLENGE];
+        }
+        else
+        {
+            ptr = sBattlePyramid_MapHeaderStrings[gSaveBlock2Ptr->frontier.curChallengeBattleNum];
+        }
+        StringCopy(mapName, ptr);
+    }
+    else
+    {
+        u8 *ptr = GetMapName(mapName, gMapHeader.regionMapSectionId, 0);
+        if (gMapHeader.floorNum != 0)
+        {
+            ptr = MapNamePopupAppendFloorNum(ptr, gMapHeader.floorNum);
+            maxWidth = gMapHeader.floorNum != FLOOR_ROOFTOP ? 152 : 176;
+        }
     }
     xpos = (maxWidth - GetStringWidth(FONT_NORMAL, mapName, -1)) / 2;
     FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
@@ -225,7 +277,7 @@ static u8 *MapNamePopupAppendFloorNum(u8 *dest, s8 floorNum)
         return dest;
     *dest++ = CHAR_SPACE;
     if (floorNum == FLOOR_ROOFTOP)
-        return StringCopy(dest, gText_Rooftop2);
+        return StringCopy(dest, gText_Rooftop);
     if (floorNum < 0)
     {
         *dest++ = CHAR_B;

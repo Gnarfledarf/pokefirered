@@ -1,14 +1,15 @@
 #include "global.h"
 #include "field_message_box.h"
-#include "gflib.h"
 #include "menu.h"
 #include "quest_log.h"
 #include "script.h"
+#include "string_util.h"
 #include "text_window.h"
 
 static EWRAM_DATA u8 sMessageBoxType = 0;
 
 static void ExpandStringAndStartDrawFieldMessageBox(const u8 *str);
+static void StartDrawFieldMessage(void);
 
 void InitFieldMessageBox(void)
 {
@@ -79,9 +80,26 @@ bool8 ShowFieldAutoScrollMessage(const u8 *str)
     return TRUE;
 }
 
+// Same as ShowFieldMessage, but instead of accepting a
+// string arg it just prints whats already in gStringVar4
+bool8 ShowFieldMessageFromBuffer(void)
+{
+    if (sMessageBoxType != FIELD_MESSAGE_BOX_HIDDEN)
+        return FALSE;
+    sMessageBoxType = FIELD_MESSAGE_BOX_NORMAL;
+    StartDrawFieldMessage();
+    return TRUE;
+}
+
 static void ExpandStringAndStartDrawFieldMessageBox(const u8 *str)
 {
     StringExpandPlaceholders(gStringVar4, str);
+    AddTextPrinterForMessage(TRUE);
+    CreateTask_DrawFieldMessageBox();
+}
+
+static void StartDrawFieldMessage(void)
+{
     AddTextPrinterForMessage(TRUE);
     CreateTask_DrawFieldMessageBox();
 }

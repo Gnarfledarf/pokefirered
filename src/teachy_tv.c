@@ -1,33 +1,37 @@
 #include "global.h"
+#include "battle_controllers.h"
 #include "battle_main.h"
-#include "task.h"
-#include "gflib.h"
-#include "menu_helpers.h"
-#include "menu.h"
-#include "scanline_effect.h"
-#include "decompress.h"
-#include "field_effect.h"
-#include "list_menu.h"
-#include "item_menu.h"
-#include "item.h"
-#include "event_object_movement.h"
-#include "random.h"
-#include "constants/songs.h"
-#include "constants/items.h"
-#include "event_data.h"
-#include "load_save.h"
 #include "battle_transition.h"
 #include "battle.h"
-#include "battle_controllers.h"
-#include "global.fieldmap.h"
-#include "teachy_tv.h"
-#include "help_system.h"
-#include "overworld.h"
-#include "graphics.h"
+#include "bg.h"
+#include "decompress.h"
+#include "event_data.h"
+#include "event_object_movement.h"
+#include "field_effect.h"
 #include "fieldmap.h"
+#include "global.fieldmap.h"
+#include "gpu_regs.h"
+#include "graphics.h"
+#include "help_system.h"
+#include "item_menu.h"
+#include "item.h"
+#include "list_menu.h"
+#include "load_save.h"
+#include "malloc.h"
+#include "menu_helpers.h"
+#include "menu.h"
+#include "overworld.h"
+#include "palette.h"
+#include "random.h"
+#include "scanline_effect.h"
+#include "sound.h"
 #include "strings.h"
+#include "task.h"
+#include "teachy_tv.h"
 #include "constants/event_objects.h"
 #include "constants/field_effects.h"
+#include "constants/items.h"
+#include "constants/songs.h"
 
 struct TeachyTvCtrlBlk
 {
@@ -103,7 +107,9 @@ static void TeachyTvComputeSingleMapTileBlockFromTilesetAndMetaTiles(u8 *blockBu
 static u16 TeachyTvComputePalIndexArrayEntryByMetaTile(u8 *palIndexArrayBuf, u16 metaTile);
 static void TeachyTvLoadMapPalette(const struct MapLayout * mStruct, const u8 *palIndexArray);
 
-static const struct BgTemplate sBgTemplates[] = 
+#include "data/text/teachy_tv.h"
+
+static const struct BgTemplate sBgTemplates[] =
 {
     {
         .bg = 0,
@@ -143,7 +149,7 @@ static const struct BgTemplate sBgTemplates[] =
     },
 };
 
-static const struct WindowTemplate sWindowTemplates[] = 
+static const struct WindowTemplate sWindowTemplates[] =
 {
     {
         .bg = 1,
@@ -166,64 +172,64 @@ static const struct WindowTemplate sWindowTemplates[] =
     DUMMY_WIN_TEMPLATE,
 };
 
-static const struct ListMenuItem sListMenuItems[] = 
+static const struct ListMenuItem sListMenuItems[] =
 {
     {
-        .name = gTeachyTvString_TeachBattle,
+        .name = sTeachyTvString_TeachBattle,
         .id = TTVSCR_BATTLE
     },
     {
-        .name = gTeachyTvString_StatusProblems,
+        .name = sTeachyTvString_StatusProblems,
         .id = TTVSCR_STATUS
     },
     {
-        .name = gTeachyTvString_TypeMatchups,
+        .name = sTeachyTvString_TypeMatchups,
         .id = TTVSCR_MATCHUPS
     },
     {
-        .name = gTeachyTvString_CatchPkmn,
+        .name = sTeachyTvString_CatchPkmn,
         .id = TTVSCR_CATCHING
     },
     {
-        .name = gTeachyTvString_AboutTMs,
+        .name = COMPOUND_STRING("Teach me about TMs."),
         .id = TTVSCR_TMS
     },
     {
-        .name = gTeachyTvString_RegisterItem,
+        .name = COMPOUND_STRING("How do I register an item?"),
         .id = TTVSCR_REGISTER
     },
 
     {
-        .name = gTeachyTvString_Cancel,
+        .name = gText_Cancel,
         .id = -2
     },
 };
 
-static const struct ListMenuItem sListMenuItems_NoTMCase[] = 
+static const struct ListMenuItem sListMenuItems_NoTMCase[] =
 {
     {
-        .name = gTeachyTvString_TeachBattle,
+        .name = sTeachyTvString_TeachBattle,
         .id = TTVSCR_BATTLE
     },
     {
-        .name = gTeachyTvString_StatusProblems,
+        .name = sTeachyTvString_StatusProblems,
         .id = TTVSCR_STATUS
     },
     {
-        .name = gTeachyTvString_TypeMatchups,
+        .name = sTeachyTvString_TypeMatchups,
         .id = TTVSCR_MATCHUPS
     },
     {
-        .name = gTeachyTvString_CatchPkmn,
+        .name = sTeachyTvString_CatchPkmn,
         .id = TTVSCR_CATCHING
     },
     {
-        .name = gTeachyTvString_Cancel,
+        .name = gText_Cancel,
         .id = -2
     },
 };
 
-static const struct ListMenuTemplate sListMenuTemplate = 
+static const struct ListMenuTemplate sListMenuTemplate =
 {
     .items = sListMenuItems,
     .moveCursorFunc = NULL,
@@ -245,7 +251,7 @@ static const struct ListMenuTemplate sListMenuTemplate =
     .cursorKind = 0x0,
 };
 
-static const struct ScrollArrowsTemplate sScrollIndicatorArrowPair = 
+static const struct ScrollArrowsTemplate sScrollIndicatorArrowPair =
 {
     .firstArrowType = 0x2,
     .firstX = 0x78,
@@ -260,7 +266,7 @@ static const struct ScrollArrowsTemplate sScrollIndicatorArrowPair =
     .palNum = 0x0,
 };
 
-static const u8 sWhereToReturnToFromBattle[] = 
+static const u8 sWhereToReturnToFromBattle[] =
 {
     12,
     12,
@@ -270,7 +276,7 @@ static const u8 sWhereToReturnToFromBattle[] =
      9
 };
 
-static void (* const sBattleScript[])(u8) = 
+static void (* const sBattleScript[])(u8) =
 {
     TTVcmd_TransitionRenderBg2TeachyTvGraphicInitNpcPos,
     TTVcmd_ClearBg2TeachyTvGraphic,
@@ -293,7 +299,7 @@ static void (* const sBattleScript[])(u8) =
     TTVcmd_End,
 };
 
-static void (* const sStatusScript[])(u8) = 
+static void (* const sStatusScript[])(u8) =
 {
     TTVcmd_TransitionRenderBg2TeachyTvGraphicInitNpcPos,
     TTVcmd_ClearBg2TeachyTvGraphic,
@@ -316,7 +322,7 @@ static void (* const sStatusScript[])(u8) =
     TTVcmd_End,
 };
 
-static void (* const sMatchupsScript[])(u8) = 
+static void (* const sMatchupsScript[])(u8) =
 {
     TTVcmd_TransitionRenderBg2TeachyTvGraphicInitNpcPos,
     TTVcmd_ClearBg2TeachyTvGraphic,
@@ -339,7 +345,7 @@ static void (* const sMatchupsScript[])(u8) =
     TTVcmd_End,
 };
 
-static void (* const sCatchingScript[])(u8) = 
+static void (* const sCatchingScript[])(u8) =
 {
     TTVcmd_TransitionRenderBg2TeachyTvGraphicInitNpcPos,
     TTVcmd_ClearBg2TeachyTvGraphic,
@@ -362,7 +368,7 @@ static void (* const sCatchingScript[])(u8) =
     TTVcmd_End,
 };
 
-static void (* const sTMsScript[])(u8) = 
+static void (* const sTMsScript[])(u8) =
 {
     TTVcmd_TransitionRenderBg2TeachyTvGraphicInitNpcPos,
     TTVcmd_ClearBg2TeachyTvGraphic,
@@ -382,7 +388,7 @@ static void (* const sTMsScript[])(u8) =
     TTVcmd_End,
 };
 
-static void (* const sRegisterKeyItemScript[])(u8) = 
+static void (* const sRegisterKeyItemScript[])(u8) =
 {
     TTVcmd_TransitionRenderBg2TeachyTvGraphicInitNpcPos,
     TTVcmd_ClearBg2TeachyTvGraphic,
@@ -790,13 +796,13 @@ static void TTVcmd_NpcMoveAndSetupTextPrinter(u8 taskId)
         if (spriteAddr->x2 == 0x78)
         {
             StartSpriteAnim(&gSprites[data[1]], 0);
-            TeachyTvInitTextPrinter(gTeachyTvText_PokedudeSaysHello);
+            TeachyTvInitTextPrinter(sTeachyTvText_PokedudeSaysHello);
             data[2] = 0;
             ++data[3];
         }
         else
             ++spriteAddr->x2;
-    }   
+    }
 }
 
 static void TTVcmd_IdleIfTextPrinterIsActive(u8 taskId)
@@ -840,12 +846,12 @@ static void TTVcmd_TextPrinterSwitchStringByOptionChosen(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
     static const u8 *const texts[] = {
-        gTeachyTvText_BattleScript1,
-        gTeachyTvText_StatusScript1,
-        gTeachyTvText_MatchupsScript1,
-        gTeachyTvText_CatchingScript1,
-        gTeachyTvText_TMsScript1,
-        gTeachyTvText_RegisterScript1,
+        sTeachyTvText_BattleScript1,
+        sTeachyTvText_StatusScript1,
+        sTeachyTvText_MatchupsScript1,
+        sTeachyTvText_CatchingScript1,
+        sTeachyTvText_TMsScript1,
+        sTeachyTvText_RegisterScript1,
     };
     TeachyTvInitTextPrinter(texts[sStaticResources.whichScript]);
     ++data[3];
@@ -856,24 +862,24 @@ static void TTVcmd_TextPrinterSwitchStringByOptionChosen2(u8 taskId)
     s16 *data = gTasks[taskId].data;
     static const u8 *const texts[] =
     {
-        gTeachyTvText_BattleScript2,
-        gTeachyTvText_StatusScript2,
-        gTeachyTvText_MatchupsScript2,
-        gTeachyTvText_CatchingScript2,
-        gTeachyTvText_TMsScript2,
-        gTeachyTvText_RegisterScript2,
+        sTeachyTvText_BattleScript2,
+        sTeachyTvText_StatusScript2,
+        sTeachyTvText_MatchupsScript2,
+        sTeachyTvText_CatchingScript2,
+        sTeachyTvText_TMsScript2,
+        sTeachyTvText_RegisterScript2,
     };
     TeachyTvInitTextPrinter(texts[sStaticResources.whichScript]);
     ++data[3];
 }
 
-static const u16 sBg1EndGraphic[] = 
+static const u16 sBg1EndGraphic[] =
 {
     0xD1, 0xD2, 0xD3, 0xD4, 0xD5, 0xD6, 0xD7, 0xD8,
     0xE1, 0xE2, 0xE3, 0xE4, 0xE5, 0xE6, 0xE7, 0xE8,
 };
 
-static const struct Subsprite sSubspriteArray[] = 
+static const struct Subsprite sSubspriteArray[] =
 {
     {
         .x = -0x8,
@@ -893,7 +899,7 @@ static const struct Subsprite sSubspriteArray[] =
     },
 };
 
-static const struct SubspriteTable sSubspriteTableArray[] = 
+static const struct SubspriteTable sSubspriteTableArray[] =
 {
     {
         .subspriteCount = 0,
@@ -905,7 +911,7 @@ static const struct SubspriteTable sSubspriteTableArray[] =
     },
 };
 
-static const u8 sGrassAnimArray[] = 
+static const u8 sGrassAnimArray[] =
 {
     0, 0, 1, 1, 1, 1, 1, 1,
     1, 1, 1, 1, 1, 1, 0, 0,

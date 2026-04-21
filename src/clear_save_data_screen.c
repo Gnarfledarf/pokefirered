@@ -1,7 +1,11 @@
 #include "global.h"
-#include "gflib.h"
+#include "bg.h"
+#include "gpu_regs.h"
+#include "malloc.h"
 #include "menu.h"
+#include "palette.h"
 #include "save.h"
+#include "sound.h"
 #include "strings.h"
 #include "task.h"
 #include "text_window.h"
@@ -12,6 +16,9 @@ struct ClearSaveDataStruct {
     u8 unk1;
     u8 unk2;
 };
+
+static const u8 sText_ClearAllSaveData[] = _("Clear all save data areas?");
+static const u8 sText_ClearingData[] = _("Clearing data‥\nPlease wait.");
 
 static EWRAM_DATA struct ClearSaveDataStruct * sClearSaveDataState = NULL;
 
@@ -106,7 +113,7 @@ static void Task_DrawClearSaveDataScreen(u8 taskId)
         break;
     case 4:
         DrawStdFrameWithCustomTileAndPalette(1, TRUE, 0x001, 15);
-        AddTextPrinterParameterized4(1, FONT_NORMAL, 0, 3, 1, 1, sTextColor, 0, gText_ClearAllSaveData);
+        AddTextPrinterParameterized4(1, FONT_NORMAL, 0, 3, 1, 1, sTextColor, 0, sText_ClearAllSaveData);
         CopyWindowToVram(1, COPYWIN_GFX);
         break;
     case 5:
@@ -138,7 +145,7 @@ static void Task_HandleYesNoMenu(u8 taskId)
         case 0:
             PlaySE(SE_SELECT);
             FillWindowPixelBuffer(1, PIXEL_FILL(1));
-            AddTextPrinterParameterized4(1, FONT_NORMAL, 0, 3, 1, 1, sTextColor, 0, gText_ClearingData);
+            AddTextPrinterParameterized4(1, FONT_NORMAL, 0, 3, 1, 1, sTextColor, 0, sText_ClearingData);
             CopyWindowToVram(1, COPYWIN_FULL);
             ClearSaveData();
             break;
@@ -192,7 +199,7 @@ static void SaveClearScreen_GpuInit(void)
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
     SetGpuReg(REG_OFFSET_BLDY, 0);
     ResetBgsAndClearDma3BusyFlags(FALSE);
-    InitBgsFromTemplates(0, sBgTemplates, NELEMS(sBgTemplates));
+    InitBgsFromTemplates(0, sBgTemplates, ARRAY_COUNT(sBgTemplates));
     ChangeBgX(0, 0, 0);
     ChangeBgY(0, 0, 0);
     ChangeBgX(1, 0, 0);

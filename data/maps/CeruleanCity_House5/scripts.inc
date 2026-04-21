@@ -35,8 +35,8 @@ CeruleanCity_House5_EventScript_AskToExchangePowder::
 CeruleanCity_House5_EventScript_ChooseExchangeItem::
 	message CeruleanCity_House5_Text_ExchangeWithWhat
 	waitmessage
-	setvar VAR_0x8004, LISTMENU_BERRY_POWDER
-	special ListMenu
+	setvar VAR_0x8004, SCROLL_MULTI_BERRY_POWDER
+	special ShowScrollableMultichoice
 	waitstate
 	switch VAR_RESULT
 	case 0, CeruleanCity_House5_EventScript_EnergyPowder

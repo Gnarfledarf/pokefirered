@@ -15,14 +15,10 @@
 #define UNUSED __attribute__((unused))
 #define USED __attribute__((used))
 #define KEEP_SECTION __attribute__((section(".text.consts")))
+#define DEPRECATED(msg) __attribute__((deprecated(msg)))
 
 #define ARM_FUNC __attribute__((target("arm")))
-
-#if MODERN
 #define NOINLINE __attribute__((noinline))
-#else
-#define NOINLINE
-#endif
 
 #define ALIGNED(n) __attribute__((aligned(n)))
 #define PACKED __attribute__((packed))

@@ -126,14 +126,12 @@ C_SUBDIR = src
 ASM_SUBDIR = asm
 DATA_SRC_SUBDIR = src/data
 DATA_ASM_SUBDIR = data
-SONG_SUBDIR = sound/songs
 MID_SUBDIR = sound/songs/midi
 TEST_SUBDIR = test
 
 C_BUILDDIR = $(OBJ_DIR)/$(C_SUBDIR)
 ASM_BUILDDIR = $(OBJ_DIR)/$(ASM_SUBDIR)
 DATA_ASM_BUILDDIR = $(OBJ_DIR)/$(DATA_ASM_SUBDIR)
-SONG_BUILDDIR = $(OBJ_DIR)/$(SONG_SUBDIR)
 MID_BUILDDIR = $(OBJ_DIR)/$(MID_SUBDIR)
 TEST_BUILDDIR = $(OBJ_DIR)/$(TEST_SUBDIR)
 
@@ -158,6 +156,9 @@ ifeq ($(RELEASE),1)
 		LTO := 1
 	endif
 endif
+ifeq ($(COMPARE), 1)
+	override CPPFLAGS += -DCOMPARE
+endif
 ARMCC := $(PREFIX)gcc
 PATH_ARMCC := PATH="$(PATH)" $(ARMCC)
 CC1 := $(shell $(PATH_ARMCC) --print-prog-name=cc1) -quiet
@@ -173,15 +174,15 @@ endif
 ifeq ($(ANALYZE),1)
   override CFLAGS += -fanalyzer
 endif
-# Only throw an error for unused elements if its cawtds's repo
+# Only throw an error for unused elements if its RH-Hideout's repo
 ifeq ($(UNUSED_ERROR),0)
-  ifneq ($(GITHUB_REPOSITORY_OWNER),cawtds)
+  ifneq ($(GITHUB_REPOSITORY_OWNER),rh-hideout)
     override CFLAGS += -Wno-error=unused-variable -Wno-error=unused-const-variable -Wno-error=unused-parameter -Wno-error=unused-function -Wno-error=unused-but-set-parameter -Wno-error=unused-but-set-variable -Wno-error=unused-value -Wno-error=unused-local-typedefs
   endif
 endif
 
 ifeq ($(DEPRECATED_ERROR),0)
-  ifneq ($(GITHUB_REPOSITORY_OWNER),cawtds)
+  ifneq ($(GITHUB_REPOSITORY_OWNER),rh-hideout)
     override CFLAGS += -Wno-error=deprecated-declarations
   endif
 endif
@@ -245,8 +246,8 @@ AUTO_GEN_TARGETS += $(DATA_SRC_SUBDIR)/wild_encounters.h
 MISC_TOOL_DIR := $(TOOLS_DIR)/misc
 AUTO_GEN_TARGETS +=  $(INCLUDE_DIRS)/constants/script_commands.h
 
-$(DATA_SRC_SUBDIR)/wild_encounters.h: $(DATA_SRC_SUBDIR)/wild_encounters.json $(WILD_ENCOUNTERS_TOOL_DIR)/wild_encounters_time_season.py $(INCLUDE_DIRS)/config/overworld.h $(INCLUDE_DIRS)/config/dexnav.h
-	python3 $(WILD_ENCOUNTERS_TOOL_DIR)/wild_encounters_time_season.py
+$(DATA_SRC_SUBDIR)/wild_encounters.h: $(DATA_SRC_SUBDIR)/wild_encounters.json $(WILD_ENCOUNTERS_TOOL_DIR)/wild_encounters_to_header.py $(INCLUDE_DIRS)/config/overworld.h $(INCLUDE_DIRS)/config/dexnav.h
+	python3 $(WILD_ENCOUNTERS_TOOL_DIR)/wild_encounters_to_header.py
 
 $(INCLUDE_DIRS)/constants/script_commands.h: $(MISC_TOOL_DIR)/make_scr_cmd_constants.py $(DATA_ASM_SUBDIR)/script_cmd_table.inc
 	python3  $(MISC_TOOL_DIR)/make_scr_cmd_constants.py
@@ -313,19 +314,13 @@ C_ASM_OBJS := $(patsubst $(C_SUBDIR)/%.s,$(C_BUILDDIR)/%.o,$(C_ASM_SRCS))
 ASM_SRCS := $(wildcard $(ASM_SUBDIR)/*.s)
 ASM_OBJS := $(patsubst $(ASM_SUBDIR)/%.s,$(ASM_BUILDDIR)/%.o,$(ASM_SRCS))
 
-# get all the data/*.s files EXCEPT the ones with specific rules
-REGULAR_DATA_ASM_SRCS := $(filter-out $(DATA_ASM_SUBDIR)/maps.s $(DATA_ASM_SUBDIR)/map_events.s, $(wildcard $(DATA_ASM_SUBDIR)/*.s))
-
 DATA_ASM_SRCS := $(wildcard $(DATA_ASM_SUBDIR)/*.s)
 DATA_ASM_OBJS := $(patsubst $(DATA_ASM_SUBDIR)/%.s,$(DATA_ASM_BUILDDIR)/%.o,$(DATA_ASM_SRCS))
-
-SONG_SRCS := $(wildcard $(SONG_SUBDIR)/*.s)
-SONG_OBJS := $(patsubst $(SONG_SUBDIR)/%.s,$(SONG_BUILDDIR)/%.o,$(SONG_SRCS))
 
 MID_SRCS := $(wildcard $(MID_SUBDIR)/*.mid)
 MID_OBJS := $(patsubst $(MID_SUBDIR)/%.mid,$(MID_BUILDDIR)/%.o,$(MID_SRCS))
 
-OBJS     := $(C_OBJS) $(C_ASM_OBJS) $(ASM_OBJS) $(DATA_ASM_OBJS) $(SONG_OBJS) $(MID_OBJS)
+OBJS     := $(C_OBJS) $(C_ASM_OBJS) $(ASM_OBJS) $(DATA_ASM_OBJS) $(MID_OBJS)
 OBJS_REL := $(patsubst $(OBJ_DIR)/%,%,$(OBJS))
 
 SUBDIRS  := $(sort $(dir $(OBJS) $(dir $(TEST_OBJS))))
@@ -387,7 +382,7 @@ clean-assets:
 tidy: tidymodern tidycheck tidydebug tidyrelease
 
 tidymodern:
-	rm -f $(ROM_NAME) $(ELF_NAME) $(MAP_NAME)
+	rm -f poke*.gba poke*.elf poke*.map
 	rm -rf $(OBJ_DIR_NAME)
 
 tidycheck:
@@ -395,7 +390,7 @@ tidycheck:
 	rm -rf $(OBJ_DIR_NAME_TEST)
 
 tidydebug:
-	rm -rf $(DEBUG_OBJ_DIR_NAME)
+	rm -rf $(OBJ_DIR_NAME_DEBUG)
 
 tidyrelease:
 ifeq ($(RELEASE),1)
@@ -460,10 +455,9 @@ $(C_BUILDDIR)/data.o: CFLAGS += -fno-show-column -fno-diagnostics-show-caret
 # Needed for parity with pret
 $(C_BUILDDIR)/graphics.o: override CFLAGS += -Wno-missing-braces
 
-$(TEST_BUILDDIR)/%.o: CFLAGS := -mthumb -mthumb-interwork -O2 -mabi=apcs-gnu -mtune=arm7tdmi -march=armv4t -Wno-pointer-to-int-cast -Werror -Wall -Wno-strict-aliasing -Wno-attribute-alias -Woverride-init
-
 # Dependency rules (for the *.c & *.s sources to .o files)
 # Have to be explicit or else missing files won't be reported.
+$(C_BUILDDIR)/move_relearner.o: $(C_SUBDIR)/move_relearner.c $(DATA_SRC_SUBDIR)/tutor_moves.h
 $(C_BUILDDIR)/pokemon.o: $(C_SUBDIR)/pokemon.c $(DATA_SRC_SUBDIR)/pokemon/teachable_learnsets.h
 
 # As a side effect, they're evaluated immediately instead of when the rule is invoked.
@@ -522,13 +516,13 @@ ifneq ($(NODEP),1)
 endif
 
 $(DATA_ASM_BUILDDIR)/%.o: $(DATA_ASM_SUBDIR)/%.s
-	$(PREPROC) $< charmap.txt | $(CPP) $(CPPFLAGS) $(INCLUDE_SCANINC_ARGS) - | $(PREPROC) -ie $< charmap.txt | $(AS) $(ASFLAGS) -o $@
+	$(PREPROC) -s $< charmap.txt | $(CPP) $(CPPFLAGS) $(INCLUDE_SCANINC_ARGS) - | $(PREPROC) -ie $< charmap.txt | $(AS) $(ASFLAGS) -o $@
 
 $(DATA_ASM_BUILDDIR)/%.d: $(DATA_ASM_SUBDIR)/%.s
 	$(SCANINC) -M $@ $(INCLUDE_SCANINC_ARGS) -I "" $<
 
 ifneq ($(NODEP),1)
--include $(addprefix $(OBJ_DIR)/,$(REGULAR_DATA_ASM_SRCS:.s=.d))
+-include $(addprefix $(OBJ_DIR)/,$(DATA_ASM_SRCS:.s=.d))
 endif
 
 $(OBJ_DIR)/sym_bss.ld: sym_bss.txt
@@ -540,12 +534,12 @@ $(OBJ_DIR)/sym_common.ld: sym_common.txt $(C_OBJS) $(wildcard common_syms/*.txt)
 $(OBJ_DIR)/sym_ewram.ld: sym_ewram.txt
 	$(RAMSCRGEN) ewram_data $< ENGLISH > $@
 
-TEACHABLE_DEPS := $(ALL_LEARNABLES_JSON) $(INCLUDE_DIRS)/constants/tms_hms.h $(INCLUDE_DIRS)/config/pokemon.h  $(DATA_SRC_SUBDIR)/pokemon/special_movesets.json $(INCLUDE_DIRS)/config/pokedex_plus_hgss.h $(LEARNSET_HELPERS_DIR)/make_teachables.py
+TEACHABLE_DEPS := $(ALL_LEARNABLES_JSON) $(INCLUDE_DIRS)/constants/tms_hms.h $(INCLUDE_DIRS)/config/pokemon.h $(DATA_SRC_SUBDIR)/pokemon/special_movesets.json $(INCLUDE_DIRS)/config/pokedex_plus_hgss.h $(LEARNSET_HELPERS_DIR)/make_teachables.py
 
 $(LEARNSET_HELPERS_BUILD_DIR):
 	@mkdir -p $@
 
-$(ALL_LEARNABLES_JSON):  | $(wildcard $(LEARNSET_HELPERS_DATA_DIR)/*.json)
+$(ALL_LEARNABLES_JSON):
 	python3 $(LEARNSET_HELPERS_DIR)/make_learnables.py $(LEARNSET_HELPERS_DATA_DIR) $@
 
 $(ALL_TUTORS_JSON): $(shell find data/ -type f -name '*.inc')  $(LEARNSET_HELPERS_DIR)/make_tutors.py | $(LEARNSET_HELPERS_BUILD_DIR)
@@ -557,8 +551,8 @@ $(ALL_TEACHING_TYPES_JSON): $(wildcard $(DATA_SRC_SUBDIR)/pokemon/species_info/*
 $(DATA_SRC_SUBDIR)/pokemon/teachable_learnsets.h: $(TEACHABLE_DEPS) | $(ALL_TUTORS_JSON) $(ALL_TEACHING_TYPES_JSON)
 	python3 $(LEARNSET_HELPERS_DIR)/make_teachables.py $(LEARNSET_HELPERS_BUILD_DIR)
 
-$(DATA_SRC_SUBDIR)/tutor_moves.h: | $(ALL_TUTORS_JSON)
-	python3 $(LEARNSET_HELPERS_DIR)/make_teachables.py $(LEARNSET_HELPERS_BUILD_DIR)
+$(DATA_SRC_SUBDIR)/tutor_moves.h: $(DATA_SRC_SUBDIR)/pokemon/special_movesets.json | $(ALL_TUTORS_JSON)
+	python3 $(LEARNSET_HELPERS_DIR)/make_teachables.py  --tutors $(LEARNSET_HELPERS_BUILD_DIR)
 
 # Linker script
 LD_SCRIPT := ld_script_modern.ld

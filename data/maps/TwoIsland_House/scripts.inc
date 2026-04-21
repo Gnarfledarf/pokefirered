@@ -53,7 +53,8 @@ TwoIsland_House_EventScript_ChooseMonToTutor::
 	goto_if_ge VAR_0x8004, PARTY_SIZE, TwoIsland_House_EventScript_EndTutorMove
 	special IsSelectedMonEgg
 	goto_if_eq VAR_RESULT, TRUE, TwoIsland_House_EventScript_CantTutorEgg
-	goto_if_eq VAR_0x8005, 0, TwoIsland_House_EventScript_NoMoveToTutorMon
+	special HasMovesToRelearn
+	goto_if_eq VAR_RESULT, 0, TwoIsland_House_EventScript_NoMoveToTutorMon
 	goto TwoIsland_House_EventScript_ChooseMoveToTeach
 	end
 
@@ -86,7 +87,7 @@ TwoIsland_House_EventScript_GiveTinyMushrooms::
 TwoIsland_House_EventScript_ChooseMushroom::
 	message TwoIsland_House_Text_IllNeedMushroomOrTwo
 	waitmessage
-	multichoice 0, 0, MULTICHOICE_MUSHROOMS, TRUE
+	multichoice 0, 0, MULTI_MUSHROOMS, TRUE
 	switch VAR_RESULT
 	case 0, TwoIsland_House_EventScript_GiveTinyMushrooms
 	case 1, TwoIsland_House_EventScript_GiveBigMushroom

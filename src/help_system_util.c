@@ -1,16 +1,22 @@
 #include "global.h"
-#include "gflib.h"
 #include "decompress.h"
-#include "m4a.h"
+#include "dma3.h"
 #include "event_data.h"
+#include "gpu_regs.h"
 #include "help_system.h"
 #include "list_menu.h"
+#include "m4a.h"
+#include "malloc.h"
+#include "sound.h"
 #include "strings.h"
+#include "text.h"
 #include "constants/songs.h"
 
 #define ZERO 0
 
-COMMON_DATA bool8 gHelpSystemEnabled = 0;
+static const u8 sText_ClearTo8[] = _("{CLEAR_TO 8}");
+
+COMMON_DATA enum HelpSystemStatus gHelpSystemStatus = 0;
 
 struct HelpSystemVideoState
 {
@@ -21,12 +27,13 @@ struct HelpSystemVideoState
     /*0x0c*/ u16 savedBg0Hofs;
     /*0x0e*/ u16 savedBg0Vofs;
     /*0x10*/ u16 savedBldCnt;
-    /*0x12*/ u8 savedTextColor[3];
+    /*0x12*/ union TextColor savedTextColor;
     /*0x15*/ u8 state;
 };
 
 #define TILES_BACKUP_HEAP 0x2000
 
+static EWRAM_DATA ALIGNED(4) u8 gDecompressionBuffer[0x4000] = {0};
 static EWRAM_DATA u8 sMapTilesBackup[BG_CHAR_SIZE - TILES_BACKUP_HEAP] = {0};
 static EWRAM_DATA u8 (*sMapTilesBackupHeap)[TILES_BACKUP_HEAP] = NULL;
 EWRAM_DATA u8 gDisableHelpSystemVolumeReduce = 0;
@@ -54,7 +61,10 @@ u8 RunHelpSystemCallback(void)
             return 0;
         if (JOY_NEW(L_BUTTON | R_BUTTON))
         {
-            if (!HelpSystem_IsSinglePlayer() || !gHelpSystemEnabled)
+            if (gHelpSystemStatus == HELP_DISABLED_NO_SOUND)
+                return 0;
+
+            if (!HelpSystem_IsSinglePlayer() || gHelpSystemStatus == HELP_DISABLED)
             {
                 PlaySE(SE_HELP_ERROR);
                 return 0;
@@ -87,7 +97,7 @@ u8 RunHelpSystemCallback(void)
         HS_BufferFillMapWithTile1FF();
         HelpSystem_FillPanel3();
         HelpSystem_FillPanel2();
-        HelpSystem_PrintTextInTopLeftCorner(gString_Help);
+        HelpSystem_PrintTextInTopLeftCorner(gText_Help);
         HS_ShowOrHideWordHELPinTopLeft(1);
         if (HelpSystem_UpdateHasntSeenIntro() == TRUE)
             HelpSystemSubroutine_PrintWelcomeMessage(&gHelpSystemListMenu, gHelpSystemListMenuItems);
@@ -171,11 +181,7 @@ void SaveMapTiles(void)
 
 void SaveMapTextColors(void)
 {
-    SaveTextColors(
-        &sVideoState.savedTextColor[0],
-        &sVideoState.savedTextColor[1],
-        &sVideoState.savedTextColor[2]
-    );
+    sVideoState.savedTextColor = SaveTextColors();
 }
 
 void RestoreCallbacks(void)
@@ -202,11 +208,7 @@ void RestoreMapTiles(void)
 
 void RestoreMapTextColors(void)
 {
-    RestoreTextColors(
-        &sVideoState.savedTextColor[0],
-        &sVideoState.savedTextColor[1],
-        &sVideoState.savedTextColor[2]
-    );
+    RestoreTextColors(sVideoState.savedTextColor);
 }
 
 void CommitTilemap(void)
@@ -433,19 +435,19 @@ void HelpSystemRenderText(u8 fontId, u8 * dest, const u8 * src, u8 x, u8 y, u8 w
                 {
                     if (FlagGet(FLAG_SYS_NOT_SOMEONES_PC) == TRUE)
                     {
-                        if (gString_Bill[i] == EOS)
+                        if (gText_Bill[i] == EOS)
                         {
                             break;
                         }
-                        DecompressAndRenderGlyph(fontId, gString_Bill[i], &srcBlit, &destBlit, dest, x, y, width, height);
+                        DecompressAndRenderGlyph(fontId, gText_Bill[i], &srcBlit, &destBlit, dest, x, y, width, height);
                     }
                     else
                     {
-                        if (gString_Someone[i] == EOS)
+                        if (gText_Someone[i] == EOS)
                         {
                             break;
                         }
-                        DecompressAndRenderGlyph(fontId, gString_Someone[i], &srcBlit, &destBlit, dest, x, y, width, height);
+                        DecompressAndRenderGlyph(fontId, gText_Someone[i], &srcBlit, &destBlit, dest, x, y, width, height);
                     }
                     if (fontId == FONT_SMALL)
                     {
@@ -581,35 +583,70 @@ void DecompressAndRenderGlyph(u8 fontId, u16 glyph, struct Bitmap *srcBlit, stru
 
 void HelpSystem_PrintTextInTopLeftCorner(const u8 * str)
 {
-    GenerateFontHalfRowLookupTable(TEXT_COLOR_WHITE, TEXT_DYNAMIC_COLOR_6, TEXT_COLOR_DARK_GRAY);
+    union TextColor color = {
+        .background = TEXT_DYNAMIC_COLOR_6,
+        .foreground = TEXT_COLOR_WHITE,
+        .shadow = TEXT_COLOR_DARK_GRAY,
+        .accent = TEXT_DYNAMIC_COLOR_6,
+    };
+
+    GenerateFontHalfRowLookupTable(color);
     HelpSystemRenderText(5, gDecompressionBuffer + 0x3D00, str, 6, 2, 7, 2);
 }
 
 void HelpSystem_PrintTextRightAlign_Row52(const u8 * str)
 {
+    union TextColor color = {
+        .background = TEXT_DYNAMIC_COLOR_6,
+        .foreground = TEXT_COLOR_WHITE,
+        .shadow = TEXT_COLOR_DARK_GRAY,
+        .accent = TEXT_DYNAMIC_COLOR_6,
+    };
+
     s32 left = 0x7C - GetStringWidth(FONT_SMALL, str, 0);
-    GenerateFontHalfRowLookupTable(TEXT_COLOR_WHITE, TEXT_DYNAMIC_COLOR_6, TEXT_COLOR_DARK_GRAY);
+    GenerateFontHalfRowLookupTable(color);
     HelpSystemRenderText(0, gDecompressionBuffer + 0x3400, str, left, 2, 16, 2);
 }
 
 void HelpSystem_PrintTextAt(const u8 * str, u8 x, u8 y)
 {
-    GenerateFontHalfRowLookupTable(TEXT_COLOR_WHITE, TEXT_DYNAMIC_COLOR_6, TEXT_COLOR_DARK_GRAY);
-    HelpSystemRenderText(2, gDecompressionBuffer + 0x0000, str, x, y, 26, 16);
+    union TextColor color = {
+        .background = TEXT_DYNAMIC_COLOR_6,
+        .foreground = TEXT_COLOR_WHITE,
+        .shadow = TEXT_COLOR_DARK_GRAY,
+        .accent = TEXT_DYNAMIC_COLOR_6,
+    };
+
+    GenerateFontHalfRowLookupTable(color);
+    HelpSystemRenderText(FONT_NORMAL, gDecompressionBuffer + 0x0000, str, x, y, 26, 16);
 }
 
 void HelpSystem_PrintQuestionAndAnswerPair(const u8 * question, const u8 * answer)
 {
+    union TextColor color = {
+        .background = TEXT_DYNAMIC_COLOR_5,
+        .foreground = TEXT_COLOR_WHITE,
+        .shadow = TEXT_COLOR_DARK_GRAY,
+        .accent = TEXT_DYNAMIC_COLOR_5,
+    };
+
     CpuFill16(0xEEEE, gDecompressionBuffer + 0x0000, 0x3400);
-    GenerateFontHalfRowLookupTable(TEXT_COLOR_WHITE, TEXT_DYNAMIC_COLOR_5, TEXT_COLOR_DARK_GRAY);
+    GenerateFontHalfRowLookupTable(color);
     HelpSystemRenderText(2, gDecompressionBuffer + 0x0000, question, 0, 0, 26, 16);
     HelpSystemRenderText(2, gDecompressionBuffer + 0x09C0, answer, 0, 0, 26, 13);
 }
 
 void HelpSystem_PrintTopicMouseoverDescription(const u8 * str)
 {
+    union TextColor color = {
+        .background = TEXT_COLOR_WHITE,
+        .foreground = TEXT_COLOR_DARK_GRAY,
+        .shadow = TEXT_COLOR_LIGHT_GRAY,
+        .accent = TEXT_COLOR_WHITE,
+    };
+
     CpuFill16(0x1111, gDecompressionBuffer + 0x23C0, 0x1040);
-    GenerateFontHalfRowLookupTable(TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+    GenerateFontHalfRowLookupTable(color);
     HelpSystemRenderText(2, gDecompressionBuffer + 0x23C0, str, 2, 6, 26, 5);
 }
 
@@ -738,7 +775,7 @@ void PlaceListMenuCursor(void)
     u8 glyphHeight = GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT) + 1;
     u8 x = gHelpSystemListMenu.sub.left;
     u8 y = gHelpSystemListMenu.sub.top + glyphHeight * gHelpSystemListMenu.cursorPos;
-    HelpSystem_PrintTextAt(gText_SelectorArrow2, x, y);
+    HelpSystem_PrintTextAt(gText_SelectorArrow, x, y);
 }
 
 void HS_RemoveSelectionCursorAt(u8 i)
@@ -746,7 +783,7 @@ void HS_RemoveSelectionCursorAt(u8 i)
     u8 glyphHeight = GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT) + 1;
     u8 x = gHelpSystemListMenu.sub.left;
     u8 y = gHelpSystemListMenu.sub.top + i * glyphHeight;
-    HelpSystem_PrintTextAt(gString_HelpSystem_ClearTo8, x, y);
+    HelpSystem_PrintTextAt(sText_ClearTo8, x, y);
 }
 
 u8 TryMoveCursor1(u8 dirn)

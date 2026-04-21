@@ -93,8 +93,8 @@ void QL_LoadObjects(const struct QuestLogScene * questLog, const struct ObjectEv
             {
                 gObjectEvents[i].initialCoords.x = templates[j].x + MAP_OFFSET;
                 gObjectEvents[i].initialCoords.y = templates[j].y + MAP_OFFSET;
-                gObjectEvents[i].rangeX = templates[j].movementRangeX;
-                gObjectEvents[i].rangeY = templates[j].movementRangeY;
+                gObjectEvents[i].range.rangeX = templates[j].movementRangeX;
+                gObjectEvents[i].range.rangeY = templates[j].movementRangeY;
             }
         }
 
@@ -136,10 +136,10 @@ void QL_TryStopSurfing(void)
         s16 x, y;
 
         PlayerGetDestCoords(&x, &y);
-        if (!MetatileBehavior_IsSurfable(MapGridGetMetatileBehaviorAt(x, y)) && TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING))
+        if (!MetatileBehavior_IsSurfable(MapGridGetMetatileBehaviorAt(x, y)) && TestPlayerAvatarState(PLAYER_AVATAR_STATE_SURFING))
         {
             struct ObjectEvent * objectEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
-            SetPlayerAvatarTransitionFlags(PLAYER_AVATAR_FLAG_ON_FOOT);
+            SetPlayerAvatarTransitionState(PLAYER_AVATAR_STATE_NORMAL);
             DestroySprite(&gSprites[objectEvent->fieldEffectSpriteId]);
         }
     }

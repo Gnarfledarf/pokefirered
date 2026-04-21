@@ -1,19 +1,23 @@
 #include "global.h"
-#include "gflib.h"
 #include "battle_anim.h"
+#include "bg.h"
 #include "decompress.h"
 #include "digit_obj_util.h"
 #include "dynamic_placeholder_text_util.h"
 #include "event_data.h"
 #include "item.h"
-#include "link.h"
 #include "link_rfu.h"
+#include "link.h"
+#include "malloc.h"
 #include "menu.h"
 #include "minigame_countdown.h"
+#include "palette.h"
 #include "pokemon_jump.h"
 #include "random.h"
 #include "save.h"
 #include "script.h"
+#include "sound.h"
+#include "string_util.h"
 #include "strings.h"
 #include "task.h"
 #include "text_window.h"
@@ -266,7 +270,7 @@ static void InitGame(struct PokemonJump *);
 static void ResetForNewGame(struct PokemonJump *);
 static void InitPlayerAndJumpTypes(void);
 static void ResetPlayersForNewGame(void);
-static s16 GetSpeciesPokemonJumpType(u16 species);
+static s16 GetSpeciesPokemonJumpType(enum Species species);
 static void InitJumpMonInfo(struct PokemonJump_MonInfo *monInfo, struct Pokemon *mon);
 static void CB2_PokemonJump(void);
 static void Task_StartPokemonJump(u8 taskId);
@@ -331,9 +335,9 @@ static void TryUpdateExcellentsRecord(u16);
 static bool32 HasEnoughScoreForPrize(void);
 static u16 GetPrizeData(void);
 static void UnpackPrizeData(u16, u16 *, u16 *);
-static u16 GetPrizeItemId(void);
+static enum Item GetPrizeItemId(void);
 static u16 GetPrizeQuantity(void);
-static u16 GetQuantityLimitedByBag(u16 item, u16 quantity);
+static u16 GetQuantityLimitedByBag(enum Item item, u16 quantity);
 static void SetUpPokeJumpGfxFunc(void (*func)(void));
 static void Task_RunPokeJumpGfxFunc(u8 taskId);
 static void LoadPokeJumpGfx(void);
@@ -373,9 +377,9 @@ static void SetUpPokeJumpGfxFuncById(int);
 static bool32 IsPokeJumpGfxFuncFinished(void);
 static void SetUpResetVineGfx(void);
 static bool32 ResetVineGfx(void);
-static void PrintPrizeMessage(u16, u16);
-static void PrintPrizeFilledBagMessage(u16);
-static void PrintNoRoomForPrizeMessage(u16);
+static void PrintPrizeMessage(enum Item itemId, u16 quantity);
+static void PrintPrizeFilledBagMessage(enum Item itemId);
+static void PrintNoRoomForPrizeMessage(enum Item itemId);
 static bool32 DoPrizeMessageAndFanfare(void);
 static void ClearMessageWindow(void);
 static void SetMonSpriteY(u32 , s16);
@@ -446,8 +450,21 @@ enum {
     ANIM_START_RIGHT,
 };
 
+static const u8 sText_SpacePoints2[] = _(" points");
+static const u8 sText_SpaceTimes3[] = _(" time(s)");
+static const u8 sText_PkmnJumpRecords[] = _("POKéMON JUMP RECORDS");
+static const u8 sText_JumpsInARow[] = _("Jumps in a row:");
+static const u8 sText_BestScore2[] = _("Best score:");
+static const u8 sText_ExcellentsInARow[] = _("EXCELLENTS in a row:");
+static const u8 sText_AwesomeWonF701F700[] = _("Awesome score! You've\nwon {DYNAMIC 01} {DYNAMIC 00}!");
+static const u8 sText_FilledStorageSpace2[] = _("There's no room left now.");
+static const u8 sText_CantHoldMore[] = _("You can't hold any more!");
+static const u8 sText_WantToPlayAgain2[] = _("Want to play again?");
+static const u8 sText_SomeoneDroppedOut2[] = _("Somebody dropped out.\nThe link will be canceled.");
+static const u8 sText_SavingDontTurnOffPower[] = _("SAVING…\nDON'T TURN OFF THE POWER.");
+
 static const u16 s321Start_Static_Pal[] = INCBIN_U16("graphics/link/321start.gbapal");
-static const u32 s321Start_Static_Gfx[] = INCBIN_U32("graphics/link/321start.4bpp.lz");
+static const u32 s321Start_Static_Gfx[] = INCBIN_U32("graphics/link/321start.4bpp.smol");
 
 static const struct CompressedSpriteSheet sSpriteSheet_321Start_Static[] = {
     {s321Start_Static_Gfx, 0xC00, TAG_STATIC_COUNTDOWN},
@@ -811,7 +828,7 @@ static void ResetPlayersForNewGame(void)
     }
 }
 
-static s16 GetSpeciesPokemonJumpType(u16 species)
+static s16 GetSpeciesPokemonJumpType(enum Species species)
 {
     return gSpeciesInfo[SanitizeSpeciesId(species)].pokemonJumpType;
 }
@@ -912,7 +929,7 @@ static void SetLinkTimeInterval(int intervalId)
     {
         // Link data is sent when timer reaches 0.
         // Set timer to 1 and set limit to special
-        // 'stopped' value so timer won't change        
+        // 'stopped' value so timer won't change
         sPokemonJump->linkTimerLimit = LINK_TIMER_STOPPED;
         sPokemonJump->linkTimer = 1;
     }
@@ -2410,7 +2427,7 @@ static void TryUpdateExcellentsRecord(u16 excellentsInRow)
         sPokemonJump->excellentsInRowRecord = excellentsInRow;
 }
 
-static const u16 sPrizeItems[] = {
+static const enum Item sPrizeItems[] = {
     ITEM_LEPPA_BERRY,
     ITEM_LUM_BERRY,
     ITEM_SITRUS_BERRY,
@@ -2443,7 +2460,7 @@ static bool32 HasEnoughScoreForPrize(void)
 
 static u16 GetPrizeData(void)
 {
-    u16 itemId = GetPrizeItemId();
+    enum Item itemId = GetPrizeItemId();
     u16 quantity = GetPrizeQuantity();
     return (quantity << 12) | (itemId & 0xFFF);
 }
@@ -2454,7 +2471,7 @@ static void UnpackPrizeData(u16 data, u16 *itemId, u16 *quantity)
     *itemId = data & 0xFFF;
 }
 
-static u16 GetPrizeItemId(void)
+static enum Item GetPrizeItemId(void)
 {
     u16 index = Random() % ARRAY_COUNT(sPrizeItems);
     return sPrizeItems[index];
@@ -2462,10 +2479,9 @@ static u16 GetPrizeItemId(void)
 
 static u16 GetPrizeQuantity(void)
 {
-    u32 quantity, i;
+    u32 quantity = 0;
 
-    quantity = 0;
-    for (i = 0; i < ARRAY_COUNT(sPrizeQuantityData); i++)
+    for (u32 i = 0; i < ARRAY_COUNT(sPrizeQuantityData); i++)
     {
         if (sPokemonJump->comm.jumpScore >= sPrizeQuantityData[i].score)
             quantity = sPrizeQuantityData[i].quantity;
@@ -2476,7 +2492,7 @@ static u16 GetPrizeQuantity(void)
     return quantity;
 }
 
-static u16 GetQuantityLimitedByBag(u16 item, u16 quantity)
+static u16 GetQuantityLimitedByBag(enum Item item, u16 quantity)
 {
     while (quantity && !CheckBagHasSpace(item, quantity))
         quantity--;
@@ -2504,7 +2520,7 @@ static u8 *GetPokeJumpPlayerName(u8 multiplayerId)
     return sPokemonJump->players[multiplayerId].name;
 }
 
-bool32 IsSpeciesAllowedInPokemonJump(u16 species)
+bool32 IsSpeciesAllowedInPokemonJump(enum Species species)
 {
     return GetSpeciesPokemonJumpType(species) != PKMN_JUMP_TYPE_NONE;
 }
@@ -2517,7 +2533,7 @@ void IsPokemonJumpSpeciesInParty(void)
     {
         if (GetMonData(&gPlayerParty[i], MON_DATA_SANITY_HAS_SPECIES))
         {
-            u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG);
+            enum Species species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG);
             if (IsSpeciesAllowedInPokemonJump(species))
             {
                 gSpecialVar_Result = TRUE;
@@ -2712,16 +2728,16 @@ static void InitPokeJumpGfx(struct PokemonJumpGfx *jumpGfx)
 static const u16 sInterface_Pal[] = INCBIN_U16("graphics/pokemon_jump/interface.gbapal");
 
 static const u16 sBg_Pal[] = INCBIN_U16("graphics/pokemon_jump/bg.gbapal");
-static const u32 sBg_Gfx[] = INCBIN_U32("graphics/pokemon_jump/bg.4bpp.lz");
-static const u32 sBg_Tilemap[] = INCBIN_U32("graphics/pokemon_jump/bg.bin.lz");
+static const u32 sBg_Gfx[] = INCBIN_U32("graphics/pokemon_jump/bg.4bpp.smol");
+static const u32 sBg_Tilemap[] = INCBIN_U32("graphics/pokemon_jump/bg.bin.smolTM");
 
 static const u16 sVenusaur_Pal[] = INCBIN_U16("graphics/pokemon_jump/venusaur.gbapal");
-static const u32 sVenusaur_Gfx[] = INCBIN_U32("graphics/pokemon_jump/venusaur.4bpp.lz");
-static const u32 sVenusaur_Tilemap[] = INCBIN_U32("graphics/pokemon_jump/venusaur.bin.lz");
+static const u32 sVenusaur_Gfx[] = INCBIN_U32("graphics/pokemon_jump/venusaur.4bpp.smol");
+static const u32 sVenusaur_Tilemap[] = INCBIN_U32("graphics/pokemon_jump/venusaur.bin.smolTM");
 
 static const u16 sBonuses_Pal[] = INCBIN_U16("graphics/pokemon_jump/bonuses.gbapal");
-static const u32 sBonuses_Gfx[] = INCBIN_U32("graphics/pokemon_jump/bonuses.4bpp.lz");
-static const u32 sBonuses_Tilemap[] = INCBIN_U32("graphics/pokemon_jump/bonuses.bin.lz");
+static const u32 sBonuses_Gfx[] = INCBIN_U32("graphics/pokemon_jump/bonuses.4bpp.smol");
+static const u32 sBonuses_Tilemap[] = INCBIN_U32("graphics/pokemon_jump/bonuses.bin.smolTM");
 
 static const struct BgTemplate sBgTemplates[] =
 {
@@ -2980,7 +2996,7 @@ static void Msg_WantToPlayAgain(void)
     {
     case 0:
         sPokemonJumpGfx->msgWindowId = AddMessageWindow(1, 8, 20, 2);
-        AddTextPrinterParameterized(sPokemonJumpGfx->msgWindowId, FONT_NORMAL, gText_WantToPlayAgain2, 0, 2, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(sPokemonJumpGfx->msgWindowId, FONT_NORMAL, sText_WantToPlayAgain2, 0, 2, TEXT_SKIP_DRAW, NULL);
         CopyWindowToVram(sPokemonJumpGfx->msgWindowId, COPYWIN_GFX);
         sPokemonJumpGfx->mainState++;
         break;
@@ -3007,7 +3023,7 @@ static void Msg_SavingDontTurnOff(void)
     {
     case 0:
         sPokemonJumpGfx->msgWindowId = AddMessageWindow(2, 7, 26, 4);
-        AddTextPrinterParameterized(sPokemonJumpGfx->msgWindowId, FONT_NORMAL, gText_SavingDontTurnOffPower, 0, 2, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(sPokemonJumpGfx->msgWindowId, FONT_NORMAL, sText_SavingDontTurnOffPower, 0, 2, TEXT_SKIP_DRAW, NULL);
         CopyWindowToVram(sPokemonJumpGfx->msgWindowId, COPYWIN_GFX);
         sPokemonJumpGfx->mainState++;
         break;
@@ -3050,7 +3066,7 @@ static void Msg_SomeoneDroppedOut(void)
     {
     case 0:
         sPokemonJumpGfx->msgWindowId = AddMessageWindow(2, 8, 22, 4);
-        AddTextPrinterParameterized(sPokemonJumpGfx->msgWindowId, FONT_NORMAL, gText_SomeoneDroppedOut2, 0, 2, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(sPokemonJumpGfx->msgWindowId, FONT_NORMAL, sText_SomeoneDroppedOut2, 0, 2, TEXT_SKIP_DRAW, NULL);
         CopyWindowToVram(sPokemonJumpGfx->msgWindowId, COPYWIN_GFX);
         sPokemonJumpGfx->mainState++;
         break;
@@ -3076,7 +3092,7 @@ static void Msg_CommunicationStandby(void)
     {
     case 0:
         sPokemonJumpGfx->msgWindowId = AddMessageWindow(7, 10, 16, 2);
-        AddTextPrinterParameterized(sPokemonJumpGfx->msgWindowId, FONT_NORMAL, gText_CommunicationStandby4, 0, 2, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(sPokemonJumpGfx->msgWindowId, FONT_NORMAL, gText_CommunicationStandby, 0, 2, TEXT_SKIP_DRAW, NULL);
         CopyWindowToVram(sPokemonJumpGfx->msgWindowId, COPYWIN_GFX);
         sPokemonJumpGfx->mainState++;
         break;
@@ -3147,7 +3163,7 @@ static bool32 ResetVineGfx(void)
 
 static const u8 sPluralTxt[] = _("IES");
 
-static void PrintPrizeMessage(u16 itemId, u16 quantity)
+static void PrintPrizeMessage(enum Item itemId, u16 quantity)
 {
     CopyItemName(itemId, sPokemonJumpGfx->itemName);
     ConvertIntToDecimalStringN(sPokemonJumpGfx->itemQuantityStr, quantity, STR_CONV_MODE_LEFT_ALIGN, 1);
@@ -3167,7 +3183,7 @@ static void PrintPrizeMessage(u16 itemId, u16 quantity)
     DynamicPlaceholderTextUtil_Reset();
     DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, sPokemonJumpGfx->itemName);
     DynamicPlaceholderTextUtil_SetPlaceholderPtr(1, sPokemonJumpGfx->itemQuantityStr);
-    DynamicPlaceholderTextUtil_ExpandPlaceholders(sPokemonJumpGfx->prizeMsg, gText_AwesomeWonF701F700);
+    DynamicPlaceholderTextUtil_ExpandPlaceholders(sPokemonJumpGfx->prizeMsg, sText_AwesomeWonF701F700);
     sPokemonJumpGfx->msgWindowId = AddMessageWindow(4, 8, 22, 4);
     AddTextPrinterParameterized(sPokemonJumpGfx->msgWindowId, FONT_NORMAL, sPokemonJumpGfx->prizeMsg, 0, 2, TEXT_SKIP_DRAW, NULL);
     CopyWindowToVram(sPokemonJumpGfx->msgWindowId, COPYWIN_GFX);
@@ -3175,12 +3191,12 @@ static void PrintPrizeMessage(u16 itemId, u16 quantity)
     sPokemonJumpGfx->msgWindowState = 0;
 }
 
-static void PrintPrizeFilledBagMessage(u16 itemId)
+static void PrintPrizeFilledBagMessage(enum Item itemId)
 {
     CopyItemName(itemId, sPokemonJumpGfx->itemName);
     DynamicPlaceholderTextUtil_Reset();
     DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, sPokemonJumpGfx->itemName);
-    DynamicPlaceholderTextUtil_ExpandPlaceholders(sPokemonJumpGfx->prizeMsg, gText_FilledStorageSpace2);
+    DynamicPlaceholderTextUtil_ExpandPlaceholders(sPokemonJumpGfx->prizeMsg, sText_FilledStorageSpace2);
     sPokemonJumpGfx->msgWindowId = AddMessageWindow(4, 8, 22, 4);
     AddTextPrinterParameterized(sPokemonJumpGfx->msgWindowId, FONT_NORMAL, sPokemonJumpGfx->prizeMsg, 0, 2, TEXT_SKIP_DRAW, NULL);
     CopyWindowToVram(sPokemonJumpGfx->msgWindowId, COPYWIN_GFX);
@@ -3188,12 +3204,12 @@ static void PrintPrizeFilledBagMessage(u16 itemId)
     sPokemonJumpGfx->msgWindowState = 0;
 }
 
-static void PrintNoRoomForPrizeMessage(u16 itemId)
+static void PrintNoRoomForPrizeMessage(enum Item itemId)
 {
     CopyItemName(itemId, sPokemonJumpGfx->itemName);
     DynamicPlaceholderTextUtil_Reset();
     DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, sPokemonJumpGfx->itemName);
-    DynamicPlaceholderTextUtil_ExpandPlaceholders(sPokemonJumpGfx->prizeMsg, gText_CantHoldMore);
+    DynamicPlaceholderTextUtil_ExpandPlaceholders(sPokemonJumpGfx->prizeMsg, sText_CantHoldMore);
     sPokemonJumpGfx->msgWindowId = AddMessageWindow(4, 9, 22, 2);
     AddTextPrinterParameterized(sPokemonJumpGfx->msgWindowId, FONT_NORMAL, sPokemonJumpGfx->prizeMsg, 0, 2, TEXT_SKIP_DRAW, NULL);
     CopyWindowToVram(sPokemonJumpGfx->msgWindowId, COPYWIN_GFX);
@@ -3316,8 +3332,8 @@ static void PrintScoreSuffixes(void)
     PutWindowTilemap(WIN_TIMES);
     FillWindowPixelBuffer(WIN_POINTS, PIXEL_FILL(0));
     FillWindowPixelBuffer(WIN_TIMES, PIXEL_FILL(0));
-    AddTextPrinterParameterized3(WIN_POINTS, FONT_SMALL, 0, 2, color, 0, gText_SpacePoints2);
-    AddTextPrinterParameterized3(WIN_TIMES, FONT_SMALL, 0, 2, color, 0, gText_SpaceTimes3);
+    AddTextPrinterParameterized3(WIN_POINTS, FONT_SMALL, 0, 2, color, 0, sText_SpacePoints2);
+    AddTextPrinterParameterized3(WIN_TIMES, FONT_SMALL, 0, 2, color, 0, sText_SpaceTimes3);
 }
 
 // The venusaurs in the background are actually an empty 256x512 bg with 3 pairs of venusaurs on it.
@@ -3608,12 +3624,12 @@ static void Task_UpdateBonus(u8 taskId)
 static const u16 sPokeJumpPal1[] = INCBIN_U16("graphics/pokemon_jump/pal1.gbapal");
 static const u16 sPokeJumpPal2[] = INCBIN_U16("graphics/pokemon_jump/pal2.gbapal");
 
-static const u32 sVine1_Gfx[] = INCBIN_U32("graphics/pokemon_jump/vine1.4bpp.lz");
-static const u32 sVine2_Gfx[] = INCBIN_U32("graphics/pokemon_jump/vine2.4bpp.lz");
-static const u32 sVine3_Gfx[] = INCBIN_U32("graphics/pokemon_jump/vine3.4bpp.lz");
-static const u32 sVine4_Gfx[] = INCBIN_U32("graphics/pokemon_jump/vine4.4bpp.lz");
+static const u32 sVine1_Gfx[] = INCBIN_U32("graphics/pokemon_jump/vine1.4bpp.smol");
+static const u32 sVine2_Gfx[] = INCBIN_U32("graphics/pokemon_jump/vine2.4bpp.smol");
+static const u32 sVine3_Gfx[] = INCBIN_U32("graphics/pokemon_jump/vine3.4bpp.smol");
+static const u32 sVine4_Gfx[] = INCBIN_U32("graphics/pokemon_jump/vine4.4bpp.smol");
 
-static const u32 sStar_Gfx[] = INCBIN_U32("graphics/pokemon_jump/star.4bpp.lz");
+static const u32 sStar_Gfx[] = INCBIN_U32("graphics/pokemon_jump/star.4bpp.smol");
 
 static const struct CompressedSpriteSheet sCompressedSpriteSheets[] =
 {
@@ -4322,7 +4338,7 @@ static const struct WindowTemplate sWindowTemplate_Records =
     .baseBlock = 0x1,
 };
 
-static const u8 *const sRecordsTexts[] = {gText_JumpsInARow, gText_BestScore2, gText_ExcellentsInARow};
+static const u8 *const sRecordsTexts[] = {sText_JumpsInARow, sText_BestScore2, sText_ExcellentsInARow};
 
 #define tState data[0]
 #define tWindowId data[1]
@@ -4379,7 +4395,7 @@ static void PrintRecordsText(u16 windowId)
     LoadStdWindowGfx(windowId, 0x21D, BG_PLTT_ID(13));
     DrawTextBorderOuter(windowId, 0x21D, 13);
     FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
-    AddTextPrinterParameterized5(windowId, FONT_NORMAL, gText_PkmnJumpRecords, 0, 0, TEXT_SKIP_DRAW, NULL, 1, 0);
+    AddTextPrinterParameterized5(windowId, FONT_NORMAL, sText_PkmnJumpRecords, 0, 0, TEXT_SKIP_DRAW, NULL, 1, 0);
     for (i = 0; i < ARRAY_COUNT(sRecordsTexts); i++)
     {
         AddTextPrinterParameterized5(windowId, FONT_NORMAL, sRecordsTexts[i], 0, 20 + (i * 14), TEXT_SKIP_DRAW, NULL, 1, 0);

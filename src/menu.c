@@ -1,15 +1,23 @@
 #include "global.h"
+#include "battle_main.h"
 #include "decompress.h"
-#include "gflib.h"
+#include "dma3.h"
+#include "event_data.h"
 #include "field_specials.h"
 #include "field_weather.h"
 #include "graphics.h"
 #include "help_message.h"
-#include "menu.h"
+#include "malloc.h"
 #include "menu_helpers.h"
+#include "menu.h"
+#include "palette.h"
+#include "pokedex.h"
 #include "pokemon_icon.h"
 #include "quest_log.h"
+#include "region_map.h"
 #include "script.h"
+#include "sound.h"
+#include "string_util.h"
 #include "strings.h"
 #include "text_window.h"
 #include "constants/songs.h"
@@ -20,7 +28,7 @@
 #define STD_WINDOW_PALETTE_SIZE PLTT_SIZEOF(10)
 #define STD_WINDOW_BASE_TILE_NUM 0x214
 
-struct MenuInfoIcon
+struct MenuInfoIconData
 {
     u8 width;
     u8 height;
@@ -50,7 +58,6 @@ static EWRAM_DATA u8 sPaletteNum = 0;
 static EWRAM_DATA u8 sYesNoWindowId = 0;
 static EWRAM_DATA u8 sTopBarWindowId = 0;
 static EWRAM_DATA u8 sMapNamePopupWindowId = 0;
-static EWRAM_DATA u8 sSecondaryPopupWindowId = 0;
 static EWRAM_DATA bool8 sScheduledBgCopiesToVram[4] = {FALSE};
 static EWRAM_DATA void *sTempTileDataBuffers[0x20] = {NULL};
 static EWRAM_DATA u16 sTempTileDataBufferCursor = {0};
@@ -69,6 +76,7 @@ static u8 MultichoiceGrid_MoveCursor(s8 deltaX, s8 deltaY);
 static void TaskFreeBufAfterCopyingTileDataToVram(u8 taskId);
 static u16 CopyDecompressedTileDataToVram(u8 bgId, const void *src, u16 size, u16 offset, u8 mode);
 
+static const u8 sText_YesNo[] = _("YES\nNO");
 
 static const u16 sUnusedWindow_Gfx[] = INCBIN_U16("graphics/text_window/unused.4bpp");
 
@@ -81,7 +89,7 @@ static const u8 sTextSpeedFrameDelays[] =
     [OPTIONS_TEXT_SPEED_FAST] = 1
 };
 
-static const struct WindowTemplate sStandardTextBox_WindowTemplates[] = 
+static const struct WindowTemplate sStandardTextBox_WindowTemplates[] =
 {
     {
         .bg = 0,
@@ -95,7 +103,7 @@ static const struct WindowTemplate sStandardTextBox_WindowTemplates[] =
     DUMMY_WIN_TEMPLATE
 };
 
-static const struct WindowTemplate sYesNo_WindowTemplate = 
+static const struct WindowTemplate sYesNo_WindowTemplate =
 {
     .bg = 0,
     .tilemapLeft = 21,
@@ -108,33 +116,14 @@ static const struct WindowTemplate sYesNo_WindowTemplate =
 
 static const u8 sTopBarWindowTextColors[3] = {TEXT_DYNAMIC_COLOR_6, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY};
 
-static const struct MenuInfoIcon sMenuInfoIcons[] =
+static const struct MenuInfoIconData sMenuInfoIcons[] =
 {   // { width, height, offset }
-    [MENU_INFO_ICON_CAUGHT] = { 12, 12, 0x00 },
-    [TYPE_NORMAL + 1]   = { 32, 12, 0x20 },
-    [TYPE_FIGHTING + 1] = { 32, 12, 0x64 },
-    [TYPE_FLYING + 1]   = { 32, 12, 0x60 },
-    [TYPE_POISON + 1]   = { 32, 12, 0x80 },
-    [TYPE_GROUND + 1]   = { 32, 12, 0x48 },
-    [TYPE_ROCK + 1]     = { 32, 12, 0x44 },
-    [TYPE_BUG + 1]      = { 32, 12, 0x6C },
-    [TYPE_GHOST + 1]    = { 32, 12, 0x68 },
-    [TYPE_STEEL + 1]    = { 32, 12, 0x88 },
-    [TYPE_MYSTERY + 1]  = { 32, 12, 0xA4 },
-    [TYPE_FIRE + 1]     = { 32, 12, 0x24 },
-    [TYPE_WATER + 1]    = { 32, 12, 0x28 },
-    [TYPE_GRASS + 1]    = { 32, 12, 0x2C },
-    [TYPE_ELECTRIC + 1] = { 32, 12, 0x40 },
-    [TYPE_PSYCHIC + 1]  = { 32, 12, 0x84 },
-    [TYPE_ICE + 1]      = { 32, 12, 0x4C },
-    [TYPE_DRAGON + 1]   = { 32, 12, 0xA0 },
-    [TYPE_DARK + 1]     = { 32, 12, 0x8C },
-    [TYPE_FAIRY + 1]    = { 32, 12, 0x0C },
-    [MENU_INFO_ICON_TYPE]      = { 40, 12, 0xA8 },
-    [MENU_INFO_ICON_POWER]     = { 40, 12, 0xC0 },
-    [MENU_INFO_ICON_ACCURACY]  = { 40, 12, 0xC8 },
-    [MENU_INFO_ICON_PP]        = { 40, 12, 0xE0 },
-    [MENU_INFO_ICON_EFFECT]    = { 40, 12, 0xE8 },
+    [MENU_INFO_ICON_CAUGHT]   = { 12, 12, 0x00 },
+    [MENU_INFO_ICON_TYPE]     = { 40, 12, 0xA8 },
+    [MENU_INFO_ICON_POWER]    = { 40, 12, 0xC0 },
+    [MENU_INFO_ICON_ACCURACY] = { 40, 12, 0xC8 },
+    [MENU_INFO_ICON_PP]       = { 40, 12, 0xE0 },
+    [MENU_INFO_ICON_EFFECT]   = { 40, 12, 0xE8 },
 };
 
 void InitStandardTextBoxWindows(void)
@@ -161,7 +150,7 @@ void InitTextBoxGfxAndPrinters(void)
 u16 RunTextPrintersAndIsPrinter0Active(void)
 {
     RunTextPrinters();
-    return IsTextPrinterActive(0);
+    return IsTextPrinterActiveOnWindow(0);
 }
 
 u16 AddTextPrinterParameterized2(u8 windowId, u8 fontId, const u8 *str, u8 speed, void (*callback)(struct TextPrinterTemplate *, u16), u8 fgColor, u8 bgColor, u8 shadowColor)
@@ -169,6 +158,7 @@ u16 AddTextPrinterParameterized2(u8 windowId, u8 fontId, const u8 *str, u8 speed
     struct TextPrinterTemplate printer;
 
     printer.currentChar = str;
+    printer.type = WINDOW_TEXT_PRINTER;
     printer.windowId = windowId;
     printer.fontId = fontId;
     printer.x = 0;
@@ -177,10 +167,10 @@ u16 AddTextPrinterParameterized2(u8 windowId, u8 fontId, const u8 *str, u8 speed
     printer.currentY = 1;
     printer.letterSpacing = 1;
     printer.lineSpacing = 1;
-    printer.unk = 0;
-    printer.fgColor = fgColor;
-    printer.bgColor = bgColor;
-    printer.shadowColor = shadowColor;
+    printer.color.background = bgColor;
+    printer.color.foreground = fgColor;
+    printer.color.shadow = shadowColor;
+    printer.color.accent = bgColor;
     gTextFlags.useAlternateDownArrow = 0;
     return AddTextPrinter(&printer, speed, callback);
 }
@@ -190,7 +180,7 @@ void AddTextPrinterForMessage(bool8 allowSkippingDelayWithButtonPress)
     u8 color;
     void *nptr = NULL;
 
-    gTextFlags.canABSpeedUpPrint = allowSkippingDelayWithButtonPress;    
+    gTextFlags.canABSpeedUpPrint = allowSkippingDelayWithButtonPress;
     color = ContextNpcGetTextColor();
     if (color == NPC_TEXT_COLOR_MALE)
         AddTextPrinterParameterized2(0, FONT_MALE, gStringVar4, GetPlayerTextSpeedDelay(), nptr, TEXT_COLOR_BLUE, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
@@ -247,6 +237,7 @@ void DrawStdWindowFrame(u8 windowId, bool8 copyToVram)
 
 void ClearDialogWindowAndFrame(u8 windowId, bool8 copyToVram)
 {
+    DeactivateSingleTextPrinter(windowId, WINDOW_TEXT_PRINTER);
     CallWindowFunction(windowId, WindowFunc_ClearDialogWindowAndFrame);
     FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
     ClearWindowTilemap(windowId);
@@ -395,16 +386,9 @@ void DisplayYesNoMenuDefaultYes(void)
     CreateYesNoMenuAtPos(&sYesNo_WindowTemplate, FONT_NORMAL, 0, 2, STD_WINDOW_BASE_TILE_NUM, STD_WINDOW_PALETTE_NUM, 0);
 }
 
-void DisplayYesNoMenuWithDefault(void)
+void DisplayYesNoMenuWithDefault(u8 initialCursorPos)
 {
-    CreateYesNoMenuAtPos(&sYesNo_WindowTemplate, FONT_NORMAL, 0, 2, STD_WINDOW_BASE_TILE_NUM, STD_WINDOW_PALETTE_NUM, 1);
-}
-
-u8 GetPlayerTextSpeedDelay(void)
-{
-    if (gSaveBlock2Ptr->optionsTextSpeed > OPTIONS_TEXT_SPEED_FAST)
-        gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_MID;
-    return sTextSpeedFrameDelays[gSaveBlock2Ptr->optionsTextSpeed];
+    CreateYesNoMenuAtPos(&sYesNo_WindowTemplate, FONT_NORMAL, 0, 2, STD_WINDOW_BASE_TILE_NUM, STD_WINDOW_PALETTE_NUM, initialCursorPos);
 }
 
 u8 AddStartMenuWindow(u8 height)
@@ -435,12 +419,8 @@ void RemoveStartMenuWindow(void)
 u8 AddMapNamePopUpWindow(void)
 {
     if (sMapNamePopupWindowId == WINDOW_NONE)
-    {
-        if (OW_POPUP_GENERATION == GEN_5)
-            sMapNamePopupWindowId = AddWindowParameterized(0, 0, 0, 30, 3, 14, 0x107);
-        else
-            sMapNamePopupWindowId = AddWindowParameterized(0, 1, 1, 10, 3, 14, 0x107);
-    }
+        sMapNamePopupWindowId = AddWindowParameterized(0, 1, 1, 10, 3, 14, 0x107);
+
     return sMapNamePopupWindowId;
 }
 
@@ -560,10 +540,10 @@ static void WindowFunc_ClearStdWindowAndFrameToTransparent(u8 bg, u8 tilemapLeft
 
 /*
    The following functions are used for handling top bar window
-   in hall of fame screen and story mode screen before oak intro. 
+   in hall of fame screen and story mode screen before oak intro.
    However, you can still designate a yPos value to place that bar
    as well as the bar width.
-   The xPos is simply computed according to width (always right aligned). 
+   The xPos is simply computed according to width (always right aligned).
 */
 u8 HofPCTopBar_AddWindow(u8 bg, u8 width, u8 yPos, u8 palette, u16 baseTile)
 {
@@ -692,7 +672,7 @@ static void RedrawMenuCursor(u8 oldPos, u8 newPos)
     width = GetMenuCursorDimensionByFont(sMenu.fontId, 0);
     height = GetMenuCursorDimensionByFont(sMenu.fontId, 1);
     FillWindowPixelRect(sMenu.windowId, 1, sMenu.left, sMenu.optionHeight * oldPos + sMenu.top, width, height);
-    AddTextPrinterParameterized(sMenu.windowId, sMenu.fontId, gText_SelectorArrow2, sMenu.left, sMenu.optionHeight * newPos + sMenu.top, 0, 0);
+    AddTextPrinterParameterized(sMenu.windowId, sMenu.fontId, gText_SelectorArrow, sMenu.left, sMenu.optionHeight * newPos + sMenu.top, 0, 0);
 }
 
 u8 Menu_MoveCursor(s8 cursorDelta)
@@ -874,11 +854,12 @@ void PrintMenuActionTexts(u8 windowId, u8 fontId, u8 left, u8 top, u8 letterSpac
     struct TextPrinterTemplate printer;
 
     printer.windowId = windowId;
+    printer.type = WINDOW_TEXT_PRINTER;
     printer.fontId = fontId;
-    printer.fgColor = GetFontAttribute(fontId, FONTATTR_COLOR_FOREGROUND);
-    printer.bgColor = GetFontAttribute(fontId, FONTATTR_COLOR_BACKGROUND);
-    printer.shadowColor = GetFontAttribute(fontId, FONTATTR_COLOR_SHADOW);
-    printer.unk = GetFontAttribute(fontId, FONTATTR_UNKNOWN);
+    printer.color.foreground = GetFontAttribute(fontId, FONTATTR_COLOR_FOREGROUND);
+    printer.color.background = GetFontAttribute(fontId, FONTATTR_COLOR_BACKGROUND);
+    printer.color.shadow = GetFontAttribute(fontId, FONTATTR_COLOR_SHADOW);
+    printer.color.accent = GetFontAttribute(fontId, FONTATTR_COLOR_ACCENT);
     printer.letterSpacing = letterSpacing;
     printer.lineSpacing = GetFontAttribute(fontId, FONTATTR_LINE_SPACING);
     printer.x = left;
@@ -924,20 +905,21 @@ void CreateYesNoMenuAtPos(const struct WindowTemplate *window, u8 fontId, u8 lef
 
     sYesNoWindowId = AddWindow(window);
     DrawStdFrameWithCustomTileAndPalette(sYesNoWindowId, 1, baseTileNum, paletteNum);
-    textSubPrinter.currentChar = gText_YesNo;
+    textSubPrinter.currentChar = sText_YesNo;
+    textSubPrinter.type = WINDOW_TEXT_PRINTER;
     textSubPrinter.windowId = sYesNoWindowId;
     textSubPrinter.fontId = fontId;
     textSubPrinter.x = GetMenuCursorDimensionByFont(fontId, 0) + left;
     textSubPrinter.y = top;
     textSubPrinter.currentX = textSubPrinter.x;
     textSubPrinter.currentY = textSubPrinter.y;
-    textSubPrinter.fgColor = GetFontAttribute(fontId, FONTATTR_COLOR_FOREGROUND);
-    textSubPrinter.bgColor = GetFontAttribute(fontId, FONTATTR_COLOR_BACKGROUND);
-    textSubPrinter.shadowColor = GetFontAttribute(fontId, FONTATTR_COLOR_SHADOW);
-    textSubPrinter.unk = GetFontAttribute(fontId, FONTATTR_UNKNOWN);
+    textSubPrinter.color.foreground = GetFontAttribute(fontId, FONTATTR_COLOR_FOREGROUND);
+    textSubPrinter.color.background = GetFontAttribute(fontId, FONTATTR_COLOR_BACKGROUND);
+    textSubPrinter.color.shadow = GetFontAttribute(fontId, FONTATTR_COLOR_SHADOW);
+    textSubPrinter.color.accent = GetFontAttribute(fontId, FONTATTR_COLOR_ACCENT);
     textSubPrinter.letterSpacing = GetFontAttribute(fontId, FONTATTR_LETTER_SPACING);
     textSubPrinter.lineSpacing = GetFontAttribute(fontId, FONTATTR_LINE_SPACING);
-    AddTextPrinter(&textSubPrinter, 0xFF, NULL);
+    AddTextPrinter(&textSubPrinter, TEXT_SKIP_DRAW, NULL);
     InitMenuNormal(sYesNoWindowId, fontId, left, top, GetFontAttribute(fontId, FONTATTR_MAX_LETTER_HEIGHT) + textSubPrinter.lineSpacing, 2, initialCursorPos);
 }
 
@@ -947,6 +929,115 @@ s8 Menu_ProcessInputNoWrapClearOnChoose(void)
     if (result != MENU_NOTHING_CHOSEN)
         DestroyYesNoMenu();
     return result;
+}
+
+void PrintMenuActionGrid(u8 windowId, u8 fontId, u8 left, u8 top, u8 optionWidth, u8 horizontalCount, u8 verticalCount, const struct MenuAction *menuActions, const u8 *actionIds)
+{
+    u8 i;
+    u8 j;
+    struct TextPrinterTemplate printer;
+
+    printer.type = WINDOW_TEXT_PRINTER;
+    printer.windowId = windowId;
+    printer.fontId = fontId;
+    printer.color.foreground = GetFontAttribute(fontId, FONTATTR_COLOR_FOREGROUND);
+    printer.color.background = GetFontAttribute(fontId, FONTATTR_COLOR_BACKGROUND);
+    printer.color.shadow = GetFontAttribute(fontId, FONTATTR_COLOR_SHADOW);
+    printer.color.accent = GetFontAttribute(fontId, FONTATTR_COLOR_ACCENT);
+    printer.letterSpacing = GetFontAttribute(fontId, FONTATTR_LETTER_SPACING);
+    printer.lineSpacing = GetFontAttribute(fontId, FONTATTR_LINE_SPACING);
+
+    for (i = 0; i < verticalCount; i++)
+    {
+        for (j = 0; j < horizontalCount; j++)
+        {
+            printer.currentChar = menuActions[actionIds[(horizontalCount * i) + j]].text;
+            printer.x = (optionWidth * j) + left;
+            printer.y = (GetFontAttribute(fontId, FONTATTR_MAX_LETTER_HEIGHT) * i) + top;
+            printer.currentX = printer.x;
+            printer.currentY = printer.y;
+            AddTextPrinter(&printer, TEXT_SKIP_DRAW, NULL);
+        }
+    }
+
+    CopyWindowToVram(windowId, COPYWIN_GFX);
+}
+
+u8 InitMenuActionGrid(u8 windowId, u8 optionWidth, u8 columns, u8 rows, u8 initialCursorPos)
+{
+    s32 pos;
+
+    sMenu.left = 0;
+    sMenu.top = 1;
+    sMenu.minCursorPos = 0;
+    sMenu.maxCursorPos = (columns * rows) - 1;
+    sMenu.windowId = windowId;
+    sMenu.fontId = FONT_NORMAL;
+    sMenu.optionWidth = optionWidth;
+    sMenu.optionHeight = 16;
+    sMenu.columns = columns;
+    sMenu.rows = rows;
+
+    pos = initialCursorPos;
+
+    if (pos < 0 || pos > sMenu.maxCursorPos)
+        sMenu.cursorPos = 0;
+    else
+        sMenu.cursorPos = pos;
+
+    // Why call this when it's not gonna move?
+    ChangeMenuGridCursorPosition(MENU_CURSOR_DELTA_NONE, MENU_CURSOR_DELTA_NONE);
+    return sMenu.cursorPos;
+}
+// Erase cursor at old position, draw cursor at new position.
+static void MoveMenuGridCursor(u8 oldCursorPos, u8 newCursorPos)
+{
+    u8 cursorWidth = GetMenuCursorDimensionByFont(sMenu.fontId, 0);
+    u8 cursorHeight = GetMenuCursorDimensionByFont(sMenu.fontId, 1);
+
+    u8 xPos = (oldCursorPos % sMenu.columns) * sMenu.optionWidth + sMenu.left;
+    u8 yPos = (oldCursorPos / sMenu.columns) * sMenu.optionHeight + sMenu.top;
+    FillWindowPixelRect(sMenu.windowId, PIXEL_FILL(1), xPos, yPos, cursorWidth, cursorHeight);
+
+    xPos = (newCursorPos % sMenu.columns) * sMenu.optionWidth + sMenu.left;
+    yPos = (newCursorPos / sMenu.columns) * sMenu.optionHeight + sMenu.top;
+    AddTextPrinterParameterized(sMenu.windowId, sMenu.fontId, gText_SelectorArrow, xPos, yPos, 0, 0);
+}
+
+u8 ChangeMenuGridCursorPosition(s8 deltaX, s8 deltaY)
+{
+    u8 oldPos = sMenu.cursorPos;
+
+    if (deltaX != 0)
+    {
+        if ((sMenu.cursorPos % sMenu.columns) + deltaX < 0)
+            sMenu.cursorPos += sMenu.columns - 1;
+        else if ((sMenu.cursorPos % sMenu.columns) + deltaX >= sMenu.columns)
+            sMenu.cursorPos = (sMenu.cursorPos / sMenu.columns) * sMenu.columns;
+        else
+            sMenu.cursorPos += deltaX;
+    }
+
+    if (deltaY != 0)
+    {
+        if ((sMenu.cursorPos / sMenu.columns) + deltaY < 0)
+            sMenu.cursorPos += sMenu.columns * (sMenu.rows - 1);
+        else if ((sMenu.cursorPos / sMenu.columns) + deltaY >= sMenu.rows)
+            sMenu.cursorPos -= sMenu.columns * (sMenu.rows - 1);
+        else
+            sMenu.cursorPos += (sMenu.columns * deltaY);
+    }
+
+    if (sMenu.cursorPos > sMenu.maxCursorPos)
+    {
+        sMenu.cursorPos = oldPos;
+        return sMenu.cursorPos;
+    }
+    else
+    {
+        MoveMenuGridCursor(oldPos, sMenu.cursorPos);
+        return sMenu.cursorPos;
+    }
 }
 
 u8 InitMenuInUpperLeftCorner(u8 windowId, u8 numChoices, u8 initialCursorPos, bool8 APressMuted)
@@ -1015,7 +1106,7 @@ void ResetTempTileDataBuffers(void)
 {
     int i;
 
-    for (i = 0; i < (s32)NELEMS(sTempTileDataBuffers); i++)
+    for (i = 0; i < (s32)ARRAY_COUNT(sTempTileDataBuffers); i++)
     {
         sTempTileDataBuffers[i] = NULL;
     }
@@ -1048,7 +1139,7 @@ void *DecompressAndCopyTileDataToVram(u8 bgId, const void *src, u32 size, u16 of
 {
     u32 sizeOut;
 
-    if (sTempTileDataBufferCursor < NELEMS(sTempTileDataBuffers))
+    if (sTempTileDataBufferCursor < ARRAY_COUNT(sTempTileDataBuffers))
     {
         void *ptr = malloc_and_decompress(src, &sizeOut);
         if (!size)
@@ -1122,7 +1213,7 @@ static u16 CopyDecompressedTileDataToVram(u8 bgId, const void *src, u16 size, u1
     {
     case 1:
         break;
-    case 0:        
+    case 0:
     default:
         return LoadBgTiles(bgId, src, size, offset);
     }
@@ -1190,8 +1281,12 @@ void ResetBgPositions(void)
 
 void DestroyYesNoMenu(void)
 {
+    if (sYesNoWindowId == WINDOW_NONE)
+        return;
+
     ClearStdWindowAndFrameToTransparent(sYesNoWindowId, TRUE);
     RemoveWindow(sYesNoWindowId);
+    sYesNoWindowId = WINDOW_NONE;
 }
 
 void MultichoiceGrid_PrintItems(u8 windowId, u8 fontId, u8 itemWidth, u8 itemHeight, u8 cols, u8 rows, const struct MenuAction *strs)
@@ -1246,11 +1341,11 @@ static void MultichoiceGrid_RedrawCursor(u8 oldCursorPos, u8 newCursorPos)
     u8 cursorHeight = GetMenuCursorDimensionByFont(sMenu.fontId, 1);
     u8 xPos = (oldCursorPos % sMenu.columns) * sMenu.optionWidth + sMenu.left;
     u8 yPos = (oldCursorPos / sMenu.columns) * sMenu.optionHeight + sMenu.top;
-    
+
     FillWindowPixelRect(sMenu.windowId, PIXEL_FILL(1), xPos, yPos, cursorWidth, cursorHeight);
     xPos = (newCursorPos % sMenu.columns) * sMenu.optionWidth + sMenu.left;
     yPos = (newCursorPos / sMenu.columns) * sMenu.optionHeight + sMenu.top;
-    AddTextPrinterParameterized(sMenu.windowId, sMenu.fontId, gText_SelectorArrow2, xPos, yPos, 0, 0);
+    AddTextPrinterParameterized(sMenu.windowId, sMenu.fontId, gText_SelectorArrow, xPos, yPos, 0, 0);
 }
 
 static u8 MultichoiceGrid_MoveCursor(s8 deltaX, s8 deltaY)
@@ -1313,7 +1408,7 @@ static u8 MultichoiceGrid_MoveCursorIfValid(s8 deltaX, s8 deltaY)
     }
 }
 
-s8 Menu_ProcessInputGridLayout(void)
+s8 Menu_ProcessGridInput(void)
 {
     u8 oldPos = sMenu.cursorPos;
 
@@ -1356,8 +1451,6 @@ s8 Menu_ProcessInputGridLayout(void)
 void InitPopupWindows(void)
 {
     sMapNamePopupWindowId = WINDOW_NONE;
-    if (OW_POPUP_GENERATION == GEN_5)
-        sSecondaryPopupWindowId = WINDOW_NONE;
 }
 
 u16 GetStandardFrameBaseTileNum(void)
@@ -1370,6 +1463,7 @@ void AddTextPrinterParameterized3(u8 windowId, u8 fontId, u8 x, u8 y, const u8 *
     struct TextPrinterTemplate printer;
 
     printer.currentChar = str;
+    printer.type = WINDOW_TEXT_PRINTER;
     printer.windowId = windowId;
     printer.fontId = fontId;
     printer.x = x;
@@ -1378,10 +1472,11 @@ void AddTextPrinterParameterized3(u8 windowId, u8 fontId, u8 x, u8 y, const u8 *
     printer.currentY = printer.y;
     printer.letterSpacing = GetFontAttribute(fontId, FONTATTR_LETTER_SPACING);
     printer.lineSpacing = GetFontAttribute(fontId, FONTATTR_LINE_SPACING);
-    printer.unk = 0;
-    printer.fgColor = color[1];
-    printer.bgColor = color[0];
-    printer.shadowColor = color[2];
+    printer.color.background = color[0];
+    printer.color.foreground = color[1];
+    printer.color.shadow = color[2];
+    printer.color.accent = color[0];
+
     AddTextPrinter(&printer, speed, NULL);
 }
 
@@ -1390,6 +1485,7 @@ void AddTextPrinterParameterized4(u8 windowId, u8 fontId, u8 x, u8 y, u8 letterS
     struct TextPrinterTemplate printer;
 
     printer.currentChar = str;
+    printer.type = WINDOW_TEXT_PRINTER;
     printer.windowId = windowId;
     printer.fontId = fontId;
     printer.x = x;
@@ -1398,10 +1494,11 @@ void AddTextPrinterParameterized4(u8 windowId, u8 fontId, u8 x, u8 y, u8 letterS
     printer.currentY = printer.y;
     printer.letterSpacing = letterSpacing;
     printer.lineSpacing = lineSpacing;
-    printer.unk = 0;
-    printer.fgColor = color[1];
-    printer.bgColor = color[0];
-    printer.shadowColor = color[2];
+    printer.color.background = color[0];
+    printer.color.foreground = color[1];
+    printer.color.shadow = color[2];
+    printer.color.accent = color[0];
+
     AddTextPrinter(&printer, speed, NULL);
 }
 
@@ -1410,6 +1507,7 @@ void AddTextPrinterParameterized5(u8 windowId, u8 fontId, const u8 *str, u8 x, u
     struct TextPrinterTemplate printer;
 
     printer.currentChar = str;
+    printer.type = WINDOW_TEXT_PRINTER;
     printer.windowId = windowId;
     printer.fontId = fontId;
     printer.x = x;
@@ -1418,10 +1516,10 @@ void AddTextPrinterParameterized5(u8 windowId, u8 fontId, const u8 *str, u8 x, u
     printer.currentY = y;
     printer.letterSpacing = letterSpacing;
     printer.lineSpacing = lineSpacing;
-    printer.unk = 0;
-    printer.fgColor = GetFontAttribute(fontId, FONTATTR_COLOR_FOREGROUND);
-    printer.bgColor = GetFontAttribute(fontId, FONTATTR_COLOR_BACKGROUND);
-    printer.shadowColor = GetFontAttribute(fontId, FONTATTR_COLOR_SHADOW);
+    printer.color.background = GetFontAttribute(fontId, FONTATTR_COLOR_BACKGROUND);
+    printer.color.foreground = GetFontAttribute(fontId, FONTATTR_COLOR_FOREGROUND);
+    printer.color.shadow = GetFontAttribute(fontId, FONTATTR_COLOR_SHADOW);
+    printer.color.accent = GetFontAttribute(fontId, FONTATTR_COLOR_ACCENT);
     AddTextPrinter(&printer, speed, callback);
 }
 
@@ -1443,12 +1541,12 @@ void PrintPlayerNameOnWindow(u8 windowId, const u8 * src, u16 x, u16 y)
     }
 }
 
-void LoadMonIconPalAtOffset(u8 palOffset, u16 speciesId)
+void LoadMonIconPalAtOffset(u8 palOffset, enum Species speciesId)
 {
     LoadPalette(GetValidMonIconPalettePtr(speciesId), palOffset, PLTT_SIZE_4BPP);
 }
 
-void DrawMonIconAtPos(u8 windowId, u16 speciesId, u32 personality, u16 x, u16 y)
+void DrawMonIconAtPos(u8 windowId, enum Species speciesId, u32 personality, u16 x, u16 y)
 {
     BlitBitmapToWindow(windowId, GetMonIconPtr(speciesId, personality), x, y, 32, 32);
 }
@@ -1470,59 +1568,63 @@ void ListMenuLoadStdPalAt(u8 palOffset, u8 palId)
     LoadPalette(palette, palOffset, PLTT_SIZE_4BPP);
 }
 
-void BlitMenuInfoIcon(u8 windowId, u8 iconId, u16 x, u16 y)
+void BlitMenuInfoIcon(u8 windowId, enum MenuInfoIcon iconId, u16 x, u16 y)
 {
     BlitBitmapRectToWindow(windowId, &gMenuInfoElements_Gfx[sMenuInfoIcons[iconId].offset * TILE_SIZE_4BPP], 0, 0, 128, 128, x, y, sMenuInfoIcons[iconId].width, sMenuInfoIcons[iconId].height);
 }
 
-// BW map pop-ups
-u8 AddSecondaryPopUpWindow(void)
+void BlitMenuTypeIcon(u8 windowId, enum Type type, u16 x, u16 y)
 {
-    if (sSecondaryPopupWindowId == WINDOW_NONE)
-        sSecondaryPopupWindowId = AddWindowParameterized(0, 0, 17, 30, 3, 14, 0x161);
-    return sSecondaryPopupWindowId;
+    BlitBitmapRectToWindow(windowId, &gMenuInfoElements_Gfx[gTypesInfo[type].menuIconOffset * TILE_SIZE_4BPP], 0, 0, 128, 128, x, y, MENU_INFO_TYPE_ICON_WIDTH, MENU_INFO_TYPE_ICON_HEIGHT);
 }
 
-u8 GetSecondaryPopUpWindowId(void)
+void BufferSaveMenuText(enum SaveStat gameStatId, u8 *dest0, u8 color)
 {
-    return sSecondaryPopupWindowId;
-}
+    int nBadges;
+    int flagId;
 
-void RemoveSecondaryPopUpWindow(void)
-{
-    if (sSecondaryPopupWindowId != WINDOW_NONE)
+    u8 *dest = dest0;
+    *dest++ = EXT_CTRL_CODE_BEGIN;
+    *dest++ = EXT_CTRL_CODE_COLOR;
+    *dest++ = color;
+    *dest++ = EXT_CTRL_CODE_BEGIN;
+    *dest++ = EXT_CTRL_CODE_SHADOW;
+    *dest++ = color + 1;
+    switch (gameStatId)
     {
-        RemoveWindow(sSecondaryPopupWindowId);
-        sSecondaryPopupWindowId = WINDOW_NONE;
-    }
-}
-
-void HBlankCB_DoublePopupWindow(void)
-{
-    u16 offset = gTasks[gPopupTaskId].data[2];
-    u16 scanline = REG_VCOUNT;
-
-    if (scanline < 80 || scanline > 160)
-    {
-        REG_BG0VOFS = offset;
-        if(OW_POPUP_BW_ALPHA_BLEND && !IsWeatherAlphaBlend())
-            REG_BLDALPHA = BLDALPHA_BLEND(15, 5);
-    }
-    else
-    {
-        REG_BG0VOFS = 512 - offset;
+    case SAVE_MENU_NAME:
+        dest = StringCopy(dest, gSaveBlock2Ptr->playerName);
+        break;
+    case SAVE_MENU_POKEDEX:
+        if (IsNationalPokedexEnabled())
+            dest = ConvertIntToDecimalStringN(dest, GetNationalPokedexCount(FLAG_GET_CAUGHT), STR_CONV_MODE_LEFT_ALIGN, 4);
+        else
+            dest = ConvertIntToDecimalStringN(dest, GetKantoPokedexCount(FLAG_GET_CAUGHT), STR_CONV_MODE_LEFT_ALIGN, 3);
+        break;
+    case SAVE_MENU_TIME:
+        dest = ConvertIntToDecimalStringN(dest, gSaveBlock2Ptr->playTimeHours, STR_CONV_MODE_LEFT_ALIGN, 3);
+        *dest++ = CHAR_COLON;
+        dest = ConvertIntToDecimalStringN(dest, gSaveBlock2Ptr->playTimeMinutes, STR_CONV_MODE_LEADING_ZEROS, 2);
+        break;
+    case SAVE_MENU_LOCATION:
+        GetMapNameGeneric(dest, gMapHeader.regionMapSectionId);
+        break;
+    case SAVE_MENU_BADGES:
+        for (flagId = FLAG_BADGE01_GET, nBadges = 0; flagId < FLAG_BADGE01_GET + 8; flagId++)
+        {
+            if (FlagGet(flagId))
+                nBadges++;
+        }
+        *dest++ = nBadges + CHAR_0;
+        *dest++ = EOS;
+        break;
     }
 }
 
 void DrawHelpMessageWindowWithText(const u8 * text)
 {
     LoadHelpMessageWindowGfx(CreateHelpMessageWindow(), DLG_WINDOW_BASE_TILE_NUM, BG_PLTT_ID(DLG_WINDOW_PALETTE_NUM));
-    PrintTextOnHelpMessageWindow(text, 2);
-}
-
-void DestroyHelpMessageWindow_(void)
-{
-    DestroyHelpMessageWindow(2);
+    PrintTextOnHelpMessageWindow(text, COPYWIN_GFX);
 }
 
 void LoadSignPostWindowFrameGfx(void)

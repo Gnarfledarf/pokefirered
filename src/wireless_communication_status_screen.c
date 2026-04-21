@@ -1,14 +1,19 @@
 #include "global.h"
-#include "gflib.h"
-#include "task.h"
-#include "scanline_effect.h"
-#include "m4a.h"
+#include "bg.h"
 #include "dynamic_placeholder_text_util.h"
-#include "overworld.h"
-#include "strings.h"
-#include "menu.h"
+#include "gpu_regs.h"
 #include "librfu.h"
 #include "link_rfu.h"
+#include "m4a.h"
+#include "malloc.h"
+#include "menu.h"
+#include "overworld.h"
+#include "palette.h"
+#include "scanline_effect.h"
+#include "sound.h"
+#include "string_util.h"
+#include "strings.h"
+#include "task.h"
 #include "union_room.h"
 #include "constants/songs.h"
 #include "constants/union_room.h"
@@ -46,8 +51,8 @@ static struct
     u8 filler[10];
 } * sStatusScreen;
 
+void Task_WirelessCommunicationScreen(u8 taskId);
 static void CB2_InitWirelessCommunicationScreen(void);
-static void Task_WirelessCommunicationScreen(u8 taskId);
 static void WCSS_AddTextPrinterParameterized(u8 windowId, u8 fontId, const u8 * str, u8 x, u8 y, u8 palIdx);
 static bool32 UpdateCommunicationCounts(u32 * counts, u32 * lastCounts, u32 * activities, u8 taskId);
 
@@ -69,7 +74,7 @@ static const u16 sPalettes[][16] = {
     INCBIN_U16("graphics/wireless_status_screen/anim_12.gbapal"),
     INCBIN_U16("graphics/wireless_status_screen/anim_13.gbapal")
 };
-static const u32 sBgTiles_Gfx[] = INCBIN_U32("graphics/wireless_status_screen/bg.4bpp.lz");
+static const u32 sBgTiles_Gfx[] = INCBIN_U32("graphics/wireless_status_screen/bg.4bpp.smol");
 static const u16 sBgTiles_Tilemap[] = INCBIN_U16("graphics/wireless_status_screen/bg.bin");
 
 static const struct BgTemplate sBgTemplates[] = {
@@ -120,26 +125,18 @@ static const struct WindowTemplate sWindowTemplates[] = {
     }, DUMMY_WIN_TEMPLATE
 };
 
-// Unused
-static const u8 *const sPlayersTextPtrs[] = {
-    gText_Dynamic0Players,
-    gText_Dynamic1Players,
-    gText_Dynamic2Players,
-    gText_Dynamic3Players
-};
-
 static const u8 *const sHeaderTexts[NUM_GROUPTYPES + 1] = {
-    [0]                    = gText_WirelessCommunicationStatus,
-    [GROUPTYPE_TRADE + 1]  = gText_PeopleTrading,
-    [GROUPTYPE_BATTLE + 1] = gText_PeopleBattling,
-    [GROUPTYPE_UNION + 1]  = gText_PeopleInUnionRoom,
-    [GROUPTYPE_TOTAL + 1]  = gText_PeopleCommunicating
+    [0]                    = COMPOUND_STRING("Wireless Communication Status"),
+    [GROUPTYPE_TRADE + 1]  = COMPOUND_STRING("People trading:"),
+    [GROUPTYPE_BATTLE + 1] = COMPOUND_STRING("People battling:"),
+    [GROUPTYPE_UNION + 1]  = COMPOUND_STRING("People in the UNION ROOM:"),
+    [GROUPTYPE_TOTAL + 1]  = COMPOUND_STRING("People communicating:"),
 };
 
 // Activity, group type, number of players
 // 0 players means the number of players can change and should be counted dynamically
 // GROUPTYPE_TOTAL have no unique group and are simply counted in the total of "people communicating".
-// A handful use NUM_GROUPTYPES, which is invalid, and are changed to GROUPTYPE_TOTAL in Emerald.
+// A handful use NUM_GROUPTYPES, which is invalid, and are changed to GROUPTYPE_TOTAL in Emerald (and Revision 10)
 // UB: GROUPTYPE_NONE (-1) can potentially be used as an index into a u8[4] in CountPlayersInGroupAndGetActivity.
 static const u8 sActivityGroupInfo[][3] = {
     {ACTIVITY_BATTLE_SINGLE,                  GROUPTYPE_BATTLE, 2},
@@ -148,13 +145,13 @@ static const u8 sActivityGroupInfo[][3] = {
     {ACTIVITY_TRADE,                          GROUPTYPE_TRADE,  2},
     {ACTIVITY_WONDER_CARD,                    GROUPTYPE_TOTAL,  2},
     {ACTIVITY_WONDER_NEWS,                    GROUPTYPE_TOTAL,  2},
-    {ACTIVITY_POKEMON_JUMP,                   NUM_GROUPTYPES,   0},
-    {ACTIVITY_BERRY_CRUSH,                    NUM_GROUPTYPES,   0},
-    {ACTIVITY_BERRY_PICK,                     NUM_GROUPTYPES,   0},
+    {ACTIVITY_POKEMON_JUMP,                   GROUPTYPE_TOTAL,  0},
+    {ACTIVITY_BERRY_CRUSH,                    GROUPTYPE_TOTAL,  0},
+    {ACTIVITY_BERRY_PICK,                     GROUPTYPE_TOTAL,  0},
     {ACTIVITY_SEARCH,                         GROUPTYPE_NONE,   0},
     {ACTIVITY_SPIN_TRADE,                     GROUPTYPE_TRADE,  0},
     {ACTIVITY_ITEM_TRADE,                     GROUPTYPE_NONE,   0},
-    {ACTIVITY_RECORD_CORNER,                  NUM_GROUPTYPES,   0},
+    {ACTIVITY_RECORD_CORNER,                  GROUPTYPE_TOTAL,  0},
     {ACTIVITY_BERRY_BLENDER,                  GROUPTYPE_NONE,   0},
     {ACTIVITY_NONE | IN_UNION_ROOM,           GROUPTYPE_UNION,  1},
     {ACTIVITY_BATTLE_SINGLE | IN_UNION_ROOM,  GROUPTYPE_UNION,  2},
@@ -164,7 +161,9 @@ static const u8 sActivityGroupInfo[][3] = {
     {ACTIVITY_PLYRTALK | IN_UNION_ROOM,       GROUPTYPE_UNION,  1},
     {ACTIVITY_NPCTALK | IN_UNION_ROOM,        GROUPTYPE_UNION,  2},
     {ACTIVITY_ACCEPT | IN_UNION_ROOM,         GROUPTYPE_UNION,  1},
-    {ACTIVITY_DECLINE | IN_UNION_ROOM,        GROUPTYPE_UNION,  1}
+    {ACTIVITY_DECLINE | IN_UNION_ROOM,        GROUPTYPE_UNION,  1},
+    {ACTIVITY_BATTLE_TOWER,                  GROUPTYPE_BATTLE,  2},
+    {ACTIVITY_BATTLE_TOWER_OPEN,             GROUPTYPE_BATTLE,  2},
 };
 
 static void CB2_RunWirelessCommunicationScreen(void)
@@ -283,7 +282,7 @@ static void PrintHeaderTexts(void)
 
 #define tState data[0]
 
-static void Task_WirelessCommunicationScreen(u8 taskId)
+void Task_WirelessCommunicationScreen(u8 taskId)
 {
     s32 i;
     switch (gTasks[taskId].tState)
@@ -318,6 +317,7 @@ static void Task_WirelessCommunicationScreen(u8 taskId)
             PutWindowTilemap(2);
             CopyWindowToVram(2, COPYWIN_FULL);
         }
+
         if (JOY_NEW(A_BUTTON) || JOY_NEW(B_BUTTON))
         {
             PlaySE(SE_SELECT);
@@ -410,11 +410,12 @@ static u32 CountPlayersInGroupAndGetActivity(struct RfuPlayer * player, u32 * gr
         }
     }
 
-    return activity;
-
     #undef group_activity
     #undef group_type
     #undef group_players
+
+    return activity;
+
 }
 
 static bool32 HaveCountsChanged(const u32 * curCounts, const u32 * prevCounts)
@@ -457,7 +458,7 @@ static bool32 UpdateCommunicationCounts(u32 * groupCounts, u32 * prevGroupCounts
 
     memcpy(groupCounts,     groupCountBuffer, sizeof(groupCountBuffer));
     memcpy(prevGroupCounts, groupCountBuffer, sizeof(groupCountBuffer));
-    
+
     groupCounts[GROUPTYPE_TOTAL] = groupCounts[GROUPTYPE_TRADE]
                                  + groupCounts[GROUPTYPE_BATTLE]
                                  + groupCounts[GROUPTYPE_UNION]

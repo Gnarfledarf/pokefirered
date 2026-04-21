@@ -2,6 +2,7 @@
 #include "field_effect.h"
 #include "field_player_avatar.h"
 #include "fldeff.h"
+#include "follower_npc.h"
 #include "party_menu.h"
 #include "overworld.h"
 
@@ -10,6 +11,9 @@ static void StartTeleportFieldEffect(void);
 
 bool32 FieldMove_SetUpTeleport(void)
 {
+    if (!CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_LEAVE_ROUTE))
+        return FALSE;
+
     if (Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)
     {
         gFieldCallback2 = FieldCallback_PrepareFadeInFromMenu;
@@ -30,7 +34,7 @@ u32 FldEff_UseTeleport(void)
 {
     u8 taskId = CreateFieldEffectShowMon();
     FLDEFF_SET_FUNC_TO_DATA(StartTeleportFieldEffect);
-    SetPlayerAvatarTransitionFlags(PLAYER_AVATAR_FLAG_ON_FOOT);
+    SetPlayerAvatarTransitionState(PLAYER_AVATAR_STATE_NORMAL);
     return FALSE;
 }
 

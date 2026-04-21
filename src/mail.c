@@ -1,20 +1,22 @@
 #include "global.h"
-#include "gflib.h"
-#include "scanline_effect.h"
-#include "palette.h"
-#include "text_window.h"
+#include "bg.h"
 #include "easy_chat.h"
-#include "mail.h"
-#include "task.h"
-#include "menu.h"
-#include "player_pc.h"
-#include "overworld.h"
-#include "help_system.h"
-#include "menu_helpers.h"
+#include "gpu_regs.h"
 #include "graphics.h"
+#include "help_system.h"
+#include "mail.h"
+#include "malloc.h"
+#include "menu_helpers.h"
+#include "menu.h"
+#include "overworld.h"
+#include "palette.h"
+#include "player_pc.h"
 #include "pokemon_icon.h"
+#include "scanline_effect.h"
 #include "string_util.h"
 #include "strings.h"
+#include "task.h"
+#include "text_window.h"
 #include "constants/items.h"
 
 enum MailIconParam
@@ -69,6 +71,8 @@ struct MailViewResources {
     u16 bg1TilemapBuffer[BG_SCREEN_SIZE];
     u16 bg2TilemapBuffer[BG_SCREEN_SIZE];
 };
+
+static const u8 sText_From[] = _("From ");
 
 static EWRAM_DATA struct MailViewResources * sMailViewResources = NULL;
 
@@ -438,7 +442,8 @@ static const struct MailAttrStruct sMessageLayouts_5x2[] = {
 void ReadMail(struct Mail * mail, void (*savedCallback)(void), bool8 messageExists)
 {
     u16 sp0;
-    u16 species;
+    enum Species species;
+
     sMailViewResources = AllocZeroed(sizeof(struct MailViewResources));
     sMailViewResources->unused = 2;
     sMailViewResources->mailArrangementType = 1;
@@ -532,7 +537,7 @@ static bool8 DoInitMailView(void)
         break;
     case 6:
         ResetBgsAndClearDma3BusyFlags(FALSE);
-        InitBgsFromTemplates(0, sBgTemplates, NELEMS(sBgTemplates));
+        InitBgsFromTemplates(0, sBgTemplates, ARRAY_COUNT(sBgTemplates));
         SetBgTilemapBuffer(1, sMailViewResources->bg1TilemapBuffer);
         SetBgTilemapBuffer(2, sMailViewResources->bg2TilemapBuffer);
         break;
@@ -582,7 +587,7 @@ static bool8 DoInitMailView(void)
         }
         break;
     case 15:
-        if (Overworld_LinkRecvQueueLengthMoreThan2() == TRUE)
+        if (Overworld_IsRecvQueueAtMax() == TRUE)
             return FALSE;
         break;
     case 16:
@@ -642,7 +647,7 @@ static void BufferMailMessage(void)
     }
     if (sMailViewResources->mailArrangementType == 0)
     {
-        StringCopy(StringCopy(sMailViewResources->authorNameBuffer, sMailViewResources->mail->playerName), gText_From); // ???
+        StringCopy(StringCopy(sMailViewResources->authorNameBuffer, sMailViewResources->mail->playerName), sText_From); // ???
         sMailViewResources->nameX = sMailViewResources->messageLayout->nameX + 0x60 - 8 * StringLength(sMailViewResources->authorNameBuffer);
     }
     else
@@ -672,8 +677,8 @@ static void AddMailMessagePrinters(void)
             y += sMailViewResources->messageLayout->linesLayout[i].lineHeight;
         }
     }
-    width = GetStringWidth(FONT_NORMAL_COPY_1, gText_From, 0);
-    AddTextPrinterParameterized3(1, FONT_NORMAL_COPY_1, sMailViewResources->nameX, sMailViewResources->messageLayout->nameY, sTextColor, 0, gText_From);
+    width = GetStringWidth(FONT_NORMAL_COPY_1, sText_From, 0);
+    AddTextPrinterParameterized3(1, FONT_NORMAL_COPY_1, sMailViewResources->nameX, sMailViewResources->messageLayout->nameY, sTextColor, 0, sText_From);
     AddTextPrinterParameterized3(1, FONT_NORMAL_COPY_1, sMailViewResources->nameX + width, sMailViewResources->messageLayout->nameY, sTextColor, 0, sMailViewResources->authorNameBuffer);
     CopyWindowToVram(0, COPYWIN_FULL);
     CopyWindowToVram(1, COPYWIN_FULL);

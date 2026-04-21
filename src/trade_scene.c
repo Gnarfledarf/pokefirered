@@ -1,36 +1,42 @@
 #include "global.h"
-#include "gflib.h"
-#include "task.h"
-#include "util.h"
-#include "decompress.h"
-#include "trade.h"
-#include "link.h"
-#include "link_rfu.h"
-#include "mystery_gift.h"
-#include "graphics.h"
-#include "strings.h"
-#include "menu.h"
-#include "data.h"
 #include "battle.h"
-#include "script.h"
+#include "bg.h"
+#include "data.h"
+#include "decompress.h"
 #include "event_data.h"
-#include "mail.h"
-#include "pokeball.h"
 #include "evolution_scene.h"
-#include "overworld.h"
 #include "field_fadetransition.h"
-#include "quest_log.h"
+#include "gpu_regs.h"
+#include "graphics.h"
 #include "help_system.h"
-#include "pokedex.h"
-#include "save.h"
+#include "link_rfu.h"
+#include "link.h"
 #include "load_save.h"
+#include "mail.h"
+#include "malloc.h"
+#include "menu.h"
+#include "mystery_gift.h"
+#include "overworld.h"
+#include "palette.h"
+#include "pokeball.h"
+#include "pokedex.h"
+#include "quest_log.h"
 #include "random.h"
+#include "save.h"
+#include "script.h"
+#include "sound.h"
+#include "string_util.h"
+#include "strings.h"
+#include "task.h"
 #include "trade_scene.h"
-#include "constants/items.h"
+#include "trade.h"
+#include "util.h"
 #include "constants/easy_chat.h"
-#include "constants/songs.h"
-#include "constants/region_map_sections.h"
+#include "constants/items.h"
 #include "constants/moves.h"
+#include "constants/party_menu.h"
+#include "constants/region_map_sections.h"
+#include "constants/songs.h"
 
 // Values for signaling to/from the link partner
 enum {
@@ -53,7 +59,7 @@ enum {
 
 struct InGameTrade {
     /*0x00*/ u8 nickname[POKEMON_NAME_LENGTH + 1];
-    /*0x0C*/ u16 species;
+    /*0x0C*/ enum Species species;
     /*0x0E*/ u8 ivs[NUM_STATS];
     /*0x14*/ u8 abilityNum;
     /*0x18*/ u32 otId;
@@ -64,7 +70,7 @@ struct InGameTrade {
     /*0x2B*/ u8 otName[11];
     /*0x36*/ u8 otGender;
     /*0x37*/ u8 sheen;
-    /*0x38*/ u16 requestedSpecies;
+    /*0x38*/ enum Species requestedSpecies;
 };
 
 struct {
@@ -102,7 +108,7 @@ struct {
     /*0xEA*/ u16 bg2Zoom;
     /*0xEC*/ u16 bg2alpha;
     /*0xEE*/ bool8 isLinkTrade;
-    /*0xF0*/ u16 monSpecies[2];
+    /*0xF0*/ enum Species monSpecies[2];
     /*0xF4*/ u16 cachedMapMusic;
     /*0xF6*/ u8 unk_F6;
     /*0xF8*/ struct QuestLogEvent_Traded questLogData;
@@ -113,7 +119,7 @@ struct {
     /*0x10A*/ u8 win0top;
     /*0x10B*/ u8 win0right;
     /*0x10C*/ u8 win0bottom;
-} static EWRAM_DATA * sTradeAnim = NULL;
+} static EWRAM_DATA *sTradeAnim = NULL;
 
 static void SpriteCB_LinkMonGlow(struct Sprite *sprite);
 static void SpriteCB_LinkMonGlowWireless(struct Sprite *sprite);
@@ -145,6 +151,11 @@ static void Task_AnimateWirelessSignal(u8 taskId);
 static void Task_OpenCenterWhiteColumn(u8 taskId);
 static void Task_CloseCenterWhiteColumn(u8 taskId);
 
+static const u8 sText_XWillBeSentToY[] = _("{STR_VAR_2} will be\nsent to {STR_VAR_1}.");
+static const u8 sText_ByeByeVar1[] = _("Bye-bye, {STR_VAR_2}!");
+static const u8 sText_XSentOverY[] = _("{STR_VAR_1} sent over {STR_VAR_3}.");
+static const u8 sText_TakeGoodCareOfX[] = _("Take good care of {STR_VAR_3}!");
+
 static const u16 sPokeball_Pal[]                    = INCBIN_U16("graphics/trade/pokeball.gbapal");
 static const u8 sPokeball_Gfx[]                     = INCBIN_U8("graphics/trade/pokeball.4bpp");
 static const u8 sPokeballSymbol_Gfx[]               = INCBIN_U8("graphics/trade/pokeball_symbol.8bpp"); // Unused
@@ -166,12 +177,12 @@ static const u8 sGbaAffineMapCable[]                = INCBIN_U8("graphics/trade/
 static const u8 sGbaAffineMapWireless[]             = INCBIN_U8("graphics/trade/gba_affine_map_wireless.bin");
 static const u16 sGbaMapWireless[]                  = INCBIN_U16("graphics/trade/gba_map_wireless.bin");
 static const u16 sGbaMapCable[]                     = INCBIN_U16("graphics/trade/gba_map_cable.bin");
-static const u32 sWirelessCloseup_Map[]             = INCBIN_U32("graphics/trade/wireless_signal_closeup.bin.lz");
+static const u32 sWirelessCloseup_Map[]             = INCBIN_U32("graphics/trade/wireless_signal_closeup.bin.smolTM");
 static const u16 sWirelessSignalAnimPals_Outbound[] = INCBIN_U16("graphics/trade/wireless_signal_send.gbapal");
 static const u16 sWirelessSignalAnimPals_Inbound[]  = INCBIN_U16("graphics/trade/wireless_signal_receive.gbapal");
 static const u16 sWirelessSignalAnimPals_Off[]      = INCBIN_U16("graphics/trade/black.gbapal");
-static const u32 sWirelessSignal4bpp[]              = INCBIN_U32("graphics/trade/wireless_signal.4bpp.lz");
-static const u32 sWirelessSignalTilemap[]           = INCBIN_U32("graphics/trade/wireless_signal.bin.lz");
+static const u32 sWirelessSignal4bpp[]              = INCBIN_U32("graphics/trade/wireless_signal.4bpp.smol");
+static const u32 sWirelessSignalTilemap[]           = INCBIN_U32("graphics/trade/wireless_signal.bin.smolTM");
 
 static const struct OamData sOamData_Pokeball = {
     .affineMode = ST_OAM_AFFINE_NORMAL,
@@ -728,33 +739,20 @@ static u32 TradeGetMultiplayerId(void)
     return 0;
 }
 
-static void LoadTradeMonPic(u8 whichParty, u8 state)
+static void LoadTradeMonPic(struct Pokemon *mon, u8 state)
 {
-    int pos = 0;
-    struct Pokemon * mon = NULL;
-    u16 species;
+    enum Species species;
     u32 personality;
-
-    if (whichParty == TRADE_PLAYER)
-    {
-        mon = &gPlayerParty[gSelectedTradeMonPositions[TRADE_PLAYER]];
-        pos = B_POSITION_OPPONENT_LEFT;
-    }
-
-    if (whichParty == TRADE_PARTNER)
-    {
-        mon = &gEnemyParty[gSelectedTradeMonPositions[TRADE_PARTNER] % PARTY_SIZE];
-        pos = B_POSITION_OPPONENT_RIGHT;
-    }
+    u32 whichParty = state / 2;
     species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG);
 
-    switch (state)
+    switch (state % 2)
     {
     case 0:
         // Load graphics
         personality = GetMonData(mon, MON_DATA_PERSONALITY);
 
-        HandleLoadSpecialPokePic(TRUE, gMonSpritesGfxPtr->spritesGfx[whichParty * 2 + 1], species, personality);
+        HandleLoadSpecialPokePic(TRUE, gMonSpritesGfxPtr->spritesGfx[whichParty * 2 + B_POSITION_OPPONENT_LEFT], species, personality);
 
         LoadSpritePaletteWithTag(GetMonFrontSpritePal(mon), species);
         sTradeAnim->monSpecies[whichParty] = species;
@@ -762,7 +760,7 @@ static void LoadTradeMonPic(u8 whichParty, u8 state)
         break;
     case 1:
         // Create sprite
-        SetMultiuseSpriteTemplateToPokemon(species, pos);
+        SetMultiuseSpriteTemplateToPokemon(species, whichParty * 2 + B_POSITION_OPPONENT_LEFT);
         sTradeAnim->monSpriteIds[whichParty] = CreateSprite(&gMultiuseSpriteTemplate, 120, 60, 6);
         gSprites[sTradeAnim->monSpriteIds[whichParty]].invisible = TRUE;
         gSprites[sTradeAnim->monSpriteIds[whichParty]].callback = SpriteCallbackDummy;
@@ -851,19 +849,19 @@ void CB2_LinkTrade(void)
         sTradeAnim->playerFinishStatus = 0;
         sTradeAnim->partnerFinishStatus = 0;
         sTradeAnim->scheduleLinkTransfer = 0;
-        LoadTradeMonPic(TRADE_PLAYER, 0);
+        LoadTradeMonPic(&gPlayerParty[gSelectedTradeMonPositions[TRADE_PLAYER]], 0);
         gMain.state++;
         break;
     case 6:
-        LoadTradeMonPic(TRADE_PLAYER, 1);
+        LoadTradeMonPic(&gPlayerParty[gSelectedTradeMonPositions[TRADE_PLAYER]], 1);
         gMain.state++;
         break;
     case 7:
-        LoadTradeMonPic(TRADE_PARTNER, 0);
+        LoadTradeMonPic(&gEnemyParty[gSelectedTradeMonPositions[TRADE_PARTNER] % PARTY_SIZE], 2);
         gMain.state++;
         break;
     case 8:
-        LoadTradeMonPic(TRADE_PARTNER, 1);
+        LoadTradeMonPic(&gEnemyParty[gSelectedTradeMonPositions[TRADE_PARTNER] % PARTY_SIZE], 3);
         LinkTradeDrawWindow();
         gMain.state++;
         break;
@@ -940,10 +938,25 @@ static void CB2_InitInGameTrade(void)
 {
     u8 otName[11];
 
+    struct Pokemon *playerMon;
+    if (gSpecialVar_0x8004 == PC_MON_CHOSEN)
+        playerMon = &gEnemyParty[TRADEMON_FROM_PC];
+    else
+        playerMon = &gPlayerParty[gSpecialVar_0x8004];
+
     switch (gMain.state)
     {
     case 0:
-        gSelectedTradeMonPositions[TRADE_PLAYER] = gSpecialVar_0x8005;
+        //If ChooseBoxMon points to a pc mon, we store it into gEnemyParty
+        if(gSpecialVar_0x8004 == PC_MON_CHOSEN)
+        {
+            gSelectedTradeMonPositions[TRADE_PLAYER] = TRADEMON_FROM_PC;
+            RemoveSelectedPcMon(&gEnemyParty[TRADEMON_FROM_PC]);
+        }
+        else
+        {
+            gSelectedTradeMonPositions[TRADE_PLAYER] = gSpecialVar_0x8004;
+        }
         gSelectedTradeMonPositions[TRADE_PARTNER] = PARTY_SIZE;
         StringCopy(gLinkPlayers[0].name, gSaveBlock2Ptr->playerName);
         GetMonData(&gEnemyParty[0], MON_DATA_OT_NAME, otName);
@@ -970,20 +983,20 @@ static void CB2_InitInGameTrade(void)
         gMain.state = 5;
         break;
     case 5:
-        LoadTradeMonPic(TRADE_PLAYER, 0);
+        LoadTradeMonPic(playerMon, 0);
         gMain.state++;
         break;
     case 6:
-        LoadTradeMonPic(TRADE_PLAYER, 1);
+        LoadTradeMonPic(playerMon, 1);
         gMain.state++;
         break;
     case 7:
-        LoadTradeMonPic(TRADE_PARTNER, 0);
+        LoadTradeMonPic(&gEnemyParty[0], 2);
         ShowBg(0);
         gMain.state++;
         break;
     case 8:
-        LoadTradeMonPic(TRADE_PARTNER, 1);
+        LoadTradeMonPic(&gEnemyParty[0], 3);
         FillWindowPixelBuffer(0, PIXEL_FILL(15));
         PutWindowTilemap(0);
         CopyWindowToVram(0, COPYWIN_FULL);
@@ -1019,16 +1032,24 @@ static void CB2_InitInGameTrade(void)
 
 static void UpdatePokedexForReceivedMon(u8 partyIdx)
 {
-    struct Pokemon * mon = &gPlayerParty[partyIdx];
+    struct Pokemon *mon;
+    enum Species species;
+    enum NationalDexOrder natDex;
+    u32 personality;
 
-    if (!GetMonData(mon, MON_DATA_IS_EGG))
-    {
-        u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        u32 personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
-        species = SpeciesToNationalPokedexNum(species);
-        GetSetPokedexFlag(species, FLAG_SET_SEEN);
-        HandleSetPokedexFlag(species, FLAG_SET_CAUGHT, personality);
-    }
+    if (partyIdx == PC_MON_CHOSEN)
+        mon = &gEnemyParty[TRADEMON_FROM_PC];
+    else
+        mon = &gPlayerParty[partyIdx];
+
+    if (GetMonData(mon, MON_DATA_IS_EGG))
+        return;
+
+    species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
+    natDex = SpeciesToNationalPokedexNum(species);
+    GetSetPokedexFlag(natDex, FLAG_SET_SEEN);
+    HandleSetPokedexFlag(natDex, FLAG_SET_CAUGHT, personality);
 }
 
 static void TryEnableNationalDexFromLinkPartner(void)
@@ -1044,10 +1065,15 @@ static void TradeMons(u8 playerPartyIdx, u8 partnerPartyIdx)
     u8 friendship;
 
     // Get whether the offered Pokemon have mail
-    struct Pokemon * playerMon = &gPlayerParty[playerPartyIdx];
+    struct Pokemon *playerMon;
+    if (playerPartyIdx == PC_MON_CHOSEN)
+        playerMon = &gEnemyParty[TRADEMON_FROM_PC];
+    else
+        playerMon = &gPlayerParty[playerPartyIdx];
+
     u16 playerMail = GetMonData(playerMon, MON_DATA_MAIL);
 
-    struct Pokemon * partnerMon = &gEnemyParty[partnerPartyIdx];
+    struct Pokemon *partnerMon = &gEnemyParty[partnerPartyIdx];
     u16 partnerMail = GetMonData(partnerMon, MON_DATA_MAIL);
 
     // The mail attached to the sent Pokemon no longer exists in your file.
@@ -1062,11 +1088,23 @@ static void TradeMons(u8 playerPartyIdx, u8 partnerPartyIdx)
     if (!GetMonData(playerMon, MON_DATA_IS_EGG))
         SetMonData(playerMon, MON_DATA_FRIENDSHIP, &friendship);
 
-    // Associate your partner's mail with the Pokemon they sent over.
     if (partnerMail != MAIL_NONE)
-        GiveMailToMon2(playerMon, &gLinkPartnerMail[partnerMail]);
+    {
+        if (playerPartyIdx == PC_MON_CHOSEN)
+        {
+            //TODO: add message explaining mail has been send to PC OR couldn't be saved
+            SaveMailToPC(&gLinkPartnerMail[partnerMail]);
+            TakeMailFromMon(playerMon);
+        }
+        else
+        {
+            GiveMailToMon2(playerMon, &gLinkPartnerMail[partnerMail]);
+        }
+    }
 
     UpdatePokedexForReceivedMon(playerPartyIdx);
+    if (playerPartyIdx == PC_MON_CHOSEN)
+        CopyMonToPC(playerMon);
     if (gReceivedRemoteLinkPlayers)
         TryEnableNationalDexFromLinkPartner();
 }
@@ -1220,6 +1258,7 @@ static void TradeBufferOTnameAndNicknames(void)
     u8 nickname[POKEMON_NAME_BUFFER_SIZE];
     u8 mpId;
     const struct InGameTrade * inGameTrade;
+
     if (sTradeAnim->isLinkTrade)
     {
         mpId = GetMultiplayerId();
@@ -1231,10 +1270,13 @@ static void TradeBufferOTnameAndNicknames(void)
     }
     else
     {
-        inGameTrade = &sInGameTrades[gSpecialVar_0x8004];
+        inGameTrade = &sInGameTrades[gSpecialVar_0x8005];
         StringCopy(gStringVar1, inGameTrade->otName);
         StringCopy_Nickname(gStringVar3, inGameTrade->nickname);
-        GetMonData(&gPlayerParty[gSpecialVar_0x8005], MON_DATA_NICKNAME, nickname);
+        if(gSpecialVar_0x8004 == PC_MON_CHOSEN)
+            GetMonData(&gEnemyParty[TRADEMON_FROM_PC], MON_DATA_NICKNAME, nickname);
+        else
+            GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_NICKNAME, nickname);
         StringCopy_Nickname(gStringVar2, nickname);
     }
 }
@@ -1352,7 +1394,7 @@ static bool8 DoTradeAnim_Cable(void)
         }
         break;
     case STATE_SEND_MSG:
-        StringExpandPlaceholders(gStringVar4, gText_XWillBeSentToY);
+        StringExpandPlaceholders(gStringVar4, sText_XWillBeSentToY);
         DrawTextOnTradeWindow(0, gStringVar4, 0);
 
         if (sTradeAnim->monSpecies[TRADE_PLAYER] != SPECIES_EGG)
@@ -1366,7 +1408,7 @@ static bool8 DoTradeAnim_Cable(void)
         {
             sTradeAnim->releasePokeballSpriteId = CreateTradePokeballSprite(sTradeAnim->monSpriteIds[TRADE_PLAYER], gSprites[sTradeAnim->monSpriteIds[TRADE_PLAYER]].oam.paletteNum, 120, 32, 2, 1, 0x14, 0xfffff);
             sTradeAnim->state++;
-            StringExpandPlaceholders(gStringVar4, gText_ByeByeVar1);
+            StringExpandPlaceholders(gStringVar4, sText_ByeByeVar1);
             DrawTextOnTradeWindow(0, gStringVar4, 0);
         }
         break;
@@ -1693,9 +1735,9 @@ static bool8 DoTradeAnim_Cable(void)
         if (gSprites[sTradeAnim->bouncingPokeballSpriteId].callback == SpriteCallbackDummy)
         {
             HandleLoadSpecialPokePic(TRUE,
-                                      gMonSpritesGfxPtr->spritesGfx[B_POSITION_OPPONENT_RIGHT],
-                                      sTradeAnim->monSpecies[TRADE_PARTNER],
-                                      sTradeAnim->monPersonalities[TRADE_PARTNER]);
+                                     gMonSpritesGfxPtr->spritesGfx[B_POSITION_OPPONENT_RIGHT],
+                                     sTradeAnim->monSpecies[TRADE_PARTNER],
+                                     sTradeAnim->monPersonalities[TRADE_PARTNER]);
             sTradeAnim->state++;
         }
         break;
@@ -1716,7 +1758,7 @@ static bool8 DoTradeAnim_Cable(void)
                                       DISPCNT_BG0_ON |
                                       DISPCNT_BG2_ON |
                                       DISPCNT_OBJ_ON);
-        StringExpandPlaceholders(gStringVar4, gText_XSentOverY);
+        StringExpandPlaceholders(gStringVar4, sText_XSentOverY);
         DrawTextOnTradeWindow(0, gStringVar4, 0);
         sTradeAnim->state = STATE_DELAY_FOR_MON_ANIM;
         sTradeAnim->timer = 0;
@@ -1741,7 +1783,7 @@ static bool8 DoTradeAnim_Cable(void)
         if (sTradeAnim->timer == 250)
         {
             sTradeAnim->state++;
-            StringExpandPlaceholders(gStringVar4, gText_TakeGoodCareOfX);
+            StringExpandPlaceholders(gStringVar4, sText_TakeGoodCareOfX);
             DrawTextOnTradeWindow(0, gStringVar4, 0);
             sTradeAnim->timer = 0;
         }
@@ -1830,7 +1872,7 @@ static bool8 DoTradeAnim_Wireless(void)
         }
         break;
     case STATE_SEND_MSG:
-        StringExpandPlaceholders(gStringVar4, gText_XWillBeSentToY);
+        StringExpandPlaceholders(gStringVar4, sText_XWillBeSentToY);
         DrawTextOnTradeWindow(0, gStringVar4, 0);
 
         if (sTradeAnim->monSpecies[TRADE_PLAYER] != SPECIES_EGG)
@@ -1844,7 +1886,7 @@ static bool8 DoTradeAnim_Wireless(void)
         {
             sTradeAnim->releasePokeballSpriteId = CreateTradePokeballSprite(sTradeAnim->monSpriteIds[TRADE_PLAYER], gSprites[sTradeAnim->monSpriteIds[TRADE_PLAYER]].oam.paletteNum, 120, 32, 2, 1, 0x14, 0xfffff);
             sTradeAnim->state++;
-            StringExpandPlaceholders(gStringVar4, gText_ByeByeVar1);
+            StringExpandPlaceholders(gStringVar4, sText_ByeByeVar1);
             DrawTextOnTradeWindow(0, gStringVar4, 0);
         }
         break;
@@ -2219,7 +2261,7 @@ static bool8 DoTradeAnim_Wireless(void)
                                       DISPCNT_BG0_ON |
                                       DISPCNT_BG2_ON |
                                       DISPCNT_OBJ_ON);
-        StringExpandPlaceholders(gStringVar4, gText_XSentOverY);
+        StringExpandPlaceholders(gStringVar4, sText_XSentOverY);
         DrawTextOnTradeWindow(0, gStringVar4, 0);
         sTradeAnim->state = STATE_DELAY_FOR_MON_ANIM;
         sTradeAnim->timer = 0;
@@ -2244,7 +2286,7 @@ static bool8 DoTradeAnim_Wireless(void)
         if (sTradeAnim->timer == 250)
         {
             sTradeAnim->state++;
-            StringExpandPlaceholders(gStringVar4, gText_TakeGoodCareOfX);
+            StringExpandPlaceholders(gStringVar4, sText_TakeGoodCareOfX);
             DrawTextOnTradeWindow(0, gStringVar4, 0);
             sTradeAnim->timer = 0;
         }
@@ -2264,13 +2306,18 @@ static bool8 DoTradeAnim_Wireless(void)
             sTradeAnim->state++;
         break;
     case STATE_TRY_EVOLUTION: // Only if in-game trade, link trades use CB2_TryLinkTradeEvolution
-        TradeMons(gSpecialVar_0x8005, 0);
+        TradeMons(gSpecialVar_0x8004, 0);
         gCB2_AfterEvolution = CB2_InGameTrade;
-        evoTarget = GetEvolutionTargetSpecies(&gPlayerParty[gSelectedTradeMonPositions[TRADE_PLAYER]], EVO_MODE_TRADE, ITEM_NONE, &gPlayerParty[gSelectedTradeMonPositions[TRADE_PARTNER]], NULL, CHECK_EVO);
+        struct Pokemon *canEvolveMon;
+        if (gSpecialVar_0x8004 == PC_MON_CHOSEN)
+            canEvolveMon = &gEnemyParty[TRADEMON_FROM_PC];
+        else
+            canEvolveMon = &gPlayerParty[gSpecialVar_0x8004];
+        evoTarget = GetEvolutionTargetSpecies(canEvolveMon, EVO_MODE_TRADE, ITEM_NONE, &gPlayerParty[gSelectedTradeMonPositions[TRADE_PARTNER]], NULL, CHECK_EVO);
         if (evoTarget != SPECIES_NONE)
         {
-            GetEvolutionTargetSpecies(&gPlayerParty[gSelectedTradeMonPositions[TRADE_PLAYER]], EVO_MODE_TRADE, ITEM_NONE, &gPlayerParty[gSelectedTradeMonPositions[TRADE_PARTNER]], NULL, DO_EVO);
-            TradeEvolutionScene(&gPlayerParty[gSelectedTradeMonPositions[TRADE_PLAYER]], evoTarget, sTradeAnim->monSpriteIds[TRADE_PARTNER], gSelectedTradeMonPositions[TRADE_PLAYER]);
+            GetEvolutionTargetSpecies(canEvolveMon, EVO_MODE_TRADE, ITEM_NONE, &gPlayerParty[gSelectedTradeMonPositions[TRADE_PARTNER]], NULL, DO_EVO);
+            TradeEvolutionScene(canEvolveMon, evoTarget, sTradeAnim->monSpriteIds[TRADE_PARTNER], gSelectedTradeMonPositions[TRADE_PLAYER]);
         }
         sTradeAnim->state++;
         break;
@@ -2433,7 +2480,7 @@ u16 GetInGameTradeSpeciesInfo(void)
     // Populates gStringVar1 with the name of the requested species and
     // gStringVar2 with the name of the offered species.
     // Returns the requested species.
-    const struct InGameTrade * inGameTrade = &sInGameTrades[gSpecialVar_0x8004];
+    const struct InGameTrade * inGameTrade = &sInGameTrades[gSpecialVar_0x8005];
     StringCopy(gStringVar1, gSpeciesInfo[inGameTrade->requestedSpecies].speciesName);
     StringCopy(gStringVar2, gSpeciesInfo[inGameTrade->species].speciesName);
     return inGameTrade->requestedSpecies;
@@ -2442,7 +2489,7 @@ u16 GetInGameTradeSpeciesInfo(void)
 static void BufferInGameTradeMonName(void)
 {
     u8 nickname[max(32, POKEMON_NAME_BUFFER_SIZE)];
-    const struct InGameTrade * inGameTrade = &sInGameTrades[gSpecialVar_0x8004];
+    const struct InGameTrade * inGameTrade = &sInGameTrades[gSpecialVar_0x8005];
     GetMonData(&gPlayerParty[gSpecialVar_0x8005], MON_DATA_NICKNAME, nickname);
     StringCopy_Nickname(gStringVar1, nickname);
     StringCopy(gStringVar2, gSpeciesInfo[inGameTrade->species].speciesName);
@@ -2450,8 +2497,10 @@ static void BufferInGameTradeMonName(void)
 
 static void CreateInGameTradePokemonInternal(u8 playerSlot, u8 inGameTradeIdx)
 {
-    const struct InGameTrade * inGameTrade = &sInGameTrades[inGameTradeIdx];
-    u8 level = GetMonData(&gPlayerParty[playerSlot], MON_DATA_LEVEL);
+    const struct InGameTrade *inGameTrade = &sInGameTrades[inGameTradeIdx];
+    struct BoxPokemon *boxmon = GetSelectedBoxMonFromPcOrParty();
+    u32 level = GetLevelFromBoxMonExp(boxmon);
+
     struct Mail mail;
     u8 metLocation = METLOC_IN_GAME_TRADE;
     struct Pokemon *tradeMon = &gEnemyParty[0];
@@ -2511,15 +2560,16 @@ static void GetInGameTradeMail(struct Mail * mail, const struct InGameTrade * in
 
 u16 GetTradeSpecies(void)
 {
-    if (GetMonData(&gPlayerParty[gSpecialVar_0x8005], MON_DATA_IS_EGG))
+    struct BoxPokemon *boxmon = GetSelectedBoxMonFromPcOrParty();
+    if (GetBoxMonData(boxmon, MON_DATA_IS_EGG))
         return SPECIES_NONE;
-    else
-        return GetMonData(&gPlayerParty[gSpecialVar_0x8005], MON_DATA_SPECIES);
+    u32 species = GetBoxMonData(boxmon, MON_DATA_SPECIES);
+    return species;
 }
 
 void CreateInGameTradePokemon(void)
 {
-    CreateInGameTradePokemonInternal(gSpecialVar_0x8005, gSpecialVar_0x8004);
+    CreateInGameTradePokemonInternal(gSpecialVar_0x8004, gSpecialVar_0x8005);
 }
 
 static void CB2_UpdateLinkTrade(void)
@@ -2567,7 +2617,7 @@ static void CB2_SaveAndEndTrade(void)
     {
     case 0:
         gMain.state++;
-        StringExpandPlaceholders(gStringVar4, gText_CommunicationStandby5);
+        StringExpandPlaceholders(gStringVar4, gText_CommunicationStandby);
         DrawTextOnTradeWindow(0, gStringVar4, 0);
         break;
     case 1:
@@ -2590,7 +2640,7 @@ static void CB2_SaveAndEndTrade(void)
         break;
     case 2:
         gMain.state = 50;
-        StringExpandPlaceholders(gStringVar4, gText_SavingDontTurnOffThePower2);
+        StringExpandPlaceholders(gStringVar4, gText_SavingDontTurnOffThePower);
         DrawTextOnTradeWindow(0, gStringVar4, 0);
         break;
     case 50:

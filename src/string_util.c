@@ -26,19 +26,16 @@ static const s32 sPowersOfTen[] =
     1000000000,
 };
 
-extern const u8 gExpandedPlaceholder_Empty[];
-extern u8 gExpandedPlaceholder_Kun[];
-extern u8 gExpandedPlaceholder_Chan[];
-extern u8 gExpandedPlaceholder_Sapphire[];
-extern u8 gExpandedPlaceholder_Ruby[];
-extern u8 gExpandedPlaceholder_Aqua[];
-extern u8 gExpandedPlaceholder_Magma[];
-extern u8 gExpandedPlaceholder_Archie[];
-extern u8 gExpandedPlaceholder_Maxie[];
-extern u8 gExpandedPlaceholder_Kyogre[];
-extern u8 gExpandedPlaceholder_Groudon[];
-extern u8 gExpandedPlaceholder_Red[];
-extern u8 gExpandedPlaceholder_Green[];
+static const u8 sExpandedPlaceholder_Sapphire[] = _("SAPPHIRE");
+static const u8 sExpandedPlaceholder_Ruby[] = _("RUBY");
+static const u8 sExpandedPlaceholder_Aqua[] = _("AQUA");
+static const u8 sExpandedPlaceholder_Magma[] = _("MAGMA");
+static const u8 sExpandedPlaceholder_Archie[] = _("ARCHIE");
+static const u8 sExpandedPlaceholder_Maxie[] = _("MAXIE");
+static const u8 sExpandedPlaceholder_Kyogre[] = _("KYOGRE");
+static const u8 sExpandedPlaceholder_Groudon[] = _("GROUDON");
+static const u8 sExpandedPlaceholder_Red[] = _("RED");
+static const u8 sExpandedPlaceholder_Green[] = _("GREEN");
 
 u8 *StringCopy_Nickname(u8 *dest, const u8 *src)
 {
@@ -312,40 +309,41 @@ u8 *StringExpandPlaceholders(u8 *dest, const u8 *src)
 
         switch (c)
         {
-            case PLACEHOLDER_BEGIN:
-                placeholderId = *src++;
-                expandedString = GetExpandedPlaceholder(placeholderId);
-                dest = StringExpandPlaceholders(dest, expandedString);
-                break;
-            case EXT_CTRL_CODE_BEGIN:
-                *dest++ = c;
-                c = *src++;
-                *dest++ = c;
+        case PLACEHOLDER_BEGIN:
+            placeholderId = *src++;
+            expandedString = GetExpandedPlaceholder(placeholderId);
+            dest = StringExpandPlaceholders(dest, expandedString);
+            break;
+        case EXT_CTRL_CODE_BEGIN:
+            *dest++ = c;
+            c = *src++;
+            *dest++ = c;
 
-                switch (c)
-                {
-                    case 0x07:
-                    case 0x09:
-                    case 0x0F:
-                    case 0x15:
-                    case 0x16:
-                    case 0x17:
-                    case 0x18:
-                        break;
-                    case 0x04:
-                        *dest++ = *src++;
-                    case 0x0B:
-                        *dest++ = *src++;
-                    default:
-                        *dest++ = *src++;
-                }
+            switch (c)
+            {
+            case EXT_CTRL_CODE_RESET_FONT:
+            case EXT_CTRL_CODE_PAUSE_UNTIL_PRESS:
+            case EXT_CTRL_CODE_FILL_WINDOW:
+            case EXT_CTRL_CODE_JPN:
+            case EXT_CTRL_CODE_ENG:
+            case EXT_CTRL_CODE_PAUSE_MUSIC:
+            case EXT_CTRL_CODE_RESUME_MUSIC:
                 break;
-            case EOS:
-                *dest = EOS;
-                return dest;
-            case 0xFA:
-            case 0xFB:
-            case 0xFE:
+            case EXT_CTRL_CODE_COLOR_HIGHLIGHT_SHADOW:
+            case EXT_CTRL_CODE_TEXT_COLORS:
+                *dest++ = *src++;
+            case EXT_CTRL_CODE_PLAY_BGM:
+                *dest++ = *src++;
+            default:
+                *dest++ = *src++;
+            }
+            break;
+        case EOS:
+            *dest = EOS;
+            return dest;
+        case CHAR_PROMPT_SCROLL:
+        case CHAR_PROMPT_CLEAR:
+        case CHAR_NEWLINE:
             default:
                 *dest++ = c;
         }
@@ -379,47 +377,44 @@ u8 *StringBraille(u8 *dest, const u8 *src)
     }
 }
 
-static u8 *ExpandPlaceholder_UnknownStringVar(void)
+static const u8 *ExpandPlaceholder_UnknownStringVar(void)
 {
     return gUnknownStringVar;
 }
 
-static u8 *ExpandPlaceholder_PlayerName(void)
+static const u8 *ExpandPlaceholder_PlayerName(void)
 {
     return gSaveBlock2Ptr->playerName;
 }
 
-static u8 *ExpandPlaceholder_StringVar1(void)
+static const u8 *ExpandPlaceholder_StringVar1(void)
 {
     return gStringVar1;
 }
 
-static u8 *ExpandPlaceholder_StringVar2(void)
+static const u8 *ExpandPlaceholder_StringVar2(void)
 {
     return gStringVar2;
 }
 
-static u8 *ExpandPlaceholder_StringVar3(void)
+static const u8 *ExpandPlaceholder_StringVar3(void)
 {
     return gStringVar3;
 }
 
-static u8 *ExpandPlaceholder_KunChan(void)
+static const u8 *ExpandPlaceholder_KunChan(void)
 {
-    if (gSaveBlock2Ptr->playerGender == MALE)
-        return gExpandedPlaceholder_Kun;
-    else
-        return gExpandedPlaceholder_Chan;
+    return gText_EmptyString;
 }
 
-static u8 *ExpandPlaceholder_RivalName(void)
+static const u8 *ExpandPlaceholder_RivalName(void)
 {
     if (gSaveBlock1Ptr->rivalName[0] == EOS)
     {
         if (gSaveBlock2Ptr->playerGender == MALE)
-            return gExpandedPlaceholder_Green;
+            return sExpandedPlaceholder_Green;
         else
-            return gExpandedPlaceholder_Red;
+            return sExpandedPlaceholder_Red;
     }
     else
     {
@@ -427,72 +422,72 @@ static u8 *ExpandPlaceholder_RivalName(void)
     }
 }
 
-static u8 *ExpandPlaceholder_Version(void)
+static const u8 *ExpandPlaceholder_Version(void)
 {
 #if defined(FIRERED)
-    return gExpandedPlaceholder_Ruby;
+    return sExpandedPlaceholder_Ruby;
 #elif defined(LEAFGREEN)
-    return gExpandedPlaceholder_Sapphire;
+    return sExpandedPlaceholder_Sapphire;
 #endif
 }
 
-static u8 *ExpandPlaceholder_Magma(void)
+static const u8 *ExpandPlaceholder_Magma(void)
 {
 #if defined(FIRERED)
-    return gExpandedPlaceholder_Magma;
+    return sExpandedPlaceholder_Magma;
 #elif defined(LEAFGREEN)
-    return gExpandedPlaceholder_Aqua;
+    return sExpandedPlaceholder_Aqua;
 #endif
 }
 
-static u8 *ExpandPlaceholder_Aqua(void)
+static const u8 *ExpandPlaceholder_Aqua(void)
 {
 #if defined(FIRERED)
-    return gExpandedPlaceholder_Aqua;
+    return sExpandedPlaceholder_Aqua;
 #elif defined(LEAFGREEN)
-    return gExpandedPlaceholder_Magma;
+    return sExpandedPlaceholder_Magma;
 #endif
 }
 
-static u8 *ExpandPlaceholder_Maxie(void)
+static const u8 *ExpandPlaceholder_Maxie(void)
 {
 #if defined(FIRERED)
-    return gExpandedPlaceholder_Maxie;
+    return sExpandedPlaceholder_Maxie;
 #elif defined(LEAFGREEN)
-    return gExpandedPlaceholder_Archie;
+    return sExpandedPlaceholder_Archie;
 #endif
 }
 
-static u8 *ExpandPlaceholder_Archie(void)
+static const u8 *ExpandPlaceholder_Archie(void)
 {
 #if defined(FIRERED)
-    return gExpandedPlaceholder_Archie;
+    return sExpandedPlaceholder_Archie;
 #elif defined(LEAFGREEN)
-    return gExpandedPlaceholder_Maxie;
+    return sExpandedPlaceholder_Maxie;
 #endif
 }
 
-static u8 *ExpandPlaceholder_Groudon(void)
+static const u8 *ExpandPlaceholder_Groudon(void)
 {
 #if defined(FIRERED)
-    return gExpandedPlaceholder_Groudon;
+    return sExpandedPlaceholder_Groudon;
 #elif defined(LEAFGREEN)
-    return gExpandedPlaceholder_Kyogre;
+    return sExpandedPlaceholder_Kyogre;
 #endif
 }
 
-static u8 *ExpandPlaceholder_Kyogre(void)
+static const u8 *ExpandPlaceholder_Kyogre(void)
 {
 #if defined(FIRERED)
-    return gExpandedPlaceholder_Kyogre;
+    return sExpandedPlaceholder_Kyogre;
 #elif defined(LEAFGREEN)
-    return gExpandedPlaceholder_Groudon;
+    return sExpandedPlaceholder_Groudon;
 #endif
 }
 
 const u8 *GetExpandedPlaceholder(u32 id)
 {
-    typedef u8 *(*ExpandPlaceholderFunc)(void);
+    typedef const u8 *(*ExpandPlaceholderFunc)(void);
 
     static const ExpandPlaceholderFunc funcs[] =
     {
@@ -512,8 +507,8 @@ const u8 *GetExpandedPlaceholder(u32 id)
         [PLACEHOLDER_ID_KYOGRE]       = ExpandPlaceholder_Kyogre,
     };
 
-    if (id >= NELEMS(funcs))
-        return gExpandedPlaceholder_Empty;
+    if (id >= ARRAY_COUNT(funcs))
+        return gText_EmptyString;
     else
         return funcs[id]();
 }
@@ -569,7 +564,7 @@ u8 *StringCopyN_Multibyte(u8 *dest, const u8 *src, u32 n)
         else
         {
             *dest++ = *src++;
-            if (*(src - 1) == 0xF9)
+            if (*(src - 1) == CHAR_EXTRA_SYMBOL)
                 *dest++ = *src++;
         }
     }
@@ -584,7 +579,7 @@ u32 StringLength_Multibyte(const u8 *str)
 
     while (*str != EOS)
     {
-        if (*str == 0xF9)
+        if (*str == CHAR_EXTRA_SYMBOL)
             str++;
         str++;
         length++;
@@ -593,23 +588,31 @@ u32 StringLength_Multibyte(const u8 *str)
     return length;
 }
 
-u8 *WriteColorChangeControlCode(u8 *dest, u32 colorType, u8 color)
+u8 *WriteColorChangeControlCode(u8 *dest, enum TextColorType colorType, u8 color)
 {
-    *dest = 0xFC;
+    *dest = EXT_CTRL_CODE_BEGIN;
     dest++;
 
     switch (colorType)
     {
-    case 0:
-        *dest = 1;
+    case TEXT_COLOR_TYPE_FOREGROUND:
+        *dest = EXT_CTRL_CODE_COLOR;
         dest++;
         break;
-    case 1:
-        *dest = 3;
+    case TEXT_COLOR_TYPE_SHADOW:
+        *dest = EXT_CTRL_CODE_SHADOW;
         dest++;
         break;
-    case 2:
-        *dest = 2;
+    case TEXT_COLOR_TYPE_HIGHLIGHT:
+        *dest = EXT_CTRL_CODE_HIGHLIGHT;
+        dest++;
+        break;
+    case TEXT_COLOR_TYPE_ACCENT:
+        *dest = EXT_CTRL_CODE_ACCENT;
+        dest++;
+        break;
+    case TEXT_COLOR_TYPE_BACKGROUND:
+        *dest = EXT_CTRL_CODE_BACKGROUND;
         dest++;
         break;
     }
@@ -618,6 +621,19 @@ u8 *WriteColorChangeControlCode(u8 *dest, u32 colorType, u8 color)
     dest++;
     *dest = EOS;
     return dest;
+}
+
+bool32 IsStringJapanese(u8 *str)
+{
+    while (*str != EOS)
+    {
+        if (*str <= JAPANESE_CHAR_END)
+            if (*str != CHAR_SPACE)
+                return TRUE;
+        str++;
+    }
+
+    return FALSE;
 }
 
 u8 GetExtCtrlCodeLength(u8 code)
@@ -649,17 +665,20 @@ u8 GetExtCtrlCodeLength(u8 code)
         [EXT_CTRL_CODE_ENG]                    = 1,
         [EXT_CTRL_CODE_PAUSE_MUSIC]            = 1,
         [EXT_CTRL_CODE_RESUME_MUSIC]           = 1,
+        [EXT_CTRL_CODE_ACCENT]                 = 2,
+        [EXT_CTRL_CODE_BACKGROUND]             = 2,
+        [EXT_CTRL_CODE_TEXT_COLORS]            = 4,
     };
 
     u8 length = 0;
-    if (code < NELEMS(lengths))
+    if (code < ARRAY_COUNT(lengths))
         length = lengths[code];
     return length;
 }
 
 static const u8 *SkipExtCtrlCode(const u8 *s)
 {
-    while (*s == 0xFC)
+    while (*s == EXT_CTRL_CODE_BEGIN)
     {
         s++;
         s += GetExtCtrlCodeLength(*s);
@@ -683,11 +702,11 @@ s32 StringCompareWithoutExtCtrlCodes(const u8 *str1, const u8 *str2)
         if (*str1 < *str2)
         {
             retVal = -1;
-            if (*str2 == 0xFF)
+            if (*str2 == EOS)
                 retVal = 1;
         }
 
-        if (*str1 == 0xFF)
+        if (*str1 == EOS)
             return retVal;
 
         str1++;
@@ -696,13 +715,13 @@ s32 StringCompareWithoutExtCtrlCodes(const u8 *str1, const u8 *str2)
 
     retVal = 1;
 
-    if (*str1 == 0xFF)
+    if (*str1 == EOS)
         retVal = -1;
 
     return retVal;
 }
 
-void ConvertInternationalString(u8 *s, u8 language)
+void ConvertInternationalString(u8 *s, enum Language language)
 {
     if (language == LANGUAGE_JAPANESE)
     {
@@ -710,9 +729,9 @@ void ConvertInternationalString(u8 *s, u8 language)
 
         StripExtCtrlCodes(s);
         i = StringLength(s);
-        s[i++] = 0xFC;
-        s[i++] = 22;
-        s[i++] = 0xFF;
+        s[i++] = EXT_CTRL_CODE_BEGIN;
+        s[i++] = EXT_CTRL_CODE_ENG;
+        s[i++] = EOS;
 
         i--;
 
@@ -722,8 +741,8 @@ void ConvertInternationalString(u8 *s, u8 language)
             i--;
         }
 
-        s[0] = 0xFC;
-        s[1] = 21;
+        s[0] = EXT_CTRL_CODE_BEGIN;
+        s[1] = EXT_CTRL_CODE_JPN;
     }
 }
 
@@ -731,9 +750,9 @@ void StripExtCtrlCodes(u8 *str)
 {
     u16 srcIndex = 0;
     u16 destIndex = 0;
-    while (str[srcIndex] != 0xFF)
+    while (str[srcIndex] != EOS)
     {
-        if (str[srcIndex] == 0xFC)
+        if (str[srcIndex] == EXT_CTRL_CODE_BEGIN)
         {
             srcIndex++;
             srcIndex += GetExtCtrlCodeLength(str[srcIndex]);
@@ -743,5 +762,16 @@ void StripExtCtrlCodes(u8 *str)
             str[destIndex++] = str[srcIndex++];
         }
     }
-    str[destIndex] = 0xFF;
+    str[destIndex] = EOS;
+}
+
+bool32 DoesStringProperlyTerminate(const u8 *str, u32 last)
+{
+    for (u32 i = 0; i < last; i++)
+    {
+        if (str[i] == EOS)
+            return TRUE;
+    }
+
+    return FALSE;
 }

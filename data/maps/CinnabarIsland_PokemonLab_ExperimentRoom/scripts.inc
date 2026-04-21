@@ -8,18 +8,7 @@ CinnabarIsland_PokemonLab_ExperimentRoom_MapScripts::
 CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_Garett::
 	lock
 	faceplayer
-	setvar VAR_0x8008, INGAME_TRADE_SEEL
-	call EventScript_GetInGameTradeSpeciesInfo
-	goto_if_set FLAG_DID_SEELOR_TRADE, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_AlreadyTraded
-	msgbox Trade_Text_LookingForMonWannaTradeForMon, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_DeclineTrade
-	call EventScript_ChooseMonForInGameTrade
-	goto_if_ge VAR_0x8004, PARTY_SIZE, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_DeclineTrade
-	call EventScript_GetInGameTradeSpecies
-	goto_if_ne VAR_RESULT, VAR_0x8009, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_NotRequestedMon
-	call EventScript_DoInGameTrade
-	msgbox Trade_Text_HeyThanks
-	setflag FLAG_DID_SEELOR_TRADE
+	ingame_trade INGAME_TRADE_SEEL, Trade_Text_LookingForMonWannaTradeForMon, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_DeclineTrade, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_NotRequestedMon, Trade_Text_HeyThanks, FLAG_DID_SEELOR_TRADE, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_AlreadyTraded
 	release
 	end
 
@@ -89,7 +78,7 @@ CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_ChooseFossilHelix::
 	waitmessage
 	call CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_CheckAddOldAmberToList
 	goto_if_eq VAR_RESULT, TRUE, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_ChooseFossilHelixAmber
-	multichoice 0, 0, MULTICHOICE_HELIX, FALSE
+	multichoice 0, 0, MULTI_HELIX, FALSE
 	switch VAR_RESULT
 	case 0, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_ShowHelixFossil
 	case 1, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_DontShowFossil
@@ -101,7 +90,7 @@ CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_ChooseFossilDome::
 	waitmessage
 	call CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_CheckAddOldAmberToList
 	goto_if_eq VAR_RESULT, TRUE, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_ChooseFossilDomeAmber
-	multichoice 0, 0, MULTICHOICE_DOME, FALSE
+	multichoice 0, 0, MULTI_DOME, FALSE
 	switch VAR_RESULT
 	case 0, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_ShowDomeFossil
 	case 1, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_DontShowFossil
@@ -111,7 +100,7 @@ CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_ChooseFossilDome::
 CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_ChooseFossilAmber::
 	message CinnabarIsland_PokemonLab_ExperimentRoom_Text_HaveYouAFossilForMe
 	waitmessage
-	multichoice 0, 0, MULTICHOICE_AMBER, FALSE
+	multichoice 0, 0, MULTI_AMBER, FALSE
 	switch VAR_RESULT
 	case 0, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_ShowOldAmber
 	case 1, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_DontShowFossil
@@ -119,7 +108,7 @@ CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_ChooseFossilAmber::
 	end
 
 CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_ChooseFossilHelixAmber::
-	multichoice 0, 0, MULTICHOICE_HELIX_AMBER, FALSE
+	multichoice 0, 0, MULTI_HELIX_AMBER, FALSE
 	switch VAR_RESULT
 	case 0, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_ShowHelixFossil
 	case 1, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_ShowOldAmber
@@ -128,7 +117,7 @@ CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_ChooseFossilHelixAmber::
 	end
 
 CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_ChooseFossilDomeAmber::
-	multichoice 0, 0, MULTICHOICE_DOME_AMBER, FALSE
+	multichoice 0, 0, MULTI_DOME_AMBER, FALSE
 	switch VAR_RESULT
 	case 0, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_ShowDomeFossil
 	case 1, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_ShowOldAmber

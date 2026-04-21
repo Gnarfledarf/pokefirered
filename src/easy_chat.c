@@ -1,15 +1,16 @@
 #include "global.h"
-#include "gflib.h"
 #include "data.h"
 #include "easy_chat.h"
 #include "event_data.h"
 #include "field_message_box.h"
-#include "mystery_gift.h"
-#include "menu.h"
 #include "mail.h"
+#include "malloc.h"
+#include "menu.h"
 #include "move.h"
+#include "mystery_gift.h"
 #include "pokedex.h"
 #include "random.h"
+#include "string_util.h"
 #include "strings.h"
 #include "constants/easy_chat.h"
 
@@ -33,35 +34,36 @@ static void PopulateAlphabeticalGroups(void);
 static u16 GetUnlockedWordsInECGroup(u16);
 static u16 GetUnlockedWordsInAlphabeticalGroup(u16);
 static bool8 UnlockedECMonOrMove(u16, u8);
-static bool32 EC_IsDeoxys(u16 species);
+static bool32 EC_IsDeoxys(enum Species species);
 static bool8 IsWordUnlocked(u16 word);
 
 #include "data/easy_chat/easy_chat_groups.h"
 #include "data/easy_chat/easy_chat_words_by_letter.h"
 
-static const u8 *const sEasyChatGroupNamePointers[] = {
-    [EC_GROUP_POKEMON] = gEasyChatGroupName_Pokemon,
-    [EC_GROUP_TRAINER] = gEasyChatGroupName_Trainer,
-    [EC_GROUP_STATUS] = gEasyChatGroupName_Status,
-    [EC_GROUP_BATTLE] = gEasyChatGroupName_Battle,
-    [EC_GROUP_GREETINGS] = gEasyChatGroupName_Greetings,
-    [EC_GROUP_PEOPLE] = gEasyChatGroupName_People,
-    [EC_GROUP_VOICES] = gEasyChatGroupName_Voices,
-    [EC_GROUP_SPEECH] = gEasyChatGroupName_Speech,
-    [EC_GROUP_ENDINGS] = gEasyChatGroupName_Endings,
-    [EC_GROUP_FEELINGS] = gEasyChatGroupName_Feelings,
-    [EC_GROUP_CONDITIONS] = gEasyChatGroupName_Conditions,
-    [EC_GROUP_ACTIONS] = gEasyChatGroupName_Actions,
-    [EC_GROUP_LIFESTYLE] = gEasyChatGroupName_Lifestyle,
-    [EC_GROUP_HOBBIES] = gEasyChatGroupName_Hobbies,
-    [EC_GROUP_TIME] = gEasyChatGroupName_Time,
-    [EC_GROUP_MISC] = gEasyChatGroupName_Misc,
-    [EC_GROUP_ADJECTIVES] = gEasyChatGroupName_Adjectives,
-    [EC_GROUP_EVENTS] = gEasyChatGroupName_Events,
-    [EC_GROUP_MOVE_1] = gEasyChatGroupName_Move1,
-    [EC_GROUP_MOVE_2] = gEasyChatGroupName_Move2,
-    [EC_GROUP_TRENDY_SAYING] = gEasyChatGroupName_TrendySaying,
-    [EC_GROUP_POKEMON_2] = gEasyChatGroupName_Pokemon2,
+static const u8 *const sEasyChatGroupNamePointers[] =
+{
+    [EC_GROUP_POKEMON]       = gText_Pokemon,
+    [EC_GROUP_TRAINER]       = COMPOUND_STRING("TRAINER"),
+    [EC_GROUP_STATUS]        = COMPOUND_STRING("STATUS"),
+    [EC_GROUP_BATTLE]        = gText_Battle,
+    [EC_GROUP_GREETINGS]     = COMPOUND_STRING("GREETINGS"),
+    [EC_GROUP_PEOPLE]        = COMPOUND_STRING("PEOPLE"),
+    [EC_GROUP_VOICES]        = COMPOUND_STRING("VOICES"),
+    [EC_GROUP_SPEECH]        = COMPOUND_STRING("SPEECH"),
+    [EC_GROUP_ENDINGS]       = COMPOUND_STRING("ENDINGS"),
+    [EC_GROUP_FEELINGS]      = COMPOUND_STRING("FEELINGS"),
+    [EC_GROUP_CONDITIONS]    = COMPOUND_STRING("CONDITIONS"),
+    [EC_GROUP_ACTIONS]       = COMPOUND_STRING("ACTIONS"),
+    [EC_GROUP_LIFESTYLE]     = COMPOUND_STRING("LIFESTYLE"),
+    [EC_GROUP_HOBBIES]       = COMPOUND_STRING("HOBBIES"),
+    [EC_GROUP_TIME]          = gText_Time,
+    [EC_GROUP_MISC]          = COMPOUND_STRING("MISC."),
+    [EC_GROUP_ADJECTIVES]    = COMPOUND_STRING("ADJECTIVES"),
+    [EC_GROUP_EVENTS]        = COMPOUND_STRING("EVENTS"),
+    [EC_GROUP_MOVE_1]        = COMPOUND_STRING("MOVE 1"),
+    [EC_GROUP_MOVE_2]        = COMPOUND_STRING("MOVE 2"),
+    [EC_GROUP_TRENDY_SAYING] = COMPOUND_STRING("TRENDY SAYING"),
+    [EC_GROUP_POKEMON_2]     = COMPOUND_STRING("POKéMON2"),
 };
 
 static const u16 sDefaultProfileWords[] = {
@@ -80,8 +82,11 @@ static const u16 sDefaultBattleStartWords[] = {
     EC_WORD_EXCL,
 };
 
-static const u16 sDeoxysValue[] = {
+static const enum Species sDeoxysValue[] = {
     SPECIES_DEOXYS,
+    SPECIES_DEOXYS_ATTACK,
+    SPECIES_DEOXYS_DEFENSE,
+    SPECIES_DEOXYS_SPEED,
 };
 
 static bool8 IsECGroupUnlocked(u8 groupId)
@@ -119,7 +124,7 @@ static bool8 IsECWordInvalid(u16 easyChatWord)
     u32 index;
     u16 numWords;
     const u16 *list;
-    if (easyChatWord == EC_WORD_UNDEFINED)
+    if (easyChatWord == EC_EMPTY_WORD)
         return FALSE;
 
     groupId = EC_GROUP(easyChatWord);
@@ -171,7 +176,7 @@ u8 *CopyEasyChatWord(u8 *dest, u16 easyChatWord)
     {
         resultStr = StringCopy(dest, gText_ThreeQuestionMarks);
     }
-    else if (easyChatWord != EC_WORD_UNDEFINED)
+    else if (easyChatWord != EC_EMPTY_WORD)
     {
         u16 index = EC_INDEX(easyChatWord);
         u8 groupId = EC_GROUP(easyChatWord);
@@ -196,7 +201,7 @@ u8 *ConvertEasyChatWordsToString(u8 *dest, const u16 *src, u16 columns, u16 rows
         for (j = 0; j < numColumns; j++)
         {
             dest = CopyEasyChatWord(dest, *src);
-            if (*src != EC_WORD_UNDEFINED)
+            if (*src != EC_EMPTY_WORD)
             {
                 *dest = CHAR_SPACE;
                 dest++;
@@ -217,7 +222,7 @@ u8 *ConvertEasyChatWordsToString(u8 *dest, const u16 *src, u16 columns, u16 rows
 
 static u16 GetEasyChatWordStringLength(u16 easyChatWord)
 {
-    if (easyChatWord == EC_WORD_UNDEFINED)
+    if (easyChatWord == EC_EMPTY_WORD)
         return 0;
 
     if (IsECWordInvalid(easyChatWord))
@@ -266,7 +271,7 @@ static u16 GetRandomWordFromGroup(u16 groupId)
 static u16 GetRandomWordFromAnyGroup(u16 groupId)
 {
     if (!IsECGroupUnlocked(groupId))
-        return EC_WORD_UNDEFINED;
+        return EC_EMPTY_WORD;
 
     if (groupId == EC_GROUP_POKEMON)
         return GetRandomECPokemon();
@@ -345,7 +350,7 @@ static u16 GetRandomECPokemon(void)
     const u16 *species;
     u16 index = EasyChat_GetNumWordsInGroup(EC_GROUP_POKEMON_2);
     if (index == 0)
-        return EC_WORD_UNDEFINED;
+        return EC_EMPTY_WORD;
 
     index = Random() % index;
     species = sEasyChatGroups[EC_GROUP_POKEMON_2].wordData.valueList;
@@ -364,7 +369,7 @@ static u16 GetRandomECPokemon(void)
         species++;
     }
 
-    return EC_WORD_UNDEFINED;
+    return EC_EMPTY_WORD;
 }
 
 void InitEasyChatPhrases(void)
@@ -379,14 +384,14 @@ void InitEasyChatPhrases(void)
 
     for (i = 0; i < 6; i++)
     {
-        gSaveBlock1Ptr->easyChatBattleWon[i] = EC_WORD_UNDEFINED;
-        gSaveBlock1Ptr->easyChatBattleLost[i] = EC_WORD_UNDEFINED;
+        gSaveBlock1Ptr->easyChatBattleWon[i] = EC_EMPTY_WORD;
+        gSaveBlock1Ptr->easyChatBattleLost[i] = EC_EMPTY_WORD;
     }
 
     for (i = 0; i < MAIL_COUNT; i++)
     {
         for (j = 0; j < MAIL_WORDS_COUNT; j++)
-            gSaveBlock1Ptr->mail[i].words[j] = EC_WORD_UNDEFINED;
+            gSaveBlock1Ptr->mail[i].words[j] = EC_EMPTY_WORD;
     }
 
 #ifndef UBFIX
@@ -397,7 +402,7 @@ void InitEasyChatPhrases(void)
     for (i = 0; i < 64; i++)
         gSaveBlock1Ptr->additionalPhrases[i] = 0;
 #else
-    for (i = 0; i < NELEMS(gSaveBlock1Ptr->additionalPhrases); i++)
+    for (i = 0; i < ARRAY_COUNT(gSaveBlock1Ptr->additionalPhrases); i++)
         gSaveBlock1Ptr->additionalPhrases[i] = 0;
 #endif
 }
@@ -407,7 +412,7 @@ void InitQuestionnaireWords(void)
     s32 i;
     u16 *ptr = GetQuestionnaireWordsPtr();
     for (i = 0; i < NUM_QUESTIONNAIRE_WORDS; i++)
-        ptr[i] = EC_WORD_UNDEFINED;
+        ptr[i] = EC_EMPTY_WORD;
 }
 
 bool8 InitEasyChatSelection(void)
@@ -499,7 +504,7 @@ static void PopulateAlphabeticalGroups(void)
         index = 0;
         for (j = 0; j < numWords; )
         {
-            if (*words == EC_WORD_UNDEFINED)
+            if (*words == EC_EMPTY_WORD)
             {
                 words++;
                 numToProcess = *words++;
@@ -537,7 +542,7 @@ void GetUnlockedECWords(bool32 isAlphabetical, u16 groupId)
 u16 GetDisplayedWordByIndex(u16 index)
 {
     if (index >= sEasyChatSelectionData->totalWords)
-        return EC_WORD_UNDEFINED;
+        return EC_EMPTY_WORD;
     else
         return sEasyChatSelectionData->allWords[index];
 }
@@ -622,10 +627,10 @@ static bool8 UnlockedECMonOrMove(u16 wordIndex, u8 groupId)
     }
 }
 
-static bool32 EC_IsDeoxys(u16 species)
+static bool32 EC_IsDeoxys(enum Species species)
 {
     u32 i;
-    for (i = 0; i < NELEMS(sDeoxysValue); i++)
+    for (i = 0; i < ARRAY_COUNT(sDeoxysValue); i++)
     {
         if (sDeoxysValue[i] == species)
             return TRUE;

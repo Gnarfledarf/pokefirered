@@ -1,13 +1,15 @@
 #include "global.h"
-#include "gflib.h"
 #include "event_data.h"
 #include "event_object_lock.h"
 #include "event_scripts.h"
 #include "field_player_avatar.h"
 #include "field_specials.h"
 #include "fieldmap.h"
+#include "itemfinder.h"
 #include "menu.h"
+#include "oras_dowse.h"
 #include "script.h"
+#include "sound.h"
 #include "strings.h"
 #include "task.h"
 #include "constants/songs.h"
@@ -15,12 +17,10 @@
 static void Task_NoResponse_CleanUp(u8 taskId);
 static void Task_ItemfinderResponseSoundsAndAnims(u8 taskId);
 static void Task_ItemfinderUnderfootSoundsAndAnims(u8 taskId);
-static bool8 HiddenItemIsWithinRangeOfPlayer(const struct MapEvents * events, u8 taskId);
 static void SetUnderfootHiddenItem(u8 taskId, u32 hiddenItem);
 static void SetNormalHiddenItem(u8 taskId);
 static void FindHiddenItemsInConnectedMaps(u8 taskId);
 static void RegisterHiddenItemRelativeCoordsIfCloser(u8 taskId, s16 dx, s16 dy);
-static u8 GetPlayerDirectionTowardsHiddenItem(s16 itemX, s16 itemY);
 static void Task_ItemfinderResponsePrintMessage(u8 taskId);
 static void Task_ItemfinderResponseCleanUp(u8 taskId);
 static void Task_ItemfinderUnderfootPrintMessage(u8 taskId);
@@ -35,6 +35,10 @@ static void SpriteCallback_Star(struct Sprite *sprite);
 static void SpriteCallback_DestroyStar(struct Sprite *sprite);
 
 #define ARROW_TILE_TAG 2000
+
+static const u8 sText_ItemfinderResponding[] = _("Huh?\nThe ITEMFINDER's responding!\pThere's an item buried around here!{PAUSE_UNTIL_PRESS}");
+static const u8 sText_ItemfinderShakingWildly[] = _("Oh!\nThe ITEMFINDER's shaking wildly!\pThere's an item buried underfoot!\p‥ ‥ ‥ ‥ ‥ ‥{PAUSE_UNTIL_PRESS}");
+static const u8 sText_NopeTheresNoResponse[] = _("‥ ‥ ‥ ‥Nope!\nThere's no response.{PAUSE_UNTIL_PRESS}");
 
 static const u16 sArrowAndStarSpriteTiles[] = INCBIN_U16("graphics/itemfinder/spr_tiles.4bpp");
 
@@ -130,27 +134,40 @@ static const struct SpriteSheet sArrowAndStarSpriteSheet = {
 
 void ItemUseOnFieldCB_Itemfinder(u8 taskId)
 {
-    u8 i;
-    for (i = 0; i < 16; i++)
-        gTasks[taskId].data[i] = 0;
-    if (HiddenItemIsWithinRangeOfPlayer(gMapHeader.events, taskId) == TRUE)
+
+    if (I_ORAS_DOWSING_FLAG != 0)
     {
-        LoadArrowAndStarTiles();
-        if (gTasks[taskId].tUnderfoot == TRUE)
-            gTasks[taskId].func = Task_ItemfinderUnderfootSoundsAndAnims;
+        if (!TestPlayerAvatarState(PLAYER_AVATAR_STATE_SURFING) && !TestPlayerAvatarState(PLAYER_AVATAR_STATE_UNDERWATER))
+            gTasks[taskId].func = Task_UseORASDowsingMachine;
         else
-            gTasks[taskId].func = Task_ItemfinderResponseSoundsAndAnims;
+            DisplayItemMessageOnField(taskId, FONT_NORMAL, gText_OakForbidsUseOfItemHere, Task_NoResponse_CleanUp);
     }
     else
     {
-        DisplayItemMessageOnField(taskId, FONT_NORMAL, gText_NopeTheresNoResponse, Task_NoResponse_CleanUp);
+        u8 i;
+
+        for (i = 0; i < NUM_TASK_DATA; i++)
+            gTasks[taskId].data[i] = 0;
+
+        if (HiddenItemIsWithinRangeOfPlayer(gMapHeader.events, taskId) == TRUE)
+        {
+            LoadArrowAndStarTiles();
+            if (gTasks[taskId].tUnderfoot == TRUE)
+                gTasks[taskId].func = Task_ItemfinderUnderfootSoundsAndAnims;
+            else
+                gTasks[taskId].func = Task_ItemfinderResponseSoundsAndAnims;
+        }
+        else
+        {
+            DisplayItemMessageOnField(taskId, FONT_NORMAL, sText_NopeTheresNoResponse, Task_NoResponse_CleanUp);
+        }
     }
 }
 
 static void Task_NoResponse_CleanUp(u8 taskId)
 {
     ClearDialogWindowAndFrame(0, TRUE);
-    ClearPlayerHeldMovementAndUnfreezeObjectEvents();
+    ScriptUnfreezeObjectEvents();
     UnlockPlayerFieldControls();
     DestroyTask(taskId);
 }
@@ -199,11 +216,16 @@ static void Task_ItemfinderUnderfootSoundsAndAnims(u8 taskId)
     tDingTimer++;
 }
 
-static bool8 HiddenItemIsWithinRangeOfPlayer(const struct MapEvents * events, u8 taskId)
+bool8 HiddenItemIsWithinRangeOfPlayer(const struct MapEvents *events, u8 taskId)
 {
     s16 x, y, i, dx, dy;
     PlayerGetDestCoords(&x, &y);
-    gTasks[taskId].tHiddenItemFound = FALSE;
+
+    if (I_ORAS_DOWSING_FLAG != 0)
+        gSprites[gObjectEvents[gPlayerAvatar.objectEventId].fieldEffectSpriteId].tHiddenItemFound = FALSE;
+    else
+        gTasks[taskId].tHiddenItemFound = FALSE;
+
     for (i = 0; i < events->bgEventCount; i++)
     {
         if (events->bgEvents[i].kind == 7 && !FlagGet(GetHiddenItemAttr(events->bgEvents[i].bgUnion.hiddenItem, HIDDEN_ITEM_FLAG)))
@@ -230,7 +252,7 @@ static bool8 HiddenItemIsWithinRangeOfPlayer(const struct MapEvents * events, u8
         }
     }
     FindHiddenItemsInConnectedMaps(taskId);
-    if (gTasks[taskId].tHiddenItemFound == TRUE)
+    if (gTasks[taskId].tHiddenItemFound == TRUE || gSprites[gObjectEvents[gPlayerAvatar.objectEventId].fieldEffectSpriteId].tHiddenItemFound)
     {
         SetNormalHiddenItem(taskId);
         return TRUE;
@@ -257,7 +279,7 @@ static void SetNormalHiddenItem(u8 taskId)
     s16 *data = gTasks[taskId].data;
     s16 absY = tItemY;
     s16 absX = tItemX;
-    
+
     // The strength of the response increases inversely with distance to the item.
     if (tItemX == 0 && tItemY == 0)
         tNumDingsRemaining = 4;
@@ -431,7 +453,7 @@ static void RegisterHiddenItemRelativeCoordsIfCloser(u8 taskId, s16 dx, s16 dy)
     }
 }
 
-static u8 GetPlayerDirectionTowardsHiddenItem(s16 itemX, s16 itemY)
+u8 GetPlayerDirectionTowardsHiddenItem(s16 itemX, s16 itemY)
 {
     s16 abX, abY;
 
@@ -479,21 +501,21 @@ static u8 GetPlayerDirectionTowardsHiddenItem(s16 itemX, s16 itemY)
 
 static void Task_ItemfinderResponsePrintMessage(u8 taskId)
 {
-    DisplayItemMessageOnField(taskId, FONT_NORMAL, gText_ItemfinderResponding, Task_ItemfinderResponseCleanUp);
+    DisplayItemMessageOnField(taskId, FONT_NORMAL, sText_ItemfinderResponding, Task_ItemfinderResponseCleanUp);
 }
 
 static void Task_ItemfinderResponseCleanUp(u8 taskId)
 {
     DestroyArrowAndStarTiles();
     ClearDialogWindowAndFrame(0, TRUE);
-    ClearPlayerHeldMovementAndUnfreezeObjectEvents();
+    ScriptUnfreezeObjectEvents();
     UnlockPlayerFieldControls();
     DestroyTask(taskId);
 }
 
 static void Task_ItemfinderUnderfootPrintMessage(u8 taskId)
 {
-    DisplayItemMessageOnField(taskId, FONT_NORMAL, gText_ItemfinderShakingWildly, Task_ItemfinderUnderfootDigUpItem);
+    DisplayItemMessageOnField(taskId, FONT_NORMAL, sText_ItemfinderShakingWildly, Task_ItemfinderUnderfootDigUpItem);
 }
 
 static void Task_ItemfinderUnderfootDigUpItem(u8 taskId)

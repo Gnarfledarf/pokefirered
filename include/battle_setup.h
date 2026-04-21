@@ -1,6 +1,8 @@
 #ifndef GUARD_BATTLE_SETUP_H
 #define GUARD_BATTLE_SETUP_H
 
+#include "battle_transition.h"
+#include "vs_seeker.h"
 /*
 the layout of the first byte can be confusing here
 isDoubleBattle is the least lsb. msb is in the mode.
@@ -47,16 +49,15 @@ void BattleSetup_StartLatiBattle(void);
 void BattleSetup_StartLegendaryBattle(void);
 void StartGroudonKyogreBattle(void);
 void StartRegiBattle(void);
-u8 BattleSetup_GetEnvironmentId(void);
-u8 BattleSetup_GetBattleTowerBattleTransition(void);
-u8 GetWildBattleTransition(void);
-u8 GetTrainerBattleTransition(void);
-u8 GetSpecialBattleTransition(s32 id);
-void ChooseStarter(void);
+enum BattleEnvironments BattleSetup_GetEnvironmentId(void);
+enum BattleTransition GetWildBattleTransition(void);
+enum BattleTransition GetTrainerBattleTransition(void);
+enum BattleTransition GetSpecialBattleTransition(enum BattleTransitionGroup id);
 void ResetTrainerOpponentIds(void);
 void SetMapVarsToTrainerA(void);
 void SetMapVarsToTrainerB(void);
 const u8 *BattleSetup_ConfigureTrainerBattle(const u8 *data);
+const u8* BattleSetup_ConfigureFacilityTrainerBattle(u8 facility, const u8* scriptEndPtr);
 void ConfigureAndSetUpOneTrainerBattle(u8 trainerObjEventId, const u8 *trainerScript);
 void ConfigureTwoTrainersBattle(u8 trainerObjEventId, const u8 *trainerScript);
 void SetUpTwoTrainersBattle(void);
@@ -64,9 +65,9 @@ bool32 GetTrainerFlagFromScriptPointer(const u8 *data);
 void SetTrainerFacingDirection(void);
 u8 GetTrainerBattleMode(void);
 bool8 GetTrainerFlag(void);
-bool8 HasTrainerBeenFought(u16 trainerId);
-void SetTrainerFlag(u16 trainerId);
-void ClearTrainerFlag(u16 trainerId);
+bool8 HasTrainerBeenFought(enum TrainerID trainerId);
+void SetTrainerFlag(enum TrainerID trainerId);
+void ClearTrainerFlag(enum TrainerID trainerId);
 void BattleSetup_StartTrainerBattle(void);
 void BattleSetup_StartRematchBattle(void);
 void ShowTrainerIntroSpeech(void);
@@ -84,17 +85,20 @@ bool32 DoesSomeoneWantRematchIn(u16 mapGroup, u16 mapNum);
 bool32 IsRematchTrainerIn(u16 mapGroup, u16 mapNum);
 u16 GetLastBeatenRematchTrainerId(u16 trainerId);
 bool8 ShouldTryRematchBattle(void);
-bool8 ShouldTryRematchBattleForTrainerId(u16 trainerId);
+bool8 ShouldTryRematchBattleForTrainerId(enum TrainerID trainerId);
 bool8 IsTrainerReadyForRematch(void);
 void ShouldTryGetTrainerScript(void);
+u16 CountMaxPossibleRematch(u16 trainerId);
 u16 CountBattledRematchTeams(u16 trainerId);
 void TrainerBattleLoadArgs(const u8 *data);
 void TrainerBattleLoadArgsTrainerA(const u8 *data);
 void TrainerBattleLoadArgsTrainerB(const u8 *data);
 void TrainerBattleLoadArgsSecondTrainer(const u8 *data);
+void InitTrainerBattleParameter(void);
 
 void DoStandardWildBattle_Debug(void);
 void BattleSetup_StartTrainerBattle_Debug(void);
+s32 FirstBattleTrainerIdToRematchTableId(const struct RematchData *table, u16 trainerId);
 
 u16 GetRivalBattleFlags(void);
 void SetBattledTrainerFlag(void);

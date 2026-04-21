@@ -1,16 +1,24 @@
 #include "global.h"
-#include "gflib.h"
+#include "bg.h"
 #include "data.h"
 #include "decompress.h"
+#include "dma3.h"
 #include "dynamic_placeholder_text_util.h"
-#include "item.h"
+#include "gpu_regs.h"
 #include "item_icon.h"
+#include "item.h"
+#include "malloc.h"
 #include "menu.h"
+#include "palette.h"
 #include "pokemon_special_anim_internal.h"
 #include "random.h"
+#include "sound.h"
+#include "string_util.h"
 #include "strings.h"
 #include "text_window.h"
 #include "trig.h"
+#include "constants/menu.h"
+#include "constants/pokemon_special_anim.h"
 #include "constants/songs.h"
 
 static void LoadBgGfxByAnimType(u16 animType);
@@ -23,8 +31,7 @@ static void StartMonWiggleAnim(struct PokemonSpecialAnimScene * scene, u8 frameL
 static void StopMonWiggleAnim(struct PokemonSpecialAnimScene * scene);
 static void SpriteCallback_MonSpriteWiggle(struct Sprite *sprite);
 static void LoadMonSpriteGraphics(u16 *tilees, const u16 *palette);
-static struct Sprite *PSA_CreateItemIconObject(u16 itemId);
-static u16 GetBlendColorByItemId(u16 itemId);
+static struct Sprite *PSA_CreateItemIconObject(enum Item itemId);
 static void Task_ItemUseOnMonAnim(u8 taskId);
 static void CreateSprites_UseItem_OutwardSpiralDots(u8 taskId, s16 *data, struct Sprite *sprite);
 static void SpriteCB_OutwardSpiralDots(struct Sprite *sprite);
@@ -48,16 +55,35 @@ static void Task_LevelUpVerticalSprites(u8 taskId);
 static void CreateLevelUpVerticalSprite(u8 taskId, s16 *data);
 static void SpriteCB_LevelUpVertical(struct Sprite *sprite);
 
+static const u8 sText_WasUsedOn[] = _(" was used on\n");
+static const u8 sText_LevelRoseTo[] = _("'s level rose to\n");
+static const u8 sText_LevelUp_MaxHP[] = _("{FONT_SMALL}MAX.{FONT_NORMAL} HP");
+static const u8 sText_LevelUp_Attack[] = _("Attack");
+static const u8 sText_LevelUp_Defense[] = _("Defense");
+static const u8 sText_LevelUp_Speed[] = _("Speed");
+static const u8 sText_LevelUp_SpAtk[] = _("Sp. Atk");
+static const u8 sText_LevelUp_SpDef[] = _("Sp. Def");
+static const u8 sText_LevelUp_Plus[] = _("{FONT_SMALL}{PLUS}{FONT_NORMAL}");
+static const u8 sText_LevelUp_Minus[] = _("{FONT_SMALL}-{FONT_NORMAL}");
+static const u8 sText_Counting_1[] = _("1, ");
+static const u8 sText_Counting_2And[] = _("2, and ‥ ‥ ‥ ");
+static const u8 sText_Poof[] = _("Poof!\p");
+static const u8 sText_MonForgotMove[] = _("{DYNAMIC 0x00} forgot\n{DYNAMIC 0x01}.\p");
+static const u8 sText_And[] = _("And‥\p");
+static const u8 sText_MachineSet[] = _("Machine set!\p");
+static const u8 sText_Huh[] = _("Huh?");
+static const u8 sText_MonLearnedTMHM[] = _("{DYNAMIC 0x00} learned\n{DYNAMIC 0x01}!");
+
 static const u16 sBg_Pal[] = INCBIN_U16("graphics/pokemon_special_anim/bg.gbapal");
 static const u16 sBg_TmHm_Pal[] = INCBIN_U16("graphics/pokemon_special_anim/bg_tm_hm.gbapal");
-static const u32 sBg_Gfx[] = INCBIN_U32("graphics/pokemon_special_anim/bg.4bpp.lz");
-static const u32 sBg_Tilemap[] = INCBIN_U32("graphics/pokemon_special_anim/bg.bin.lz");
+static const u32 sBg_Gfx[] = INCBIN_U32("graphics/pokemon_special_anim/bg.4bpp.smol");
+static const u32 sBg_Tilemap[] = INCBIN_U32("graphics/pokemon_special_anim/bg.bin.smolTM");
 static const u16 sLevelUp_Pal[] = INCBIN_U16("graphics/pokemon_special_anim/level_up.gbapal");
-static const u32 sLevelUp_Gfx[] = INCBIN_U32("graphics/pokemon_special_anim/level_up.4bpp.lz");
+static const u32 sLevelUp_Gfx[] = INCBIN_U32("graphics/pokemon_special_anim/level_up.4bpp.smol");
 static const u16 sStar_Pal[] = INCBIN_U16("graphics/pokemon_special_anim/star.gbapal");
-static const u32 sStar_Gfx[] = INCBIN_U32("graphics/pokemon_special_anim/star.4bpp.lz");
+static const u32 sStar_Gfx[] = INCBIN_U32("graphics/pokemon_special_anim/star.4bpp.smol");
 static const u16 sOutwardSpiralDots_Pal[] = INCBIN_U16("graphics/pokemon_special_anim/outward_spiral_dots.gbapal");
-static const u32 sOutwardSpiralDots_Gfx[] = INCBIN_U32("graphics/pokemon_special_anim/outward_spiral_dots.4bpp.lz");
+static const u32 sOutwardSpiralDots_Gfx[] = INCBIN_U32("graphics/pokemon_special_anim/outward_spiral_dots.4bpp.smol");
 
 static const struct BgTemplate sBgTemplates[] = {
     {
@@ -92,9 +118,9 @@ static const struct WindowTemplate sWindowTemplates[] = {
 };
 
 static const u8 *const s1_2_and_Poof_textPtrs[] = {
-    gText_Counting_1,
-    gText_Counting_2And,
-    gText_Poof,
+    sText_Counting_1,
+    sText_Counting_2And,
+    sText_Poof,
 };
 
 static const u16 sUnusedArray[] = {
@@ -328,7 +354,7 @@ void InitPokemonSpecialAnimScene(struct PokemonSpecialAnimScene * buffer, u16 an
     ResetTempTileDataBuffers();
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
     ResetBgsAndClearDma3BusyFlags(FALSE);
-    InitBgsFromTemplates(0, sBgTemplates, NELEMS(sBgTemplates));
+    InitBgsFromTemplates(0, sBgTemplates, ARRAY_COUNT(sBgTemplates));
     InitWindows(sWindowTemplates);
     ChangeBgX(0, 0, 0);
     ChangeBgY(0, 0, 0);
@@ -383,7 +409,7 @@ void PSA_HideMessageWindow(void)
 void PSA_PrintMessage(u8 messageId)
 {
     struct PokemonSpecialAnimScene * scene = PSA_GetSceneWork();
-    u16 itemId = PSA_GetItemId();
+    enum Item itemId = PSA_GetItemId();
     u16 strWidth = 0;
     u8 textSpeed = GetPlayerTextSpeedDelay();
     struct Pokemon * pokemon = PSA_GetPokemon();
@@ -394,30 +420,30 @@ void PSA_PrintMessage(u8 messageId)
     {
     case 0: // Item was used on Mon
         str = StringCopy(scene->textBuf, GetItemName(itemId));
-        str = StringCopy(str, gText_WasUsedOn);
+        str = StringCopy(str, sText_WasUsedOn);
         GetMonData(pokemon, MON_DATA_NICKNAME, str);
-        StringAppend(scene->textBuf, gText_Period);
+        StringAppend(scene->textBuf, gText_DecimalPoint);
         break;
     case 1: // Mon's level was elevated to level
         level = GetMonData(pokemon, MON_DATA_LEVEL);
         GetMonData(pokemon, MON_DATA_NICKNAME, scene->textBuf);
-        str = StringAppend(scene->textBuf, gText_LevelRoseTo);
+        str = StringAppend(scene->textBuf, sText_LevelRoseTo);
         if (level < MAX_LEVEL)
             level++;
         str = ConvertIntToDecimalStringN(str, level, STR_CONV_MODE_LEFT_ALIGN, level < MAX_LEVEL ? 2 : 3);
-        StringAppend(str, gText_Period2);
+        StringAppend(str, gText_DecimalPoint);
         break;
     case 9: // Mon learned move
         DynamicPlaceholderTextUtil_Reset();
         DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, PSA_GetMonNickname());
         DynamicPlaceholderTextUtil_SetPlaceholderPtr(1, PSA_GetNameOfMoveToTeach());
-        DynamicPlaceholderTextUtil_ExpandPlaceholders(scene->textBuf, gText_MonLearnedTMHM);
+        DynamicPlaceholderTextUtil_ExpandPlaceholders(scene->textBuf, sText_MonLearnedTMHM);
         break;
     case 4:
-        strWidth += GetStringWidth(FONT_NORMAL, gText_Counting_2And, -1);
+        strWidth += GetStringWidth(FONT_NORMAL, sText_Counting_2And, -1);
         // fallthrough
     case 3:
-        strWidth += GetStringWidth(FONT_NORMAL, gText_Counting_1, -1);
+        strWidth += GetStringWidth(FONT_NORMAL, sText_Counting_1, -1);
         // fallthrough
     case 2: // 1
         StringCopy(scene->textBuf, s1_2_and_Poof_textPtrs[messageId - 2]);
@@ -427,16 +453,16 @@ void PSA_PrintMessage(u8 messageId)
         DynamicPlaceholderTextUtil_Reset();
         DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, PSA_GetMonNickname());
         DynamicPlaceholderTextUtil_SetPlaceholderPtr(1, PSA_GetNameOfMoveForgotten());
-        DynamicPlaceholderTextUtil_ExpandPlaceholders(scene->textBuf, gText_MonForgotMove);
+        DynamicPlaceholderTextUtil_ExpandPlaceholders(scene->textBuf, sText_MonForgotMove);
         break;
     case 6:
-        StringCopy(scene->textBuf, gText_And);
+        StringCopy(scene->textBuf, sText_And);
         break;
     case 7:
-        StringCopy(scene->textBuf, gText_MachineSet);
+        StringCopy(scene->textBuf, sText_MachineSet);
         break;
     case 8:
-        StringCopy(scene->textBuf, gText_Huh);
+        StringCopy(scene->textBuf, sText_Huh);
         break;
     default:
         return;
@@ -453,7 +479,7 @@ void PSA_AfterPoof_ClearMessageWindow(void)
 
 bool8 PSA_IsMessagePrintTaskActive(void)
 {
-    return IsTextPrinterActive(0);
+    return IsTextPrinterActiveOnWindow(0);
 }
 
 void PSA_DarkenMonSprite(void)
@@ -634,7 +660,7 @@ static void LoadBgGfxByAnimType(u16 animType)
 {
     CopyToBgTilemapBuffer(3, sBg_Tilemap, 0, 0x000);
     DecompressAndCopyTileDataToVram(3, sBg_Gfx, 0, 0x000, 0);
-    if (animType != 4)
+    if (animType != PSA_ITEM_ANIM_TYPE_TMHM)
         LoadPalette(sBg_Pal, BG_PLTT_ID(0), sizeof(sBg_Pal));
     else
         LoadPalette(sBg_TmHm_Pal, BG_PLTT_ID(0), sizeof(sBg_TmHm_Pal));
@@ -644,30 +670,28 @@ void PSA_CreateMonSpriteAtCloseness(u8 closeness)
 {
     struct PokemonSpecialAnimScene * scene = PSA_GetSceneWork();
     struct Pokemon * pokemon = PSA_GetPokemon();
-    u16 species = GetMonData(pokemon, MON_DATA_SPECIES);
+    enum Species species = GetMonData(pokemon, MON_DATA_SPECIES);
     u32 personality = GetMonData(pokemon, MON_DATA_PERSONALITY);
-    u8 r1 = Menu2_GetMonSpriteAnchorCoord(species, personality, 2);
-    void *r6;
-    void *r9;
+    u8 yOffset = Menu2_GetMonPosAttribute(species, personality, PSA_MON_ATTR_Y_OFFSET);
+    void *monPicBuffer;
     u8 spriteId;
 
-    if (r1 != 0xFF)
+    if (yOffset != 0xFF)
     {
-        scene->monSpriteY1 = 0x48;
-        scene->monSpriteY2 = r1 + 0x30;
+        scene->monSpriteY1 = 72;
+        scene->monSpriteY2 = yOffset + 48;
     }
     else
     {
-        scene->monSpriteY1 = 0x48;
-        scene->monSpriteY2 = 0x60;
+        scene->monSpriteY1 = 72;
+        scene->monSpriteY2 = 96;
     }
 
-    r6 = Alloc(0x2000);
-    r9 = Alloc(0x2000);
-    if (r6 != NULL && r9 != NULL)
+    monPicBuffer = Alloc(MON_PIC_SIZE * MAX_MON_PIC_FRAMES);
+    if (monPicBuffer != NULL)
     {
-        HandleLoadSpecialPokePic(TRUE, r6, species, personality);
-        LoadMonSpriteGraphics(r6, GetMonFrontSpritePal(pokemon));
+        HandleLoadSpecialPokePic(TRUE, monPicBuffer, species, personality);
+        LoadMonSpriteGraphics(monPicBuffer, GetMonFrontSpritePal(pokemon));
         spriteId = CreateSprite(&sSpriteTemplate_MonSprite, 120, scene->monSpriteY1, 4);
         if (spriteId != MAX_SPRITES)
         {
@@ -678,8 +702,7 @@ void PSA_CreateMonSpriteAtCloseness(u8 closeness)
             scene->monSprite = NULL;
         scene->lastCloseness = closeness;
     }
-    if (r6 != NULL) Free(r6);
-    if (r9 != NULL) Free(r9);
+    if (monPicBuffer != NULL) Free(monPicBuffer);
 }
 
 #define tState          data[0]
@@ -837,7 +860,7 @@ static void LoadMonSpriteGraphics(u16 *tiles, const u16 *palette)
     struct SpritePalette spritePalette;
 
     spriteSheet.data = tiles;
-    spriteSheet.size = 0x800;
+    spriteSheet.size = MON_PIC_SIZE;
     spriteSheet.tag = 0;
     spritePalette.data = palette;
     spritePalette.tag = 0;
@@ -867,7 +890,7 @@ static void LoadMonSpriteGraphics(u16 *tiles, const u16 *palette)
 #define tTimerReset      data[10]
 #define tSuppressDots    data[11]
 
-void PSA_SetUpItemUseOnMonAnim(u16 itemId, u8 closeness, bool32 a2)
+void PSA_SetUpItemUseOnMonAnim(enum Item itemId, u8 closeness, bool32 a2)
 {
     struct PokemonSpecialAnimScene * scene = PSA_GetSceneWork();
     u8 taskId;
@@ -882,18 +905,13 @@ void PSA_SetUpItemUseOnMonAnim(u16 itemId, u8 closeness, bool32 a2)
         gTasks[taskId].tCloseness = closeness;
         gTasks[taskId].tYpos = GetYPosByScale(sAffineScales[closeness]);
         gTasks[taskId].tData6 = a2;
-        gTasks[taskId].tBlendColor = GetBlendColorByItemId(itemId);
+        gTasks[taskId].tBlendColor = RGB_WHITE;
     }
 }
 
-static u16 GetBlendColorByItemId(u16 itemId)
+void CreateItemIconSpriteAtMaxCloseness(enum Item itemId)
 {
-    return RGB_WHITE;
-}
-
-void CreateItemIconSpriteAtMaxCloseness(u16 itemId)
-{
-    struct PokemonSpecialAnimScene * scene = PSA_GetSceneWork();
+    struct PokemonSpecialAnimScene *scene = PSA_GetSceneWork();
     scene->itemIconSprite = PSA_CreateItemIconObject(itemId);
     if (scene->itemIconSprite != NULL)
     {
@@ -902,7 +920,7 @@ void CreateItemIconSpriteAtMaxCloseness(u16 itemId)
     }
 }
 
-static struct Sprite *PSA_CreateItemIconObject(u16 itemId)
+static struct Sprite *PSA_CreateItemIconObject(enum Item itemId)
 {
     u8 spriteId;
     spriteId = AddItemIconSprite(1, 1, itemId);
@@ -1038,8 +1056,10 @@ void PSA_UseItem_CleanUpForCancel(void)
 
 static void InitItemIconSpriteState(struct PokemonSpecialAnimScene * scene, struct Sprite *sprite, u8 closeness)
 {
-    u16 species, x, y;
+    enum Species species;
+    u16 x, y;
     u32 personality;
+
     if (closeness == 3)
     {
         sprite->x = 120;
@@ -1056,10 +1076,10 @@ static void InitItemIconSpriteState(struct PokemonSpecialAnimScene * scene, stru
     personality = PSA_GetMonPersonality();
     switch (PSA_GetAnimType())
     {
-        case 4:
+        case PSA_ITEM_ANIM_TYPE_TMHM:
         {
-            x = Menu2_GetMonSpriteAnchorCoord(species, personality, 0);
-            y = Menu2_GetMonSpriteAnchorCoord(species, personality, 1);
+            x = Menu2_GetMonPosAttribute(species, personality, PSA_MON_ATTR_TMHM_X_POS);
+            y = Menu2_GetMonPosAttribute(species, personality, PSA_MON_ATTR_TMHM_Y_POS);
             if (x == 0xFF)
                 x = 0;
             if (y == 0xFF)
@@ -1070,8 +1090,8 @@ static void InitItemIconSpriteState(struct PokemonSpecialAnimScene * scene, stru
         }
         default:
         {
-            x = Menu2_GetMonSpriteAnchorCoord(species, personality, 3);
-            y = Menu2_GetMonSpriteAnchorCoord(species, personality, 4);
+            x = Menu2_GetMonPosAttribute(species, personality, PSA_MON_ATTR_ITEM_X_POS);
+            y = Menu2_GetMonPosAttribute(species, personality, PSA_MON_ATTR_ITEM_Y_POS);
             if (x == 0xFF)
                 x = 0;
             if (y == 0xFF)
@@ -1180,8 +1200,9 @@ static void CreateStarSprites(struct PokemonSpecialAnimScene * scene)
 {
     int i;
     u8 spriteId;
-    u16 species;
+    enum Species species;
     u32 personality;
+
     LoadCompressedSpriteSheet(&sSpriteSheet_Star);
     LoadSpritePalette(&sSpritePalette_Star);
     scene->field_0002 = 0;
@@ -1194,8 +1215,8 @@ static void CreateStarSprites(struct PokemonSpecialAnimScene * scene)
             personality = PSA_GetMonPersonality();
             gSprites[spriteId].data[3] = sStarCoordOffsets[i][0] * 8;
             gSprites[spriteId].data[4] = sStarCoordOffsets[i][1] * 8;
-            gSprites[spriteId].x += GetSpriteOffsetByScale(Menu2_GetMonSpriteAnchorCoordMinusx20(species, personality, 0), 3);
-            gSprites[spriteId].y += GetSpriteOffsetByScale(Menu2_GetMonSpriteAnchorCoordMinusx20(species, personality, 1), 3);
+            gSprites[spriteId].x += GetSpriteOffsetByScale(Menu2_GetStarSpritePosAttribute(species, personality, PSA_MON_ATTR_TMHM_X_POS), 3);
+            gSprites[spriteId].y += GetSpriteOffsetByScale(Menu2_GetStarSpritePosAttribute(species, personality, PSA_MON_ATTR_TMHM_Y_POS), 3);
             scene->field_0002++;
         }
     }
@@ -1476,12 +1497,12 @@ static void SpriteCB_LevelUpVertical(struct Sprite *sprite)
 // ========================================================
 
 static const u8 *const sLevelUpWindowStatNames[] = {
-    gText_LevelUp_MaxHP,
-    gText_LevelUp_Attack,
-    gText_LevelUp_Defense,
-    gText_LevelUp_SpAtk,
-    gText_LevelUp_SpDef,
-    gText_LevelUp_Speed
+    sText_LevelUp_MaxHP,
+    sText_LevelUp_Attack,
+    sText_LevelUp_Defense,
+    sText_LevelUp_SpAtk,
+    sText_LevelUp_SpDef,
+    sText_LevelUp_Speed
 };
 
 void DrawLevelUpWindowPg1(u16 windowId, u16 *beforeStats, u16 *afterStats, u8 bgColor, u8 fgColor, u8 shadowColor)
@@ -1508,7 +1529,7 @@ void DrawLevelUpWindowPg1(u16 windowId, u16 *beforeStats, u16 *afterStats, u8 bg
     for (i = 0; i < 6; i++)
     {
         AddTextPrinterParameterized3(windowId, FONT_NORMAL, 0, i * 15, textColor, TEXT_SKIP_DRAW, sLevelUpWindowStatNames[i]);
-        StringCopy(textbuf, diffStats[i] >= 0 ? gText_LevelUp_Plus : gText_LevelUp_Minus);
+        StringCopy(textbuf, diffStats[i] >= 0 ? sText_LevelUp_Plus : sText_LevelUp_Minus);
         AddTextPrinterParameterized3(windowId, FONT_NORMAL, 56, i * 15, textColor, TEXT_SKIP_DRAW, textbuf);
         textbuf[0] = CHAR_SPACE;
         x = abs(diffStats[i]) < 10 ? 12 : 6;

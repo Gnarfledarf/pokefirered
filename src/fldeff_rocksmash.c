@@ -1,18 +1,18 @@
 #include "global.h"
-#include "gflib.h"
-#include "field_player_avatar.h"
-#include "field_effect.h"
-#include "party_menu.h"
 #include "event_data.h"
-#include "script.h"
-#include "fldeff.h"
-#include "event_scripts.h"
-#include "overworld.h"
 #include "event_object_movement.h"
-#include "constants/songs.h"
-#include "constants/event_objects.h"
+#include "event_scripts.h"
+#include "field_effect.h"
+#include "field_player_avatar.h"
+#include "fldeff.h"
+#include "overworld.h"
+#include "party_menu.h"
+#include "script.h"
+#include "sound.h"
 #include "constants/event_object_movement.h"
+#include "constants/event_objects.h"
 #include "constants/maps.h"
+#include "constants/songs.h"
 
 static void Task_FieldEffectShowMon_Init(u8 taskId);
 static void Task_FieldEffectShowMon_WaitFldeff(u8 taskId);
@@ -89,7 +89,7 @@ static void Task_FieldEffectShowMon_WaitFldeff(u8 taskId)
             gFieldEffectArguments[2] = 2;
         if (gFieldEffectArguments[1] == DIR_EAST)
             gFieldEffectArguments[2] = 3;
-        ObjectEventSetGraphicsId(&gObjectEvents[gPlayerAvatar.objectEventId], GetPlayerAvatarGraphicsIdByCurrentState());
+        ObjectEventSetGraphicsId(&gObjectEvents[gPlayerAvatar.objectEventId], GetPlayerAvatarGfxForCurrentState());
         StartSpriteAnim(&gSprites[gPlayerAvatar.spriteId], gFieldEffectArguments[2]);
         FieldEffectActiveListRemove(FLDEFF_FIELD_MOVE_SHOW_MON);
         gTasks[taskId].func = Task_FieldEffectShowMon_Cleanup;

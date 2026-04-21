@@ -13,6 +13,9 @@
 // An undefined map grid block has all metatile id bits set and nothing else
 #define MAPGRID_UNDEFINED   MAPGRID_METATILE_ID_MASK
 
+// When setting impassability manually GF sets all the collision bits
+#define MAPGRID_IMPASSABLE  MAPGRID_COLLISION_MASK
+
 enum {
     METATILE_LAYER_TYPE_NORMAL,  // Metatile uses middle and top bg layers
     METATILE_LAYER_TYPE_COVERED, // Metatile uses bottom and middle bg layers
@@ -49,6 +52,11 @@ enum
     TILE_TERRAIN_WATER,
     TILE_TERRAIN_WATERFALL,
 };
+
+// Rows of metatiles do not actually have a strict width.
+// This constant is used for calculations for finding the next row of metatiles
+// for constructing large tiles, such as the Battle Pike's curtain tile.
+#define METATILE_ROW_WIDTH 8
 
 // Identifiers for the hidden item data stored in BgEvent's u32 hiddenItem
 enum
@@ -240,14 +248,15 @@ struct ObjectEvent
              u32 inShallowFlowingWater:1;
              u32 inSandPile:1;
              u32 inHotSprings:1;
-             u32 hasShadow:1;
+             u32 noShadow:1;
              u32 spriteAnimPausedBackup:1;
     /*0x03*/ u32 spriteAffineAnimPausedBackup:1;
              u32 disableJumpLandingGroundEffect:1;
              u32 fixedPriority:1;
              u32 hideReflection:1;
              u32 shiny:1; // OW mon shininess
-             u32 padding:3;
+             u32 jumpDone:1;
+             u32 padding:2;
     /*0x04*/ u16 graphicsId; // 12 bits for species; high 4 bits for form
     /*0x06*/ u8 movementType;
     /*0x07*/ u8 trainerType;
@@ -261,8 +270,11 @@ struct ObjectEvent
     /*0x14*/ struct Coords16 previousCoords;
     /*0x18*/ u16 facingDirection:4; // current direction?
              u16 movementDirection:4;
-             u16 rangeX:4;
-             u16 rangeY:4;
+             struct __attribute__((packed))
+             {
+                u8 rangeX:4;
+                u8 rangeY:4;
+             } range;
     /*0x1A*/ u8 fieldEffectSpriteId;
     /*0x1B*/ u8 warpArrowSpriteId;
     /*0x1C*/ u8 movementActionId;
@@ -297,36 +309,20 @@ struct ObjectEventGraphicsInfo
     /*0x20*/ const union AffineAnimCmd *const *affineAnims;
 };
 
-enum {
-    // gPlayerAvatar.flags (u8) + gfx
+enum __attribute__((packed)) AvatarState
+{
     PLAYER_AVATAR_STATE_NORMAL,
     PLAYER_AVATAR_STATE_MACH_BIKE,
     PLAYER_AVATAR_STATE_ACRO_BIKE,
     PLAYER_AVATAR_STATE_SURFING,
     PLAYER_AVATAR_STATE_UNDERWATER,
-    PLAYER_AVATAR_STATE_CONTROLLABLE,
-    PLAYER_AVATAR_STATE_FORCED,
-    PLAYER_AVATAR_STATE_DASH,
-    // gfx
     PLAYER_AVATAR_STATE_FIELD_MOVE,
     PLAYER_AVATAR_STATE_WATERING,
     PLAYER_AVATAR_STATE_FISHING,
     PLAYER_AVATAR_STATE_VSSEEKER,
+
+    PLAYER_AVATAR_STATE_COUNT,
 };
-
-#define PLAYER_AVATAR_FLAG_ON_FOOT      (1 << PLAYER_AVATAR_STATE_NORMAL)
-#define PLAYER_AVATAR_FLAG_MACH_BIKE    (1 << PLAYER_AVATAR_STATE_MACH_BIKE)
-#define PLAYER_AVATAR_FLAG_ACRO_BIKE    (1 << PLAYER_AVATAR_STATE_ACRO_BIKE)
-#define PLAYER_AVATAR_FLAG_SURFING      (1 << PLAYER_AVATAR_STATE_SURFING)
-#define PLAYER_AVATAR_FLAG_UNDERWATER   (1 << PLAYER_AVATAR_STATE_UNDERWATER)
-#define PLAYER_AVATAR_FLAG_CONTROLLABLE (1 << PLAYER_AVATAR_STATE_CONTROLLABLE)
-#define PLAYER_AVATAR_FLAG_FORCED       (1 << PLAYER_AVATAR_STATE_FORCED)
-#define PLAYER_AVATAR_FLAG_DASH         (1 << PLAYER_AVATAR_STATE_DASH)
-
-#define PLAYER_AVATAR_FLAG_BIKE        (PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE)
-// Player avatar flags for which follower Pokémon are hidden
-#define FOLLOWER_INVISIBLE_FLAGS       (PLAYER_AVATAR_FLAG_SURFING | PLAYER_AVATAR_FLAG_UNDERWATER | \
-                                        PLAYER_AVATAR_FLAG_BIKE | PLAYER_AVATAR_FLAG_FORCED)
 
 enum
 {
@@ -339,7 +335,7 @@ enum
     ACRO_BIKE_STATE6,
 };
 
-enum
+enum Collision
 {
     COLLISION_NONE,
     COLLISION_OUTSIDE_RANGE,
@@ -378,15 +374,22 @@ enum
 
 struct PlayerAvatar
 {
-    /*0x00*/ u8 flags;
-    /*0x01*/ u8 transitionFlags; // used to be bike, but it's not that in Emerald and probably isn't here either. maybe transition flags?
-    /*0x02*/ u8 runningState:7; // this is a static running state. 00 is not moving, 01 is turn direction, 02 is moving.
-             u8 creeping:1;
-    /*0x03*/ u8 tileTransitionState; // this is a transition running state: 00 is not moving, 01 is transition between tiles, 02 means you are on the frame in which you have centered on a tile but are about to keep moving, even if changing directions. 2 is also used for a ledge hop, since you are transitioning.
-    /*0x04*/ u8 spriteId;
-    /*0x05*/ u8 objectEventId;
-    /*0x06*/ bool8 preventStep;
-    /*0x07*/ u8 gender;
+    enum AvatarState playerState;
+    enum AvatarState transitionState;
+    bool8 forced:1;
+    bool8 forcedTransition:1;
+    bool8 dashing:1;
+    bool8 dashTransition:1;
+    bool8 controllable:1;
+    bool8 controllableTransition:1;
+    u8 unused:2;
+    u8 runningState:7; // this is a static running state. 00 is not moving, 01 is turn direction, 02 is moving.
+    u8 creeping:1;
+    u8 tileTransitionState; // this is a transition running state: 00 is not moving, 01 is transition between tiles, 02 means you are on the frame in which you have centered on a tile but are about to keep moving, even if changing directions. 2 is also used for a ledge hop, since you are transitioning.
+    u8 spriteId;
+    u8 objectEventId;
+    bool8 preventStep;
+    enum Gender gender;
     // These are not used in FRLG
     u8 acroBikeState;
     u8 newDirBackup;

@@ -1,10 +1,14 @@
 #include "global.h"
-#include "gflib.h"
-#include "keyboard_text.h"
+#include "bg.h"
 #include "decompress.h"
 #include "easy_chat.h"
+#include "gpu_regs.h"
 #include "graphics.h"
+#include "keyboard_text.h"
+#include "malloc.h"
 #include "menu.h"
+#include "palette.h"
+#include "string_util.h"
 #include "strings.h"
 #include "text_window.h"
 
@@ -150,6 +154,8 @@ static void UpdateStartSelectButtonSpriteVisibility(void);
 static void HideStartSelectButtonSprites(void);
 static void CreateFooterWindow(void);
 
+static const u8 sText_DelAllCancelOk[] = _("DEL. ALL{CLEAR_TO 0x57}CANCEL{CLEAR_TO 0xA4}OK");
+
 static const u16 sTriangleCursor_Pal[] = INCBIN_U16("graphics/easy_chat/triangle_cursor.gbapal");
 static const u16 sRectangleCursor_Pal[] = INCBIN_U16("graphics/easy_chat/rectangle_cursor.gbapal");
 static const u16 sTriangleCursor_Gfx[] = INCBIN_U16("graphics/easy_chat/triangle_cursor.4bpp");
@@ -159,45 +165,54 @@ static const u16 sStartSelectButtons_Gfx[] = INCBIN_U16("graphics/easy_chat/star
 // on screen the interview_frame gfx was shown behind them.
 // In FRLG all Easy Chat screens have a filled background, so these gfx go unused
 static const u16 sRSInterviewFrame_Pal[] = INCBIN_U16("graphics/easy_chat/interview_frame.gbapal");
-static const u32 sRSInterviewFrame_Gfx[] = INCBIN_U32("graphics/easy_chat/interview_frame.4bpp.lz");
+static const u32 sRSInterviewFrame_Gfx[] = INCBIN_U32("graphics/easy_chat/interview_frame.4bpp.smol");
 static const u16 sTextInputFrameOrange_Pal[] = INCBIN_U16("graphics/easy_chat/text_input_frame_orange.gbapal");
 static const u16 sTextInputFrameGreen_Pal[] = INCBIN_U16("graphics/easy_chat/text_input_frame_green.gbapal");
-static const u32 sTextInputFrame_Gfx[] = INCBIN_U32("graphics/easy_chat/text_input_frame.4bpp.lz");
+static const u32 sTextInputFrame_Gfx[] = INCBIN_U32("graphics/easy_chat/text_input_frame.4bpp.smol");
 static const u16 sTitleText_Pal[] = INCBIN_U16("graphics/easy_chat/title_text.gbapal");
 static const u16 sText_Pal[] = INCBIN_U16("graphics/easy_chat/text.gbapal");
 
 static const struct EasyChatPhraseFrameDimensions sPhraseFrameDimensions[] = {
+    [FRAMEID_0] =
     {
         .left = 3,
         .top = 4,
         .width = 24,
         .height = 4
-    }, {
+    },
+    [FRAMEID_1] =
+    {
         .left = 1,
         .top = 4,
         .width = 27,
         .height = 4
-    }, {
+    },
+    [FRAMEID_MAIL] =
+    {
         .left = 3,
         .top = 0,
         .width = 24,
         .height = 10
-    }, {
+    },
+    [FRAMEID_COMBINE_TWO_WORDS] =
+    {
         .left = 6,
         .top = 6,
         .width = 18,
         .height = 4
-    }, {
+    },
+    [FRAMEID_INTERVIEW_SHOW_PERSON] = {
         .left = 16,
-        .top = 4,
-        .width = 9,
-        .height = 2
-    }, {
-        .left = 14,
-        .top = 4,
-        .width = 18,
-        .height = 4
-    }
+        .top = 5,
+        .width = 12,
+        .height = 2,
+    },
+    [FRAMEID_GENERAL_2x3] = {
+        .left = 3,
+        .top = 3,
+        .width = 24,
+        .height = 6,
+    },
 };
 
 static const struct BgTemplate sEasyChatBgTemplates[] = {
@@ -570,7 +585,7 @@ bool8 LoadEasyChatGraphics(void)
     {
     case 0:
         ResetBgsAndClearDma3BusyFlags(0);
-        InitBgsFromTemplates(0, sEasyChatBgTemplates, NELEMS(sEasyChatBgTemplates));
+        InitBgsFromTemplates(0, sEasyChatBgTemplates, ARRAY_COUNT(sEasyChatBgTemplates));
         SetBgTilemapBuffer(3, sEasyChatGraphicsResources->bg3TilemapBuffer);
         SetBgTilemapBuffer(1, sEasyChatGraphicsResources->bg1TilemapBuffer);
         InitWindows(sEasyChatWindowTemplates);
@@ -691,7 +706,7 @@ static bool8 ECInterfaceCmd_02(void)
     u8 i;
     u16 *ecWordBuffer;
     u16 *ecWord;
-    u8 frameId;
+    enum EasyChatFrameId frameId;
     u8 cursorColumn, cursorRow, numColumns;
     s16 var1;
     int stringWidth;
@@ -1406,7 +1421,7 @@ static void EC_CreateYesNoMenuWithInitialCursorPos(u8 initialCursorPos)
 
 static void CreatePhraseFrameWindow(void)
 {
-    u8 frameId;
+    enum EasyChatFrameId frameId;
     struct WindowTemplate template;
 
     frameId = GetEasyChatScreenFrameId();
@@ -1426,7 +1441,7 @@ static void PrintECFields(void)
     u16 *ecWord;
     u8 numColumns, numRows;
     u8 *str;
-    u8 frameId;
+    enum EasyChatFrameId frameId;
     int i, j, k;
 
     ecWord = GetEasyChatWordBuffer();
@@ -1460,7 +1475,7 @@ static void PrintECFields(void)
             }
 
             str = StringAppend(str, sText_Clear17);
-            if (frameId == 2)
+            if (frameId == FRAMEID_MAIL)
             {
                 if (j == 0 && i == 4)
                     break;
@@ -1476,13 +1491,13 @@ static void PrintECFields(void)
 
 static void DrawECFrameInTilemapBuffer(u16 *tilemap)
 {
-    u8 frameId;
+    enum EasyChatFrameId frameId;
     int right, bottom;
     int x, y;
 
     frameId = GetEasyChatScreenFrameId();
     CpuFastFill(0, tilemap, BG_SCREEN_SIZE);
-    if (frameId == 2)
+    if (frameId == FRAMEID_MAIL)
     {
         right = sPhraseFrameDimensions[frameId].left + sPhraseFrameDimensions[frameId].width;
         bottom = sPhraseFrameDimensions[frameId].top + sPhraseFrameDimensions[frameId].height;
@@ -1935,13 +1950,13 @@ static void LoadSpriteGfx(void)
 
     LoadSpriteSheets(sEasyChatSpriteSheets);
     LoadSpritePalettes(sEasyChatSpritePalettes);
-    for (i = 0; i < NELEMS(sEasyChatCompressedSpriteSheets); i++)
+    for (i = 0; i < ARRAY_COUNT(sEasyChatCompressedSpriteSheets); i++)
         LoadCompressedSpriteSheet(&sEasyChatCompressedSpriteSheets[i]);
 }
 
 static void CreateSelectDestFieldCursorSprite(void)
 {
-    u8 frameId = GetEasyChatScreenFrameId();
+    enum EasyChatFrameId frameId = GetEasyChatScreenFrameId();
     s16 x = sPhraseFrameDimensions[frameId].left * 8 + 13;
     s16 y = (sPhraseFrameDimensions[frameId].top + 1) * 8 + 1;
     u8 spriteId = CreateSprite(&sSpriteTemplate_TriangleCursor, x, y, 2);
@@ -2309,6 +2324,6 @@ static void CreateFooterWindow(void)
     template.baseBlock = 0x030;
     windowId = AddWindow(&template);
     FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
-    EC_AddTextPrinterParameterized(windowId, FONT_NORMAL_COPY_1, gText_DelAllCancelOk, 0, 0, 0, NULL);
+    EC_AddTextPrinterParameterized(windowId, FONT_NORMAL_COPY_1, sText_DelAllCancelOk, 0, 0, 0, NULL);
     PutWindowTilemap(windowId);
 }

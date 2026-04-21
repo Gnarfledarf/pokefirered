@@ -3,8 +3,6 @@
 
 #include "global.h"
 
-extern const u8 gText_UR_EmptyString[];
-extern const u8 gText_UR_Colon[];
 extern const u8 gText_UR_ID[];
 extern const u8 gText_UR_PleaseStartOver[];
 extern const u8 gText_UR_WirelessSearchCanceled[];
@@ -84,23 +82,14 @@ extern const u8 gText_UR_AwaitingPlayersResponse[];
 extern const u8 gText_UR_PlayerHasBeenAskedToRegisterYouPleaseWait[];
 extern const u8 gText_UR_AwaitingResponseFromWirelessSystem[];
 extern const u8 *const gTexts_UR_NoWonderShared[];
-extern const u8 gText_UR_Battle[];
 extern const u8 gText_UR_Chat2[];
 extern const u8 gText_UR_Greetings[];
-extern const u8 gText_UR_Exit[];
-extern const u8 gText_UR_Exit2[];
-extern const u8 gText_UR_Info[];
 extern const u8 gText_UR_NameWantedOfferLv[];
-extern const u8 gText_UR_SingleBattle[];
-extern const u8 gText_UR_DoubleBattle[];
-extern const u8 gText_UR_MultiBattle[];
 extern const u8 gText_UR_PokemonTrades[];
 extern const u8 gText_UR_Chat[];
 extern const u8 gText_UR_WonderCards[];
 extern const u8 gText_UR_WonderNews[];
 extern const u8 gText_UR_Cards[];
-extern const u8 gText_UR_PokemonJump[];
-extern const u8 gText_UR_BerryCrush[];
 extern const u8 gText_UR_BerryPicking[];
 extern const u8 gText_UR_Search[];
 extern const u8 gText_UR_SpinTrade[];

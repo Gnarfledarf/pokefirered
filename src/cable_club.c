@@ -1,8 +1,7 @@
 #include "global.h"
-#include "gflib.h"
-#include "battle.h"
 #include "battle_records.h"
 #include "battle_setup.h"
+#include "battle.h"
 #include "cable_club.h"
 #include "event_data.h"
 #include "event_scripts.h"
@@ -14,21 +13,22 @@
 #include "menu.h"
 #include "mystery_gift.h"
 #include "overworld.h"
+#include "palette.h"
 #include "quest_log.h"
-#include "script.h"
 #include "script_pokemon_util.h"
+#include "script.h"
+#include "sound.h"
 #include "start_menu.h"
+#include "string_util.h"
 #include "strings.h"
 #include "task.h"
 #include "trade.h"
 #include "trainer_card.h"
 #include "union_room.h"
-#include "constants/songs.h"
 #include "constants/cable_club.h"
 #include "constants/field_weather.h"
 #include "constants/maps.h"
-
-COMMON_DATA u32 UnusedVarNeededToMatch[8] = {0};
+#include "constants/songs.h"
 
 static void Task_LinkupStart(u8 taskId);
 static void Task_LinkupAwaitConnection(u8 taskId);
@@ -57,6 +57,8 @@ static void Task_ReestablishLinkAwaitConfirmation(u8 taskId);
 #define tTimer      data[4]
 #define tWindowId   data[5]
 
+static const u8 sText_NumPlayerLink[] = _("{STR_VAR_1}P LINK");
+
 static const struct WindowTemplate sWindowTemplate_LinkPlayerCount = {
     .bg = 0,
     .tilemapLeft = 16,
@@ -68,8 +70,8 @@ static const struct WindowTemplate sWindowTemplate_LinkPlayerCount = {
 };
 
 static const u8 *const sTrainerCardColorNames[] = {
-    gText_BronzeCard,
-    gText_CopperCard,
+    COMPOUND_STRING("BRONZE"),
+    COMPOUND_STRING("COPPER"),
     gText_SilverCard,
     gText_GoldCard
 };
@@ -89,7 +91,7 @@ static void PrintNumPlayersInLink(u16 windowId, s32 numPlayers)
 {
     ConvertIntToDecimalStringN(gStringVar1, numPlayers, STR_CONV_MODE_LEFT_ALIGN, 1);
     SetStandardWindowBorderStyle(windowId, FALSE);
-    StringExpandPlaceholders(gStringVar4, gText_NumPlayerLink);
+    StringExpandPlaceholders(gStringVar4, sText_NumPlayerLink);
     AddTextPrinterParameterized(windowId, FONT_NORMAL, gStringVar4, 0, 0, TEXT_SKIP_DRAW, NULL);
     CopyWindowToVram(windowId, COPYWIN_FULL);
 }
@@ -345,12 +347,9 @@ static void Task_LinkupExchangeDataWithLeader(u8 taskId)
 
 static bool32 AnyConnectedPartnersPlayingRS(void)
 {
-    int i;
-    u16 version;
-
-    for (i = 0; i < GetLinkPlayerCount(); i++)
+    for (u32 i = 0; i < GetLinkPlayerCount(); i++)
     {
-        version = gLinkPlayers[i].version & 0xFF;
+        enum GameVersion version = gLinkPlayers[i].version & 0xFF;
         if (version == VERSION_RUBY || version == VERSION_SAPPHIRE)
             return TRUE;
     }
@@ -397,18 +396,15 @@ static void Task_LinkupCheckStatusAfterConfirm(u8 taskId)
 
 static void Task_LinkupAwaitTrainerCardData(u8 taskId)
 {
-    u8 i;
-    u16 version;
-
     if (CheckLinkErrored(taskId) == TRUE)
         return;
 
     if (GetBlockReceivedStatus() != GetSavedLinkPlayerCountAsBitFlags())
         return;
 
-    for (i = 0; i < GetLinkPlayerCount(); i++)
+    for (u32 i = 0; i < GetLinkPlayerCount(); i++)
     {
-        version = gLinkPlayers[i].version & 0xFF;
+        enum GameVersion version = gLinkPlayers[i].version & 0xFF;
         if (version != VERSION_FIRE_RED && version != VERSION_LEAF_GREEN)
         {
             const struct TrainerCardRSE * src = (const struct TrainerCardRSE *)gBlockRecvBuffer[i];
@@ -426,9 +422,6 @@ static void Task_LinkupAwaitTrainerCardData(u8 taskId)
     HideFieldMessageBox();
     if (gSpecialVar_Result == LINKUP_SUCCESS)
     {
-        // Dumb trick required to match
-        if (gLinkType == LINKTYPE_BERRY_BLENDER_SETUP)
-            *UnusedVarNeededToMatch += 0;
         ClearLinkPlayerCountWindow(gTasks[taskId].tWindowId);
         ScriptContext_Enable();
         DestroyTask(taskId);
@@ -609,7 +602,7 @@ static void Task_ReestablishLinkAwaitConfirmation(u8 taskId)
 // Unused
 void CableClub_AskSaveTheGame(void)
 {
-    Field_AskSaveTheGame();
+    SaveGame();
 }
 
 #define tTimer data[1]
@@ -644,9 +637,9 @@ static void Task_StartWiredCableClubBattle(u8 taskId)
         break;
     case 5:
         if (gLinkPlayers[0].trainerId & 1)
-            PlayMapChosenOrBattleBGM(MUS_RS_VS_GYM_LEADER);
+            PlayMapChosenOrBattleBGM(MUS_RSE_VS_GYM_LEADER);
         else
-            PlayMapChosenOrBattleBGM(MUS_RS_VS_TRAINER);
+            PlayMapChosenOrBattleBGM(MUS_RSE_VS_TRAINER);
         switch (gSpecialVar_0x8004)
         {
         case USING_SINGLE_BATTLE:
@@ -716,9 +709,9 @@ static void Task_StartWirelessCableClubBattle(u8 taskId)
         break;
     case 7:
         if (gLinkPlayers[0].trainerId & 1)
-            PlayMapChosenOrBattleBGM(MUS_RS_VS_GYM_LEADER);
+            PlayMapChosenOrBattleBGM(MUS_RSE_VS_GYM_LEADER);
         else
-            PlayMapChosenOrBattleBGM(MUS_RS_VS_TRAINER);
+            PlayMapChosenOrBattleBGM(MUS_RSE_VS_TRAINER);
         gLinkPlayers[0].linkType = LINKTYPE_BATTLE;
         switch (gSpecialVar_0x8004)
         {
@@ -978,6 +971,7 @@ bool32 GetSeeingLinkPlayerCardMsg(u8 linkPlayerIndex)
 void Task_WaitForLinkPlayerConnection(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
+
     if (++task->tTimer > 300)
     {
         CloseLink();
@@ -990,3 +984,66 @@ void Task_WaitForLinkPlayerConnection(u8 taskId)
 }
 
 #undef tTimer
+
+
+#define tTimer data[1]
+
+// Confirm that all cabled link players are connected
+void Task_ReconnectWithLinkPlayers(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+
+    switch (tState)
+    {
+    case 0:
+        if (gWirelessCommType != 0)
+        {
+            DestroyTask(taskId);
+        }
+        else
+        {
+            OpenLink();
+            CreateTask(Task_WaitForLinkPlayerConnection, 1);
+            tState++;
+        }
+        break;
+    case 1:
+        if (++tTimer > 11)
+        {
+            tTimer = 0;
+            tState++;
+        }
+        break;
+    case 2:
+        if (GetLinkPlayerCount_2() >= GetSavedPlayerCount())
+        {
+            if (IsLinkMaster())
+            {
+                if (++tTimer > 30)
+                {
+                    CheckShouldAdvanceLinkState();
+                    tState++;
+                }
+            }
+            else
+            {
+                tState++;
+            }
+        }
+        break;
+    case 3:
+        if (gReceivedRemoteLinkPlayers == TRUE && IsLinkPlayerDataExchangeComplete() == TRUE)
+        {
+            DestroyTask(taskId);
+        }
+        break;
+    }
+}
+
+#undef tTimer
+
+void TrySetBattleTowerLinkType(void)
+{
+    if (gWirelessCommType == 0)
+        gLinkType = LINKTYPE_BATTLE_TOWER;
+}

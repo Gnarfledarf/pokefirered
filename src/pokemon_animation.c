@@ -468,7 +468,7 @@ static void SetPosForRotation(struct Sprite *sprite, u16 index, s16 amplitudeX, 
     sprite->y2 = yAdder + amplitudeY;
 }
 
-u8 GetSpeciesBackAnimSet(u16 species)
+enum BackAnim GetSpeciesBackAnimSet(enum Species species)
 {
     if (gSpeciesInfo[species].backAnimId != BACK_ANIM_NONE)
         return gSpeciesInfo[species].backAnimId - 1;
@@ -488,11 +488,7 @@ u8 GetSpeciesBackAnimSet(u16 species)
 // as 0xFFFFXXXX instead of the desired 0x02YYXXXX.
 // By dumb luck, this is not an issue in vanilla. However,
 // changing the link order revealed this bug.
-#if MODERN || defined(BUGFIX)
 #define ANIM_SPRITE(taskId)   ((struct Sprite *)((gTasks[taskId].tPtrHi << 16) | ((u16)gTasks[taskId].tPtrLo)))
-#else
-#define ANIM_SPRITE(taskId)   ((struct Sprite *)((gTasks[taskId].tPtrHi << 16) | (gTasks[taskId].tPtrLo)))
-#endif //MODERN || BUGFIX
 
 static void Task_HandleMonAnimation(u8 taskId)
 {
@@ -532,7 +528,7 @@ static void Task_HandleMonAnimation(u8 taskId)
     }
 }
 
-void LaunchAnimationTaskForFrontSprite(struct Sprite *sprite, u8 frontAnimId)
+void LaunchAnimationTaskForFrontSprite(struct Sprite *sprite, enum AnimFunctionIDs frontAnimId)
 {
     u8 taskId = CreateTask(Task_HandleMonAnimation, 128);
     gTasks[taskId].tPtrHi = (u32)(sprite) >> 16;
@@ -540,16 +536,17 @@ void LaunchAnimationTaskForFrontSprite(struct Sprite *sprite, u8 frontAnimId)
     gTasks[taskId].tAnimId = frontAnimId;
 }
 
-void StartMonSummaryAnimation(struct Sprite *sprite, u8 frontAnimId)
+void StartMonSummaryAnimation(struct Sprite *sprite, enum AnimFunctionIDs frontAnimId)
 {
     // sDontFlip is expected to still be FALSE here, not explicitly cleared
     sIsSummaryAnim = TRUE;
     sprite->callback = sMonAnimFunctions[frontAnimId];
 }
 
-void LaunchAnimationTaskForBackSprite(struct Sprite *sprite, u8 backAnimSet)
+void LaunchAnimationTaskForBackSprite(struct Sprite *sprite, enum BackAnim backAnimSet)
 {
-    u8 nature, taskId, animId, battlerId;
+    enum Nature nature;
+    u8 taskId, animId, battlerId;
 
     taskId = CreateTask(Task_HandleMonAnimation, 128);
     gTasks[taskId].tPtrHi = (u32)(sprite) >> 16;

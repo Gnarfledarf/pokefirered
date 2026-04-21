@@ -8,8 +8,6 @@
 #include "text.h"
 #include "menu.h"
 
-EWRAM_DATA ALIGNED(4) u8 gDecompressionBuffer[0x4000] = {0};
-
 //  === WARNING === WARNING === WARNING ===
 //  === No user serviceable code before ===
 //  === the SpecialPokePic function, do ===
@@ -246,14 +244,14 @@ u32 LoadCompressedSpriteSheetByTemplate(const struct SpriteTemplate *template, s
 
 }
 
-void DecompressPicFromTable(const struct CompressedSpriteSheet *src, void *buffer)
+void HandleLoadSpecialPokePic(bool32 isFrontPic, void *dest, enum Species species, u32 personality)
 {
-    DecompressDataWithHeaderWram(src->data, buffer);
+    LoadSpecialPokePicIsEgg(dest, species, personality, isFrontPic, FALSE);
 }
 
-void HandleLoadSpecialPokePic(bool32 isFrontPic, void *dest, s32 species, u32 personality)
+void HandleLoadSpecialPokePicIsEgg(bool32 isFrontPic, void *dest, enum Species species, u32 personality, bool32 isEgg)
 {
-    LoadSpecialPokePic(dest, species, personality, isFrontPic);
+    LoadSpecialPokePicIsEgg(dest, species, personality, isFrontPic, isEgg);
 }
 
 //  Wrapper function for all decompression calls using formats with headers
@@ -1126,13 +1124,25 @@ static bool32 isModeSymDelta(enum CompressionMode mode)
     return FALSE;
 }
 
-void LoadSpecialPokePic(void *dest, s32 species, u32 personality, bool8 isFrontPic)
+void LoadSpecialPokePic(void *dest, enum Species species, u32 personality, bool8 isFrontPic)
+{
+    LoadSpecialPokePicIsEgg(dest, species, personality, isFrontPic, FALSE);
+}
+
+void LoadSpecialPokePicIsEgg(void *dest, enum Species species, u32 personality, bool8 isFrontPic, bool32 isEgg)
 {
     species = SanitizeSpeciesId(species);
     if (species == SPECIES_UNOWN)
         species = GetUnownSpeciesId(personality);
 
-    if (isFrontPic)
+    if (isEgg)
+    {
+        if (gSpeciesInfo[species].eggId != EGG_ID_NONE)
+            DecompressDataWithHeaderWram(gEggDatas[gSpeciesInfo[species].eggId].eggSprite, dest);
+        else
+            DecompressDataWithHeaderWram(gSpeciesInfo[SPECIES_EGG].frontPic, dest);
+    }
+    else if (isFrontPic)
     {
     #if P_GENDER_DIFFERENCES
         if (gSpeciesInfo[species].frontPicFemale != NULL && IsPersonalityFemale(species, personality))

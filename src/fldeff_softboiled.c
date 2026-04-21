@@ -1,7 +1,9 @@
 #include "global.h"
-#include "gflib.h"
-#include "party_menu.h"
 #include "menu.h"
+#include "party_menu.h"
+#include "sound.h"
+#include "string_util.h"
+#include "strings.h"
 #include "constants/songs.h"
 
 static void Task_SoftboiledRestoreHealth(u8 taskId);
@@ -9,8 +11,7 @@ static void Task_DisplayHPRestoredMessage(u8 taskId);
 static void Task_FinishSoftboiled(u8 taskId);
 static void CantUseSoftboiledOnMon(u8 taskId);
 
-extern const u8 gText_CantBeUsedOnPkmn[];
-extern const u8 gText_PkmnHPRestoredByVar2[];
+static const u8 sText_CantBeUsedOnPkmn[] = _("This can't be used on\nthat POKéMON.{PAUSE_UNTIL_PRESS}");
 
 bool32 FieldMove_SetUpSoftBoiled(void)
 {
@@ -101,7 +102,7 @@ static void Task_ChooseNewMonForSoftboiled(u8 taskId)
 static void CantUseSoftboiledOnMon(u8 taskId)
 {
     PlaySE(SE_SELECT);
-    DisplayPartyMenuMessage(gText_CantBeUsedOnPkmn, FALSE);
+    DisplayPartyMenuMessage(sText_CantBeUsedOnPkmn, FALSE);
     ScheduleBgCopyTilemapToVram(2);
     gTasks[taskId].func = Task_ChooseNewMonForSoftboiled;
 }

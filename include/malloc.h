@@ -50,17 +50,19 @@ extern u8 gHeap[];
 
 #define Alloc(size) Alloc_(size, __FILE__ ":" STR(__LINE__))
 #define AllocZeroed(size) AllocZeroed_(size, __FILE__ ":" STR(__LINE__))
+#define Free(ptr) Free_(ptr, __FILE__ ":" STR(__LINE__))
 
 #else
 
 #define Alloc(size) Alloc_(size, NULL)
 #define AllocZeroed(size) AllocZeroed_(size, NULL)
+#define Free(ptr) Free_(ptr, NULL)
 
 #endif
 
 void *Alloc_(u32 size, const char *location);
 void *AllocZeroed_(u32 size, const char *location);
-void Free(void *pointer);
+void Free_(void *pointer, const char *location);
 void InitHeap(void *pointer, u32 size);
 
 const struct MemBlock *HeapHead(void);

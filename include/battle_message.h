@@ -1,6 +1,7 @@
 #ifndef GUARD_BATTLE_MESSAGE_H
 #define GUARD_BATTLE_MESSAGE_H
 
+#include "constants/abilities.h"
 #include "constants/battle.h"
 #include "constants/battle_string_ids.h"
 
@@ -14,7 +15,6 @@
 #define BATTLE_MSG_MAX_LINES    2
 
 // for 0xFD
-
 #define B_TXT_BUFF1 0x0
 #define B_TXT_BUFF2 0x1
 #define B_TXT_COPY_VAR_1 0x2
@@ -76,6 +76,7 @@
 #define B_TXT_DEF_TEAM1 0x3A // Your/The opposing
 #define B_TXT_DEF_TEAM2 0x3B // your/the opposing
 #define B_TXT_DEF_PARTNER_NAME 0x3C
+// #define B_UNUSED_0x3D 0x3D
 #define B_TXT_ATK_NAME_WITH_PREFIX2 0x3E //lowercase
 #define B_TXT_DEF_NAME_WITH_PREFIX2 0x3F //lowercase
 #define B_TXT_EFF_NAME_WITH_PREFIX2 0x40 //lowercase
@@ -86,8 +87,6 @@
 #define B_TXT_ATK_TRAINER_NAME_WITH_CLASS 0x45
 #define B_TXT_EFF_TEAM1 0x46
 #define B_TXT_EFF_TEAM2 0x47
-
-// for B_TXT_BUFF1, B_TXT_BUFF2 and B_TXT_BUFF3
 
 #define B_BUFF_STRING                       0
 #define B_BUFF_NUMBER                       1
@@ -240,25 +239,24 @@ struct BattleMsgData
     u16 currentMove;
     u16 originallyUsedMove;
     u16 lastItem;
-    u16 lastAbility;
+    enum Ability lastAbility;
     u8 scrActive;
     u8 bakScriptPartyIdx;
     u8 hpScale;
     u8 itemEffectBattler;
-    u8 moveType;
-    u16 abilities[MAX_BATTLERS_COUNT];
+    enum Type moveType;
+    enum Ability abilities[MAX_BATTLERS_COUNT];
     u8 textBuffs[3][TEXT_BUFF_ARRAY_COUNT];
 };
 
-void BufferStringBattle(enum StringID stringID, u32 battler);
+void BufferStringBattle(enum StringID stringID, enum BattlerId battler);
 u32 BattleStringExpandPlaceholdersToDisplayedString(const u8 *src);
 u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize);
-void BattleHandleAddTextPrinter(const u8 *text, u8 arg1);
-void SetPpNumbersPaletteInMoveSelection(u32 battler);
+void BattlePutTextOnWindow(const u8 *text, u8 windowId);
+void SetPpNumbersPaletteInMoveSelection(enum BattlerId battler);
 u8 GetCurrentPpToMaxPpState(u8 currentPp, u8 maxPp);
-void BattlePutTextOnWindow(const u8 *text, u8 windowId_flags);
-bool8 BattleStringShouldBeColored(u16);
 void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst);
+bool8 BattleStringShouldBeColored(u16);
 
 extern struct BattleMsgData *gBattleMsgDataPtr;
 
@@ -266,10 +264,14 @@ extern const u8 *const gBattleStringsTable[];
 extern const u8 *const gStatNamesTable[];
 extern const u8 *const gPokeblockWasTooXStringTable[];
 extern const u8 *const gRefereeStringsTable[];
+extern const u8 *const gRoundsStringTable[];
 extern const u8 *const gStatNamesTable2[];
 
 extern const u16 gMissStringIds[];
 
+// battle main
+extern const u8 gText_LinkStandby3[];
+extern const u8 BattleFrontier_BattleTowerBattleRoom_Text_RecordCouldntBeSaved[];
 extern const u8 gText_Sleep[];
 extern const u8 gText_Poison[];
 extern const u8 gText_Burn[];
@@ -277,12 +279,6 @@ extern const u8 gText_Paralysis[];
 extern const u8 gText_Ice[];
 extern const u8 gText_Confusion[];
 extern const u8 gText_Love[];
-
-extern const u8 gText_BattleTowerBan_Space[];
-extern const u8 gText_BattleTowerBan_Newline1[];
-extern const u8 gText_BattleTowerBan_Newline2[];
-extern const u8 gText_BattleTowerBan_Is1[];
-extern const u8 gText_BattleTowerBan_Is2[];
 
 extern const u8 gText_StatSharply[];
 extern const u8 gText_StatRose[];
@@ -295,6 +291,9 @@ extern const u8 gText_BattleYesNoChoice[];
 
 extern const u8 gText_SafariBalls[];
 extern const u8 gText_HighlightRed_Left[];
+extern const u8 gText_HealthboxGender_Male[];
+extern const u8 gText_HealthboxGender_Female[];
+extern const u8 gText_HealthboxGender_None[];
 
 extern const u8 gText_Win[];
 extern const u8 gText_Loss[];
@@ -302,5 +301,7 @@ extern const u8 gText_Draw[];
 
 extern const u16 gStatUpStringIds[];
 extern const u16 gStatDownStringIds[];
+
+extern const u8 gText_BattleTourney[];
 
 #endif // GUARD_BATTLE_MESSAGE_H

@@ -1,28 +1,36 @@
 #include "global.h"
-#include "tm_case.h"
-#include "gflib.h"
-#include "decompress.h"
-#include "graphics.h"
-#include "task.h"
-#include "text_window.h"
-#include "menu.h"
-#include "menu_helpers.h"
-#include "list_menu.h"
-#include "item.h"
-#include "item_menu.h"
-#include "link.h"
-#include "money.h"
-#include "shop.h"
-#include "teachy_tv.h"
-#include "move.h"
-#include "pokemon_storage_system.h"
-#include "party_menu.h"
+#include "battle_main.h"
+#include "bg.h"
 #include "data.h"
+#include "decompress.h"
+#include "gpu_regs.h"
+#include "graphics.h"
+#include "item_menu.h"
+#include "item.h"
+#include "link.h"
+#include "list_menu.h"
+#include "malloc.h"
+#include "menu_helpers.h"
+#include "menu.h"
+#include "money.h"
+#include "move.h"
+#include "palette.h"
+#include "party_menu.h"
+#include "pokemon_storage_system.h"
+#include "pokemon_summary_screen.h"
 #include "scanline_effect.h"
+#include "shop.h"
+#include "sound.h"
+#include "string_util.h"
 #include "strings.h"
+#include "task.h"
+#include "teachy_tv.h"
+#include "text_window.h"
+#include "tm_case.h"
+#include "type_icon_sprite.h"
 #include "constants/items.h"
-#include "constants/songs.h"
 #include "constants/quest_log.h"
+#include "constants/songs.h"
 
 #define TAG_SCROLL_ARROW 110
 
@@ -99,7 +107,7 @@ static EWRAM_DATA struct {
     const u8 * menuActionIndices;
     u8 numMenuActions;
     s16 seqId;
-    u8 unused[8];
+    u8 typeIconSpriteId;
 } * sTMCaseDynamicResources = NULL;
 
 // Save the player's bag state when the Pokedude's bag is being shown
@@ -109,6 +117,11 @@ static EWRAM_DATA struct {
     u16 selectedRow;
     u16 scrollOffset;
 } * sPokedudeBagBackup = NULL;
+
+extern const u8 gPokedudeText_TMTypes[];
+extern const u8 gPokedudeText_ReadTMDescription[];
+
+static const u8 sText_TMCaseWillBePutAway[] = _("The TM CASE will be\nput away.");
 
 static EWRAM_DATA void *sTilemapBuffer = NULL;
 static EWRAM_DATA struct ListMenuItem * sListMenuItemsBuffer = NULL;
@@ -121,11 +134,11 @@ static void LoadBGTemplates(void);
 static bool8 HandleLoadTMCaseGraphicsAndPalettes(void);
 static void CreateTMCaseListMenuBuffers(void);
 static void InitTMCaseListMenuItems(void);
-static void GetTMNumberAndMoveString(u8 * dest, u16 itemId);
+static void GetTMNumberAndMoveString(u8 *dest, enum Item itemId);
 static void List_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list);
 static void List_ItemPrintFunc(u8 windowId, u32 itemId, u8 y);
 static void PrintDescription(s32 itemIndex);
-static void PrintMoveInfo(u16 itemId);
+static void PrintMoveInfo(enum Item itemId);
 static void PrintListCursorAtRow(u8 y, u8 colorIdx);
 static void CreateListScrollArrows(void);
 static void TMCaseSetup_GetTMCount(void);
@@ -168,12 +181,16 @@ static void PrintPlayersMoney(void);
 static void HandleCreateYesNoMenu(u8 taskId, const struct YesNoFuncTable * ptrs);
 static u8 AddContextMenu(u8 * windowId, u8 windowIndex);
 static void RemoveContextMenu(u8 * windowId);
-static u8 CreateDiscSprite(u16 itemId);
+static u8 CreateDiscSprite(enum Item itemId);
 static void SetDiscSpriteAnim(struct Sprite *sprite, u8 tmIdx);
-static void TintDiscpriteByType(u8 type);
+static void TintDiscpriteByType(enum Type type);
 static void SetDiscSpritePosition(struct Sprite *sprite, u8 tmIdx);
-static void SwapDisc(u8 spriteId, u16 itemId);
+static void SwapDisc(u8 spriteId, enum Item itemId);
 static void SpriteCB_SwapDisc(struct Sprite *sprite);
+static void TMCase_CreateTypeIconSprite(void);
+static void UpdateTypeIconSprite(enum Type type);
+static void HideTypeIcon(void);
+static void DestroyTypeIconSprites(void);
 
 static const struct BgTemplate sBGTemplates[] = {
     {
@@ -213,9 +230,9 @@ static void (*const sSelectTMActionTasks[])(u8 taskId) = {
 };
 
 static const struct MenuAction sMenuActions[] = {
-    [TMCASE_ACTION_USE]  = {gOtherText_Use,  {Action_Use}  },
-    [TMCASE_ACTION_GIVE] = {gOtherText_Give, {Action_Give} },
-    [TMCASE_ACTION_EXIT] = {gOtherText_Exit, {Action_Exit} },
+    [TMCASE_ACTION_USE]  = {gText_Use,  {Action_Use}  },
+    [TMCASE_ACTION_GIVE] = {gText_Give, {Action_Give} },
+    [TMCASE_ACTION_EXIT] = {gText_Exit, {Action_Exit} },
 };
 
 static const u8 sMenuActionIndices_Field[] = {TMCASE_ACTION_USE, TMCASE_ACTION_GIVE, TMCASE_ACTION_EXIT};
@@ -382,9 +399,6 @@ static const struct SpriteTemplate sSpriteTemplate_Disc = {
     .paletteTag = TAG_DISC,
     .oam = &sTMSpriteOamData,
     .anims = sAnims_Disc,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy
 };
 
 static const u16 sTMSpritePaletteOffsetByType[NUMBER_OF_MON_TYPES] = {
@@ -415,6 +429,7 @@ void InitTMCase(u8 type, void (* exitCallback)(void), bool8 allowSelectClose)
     sTMCaseDynamicResources->nextScreenCallback = NULL;
     sTMCaseDynamicResources->scrollArrowsTaskId = TASK_NONE;
     sTMCaseDynamicResources->contextMenuWindowId = WINDOW_NONE;
+    sTMCaseDynamicResources->typeIconSpriteId = 0xFF;
     if (type != TMCASE_REOPENING)
         sTMCaseStaticResources.menuType = type;
     if (exitCallback != NULL)
@@ -608,9 +623,11 @@ static bool8 HandleLoadTMCaseGraphicsAndPalettes(void)
         break;
     case 2:
         DecompressDataWithHeaderWram(gTMCase_Tilemap, GetBgTilemapBuffer(1));
+        TMCase_CreateTypeIconSprite();
         sTMCaseDynamicResources->seqId++;
         break;
     case 3:
+        AllocSpritePalette(TAG_DISC);
         if (gSaveBlock2Ptr->playerGender == MALE)
             LoadPalette(gTMCaseMenu_Male_Pal, BG_PLTT_ID(0), 4 * PLTT_SIZE_4BPP);
         else
@@ -670,7 +687,7 @@ static void InitTMCaseListMenuItems(void)
     gMultiuseListMenuTemplate.scrollMultiple = 0;
 }
 
-static void GetTMNumberAndMoveString(u8 *dest, u16 itemId)
+static void GetTMNumberAndMoveString(u8 *dest, enum Item itemId)
 {
     StringCopy(gStringVar4, gText_FontSmall);
     if (IsItemHM(itemId))
@@ -694,7 +711,7 @@ static void GetTMNumberAndMoveString(u8 *dest, u16 itemId)
 
 static void List_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list)
 {
-    u16 itemId;
+    enum Item itemId;
 
     if (itemIndex == LIST_CANCEL)
         itemId = ITEM_NONE;
@@ -714,7 +731,7 @@ static void List_ItemPrintFunc(u8 windowId, u32 itemIndex, u8 y)
 {
     if (itemIndex != LIST_CANCEL)
     {
-        u16 itemId = GetBagItemId(POCKET_TM_HM, itemIndex);
+        enum Item itemId = GetBagItemId(POCKET_TM_HM, itemIndex);
         if (!IsItemHM(itemId))
         {
             if (!GetItemImportance(itemId))
@@ -724,7 +741,7 @@ static void List_ItemPrintFunc(u8 windowId, u32 itemIndex, u8 y)
             }
             else
             {
-                StringCopy(gStringVar4, gText_EmptyString3);
+                StringCopy(gStringVar4, gText_EmptyString);
             }
             TMCase_Print(windowId, FONT_SMALL, gStringVar4, 126, y, 0, 0, TEXT_SKIP_DRAW, COLOR_DARK);
         }
@@ -738,10 +755,12 @@ static void List_ItemPrintFunc(u8 windowId, u32 itemIndex, u8 y)
 static void PrintDescription(s32 itemIndex)
 {
     const u8 * str;
+
     if (itemIndex != LIST_CANCEL)
         str = GetItemDescription(GetBagItemId(POCKET_TM_HM, itemIndex));
     else
-        str = gText_TMCaseWillBePutAway;
+        str = sText_TMCaseWillBePutAway;
+
     FillWindowPixelBuffer(WIN_DESCRIPTION, 0);
     TMCase_Print(WIN_DESCRIPTION, FONT_NORMAL, str, 2, 3, 1, 0, 0, COLOR_LIGHT);
 }
@@ -769,7 +788,7 @@ static void PrintListCursorAtRow(u8 y, u8 colorIdx)
     }
     else
     {
-        TMCase_Print(WIN_LIST, FONT_NORMAL, gText_SelectorArrow2, 0, y, 0, 0, 0, colorIdx);
+        TMCase_Print(WIN_LIST, FONT_NORMAL, gText_SelectorArrow, 0, y, 0, 0, 0, colorIdx);
     }
 }
 
@@ -884,6 +903,7 @@ static void Task_FadeOutAndCloseTMCase(u8 taskId)
         else
             SetMainCallback2(sTMCaseStaticResources.exitCallback);
         RemoveScrollArrows();
+        DestroyTypeIconSprites();
         DestroyTMCaseBuffers();
         DestroyTask(taskId);
     }
@@ -1040,8 +1060,9 @@ static void Action_Use(u8 taskId)
 
 static void Action_Give(u8 taskId)
 {
-    s16 * data = gTasks[taskId].data;
-    u16 itemId = GetBagItemId(POCKET_TM_HM, tListPos);
+    s16 *data = gTasks[taskId].data;
+    enum Item itemId = GetBagItemId(POCKET_TM_HM, tListPos);
+
     RemoveContextMenu(&sTMCaseDynamicResources->contextMenuWindowId);
     ClearStdWindowAndFrameToTransparent(WIN_SELECTED_MSG, FALSE);
     ClearWindowTilemap(WIN_SELECTED_MSG);
@@ -1433,7 +1454,7 @@ static void Task_Pokedude_Run(u8 taskId)
     case 9:
     case 19:
         RunTextPrinters();
-        if (!IsTextPrinterActive(WIN_MESSAGE))
+        if (!IsTextPrinterActiveOnWindow(WIN_MESSAGE))
             tPokedudeState++;
         break;
     case 10:
@@ -1476,6 +1497,7 @@ static void Task_Pokedude_Run(u8 taskId)
         {
             SetMainCallback2(sTMCaseStaticResources.exitCallback);
             RemoveScrollArrows();
+            DestroyTypeIconSprites();
             DestroyTMCaseBuffers();
             DestroyTask(taskId);
         }
@@ -1543,24 +1565,28 @@ static void DrawMoveInfoLabels(void)
     CopyWindowToVram(WIN_MOVE_INFO_LABELS, COPYWIN_GFX);
 }
 
-static void PrintMoveInfo(u16 itemId)
+static void PrintMoveInfo(enum Item itemId)
 {
-    u8 i;
-    u16 move;
-    const u8 * str;
 
     FillWindowPixelRect(WIN_MOVE_INFO, 0, 0, 0, 40, 48);
     if (itemId == ITEM_NONE)
     {
-        for (i = 0; i < 4; i++)
+        for (u32 i = 0; i < 4; i++)
             TMCase_Print(WIN_MOVE_INFO, FONT_NORMAL_COPY_2, gText_ThreeHyphens, 7, 12 * i, 0, 0, TEXT_SKIP_DRAW, COLOR_MOVE_INFO);
         CopyWindowToVram(WIN_MOVE_INFO, COPYWIN_GFX);
+        HideTypeIcon();
     }
     else
     {
+        const u8 *str;
+        enum Move move = ItemIdToBattleMoveId(itemId);
+        enum Type type = gMovesInfo[move].type;
+
         // Draw type icon
-        move = ItemIdToBattleMoveId(itemId);
-        BlitMenuInfoIcon(WIN_MOVE_INFO, gMovesInfo[move].type + 1, 0, 0);
+        if (P_USE_TYPE_ICON_SPRITES)
+            UpdateTypeIconSprite(type);
+        else
+            BlitMenuTypeIcon(WIN_MOVE_INFO, type, 0, 0);
 
         // Print power
         if (gMovesInfo[move].power < 2)
@@ -1625,10 +1651,11 @@ static void RemoveContextMenu(u8 * windowId)
     *windowId = WINDOW_NONE;
 }
 
-static u8 CreateDiscSprite(u16 itemId)
+static u8 CreateDiscSprite(enum Item itemId)
 {
     u8 spriteId = CreateSprite(&sSpriteTemplate_Disc, DISC_BASE_X, DISC_BASE_Y, 0);
     u8 tmIdx;
+
     if (itemId == ITEM_NONE)
     {
         SetDiscSpritePosition(&gSprites[spriteId], DISC_HIDDEN);
@@ -1654,7 +1681,7 @@ static void SetDiscSpriteAnim(struct Sprite *sprite, u8 tmIdx)
 
 #define NUM_TYPES_PER_PALETTE 16
 
-static void TintDiscpriteByType(u8 type)
+static void TintDiscpriteByType(enum Type type)
 {
     u8 palOffset = PLTT_ID(IndexOfSpritePaletteTag(TAG_DISC));
     u32 palTypeIndex = sTMSpritePaletteOffsetByType[type] / (NUM_TYPES_PER_PALETTE * PLTT_SIZE_4BPP);
@@ -1691,7 +1718,7 @@ static void SetDiscSpritePosition(struct Sprite *sprite, u8 tmIdx)
 #define sItemId  data[0]
 #define sState   data[1]
 
-static void SwapDisc(u8 spriteId, u16 itemId)
+static void SwapDisc(u8 spriteId, enum Item itemId)
 {
     gSprites[spriteId].sItemId = itemId;
     gSprites[spriteId].sState = 0;
@@ -1730,4 +1757,53 @@ static void SpriteCB_SwapDisc(struct Sprite *sprite)
         else
             sprite->y2 -= DISC_Y_MOVE;
     }
+}
+
+static void TMCase_CreateTypeIconSprite(void)
+{
+    if (!P_USE_TYPE_ICON_SPRITES)
+        return;
+
+    InitTypeIconGfx();
+    sTMCaseDynamicResources->typeIconSpriteId = CreateTypeIconSprite();
+}
+
+static void ShowMonTypeIcon(enum Type type, s32 x, s32 y)
+{
+    struct Sprite *icon = &gSprites[sTMCaseDynamicResources->typeIconSpriteId];
+
+    icon->invisible = FALSE;
+    icon->oam.paletteNum = IndexOfSpritePaletteTag(gTypesInfo[type].paletteTag);
+    icon->x = x;
+    icon->y = y;
+    StartSpriteAnim(icon, type);
+}
+
+static void UpdateTypeIconSprite(enum Type type)
+{
+    if (!P_USE_TYPE_ICON_SPRITES)
+        return;
+
+    ShowMonTypeIcon(type, 72, 110);
+}
+
+static void HideTypeIcon(void)
+{
+    gSprites[sTMCaseDynamicResources->typeIconSpriteId].invisible = TRUE;
+}
+
+static void DestroyTypeIconSprites(void)
+{
+    if (!P_USE_TYPE_ICON_SPRITES)
+        return;
+
+    if (sTMCaseDynamicResources->typeIconSpriteId != 0xFF)
+    {
+        DestroySprite(&gSprites[sTMCaseDynamicResources->typeIconSpriteId]);
+        sTMCaseDynamicResources->typeIconSpriteId = 0xFF;
+    }
+
+    FreeSpritePaletteByTag(TAG_MOVE_TYPES_1);
+    FreeSpritePaletteByTag(TAG_MOVE_TYPES_2);
+    FreeSpritePaletteByTag(TAG_MOVE_TYPES_3);
 }

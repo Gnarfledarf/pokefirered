@@ -1,6 +1,7 @@
 #ifndef GUARD_POKEMON_SPRITE_VISUALIZER_H
 #define GUARD_POKEMON_SPRITE_VISUALIZER_H
 
+#include "constants/global.h"
 #include "constants/pokemon_sprite_visualizer.h"
 
 //Structs
@@ -56,7 +57,7 @@ struct PokemonShadowSettings
 
 struct PokemonSpriteVisualizer
 {
-    u16 currentmonId;
+    enum Species currentmonId;
     u8 currentmonWindowId;
     u8 InstructionsWindowId;
     u8 frontspriteId;
@@ -79,10 +80,17 @@ struct PokemonSpriteVisualizer
 
     u8 animIdBack;
     u8 animIdFront;
-    u8 battleBgType;
-    u8 battleTerrain;
+    u8 battleEnvironment;
+    u8 moveBackground;
     u8 currentSubmenu;
     u8 submenuYpos[3];
+};
+
+struct SubmenuText
+{
+    const u8 *instructions;
+    const u8 *instructionsGender;
+    const u8 *bottomLeft;
 };
 
 void CB2_Pokemon_Sprite_Visualizer(void);

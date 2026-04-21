@@ -1,32 +1,38 @@
 #include "global.h"
-#include "gflib.h"
-#include "decompress.h"
-#include "scanline_effect.h"
-#include "task.h"
-#include "save.h"
-#include "data.h"
-#include "m4a.h"
-#include "help_system.h"
-#include "hall_of_fame.h"
-#include "quest_log.h"
-#include "pc_screen_effect.h"
-#include "strings.h"
+#include "bg.h"
+#include "confetti_util.h"
 #include "credits.h"
+#include "data.h"
+#include "decompress.h"
 #include "event_data.h"
-#include "overworld.h"
-#include "trainer_pokemon_sprites.h"
-#include "text_window.h"
 #include "field_screen_effect.h"
-#include "menu.h"
-#include "string_util.h"
-#include "trig.h"
-#include "random.h"
+#include "gpu_regs.h"
 #include "graphics.h"
-#include "constants/songs.h"
+#include "hall_of_fame.h"
+#include "help_system.h"
+#include "m4a.h"
+#include "malloc.h"
+#include "menu.h"
+#include "overworld.h"
+#include "palette.h"
+#include "pc_screen_effect.h"
+#include "quest_log.h"
+#include "random.h"
+#include "save.h"
+#include "scanline_effect.h"
+#include "sound.h"
+#include "string_util.h"
+#include "strings.h"
+#include "task.h"
+#include "text_window.h"
+#include "trainer_pokemon_sprites.h"
+#include "trig.h"
 #include "constants/maps.h"
+#include "constants/songs.h"
 
 #define HALL_OF_FAME_MAX_TEAMS 50
 #define HALL_OF_FAME_BG_PAL    RGB(22, 24, 29)
+#define TAG_CONFETTI 1001
 
 
 STATIC_ASSERT(sizeof(struct HallofFameTeam) * HALL_OF_FAME_MAX_TEAMS <= SECTOR_DATA_SIZE * NUM_HOF_SECTORS, HallOfFameFreeSpace);
@@ -79,6 +85,19 @@ static bool8 DrawHofBackground(void);
 static void SpriteCB_GetOnScreen(struct Sprite *sprite);
 static void SpriteCB_Confetti(struct Sprite *sprite);
 static bool8 Hof_SpawnConfetti(void);
+static void Task_DoDomeConfetti(u8 taskId);
+
+static const u8 sText_UPDOWNPick_ABUTTONNext_BBUTTONBack[] = _("{DPAD_UPDOWN}PICK {A_BUTTON}NEXT {B_BUTTON}CANCEL");
+static const u8 sText_UPDOWNPick_ABUTTONBBUTTONCancel[] = _("{DPAD_UPDOWN}PICK {A_BUTTON}{B_BUTTON}CANCEL");
+static const u8 sText_ABUTTONExit[] = _("{A_BUTTON}EXIT");
+static const u8 sText_WelcomeToHOF[] = _("Welcome to the HALL OF FAME!");
+static const u8 sText_HOFCorrupted[] = _("The HALL OF FAME data is\ncorrupted.");
+static const u8 sText_HOFNumber[] = _("HALL OF FAME No. {STR_VAR_1}");
+static const u8 sText_LeagueChamp[] = _("LEAGUE CHAMPION!\nCONGRATULATIONS!");
+static const u8 sText_Number[] = _("No. ");
+static const u8 sText_Level[] = _("Lv. ");
+static const u8 sText_Name[] = _("NAME");
+static const u8 sText_IDNumber[] = _("IDNo.");
 
 static const struct BgTemplate sHof_BgTemplates[] = {
     {
@@ -127,12 +146,12 @@ static const u8 sTextColors[][4] = {
 };
 
 static const struct CompressedSpriteSheet sHallOfFame_ConfettiSpriteSheet[] = {
-    {gFile_graphics_misc_confetti_sheet, 0x220, 1001},
+    {gFile_graphics_misc_confetti_sheet, 0x220, TAG_CONFETTI},
     {}
 };
 
 static const struct SpritePalette sHallOfFame_ConfettiSpritePalette[] = {
-    {gFile_graphics_misc_confetti_palette, 1001},
+    {gFile_graphics_misc_confetti_palette, TAG_CONFETTI},
     {}
 };
 
@@ -264,8 +283,8 @@ static const union AnimCmd *const sSpriteAnimTable_Confetti[] = {
 };
 
 static const struct SpriteTemplate sSpriteTemplate_Confetti = {
-    .tileTag = 1001,
-    .paletteTag = 1001,
+    .tileTag = TAG_CONFETTI,
+    .paletteTag = TAG_CONFETTI,
     .oam = &sOamData_Confetti,
     .anims = sSpriteAnimTable_Confetti,
     .affineAnims = gDummySpriteAffineAnimTable,
@@ -273,7 +292,7 @@ static const struct SpriteTemplate sSpriteTemplate_Confetti = {
 };
 
 static const u16 sHallOfFame_Pal[] = INCBIN_U16("graphics/hall_of_fame/hall_of_fame.gbapal");
-static const u32 sHallOfFame_Gfx[] = INCBIN_U32("graphics/hall_of_fame/hall_of_fame.4bpp.lz");
+static const u32 sHallOfFame_Gfx[] = INCBIN_U32("graphics/hall_of_fame/hall_of_fame.4bpp.smol");
 
 static const struct HallofFameMon sDummyHofMon = {
     .tid = 0x03EA03EA,
@@ -307,7 +326,7 @@ static bool8 InitHallOfFameScreen(void)
     switch (gMain.state)
     {
     case 0:
-        gHelpSystemEnabled = FALSE;
+        gHelpSystemStatus = HELP_DISABLED;
         SetVBlankCallback(NULL);
         ClearVramOamPltt_LoadHofPal();
         sHofGfxPtr = AllocZeroed(sizeof(struct HofGfx));
@@ -451,7 +470,7 @@ static void Task_Hof_InitTeamSaveData(u8 taskId)
     *lastSavedTeam = *sHofMonPtr;
 
     DrawDialogueFrame(0, 0);
-    AddTextPrinterParameterized2(0, FONT_NORMAL, gText_SavingDontTurnOffThePower2, 0, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+    AddTextPrinterParameterized2(0, FONT_NORMAL, gText_SavingDontTurnOffThePower, 0, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
     CopyWindowToVram(0, COPYWIN_FULL);
     gTasks[taskId].func = Task_Hof_TrySaveData;
 }
@@ -512,7 +531,7 @@ static void Task_Hof_DisplayMon(u8 taskId)
         dstY = sHallOfFame_MonHalfTeamPositions[currMonId][3];
     }
 
-    spriteId = CreateMonPicSprite(currMon->species, currMon->isShiny, currMon->personality, 1, srcX, srcY, currMonId, 0xFFFF);
+    spriteId = CreateMonFrontPicSprite(currMon->species, currMon->isShiny, currMon->personality, srcX, srcY, currMonId, TAG_NONE);
     gSprites[spriteId].data[1] = dstX;
     gSprites[spriteId].data[2] = dstY;
     gSprites[spriteId].data[0] = 0;
@@ -622,7 +641,7 @@ static void Task_Hof_SpawnPlayerPic(u8 taskId)
     ShowBg(0);
     ShowBg(1);
     ShowBg(3);
-    gTasks[taskId].data[4] = CreateTrainerPicSprite(PlayerGenderToFrontTrainerPicId(gSaveBlock2Ptr->playerGender), TRUE, 0x78, 0x48, 6, 0xFFFF);
+    gTasks[taskId].data[4] = CreateTrainerFrontPicSprite(PlayerGenderToFrontTrainerPicId(gSaveBlock2Ptr->playerGender), 120, 72, 6);
     AddWindow(&sWindowTemplate);
     LoadStdWindowGfx(1, 0x21D, BG_PLTT_ID(13));
     gTasks[taskId].data[3] = 120;
@@ -644,7 +663,7 @@ static void Task_Hof_WaitAndPrintPlayerInfo(u8 taskId)
         FillBgTilemapBufferRect_Palette0(0, 0, 0, 0, 0x20, 0x20);
         HallOfFame_PrintPlayerInfo(1, 2);
         DrawDialogueFrame(0, 0);
-        AddTextPrinterParameterized2(0, FONT_NORMAL, gText_LeagueChamp, 0, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+        AddTextPrinterParameterized2(0, FONT_NORMAL, sText_LeagueChamp, 0, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
         CopyWindowToVram(0, COPYWIN_FULL);
         gTasks[taskId].func = Task_Hof_ExitOnKeyPressed;
     }
@@ -825,7 +844,7 @@ static void Task_HofPC_DrawSpritesPrintText(u8 taskId)
                 posY = sHallOfFame_MonHalfTeamPositions[i][3];
             }
 
-            spriteId = CreateMonPicSprite(currMon->species, currMon->isShiny, currMon->personality, TRUE, posX, posY, i, 0xFFFF);
+            spriteId = CreateMonFrontPicSprite(currMon->species, currMon->isShiny, currMon->personality, posX, posY, i, TAG_NONE);
             gSprites[spriteId].oam.priority = 1;
             gTasks[taskId].data[5 + i] = spriteId;
         }
@@ -838,12 +857,12 @@ static void Task_HofPC_DrawSpritesPrintText(u8 taskId)
     BlendPalettes(0xFFFF0000, 0xC, HALL_OF_FAME_BG_PAL);
 
     ConvertIntToDecimalStringN(gStringVar1, gTasks[taskId].data[1], STR_CONV_MODE_LEFT_ALIGN, 3);
-    StringExpandPlaceholders(gStringVar4, gText_HOFNumber);
+    StringExpandPlaceholders(gStringVar4, sText_HOFNumber);
 
     if (gTasks[taskId].data[0] <= 0)
-        HofPCTopBar_PrintPair(gStringVar4, gText_UPDOWNPick_ABUTTONBBUTTONCancel, 0, 0, TRUE);
+        HofPCTopBar_PrintPair(gStringVar4, sText_UPDOWNPick_ABUTTONBBUTTONCancel, 0, 0, TRUE);
     else
-        HofPCTopBar_PrintPair(gStringVar4, gText_UPDOWNPick_ABUTTONNext_BBUTTONBack, 0, 0, TRUE);
+        HofPCTopBar_PrintPair(gStringVar4, sText_UPDOWNPick_ABUTTONNext_BBUTTONBack, 0, 0, TRUE);
 
     gTasks[taskId].func = Task_HofPC_PrintMonInfo;
 }
@@ -959,9 +978,9 @@ static void Task_HofPC_HandleExit(u8 taskId)
 
 static void Task_HofPC_PrintDataIsCorrupted(u8 taskId)
 {
-    HofPCTopBar_Print(gText_ABUTTONExit, 8, TRUE);
+    HofPCTopBar_Print(sText_ABUTTONExit, 8, TRUE);
     DrawDialogueFrame(0, 0);
-    AddTextPrinterParameterized2(0, FONT_NORMAL, gText_HOFCorrupted, 0, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+    AddTextPrinterParameterized2(0, FONT_NORMAL, sText_HOFCorrupted, 0, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
     CopyWindowToVram(0, COPYWIN_FULL);
     gTasks[taskId].func = Task_HofPC_ExitOnButtonPress;
 }
@@ -974,10 +993,10 @@ static void Task_HofPC_ExitOnButtonPress(u8 taskId)
 
 static void HallOfFame_PrintWelcomeText(u8 not, u8 used)
 {
-    u8 x = (0xD0 - GetStringWidth(FONT_NORMAL, gText_WelcomeToHOF, 0)) / 2;
+    u8 x = (0xD0 - GetStringWidth(FONT_NORMAL, sText_WelcomeToHOF, 0)) / 2;
     FillWindowPixelBuffer(0, PIXEL_FILL(0));
     PutWindowTilemap(0);
-    AddTextPrinterParameterized3(0, FONT_NORMAL, x, 1, sTextColors[0], 0, gText_WelcomeToHOF);
+    AddTextPrinterParameterized3(0, FONT_NORMAL, x, 1, sTextColors[0], 0, sText_WelcomeToHOF);
     CopyWindowToVram(0, COPYWIN_FULL);
 }
 
@@ -998,7 +1017,7 @@ static void HallOfFame_PrintMonInfo(struct HallofFameMon* currMon, u8 unused1, u
     // dex number
     if (currMon->species != SPECIES_EGG)
     {
-        StringCopy(text2, gText_Number);
+        StringCopy(text2, sText_Number);
         dexNumber = SpeciesToPokedexNum(currMon->species);
         if (dexNumber != 0xFFFF)
         {
@@ -1056,11 +1075,11 @@ static void HallOfFame_PrintMonInfo(struct HallofFameMon* currMon, u8 unused1, u
 
         AddTextPrinterParameterized3(0, FONT_NORMAL, 0x80, 1, sTextColors[0], 0, text);
 
-        stringPtr = StringCopy(text, gText_Level);
+        stringPtr = StringCopy(text, sText_Level);
         ConvertIntToDecimalStringN(stringPtr, currMon->lvl, STR_CONV_MODE_LEFT_ALIGN, 3);
         AddTextPrinterParameterized3(0, FONT_NORMAL, 0x20, 0x11, sTextColors[0], 0, text);
 
-        stringPtr = StringCopy(text, gText_IDNumber);
+        stringPtr = StringCopy(text, sText_IDNumber);
         ConvertIntToDecimalStringN(stringPtr, (u16)(currMon->tid), STR_CONV_MODE_LEADING_ZEROS, 5);
         AddTextPrinterParameterized3(0, FONT_NORMAL, 0x60, 0x11, sTextColors[0], 0, text);
 
@@ -1077,12 +1096,12 @@ static void HallOfFame_PrintPlayerInfo(u8 unused1, u8 unused2)
     FillWindowPixelBuffer(1, PIXEL_FILL(1));
     PutWindowTilemap(1);
     DrawStdFrameWithCustomTileAndPalette(1, FALSE, 0x21D, 13);
-    AddTextPrinterParameterized4(1, FONT_NORMAL, 4, 3, 0, 0, sTextColors[1], 0, gText_Name);
+    AddTextPrinterParameterized4(1, FONT_NORMAL, 4, 3, 0, 0, sTextColors[1], 0, sText_Name);
 
     AddTextPrinterParameterized3(1, FONT_NORMAL, textWidth - GetStringWidth(FONT_NORMAL, gSaveBlock2Ptr->playerName, 0), 3, sTextColors[1], 0, gSaveBlock2Ptr->playerName);
 
     trainerId = (gSaveBlock2Ptr->playerTrainerId[0]) | (gSaveBlock2Ptr->playerTrainerId[1] << 8);
-    AddTextPrinterParameterized3(1, FONT_NORMAL, 4, 18, sTextColors[1], 0, gText_IDNumber);
+    AddTextPrinterParameterized3(1, FONT_NORMAL, 4, 18, sTextColors[1], 0, sText_IDNumber);
     text[0] = (trainerId % 100000) / 10000 + CHAR_0;
     text[1] = (trainerId % 10000) / 1000 + CHAR_0;
     text[2] = (trainerId % 1000) / 100 + CHAR_0;
@@ -1091,7 +1110,7 @@ static void HallOfFame_PrintPlayerInfo(u8 unused1, u8 unused2)
     text[5] = EOS;
     AddTextPrinterParameterized3(1, FONT_NORMAL, textWidth - 30, 18, sTextColors[1], 0, text);
 
-    AddTextPrinterParameterized3(1, FONT_NORMAL, 4, 32, sTextColors[1], 0, gText_MainMenuTime);
+    AddTextPrinterParameterized3(1, FONT_NORMAL, 4, 32, sTextColors[1], 0, gText_Time);
     text[0] = (gSaveBlock2Ptr->playTimeHours / 100) + CHAR_0;
     text[1] = (gSaveBlock2Ptr->playTimeHours % 100) / 10 + CHAR_0;
     text[2] = (gSaveBlock2Ptr->playTimeHours % 10) + CHAR_0;
@@ -1158,7 +1177,7 @@ static void HofInit_ResetGpuBuffersAndLoadConfettiGfx(void)
 static void Hof_InitBgs(void)
 {
     ResetBgsAndClearDma3BusyFlags(0);
-    InitBgsFromTemplates(0, sHof_BgTemplates, NELEMS(sHof_BgTemplates));
+    InitBgsFromTemplates(0, sHof_BgTemplates, ARRAY_COUNT(sHof_BgTemplates));
     SetBgTilemapBuffer(1, sHofGfxPtr->tilemap1);
     SetBgTilemapBuffer(3, sHofGfxPtr->tilemap2);
     ChangeBgX(0, 0, 0);
@@ -1275,3 +1294,132 @@ static bool8 Hof_SpawnConfetti(void)
 
     return FALSE;
 }
+
+// The below confetti functions are used when a Battle Dome tourney is won
+// For the Hall of Fame confetti see Task_Hof_DoConfetti
+// The end result is essentially the same, just a very different way of handling it
+#define tState         data[0]
+#define tTimer         data[1]
+#define tConfettiCount data[15]
+
+// Indexes into the data array of the struct ConfettiUtil
+#define CONFETTI_SINE_IDX 0
+#define CONFETTI_EXTRA_Y  1
+#define CONFETTI_TASK_ID  7
+
+void DoDomeConfetti(void)
+{
+    u8 taskId;
+
+    gSpecialVar_0x8004 = 180;
+    taskId = CreateTask(Task_DoDomeConfetti, 0);
+    if (taskId != TASK_NONE)
+    {
+        gTasks[taskId].tTimer = gSpecialVar_0x8004;
+        gSpecialVar_0x8005 = taskId;
+    }
+}
+
+static void StopDomeConfetti(void)
+{
+    u8 taskId;
+
+    if ((taskId = FindTaskIdByFunc(Task_DoDomeConfetti)) != TASK_NONE)
+        DestroyTask(taskId);
+
+    ConfettiUtil_Free();
+    FreeSpriteTilesByTag(TAG_CONFETTI);
+    FreeSpritePaletteByTag(TAG_CONFETTI);
+}
+
+static void UpdateDomeConfetti(struct ConfettiUtil *util)
+{
+    if (util->yDelta > 110)
+    {
+        // Destroy confetti after it falls far enough
+        gTasks[util->data[CONFETTI_TASK_ID]].tConfettiCount--;
+        ConfettiUtil_Remove(util->id);
+    }
+    else
+    {
+        // Move confetti down
+        u8 sineIdx;
+        s32 rand;
+
+        util->yDelta++;
+        util->yDelta += util->data[CONFETTI_EXTRA_Y];
+
+        sineIdx = util->data[CONFETTI_SINE_IDX];
+        rand = Random();
+        rand &= 3;
+        rand += 8;
+        util->xDelta = (rand) * ((gSineTable[sineIdx])) / 256;
+
+        util->data[CONFETTI_SINE_IDX] += 4;
+    }
+}
+
+static void Task_DoDomeConfetti(u8 taskId)
+{
+    u32 id = 0;
+    s16 *data = gTasks[taskId].data;
+
+    switch (tState)
+    {
+    case 0:
+        if (!ConfettiUtil_Init(64))
+        {
+            // Init failed
+            DestroyTask(taskId);
+            gSpecialVar_0x8004 = 0;
+            gSpecialVar_0x8005 = 0xFFFF;
+        }
+        LoadCompressedSpriteSheet(sHallOfFame_ConfettiSpriteSheet);
+        LoadSpritePalette(sHallOfFame_ConfettiSpritePalette);
+        tState++;
+        break;
+    case 1:
+        if (tTimer != 0 && tTimer % 3 == 0)
+        {
+            // Create new confetti every 3 frames
+            id = ConfettiUtil_AddNew(&sOamData_Confetti,
+                              TAG_CONFETTI,
+                              TAG_CONFETTI,
+                              Random() % DISPLAY_WIDTH,
+                              -(Random() % 8),
+                              Random() % ARRAY_COUNT(sSpriteAnimTable_Confetti),
+                              id);
+            if (id != 0xFF)
+            {
+                ConfettiUtil_SetCallback(id, UpdateDomeConfetti);
+
+                // 1/4 of the confetti move an extra y coord every frame
+                if ((Random() % 4) == 0)
+                    ConfettiUtil_SetData(id, CONFETTI_EXTRA_Y, 1);
+
+                ConfettiUtil_SetData(id, CONFETTI_TASK_ID, taskId);
+                tConfettiCount++;
+            }
+        }
+
+        ConfettiUtil_Update();
+        if (tTimer != 0)
+            tTimer--;
+        else if (tConfettiCount == 0)
+            tState = 0xFF;
+        break;
+    case 0xFF:
+        StopDomeConfetti();
+        gSpecialVar_0x8004 = 0;
+        gSpecialVar_0x8005 = 0xFFFF;
+        break;
+    }
+}
+
+#undef tState
+#undef tTimer
+#undef tConfettiCount
+
+#undef CONFETTI_SINE_IDX
+#undef CONFETTI_EXTRA_Y
+#undef CONFETTI_TASK_ID

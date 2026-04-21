@@ -5,8 +5,9 @@
 
 #include "sprite.h"
 
+#define HP_EMPTY 0
+
 extern const u8 gMiscBlank_Gfx[]; // unused in Emerald
-extern const u32 gBitTable[];
 
 u8 CreateInvisibleSpriteWithCallback(void (*)(struct Sprite *));
 void StoreWordInTwoHalfwords(u16 *, u32);
@@ -18,5 +19,6 @@ u32 CalcByteArraySum(const u8 *data, u32 length);
 void BlendPalette(u16 palOffset, u16 numEntries, u8 coeff, u32 blendColor);
 void BlendPalettesAt(u16 * palbuff, u16 blend_pal, u32 coefficient, s32 size);
 void DoBgAffineSet(struct BgAffineDstData * dest, u32 texX, u32 texY, s16 srcX, s16 srcY, s16 sx, s16 sy, u16 alpha);
+s32 SubtractClamped(s32 lowestVal, s32 highestVal, s32 currentVal, s32 delta);
 
 #endif // GUARD_UTIL_H

@@ -1,10 +1,10 @@
 #include "global.h"
-#include "gflib.h"
 #include "data.h"
 #include "event_data.h"
 #include "pokedex.h"
-#include "text.h"
+#include "string_util.h"
 #include "strings.h"
+#include "text.h"
 
 #define DEFAULT_MAX_SIZE 0 // was 0x8100 in Ruby/Sapphire, 0x8000 in Emerald
 
@@ -71,7 +71,7 @@ static u8 TranslateBigMonSizeTableIndex(u16 a)
     return i;
 }
 
-static u32 GetMonSize(u16 species, u16 b)
+static u32 GetMonSize(enum Species species, u16 b)
 {
     u64 unk2;
     u64 unk4;
@@ -98,7 +98,7 @@ static void FormatMonSizeRecord(u8 *string, u32 size)
     ConvertIntToDecimalStringN(string, size % 10, STR_CONV_MODE_LEFT_ALIGN, 1);
 }
 
-static u8 CompareMonSize(u16 species, u16 *sizeRecord)
+static u8 CompareMonSize(enum Species species, u16 *sizeRecord)
 {
     if (gSpecialVar_Result >= PARTY_SIZE)
     {
@@ -141,7 +141,7 @@ static u8 CompareMonSize(u16 species, u16 *sizeRecord)
 }
 
 // Stores species name in gStringVar1, trainer's name in gStringVar2, and size in gStringVar3
-static void GetMonSizeRecordInfo(u16 species, u16 *sizeRecord)
+static void GetMonSizeRecordInfo(enum Species species, u16 *sizeRecord)
 {
     u32 size = GetMonSize(species, *sizeRecord);
 

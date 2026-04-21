@@ -15,12 +15,27 @@
 #define MENU_CURSOR_DELTA_LEFT  -1
 #define MENU_CURSOR_DELTA_RIGHT  1
 
-#define MENU_INFO_ICON_CAUGHT    0
-#define MENU_INFO_ICON_TYPE      (NUMBER_OF_MON_TYPES + 1)
-#define MENU_INFO_ICON_POWER     (NUMBER_OF_MON_TYPES + 2)
-#define MENU_INFO_ICON_ACCURACY  (NUMBER_OF_MON_TYPES + 3)
-#define MENU_INFO_ICON_PP        (NUMBER_OF_MON_TYPES + 4)
-#define MENU_INFO_ICON_EFFECT    (NUMBER_OF_MON_TYPES + 5)
+#define MENU_INFO_TYPE_ICON_WIDTH  32
+#define MENU_INFO_TYPE_ICON_HEIGHT 12
+
+enum MenuInfoIcon
+{
+    MENU_INFO_ICON_CAUGHT,
+    MENU_INFO_ICON_TYPE,
+    MENU_INFO_ICON_POWER,
+    MENU_INFO_ICON_ACCURACY,
+    MENU_INFO_ICON_PP,
+    MENU_INFO_ICON_EFFECT
+};
+
+enum SaveStat
+{
+    SAVE_MENU_NAME = 0,
+    SAVE_MENU_POKEDEX,
+    SAVE_MENU_TIME,
+    SAVE_MENU_LOCATION,
+    SAVE_MENU_BADGES,
+};
 
 struct MenuAction
 {
@@ -40,22 +55,26 @@ void AddTextPrinterParameterized5(u8 windowId, u8 fontId, const u8 *str, u8 x, u
 void PrintPlayerNameOnWindow(u8 windowId, const u8 * src, u16 x, u16 y);
 void StartBlendTask(u8 eva_start, u8 evb_start, u8 eva_end, u8 evb_end, u8 ev_step, u8 priority);
 bool8 IsBlendTaskActive(void);
-u8 Menu2_GetMonSpriteAnchorCoord(u16 species, u32 personality, u8 a2);
-s8 Menu2_GetMonSpriteAnchorCoordMinusx20(u16 species, u32 personality, u8 a2);
+u8 Menu2_GetMonPosAttribute(enum Species species, u32 personality, u8 attributeId);
+s8 Menu2_GetStarSpritePosAttribute(enum Species species, u32 personality, u8 attributeId);
 
 // list_menu
-void LoadMonIconPalAtOffset(u8 palOffset, u16 speciesId);
-void DrawMonIconAtPos(u8 windowId, u16 speciesId, u32 personality, u16 x, u16 y);
+void LoadMonIconPalAtOffset(u8 palOffset, enum Species speciesId);
+void DrawMonIconAtPos(u8 windowId, enum Species speciesId, u32 personality, u16 x, u16 y);
 void ListMenuLoadStdPalAt(u8 palOffset, u8 palId);
-void BlitMenuInfoIcon(u8 windowId, u8 iconId, u16 x, u16 y);
+void BlitMenuInfoIcon(u8 windowId, enum MenuInfoIcon iconId, u16 x, u16 y);
+void BlitMenuTypeIcon(u8 windowId, enum Type type, u16 x, u16 y);
 
 // menu
-s8 Menu_ProcessInputGridLayout(void);
+s8 Menu_ProcessGridInput(void);
 u8 MultichoiceGrid_InitCursor(u8 windowId, u8 fontId, u8 left, u8 top, u8 optionWidth, u8 cols, u8 rows, u8 cursorPos);
 void MultichoiceGrid_PrintItems(u8 windowId, u8 fontId, u8 itemWidth, u8 itemHeight, u8 cols, u8 rows, const struct MenuAction *strs);
 void DestroyYesNoMenu(void);
 s8 Menu_ProcessInputNoWrapClearOnChoose(void);
 void CreateYesNoMenuAtPos(const struct WindowTemplate *window, u8 fontId, u8 left, u8 top, u16 baseTileNum, u8 paletteNum, u8 initialCursorPos);
+void PrintMenuActionGrid(u8 windowId, u8 fontId, u8 left, u8 top, u8 optionWidth, u8 horizontalCount, u8 verticalCount, const struct MenuAction *menuActions, const u8 *actionIds);
+u8 InitMenuActionGrid(u8 windowId, u8 optionWidth, u8 columns, u8 rows, u8 initialCursorPos);
+u8 ChangeMenuGridCursorPosition(s8 deltaX, s8 deltaY);
 void PrintMenuActionTexts(u8 windowId, u8 fontId, u8 left, u8 top, u8 letterSpacing, u8 lineHeight, u8 itemCount, const struct MenuAction *strs, const u8 *orderArray);
 void PrintMenuActionTextsAtTop(u8 windowId, u8 fontId, u8 lineHeight, u8 itemCount, const struct MenuAction *strs);
 void PrintMenuActionTextsWithSpacing(u8 windowId, u8 fontId, u8 left, u8 top, u8 lineHeight, u8 itemCount, const struct MenuAction *strs, u8 letterSpacing, u8 lineSpacing);
@@ -82,10 +101,6 @@ void SetWindowTemplateFields(struct WindowTemplate *template, u8 bg, u8 left, u8
 void RemoveMapNamePopUpWindow(void);
 u8 GetMapNamePopUpWindowId(void);
 u8 AddMapNamePopUpWindow(void);
-u8 AddSecondaryPopUpWindow(void);
-u8 GetSecondaryPopUpWindowId(void);
-void RemoveSecondaryPopUpWindow(void);
-void HBlankCB_DoublePopupWindow(void);
 void InitPopupWindows(void);
 u16 GetStandardFrameBaseTileNum(void);
 void EraseFieldMessageBox(bool8 copyToVram);
@@ -97,7 +112,6 @@ void LoadMessageBoxAndBorderGfx(void);
 void DrawStdWindowFrame(u8 windowId, bool8 copyNow);
 void Menu_LoadStdPal(void);
 void Menu_LoadStdPalAt(u16 offset);
-u8 GetPlayerTextSpeedDelay(void);
 void DoScheduledBgTilemapCopiesToVram(void);
 void ClearScheduledBgCopiesToVram(void);
 void ResetTempTileDataBuffers(void);
@@ -119,17 +133,17 @@ void DisplayItemMessageOnField(u8 taskId, u8 fontId, const u8 *src, TaskFunc cal
 void *malloc_and_decompress(const void *src, u32 * size);
 void DrawHelpMessageWindowWithText(const u8 * text);
 u8 GetStartMenuWindowId(void);
-void DestroyHelpMessageWindow_(void);
 u8 AddStartMenuWindow(u8 height);
 void RemoveStartMenuWindow(void);
 u16 RunTextPrintersAndIsPrinter0Active(void);
 void AddTextPrinterForMessage_2(bool8 allowSkippingDelayWithButtonPress);
-void DisplayYesNoMenuWithDefault(void);
+void DisplayYesNoMenuWithDefault(u8 initialCursorPos);
 void AddTextPrinterWithCustomSpeedForMessage(bool8 allowSkippingDelayWithButtonPress, u8 speed);
 void LoadSignPostWindowFrameGfx(void);
 void AddTextPrinterForMessage(bool8 allowSkippingDelayWithButtonPress);
 void DecompressAndLoadBgGfxUsingHeap2(u8 bgId, const void *src, u32 size, u16 offset, u8 mode);
 void FreeAllOverworldWindowBuffers(void);
 void CopyToBufferFromBgTilemap(u8 bgId, u16 *dest, u8 left, u8 top, u8 width, u8 height);
+void BufferSaveMenuText(enum SaveStat stat, u8 *dest, u8 color);
 
 #endif // GUARD_MENU_H

@@ -1,8 +1,10 @@
 #include "global.h"
-#include "gflib.h"
+#include "battle_pyramid.h"
+#include "bg.h"
 #include "fieldmap.h"
 #include "menu.h"
 #include "overworld.h"
+#include "palette.h"
 #include "quest_log.h"
 #include "rtc.h"
 #include "script.h"
@@ -99,6 +101,12 @@ void InitMapFromSavedGame(void)
     InitMapLayoutData(&gMapHeader);
     LoadSavedMapView();
     RunOnLoadMapScript();
+}
+
+void InitBattlePyramidMap(bool8 setPlayerPosition)
+{
+    CpuFastFill16(MAPGRID_UNDEFINED, sBackupMapData, sizeof(sBackupMapData));
+    GenerateBattlePyramidFloorLayout(sBackupMapData, setPlayerPosition);
 }
 
 static void InitMapLayoutData(struct MapHeader * mapHeader)
@@ -477,7 +485,7 @@ static bool32 SavedMapViewIsEmpty(void)
     for (i = 0; i < 0x200; i++)
         marker |= gSaveBlock2Ptr->mapView[i];
 #else
-    for (i = 0; i < NELEMS(gSaveBlock2Ptr->mapView); i++)
+    for (i = 0; i < ARRAY_COUNT(gSaveBlock2Ptr->mapView); i++)
         marker |= gSaveBlock2Ptr->mapView[i];
 #endif
 

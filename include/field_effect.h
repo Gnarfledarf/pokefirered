@@ -75,14 +75,13 @@ void StartEscapeRopeFieldEffect(void);
 void FieldEffectFreeGraphicsResources(struct Sprite *sprite);
 void FieldEff_CaveDust(void);
 void FieldEffectStop(struct Sprite *sprite, enum FieldEffect fldeff);
-u8 CreateTrainerSprite(u8 trainerSpriteID, s16 x, s16 y, u8 subpriority, u8 *buffer);
 void FieldCB_FallWarpExit(void);
 void StartEscalatorWarp(u8 metatileBehavior, u8 priority);
 void StartLavaridgeGymB1FWarp(u8 a0);
 void StartLavaridgeGym1FWarp(u8 a0);
 void ApplyGlobalFieldPaletteTint(u8 paletteIdx);
 void FreeResourcesAndDestroySprite(struct Sprite *sprite, u8 spriteId);
-u8 CreateMonSprite_PicBox(u16 species, s16 x, s16 y, bool8 unused);
+u8 CreateMonSprite_PicBox(enum Species species, s16 x, s16 y, bool8 unused);
 void ReturnToFieldFromFlyMapSelect(void);
 void MultiplyInvertedPaletteRGBComponents(u16 i, u8 r, u8 g, u8 b);
 void SpriteCB_PopOutOfAsh(struct Sprite *sprite);
@@ -90,9 +89,12 @@ void SpriteCB_AshLaunch(struct Sprite *sprite);
 void FieldEffectActiveListClear(void);
 void FieldEffectFreePaletteIfUnused(u8 paletteNum);
 void FieldCallback_UseFly(void);
+void HideFollowerForFieldEffect(void);
 
 void FieldEffectScript_LoadFadedPal(const struct SpritePalette * spritePalette);
 void FieldEffectScript_LoadPal(const struct SpritePalette * spritePalette);
+
+bool8 IsRockClimbActive(void);
 
 u32 FldEff_ExclamationMarkIcon(void);
 u32 FldEff_UseCutOnGrass(void);
@@ -121,8 +123,8 @@ u32 FldEff_DeepSandFootprints(void);
 u32 FldEff_PokecenterHeal(void);
 u32 FldEff_TreeDisguise(void);
 u32 FldEff_MountainDisguise(void);
-u32 FldEff_NpcFlyOut(void);
-u32 FldEff_FlyOut(void);
+u32 FldEff_NPCFlyOut(void);
+u32 FldEff_UseFly(void);
 u32 FldEff_FlyIn(void);
 u32 FldEff_QuestionMarkIcon(void);
 u32 FldEff_FeetInFlowingWater(void);
@@ -136,7 +138,6 @@ u32 FldEff_ShortGrass(void);
 u32 FldEff_HotSpringsWater(void);
 u32 FldEff_UseWaterfall(void);
 u32 FldEff_UseDive(void);
-u32 FldEff_Pokeball(void);
 u32 FldEff_XIcon(void);
 u32 FldEff_PopOutOfAsh(void);
 u32 FldEff_LavaridgeGymWarp(void);
@@ -163,5 +164,9 @@ u32 FldEff_SnowTracksSlither(void);
 u32 FldEff_SnowTracksBug(void);
 u32 FldEff_SnowTracksSpot(void);
 u32 FldEff_CaveDust(void);
+u32 FldEff_UseRockClimb(void);
+u32 FldEff_RockClimbDust(void);
+u32 FldEff_Defog(void);
+u32 FldEff_ORASDowsing(void);
 
 #endif //GUARD_FIELD_EFFECTS_H

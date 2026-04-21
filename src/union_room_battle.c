@@ -1,10 +1,13 @@
 #include "global.h"
-#include "gflib.h"
-#include "battle.h"
 #include "battle_setup.h"
+#include "battle.h"
+#include "bg.h"
+#include "gpu_regs.h"
 #include "link.h"
+#include "malloc.h"
 #include "menu.h"
 #include "overworld.h"
+#include "palette.h"
 #include "party_menu.h"
 #include "strings.h"
 #include "text_window.h"
@@ -15,6 +18,10 @@ struct UnionRoomBattleWork
 {
     s16 textState;
 };
+
+static const u8 sText_CommStandbyAwaitingOtherPlayer[] = _("Communication standby‥\nAwaiting another player to choose.");
+static const u8 sText_BattleWasRefused[] = _("The battle was refused.{PAUSE 0x3C}");
+static const u8 sText_RefusedBattle[] = _("Refused the battle.{PAUSE 0x3C}");
 
 static EWRAM_DATA struct UnionRoomBattleWork * sWork = NULL;
 
@@ -82,7 +89,7 @@ static bool32 UnionRoomBattle_PrintTextOnWindow0(s16 * state, const u8 * str, s3
         (*state)++;
         break;
     case 1:
-        if (!IsTextPrinterActive(0))
+        if (!IsTextPrinterActiveOnWindow(0))
         {
             *state = 0;
             return TRUE;
@@ -127,7 +134,7 @@ void CB2_UnionRoomBattle(void)
         gMain.state++;
         break;
     case 1:
-        if (UnionRoomBattle_PrintTextOnWindow0(&sWork->textState, gText_CommStandbyAwaitingOtherPlayer, 0))
+        if (UnionRoomBattle_PrintTextOnWindow0(&sWork->textState, sText_CommStandbyAwaitingOtherPlayer, 0))
         {
             gMain.state++;
         }
@@ -196,7 +203,7 @@ void CB2_UnionRoomBattle(void)
         }
         break;
     case 7:
-        if (UnionRoomBattle_PrintTextOnWindow0(&sWork->textState, gText_RefusedBattle, 1))
+        if (UnionRoomBattle_PrintTextOnWindow0(&sWork->textState, sText_RefusedBattle, 1))
         {
             SetMainCallback2(CB2_ReturnToField);
         }
@@ -208,7 +215,7 @@ void CB2_UnionRoomBattle(void)
         }
         break;
     case 9:
-        if (UnionRoomBattle_PrintTextOnWindow0(&sWork->textState, gText_BattleWasRefused, 1))
+        if (UnionRoomBattle_PrintTextOnWindow0(&sWork->textState, sText_BattleWasRefused, 1))
         {
             SetMainCallback2(CB2_ReturnToField);
         }

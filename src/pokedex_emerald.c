@@ -240,7 +240,7 @@ static u16 TryDoPokedexScroll(u16, u16);
 static void UpdateSelectedMonSpriteId(void);
 static bool8 TryDoInfoScreenScroll(void);
 static u8 ClearMonSprites(void);
-static u16 GetPokemonSpriteToDisplay(u16);
+static u16 GetPokemonSpriteToDisplay(enum NationalDexOrder natDexNum);
 static u32 CreatePokedexMonSprite(u16, s16, s16);
 static void CreateInterfaceSprites(u8);
 static void SpriteCB_MoveMonForInfoScreen(struct Sprite *sprite);
@@ -283,9 +283,9 @@ static void PrintUnknownMonMeasurements(void);
 static u8* GetUnknownMonHeightString(void);
 static u8* GetUnknownMonWeightString(void);
 static u8* ReplaceDecimalSeparator(const u8* originalString);
-static void PrintOwnedMonMeasurements(u16 species);
-static void PrintOwnedMonHeight(u16 species);
-static void PrintOwnedMonWeight(u16 species);
+static void PrintOwnedMonMeasurements(enum Species species);
+static void PrintOwnedMonHeight(enum Species species);
+static void PrintOwnedMonWeight(enum Species species);
 // static u8* ConvertMonHeightToImperialString(u32 height);
 // static u8* ConvertMonHeightToMetricString(u32 height);
 // static u8* ConvertMonWeightToImperialString(u32 weight);
@@ -298,7 +298,7 @@ static u16 GetPokemonScaleFromNationalDexNumber(u16 nationalNum);
 static u16 GetPokemonOffsetFromNationalDexNumber(u16 nationalNum);
 static u16 GetTrainerScaleFromNationalDexNumber(u16 nationalNum);
 static u16 GetTrainerOffsetFromNationalDexNumber(u16 nationalNum);
-static u16 CreateSizeScreenTrainerPic(u16, s16, s16, s8);
+static u16 CreateSizeScreenTrainerPic(enum TrainerPicID trainerPicId, s16 x, s16 y, s8 paletteSlot);
 static u16 GetNextPosition(u8, u16, u16, u16);
 static u8 LoadSearchMenu(void);
 static void Task_LoadSearchMenu(u8);
@@ -333,6 +333,69 @@ static void ClearSearchParameterBoxText(void);
 extern const u16 gPokedexOrder_Alphabetical[];
 extern const u16 gPokedexOrder_Height[];
 extern const u16 gPokedexOrder_Weight[];
+
+
+const u8 gText_SearchingPleaseWait[] = _("Searching…\nPlease wait.");
+const u8 gText_SearchCompleted[] = _("Search completed.");
+const u8 gText_NoMatchingPkmnWereFound[] = _("No matching POKéMON were found.");
+const u8 gText_SearchForPkmnBasedOnParameters[] = _("Search for POKéMON based on\nselected parameters.");
+const u8 gText_SwitchPokedexListings[] = _("Switch POKéDEX listings.");
+const u8 gText_ReturnToPokedex[] = _("Return to the POKéDEX.");
+const u8 gText_SelectPokedexMode[] = _("Select the POKéDEX mode.");
+const u8 gText_SelectPokedexListingMode[] = _("Select the POKéDEX listing mode.");
+const u8 gText_ListByFirstLetter[] = _("List by the first letter in the name.\nSpotted POKéMON only.");
+const u8 gText_ListByBodyColor[] = _("List by body color.\nSpotted POKéMON only.");
+const u8 gText_ListByType[] = _("List by type.\nOwned POKéMON only.");
+const u8 gText_ExecuteSearchSwitch[] = _("Execute search/switch.");
+const u8 gText_DexKantoTitle[] = _("KANTO DEX");
+const u8 gText_DexNatTitle[] = _("NATIONAL DEX");
+const u8 gText_DexSortNumericalTitle[] = _("NUMERICAL MODE");
+const u8 gText_DexSortAtoZTitle[] = _("A TO Z MODE");
+const u8 gText_DexSortHeaviestTitle[] = _("HEAVIEST MODE");
+const u8 gText_DexSortLightestTitle[] = _("LIGHTEST MODE");
+const u8 gText_DexSortTallestTitle[] = _("TALLEST MODE");
+const u8 gText_DexSortSmallestTitle[] = _("SMALLEST MODE");
+const u8 gText_DexSearchAlphaABC[] = _("ABC");
+const u8 gText_DexSearchAlphaDEF[] = _("DEF");
+const u8 gText_DexSearchAlphaGHI[] = _("GHI");
+const u8 gText_DexSearchAlphaJKL[] = _("JKL");
+const u8 gText_DexSearchAlphaMNO[] = _("MNO");
+const u8 gText_DexSearchAlphaPQR[] = _("PQR");
+const u8 gText_DexSearchAlphaSTU[] = _("STU");
+const u8 gText_DexSearchAlphaVWX[] = _("VWX");
+const u8 gText_DexSearchAlphaYZ[] = _("YZ");
+const u8 gText_DexSearchColorRed[] = _("RED");
+const u8 gText_DexSearchColorBlue[] = _("BLUE");
+const u8 gText_DexSearchColorYellow[] = _("YELLOW");
+const u8 gText_DexSearchColorGreen[] = _("GREEN");
+const u8 gText_DexSearchColorBlack[] = _("BLACK");
+const u8 gText_DexSearchColorBrown[] = _("BROWN");
+const u8 gText_DexSearchColorPurple[] = _("PURPLE");
+const u8 gText_DexSearchColorGray[] = _("GRAY");
+const u8 gText_DexSearchColorWhite[] = _("WHITE");
+const u8 gText_DexSearchColorPink[] = _("PINK");
+const u8 gText_DexKantoDescription[] = _("KANTO region's POKéDEX");
+const u8 gText_DexNatDescription[] = _("National edition POKéDEX");
+const u8 gText_DexSortNumericalDescription[] = _("POKéMON are listed according to their\nnumber.");
+const u8 gText_DexSortAtoZDescription[] = _("Spotted and owned POKéMON are listed\nalphabetically.");
+const u8 gText_DexSortHeaviestDescription[] = _("Owned POKéMON are listed from the\nheaviest to the lightest.");
+const u8 gText_DexSortLightestDescription[] = _("Owned POKéMON are listed from the\nlightest to the heaviest.");
+const u8 gText_DexSortTallestDescription[] = _("Owned POKéMON are listed from the\ntallest to the smallest.");
+const u8 gText_DexSortSmallestDescription[] = _("Owned POKéMON are listed from the\nsmallest to the tallest.");
+const u8 gText_DexEmptyString[] = _("");
+const u8 gText_DexSearchDontSpecify[] = _("DON'T SPECIFY.");
+
+const u8 gText_UnkHeight[] = _("{CLEAR_TO 0x0A}??'??”");
+const u8 gText_UnkHeightMetric[] = _("???.? m");
+const u8 gText_UnkWeight[] = _("????.? lbs.");
+const u8 gText_UnkWeightMetric[] = _("???.? kg.");
+
+const u8 gText_CryOf[] = _("CRY OF");
+const u8 gText_SizeComparedTo[] = _("SIZE COMPARED TO ");
+const u8 gText_PokedexRegistration[] = _("POKéDEX registration completed.");
+const u8 gText_HTHeight[] = _("HT");
+const u8 gText_WTWeight[] = _("WT");
+const u8 gText_5MarksPokemon[] = _("????? POKéMON");
 
 static const struct OamData sOamData_ScrollBar =
 {
@@ -2772,12 +2835,12 @@ static u8 ClearMonSprites(void)
     return FALSE;
 }
 
-static u16 GetPokemonSpriteToDisplay(u16 species)
+static u16 GetPokemonSpriteToDisplay(enum NationalDexOrder natDexNum)
 {
-    if (species >= NATIONAL_DEX_COUNT || sPokedexView->pokedexList[species].dexNum == 0xFFFF)
+    if (natDexNum >= NATIONAL_DEX_COUNT || sPokedexView->pokedexList[natDexNum].dexNum == 0xFFFF)
         return 0xFFFF;
-    else if (sPokedexView->pokedexList[species].seen)
-        return sPokedexView->pokedexList[species].dexNum;
+    else if (sPokedexView->pokedexList[natDexNum].seen)
+        return sPokedexView->pokedexList[natDexNum].dexNum;
     else
         return 0;
 }
@@ -4048,7 +4111,7 @@ u32 Pokedex_CreateCaughtMonSprite(u32 species, s32 x, s32 y)
 void Task_DisplayCaughtMonDexPage(u8 taskId)
 {
     u8 spriteId;
-    u16 species = gTasks[taskId].tSpecies;
+    enum Species species = gTasks[taskId].tSpecies;
     enum NationalDexOrder dexNum = SpeciesToNationalPokedexNum(species);
 
     switch (gTasks[taskId].tState)
@@ -4092,7 +4155,7 @@ void Task_DisplayCaughtMonDexPage(u8 taskId)
         gTasks[taskId].tState++;
         break;
     case 4:
-        // We're using a different mon sprite creation method, because we don't have enough memory to safely use CreateMonPicSprite.
+        // We're using a different mon sprite creation method, because we don't have enough memory to safely use CreateMonFrontPicSprite.
         spriteId = Pokedex_CreateCaughtMonSprite(species, MON_PAGE_X, MON_PAGE_Y);
         gTasks[taskId].tMonSpriteId = spriteId;
         LoadDexMonPalette(taskId, FALSE);
@@ -4189,7 +4252,7 @@ static void PrintMonInfo(u32 num, u32 value, u32 owned, u32 newEntry)
 {
     u8 str[0x10];
     u8 str2[0x30];
-    u16 species;
+    enum Species species;
     const u8 *name;
     const u8 *category;
     const u8 *description;
@@ -4229,7 +4292,7 @@ static void PrintMonInfo(u32 num, u32 value, u32 owned, u32 newEntry)
     PrintInfoScreenText(description, GetStringCenterAlignXOffset(FONT_NORMAL, description, DISPLAY_WIDTH), 95);
 }
 
-void PrintMonMeasurements(u16 species, u32 owned)
+void PrintMonMeasurements(enum Species species, u32 owned)
 {
     u32 x = GetMeasurementTextPositions(DEX_HEADER_X);
     u32 yTop = GetMeasurementTextPositions(DEX_Y_TOP);
@@ -4316,13 +4379,13 @@ static u8* ReplaceDecimalSeparator(const u8* originalString)
     return modifiedString;
 }
 
-static void PrintOwnedMonMeasurements(u16 species)
+static void PrintOwnedMonMeasurements(enum Species species)
 {
     PrintOwnedMonHeight(species);
     PrintOwnedMonWeight(species);
 }
 
-static void PrintOwnedMonHeight(u16 species)
+static void PrintOwnedMonHeight(enum Species species)
 {
     u32 height = GetSpeciesHeight(species);
     u8* heightString;
@@ -4344,7 +4407,7 @@ static void PrintOwnedMonHeight(u16 species)
 //         return ConvertMonHeightToMetricString(height);
 // }
 
-static void PrintOwnedMonWeight(u16 species)
+static void PrintOwnedMonWeight(enum Species species)
 {
     u32 weight = GetSpeciesWeight(species);
     u8* weightString;
@@ -4662,7 +4725,7 @@ static void UNUSED PrintDecimalNum(u8 windowId, u16 num, u8 left, u8 top)
 
 #define NUM_FOOTPRINT_TILES  4
 
-void DrawFootprint(u8 windowId, u16 species)
+void DrawFootprint(u8 windowId, enum Species species)
 {
     u8 ALIGNED(4) footprint4bpp[TILE_SIZE_4BPP * NUM_FOOTPRINT_TILES];
     const u8 *footprintGfx = NULL;
@@ -4741,7 +4804,7 @@ static u16 GetNextPosition(u8 direction, u16 position, u16 min, u16 max)
 
 // Unown and Spinda use the personality of the first seen individual of that species
 // All others use personality 0
-static u32 GetPokedexMonPersonality(u16 species)
+static u32 GetPokedexMonPersonality(enum Species species)
 {
     if (species == SPECIES_UNOWN || species == SPECIES_SPINDA)
     {
@@ -4758,42 +4821,47 @@ static u32 GetPokedexMonPersonality(u16 species)
 
 u16 CreateMonSpriteFromNationalDexNumber(enum NationalDexOrder nationalNum, s16 x, s16 y, u16 paletteSlot)
 {
-    nationalNum = NationalPokedexNumToSpecies(nationalNum);
-    return CreateMonPicSprite(nationalNum, FALSE, GetPokedexMonPersonality(nationalNum), TRUE, x, y, paletteSlot, TAG_NONE);
+    enum Species species = NationalPokedexNumToSpecies(nationalNum);
+
+    return CreateMonFrontPicSprite(species, FALSE, GetPokedexMonPersonality(species), x, y, paletteSlot, TAG_NONE);
 }
 
 static u16 GetPokemonScaleFromNationalDexNumber(u16 nationalNum)
 {
-    nationalNum = NationalPokedexNumToSpecies(nationalNum);
-    return gSpeciesInfo[nationalNum].pokemonScale;
+    enum Species species = NationalPokedexNumToSpecies(nationalNum);
+
+    return gSpeciesInfo[species].pokemonScale;
 }
 
 static u16 GetPokemonOffsetFromNationalDexNumber(u16 nationalNum)
 {
-    nationalNum = NationalPokedexNumToSpecies(nationalNum);
-    return gSpeciesInfo[nationalNum].pokemonOffset;
+    enum Species species = NationalPokedexNumToSpecies(nationalNum);
+
+    return gSpeciesInfo[species].pokemonOffset;
 }
 
 static u16 GetTrainerScaleFromNationalDexNumber(u16 nationalNum)
 {
-    nationalNum = NationalPokedexNumToSpecies(nationalNum);
-    return gSpeciesInfo[nationalNum].trainerScale;
+    enum Species species = NationalPokedexNumToSpecies(nationalNum);
+
+    return gSpeciesInfo[species].trainerScale;
 }
 
 static u16 GetTrainerOffsetFromNationalDexNumber(u16 nationalNum)
 {
-    nationalNum = NationalPokedexNumToSpecies(nationalNum);
-    return gSpeciesInfo[nationalNum].trainerOffset;
+    enum Species species = NationalPokedexNumToSpecies(nationalNum);
+
+    return gSpeciesInfo[species].trainerOffset;
 }
 
-static u16 CreateSizeScreenTrainerPic(u16 species, s16 x, s16 y, s8 paletteSlot)
+static u16 CreateSizeScreenTrainerPic(enum TrainerPicID trainerPicId, s16 x, s16 y, s8 paletteSlot)
 {
-    return CreateTrainerPicSprite(species, TRUE, x, y, paletteSlot, TAG_NONE);
+    return CreateTrainerFrontPicSprite(trainerPicId, x, y, paletteSlot);
 }
 
 static int DoPokedexSearch(u8 dexMode, u8 order, u8 abcGroup, enum BodyColor bodyColor, enum Type type1, enum Type type2)
 {
-    u16 species;
+    enum Species species;
     u16 i;
     u16 resultsCount;
     enum Type types[2];

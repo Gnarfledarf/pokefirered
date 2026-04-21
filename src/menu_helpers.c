@@ -96,7 +96,7 @@ void DisplayMessageAndContinueTask(u8 taskId, u8 windowId, u16 tileNum, u8 palet
 bool16 RunTextPrintersRetIsActive(u8 textPrinterId)
 {
     RunTextPrinters();
-    return IsTextPrinterActive(textPrinterId);
+    return IsTextPrinterActiveOnWindow(textPrinterId);
 }
 
 static void Task_ContinueTaskAfterMessagePrints(u8 taskId)
@@ -152,7 +152,7 @@ u8 GetLRKeysPressedAndHeld(void)
     return 0;
 }
 
-bool8 IsHoldingItemAllowed(u16 itemId)
+bool8 IsHoldingItemAllowed(enum Item itemId)
 {
     // Enigma Berry can't be held in link areas
     if (itemId == ITEM_ENIGMA_BERRY_E_READER
@@ -164,9 +164,9 @@ bool8 IsHoldingItemAllowed(u16 itemId)
         return TRUE;
 }
 
-bool8 IsWritingMailAllowed(u16 itemId)
+bool8 IsWritingMailAllowed(enum Item itemId)
 {
-    if ((IsUpdateLinkStateCBActive() == TRUE || InUnionRoom() == TRUE) && ItemIsMail(itemId) == TRUE)
+    if ((IsOverworldLinkActive() == TRUE || InUnionRoom() == TRUE) && ItemIsMail(itemId) == TRUE)
         return FALSE;
     else
         return TRUE;
@@ -174,7 +174,7 @@ bool8 IsWritingMailAllowed(u16 itemId)
 
 bool8 MenuHelpers_IsLinkActive(void)
 {
-    if (IsUpdateLinkStateCBActive() == TRUE || gReceivedRemoteLinkPlayers == 1)
+    if (IsOverworldLinkActive() == TRUE || gReceivedRemoteLinkPlayers == 1)
         return TRUE;
     else
         return FALSE;
@@ -185,7 +185,7 @@ bool8 IsActiveOverworldLinkBusy(void)
     if (!MenuHelpers_IsLinkActive())
         return FALSE;
     else
-        return (u8)Overworld_LinkRecvQueueLengthMoreThan2();
+        return (u8)Overworld_IsRecvQueueAtMax();
 }
 
 bool8 MenuHelpers_ShouldWaitForLinkRecv(void)

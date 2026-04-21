@@ -135,7 +135,14 @@ EventScript_PickUpItem::
 	showitemdescription
 	waitfanfare
 	waitmessage
+	pyramid_getlocation
+	goto_if_eq VAR_RESULT, PYRAMID_LOCATION_FLOOR, EventScript_PutBattlePyramidItemInBag
 	msgbox Text_PutItemAway
+	hideitemdescription
+	return
+
+EventScript_PutBattlePyramidItemInBag::
+	msgbox gText_PlayerPutItemInBag, MSGBOX_DEFAULT
 	hideitemdescription
 	return
 
@@ -172,6 +179,7 @@ EventScript_TryPickUpHiddenItem::
 	return
 
 EventScript_PickedUpHiddenItem::
+	callnative Script_ClearDowsingColor
 	call_if_eq VAR_0x8006, 1, EventScript_FoundSingleItem
 	call_if_ne VAR_0x8006, 1, EventScript_FoundMultipleItems
 	copyvar VAR_0x8006, VAR_0x8005
@@ -182,6 +190,7 @@ EventScript_PickedUpHiddenItem::
 	msgbox Text_PutItemAway
 	hideitemdescription
 	special SetHiddenItemFlag
+	callnative Script_UpdateDowseState
 	releaseall
 	end
 

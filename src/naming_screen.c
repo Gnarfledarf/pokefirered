@@ -1,29 +1,34 @@
 #include "global.h"
-#include "decompress.h"
-#include "gflib.h"
+#include "bg.h"
 #include "data.h"
-#include "keyboard_text.h"
+#include "decompress.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "event_scripts.h"
 #include "field_effect.h"
 #include "field_player_avatar.h"
 #include "field_specials.h"
+#include "gpu_regs.h"
 #include "graphics.h"
 #include "help_system.h"
+#include "keyboard_text.h"
+#include "malloc.h"
 #include "menu.h"
-#include "overworld.h"
 #include "naming_screen.h"
+#include "overworld.h"
+#include "palette.h"
 #include "pokemon_icon.h"
 #include "pokemon_storage_system.h"
+#include "sound.h"
+#include "string_util.h"
 #include "strings.h"
 #include "task.h"
 #include "text_window.h"
 #include "trig.h"
 #include "constants/event_object_movement.h"
+#include "constants/event_objects.h"
 #include "constants/help_system.h"
 #include "constants/songs.h"
-#include "constants/event_objects.h"
 
 enum {
     INPUT_NONE,
@@ -266,7 +271,6 @@ static void ResetVHBlank(void);
 static void SetVBlank(void);
 static void VBlankCB_NamingScreen(void);
 static void NamingScreen_ShowBgs(void);
-static bool8 IsWideLetter(u8);
 
 static const struct SubspriteTable sSubspriteTable_PageSwapFrame[];
 static const struct SubspriteTable sSubspriteTable_PageSwapText[];
@@ -285,6 +289,8 @@ static const u8 *const sNamingScreenKeyboardText[][KBROW_COUNT];
 static const struct SpriteSheet sSpriteSheets[];
 static const struct SpritePalette sSpritePalettes[];
 static const struct NamingScreenTemplate *const sNamingScreenTemplates[];
+
+static const u8 gText_MoveOkBack[] = _("{DPAD_ANY}MOVE {A_BUTTON}OK {B_BUTTON}BACK");
 
 static const u16 sPCIconOff_Gfx[] = INCBIN_U16("graphics/naming_screen/pc_icon_off.4bpp");
 static const u16 sPCIconOn_Gfx[] = INCBIN_U16("graphics/naming_screen/pc_icon_on.4bpp");
@@ -751,7 +757,7 @@ static void DisplaySentToPCMessage(void)
 static bool8 MainState_WaitSentToPCMessage(void)
 {
     RunTextPrinters();
-    if (!IsTextPrinterActive(0) && JOY_NEW(A_BUTTON))
+    if (!IsTextPrinterActiveOnWindow(0) && JOY_NEW(A_BUTTON))
         sNamingScreen->state = STATE_FADE_OUT;
 
     return FALSE;
@@ -1390,10 +1396,9 @@ static void NamingScreen_NoIcon(void)
 
 static void NamingScreen_CreatePlayerIcon(void)
 {
-    u8 rivalGfxId;
+    enum ObjectEventGfx rivalGfxId = GetPlayerAvatarGfxForGender(PLAYER_AVATAR_STATE_NORMAL, sNamingScreen->monSpecies);
     u8 spriteId;
 
-    rivalGfxId = GetRivalAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_NORMAL, sNamingScreen->monSpecies);
     spriteId = CreateObjectGraphicsSprite(rivalGfxId, SpriteCallbackDummy, 56, 37, 0);
     gSprites[spriteId].oam.priority = 3;
     StartSpriteAnim(&gSprites[spriteId], ANIM_STD_GO_SOUTH);
@@ -1903,7 +1908,6 @@ static void DrawTextEntry(void)
 {
     u8 i;
     u8 temp[2];
-    u16 extraWidth;
     u8 maxChars = sNamingScreen->template->maxChars;
     u16 xpos = sNamingScreen->inputCharBaseXPos - 0x40;
 
@@ -1912,10 +1916,9 @@ static void DrawTextEntry(void)
     for (i = 0; i < maxChars; i++)
     {
         temp[0] = sNamingScreen->textBuffer[i];
-        temp[1] = gExpandedPlaceholder_Empty[0];
-        extraWidth = (IsWideLetter(temp[0]) == TRUE) ? 2 : 0;
+        temp[1] = gText_EmptyString[0];
 
-        AddTextPrinterParameterized(sNamingScreen->windows[WIN_TEXT_ENTRY], FONT_NORMAL, temp, i * 8 + xpos + extraWidth, 1, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(sNamingScreen->windows[WIN_TEXT_ENTRY], FONT_NORMAL, temp, i * 8 + xpos, 1, TEXT_SKIP_DRAW, NULL);
     }
 
     TryDrawGenderIcon();
@@ -1923,12 +1926,12 @@ static void DrawTextEntry(void)
     PutWindowTilemap(sNamingScreen->windows[WIN_TEXT_ENTRY]);
 }
 
-struct TextColor   // Needed because of alignment
+struct NamingTextColor   // Needed because of alignment
 {
     u8 colors[3][4];
 };
 
-static const struct TextColor sTextColorStruct = {
+static const struct NamingTextColor sTextColorStruct = {
     {
         {TEXT_DYNAMIC_COLOR_4, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY},
         {TEXT_DYNAMIC_COLOR_5, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY},
@@ -2045,57 +2048,48 @@ static void NamingScreen_ShowBgs(void)
     ShowBg(3);
 }
 
-// Always false (presumably for non-latin languages)
-static bool8 IsWideLetter(u8 character)
-{
-    u8 i;
-
-    for (i = 0; gText_AlphabetUpperLower[i] != EOS; i++)
-    {
-        if (character == gText_AlphabetUpperLower[i])
-            return TRUE;
-    }
-    return FALSE;
-}
-
 //--------------------------------------------------
 // Forward-declared variables
 //--------------------------------------------------
 
-static const struct NamingScreenTemplate sPlayerNamingScreenTemplate = {
+static const struct NamingScreenTemplate sPlayerNamingScreenTemplate =
+{
     .copyExistingString = FALSE,
     .maxChars = PLAYER_NAME_LENGTH,
     .iconFunction = 1,
     .addGenderIcon = 0,
     .initialPage = KBPAGE_LETTERS_UPPER,
-    .title = gText_YourName,
+    .title = COMPOUND_STRING("YOUR NAME?"),
 };
 
-static const struct NamingScreenTemplate sPcBoxNamingScreenTemplate = {
+static const struct NamingScreenTemplate sPcBoxNamingScreenTemplate =
+{
     .copyExistingString = FALSE,
     .maxChars = BOX_NAME_LENGTH,
     .iconFunction = 2,
     .addGenderIcon = 0,
     .initialPage = KBPAGE_LETTERS_UPPER,
-    .title = gText_BoxName,
+    .title = COMPOUND_STRING("BOX NAME?"),
 };
 
-static const struct NamingScreenTemplate sMonNamingScreenTemplate = {
+static const struct NamingScreenTemplate sMonNamingScreenTemplate =
+{
     .copyExistingString = FALSE,
     .maxChars = POKEMON_NAME_LENGTH,
     .iconFunction = 3,
     .addGenderIcon = 1,
     .initialPage = KBPAGE_LETTERS_UPPER,
-    .title = gText_PkmnsNickname,
+    .title = COMPOUND_STRING("'s nickname?"),
 };
 
-static const struct NamingScreenTemplate sRivalNamingScreenTemplate = {
+static const struct NamingScreenTemplate sRivalNamingScreenTemplate =
+{
     .copyExistingString = FALSE,
     .maxChars = PLAYER_NAME_LENGTH,
     .iconFunction = 4,
     .addGenderIcon = 0,
     .initialPage = KBPAGE_LETTERS_UPPER,
-    .title = gText_RivalsName,
+    .title = COMPOUND_STRING("RIVAL's NAME?"),
 };
 
 static const struct NamingScreenTemplate *const sNamingScreenTemplates[] =

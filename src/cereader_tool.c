@@ -1,8 +1,8 @@
 #include "global.h"
-#include "gflib.h"
-#include "util.h"
-#include "save.h"
 #include "cereader_tool.h"
+#include "malloc.h"
+#include "save.h"
+#include "util.h"
 
 #define SEC30_SIZE  (offsetof(struct EReaderTrainerTowerSet, floors[4]))
 #define SEC31_SIZE  (sizeof(struct EReaderTrainerTowerSet) - SEC30_SIZE)
@@ -12,11 +12,11 @@ STATIC_ASSERT(SEC30_SIZE + SEC31_SIZE <= SECTOR_COUNTER_OFFSET * 2, EReaderTrain
 
 static u8 GetTrainerHillUnkVal(void)
 {
-#if FREE_TRAINER_HILL == FALSE
+#if FREE_TRAINER_TOWER == FALSE
     return (gSaveBlock1Ptr->trainerTower[0].unk9 + 1) % 256;
 #else
     return 0;
-#endif //FREE_TRAINER_HILL
+#endif //FREE_TRAINER_TOWER
 }
 
 static bool32 ValidateTrainerTowerTrainer(struct TrainerTowerFloor * floor)

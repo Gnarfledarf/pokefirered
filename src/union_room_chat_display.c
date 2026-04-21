@@ -1,14 +1,19 @@
 #include "global.h"
-#include "gflib.h"
+#include "bg.h"
+#include "dma3.h"
 #include "dynamic_placeholder_text_util.h"
+#include "gpu_regs.h"
 #include "graphics.h"
+#include "malloc.h"
 #include "menu.h"
+#include "palette.h"
 #include "scanline_effect.h"
+#include "string_util.h"
 #include "strings.h"
 #include "text_window.h"
-#include "union_room_chat.h"
 #include "union_room_chat_display.h"
 #include "union_room_chat_objects.h"
+#include "union_room_chat.h"
 
 #define STDMESSAGE_QUIT_CHATTING 0
 #define STDMESSAGE_REGISTER_WHERE 1
@@ -118,6 +123,8 @@ static void InitScanlineEffect(void);
 static void FillScanlineEffectWithValue1col(s16 a0);
 static void FillScanlineEffectWithValue2col(s16 a0);
 
+static const u8 sText_Ellipsis[] = _("…");
+
 static const u16 sUnionRoomChat_TextEntry_Pal[] = INCBIN_U16("graphics/union_room_chat/text_entry.gbapal");
 static const u16 gUnionRoomChat_Unused_Pal[] = INCBIN_U16("graphics/union_room_chat/unused.gbapal"); // Loaded, but nothing uses it
 static const u16 sUnionRoomChat_Messages_Pal[] = INCBIN_U16("graphics/union_room_chat/messages.gbapal");
@@ -221,124 +228,122 @@ static const struct SubtaskInfo sSubtaskInfo[] = {
 static const struct MessageWindowInfo sMessageWindowInfo[] = {
 
     [STDMESSAGE_QUIT_CHATTING] = {
-        .text = gText_QuitChatting,
+        .text = COMPOUND_STRING("Quit chatting?"),
         .boxType = 1,
         .x = 0,
         .y = 0,
         .letterSpacing = 1,
-        .lineSpacing = 2, 
+        .lineSpacing = 2,
         .expandPlaceholders = FALSE,
         .widerBox = FALSE
     },
     [STDMESSAGE_REGISTER_WHERE] = {
-        .text = gText_RegisterTextWhere,
+        .text = COMPOUND_STRING("Register text where?"),
         .boxType = 1,
         .x = 0,
         .y = 0,
         .letterSpacing = 1,
-        .lineSpacing = 2, 
+        .lineSpacing = 2,
         .expandPlaceholders = FALSE,
         .widerBox = FALSE
     },
     [STDMESSAGE_REGISTER_HERE] = {
-        .text = gText_RegisterTextHere,
+        .text = COMPOUND_STRING("Register text here?"),
         .boxType = 1,
         .x = 0,
         .y = 0,
         .letterSpacing = 1,
-        .lineSpacing = 2, 
+        .lineSpacing = 2,
         .expandPlaceholders = FALSE,
         .widerBox = FALSE
     },
     [STDMESSAGE_INPUT_TEXT] = {
-        .text = gText_InputText,
+        .text = COMPOUND_STRING("Input text."),
         .boxType = 1,
         .x = 0,
         .y = 0,
         .letterSpacing = 1,
-        .lineSpacing = 2, 
+        .lineSpacing = 2,
         .expandPlaceholders = FALSE,
         .widerBox = FALSE
     },
     [STDMESSAGE_EXITING_CHAT] = {
-        .text = gText_ExitingTheChat,
+        .text = COMPOUND_STRING("Exiting the chat‥"),
         .boxType = 2,
         .x = 0,
         .y = 0,
         .letterSpacing = 1,
-        .lineSpacing = 2, 
+        .lineSpacing = 2,
         .expandPlaceholders = FALSE,
         .widerBox = FALSE
     },
     [STDMESSAGE_LEADER_LEFT] = {
-        .text = gText_LeaderHasLeftEndingChat,
+        .text = COMPOUND_STRING("The LEADER, {DYNAMIC 0x00}, has\nleft, ending the chat."),
         .boxType = 2,
         .x = 0,
         .y = 0,
         .letterSpacing = 0,
-        .lineSpacing = 2, 
+        .lineSpacing = 2,
         .expandPlaceholders = TRUE,
         .widerBox = FALSE
     },
     [STDMESSAGE_ASK_SAVE] = {
-        .text = gText_RegisteredTextChanged_OKtoSave,
+        .text = COMPOUND_STRING("The registered text has been changed.\nIs it okay to save the game?"),
         .boxType = 2,
         .x = 0,
         .y = 0,
         .letterSpacing = 1,
-        .lineSpacing = 2, 
+        .lineSpacing = 2,
         .expandPlaceholders = FALSE,
         .widerBox = TRUE
     },
     [STDMESSAGE_ASK_OVERWRITE] = {
-        .text = gText_RegisteredTextChanged_AlreadySavedFile,
+        .text = COMPOUND_STRING("There is already a saved file.\nIs it okay to overwrite it?"),
         .boxType = 2,
         .x = 0,
         .y = 0,
         .letterSpacing = 1,
-        .lineSpacing = 2, 
+        .lineSpacing = 2,
         .expandPlaceholders = FALSE,
         .widerBox = TRUE
     },
     [STDMESSAGE_SAVING_NO_OFF] = {
-        .text = gText_RegisteredTextChanged_SavingDontTurnOff,
+        .text = COMPOUND_STRING("SAVING‥\nDON'T TURN OFF THE POWER."),
         .boxType = 2,
         .x = 0,
         .y = 0,
         .letterSpacing = 1,
-        .lineSpacing = 2, 
+        .lineSpacing = 2,
         .expandPlaceholders = FALSE,
         .widerBox = TRUE
     },
     [STDMESSAGE_SAVED_THE_GAME] = {
-        .text = gText_RegisteredTextChanged_SavedTheGame,
+        .text = COMPOUND_STRING("{DYNAMIC 0x00} saved the game."),
         .boxType = 2,
         .x = 0,
         .y = 0,
         .letterSpacing = 1,
-        .lineSpacing = 2, 
+        .lineSpacing = 2,
         .expandPlaceholders = TRUE,
         .widerBox = TRUE
     },
     [STDMESSAGE_WARN_LEADER_LEAVE] = {
-        .text = gText_IfLeaderLeavesChatWillEnd,
+        .text = COMPOUND_STRING("If the LEADER leaves, the chat\nwill end. Is that okay?"),
         .boxType = 2,
         .x = 0,
         .y = 0,
         .letterSpacing = 1,
-        .lineSpacing = 2, 
+        .lineSpacing = 2,
         .expandPlaceholders = FALSE,
         .widerBox = TRUE
     }
 };
 
-static const u8 gText_Ellipsis[] = _("…");
-
 static const struct MenuAction sKeyboardSwapTexts[] = {
-    {gText_Upper},
-    {gText_Lower},
-    {gText_Symbols},
-    {gText_Register2},
+    {COMPOUND_STRING("UPPER")},
+    {COMPOUND_STRING("lower")},
+    {COMPOUND_STRING("SYMBOLS")},
+    {gText_Register},
     {gText_Exit}
 };
 
@@ -419,7 +424,7 @@ void UnionRoomChat_StartDisplaySubtask(u16 arg0, u8 arg1)
     int i;
 
     sWork->subtasks[arg1].callback = DisplaySubtaskDummy;
-    for (i = 0; i < NELEMS(sSubtaskInfo); i++)
+    for (i = 0; i < ARRAY_COUNT(sSubtaskInfo); i++)
     {
         if (sSubtaskInfo[i].idx == arg0)
         {
@@ -1146,7 +1151,7 @@ static void PrintCurrentKeyboardPage(void)
                 } while (GetStringWidth(FONT_SMALL, str, 0) > 35);
 
                 AddTextPrinterParameterized3(2, FONT_SMALL, left, top, color, TEXT_SKIP_DRAW, str);
-                AddTextPrinterParameterized3(2, FONT_SMALL, left + 35, top, color, TEXT_SKIP_DRAW, gText_Ellipsis);
+                AddTextPrinterParameterized3(2, FONT_SMALL, left + 35, top, color, TEXT_SKIP_DRAW, sText_Ellipsis);
             }
         }
     }

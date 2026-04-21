@@ -1,20 +1,18 @@
 #include "global.h"
-
-#include "io_reg.h"
-#include "gpu_regs.h"
-#include "malloc.h"
-#include "string_util.h"
-
 #include "battle.h"
+#include "bg.h"
 #include "decompress.h"
 #include "event_data.h"
+#include "gpu_regs.h"
 #include "graphics.h"
 #include "help_system.h"
+#include "io_reg.h"
 #include "item_menu.h"
 #include "librfu.h"
-#include "link.h"
 #include "link_rfu.h"
+#include "link.h"
 #include "m4a.h"
+#include "malloc.h"
 #include "menu.h"
 #include "overworld.h"
 #include "palette.h"
@@ -24,6 +22,7 @@
 #include "save.h"
 #include "scanline_effect.h"
 #include "sound.h"
+#include "string_util.h"
 #include "strings.h"
 #include "task.h"
 #include "trade.h"
@@ -48,6 +47,12 @@ struct LinkTestBGInfo
 };
 
 #define SIO_MULTI_CNT ((struct SioMultiCnt *)REG_ADDR_SIOCNT)
+
+static const u8 sText_CommErrorCheckConnections[] = _("Communication error…\nPlease check all connections,\nthen turn the power OFF and ON.");
+static const u8 sText_CommErrorEllipsis[] = _("Communication error…");
+static const u8 sText_MoveCloserToLinkPartner[] = _("Move closer to your link partner(s).\nAvoid obstacles between partners.");
+static const u8 sText_ABtnRegistrationCounter[] = _("A Button: Registration Counter");
+static const u8 sText_ABtnTitleScreen[] = _("A Button: Title Screen");
 
 static struct BlockTransfer sBlockSend;
 ALIGNED(8) static struct BlockTransfer sBlockRecv[MAX_LINK_PLAYERS];
@@ -148,8 +153,8 @@ static void StopTimer(void);
 static void SendRecvDone(void);
 
 static const u16 sWirelessLinkDisplayPal[] = INCBIN_U16("graphics/link/wireless_display.gbapal");
-static const u16 sWirelessLinkDisplayGfx[] = INCBIN_U16("graphics/link/wireless_display.4bpp.lz");
-static const u16 sWirelessLinkDisplayTilemap[] = INCBIN_U16("graphics/link/wireless_display.bin.lz");
+static const u16 sWirelessLinkDisplayGfx[] = INCBIN_U16("graphics/link/wireless_display.4bpp.smol");
+static const u16 sWirelessLinkDisplayTilemap[] = INCBIN_U16("graphics/link/wireless_display.bin.smolTM");
 static const u16 sLinkTestFontPal[] = INCBIN_U16("graphics/link/test_font.gbapal");
 static const u16 sLinkTestFontGfx[] = INCBIN_U16("graphics/link/test_font.4bpp");
 
@@ -1160,8 +1165,8 @@ static void ErrorMsg_MoveCloserToPartner(void)
     LoadPalette(sWirelessLinkDisplayPal, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
     FillWindowPixelBuffer(0, PIXEL_FILL(0));
     FillWindowPixelBuffer(2, PIXEL_FILL(0));
-    AddTextPrinterParameterized3(0, FONT_NORMAL_COPY_2, 2, 5, sLinkErrorTextColor, 0, gText_CommErrorEllipsis);
-    AddTextPrinterParameterized3(2, FONT_NORMAL_COPY_2, 2, 2, sLinkErrorTextColor, 0, gText_MoveCloserToLinkPartner);
+    AddTextPrinterParameterized3(0, FONT_NORMAL_COPY_2, 2, 5, sLinkErrorTextColor, 0, sText_CommErrorEllipsis);
+    AddTextPrinterParameterized3(2, FONT_NORMAL_COPY_2, 2, 2, sLinkErrorTextColor, 0, sText_MoveCloserToLinkPartner);
     PutWindowTilemap(0);
     PutWindowTilemap(2);
     CopyWindowToVram(0, COPYWIN_NONE); // Does nothing
@@ -1174,7 +1179,7 @@ static void ErrorMsg_CheckConnections(void)
 {
     FillWindowPixelBuffer(1, PIXEL_FILL(0));
     FillWindowPixelBuffer(2, PIXEL_FILL(0));
-    AddTextPrinterParameterized3(1, FONT_NORMAL_COPY_2, 2, 0, sLinkErrorTextColor, 0, gText_CommErrorCheckConnections);
+    AddTextPrinterParameterized3(1, FONT_NORMAL_COPY_2, 2, 0, sLinkErrorTextColor, 0, sText_CommErrorCheckConnections);
     PutWindowTilemap(1);
     PutWindowTilemap(2);
     CopyWindowToVram(1, COPYWIN_NONE); // Does nothing
@@ -1205,9 +1210,9 @@ static void CB2_PrintErrorMessage(void)
         break;
     case 130:
         if (gWirelessCommType == 2)
-            AddTextPrinterParameterized3(0, FONT_NORMAL_COPY_2, 2, 20, sLinkErrorTextColor, 0, gText_ABtnTitleScreen);
+            AddTextPrinterParameterized3(0, FONT_NORMAL_COPY_2, 2, 20, sLinkErrorTextColor, 0, sText_ABtnTitleScreen);
         else if (gWirelessCommType == 1)
-            AddTextPrinterParameterized3(0, FONT_NORMAL_COPY_2, 2, 20, sLinkErrorTextColor, 0, gText_ABtnRegistrationCounter);
+            AddTextPrinterParameterized3(0, FONT_NORMAL_COPY_2, 2, 20, sLinkErrorTextColor, 0, sText_ABtnRegistrationCounter);
         break;
     }
     if (gMain.state == 160)
@@ -1828,4 +1833,18 @@ void ResetRecvBuffer(void)
                 gLink.recvQueue.data[i][j][k] = LINKCMD_NONE;
         }
     }
+}
+
+bool32 ShouldCheckForUnionRoom(void)
+{
+    if (OW_UNION_DISABLE_CHECK)
+        return FALSE;
+
+    if (OW_FLAG_MOVE_UNION_ROOM_CHECK == 0)
+        return TRUE;
+
+    if (FlagGet(OW_FLAG_MOVE_UNION_ROOM_CHECK))
+        return TRUE;
+
+    return FALSE;
 }

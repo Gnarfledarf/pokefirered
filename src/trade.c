@@ -1,27 +1,32 @@
 #include "global.h"
-#include "gflib.h"
-#include "task.h"
-#include "decompress.h"
-#include "text_window.h"
-#include "pokemon_icon.h"
-#include "graphics.h"
-#include "link.h"
-#include "link_rfu.h"
+#include "battle_anim.h"
+#include "battle_interface.h"
+#include "bg.h"
 #include "cable_club.h"
 #include "data.h"
-#include "strings.h"
+#include "daycare.h"
+#include "decompress.h"
+#include "event_data.h"
+#include "gpu_regs.h"
+#include "graphics.h"
+#include "link_rfu.h"
+#include "link.h"
+#include "malloc.h"
 #include "menu.h"
 #include "overworld.h"
-#include "battle_anim.h"
+#include "palette.h"
 #include "party_menu.h"
-#include "daycare.h"
-#include "event_data.h"
-#include "battle_interface.h"
-#include "pokemon_summary_screen.h"
+#include "pokemon_icon.h"
 #include "pokemon_storage_system.h"
+#include "pokemon_summary_screen.h"
+#include "sound.h"
+#include "string_util.h"
+#include "strings.h"
+#include "task.h"
+#include "text_window.h"
 #include "trade_scene.h"
-#include "constants/songs.h"
 #include "constants/moves.h"
+#include "constants/songs.h"
 #include "constants/trade.h"
 
 // IDs for CallTradeMenuFunc
@@ -208,6 +213,9 @@ static void ComputePartyHPBarLevels(u8 side);
 static void SetTradePartyHPBarSprites(void);
 static void SaveTradeGiftRibbons(void);
 static u32 CanTradeSelectedMon(struct Pokemon * party, int partyCount, int cursorPos);
+
+static const u8 sText_4Qmark[] = _("????");
+static const u8 sText_IsThisTradeOkay[] = _("Is this trade okay?");
 
 static const u16 sTradeMovesBoxTilemap[] = INCBIN_U16("graphics/trade/moves_box_map.bin");
 static const u16 sTradePartyBoxTilemap[] = INCBIN_U16("graphics/trade/party_box_map.bin");
@@ -508,36 +516,31 @@ static const u8 sUnusedCoords[][2] =
     {23, 12}
 };
 
-static const u8 sText_Dummy[] = _("");
 static const u8 sText_ClrWhtHltTranspShdwDrkGry[] = _("{COLOR WHITE}{HIGHLIGHT TRANSPARENT}{SHADOW DARK_GRAY}");
-const u8 gText_MaleSymbol4[] = _("♂");
-const u8 gText_FemaleSymbol4[] = _("♀");
-const u8 gText_GenderlessSymbol[] = _("");
-static const u8 sText_Dummy2[] = _("");
-static const u8 sText_Newline[] = _("\n");
-static const u8 sText_Slash[] = _("/");
 
 static const u8 *const sActionTexts[] = {
-    [TEXT_CANCEL]          = gTradeText_Cancel,
-    [TEXT_CHOOSE_MON]      = gTradeText_ChooseAPokemon,
-    [TEXT_SUMMARY]         = gTradeText_Summary, // Unused, sMenuAction_SummaryTrade is used instead
-    [TEXT_TRADE]           = gTradeText_Trade,   // Unused, sMenuAction_SummaryTrade is used instead
-    [TEXT_CANCEL_TRADE]    = gText_CancelTrade,
-    [TEXT_PRESS_B_TO_EXIT] = gTradeText_PressBButtonToExit // Unused
+    [TEXT_CANCEL]          = gText_Cancel,
+    [TEXT_CHOOSE_MON]      = gText_ChooseAPokemon,
+    [TEXT_SUMMARY]         = gText_Summary, // Unused, sMenuAction_SummaryTrade is used instead
+    [TEXT_TRADE]           = gText_Trade,   // Unused, sMenuAction_SummaryTrade is used instead
+    [TEXT_CANCEL_TRADE]    = COMPOUND_STRING("Cancel trade?"),
+    [TEXT_PRESS_B_TO_EXIT] = COMPOUND_STRING("Press the B Button to exit.") // Unused
 };
 
 static const struct MenuAction sMenuAction_SummaryTrade[] = {
-    {gText_TradeAction_Summary, { .void_u8 = Task_DrawSelectionSummary }},
-    {gText_TradeAction_Trade, { .void_u8 = Task_DrawSelectionTrade }}
+    {gText_Summary, { .void_u8 = Task_DrawSelectionSummary }},
+    {gText_Trade, { .void_u8 = Task_DrawSelectionTrade }}
 };
 
-static const u8 *const sMessages[] = {
-    [MSG_STANDBY]                    = gText_Trade_CommunicationStandby,
-    [MSG_CANCELED]                   = gText_TradeHasBeenCanceled,
-    [MSG_ONLY_MON1]                  = gText_Trade_OnlyPkmnForBattle,
-    [MSG_ONLY_MON2]                  = gText_OnlyPkmnForBattle, // Same as above but without color formatting
-    [MSG_WAITING_FOR_FRIEND]         = gText_WaitingForFriendToFinish,
-    [MSG_FRIEND_WANTS_TO_TRADE]      = gText_FriendWantsToTrade,
+
+static const u8 *const sMessages[] =
+{
+    [MSG_STANDBY]                    = COMPOUND_STRING("{COLOR DARK_GRAY}{HIGHLIGHT WHITE}{SHADOW LIGHT_GRAY}Communication standby…\nPlease wait."),
+    [MSG_CANCELED]                   = COMPOUND_STRING("{COLOR DARK_GRAY}{HIGHLIGHT WHITE}{SHADOW LIGHT_GRAY}The trade has been canceled."),
+    [MSG_ONLY_MON1]                  = COMPOUND_STRING("{COLOR DARK_GRAY}{HIGHLIGHT WHITE}{SHADOW LIGHT_GRAY}That's your only POKéMON\nfor battle."),
+    [MSG_ONLY_MON2]                  = COMPOUND_STRING("That's your only\nPOKéMON for battle."), // Same as above but without color formatting
+    [MSG_WAITING_FOR_FRIEND]         = COMPOUND_STRING("{COLOR DARK_GRAY}{HIGHLIGHT WHITE}{SHADOW LIGHT_GRAY}Waiting for your friend\nto finish…"),
+    [MSG_FRIEND_WANTS_TO_TRADE]      = COMPOUND_STRING("Your friend wants\nto trade POKéMON."),
     [MSG_MON_CANT_BE_TRADED]         = gText_PkmnCantBeTradedNow,
     [MSG_EGG_CANT_BE_TRADED]         = gText_EggCantBeTradedNow,
     [MSG_FRIENDS_MON_CANT_BE_TRADED] = gText_OtherTrainersPkmnCantBeTraded
@@ -1534,7 +1537,7 @@ static bool8 BufferTradeParties(void)
         for (i = 0, mon = gEnemyParty; i < PARTY_SIZE; mon++, i++)
         {
             u8 name[POKEMON_NAME_LENGTH + 1];
-            u16 species = GetMonData(mon, MON_DATA_SPECIES);
+            enum Species species = GetMonData(mon, MON_DATA_SPECIES);
 
             if (species != SPECIES_NONE)
             {
@@ -1567,7 +1570,7 @@ static bool8 BufferTradeParties(void)
 
 static void PrintIsThisTradeOkay(void)
 {
-    DrawBottomRowText(gText_IsThisTradeOkay, (u8 *)OBJ_VRAM0 + sTradeMenu->bottomTextTileStart * 32, 0x18);
+    DrawBottomRowText(sText_IsThisTradeOkay, (u8 *)OBJ_VRAM0 + sTradeMenu->bottomTextTileStart * 32, 0x18);
 }
 
 static void Leader_ReadLinkBuffer(u8 mpId, u8 status)
@@ -2327,20 +2330,20 @@ static void BufferMovesString(u8 *movesString, u8 whichParty, u8 partyIdx)
                 moves[i] = GetMonData(&gEnemyParty[partyIdx], i + MON_DATA_MOVE1, NULL);
         }
 
-        StringCopy(movesString, sText_Dummy);
+        StringCopy(movesString, gText_EmptyString);
 
         for (i = 0; i < MAX_MON_MOVES; i++)
         {
             if (moves[i] != MOVE_NONE)
                 StringAppend(movesString, gMovesInfo[moves[i]].name);
 
-            StringAppend(movesString, sText_Newline);
+            StringAppend(movesString, gText_Newline);
         }
     }
     else
     {
-        StringCopy(movesString, sText_Dummy);
-        StringAppend(movesString, gText_4Qmark);
+        StringCopy(movesString, gText_EmptyString);
+        StringAppend(movesString, sText_4Qmark);
     }
 }
 
@@ -2782,46 +2785,36 @@ static u32 CanTradeSelectedMon(struct Pokemon * playerParty, int partyCount, int
 
 s32 GetGameProgressForLinkTrade(void)
 {
-    s32 versionId; // 0: FRLG, 1: RS, 2: Emerald (or anything else)
-    u16 version;
+    enum GameVersion partnerVersion;
+    u8 playerId, partnerId;
 
-    if (gReceivedRemoteLinkPlayers)
-    {
-        versionId = 0;
-        version = (gLinkPlayers[GetMultiplayerId() ^ 1].version & 0xFF);
+    if (!gReceivedRemoteLinkPlayers)
+        return TRADE_BOTH_PLAYERS_READY;
 
-        if (version == VERSION_FIRE_RED || version == VERSION_LEAF_GREEN)
-            versionId = 0;
-        else if (version == VERSION_RUBY || version == VERSION_SAPPHIRE)
-            versionId = 1;
-        else
-            versionId = 2;
+    playerId = GetMultiplayerId();
+    partnerId = playerId ^ 1;
 
-        // If trading with RSE, both players must have progessed the story enough
-        if (versionId > 0)
-        {
-            // Has player finished the Sevii Islands
-            if (gLinkPlayers[GetMultiplayerId()].progressFlagsCopy & 0xF0)
-            {
-                if (versionId == 2)
-                {
-                    // Is RSE partner champion
-                    if (gLinkPlayers[GetMultiplayerId() ^ 1].progressFlagsCopy & 0xF0)
-                        return TRADE_BOTH_PLAYERS_READY;
-                    else
-                        return TRADE_PARTNER_NOT_READY;
-                }
-            }
-            else
-            {
-                return TRADE_PLAYER_NOT_READY;
-            }
-        }
-    }
-    return TRADE_BOTH_PLAYERS_READY;
+    partnerVersion = (gLinkPlayers[partnerId].version & 0xFF);
+    // FRLG <-> FRLG can always trade
+    if (partnerVersion == VERSION_FIRE_RED || partnerVersion == VERSION_LEAF_GREEN)
+        return TRADE_BOTH_PLAYERS_READY;
+
+    // Has player finished the Sevii Islands
+    if (!(gLinkPlayers[playerId].progressFlagsCopy & 0xF0))
+        return TRADE_PLAYER_NOT_READY;
+
+    // FRLG <-> RS only requires FRLG story progress
+    if (partnerVersion == VERSION_RUBY || partnerVersion == VERSION_SAPPHIRE)
+        return TRADE_BOTH_PLAYERS_READY;
+
+    // FRLG <-> E requires both stories to be progressed
+    if (gLinkPlayers[partnerId].progressFlagsCopy & 0xF0)
+        return TRADE_BOTH_PLAYERS_READY;
+    else
+        return TRADE_PARTNER_NOT_READY;
 }
 
-static bool32 IsDeoxysOrMewUntradable(u16 species, bool8 isModernFatefulEncounter)
+static bool32 IsDeoxysOrMewUntradable(enum Species species, bool8 isModernFatefulEncounter)
 {
     if (species == SPECIES_DEOXYS || species == SPECIES_MEW)
     {
@@ -2831,23 +2824,17 @@ static bool32 IsDeoxysOrMewUntradable(u16 species, bool8 isModernFatefulEncounte
     return FALSE;
 }
 
-int GetUnionRoomTradeMessageId(struct RfuGameCompatibilityData player, struct RfuGameCompatibilityData partner, u16 playerSpecies2, u16 partnerSpecies, u8 requestedType, u16 playerSpecies, bool8 isModernFatefulEncounter)
+int GetUnionRoomTradeMessageId(struct RfuGameCompatibilityData player, struct RfuGameCompatibilityData partner, enum Species playerSpecies2, enum Species partnerSpecies, u8 requestedType, enum Species playerSpecies, bool8 isModernFatefulEncounter)
 {
     bool8 playerHasNationalDex = player.hasNationalDex;
     bool8 playerCanLinkNationally = player.canLinkNationally;
     bool8 partnerHasNationalDex = partner.hasNationalDex;
     bool8 partnerCanLinkNationally = partner.canLinkNationally;
-    u8 partnerVersion = partner.version;
-    bool8 isNotFRLG;
-
-    if (partnerVersion == VERSION_FIRE_RED || partnerVersion == VERSION_LEAF_GREEN)
-        isNotFRLG = FALSE;
-    else
-        isNotFRLG = TRUE;
+    enum GameVersion partnerVersion = partner.version;
 
     // If partner is not using FRLG, both players must have progressed the story
     // to a certain point (becoming champion in RSE, finishing the Sevii islands in FRLG)
-    if (isNotFRLG)
+    if (partnerVersion != VERSION_FIRE_RED && partnerVersion != VERSION_LEAF_GREEN)
     {
         if (!playerCanLinkNationally)
             return UR_TRADE_MSG_CANT_TRADE_WITH_PARTNER_1;
@@ -2899,7 +2886,7 @@ int GetUnionRoomTradeMessageId(struct RfuGameCompatibilityData player, struct Rf
     return UR_TRADE_MSG_NONE;
 }
 
-int CanRegisterMonForTradingBoard(struct RfuGameCompatibilityData player, u16 species2, u16 species, bool8 isModernFatefulEncounter)
+int CanRegisterMonForTradingBoard(struct RfuGameCompatibilityData player, enum Species species2, enum Species species, bool8 isModernFatefulEncounter)
 {
     bool8 hasNationalDex = player.hasNationalDex;
 

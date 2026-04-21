@@ -1,27 +1,29 @@
 static const u8 *const sLinkGroupActivityNameTexts[] = {
-    [ACTIVITY_NONE]            = gText_UR_EmptyString,
-    [ACTIVITY_BATTLE_SINGLE]   = gText_UR_SingleBattle,
-    [ACTIVITY_BATTLE_DOUBLE]   = gText_UR_DoubleBattle,
-    [ACTIVITY_BATTLE_MULTI]    = gText_UR_MultiBattle,
+    [ACTIVITY_NONE]            = gText_EmptyString,
+    [ACTIVITY_BATTLE_SINGLE]   = gText_SingleBattle,
+    [ACTIVITY_BATTLE_DOUBLE]   = gText_DoubleBattle,
+    [ACTIVITY_BATTLE_MULTI]    = gText_MultiBattle,
     [ACTIVITY_TRADE]           = gText_UR_PokemonTrades,
     [ACTIVITY_CHAT]            = gText_UR_Chat,
     [ACTIVITY_WONDER_CARD_DUP] = gText_UR_WonderCards,
     [ACTIVITY_WONDER_NEWS_DUP] = gText_UR_WonderNews,
     [ACTIVITY_CARD]            = gText_UR_Cards,
-    [ACTIVITY_POKEMON_JUMP]    = gText_UR_PokemonJump,
-    [ACTIVITY_BERRY_CRUSH]     = gText_UR_BerryCrush,
+    [ACTIVITY_POKEMON_JUMP]    = gText_PokemonJump,
+    [ACTIVITY_BERRY_CRUSH]     = gText_BerryCrush,
     [ACTIVITY_BERRY_PICK]      = gText_UR_BerryPicking,
     [ACTIVITY_SEARCH]          = gText_UR_Search,
     [ACTIVITY_SPIN_TRADE]      = gText_UR_SpinTrade,
     [ACTIVITY_ITEM_TRADE]      = gText_UR_ItemTrade,
-    [ACTIVITY_RECORD_CORNER]   = gText_UR_EmptyString,
-    [ACTIVITY_BERRY_BLENDER]   = gText_UR_EmptyString,
-    [ACTIVITY_ACCEPT]          = gText_UR_EmptyString,
-    [ACTIVITY_DECLINE]         = gText_UR_EmptyString,
-    [ACTIVITY_NPCTALK]         = gText_UR_EmptyString,
-    [ACTIVITY_PLYRTALK]        = gText_UR_EmptyString,
+    [ACTIVITY_RECORD_CORNER]   = gText_EmptyString,
+    [ACTIVITY_BERRY_BLENDER]   = gText_EmptyString,
+    [ACTIVITY_ACCEPT]          = gText_EmptyString,
+    [ACTIVITY_DECLINE]         = gText_EmptyString,
+    [ACTIVITY_NPCTALK]         = gText_EmptyString,
+    [ACTIVITY_PLYRTALK]        = gText_EmptyString,
     [ACTIVITY_WONDER_CARD]     = gText_UR_WonderCards,
-    [ACTIVITY_WONDER_NEWS]     = gText_UR_WonderNews
+    [ACTIVITY_WONDER_NEWS]     = gText_UR_WonderNews,
+    [ACTIVITY_BATTLE_TOWER]      = COMPOUND_STRING("BATTLE TOWER LV. 50"),
+    [ACTIVITY_BATTLE_TOWER_OPEN] = COMPOUND_STRING("BATTLE TOWER OPEN LEVEL"),
 };
 
 static const struct WindowTemplate sWindowTemplate_BButtonCancel = {
@@ -50,7 +52,9 @@ static const u32 sLinkGroupToActivityAndCapacity[] = {
     [LINK_GROUP_BERRY_CRUSH]   = ACTIVITY_BERRY_CRUSH       | LINK_GROUP_CAPACITY(2, 5),
     [LINK_GROUP_BERRY_PICKING] = ACTIVITY_BERRY_PICK        | LINK_GROUP_CAPACITY(3, 5),
     [LINK_GROUP_WONDER_CARD]   = ACTIVITY_SPIN_TRADE        | LINK_GROUP_CAPACITY(3, 5),
-    [LINK_GROUP_WONDER_NEWS]   = ACTIVITY_ITEM_TRADE        | LINK_GROUP_CAPACITY(3, 5)
+    [LINK_GROUP_WONDER_NEWS]   = ACTIVITY_ITEM_TRADE        | LINK_GROUP_CAPACITY(3, 5),
+    [LINK_GROUP_BATTLE_TOWER]      = ACTIVITY_BATTLE_TOWER      | LINK_GROUP_CAPACITY(0, 2),
+    [LINK_GROUP_BATTLE_TOWER_OPEN] = ACTIVITY_BATTLE_TOWER_OPEN | LINK_GROUP_CAPACITY(0, 2)
 };
 
 static const struct WindowTemplate sWindowTemplate_List_PossibleGroupMembers = {
@@ -74,11 +78,11 @@ static const struct WindowTemplate sWindowTemplate_NumPlayerMode = {
 };
 
 const struct ListMenuItem sListMenuItems_PossibleGroupMembers[] = {
-    {gText_UR_EmptyString, 0},
-    {gText_UR_EmptyString, 1},
-    {gText_UR_EmptyString, 2},
-    {gText_UR_EmptyString, 3},
-    {gText_UR_EmptyString, 4}
+    {gText_EmptyString, 0},
+    {gText_EmptyString, 1},
+    {gText_EmptyString, 2},
+    {gText_EmptyString, 3},
+    {gText_EmptyString, 4}
 };
 
 static const struct ListMenuTemplate sListMenuTemplate_PossibleGroupMembers = {
@@ -123,22 +127,22 @@ static const struct WindowTemplate sWindowTemplate_PlayerNameAndId = {
 };
 
 static const struct ListMenuItem sListMenuItems_UnionRoomGroups[] = {
-    {gText_UR_EmptyString,  0},
-    {gText_UR_EmptyString,  1},
-    {gText_UR_EmptyString,  2},
-    {gText_UR_EmptyString,  3},
-    {gText_UR_EmptyString,  4},
-    {gText_UR_EmptyString,  5},
-    {gText_UR_EmptyString,  6},
-    {gText_UR_EmptyString,  7},
-    {gText_UR_EmptyString,  8},
-    {gText_UR_EmptyString,  9},
-    {gText_UR_EmptyString, 10},
-    {gText_UR_EmptyString, 11},
-    {gText_UR_EmptyString, 12},
-    {gText_UR_EmptyString, 13},
-    {gText_UR_EmptyString, 14},
-    {gText_UR_EmptyString, 15}
+    {gText_EmptyString,  0},
+    {gText_EmptyString,  1},
+    {gText_EmptyString,  2},
+    {gText_EmptyString,  3},
+    {gText_EmptyString,  4},
+    {gText_EmptyString,  5},
+    {gText_EmptyString,  6},
+    {gText_EmptyString,  7},
+    {gText_EmptyString,  8},
+    {gText_EmptyString,  9},
+    {gText_EmptyString, 10},
+    {gText_EmptyString, 11},
+    {gText_EmptyString, 12},
+    {gText_EmptyString, 13},
+    {gText_EmptyString, 14},
+    {gText_EmptyString, 15}
 };
 
 static const struct ListMenuTemplate sListMenuTemplate_UnionRoomGroups = {
@@ -174,9 +178,9 @@ static const struct WindowTemplate sWindowTemplate_InviteToActivity = {
 
 static const struct ListMenuItem sListMenuItems_InviteToActivity[] = {
     {gText_UR_Greetings, ACTIVITY_CARD | LINK_GROUP_CAPACITY(0, 2)},
-    {gText_UR_Battle,    ACTIVITY_BATTLE_SINGLE | IN_UNION_ROOM | LINK_GROUP_CAPACITY(0, 2)},
+    {gText_Battle,       ACTIVITY_BATTLE_SINGLE | IN_UNION_ROOM | LINK_GROUP_CAPACITY(0, 2)},
     {gText_UR_Chat2,     ACTIVITY_CHAT | IN_UNION_ROOM | LINK_GROUP_CAPACITY(0, 2)},
-    {gText_UR_Exit,      ACTIVITY_NONE | IN_UNION_ROOM }
+    {gText_Exit,         ACTIVITY_NONE | IN_UNION_ROOM }
 };
 
 static const struct ListMenuTemplate sListMenuTemplate_InviteToActivity = {
@@ -212,8 +216,8 @@ static const struct WindowTemplate sWindowTemplate_RegisterForTrade = {
 
 static const struct ListMenuItem sListMenuItems_RegisterForTrade[] = {
     {gText_Register,  1},
-    {gText_UR_Info,   2},
-    {gText_UR_Exit,   3}
+    {gText_Info,   2},
+    {gText_Exit,   3}
 };
 
 static const struct ListMenuTemplate sListMenuTemplate_RegisterForTrade = {
@@ -266,7 +270,7 @@ static const struct ListMenuItem sListMenuItems_TypeNames[NUMBER_OF_MON_TYPES] =
     { gTypesInfo[TYPE_STEEL].name,    TYPE_STEEL          },
     { gTypesInfo[TYPE_DARK].name,     TYPE_DARK           },
     { gTypesInfo[TYPE_FAIRY].name,    TYPE_FAIRY          },
-    { gText_UR_Exit,             NUMBER_OF_MON_TYPES }
+    { gText_Exit,             NUMBER_OF_MON_TYPES }
 };
 
 static const struct ListMenuTemplate sListMenuTemplate_TypeNames = {
@@ -311,16 +315,16 @@ static const struct WindowTemplate sWindowTemplate_TradingBoardMain = {
 };
 
 static const struct ListMenuItem sListMenuItems_TradeBoard[] = {
-    {gText_UR_EmptyString, -3},
-    {gText_UR_EmptyString, 0},
-    {gText_UR_EmptyString, 1},
-    {gText_UR_EmptyString, 2},
-    {gText_UR_EmptyString, 3},
-    {gText_UR_EmptyString, 4},
-    {gText_UR_EmptyString, 5},
-    {gText_UR_EmptyString, 6},
-    {gText_UR_EmptyString, 7},
-    {gText_UR_Exit2, 8}
+    {gText_EmptyString, -3},
+    {gText_EmptyString, 0},
+    {gText_EmptyString, 1},
+    {gText_EmptyString, 2},
+    {gText_EmptyString, 3},
+    {gText_EmptyString, 4},
+    {gText_EmptyString, 5},
+    {gText_EmptyString, 6},
+    {gText_EmptyString, 7},
+    {gText_Exit, 8}
 };
 
 static const struct ListMenuTemplate sListMenuTemplate_TradeBoard = {
@@ -355,22 +359,22 @@ static const struct WindowTemplate sWindowTemplate_Unused = {
 };
 
 static const struct ListMenuItem sListMenuItems_Unused[] = {
-    {gText_UR_EmptyString,  0},
-    {gText_UR_EmptyString,  1},
-    {gText_UR_EmptyString,  2},
-    {gText_UR_EmptyString,  3},
-    {gText_UR_EmptyString,  4},
-    {gText_UR_EmptyString,  5},
-    {gText_UR_EmptyString,  6},
-    {gText_UR_EmptyString,  7},
-    {gText_UR_EmptyString,  8},
-    {gText_UR_EmptyString,  9},
-    {gText_UR_EmptyString, 10},
-    {gText_UR_EmptyString, 11},
-    {gText_UR_EmptyString, 12},
-    {gText_UR_EmptyString, 13},
-    {gText_UR_EmptyString, 14},
-    {gText_UR_EmptyString, 15}
+    {gText_EmptyString,  0},
+    {gText_EmptyString,  1},
+    {gText_EmptyString,  2},
+    {gText_EmptyString,  3},
+    {gText_EmptyString,  4},
+    {gText_EmptyString,  5},
+    {gText_EmptyString,  6},
+    {gText_EmptyString,  7},
+    {gText_EmptyString,  8},
+    {gText_EmptyString,  9},
+    {gText_EmptyString, 10},
+    {gText_EmptyString, 11},
+    {gText_EmptyString, 12},
+    {gText_EmptyString, 13},
+    {gText_EmptyString, 14},
+    {gText_EmptyString, 15}
 };
 
 static const struct ListMenuTemplate sListMenuTemplate_Unused = {
@@ -440,6 +444,9 @@ ALIGNED(4) static const u8 sAcceptedActivityIds_Unk12[] = {
     0xFF
 };
 
+ALIGNED(4) static const u8 sAcceptedActivityIds_BattleTower[]     = {ACTIVITY_BATTLE_TOWER, 0xff};
+ALIGNED(4) static const u8 sAcceptedActivityIds_BattleTowerOpen[] = {ACTIVITY_BATTLE_TOWER_OPEN, 0xff};
+
 static const u8 *const sAcceptedActivityIds[NUM_LINK_GROUP_TYPES] = {
     [LINK_GROUP_SINGLE_BATTLE]     = sAcceptedActivityIds_SingleBattle,
     [LINK_GROUP_DOUBLE_BATTLE]     = sAcceptedActivityIds_DoubleBattle,
@@ -454,6 +461,8 @@ static const u8 *const sAcceptedActivityIds[NUM_LINK_GROUP_TYPES] = {
     [LINK_GROUP_UNION_ROOM_INIT]   = sAcceptedActivityIds_Init,
     [LINK_GROUP_UNK_11]            = sAcceptedActivityIds_Unk11,
     [LINK_GROUP_UNK_12]            = sAcceptedActivityIds_Unk12,
+    [LINK_GROUP_BATTLE_TOWER]      = sAcceptedActivityIds_BattleTower,
+    [LINK_GROUP_BATTLE_TOWER_OPEN] = sAcceptedActivityIds_BattleTowerOpen
 };
 
 static const u8 sLinkGroupToURoomActivity[] = {
@@ -465,7 +474,9 @@ static const u8 sLinkGroupToURoomActivity[] = {
     [LINK_GROUP_BERRY_CRUSH]   = ACTIVITY_BERRY_CRUSH,
     [LINK_GROUP_BERRY_PICKING] = ACTIVITY_BERRY_PICK,
     [LINK_GROUP_WONDER_CARD]   = ACTIVITY_WONDER_CARD,
-    [LINK_GROUP_WONDER_NEWS]   = ACTIVITY_WONDER_NEWS
+    [LINK_GROUP_WONDER_NEWS]   = ACTIVITY_WONDER_NEWS,
+    [LINK_GROUP_BATTLE_TOWER]      = ACTIVITY_BATTLE_TOWER,
+    [LINK_GROUP_BATTLE_TOWER_OPEN] = ACTIVITY_BATTLE_TOWER_OPEN
 };
 
 // Unused

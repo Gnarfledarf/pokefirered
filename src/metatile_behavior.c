@@ -1110,3 +1110,19 @@ bool8 MetatileBehavior_IsSidewaysStairsLeftSideAny(u8 metatileBehavior)
     else
         return FALSE;
 }
+
+bool8 MetatileBehavior_IsBattlePyramidWarp(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_BATTLE_PYRAMID_WARP)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsRockClimbable(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_ROCK_CLIMB)
+        return TRUE;
+    else
+        return FALSE;
+}

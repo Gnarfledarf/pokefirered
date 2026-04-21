@@ -61,12 +61,6 @@ const u32 gMetatileAttributes_ViridianGym[] = INCBIN_U32("data/tilesets/secondar
 const u16 gMetatiles_Building[] = INCBIN_U16("data/tilesets/primary/building/metatiles.bin");
 const u32 gMetatileAttributes_Building[] = INCBIN_U32("data/tilesets/primary/building/metatile_attributes.bin");
 
-const u16 gMetatiles_Dummy1[] = INCBIN_U16("data/tilesets/secondary/dummy_1/metatiles.bin");
-const u32 gMetatileAttributes_Dummy1[] = INCBIN_U32("data/tilesets/secondary/dummy_1/metatile_attributes.bin");
-
-const u16 gMetatiles_HoennBuilding[] = INCBIN_U16("data/tilesets/secondary/hoenn_building/metatiles.bin");
-const u32 gMetatileAttributes_HoennBuilding[] = INCBIN_U32("data/tilesets/secondary/hoenn_building/metatile_attributes.bin");
-
 const u16 gMetatiles_BikeShop[] = INCBIN_U16("data/tilesets/secondary/bike_shop/metatiles.bin");
 const u32 gMetatileAttributes_BikeShop[] = INCBIN_U32("data/tilesets/secondary/bike_shop/metatile_attributes.bin");
 
@@ -91,14 +85,8 @@ const u32 gMetatileAttributes_Lab[] = INCBIN_U32("data/tilesets/secondary/lab/me
 const u16 gMetatiles_SSAnne[] = INCBIN_U16("data/tilesets/secondary/ss_anne/metatiles.bin");
 const u32 gMetatileAttributes_SSAnne[] = INCBIN_U32("data/tilesets/secondary/ss_anne/metatile_attributes.bin");
 
-const u16 gMetatiles_Dummy2[] = INCBIN_U16("data/tilesets/secondary/dummy_2/metatiles.bin");
-const u32 gMetatileAttributes_Dummy2[] = INCBIN_U32("data/tilesets/secondary/dummy_2/metatile_attributes.bin");
-
 const u16 gMetatiles_ViridianForest[] = INCBIN_U16("data/tilesets/secondary/viridian_forest/metatiles.bin");
 const u32 gMetatileAttributes_ViridianForest[] = INCBIN_U32("data/tilesets/secondary/viridian_forest/metatile_attributes.bin");
-
-const u16 gMetatiles_UnusedGatehouse1[] = INCBIN_U16("data/tilesets/secondary/unused_gatehouse_1/metatiles.bin");
-const u32 gMetatileAttributes_UnusedGatehouse1[] = INCBIN_U32("data/tilesets/secondary/unused_gatehouse_1/metatile_attributes.bin");
 
 const u16 gMetatiles_RockTunnel[] = INCBIN_U16("data/tilesets/secondary/rock_tunnel/metatiles.bin");
 const u32 gMetatileAttributes_RockTunnel[] = INCBIN_U32("data/tilesets/secondary/rock_tunnel/metatile_attributes.bin");
@@ -108,9 +96,6 @@ const u32 gMetatileAttributes_DiglettsCave[] = INCBIN_U32("data/tilesets/seconda
 
 const u16 gMetatiles_SeafoamIslands[] = INCBIN_U16("data/tilesets/secondary/seafoam_islands/metatiles.bin");
 const u32 gMetatileAttributes_SeafoamIslands[] = INCBIN_U32("data/tilesets/secondary/seafoam_islands/metatile_attributes.bin");
-
-const u16 gMetatiles_UnusedGatehouse2[] = INCBIN_U16("data/tilesets/secondary/unused_gatehouse_2/metatiles.bin");
-const u32 gMetatileAttributes_UnusedGatehouse2[] = INCBIN_U32("data/tilesets/secondary/unused_gatehouse_2/metatile_attributes.bin");
 
 const u16 gMetatiles_CeruleanCave[] = INCBIN_U16("data/tilesets/secondary/cerulean_cave/metatiles.bin");
 const u32 gMetatileAttributes_CeruleanCave[] = INCBIN_U32("data/tilesets/secondary/cerulean_cave/metatile_attributes.bin");
@@ -162,12 +147,6 @@ const u32 gMetatileAttributes_Condominiums[] = INCBIN_U32("data/tilesets/seconda
 
 const u16 gMetatiles_BurgledHouse[] = INCBIN_U16("data/tilesets/secondary/burgled_house/metatiles.bin");
 const u32 gMetatileAttributes_BurgledHouse[] = INCBIN_U32("data/tilesets/secondary/burgled_house/metatile_attributes.bin");
-
-const u16 gMetatiles_Dummy3[] = INCBIN_U16("data/tilesets/secondary/dummy_3/metatiles.bin");
-const u32 gMetatileAttributes_Dummy3[] = INCBIN_U32("data/tilesets/secondary/dummy_3/metatile_attributes.bin");
-
-const u16 gMetatiles_Dummy4[] = INCBIN_U16("data/tilesets/secondary/dummy_4/metatiles.bin");
-const u32 gMetatileAttributes_Dummy4[] = INCBIN_U32("data/tilesets/secondary/dummy_4/metatile_attributes.bin");
 
 const u16 gMetatiles_MtEmber[] = INCBIN_U16("data/tilesets/secondary/mt_ember/metatiles.bin");
 const u32 gMetatileAttributes_MtEmber[] = INCBIN_U32("data/tilesets/secondary/mt_ember/metatile_attributes.bin");
@@ -291,3 +270,48 @@ const u32 gMetatileAttributes_IndigoPlateauAutumn[] = INCBIN_U32("data/tilesets/
 
 const u16 gMetatiles_IndigoPlateauWinter[] = INCBIN_U16("data/tilesets/secondary/indigo_plateau_winter/metatiles.bin");
 const u32 gMetatileAttributes_IndigoPlateauWinter[] = INCBIN_U32("data/tilesets/secondary/indigo_plateau_winter/metatile_attributes.bin");
+
+const u16 gMetatiles_BattleFrontierOutside[] = INCBIN_U16("data/tilesets/primary/battle_frontier_outside/metatiles.bin");
+const u32 gMetatileAttributes_BattleFrontierOutside[] = INCBIN_U32("data/tilesets/primary/battle_frontier_outside/metatile_attributes.bin");
+
+const u16 gMetatiles_BattleFrontierInside[] = INCBIN_U16("data/tilesets/primary/battle_frontier_inside/metatiles.bin");
+const u32 gMetatileAttributes_BattleFrontierInside[] = INCBIN_U32("data/tilesets/primary/battle_frontier_inside/metatile_attributes.bin");
+
+const u16 gMetatiles_BattleFrontierOutsideWest[] = INCBIN_U16("data/tilesets/secondary/battle_frontier_outside_west/metatiles.bin");
+const u32 gMetatileAttributes_BattleFrontierOutsideWest[] = INCBIN_U32("data/tilesets/secondary/battle_frontier_outside_west/metatile_attributes.bin");
+
+const u16 gMetatiles_BattleFrontierOutsideEast[] = INCBIN_U16("data/tilesets/secondary/battle_frontier_outside_east/metatiles.bin");
+const u32 gMetatileAttributes_BattleFrontierOutsideEast[] = INCBIN_U32("data/tilesets/secondary/battle_frontier_outside_east/metatile_attributes.bin");
+
+const u16 gMetatiles_BattleFrontierGeneral[] = INCBIN_U16("data/tilesets/secondary/battle_frontier_general/metatiles.bin");
+const u32 gMetatileAttributes_BattleFrontierGeneral[] = INCBIN_U32("data/tilesets/secondary/battle_frontier_general/metatile_attributes.bin");
+
+const u16 gMetatiles_BattleFrontierBuilding[] = INCBIN_U16("data/tilesets/secondary/battle_frontier_building/metatiles.bin");
+const u32 gMetatileAttributes_BattleFrontierBuilding[] = INCBIN_U32("data/tilesets/secondary/battle_frontier_building/metatile_attributes.bin");
+
+const u16 gMetatiles_BattleArena[] = INCBIN_U16("data/tilesets/secondary/battle_arena/metatiles.bin");
+const u32 gMetatileAttributes_BattleArena[] = INCBIN_U32("data/tilesets/secondary/battle_arena/metatile_attributes.bin");
+
+const u16 gMetatiles_BattlePalaceGeneral[] = INCBIN_U16("data/tilesets/secondary/battle_palace_general/metatiles.bin");
+const u32 gMetatileAttributes_BattlePalaceGeneral[] = INCBIN_U32("data/tilesets/secondary/battle_palace_general/metatile_attributes.bin");
+
+const u16 gMetatiles_BattlePalaceBuilding[] = INCBIN_U16("data/tilesets/secondary/battle_palace_building/metatiles.bin");
+const u32 gMetatileAttributes_BattlePalaceBuilding[] = INCBIN_U32("data/tilesets/secondary/battle_palace_building/metatile_attributes.bin");
+
+const u16 gMetatiles_BattlePyramid[] = INCBIN_U16("data/tilesets/secondary/battle_pyramid/metatiles.bin");
+const u32 gMetatileAttributes_BattlePyramid[] = INCBIN_U32("data/tilesets/secondary/battle_pyramid/metatile_attributes.bin");
+
+const u16 gMetatiles_BattleFrontierRankingHall[] = INCBIN_U16("data/tilesets/secondary/battle_frontier_ranking_hall/metatiles.bin");
+const u32 gMetatileAttributes_BattleFrontierRankingHall[] = INCBIN_U32("data/tilesets/secondary/battle_frontier_ranking_hall/metatile_attributes.bin");
+
+const u16 gMetatiles_ArtisanCave[] = INCBIN_U16("data/tilesets/secondary/artisan_cave/metatiles.bin");
+const u32 gMetatileAttributes_ArtisanCave[] = INCBIN_U32("data/tilesets/secondary/artisan_cave/metatile_attributes.bin");
+
+const u16 gMetatiles_BattlePike[] = INCBIN_U16("data/tilesets/secondary/battle_pike/metatiles.bin");
+const u32 gMetatileAttributes_BattlePike[] = INCBIN_U32("data/tilesets/secondary/battle_pike/metatile_attributes.bin");
+
+const u16 gMetatiles_BattleDome[] = INCBIN_U16("data/tilesets/secondary/battle_dome/metatiles.bin");
+const u32 gMetatileAttributes_BattleDome[] = INCBIN_U32("data/tilesets/secondary/battle_dome/metatile_attributes.bin");
+
+const u16 gMetatiles_BattleFactory[] = INCBIN_U16("data/tilesets/secondary/battle_factory/metatiles.bin");
+const u32 gMetatileAttributes_BattleFactory[] = INCBIN_U32("data/tilesets/secondary/battle_factory/metatile_attributes.bin");

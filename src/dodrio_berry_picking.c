@@ -365,6 +365,17 @@ static bool32 IsGfxFuncActive(void);
 static u32 IncrementWithLimit(u32, u32);
 static u32 Min(u32, u32);
 
+static const u8 gText_BerryPickingResults[] = _("Announcing BERRY-PICKING results!");
+static const u8 gText_10P30P50P50P[] = _("10P     30P     50P     {EMOJI_MINUS}50P");
+static const u8 gText_AnnouncingRankings[] = _("Announcing rankings!");
+static const u8 gText_AnnouncingPrizes[] = _("Announcing prizes!");
+static const u8 gText_FirstPlacePrize[] = _("The first-place winner gets\nthis {DYNAMIC 00}!");
+static const u8 gText_CantHoldAnyMore[] = _("You can't hold any more...");
+static const u8 gText_FilledStorageSpace[] = _("It filled its storage space.");
+static const u8 gText_WantToPlayAgain[] = _("Want to play again?");
+static const u8 gText_SomeoneDroppedOut[] = _("Somebody dropped out.\nThe link will be canceled.");
+static const u8 gText_SpacePoints[] = _(" points");
+
 // Unused duplicate
 static const struct BgTemplate sBgTemplates_Duplicate[] =
 {
@@ -622,16 +633,16 @@ static const u32 sDuplicateGfx[] = INCBIN_U32("graphics/dodrio_berry_picking/bg.
                                               "graphics/dodrio_berry_picking/shiny.gbapal",
                                               "graphics/dodrio_berry_picking/status.gbapal",
                                               "graphics/dodrio_berry_picking/berries.gbapal",
-                                              "graphics/dodrio_berry_picking/berries.4bpp.lz",
+                                              "graphics/dodrio_berry_picking/berries.4bpp.smol",
                                               "graphics/dodrio_berry_picking/cloud.gbapal",
-                                              "graphics/dodrio_berry_picking/bg.4bpp.lz",
-                                              "graphics/dodrio_berry_picking/tree_border.4bpp.lz",
-                                              "graphics/dodrio_berry_picking/status.4bpp.lz",
-                                              "graphics/dodrio_berry_picking/cloud.4bpp.lz",
-                                              "graphics/dodrio_berry_picking/dodrio.4bpp.lz",
-                                              "graphics/dodrio_berry_picking/bg.bin.lz",
-                                              "graphics/dodrio_berry_picking/tree_border_right.bin.lz",
-                                              "graphics/dodrio_berry_picking/tree_border_left.bin.lz");
+                                              "graphics/dodrio_berry_picking/bg.4bpp.smol",
+                                              "graphics/dodrio_berry_picking/tree_border.4bpp.smol",
+                                              "graphics/dodrio_berry_picking/status.4bpp.smol",
+                                              "graphics/dodrio_berry_picking/cloud.4bpp.smol",
+                                              "graphics/dodrio_berry_picking/dodrio.4bpp.smol",
+                                              "graphics/dodrio_berry_picking/bg.bin.smolTM",
+                                              "graphics/dodrio_berry_picking/tree_border_right.bin.smolTM",
+                                              "graphics/dodrio_berry_picking/tree_border_left.bin.smolTM");
 
 static const u8 sBerryFallDelays[][3] =
 {
@@ -2700,7 +2711,7 @@ static void ResetPickState(void)
     sGame->players[sGame->multiplayerId].comm.pickState = PICK_NONE;
 }
 
-static u16 GetPrizeItemId(void)
+static enum Item GetPrizeItemId(void)
 {
     return sGame->berryResults[sGame->multiplayerId][BERRY_PRIZE] + FIRST_BERRY_INDEX;
 }
@@ -2734,7 +2745,7 @@ static u32 GetScore(u8 playerId)
 
     // Get points lost for berries missed
     scoreLost = sGame->berryResults[playerId][BERRY_MISSED] * sBerryScoreMultipliers[BERRY_MISSED];
-    
+
     if (score <= scoreLost)
         return 0;
     else
@@ -2857,7 +2868,7 @@ enum {
 static u8 TryGivePrize(void)
 {
     u8 multiplayerId = sGame->multiplayerId;
-    u16 itemId = GetPrizeItemId();
+    enum Item itemId = GetPrizeItemId();
 
     if (GetScore(multiplayerId) != GetHighestScore())
         return NO_PRIZE;
@@ -2926,7 +2937,14 @@ static const struct WindowTemplate sWindowTemplates_Records =
     .baseBlock = 1,
 };
 
-static const u8 *const sRecordsTexts[NUM_RECORD_TYPES + 1] = {gText_BerryPickingRecords, gText_BerriesPicked, gText_BestScore, gText_BerriesInRowFivePlayers};
+static const u8 *const sRecordsTexts[NUM_RECORD_TYPES + 1] =
+{
+    COMPOUND_STRING("DODRIO BERRY-PICKING RECORDS"),
+    COMPOUND_STRING("BERRIES picked:"),
+    COMPOUND_STRING("Best score:"),
+    COMPOUND_STRING("BERRIES picked in a row with\nfive players:"),
+};
+
 static const u8 sRecordNumMaxDigits[NUM_RECORD_TYPES] = {4, 7, 4};
 
 ALIGNED(4)
@@ -3287,16 +3305,16 @@ static const u16 sDodrioNormal_Pal[]        = INCBIN_U16("graphics/dodrio_berry_
 static const u16 sDodrioShiny_Pal[]         = INCBIN_U16("graphics/dodrio_berry_picking/shiny.gbapal");
 static const u16 sStatus_Pal[]              = INCBIN_U16("graphics/dodrio_berry_picking/status.gbapal");
 static const u16 sBerries_Pal[]             = INCBIN_U16("graphics/dodrio_berry_picking/berries.gbapal");
-static const u32 sBerries_Gfx[]             = INCBIN_U32("graphics/dodrio_berry_picking/berries.4bpp.lz");
+static const u32 sBerries_Gfx[]             = INCBIN_U32("graphics/dodrio_berry_picking/berries.4bpp.smol");
 static const u16 sCloud_Pal[]               = INCBIN_U16("graphics/dodrio_berry_picking/cloud.gbapal");
-static const u32 sBg_Gfx[]                  = INCBIN_U32("graphics/dodrio_berry_picking/bg.4bpp.lz");
-static const u32 sTreeBorder_Gfx[]          = INCBIN_U32("graphics/dodrio_berry_picking/tree_border.4bpp.lz");
-static const u32 sStatus_Gfx[]              = INCBIN_U32("graphics/dodrio_berry_picking/status.4bpp.lz");
-static const u32 sCloud_Gfx[]               = INCBIN_U32("graphics/dodrio_berry_picking/cloud.4bpp.lz");
-static const u32 sDodrio_Gfx[]              = INCBIN_U32("graphics/dodrio_berry_picking/dodrio.4bpp.lz");
-static const u32 sBg_Tilemap[]              = INCBIN_U32("graphics/dodrio_berry_picking/bg.bin.lz");
-static const u32 sTreeBorderRight_Tilemap[] = INCBIN_U32("graphics/dodrio_berry_picking/tree_border_right.bin.lz");
-static const u32 sTreeBorderLeft_Tilemap[]  = INCBIN_U32("graphics/dodrio_berry_picking/tree_border_left.bin.lz");
+static const u32 sBg_Gfx[]                  = INCBIN_U32("graphics/dodrio_berry_picking/bg.4bpp.smol");
+static const u32 sTreeBorder_Gfx[]          = INCBIN_U32("graphics/dodrio_berry_picking/tree_border.4bpp.smol");
+static const u32 sStatus_Gfx[]              = INCBIN_U32("graphics/dodrio_berry_picking/status.4bpp.smol");
+static const u32 sCloud_Gfx[]               = INCBIN_U32("graphics/dodrio_berry_picking/cloud.4bpp.smol");
+static const u32 sDodrio_Gfx[]              = INCBIN_U32("graphics/dodrio_berry_picking/dodrio.4bpp.smol");
+static const u32 sBg_Tilemap[]              = INCBIN_U32("graphics/dodrio_berry_picking/bg.bin.smolTM");
+static const u32 sTreeBorderRight_Tilemap[] = INCBIN_U32("graphics/dodrio_berry_picking/tree_border_right.bin.smolTM");
+static const u32 sTreeBorderLeft_Tilemap[]  = INCBIN_U32("graphics/dodrio_berry_picking/tree_border_left.bin.smolTM");
 
 static const struct OamData sOamData_Dodrio =
 {
@@ -4210,11 +4228,11 @@ static const struct WinCoords * const sNameWindowCoords[MAX_RFU_PLAYERS] =
 
 static const u8 *const sRankingTexts[MAX_RFU_PLAYERS] =
 {
-    gText_1Colon,
-    gText_2Colon,
-    gText_3Colon,
-    gText_4Colon,
-    gText_5Colon,
+    COMPOUND_STRING("1:"),
+    COMPOUND_STRING("2:"),
+    COMPOUND_STRING("3:"),
+    COMPOUND_STRING("4:"),
+    COMPOUND_STRING("5:"),
 };
 
 static const u16 sResultsXCoords[] = {92, 132, 172, 212};
@@ -4471,7 +4489,7 @@ static void ShowResults(void)
 
                 ConvertIntToDecimalStringN(strBuff_Large, berriesPicked, STR_CONV_MODE_LEFT_ALIGN, 4);
                 width = GetStringWidth(FONT_SMALL, strBuff_Large, -1);
-                
+
                 // If player got the most of a berry type, highlight their number in red
                 if (maxBerriesPicked == berriesPicked && maxBerriesPicked != 0)
                     AddTextPrinterParameterized3(sGfx->windowIds[1], FONT_SMALL, sResultsXCoords[j] - width, sResultsYCoords[i], sTextColorTable[1], TEXT_SKIP_DRAW, strBuff_Large);
@@ -4630,7 +4648,7 @@ static void Msg_WantToPlayAgain(void)
         AddTextPrinterParameterized(sGfx->windowIds[WIN_PLAY_AGAIN], FONT_NORMAL, gText_WantToPlayAgain, 0, 6, TEXT_SKIP_DRAW, NULL);
         AddTextPrinterParameterized(sGfx->windowIds[WIN_YES_NO], FONT_NORMAL, gText_Yes, 8, 2, TEXT_SKIP_DRAW, NULL);
         AddTextPrinterParameterized(sGfx->windowIds[WIN_YES_NO], FONT_NORMAL, gText_No, 8, 16, TEXT_SKIP_DRAW, NULL);
-        AddTextPrinterParameterized(sGfx->windowIds[WIN_YES_NO], FONT_NORMAL, gText_SelectorArrow2, 0, 2, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(sGfx->windowIds[WIN_YES_NO], FONT_NORMAL, gText_SelectorArrow, 0, 2, TEXT_SKIP_DRAW, NULL);
         CopyWindowToVram(sGfx->windowIds[WIN_PLAY_AGAIN], COPYWIN_GFX);
         CopyWindowToVram(sGfx->windowIds[WIN_YES_NO], COPYWIN_GFX);
         sGfx->state++;
@@ -4653,7 +4671,7 @@ static void Msg_WantToPlayAgain(void)
         FillWindowPixelBuffer(sGfx->windowIds[WIN_YES_NO], PIXEL_FILL(1));
         AddTextPrinterParameterized(sGfx->windowIds[WIN_YES_NO], FONT_NORMAL, gText_Yes, 8, 2, TEXT_SKIP_DRAW, NULL);
         AddTextPrinterParameterized(sGfx->windowIds[WIN_YES_NO], FONT_NORMAL, gText_No, 8, 16, TEXT_SKIP_DRAW, NULL);
-        AddTextPrinterParameterized(sGfx->windowIds[WIN_YES_NO], FONT_NORMAL, gText_SelectorArrow2, 0, y == 1 ? 2 : 16, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(sGfx->windowIds[WIN_YES_NO], FONT_NORMAL, gText_SelectorArrow, 0, y == 1 ? 2 : 16, TEXT_SKIP_DRAW, NULL);
         CopyWindowToVram(sGfx->windowIds[WIN_YES_NO], COPYWIN_FULL);
 
         // Increment state only if A or B button have been pressed.
@@ -4706,7 +4724,7 @@ static void Msg_SavingDontTurnOff(void)
     {
     case 0:
         DrawDialogueFrame(0, FALSE);
-        AddTextPrinterParameterized2(0, FONT_NORMAL, gText_SavingDontTurnOffThePower2, 0, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+        AddTextPrinterParameterized2(0, FONT_NORMAL, gText_SavingDontTurnOffThePower, 0, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
         sGfx->state++;
         break;
     case 1:
@@ -4744,7 +4762,7 @@ static void Msg_CommunicationStandby(void)
         break;
     case 1:
         FillWindowPixelBuffer(sGfx->windowIds[0], PIXEL_FILL(1));
-        AddTextPrinterParameterized(sGfx->windowIds[0], FONT_NORMAL, gText_CommunicationStandby3, 0, 6, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(sGfx->windowIds[0], FONT_NORMAL, gText_CommunicationStandby, 0, 6, TEXT_SKIP_DRAW, NULL);
         CopyWindowToVram(sGfx->windowIds[0], COPYWIN_GFX);
         sGfx->state++;
         break;

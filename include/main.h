@@ -37,14 +37,14 @@ struct Main
 
     /*0x439*/ u8 oamLoadDisabled:1;
     /*0x439*/ u8 inBattle:1;
-    /*0x439*/ u8 field_439_x4:1;
+    /*0x439*/ u8 anyLinkBattlerHasFrontierPass:1;
 };
 
 #define GAME_CODE_LENGTH 4
 extern const char RomHeaderGameCode[GAME_CODE_LENGTH];
 extern const char RomHeaderSoftwareVersion;
 
-extern const u8 gGameVersion;
+extern const enum GameVersion gGameVersion;
 extern const u8 gGameLanguage;
 
 extern u16 gKeyRepeatStartDelay;

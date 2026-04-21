@@ -1,10 +1,12 @@
 #include "global.h"
-#include "gflib.h"
 #include "decompress.h"
 #include "event_data.h"
-#include "link.h"
 #include "link_rfu.h"
+#include "link.h"
+#include "malloc.h"
 #include "random.h"
+#include "string_util.h"
+#include "constants/characters.h"
 
 enum {
     WIRELESS_STATUS_ANIM_3_BARS,
@@ -32,7 +34,7 @@ struct RfuUnusedQueue
 static EWRAM_DATA u8 sWirelessStatusIndicatorSpriteId = 0;
 
 static const u16 sWirelessLinkIconPalette[] = INCBIN_U16("graphics/link/wireless_icon.gbapal");
-static const u32 sWirelessLinkIconPic[] = INCBIN_U32("graphics/link/wireless_icon.4bpp.lz");
+static const u32 sWirelessLinkIconPic[] = INCBIN_U32("graphics/link/wireless_icon.4bpp.smol");
 
 // Most of the below two tables won't make sense with ASCII encoding.
 static const u8 sWireless_ASCIItoRSETable[] = {

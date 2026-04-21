@@ -1,13 +1,14 @@
 #include "global.h"
 #include "bike.h"
+#include "event_object_movement.h"
+#include "field_effect_helpers.h"
+#include "field_effect.h"
+#include "field_player_avatar.h"
+#include "fishing.h"
+#include "quest_log_player.h"
+#include "quest_log.h"
 #include "script.h"
 #include "task.h"
-#include "field_player_avatar.h"
-#include "event_object_movement.h"
-#include "field_effect.h"
-#include "field_effect_helpers.h"
-#include "quest_log.h"
-#include "quest_log_player.h"
 
 static void QL_GfxTransition_Normal(void);
 static void QL_GfxTransition_Bike(void);
@@ -36,7 +37,7 @@ static void (*const sQLGfxTransitions[])(void) = {
 
 void QuestLogUpdatePlayerSprite(u8 state)
 {
-    if (state < NELEMS(sQLGfxTransitions))
+    if (state < ARRAY_COUNT(sQLGfxTransitions))
         sQLGfxTransitions[state]();
 }
 
@@ -58,18 +59,18 @@ void QuestLogCallUpdatePlayerSprite(u8 state)
 static void QL_GfxTransition_Normal(void)
 {
     struct ObjectEvent *objectEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
-    QL_SetObjectGraphicsId(objectEvent, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_NORMAL));
+    QL_SetObjectGraphicsId(objectEvent, GetPlayerAvatarGfxForState(PLAYER_AVATAR_STATE_NORMAL));
     ObjectEventTurn(objectEvent, objectEvent->movementDirection);
-    SetPlayerAvatarStateMask(PLAYER_AVATAR_FLAG_ON_FOOT);
+    SetPlayerAvatarState(PLAYER_AVATAR_STATE_NORMAL);
 }
 
 static void QL_GfxTransition_Bike(void)
 {
     struct ObjectEvent *objectEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
-    QL_SetObjectGraphicsId(objectEvent, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_MACH_BIKE));
+    QL_SetObjectGraphicsId(objectEvent, GetPlayerAvatarGfxForState(PLAYER_AVATAR_STATE_MACH_BIKE));
     ObjectEventTurn(objectEvent, objectEvent->movementDirection);
-    SetPlayerAvatarStateMask(PLAYER_AVATAR_FLAG_MACH_BIKE);
-    BikeClearState(0, 0);
+    SetPlayerAvatarState(PLAYER_AVATAR_STATE_MACH_BIKE);
+    BikeClearState();
 }
 
 static void QL_GfxTransition_Fish(void)
@@ -87,7 +88,7 @@ static void QL_GfxTransition_Fish(void)
     }
     else
     {
-        QL_SetObjectGraphicsId(objectEvent, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_FISHING));
+        QL_SetObjectGraphicsId(objectEvent, GetPlayerAvatarGfxForState(PLAYER_AVATAR_STATE_FISHING));
         StartSpriteAnim(sprite, GetFishingDirectionAnimNum(objectEvent->facingDirection));
     }
 }
@@ -102,7 +103,7 @@ static void Task_QLFishMovement(u8 taskId)
         case 0:
             ObjectEventClearHeldMovementIfActive(objectEvent);
             objectEvent->enableAnim = TRUE;
-            QL_SetObjectGraphicsId(objectEvent, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_FISHING));
+            QL_SetObjectGraphicsId(objectEvent, GetPlayerAvatarGfxForState(PLAYER_AVATAR_STATE_FISHING));
             StartSpriteAnim(sprite, GetFishingDirectionAnimNum(objectEvent->facingDirection));
             gTasks[taskId].data[0]++;
             gTasks[taskId].data[1] = 0;
@@ -122,10 +123,10 @@ static void Task_QLFishMovement(u8 taskId)
             AlignFishingAnimationFrames();
             if (sprite->animEnded)
             {
-                if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING))
-                    QL_SetObjectGraphicsId(objectEvent, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_NORMAL));
+                if (gPlayerAvatar.playerState != PLAYER_AVATAR_STATE_SURFING)
+                    QL_SetObjectGraphicsId(objectEvent, GetPlayerAvatarGfxForState(PLAYER_AVATAR_STATE_NORMAL));
                 else
-                    QL_SetObjectGraphicsId(objectEvent, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_SURFING));
+                    QL_SetObjectGraphicsId(objectEvent, GetPlayerAvatarGfxForState(PLAYER_AVATAR_STATE_SURFING));
                 ObjectEventTurn(objectEvent, objectEvent->movementDirection);
                 sprite->x2 = 0;
                 sprite->y2 = 0;
@@ -141,11 +142,11 @@ static void QL_GfxTransition_StartSurf(void)
     struct ObjectEvent *objectEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
     u8 fieldEffectId;
 
-    if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING))
+    if (gPlayerAvatar.playerState != PLAYER_AVATAR_STATE_SURFING)
     {
-        QL_SetObjectGraphicsId(objectEvent, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_SURFING));
+        QL_SetObjectGraphicsId(objectEvent, GetPlayerAvatarGfxForState(PLAYER_AVATAR_STATE_SURFING));
         ObjectEventTurn(objectEvent, objectEvent->movementDirection);
-        SetPlayerAvatarStateMask(PLAYER_AVATAR_FLAG_SURFING);
+        SetPlayerAvatarState(PLAYER_AVATAR_STATE_SURFING);
         gFieldEffectArguments[0] = objectEvent->currentCoords.x;
         gFieldEffectArguments[1] = objectEvent->currentCoords.y;
         gFieldEffectArguments[2] = gPlayerAvatar.objectEventId;

@@ -1,7 +1,7 @@
 #include "global.h"
-#include "gflib.h"
 #include "decompress.h"
 #include "digit_obj_util.h"
+#include "malloc.h"
 
 struct DigitPrinterAlloc
 {
@@ -36,7 +36,6 @@ static void DrawNumObjsMinusInFront(struct DigitPrinter *objWork, s32 num, bool3
 static void DrawNumObjsMinusInBack(struct DigitPrinter *objWork, s32 num, bool32 sign);
 static bool32 SharesTileWithAnyActive(u32 id);
 static bool32 SharesPalWithAnyActive(u32 id);
-static u8 GetTilesPerImage(u32 shape, u32 size);
 
 // ewram
 static EWRAM_DATA struct DigitPrinterAlloc *sOamWork = {0};
@@ -65,8 +64,8 @@ static const u8 sTilesPerImage[4][4] =
 };
 
 const u16 gMinigameDigits_Pal[] = INCBIN_U16("graphics/misc/minigame_digits.gbapal");
-const u32 gMinigameDigits_Gfx[] = INCBIN_U32("graphics/misc/minigame_digits.4bpp.lz");
-static const u32 sUnusedMinigameDigits_Gfx[] = INCBIN_U32("graphics/misc/minigame_digits_unused.4bpp.lz");
+const u32 gMinigameDigits_Gfx[] = INCBIN_U32("graphics/misc/minigame_digits.4bpp.smol");
+static const u32 sUnusedMinigameDigits_Gfx[] = INCBIN_U32("graphics/misc/minigame_digits_unused.4bpp.smol");
 
 // code
 bool32 DigitObjUtil_Init(u32 count)
@@ -445,7 +444,7 @@ static bool32 SharesPalWithAnyActive(u32 id)
     return FALSE;
 }
 
-static u8 GetTilesPerImage(u32 shape, u32 size)
+u8 GetTilesPerImage(u32 shape, u32 size)
 {
     return 1 << GetSpanPerImage(shape, size);
 }

@@ -1,9 +1,10 @@
 #include "global.h"
-#include "gflib.h"
 #include "battle.h"
 #include "event_data.h"
 #include "event_scripts.h"
 #include "random.h"
+#include "string_util.h"
+#include "constants/characters.h"
 #include "constants/trainer_fan_club.h"
 
 struct TrainerFanClub
@@ -34,6 +35,9 @@ static void BufferFanClubTrainerName(u8 whichLinkTrainer, u8 whichNPCTrainer);
 static void UpdateTrainerFansAfterLinkBattle(struct TrainerFanClub *);
 static bool8 DidPlayerGetFirstFans(struct TrainerFanClub * );
 static void SetPlayerGotFirstFans(struct TrainerFanClub *);
+
+static const u8 sText_LtSurge[] = _("LT. SURGE");
+static const u8 sText_Koga[] = _("KOGA");
 
 void ResetTrainerFanClub(void)
 {
@@ -67,7 +71,7 @@ static void UpdateTrainerFanClubGameClear(struct TrainerFanClub *fanClub)
         SetPlayerGotFirstFans(fanClub);
         SetInitialFansOfPlayer(fanClub);
         VarSet(VAR_FANCLUB_LOSE_FAN_TIMER, gSaveBlock2Ptr->playTimeHours);
-        FlagClear(FLAG_HIDE_SAFFRON_FAN_CLUB_BLACKBELT);
+        FlagClear(FLAG_HIDE_SAFFRON_FAN_CLUB_BLACK_BELT);
         FlagClear(FLAG_HIDE_SAFFRON_FAN_CLUB_ROCKER);
         FlagClear(FLAG_HIDE_SAFFRON_FAN_CLUB_WOMAN);
         FlagClear(FLAG_HIDE_SAFFRON_FAN_CLUB_BEAUTY);
@@ -271,7 +275,7 @@ void Script_BufferFanClubTrainerName(void)
         break;
     }
 #if FREE_LINK_BATTLE_RECORDS == FALSE
-    BufferFanClubTrainerName(&gSaveBlock2Ptr->linkBattleRecords, whichLinkTrainer, whichNPCTrainer);
+    BufferFanClubTrainerName(&gSaveBlock3Ptr->linkBattleRecords, whichLinkTrainer, whichNPCTrainer);
 #else
     BufferFanClubTrainerName(whichLinkTrainer, whichNPCTrainer);
 #endif //FREE_LINK_BATTLE_RECORDS
@@ -290,10 +294,10 @@ static void BufferFanClubTrainerName(struct LinkBattleRecords *linkRecords, u8 w
             StringCopy(gStringVar1, gSaveBlock1Ptr->rivalName);
             break;
         case 1:
-            StringCopy(gStringVar1, gText_LtSurge);
+            StringCopy(gStringVar1, sText_LtSurge);
             break;
         case 2:
-            StringCopy(gStringVar1, gText_Koga);
+            StringCopy(gStringVar1, sText_Koga);
             break;
         default:
             StringCopy(gStringVar1, gSaveBlock1Ptr->rivalName);
@@ -326,10 +330,10 @@ static void BufferFanClubTrainerName(u8 whichLinkTrainer, u8 whichNPCTrainer)
         StringCopy(gStringVar1, gSaveBlock1Ptr->rivalName);
         break;
     case 1:
-        StringCopy(gStringVar1, gText_LtSurge);
+        StringCopy(gStringVar1, sText_LtSurge);
         break;
     case 2:
-        StringCopy(gStringVar1, gText_Koga);
+        StringCopy(gStringVar1, sText_Koga);
         break;
     default:
         StringCopy(gStringVar1, gSaveBlock1Ptr->rivalName);

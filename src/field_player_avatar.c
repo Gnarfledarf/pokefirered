@@ -550,7 +550,7 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
                     PlayerRunSlow(direction);
                 else
                     PlayerRun(direction);
-                    gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
+                    gPlayerAvatar.dashing = TRUE;
                 return;
             }
             else
@@ -571,7 +571,7 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
                         PlayerRunSlow(direction);
                     else
                         PlayerRun(direction);
-                        gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
+                        gPlayerAvatar.dashing = TRUE;
                     return;
                 }
                 return;
@@ -581,14 +581,14 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
             PlayerRunSlow(direction);
         else
             PlayerRun(direction);
-            gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
+            gPlayerAvatar.dashing = TRUE;
         return;
     
         if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
             PlayerRunSlow(direction);
         else
             PlayerRun(direction);
-            gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
+            gPlayerAvatar.dashing = TRUE;
         return;
     }
     else

@@ -94,16 +94,16 @@ static const u8 *const sItemStorageActionDescriptionPtrs[] =
 
 static const struct MenuAction sMenuActions_TopMenu[] =
 {
-    {COMPOUND_STRING("ITEM STORAGE"),   {Task_PlayerPcItemStorage}},
+    {COMPOUND_STRING("Item Storage"),   {Task_PlayerPcItemStorage}},
     {sText_Mailbox,                     {Task_PlayerPcMailbox}},
-    {COMPOUND_STRING("TURN OFF"),       {Task_PlayerPcTurnOff}}
+    {COMPOUND_STRING("Turn off"),       {Task_PlayerPcTurnOff}}
 };
 
 static const u8 sItemOrder_BedroomPC[] = { 0, 1, 2 };
 static const u8 sItemOrder_PlayerPC[] = { 0, 1, 2 };
 
 static const struct MenuAction sMenuActions_ItemPc[] = {
-    {COMPOUND_STRING("WITHDRAW ITEM"), {Task_PlayerPcWithdrawItem}},
+    {COMPOUND_STRING("Withdraw Item"), {Task_PlayerPcWithdrawItem}},
     {gText_DepositItem, {Task_PlayerPcDepositItem}},
     {gText_Cancel, {Task_PlayerPcCancel}}
 };

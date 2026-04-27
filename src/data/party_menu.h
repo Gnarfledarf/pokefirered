@@ -1219,13 +1219,13 @@ static const u8 sPartyMenuActionCounts[] =
 
 static const u8 *const sUnionRoomTradeMessages[] =
 {
-    [UR_TRADE_MSG_NOT_MON_PARTNER_WANTS - 1]       = COMPOUND_STRING("That isn't the type of Pokémon\nthat the other TRAINER wants."),
-    [UR_TRADE_MSG_NOT_EGG - 1]                     = COMPOUND_STRING("That isn't an EGG."),
+    [UR_TRADE_MSG_NOT_MON_PARTNER_WANTS - 1]       = COMPOUND_STRING("That isn't the type of Pokémon\nthat the other Trainer wants."),
+    [UR_TRADE_MSG_NOT_EGG - 1]                     = COMPOUND_STRING("That isn't an Egg."),
     [UR_TRADE_MSG_MON_CANT_BE_TRADED_1 - 1]        = gText_PkmnCantBeTradedNow,
     [UR_TRADE_MSG_MON_CANT_BE_TRADED_2 - 1]        = gText_PkmnCantBeTradedNow,
     [UR_TRADE_MSG_PARTNERS_MON_CANT_BE_TRADED - 1] = gText_OtherTrainersPkmnCantBeTraded,
     [UR_TRADE_MSG_EGG_CANT_BE_TRADED -1]           = gText_EggCantBeTradedNow,
-    [UR_TRADE_MSG_PARTNER_CANT_ACCEPT_MON - 1]     = COMPOUND_STRING("The other TRAINER can't accept\nthat Pokémon now."),
+    [UR_TRADE_MSG_PARTNER_CANT_ACCEPT_MON - 1]     = COMPOUND_STRING("The other Trainer can't accept\nthat Pokémon now."),
     [UR_TRADE_MSG_CANT_TRADE_WITH_PARTNER_1 - 1]   = sText_CantTradeWithTrainer,
     [UR_TRADE_MSG_CANT_TRADE_WITH_PARTNER_2 - 1]   = sText_CantTradeWithTrainer,
 };

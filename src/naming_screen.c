@@ -2059,7 +2059,7 @@ static const struct NamingScreenTemplate sPlayerNamingScreenTemplate =
     .iconFunction = 1,
     .addGenderIcon = 0,
     .initialPage = KBPAGE_LETTERS_UPPER,
-    .title = COMPOUND_STRING("YOUR NAME?"),
+    .title = COMPOUND_STRING("Your name?"),
 };
 
 static const struct NamingScreenTemplate sPcBoxNamingScreenTemplate =
@@ -2069,7 +2069,7 @@ static const struct NamingScreenTemplate sPcBoxNamingScreenTemplate =
     .iconFunction = 2,
     .addGenderIcon = 0,
     .initialPage = KBPAGE_LETTERS_UPPER,
-    .title = COMPOUND_STRING("BOX NAME?"),
+    .title = COMPOUND_STRING("Box name?"),
 };
 
 static const struct NamingScreenTemplate sMonNamingScreenTemplate =
@@ -2089,7 +2089,7 @@ static const struct NamingScreenTemplate sRivalNamingScreenTemplate =
     .iconFunction = 4,
     .addGenderIcon = 0,
     .initialPage = KBPAGE_LETTERS_UPPER,
-    .title = COMPOUND_STRING("RIVAL's NAME?"),
+    .title = COMPOUND_STRING("Rival's name?"),
 };
 
 static const struct NamingScreenTemplate *const sNamingScreenTemplates[] =

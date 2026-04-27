@@ -2939,10 +2939,10 @@ static const struct WindowTemplate sWindowTemplates_Records =
 
 static const u8 *const sRecordsTexts[NUM_RECORD_TYPES + 1] =
 {
-    COMPOUND_STRING("DODRIO BERRY-PICKING RECORDS"),
-    COMPOUND_STRING("BERRIES picked:"),
+    COMPOUND_STRING("Dodrio Berry-Picking Records"),
+    COMPOUND_STRING("Berries picked:"),
     COMPOUND_STRING("Best score:"),
-    COMPOUND_STRING("BERRIES picked in a row with\nfive players:"),
+    COMPOUND_STRING("Berries picked in a row with\nfive players:"),
 };
 
 static const u8 sRecordNumMaxDigits[NUM_RECORD_TYPES] = {4, 7, 4};

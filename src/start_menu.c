@@ -169,7 +169,7 @@ static const struct MenuAction sStartMenuActionTable[] = {
     [MENU_ACTION_POKEMON]           = {gText_MenuPokemon,          {.u8_void = StartMenuPokemonCallback}},
     [MENU_ACTION_BAG]               = {gText_Bag,                  {.u8_void = StartMenuBagCallback}},
     [MENU_ACTION_PLAYER]            = {sText_MenuPlayer,           {.u8_void = StartMenuPlayerNameCallback}},
-    [MENU_ACTION_SAVE]              = {COMPOUND_STRING("SAVE"),    {.u8_void = StartMenuSaveCallback}},
+    [MENU_ACTION_SAVE]              = {COMPOUND_STRING("Save"),    {.u8_void = StartMenuSaveCallback}},
     [MENU_ACTION_OPTION]            = {gText_Option,               {.u8_void = StartMenuOptionCallback}},
     [MENU_ACTION_EXIT]              = {gText_Exit,                 {.u8_void = StartMenuExitCallback}},
     [MENU_ACTION_RETIRE_SAFARI]     = {gText_Retire,               {.u8_void = StartMenuSafariZoneRetireCallback}},
@@ -177,8 +177,8 @@ static const struct MenuAction sStartMenuActionTable[] = {
     [MENU_ACTION_REST_FRONTIER]     = {gText_Rest,                 {.u8_void = StartMenuSaveCallback}},
     [MENU_ACTION_RETIRE_FRONTIER]   = {gText_Retire,               {.u8_void = StartMenuBattlePyramidRetireCallback}},
     [MENU_ACTION_PYRAMID_BAG]       = {gText_Bag,                  {.u8_void = StartMenuBattlePyramidBagCallback}},
-    [MENU_ACTION_DEBUG]             = {COMPOUND_STRING("DEBUG"),   {.u8_void = StartMenuDebugCallback}},
-    [MENU_ACTION_DEXNAV]            = {COMPOUND_STRING("DEXNAV"),  {.u8_void = StartMenuDexNavCallback}},
+    [MENU_ACTION_DEBUG]             = {COMPOUND_STRING("Debug"),   {.u8_void = StartMenuDebugCallback}},
+    [MENU_ACTION_DEXNAV]            = {COMPOUND_STRING("DexNav"),  {.u8_void = StartMenuDexNavCallback}},
 };
 
 static const struct WindowTemplate sTimeWindowTemplate = {

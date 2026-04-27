@@ -138,19 +138,19 @@ static const u16 sOptionMenuItemCounts[MENUITEM_COUNT] = {3, 2, 2, 2, 3, 10, 0};
 
 static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
 {
-    [MENUITEM_TEXTSPEED]   = COMPOUND_STRING("TEXT SPEED"),
-    [MENUITEM_BATTLESCENE] = COMPOUND_STRING("BATTLE SCENE"),
-    [MENUITEM_BATTLESTYLE] = COMPOUND_STRING("BATTLE STYLE"),
-    [MENUITEM_SOUND]       = COMPOUND_STRING("SOUND"),
-    [MENUITEM_BUTTONMODE]  = COMPOUND_STRING("BUTTON MODE"),
-    [MENUITEM_FRAMETYPE]   = COMPOUND_STRING("FRAME"),
+    [MENUITEM_TEXTSPEED]   = COMPOUND_STRING("Text Speed"),
+    [MENUITEM_BATTLESCENE] = COMPOUND_STRING("Battle Scene"),
+    [MENUITEM_BATTLESTYLE] = COMPOUND_STRING("Battle Style"),
+    [MENUITEM_SOUND]       = COMPOUND_STRING("Sound"),
+    [MENUITEM_BUTTONMODE]  = COMPOUND_STRING("Button Mode"),
+    [MENUITEM_FRAMETYPE]   = COMPOUND_STRING("Frame"),
     [MENUITEM_CANCEL]      = gText_Cancel,
 };
 
 static const u8 *const sTextSpeedOptions[] =
 {
-    COMPOUND_STRING("SLOW"),
-    COMPOUND_STRING("MID"),
+    COMPOUND_STRING("Slow"),
+    COMPOUND_STRING("Mid"),
     gText_Fast,
 };
 
@@ -163,13 +163,13 @@ static const u8 *const sBattleSceneOptions[] =
 static const u8 *const sBattleStyleOptions[] =
 {
     gText_Shift,
-    COMPOUND_STRING("SET"),
+    COMPOUND_STRING("Set"),
 };
 
 static const u8 *const sSoundOptions[] =
 {
-    COMPOUND_STRING("MONO"),
-    COMPOUND_STRING("STEREO"),
+    COMPOUND_STRING("Mono"),
+    COMPOUND_STRING("Stereo"),
 };
 
 static const u8 *const sButtonTypeOptions[] =

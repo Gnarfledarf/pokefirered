@@ -14,7 +14,7 @@
 #define P_GEN_6_POKEMON                  TRUE // Generation 6 Pokémon (XY, ORAS)
 #define P_GEN_7_POKEMON                  TRUE // Generation 7 Pokémon (SM, USUM, LGPE)
 #define P_GEN_8_POKEMON                  FALSE // Generation 8 Pokémon (SwSh, BDSP, LA)
-#define P_GEN_9_POKEMON                  TRUE // Generation 9 Pokémon (SV)
+#define P_GEN_9_POKEMON                  FALSE // Generation 9 Pokémon (SV)
 
 // Setting this to TRUE will add the new evolutions to the Regional Dex.
 #define P_NEW_EVOS_IN_REGIONAL_DEX       FALSE
@@ -34,7 +34,7 @@
 // Regional Forms. Includes Regional Form evolutions, like Sirfetch'd.
 #define P_REGIONAL_FORMS                 TRUE
 #define P_ALOLAN_FORMS                   P_REGIONAL_FORMS
-#define P_GALARIAN_FORMS                 P_REGIONAL_FORMS
+#define P_GALARIAN_FORMS                 FALSE
 #define P_HISUIAN_FORMS                  P_REGIONAL_FORMS
 #define P_PALDEAN_FORMS                  P_REGIONAL_FORMS
 
@@ -478,7 +478,7 @@
 #define P_FAMILY_STAKATAKA               P_GEN_7_POKEMON
 #define P_FAMILY_BLACEPHALON             P_GEN_7_POKEMON
 #define P_FAMILY_ZERAORA                 P_GEN_7_POKEMON
-#define P_FAMILY_MELTAN                  P_GEN_7_POKEMON
+#define P_FAMILY_MELTAN                  FALSE
 
 #define P_FAMILY_GROOKEY                 P_GEN_8_POKEMON
 #define P_FAMILY_SCORBUNNY               P_GEN_8_POKEMON

@@ -70,7 +70,6 @@ static const u16 sDexCategory_GrasslandPkmn_Page11[] = {
 
 static const u16 sDexCategory_GrasslandPkmn_Page12[] = {
     SPECIES_FARFETCHD,
-    SPECIES_SIRFETCHD,
     SPECIES_LICKITUNG,
     SPECIES_LICKILICKY,
 };
@@ -739,7 +738,6 @@ static const u16 sDexCategory_RoughTerrainPkmn_Page11[] = {
 static const u16 sDexCategory_UrbanPkmn_Page1[] = {
     SPECIES_MEOWTH,
     SPECIES_PERSIAN,
-    SPECIES_PERRSERKER,
 };
 
 static const u16 sDexCategory_UrbanPkmn_Page2[] = {
@@ -800,7 +798,6 @@ static const u16 sDexCategory_UrbanPkmn_Page9[] = {
 static const u16 sDexCategory_UrbanPkmn_Page10[] = {
     SPECIES_MIME_JR,
     SPECIES_MR_MIME,
-    SPECIES_MR_RIME,
 };
 
 static const u16 sDexCategory_UrbanPkmn_Page11[] = {

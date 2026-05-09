@@ -4871,7 +4871,6 @@ const u16 gPokedexOrder_Type[NUM_SPECIES] =
     SPECIES_YAMASK,
     SPECIES_COFAGRIGUS,
     //SPECIES_SILVALLY_GHOST,
-    SPECIES_CURSOLA,
     // Ghost/Normal
     // Ghost/Fighting
     // Ghost/Flying
@@ -5583,7 +5582,6 @@ const u16 gPokedexOrder_Type[NUM_SPECIES] =
     //SPECIES_MR_MIME_GALAR,
     SPECIES_JYNX,
     SPECIES_SMOOCHUM,
-    SPECIES_MR_RIME,
     // Ice/Grass
     // Ice/Electric
     // Ice/Psychic
@@ -5675,7 +5673,7 @@ const u16 gPokedexOrder_Type[NUM_SPECIES] =
     //SPECIES_RATICATE_ALOLA_TOTEM,
     //SPECIES_ZIGZAGOON_GALAR,
     //SPECIES_LINOONE_GALAR,
-    SPECIES_OBSTAGOON,
+    //SPECIES_OBSTAGOON,
     // Dark/Fighting
     SPECIES_SCRAGGY,
     SPECIES_SCRAFTY,
@@ -5698,7 +5696,7 @@ const u16 gPokedexOrder_Type[NUM_SPECIES] =
     // Dark/Steel
     SPECIES_PAWNIARD,
     SPECIES_BISHARP,
-    SPECIES_KINGAMBIT,
+    //SPECIES_KINGAMBIT,
     // Dark/Fire
     SPECIES_HOUNDOUR,
     SPECIES_HOUNDOOM,

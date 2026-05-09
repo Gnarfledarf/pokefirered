@@ -347,9 +347,9 @@ enum PokemonCry
     CRY_MIME_JR,
 #endif //P_GEN_4_CROSS_EVOS
     CRY_MR_MIME,
-#if P_GALARIAN_FORMS
+/*#if P_GALARIAN_FORMS
     CRY_MR_RIME,
-#endif //P_GALARIAN_FORMS
+#endif //P_GALARIAN_FORMS*/
 #endif //P_FAMILY_MR_MIME
 #if P_FAMILY_SCYTHER
     CRY_SCYTHER,

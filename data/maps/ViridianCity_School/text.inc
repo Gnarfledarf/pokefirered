@@ -2,6 +2,31 @@ ViridianCity_School_Text_TryingToMemorizeNotes::
     .string "Whew! I'm trying to memorize all my\n"
     .string "notes.$"
 
+ViridianCity_School_Text_GetOneGymBadge::
+    .string "Hello, young Trainer!\p"
+    .string "It seems you have just begun\n"
+    .string "your journey!\p"
+    .string "If you want to become a better\n"
+    .string "Trainer, you should take on the Gym\l"
+    .string "Leaders and obtain their Badges.\p"
+    .string "Please return once you have obtained\n"
+    .string "at least one Badge for a reward.\p"
+    .string "Until then, be sure to read what's\n"
+    .string "on the blackboard carefully!$"
+
+ViridianCity_School_Text_GotOneGymBadge::
+    .string "I see you have a Gym Badge!\p"
+    .string "As reward, please take this!$"
+
+ViridianCity_School_Text_QuickClaw::
+    .string "Give this Quick Claw one of your\n"
+    .string "Pokémon to hold, and it might\l"
+    .string "attack first no matter its Speed!$"
+
+ViridianCity_School_Text_QuickClawAway::
+    .string "{PLAYER} put the Quick Claw away in\n"
+    .string "the Bag's Items Pocket.$"
+
 ViridianCity_School_Text_ReadBlackboardCarefully::
     .string "Okay!\p"
     .string "Be sure to read what's on the\n"

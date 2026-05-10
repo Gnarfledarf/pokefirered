@@ -12,9 +12,48 @@ ViridianCity_School_EventScript_Lass::
 	release
 	end
 
+ViridianCity_School_EventScript_Woman_Old::
+	lock
+	faceplayer
+	msgbox ViridianCity_School_Text_ReadBlackboardCarefully
+	closemessage
+	applymovement LOCALID_SCHOOL_WOMAN, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
 ViridianCity_School_EventScript_Woman::
 	lock
 	faceplayer
+	goto_if_set FLAG_GOT_QUICK_CLAW_IN_TRAINER_SCHOOL, ViridianCity_School_EventScript_Woman_ReadBlackboardCarefully
+    compare VAR_BADGE_COUNT, 1
+    goto_if_ge ViridianCity_School_EventScript_Woman_GotGymBadge
+	msgbox ViridianCity_School_Text_GetOneGymBadge
+	closemessage
+	applymovement LOCALID_SCHOOL_WOMAN, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
+ViridianCity_School_EventScript_Woman_GotGymBadge::
+	msgbox ViridianCity_School_Text_GotOneGymBadge, MSGBOX_NPC
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	checkitemspace ITEM_QUICK_CLAW
+	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
+	bufferitemname STR_VAR_2, ITEM_QUICK_CLAW
+	playfanfare MUS_LEVEL_UP
+	message Text_ObtainedTheX
+	waitmessage
+	waitfanfare
+	additem ITEM_QUICK_CLAW
+	msgbox ViridianCity_School_Text_QuickClawAway
+	call EventScript_RestorePrevTextColor
+	setflag FLAG_GOT_QUICK_CLAW_IN_TRAINER_SCHOOL
+	msgbox ViridianCity_School_Text_QuickClaw, MSGBOX_NPC
+	release
+	end
+
+ViridianCity_School_EventScript_Woman_ReadBlackboardCarefully::
 	msgbox ViridianCity_School_Text_ReadBlackboardCarefully
 	closemessage
 	applymovement LOCALID_SCHOOL_WOMAN, Common_Movement_FaceOriginalDirection

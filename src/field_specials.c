@@ -3939,3 +3939,15 @@ static void Task_ReturnToFieldWhileLearningMove(u8 taskId)
 #undef tState
 #undef tPartyIndex
 #undef tMove
+
+void CheckPlayerHasCaughtSpecies(void)
+{
+    u32 monSpecies = gSpecialVar_0x8000;
+
+    if (GetSetPokedexFlag(SpeciesToNationalPokedexNum(monSpecies), FLAG_GET_CAUGHT))
+    {
+        gSpecialVar_Result = TRUE;
+        return;
+    }
+    gSpecialVar_Result = FALSE;
+}

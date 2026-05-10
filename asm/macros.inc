@@ -171,3 +171,8 @@
 	.ascii "C:/WORK/POKeFRLG/Src/pm_lgfr_ose/source/"
 	.asciz "\relative"
 	.endm
+
+    .macro check_if_species_caught monSpecies:req
+    setvar VAR_0x8000, \monSpecies
+    special CheckPlayerHasCaughtSpecies
+    .endm

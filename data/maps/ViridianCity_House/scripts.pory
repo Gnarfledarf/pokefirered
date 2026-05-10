@@ -3,7 +3,36 @@ ViridianCity_House_MapScripts::
 	.byte 0
 
 ViridianCity_House_EventScript_BaldingMan::
+	lock
+	faceplayer
+	goto_if_unset FLAG_SYS_POKEDEX_GET, ViridianCity_House_EventScript_BaldingMan_AlreadyGotSharpBeak
+	goto_if_set FLAG_GOT_SHARP_BEAK_IN_VIRIDIAN_CITY_HOUSE, ViridianCity_House_EventScript_BaldingMan_AlreadyGotSharpBeak
+	msgbox ViridianCity_House_Text_DoYouHaveSpearow
+	check_if_species_caught SPECIES_SPEAROW
+	goto_if_eq VAR_RESULT, TRUE, ViridianCity_House_EventScript_BaldingMan_CaughtSpearow
+	end
+
+ViridianCity_House_EventScript_BaldingMan_CaughtSpearow::
+	msgbox ViridianCity_House_Text_YouHaveCaughtSpearow, MSGBOX_NPC
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	checkitemspace ITEM_SHARP_BEAK
+	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
+	bufferitemname STR_VAR_2, ITEM_SHARP_BEAK
+	playfanfare MUS_LEVEL_UP
+	message Text_ObtainedTheX
+	waitmessage
+	waitfanfare
+	additem ITEM_SHARP_BEAK
+	msgbox ViridianCity_House_Text_SharpBeakAway
+	call EventScript_RestorePrevTextColor
+	setflag FLAG_GOT_SHARP_BEAK_IN_VIRIDIAN_CITY_HOUSE
+	msgbox ViridianCity_House_Text_ItMakesFlyingTypeATtacksMorePowerful, MSGBOX_NPC
+	release
+	end
+
+ViridianCity_House_EventScript_BaldingMan_AlreadyGotSharpBeak::
 	msgbox ViridianCity_House_Text_NicknamingIsFun, MSGBOX_NPC
+	release
 	end
 
 ViridianCity_House_EventScript_LittleGirl::

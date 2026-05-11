@@ -103,3 +103,55 @@ ViridianForest_Text_LeavingViridianForest::
     .string "Leaving Viridian Forest\n"
     .string "Pewter City Ahead$"
 
+ViridianForest_Text_IloveBeedrill::
+    .string "I love bugs! They evolve early,\n"
+    .string "so they get more powerful early!\l"
+    .string "My favorite is Beedrill!\p"
+    .string "Oh, you have a Pokédex? Does it\n"
+    .string "have info about Beedrill?\l"
+    .string "If it does, please show me!$"
+
+ViridianForest_Text_ShowMeBeedrill::
+    .string "I love bugs! They evolve early,\n"
+    .string "so they get more powerful early!\l"
+    .string "My favorite is Beedrill!\p"
+    .string "Oh, you have a Pokédex? And\n"
+    .string "it has info about Beedrill?\l"
+    .string "Show me! Show me!\p"
+    .string "………\n"
+    .string "I see…\p"
+    .string "Thank you so much! Take this!$"
+
+ViridianForest_Text_IloveButterfree::
+    .string "I love bugs! They evolve early,\n"
+    .string "so they get more powerful early!\l"
+    .string "My favorite is Butterfree!\p"
+    .string "Oh, you have a Pokédex? Does it\n"
+    .string "have info about Butterfree?\l"
+    .string "If it does, please show me!$"
+
+ViridianForest_Text_ShowMeButterfree::
+    .string "I love bugs! They evolve early,\n"
+    .string "so they get more powerful early!\l"
+    .string "My favorite is Butterfree!\p"
+    .string "Oh, you have a Pokédex? And\n"
+    .string "it has info about Butterfree?\l"
+    .string "Show me! Show me!\p"
+    .string "………\n"
+    .string "I see…\p"
+    .string "Thank you so much! Take this!$"
+
+ViridianForest_Text_SilverPowderAway::
+    .string "{PLAYER} put the Silver Powder away in\n"
+    .string "the Bag's Items Pocket.$"
+
+ViridianForest_Text_SilverPowder::
+    .string "Give this a Pokémon to hold,\n"
+    .string "and it'll make Bug-type attacks\l"
+    .string "more powerful!$"
+
+ViridianForest_Text_BugsEvolveEarly::
+    .string "I love bugs! They evolve early,\n"
+    .string "so they get more powerful early!\l"
+    .string "But they struggle to catch up to\l"
+    .string "other evolved Pokémon.$"

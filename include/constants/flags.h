@@ -627,7 +627,7 @@
 #define FLAG_GOT_SHARP_BEAK_IN_VIRIDIAN_CITY_HOUSE       0x25A
 #define FLAG_GOT_TM27                                    0x25B
 #define FLAG_0x25C                                       0x25C
-#define FLAG_0x25D                                       0x25D
+#define FLAG_GOT_SILVER_POWDER_IN_VIRIDIAN_FOREST        0x25D
 #define FLAG_GOT_OLD_AMBER                               0x25E
 #define FLAG_0x25F                                       0x25F
 #define FLAG_0x260                                       0x260

@@ -63,4 +63,62 @@ ViridianForest_EventScript_Charlie::
 	trainerbattle_single TRAINER_BUG_CATCHER_CHARLIE, ViridianForest_Text_CharlieIntro, ViridianForest_Text_CharlieDefeat
 	msgbox ViridianForest_Text_CharliePostBattle, MSGBOX_AUTOCLOSE
 	end
+
+ViridianForest_EventScript_Boy2::
+	faceplayer
+	goto_if_set FLAG_GOT_SILVER_POWDER_IN_VIRIDIAN_FOREST, ViridianForest_EventScript_Boy2_GotSilverPowder
+#ifdef FIRERED
+	check_if_species_caught SPECIES_BEEDRILL
+	goto_if_eq VAR_RESULT, TRUE, ViridianForest_EventScript_Boy2_CaughtBeedrill
+	msgbox ViridianForest_Text_IloveBeedrill
+#else
+#ifdef LEAFGREEN
+	check_if_species_caught SPECIES_BUTTERFREE
+	goto_if_eq VAR_RESULT, TRUE, ViridianForest_EventScript_Boy2_CaughtButterfree
+	msgbox ViridianForest_Text_IloveButterfree
+#endif
+#endif
+	release
+	end
+
+ViridianForest_EventScript_Boy2_CaughtBeedrill::
+	msgbox ViridianForest_Text_ShowMeBeedrill, MSGBOX_NPC
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	checkitemspace ITEM_SILVER_POWDER
+	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
+	bufferitemname STR_VAR_2, ITEM_SILVER_POWDER
+	playfanfare MUS_LEVEL_UP
+	message Text_ObtainedTheX
+	waitmessage
+	waitfanfare
+	additem ITEM_SILVER_POWDER
+	msgbox ViridianForest_Text_SilverPowderAway
+	call EventScript_RestorePrevTextColor
+	setflag FLAG_GOT_SILVER_POWDER_IN_VIRIDIAN_FOREST
+	msgbox ViridianForest_Text_SilverPowder, MSGBOX_NPC
+	release
+	end
+
+ViridianForest_EventScript_Boy2_CaughtButterfree::
+	msgbox ViridianForest_Text_ShowMeButterfree, MSGBOX_NPC
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	checkitemspace ITEM_SILVER_POWDER
+	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
+	bufferitemname STR_VAR_2, ITEM_SILVER_POWDER
+	playfanfare MUS_LEVEL_UP
+	message Text_ObtainedTheX
+	waitmessage
+	waitfanfare
+	additem ITEM_SILVER_POWDER
+	msgbox ViridianForest_Text_SilverPowderAway
+	call EventScript_RestorePrevTextColor
+	setflag FLAG_GOT_SILVER_POWDER_IN_VIRIDIAN_FOREST
+	msgbox ViridianForest_Text_SilverPowder, MSGBOX_NPC
+	release
+	end
+
+ViridianForest_EventScript_Boy2_GotSilverPowder::
+	msgbox ViridianForest_Text_BugsEvolveEarly, MSGBOX_NPC
+	release
+	end
 `

@@ -128,3 +128,119 @@ ViridianForest_EventScript_Charlie::
 	msgbox ViridianForest_Text_CharliePostBattle, MSGBOX_AUTOCLOSE
 # 65 "data/maps/ViridianForest/scripts.pory"
 	end
+# 66 "data/maps/ViridianForest/scripts.pory"
+
+# 67 "data/maps/ViridianForest/scripts.pory"
+ViridianForest_EventScript_Boy2::
+# 68 "data/maps/ViridianForest/scripts.pory"
+	faceplayer
+# 69 "data/maps/ViridianForest/scripts.pory"
+	goto_if_set FLAG_GOT_SILVER_POWDER_IN_VIRIDIAN_FOREST, ViridianForest_EventScript_Boy2_GotSilverPowder
+# 70 "data/maps/ViridianForest/scripts.pory"
+#ifdef FIRERED
+# 71 "data/maps/ViridianForest/scripts.pory"
+	check_if_species_caught SPECIES_BEEDRILL
+# 72 "data/maps/ViridianForest/scripts.pory"
+	goto_if_eq VAR_RESULT, TRUE, ViridianForest_EventScript_Boy2_CaughtBeedrill
+# 73 "data/maps/ViridianForest/scripts.pory"
+	msgbox ViridianForest_Text_IloveBeedrill
+# 74 "data/maps/ViridianForest/scripts.pory"
+#else
+# 75 "data/maps/ViridianForest/scripts.pory"
+#ifdef LEAFGREEN
+# 76 "data/maps/ViridianForest/scripts.pory"
+	check_if_species_caught SPECIES_BUTTERFREE
+# 77 "data/maps/ViridianForest/scripts.pory"
+	goto_if_eq VAR_RESULT, TRUE, ViridianForest_EventScript_Boy2_CaughtButterfree
+# 78 "data/maps/ViridianForest/scripts.pory"
+	msgbox ViridianForest_Text_IloveButterfree
+# 79 "data/maps/ViridianForest/scripts.pory"
+#endif
+# 80 "data/maps/ViridianForest/scripts.pory"
+#endif
+# 81 "data/maps/ViridianForest/scripts.pory"
+	release
+# 82 "data/maps/ViridianForest/scripts.pory"
+	end
+# 83 "data/maps/ViridianForest/scripts.pory"
+
+# 84 "data/maps/ViridianForest/scripts.pory"
+ViridianForest_EventScript_Boy2_CaughtBeedrill::
+# 85 "data/maps/ViridianForest/scripts.pory"
+	msgbox ViridianForest_Text_ShowMeBeedrill, MSGBOX_NPC
+# 86 "data/maps/ViridianForest/scripts.pory"
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+# 87 "data/maps/ViridianForest/scripts.pory"
+	checkitemspace ITEM_SILVER_POWDER
+# 88 "data/maps/ViridianForest/scripts.pory"
+	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
+# 89 "data/maps/ViridianForest/scripts.pory"
+	bufferitemname STR_VAR_2, ITEM_SILVER_POWDER
+# 90 "data/maps/ViridianForest/scripts.pory"
+	playfanfare MUS_LEVEL_UP
+# 91 "data/maps/ViridianForest/scripts.pory"
+	message Text_ObtainedTheX
+# 92 "data/maps/ViridianForest/scripts.pory"
+	waitmessage
+# 93 "data/maps/ViridianForest/scripts.pory"
+	waitfanfare
+# 94 "data/maps/ViridianForest/scripts.pory"
+	additem ITEM_SILVER_POWDER
+# 95 "data/maps/ViridianForest/scripts.pory"
+	msgbox ViridianForest_Text_SilverPowderAway
+# 96 "data/maps/ViridianForest/scripts.pory"
+	call EventScript_RestorePrevTextColor
+# 97 "data/maps/ViridianForest/scripts.pory"
+	setflag FLAG_GOT_SILVER_POWDER_IN_VIRIDIAN_FOREST
+# 98 "data/maps/ViridianForest/scripts.pory"
+	msgbox ViridianForest_Text_SilverPowder, MSGBOX_NPC
+# 99 "data/maps/ViridianForest/scripts.pory"
+	release
+# 100 "data/maps/ViridianForest/scripts.pory"
+	end
+# 101 "data/maps/ViridianForest/scripts.pory"
+
+# 102 "data/maps/ViridianForest/scripts.pory"
+ViridianForest_EventScript_Boy2_CaughtButterfree::
+# 103 "data/maps/ViridianForest/scripts.pory"
+	msgbox ViridianForest_Text_ShowMeButterfree, MSGBOX_NPC
+# 104 "data/maps/ViridianForest/scripts.pory"
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+# 105 "data/maps/ViridianForest/scripts.pory"
+	checkitemspace ITEM_SILVER_POWDER
+# 106 "data/maps/ViridianForest/scripts.pory"
+	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
+# 107 "data/maps/ViridianForest/scripts.pory"
+	bufferitemname STR_VAR_2, ITEM_SILVER_POWDER
+# 108 "data/maps/ViridianForest/scripts.pory"
+	playfanfare MUS_LEVEL_UP
+# 109 "data/maps/ViridianForest/scripts.pory"
+	message Text_ObtainedTheX
+# 110 "data/maps/ViridianForest/scripts.pory"
+	waitmessage
+# 111 "data/maps/ViridianForest/scripts.pory"
+	waitfanfare
+# 112 "data/maps/ViridianForest/scripts.pory"
+	additem ITEM_SILVER_POWDER
+# 113 "data/maps/ViridianForest/scripts.pory"
+	msgbox ViridianForest_Text_SilverPowderAway
+# 114 "data/maps/ViridianForest/scripts.pory"
+	call EventScript_RestorePrevTextColor
+# 115 "data/maps/ViridianForest/scripts.pory"
+	setflag FLAG_GOT_SILVER_POWDER_IN_VIRIDIAN_FOREST
+# 116 "data/maps/ViridianForest/scripts.pory"
+	msgbox ViridianForest_Text_SilverPowder, MSGBOX_NPC
+# 117 "data/maps/ViridianForest/scripts.pory"
+	release
+# 118 "data/maps/ViridianForest/scripts.pory"
+	end
+# 119 "data/maps/ViridianForest/scripts.pory"
+
+# 120 "data/maps/ViridianForest/scripts.pory"
+ViridianForest_EventScript_Boy2_GotSilverPowder::
+# 121 "data/maps/ViridianForest/scripts.pory"
+	msgbox ViridianForest_Text_BugsEvolveEarly, MSGBOX_NPC
+# 122 "data/maps/ViridianForest/scripts.pory"
+	release
+# 123 "data/maps/ViridianForest/scripts.pory"
+	end

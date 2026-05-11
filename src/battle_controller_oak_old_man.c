@@ -245,7 +245,7 @@ static void SimulateInputChooseAction(enum BattlerId battler)
     case 1:
         if (--gBattleStruct->simulatedInputState[2] == 0)
         {
-            // Move cursor to BAG
+            // Move cursor to Bag
             PlaySE(SE_SELECT);
             ActionSelectionDestroyCursorAt(0);
             ActionSelectionCreateCursorAt(1, 0);

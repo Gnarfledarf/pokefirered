@@ -67,7 +67,7 @@ static void DrawOptionMenuBg(void);
 static void LoadOptionMenuItemNames(void);
 static void UpdateSettingSelectionDisplay(u16 selection);
 
-static const u8 sText_PickSwitchCancel[] = _("{DPAD_UPDOWN}PICK {DPAD_LEFTRIGHT}SWITCH {A_BUTTON}{B_BUTTON}CANCEL");
+static const u8 sText_PickSwitchCancel[] = _("{DPAD_UPDOWN}Pick {DPAD_LEFTRIGHT}Switch {A_BUTTON}{B_BUTTON}Cancel");
 
 // Data Definitions
 static const struct WindowTemplate sOptionMenuWinTemplates[] =

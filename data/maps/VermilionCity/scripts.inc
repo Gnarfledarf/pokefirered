@@ -221,31 +221,31 @@ VermilionCity_AddAuroraTicket::
 # 111 "data/maps/VermilionCity/scripts.pory"
 Seagallop_SeviiIslands::
 # 112 "data/maps/VermilionCity/scripts.pory"
-	.string "SEVII ISLANDS$"
+	.string "Sevii Islands$"
 # 113 "data/maps/VermilionCity/scripts.pory"
 
 # 114 "data/maps/VermilionCity/scripts.pory"
 Seagallop_NavelRock::
 # 115 "data/maps/VermilionCity/scripts.pory"
-	.string "NAVEL ROCK$"
+	.string "Navel Rock$"
 # 116 "data/maps/VermilionCity/scripts.pory"
 
 # 117 "data/maps/VermilionCity/scripts.pory"
 Seagallop_BirthIsland::
 # 118 "data/maps/VermilionCity/scripts.pory"
-	.string "BIRTH ISLAND$"
+	.string "Birth Island$"
 # 119 "data/maps/VermilionCity/scripts.pory"
 
 # 120 "data/maps/VermilionCity/scripts.pory"
 Seagallop_BattleFrontier::
 # 121 "data/maps/VermilionCity/scripts.pory"
-	.string "BATTLE FRONTIER$"
+	.string "Battle Frontier$"
 # 122 "data/maps/VermilionCity/scripts.pory"
 
 # 123 "data/maps/VermilionCity/scripts.pory"
 Seagallop_Cancel::
 # 124 "data/maps/VermilionCity/scripts.pory"
-	.string "CANCEL$"
+	.string "Cancel$"
 # 125 "data/maps/VermilionCity/scripts.pory"
 
 # 126 "data/maps/VermilionCity/scripts.pory"

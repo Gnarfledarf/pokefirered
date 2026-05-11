@@ -559,7 +559,7 @@ Help_Text_UsingPlayer::
 	.string " Using “{PLAYER}”$"
 
 Help_Text_UsingSave::
-	.string " Using Save$"
+	.string " Using “Save”$"
 
 Help_Text_UsingOption::
 	.string " Using “Option”$"
@@ -718,7 +718,7 @@ Help_Text_HowToUseBag::
 	.string "   Pad to check the data headings:\n"
 	.string "   “Items”\n"
 	.string "   “Key Items”\n"
-	.string "   “POKé Balls”\n"
+	.string "   “Poké Balls”\n"
 	.string "   Press up or down to select an item.$"
 
 Help_Text_HowToUseAnItem::
@@ -739,7 +739,7 @@ Help_Text_HowToUseKeyItem::
 
 Help_Text_HowToUsePokeBall::
 	.string "{CIRCLE_1} While battling a wild Pokémon,\n"
-	.string "   select the Bag's “POKé Balls”\n"
+	.string "   select the Bag's “Poké Balls”\n"
 	.string "   Pocket.\n"
 	.string "{CIRCLE_2} Press up or down on the {PLUS} Control\n"
 	.string "   Pad to select a Poké Ball.\n"
@@ -755,7 +755,7 @@ Help_Text_HowToUsePlayer::
 	.string "   the reverse side of the Card.$"
 
 Help_Text_HowToUseSave::
-	.string "{CIRCLE_1} Select Save on the Menu.\n"
+	.string "{CIRCLE_1} Select “Save” on the Menu.\n"
 	.string "{CIRCLE_2} Select “Yes” and your progress is\n"
 	.string "   recorded in the save file.\n"
 	.string "Once the game is saved, you may turn\n"

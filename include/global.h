@@ -1015,7 +1015,7 @@ struct SaveBlock1
     u16 easyChatBattleWon[EASY_CHAT_BATTLE_WORDS_COUNT];
     u16 easyChatProfile[EASY_CHAT_BATTLE_WORDS_COUNT];
     u16 mapLayoutId;
-    u16 registeredItem; // registered for use with SELECT button
+    u16 registeredItem; // registered for use with Select button
     u16 savedMusic;
     u16 vars[VARS_COUNT];
     u8 additionalPhrases[NUM_ADDITIONAL_PHRASE_BYTES];

@@ -4,7 +4,7 @@ static const u8 sTeachyTvString_TypeMatchups[] = _("What are type matchups?");
 static const u8 sTeachyTvString_CatchPkmn[] = _("I want to catch Pokémon.");
 
 static const u8 sTeachyTvText_PokedudeSaysHello[] = _(
-    "Hey, all you TRAINERS out there!\n"
+    "Hey, all you Trainers out there!\n"
     "HELLO, TRAINERS!\p"
     "……… ……… ………\p"
     "Come on, let me hear you!\n"

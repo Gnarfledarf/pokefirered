@@ -35,7 +35,7 @@ BattleFrontier_Lounge4_Text_WonderIfInterviewsAiring:
 # 18 "data/maps/BattleFrontier_Lounge4/scripts.pory"
 	.string "I wonder if they'll be airing interviews\n"
 # 19 "data/maps/BattleFrontier_Lounge4/scripts.pory"
-	.string "with tough TRAINERS today?$"
+	.string "with tough Trainer today?$"
 # 20 "data/maps/BattleFrontier_Lounge4/scripts.pory"
 
 # 21 "data/maps/BattleFrontier_Lounge4/scripts.pory"

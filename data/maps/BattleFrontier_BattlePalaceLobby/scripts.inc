@@ -971,7 +971,7 @@ BattleFrontier_BattlePalaceLobby_Text_NoSpaceForPrize:
 # 486 "data/maps/BattleFrontier_BattlePalaceLobby/scripts.pory"
 	.string "You should return when you have\n"
 # 487 "data/maps/BattleFrontier_BattlePalaceLobby/scripts.pory"
-	.string "organized your BAG.$"
+	.string "organized your Bag.$"
 # 488 "data/maps/BattleFrontier_BattlePalaceLobby/scripts.pory"
 
 # 489 "data/maps/BattleFrontier_BattlePalaceLobby/scripts.pory"

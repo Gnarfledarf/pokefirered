@@ -207,29 +207,29 @@ BattleFrontier_RankingHall_EventScript_Boy::
 # 104 "data/maps/BattleFrontier_RankingHall/scripts.pory"
 BattleFrontier_RankingHall_Text_ExplainRankingHall:
 # 105 "data/maps/BattleFrontier_RankingHall/scripts.pory"
-	.string "This is the RANKING HALL.\p"
+	.string "This is the Ranking Hall.\p"
 # 106 "data/maps/BattleFrontier_RankingHall/scripts.pory"
 	.string "This is where we recognize the immortal\n"
 # 107 "data/maps/BattleFrontier_RankingHall/scripts.pory"
-	.string "TRAINERS who left great records in\l"
+	.string "Trainers who left great records in\l"
 # 108 "data/maps/BattleFrontier_RankingHall/scripts.pory"
-	.string "BATTLE FRONTIER events.$"
+	.string "Battle Frontier events.$"
 # 109 "data/maps/BattleFrontier_RankingHall/scripts.pory"
 
 # 110 "data/maps/BattleFrontier_RankingHall/scripts.pory"
 BattleFrontier_RankingHall_Text_DomePikeFactoryRecords:
 # 111 "data/maps/BattleFrontier_RankingHall/scripts.pory"
-	.string "BATTLE DOME, BATTLE PIKE,\n"
+	.string "Battle Dome, Battle Pike,\n"
 # 112 "data/maps/BattleFrontier_RankingHall/scripts.pory"
-	.string "and BATTLE FACTORY Records$"
+	.string "and Battle Factory Records$"
 # 113 "data/maps/BattleFrontier_RankingHall/scripts.pory"
 
 # 114 "data/maps/BattleFrontier_RankingHall/scripts.pory"
 BattleFrontier_RankingHall_Text_PalaceArenaPyramidRecords:
 # 115 "data/maps/BattleFrontier_RankingHall/scripts.pory"
-	.string "BATTLE PALACE, BATTLE ARENA,\n"
+	.string "Battle Palace, Battle Arena,\n"
 # 116 "data/maps/BattleFrontier_RankingHall/scripts.pory"
-	.string "and BATTLE PYRAMID Records$"
+	.string "and Battle Pyramid Records$"
 # 117 "data/maps/BattleFrontier_RankingHall/scripts.pory"
 
 # 118 "data/maps/BattleFrontier_RankingHall/scripts.pory"

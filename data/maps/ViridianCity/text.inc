@@ -103,6 +103,9 @@ ViridianCity_Text_CitySign::
     .string "Viridian City \n"
     .string "The Eternally Green Paradise$"
 
+ViridianCity_Text_SchoolSign::
+    .string "Viridian City Trainer School$"
+
 ViridianCity_Text_CatchMonsForEasierBattles::
     .string "Trainer Tips\p"
     .string "Catch Pokémon and expand your\n"

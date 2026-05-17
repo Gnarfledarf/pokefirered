@@ -756,8 +756,9 @@ static void PrintDescription(s32 itemIndex)
 {
     const u8 * str;
 
+    enum Item itemId = GetBagItemId(POCKET_TM_HM, itemIndex);
     if (itemIndex != LIST_CANCEL)
-        str = GetItemDescription(GetBagItemId(POCKET_TM_HM, itemIndex));
+        str = GetMoveDescription(ItemIdToBattleMoveId(itemId));
     else
         str = sText_TMCaseWillBePutAway;
 

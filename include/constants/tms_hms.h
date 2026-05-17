@@ -128,7 +128,7 @@
     F(AURORA_VEIL) \
     F(BODY_SLAM) \
     F(DUAL_WINGBEAT) \
-    F(SKY_ATTACK) \
+    F(TELEPORT) \
     F(TRI_ATTACK) \
     F(HEADBUTT) \
     F(ICY_WIND) \

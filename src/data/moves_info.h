@@ -3576,7 +3576,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .validApprenticeMove = TRUE,
     },
 
-    [MOVE_EGG_BOMB] =
+    [MOVE_EGG_BOMB] =//todo: Make it user the higher attacking stat (Photon Geysir)
     {
         .name = COMPOUND_STRING("Egg Bomb"),
         .description = COMPOUND_STRING(

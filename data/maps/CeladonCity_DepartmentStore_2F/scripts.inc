@@ -117,12 +117,26 @@ CeladonCity_DepartmentStore_2F_TMs::
 # 59 "data/maps/CeladonCity_DepartmentStore_2F/scripts.pory"
 	.2byte ITEM_TM31
 # 60 "data/maps/CeladonCity_DepartmentStore_2F/scripts.pory"
-	.2byte ITEM_TM43
+	.2byte ITEM_TM40
 # 61 "data/maps/CeladonCity_DepartmentStore_2F/scripts.pory"
-	.2byte ITEM_TM45
+	.2byte ITEM_TM43
 # 62 "data/maps/CeladonCity_DepartmentStore_2F/scripts.pory"
-	.2byte ITEM_NONE
+	.2byte ITEM_TM45
 # 63 "data/maps/CeladonCity_DepartmentStore_2F/scripts.pory"
-	release
+	.2byte ITEM_TM57
 # 64 "data/maps/CeladonCity_DepartmentStore_2F/scripts.pory"
+	.2byte ITEM_TM68
+# 65 "data/maps/CeladonCity_DepartmentStore_2F/scripts.pory"
+	.2byte ITEM_TM97
+# 66 "data/maps/CeladonCity_DepartmentStore_2F/scripts.pory"
+	.2byte ITEM_TM102
+# 67 "data/maps/CeladonCity_DepartmentStore_2F/scripts.pory"
+	.2byte ITEM_TM114
+# 68 "data/maps/CeladonCity_DepartmentStore_2F/scripts.pory"
+	.2byte ITEM_TM124
+# 69 "data/maps/CeladonCity_DepartmentStore_2F/scripts.pory"
+	.2byte ITEM_NONE
+# 70 "data/maps/CeladonCity_DepartmentStore_2F/scripts.pory"
+	release
+# 71 "data/maps/CeladonCity_DepartmentStore_2F/scripts.pory"
 	end

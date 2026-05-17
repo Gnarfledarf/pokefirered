@@ -52,3 +52,20 @@ PewterCity_Museum_1F_Text_MeteoriteThatFellOnMtMoon::
     .string "A meteorite that fell on Mt. Moon.\n"
     .string "It is thought to be a Moon Stone.$"
 
+Text_WaterGunTeach::
+    .string "I'm watering this plant!\n"
+    .string "with my Water Gun!\p"
+    .string "Want me to teach one of\n"
+    .string "your Pokémon Water Gun!$"
+
+Text_WaterGunDeclined::
+    .string "Okay! I'll keep watering\n"
+    .string "this plant!$"
+
+Text_WaterGunWhichMon::
+    .string "Great! Which Pokémon\n"
+    .string "should learn Water Gun?$"
+
+Text_WaterGunTaught::
+    .string "Whew! Now I feel relieved.\n"
+    .string "But I'm thirsty again…$"

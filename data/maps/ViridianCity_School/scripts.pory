@@ -12,16 +12,6 @@ ViridianCity_School_EventScript_Lass::
 	release
 	end
 
-ViridianCity_School_EventScript_Woman_Old::
-	lock
-	faceplayer
-	msgbox ViridianCity_School_Text_ReadBlackboardCarefully
-	closemessage
-	applymovement LOCALID_SCHOOL_WOMAN, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
-
 ViridianCity_School_EventScript_Woman::
 	lock
 	faceplayer

@@ -44,29 +44,25 @@ SilphCo_2F_Text_Grunt2PostBattle::
     .string "Silph Co. will be associated with\n"
     .string "Team Rocket!$"
 
-Text_ThunderWaveTeach::
+SilphCo_2F_Text_Woman_GiveThunderWave::
     .string "Eeek!\n"
     .string "No! Stop! Help!\p"
     .string "Oh, you're not with Team Rocket.\n"
     .string "I'm sorry, I thought…\p"
-    .string "Will you forgive me if I teach\n"
-    .string "you the Thunder Wave technique?$"
+    .string "Will you forgive me if I give\n"
+    .string "you this?$"
 
-Text_ThunderWaveDeclined::
-    .string "Oh…\n"
-    .string "But Thunder Wave is convenient…$"
-
-Text_ThunderWaveWhichMon::
-    .string "Which Pokémon should I teach\n"
-    .string "Thunder Wave?$"
-
-Text_ThunderWaveTaught::
+SilphCo_2F_Text_Woman_GaveThunderWave::
     .string "Thunder Wave causes paralysis in\n"
     .string "the target Pokémon.\p"
     .string "A paralyzed Pokémon may be unable\n"
     .string "to move in battle.\p"
     .string "It's an Electric-type move, so it\n"
     .string "won't work on some Pokémon.$"
+
+SilphCo_2F_Text_TM73Away::
+    .string "{PLAYER} put the TM73 away in\n"
+    .string "the Bag's TM Case.$"
 
 SilphCo_2F_Text_FloorSign::
     .string "Silph Co. Head Office\n"

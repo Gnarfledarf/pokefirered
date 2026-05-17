@@ -8,8 +8,27 @@ SilphCo_2F_OnLoad::
 	call_if_unset FLAG_SILPH_2F_DOOR_2, EventScript_Close2FDoor2
 	end
 
-SilphCo_2F_EventScript_ThunderWaveTutor::
-	goto EventScript_ThunderWaveTutor
+SilphCo_2F_EventScript_Woman::
+	goto_if_unset FLAG_GOT_TM73, SilphCo_2F_EventScript_Woman_Give_ThunderWave
+	msgbox SilphCo_2F_Text_Woman_GaveThunderWave, MSGBOX_NPC
+	end
+
+SilphCo_2F_EventScript_Woman_Give_ThunderWave::
+	msgbox SilphCo_2F_Text_Woman_GiveThunderWave, MSGBOX_NPC
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	checkitemspace ITEM_TM73
+	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
+	bufferitemname STR_VAR_2, ITEM_TM73
+	playfanfare MUS_LEVEL_UP
+	message Text_ObtainedTheX
+	waitmessage
+	waitfanfare
+	additem ITEM_TM73
+	msgbox SilphCo_2F_Text_TM73Away
+	call EventScript_RestorePrevTextColor
+	setflag FLAG_GOT_TM73
+	msgbox SilphCo_2F_Text_Woman_GaveThunderWave, MSGBOX_NPC
+	release
 	end
 
 SilphCo_2F_EventScript_FloorSign::

@@ -14,22 +14,6 @@ EventScript_DoubleEdgeTaught::
 	release
 	end
 
-EventScript_ThunderWaveTutor::
-	lock
-	faceplayer
-	move_tutor MOVE_THUNDER_WAVE, Text_ThunderWaveTeach, Text_ThunderWaveWhichMon, EventScript_ThunderWaveDeclined, EventScript_ThunderWaveTaught, FLAG_TUTOR_THUNDER_WAVE
-	end
-
-EventScript_ThunderWaveDeclined::
-	msgbox Text_ThunderWaveDeclined
-	release
-	end
-
-EventScript_ThunderWaveTaught::
-	msgbox Text_ThunderWaveTaught
-	release
-	end
-
 RockTunnel_B1F_EventScript_RockSlideTutor::
 	lock
 	faceplayer
@@ -63,7 +47,7 @@ EventScript_ExplosionTaught::
 	release
 	end
 
-Route4_EventScript_WaterGunTutor::
+PewterCity_Museum_2F_EventScript_WaterGunTutor::
 	lock
 	faceplayer
 	move_tutor MOVE_WATER_GUN, Text_WaterGunTeach, Text_WaterGunWhichMon, EventScript_WaterGunDeclined, EventScript_WaterGunTaught, FLAG_TUTOR_WATER_GUN

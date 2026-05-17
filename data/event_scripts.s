@@ -627,6 +627,7 @@
 	.include "data/maps/Route21_North/text.inc"
 	.include "data/maps/Route21_South/text.inc"
 	.include "data/maps/Route22/text.inc"
+	.include "data/maps/Route22_NorthEntrance/text.inc"
 	.include "data/maps/Route23/text.inc"
 	.include "data/maps/Route24/text.inc"
 	.include "data/maps/Route25/text.inc"
@@ -924,8 +925,8 @@ Text_WantWhichFloor::
 	.string "Which floor do you want?$"
 
 gText_SelectWithoutRegisteredItem::
-	.string "An item in the BAG can be\n"
-	.string "registered to SELECT for easy use.$"
+	.string "An item in the Bag can be\n"
+	.string "registered to Select for easy use.$"
 
 Text_PlayerBootedUpPC::
 	.string "{PLAYER} booted up the PC.$"
@@ -1095,6 +1096,23 @@ Common_EventScript_WirelessClubAttendant::
 
 Common_EventScript_DirectCornerAttendant::
 	call CableClub_EventScript_DirectCornerAttendant
+	end
+
+VermilionCity_PokemonCenter_1F_EventScript_VSSeekerWoman::
+	lock
+	faceplayer
+	goto_if_set FLAG_GOT_VS_SEEKER, VermilionCity_PokemonCenter_1F_EventScript_ExplainVSSeeker
+	msgbox VermilionCity_PokemonCenter_1F_Text_UrgeToBattleSomeoneAgain
+	setflag FLAG_GOT_VS_SEEKER
+	giveitem ITEM_VS_SEEKER
+	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
+	msgbox VermilionCity_PokemonCenter_1F_Text_UseDeviceForRematches
+	release
+	end
+
+VermilionCity_PokemonCenter_1F_EventScript_ExplainVSSeeker::
+	msgbox VermilionCity_PokemonCenter_1F_Text_ExplainVSSeeker
+	release
 	end
 
 Std_PutItemAway::

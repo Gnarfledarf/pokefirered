@@ -17,4 +17,38 @@ Route22_NorthEntrance_EventScript_BoulderBadgeGuardTrigger::
 	bufferstdstring STR_VAR_1, STDSTRING_BOULDER_BADGE
 	goto Route23_EventScript_BadgeGuardTrigger
 	end
+
+Route22_NorthEntrance_EventScript_Woman::
+	lock
+	faceplayer
+	goto_if_set FLAG_GOT_TM121, Route22_NorthEntrance_EventScript_ExplainTM121
+	msgbox Route22_NorthEntrance_Text_CanIConfide, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Route22_NorthEntrance_EventScript_Confide
+	goto_if_eq VAR_RESULT, NO, Route22_NorthEntrance_EventScript_DeclineConfide
+	end
+
+Route22_NorthEntrance_EventScript_NoRoomForTM121::
+	msgbox Route22_NorthEntrance_Text_DontHaveRoomForThis
+	release
+	end
+
+Route22_NorthEntrance_EventScript_ExplainTM121::
+	msgbox Route22_NorthEntrance_Text_ExplainTM121
+	release
+	end
+
+Route22_NorthEntrance_EventScript_Confide::
+	msgbox Route22_NorthEntrance_Text_Confide
+	checkitemspace ITEM_TM121
+	goto_if_eq VAR_RESULT, FALSE, Route22_NorthEntrance_EventScript_NoRoomForTM121
+	giveitem_msg Route22_NorthEntrance_Text_ReceivedTM121FromGirl, ITEM_TM121
+	msgbox Route22_NorthEntrance_Text_ExplainTM121
+	setflag FLAG_GOT_TM121
+	release
+	end
+
+Route22_NorthEntrance_EventScript_DeclineConfide::
+	msgbox Route22_NorthEntrance_Text_OfCourseNot
+	release
+	end
 `

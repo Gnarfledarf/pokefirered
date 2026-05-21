@@ -213,7 +213,7 @@
     {
       "x": 7,
       "y": 21,
-      "elevation": 4,
+      "elevation": 5,
       "dest_map": "MAP_ROCK_TUNNEL_1F",
       "dest_warp_id": "0"
     },
@@ -296,7 +296,7 @@
       "type": "hidden_item",
       "x": 5,
       "y": 28,
-      "elevation": 4,
+      "elevation": 5,
       "item": "ITEM_CHERI_BERRY",
       "flag": "FLAG_HIDDEN_ITEM_ROUTE10_CHERI_BERRY",
       "quantity": 3,
@@ -306,7 +306,7 @@
       "type": "hidden_item",
       "x": 16,
       "y": 31,
-      "elevation": 4,
+      "elevation": 5,
       "item": "ITEM_PERSIM_BERRY",
       "flag": "FLAG_HIDDEN_ITEM_ROUTE10_PERSIM_BERRY",
       "quantity": 3,

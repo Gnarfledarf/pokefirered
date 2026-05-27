@@ -441,7 +441,7 @@
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_CeladonCityWinter",
+      "secondary_tileset": "gTileset_CeladonCity",
       "border_filepath": "data/layouts/CeladonCity/border.bin",
       "blockdata_filepath": "data/layouts/CeladonCity/map.bin"
     },
@@ -453,7 +453,7 @@
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_FuchsiaCityWinter",
+      "secondary_tileset": "gTileset_FuchsiaCity",
       "border_filepath": "data/layouts/FuchsiaCity/border.bin",
       "blockdata_filepath": "data/layouts/FuchsiaCity/map.bin"
     },

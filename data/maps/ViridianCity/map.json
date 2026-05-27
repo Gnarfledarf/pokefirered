@@ -16,12 +16,12 @@
   "connections": [
     {
       "map": "MAP_ROUTE2",
-      "offset": 12,
+      "offset": 18,
       "direction": "up"
     },
     {
       "map": "MAP_ROUTE1",
-      "offset": 6,
+      "offset": 12,
       "direction": "down"
     },
     {
@@ -34,7 +34,7 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
-      "x": 8,
+      "x": 14,
       "y": 26,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -48,7 +48,7 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_CUT_TREE",
-      "x": 11,
+      "x": 17,
       "y": 24,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -63,7 +63,7 @@
       "local_id": "LOCALID_VIRIDIAN_OLD_MAN",
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_OLD_MAN_1",
-      "x": 34,
+      "x": 40,
       "y": 11,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -78,7 +78,7 @@
       "local_id": "LOCALID_TUTORIAL_MAN",
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_VAR_0",
-      "x": 21,
+      "x": 27,
       "y": 6,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -93,7 +93,7 @@
       "local_id": "LOCALID_VIRIDIAN_WOMAN",
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_3",
-      "x": 20,
+      "x": 26,
       "y": 12,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -107,7 +107,7 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
-      "x": 33,
+      "x": 39,
       "y": 26,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
@@ -121,7 +121,7 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_BOY",
-      "x": 16,
+      "x": 22,
       "y": 22,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -136,7 +136,7 @@
       "local_id": "LOCALID_VIRIDIAN_BORDER_TREE",
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_CUT_TREE",
-      "x": 18,
+      "x": 24,
       "y": 5,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -150,7 +150,7 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 17,
+      "x": 23,
       "y": 5,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -164,35 +164,35 @@
   ],
   "warp_events": [
     {
-      "x": 26,
+      "x": 32,
       "y": 26,
       "elevation": 0,
       "dest_map": "MAP_VIRIDIAN_CITY_POKEMON_CENTER_1F",
       "dest_warp_id": "1"
     },
     {
-      "x": 25,
+      "x": 31,
       "y": 11,
       "elevation": 3,
       "dest_map": "MAP_VIRIDIAN_CITY_HOUSE",
       "dest_warp_id": "1"
     },
     {
-      "x": 36,
+      "x": 42,
       "y": 10,
       "elevation": 0,
       "dest_map": "MAP_VIRIDIAN_CITY_GYM",
       "dest_warp_id": "1"
     },
     {
-      "x": 25,
+      "x": 31,
       "y": 18,
       "elevation": 0,
       "dest_map": "MAP_VIRIDIAN_CITY_SCHOOL",
       "dest_warp_id": "1"
     },
     {
-      "x": 36,
+      "x": 42,
       "y": 19,
       "elevation": 0,
       "dest_map": "MAP_VIRIDIAN_CITY_MART",
@@ -202,7 +202,7 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 22,
+      "x": 28,
       "y": 11,
       "elevation": 3,
       "var": "VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN",
@@ -211,7 +211,7 @@
     },
     {
       "type": "trigger",
-      "x": 36,
+      "x": 42,
       "y": 11,
       "elevation": 3,
       "var": "VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR",
@@ -220,7 +220,7 @@
     },
     {
       "type": "trigger",
-      "x": 20,
+      "x": 26,
       "y": 8,
       "elevation": 3,
       "var": "VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN",
@@ -229,7 +229,7 @@
     },
     {
       "type": "trigger",
-      "x": 22,
+      "x": 28,
       "y": 8,
       "elevation": 3,
       "var": "VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN",
@@ -240,7 +240,7 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 23,
+      "x": 29,
       "y": 1,
       "elevation": 3,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
@@ -248,7 +248,7 @@
     },
     {
       "type": "sign",
-      "x": 32,
+      "x": 38,
       "y": 10,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
@@ -256,7 +256,7 @@
     },
     {
       "type": "sign",
-      "x": 20,
+      "x": 26,
       "y": 31,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
@@ -264,7 +264,7 @@
     },
     {
       "type": "sign",
-      "x": 20,
+      "x": 26,
       "y": 16,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
@@ -272,7 +272,7 @@
     },
     {
       "type": "sign",
-      "x": 36,
+      "x": 42,
       "y": 10,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
@@ -280,7 +280,7 @@
     },
     {
       "type": "sign",
-      "x": 23,
+      "x": 29,
       "y": 19,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",

@@ -30,8 +30,8 @@
       "local_id": "LOCALID_ROUTE22_RIVAL",
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_BLUE",
-      "x": 25,
-      "y": 4,
+      "x": 26,
+      "y": 10,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 1,
@@ -49,20 +49,13 @@
       "elevation": 0,
       "dest_map": "MAP_ROUTE22_NORTH_ENTRANCE",
       "dest_warp_id": "2"
-    },
-    {
-      "x": 9,
-      "y": 5,
-      "elevation": 0,
-      "dest_map": "MAP_ROUTE22_NORTH_ENTRANCE",
-      "dest_warp_id": "2"
     }
   ],
   "coord_events": [
     {
       "type": "trigger",
-      "x": 33,
-      "y": 4,
+      "x": 34,
+      "y": 10,
       "elevation": 3,
       "var": "VAR_MAP_SCENE_ROUTE22",
       "var_value": "1",
@@ -70,8 +63,8 @@
     },
     {
       "type": "trigger",
-      "x": 33,
-      "y": 5,
+      "x": 34,
+      "y": 11,
       "elevation": 3,
       "var": "VAR_MAP_SCENE_ROUTE22",
       "var_value": "1",
@@ -79,8 +72,8 @@
     },
     {
       "type": "trigger",
-      "x": 33,
-      "y": 6,
+      "x": 34,
+      "y": 12,
       "elevation": 0,
       "var": "VAR_MAP_SCENE_ROUTE22",
       "var_value": "1",
@@ -88,8 +81,8 @@
     },
     {
       "type": "trigger",
-      "x": 33,
-      "y": 4,
+      "x": 34,
+      "y": 10,
       "elevation": 3,
       "var": "VAR_MAP_SCENE_ROUTE22",
       "var_value": "3",
@@ -97,8 +90,8 @@
     },
     {
       "type": "trigger",
-      "x": 33,
-      "y": 5,
+      "x": 34,
+      "y": 11,
       "elevation": 3,
       "var": "VAR_MAP_SCENE_ROUTE22",
       "var_value": "3",
@@ -106,8 +99,8 @@
     },
     {
       "type": "trigger",
-      "x": 33,
-      "y": 6,
+      "x": 34,
+      "y": 12,
       "elevation": 0,
       "var": "VAR_MAP_SCENE_ROUTE22",
       "var_value": "3",

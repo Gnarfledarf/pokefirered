@@ -2371,7 +2371,7 @@ bool8 ScrCmd_checkfieldmoveusable(struct ScriptContext* ctx)
     if (!FieldMove_IsUnlocked(fieldMove))
         return FALSE;
 
-    partyIndex = Party_FirstMonWithMove(moveId);
+    partyIndex = Party_FirstMonCanLearnTeachableMove(moveId);
     if (partyIndex != PARTY_SIZE)
     {
         gFieldEffectArguments[0] = partyIndex;

@@ -3272,11 +3272,20 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
         {
             if (moveId == gFieldMovesInfo[j].moveId)
             {
-                AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, j + CURSOR_OPTION_FIELD_MOVES);
-                break;
+                if (moveId != MOVE_CUT && moveId != MOVE_FLY && moveId != MOVE_SURF && moveId != MOVE_STRENGTH && moveId != MOVE_FLASH && moveId != MOVE_ROCK_SMASH && moveId != MOVE_WATERFALL && moveId != MOVE_WHIRLPOOL && moveId != MOVE_DIVE) // If Mon already knows FLY, prevent it from being added to action list
+                    AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, j + CURSOR_OPTION_FIELD_MOVES);
+                    break;
             }
         }
     }
+    if (sPartyMenuInternal->numActions < 5
+        && (CheckBagHasItem(ITEM_HM02, 1))
+        && ((CanTeachMove(&mons[slotId], MOVE_FLY) == CAN_LEARN_MOVE) || (CanTeachMove(&mons[slotId], MOVE_FLY) == ALREADY_KNOWS_MOVE))) // If Mon can learn Fly and action list consists of < 4 moves, add FLY to action list
+        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, 1 + CURSOR_OPTION_FIELD_MOVES);
+    if (sPartyMenuInternal->numActions < 5
+        && (CheckBagHasItem(ITEM_HM05, 1))
+        && ((CanTeachMove(&mons[slotId], MOVE_FLASH) == CAN_LEARN_MOVE) || (CanTeachMove(&mons[slotId], MOVE_FLASH) == ALREADY_KNOWS_MOVE))) // If Mon can learn Flash and action list consists of < 4 moves, add FLY to action list
+        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, 4 + CURSOR_OPTION_FIELD_MOVES);
     if (GetMonData(&mons[1], MON_DATA_SPECIES) != SPECIES_NONE)
         AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, CURSOR_OPTION_SWITCH);
     if (ItemIsMail(GetMonData(&mons[slotId], MON_DATA_HELD_ITEM)))
@@ -8205,6 +8214,20 @@ u32 Party_FirstMonWithMove(enum Move moveId)
         if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_NONE)
             break;
         if (MonKnowsMove(&gPlayerParty[i], moveId))
+            return i;
+    }
+    return PARTY_SIZE;
+}
+
+u32 Party_FirstMonCanLearnTeachableMove(enum Move moveId)
+{
+    for (u32 i = 0; i < PARTY_SIZE; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_NONE)
+            break;
+        if (MonKnowsMove(&gPlayerParty[i], moveId))
+            return i;
+        if (CanLearnTeachableMove(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES), moveId))
             return i;
     }
     return PARTY_SIZE;

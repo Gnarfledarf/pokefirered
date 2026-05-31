@@ -276,3 +276,11 @@ static bool32 IsFieldMoveUnlocked_Defog(void)
     return TRUE;
 }
 #endif
+
+void ClearFieldMoveFlags(void)
+{
+    FlagClear(FLAG_SYS_USE_CUT);
+    FlagClear(FLAG_SYS_USE_SURF);
+    FlagClear(FLAG_SYS_USE_ROCK_SMASH);
+    FlagClear(FLAG_SYS_USE_WATERFALL);
+}

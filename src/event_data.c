@@ -1,5 +1,6 @@
 #include "global.h"
 #include "event_data.h"
+#include "field_move.h"
 #include "item_menu.h"
 #include "quest_log.h"
 
@@ -100,6 +101,7 @@ void ClearTempFieldEventData(void)
     FlagClear(FLAG_SYS_USE_STRENGTH);
     FlagClear(FLAG_SYS_SPECIAL_WILD_BATTLE);
     FlagClear(FLAG_SYS_INFORMED_OF_LOCAL_WIRELESS_PLAYER);
+    ClearFieldMoveFlags(); // qol_field_moves
 }
 
 

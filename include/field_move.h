@@ -17,5 +17,5 @@ extern const struct FieldMoveInfo gFieldMovesInfo[];
 
 bool32 FieldMove_IsUnlocked(enum FieldMove fieldMove);
 enum Species FieldMove_GetDefaultSpecies(enum FieldMove fieldMove);
-
+void ClearFieldMoveFlags(void);
 #endif // GUARD_FIELD_MOVE_H

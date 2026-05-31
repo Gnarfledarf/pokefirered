@@ -3283,6 +3283,10 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
         && ((CanTeachMove(&mons[slotId], MOVE_FLY) == CAN_LEARN_MOVE) || (CanTeachMove(&mons[slotId], MOVE_FLY) == ALREADY_KNOWS_MOVE))) // If Mon can learn Fly and action list consists of < 4 moves, add FLY to action list
         AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, 1 + CURSOR_OPTION_FIELD_MOVES);
     if (sPartyMenuInternal->numActions < 5
+        && (CheckBagHasItem(ITEM_HM01, 1))
+        && ((CanTeachMove(&mons[slotId], MOVE_CUT) == CAN_LEARN_MOVE) || (CanTeachMove(&mons[slotId], MOVE_CUT) == ALREADY_KNOWS_MOVE))) // If Mon can learn Fly and action list consists of < 4 moves, add FLY to action list
+        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, 0 + CURSOR_OPTION_FIELD_MOVES);
+    if (sPartyMenuInternal->numActions < 5
         && (CheckBagHasItem(ITEM_HM05, 1))
         && ((CanTeachMove(&mons[slotId], MOVE_FLASH) == CAN_LEARN_MOVE) || (CanTeachMove(&mons[slotId], MOVE_FLASH) == ALREADY_KNOWS_MOVE))) // If Mon can learn Flash and action list consists of < 4 moves, add FLY to action list
         AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, 4 + CURSOR_OPTION_FIELD_MOVES);

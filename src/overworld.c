@@ -17,6 +17,7 @@
 #include "field_effect.h"
 #include "field_fadetransition.h"
 #include "field_message_box.h"
+#include "field_move.h"
 #include "field_player_avatar.h"
 #include "field_screen_effect.h"
 #include "field_specials.h"
@@ -331,6 +332,7 @@ void Overworld_ResetStateAfterFly(void)
     FlagClear(FLAG_SYS_FLASH_ACTIVE);
     FlagClear(FLAG_SYS_QL_DEPARTED);
     VarSet(VAR_QL_ENTRANCE, 0);
+    ClearFieldMoveFlags(); // qol_field_moves
 }
 
 void Overworld_ResetStateAfterTeleport(void)
@@ -345,6 +347,7 @@ void Overworld_ResetStateAfterTeleport(void)
     FlagClear(FLAG_SYS_FLASH_ACTIVE);
     FlagClear(FLAG_SYS_QL_DEPARTED);
     VarSet(VAR_QL_ENTRANCE, 0);
+    ClearFieldMoveFlags(); // qol_field_moves
 }
 
 void Overworld_ResetStateAfterDigEscRope(void)
@@ -359,6 +362,7 @@ void Overworld_ResetStateAfterDigEscRope(void)
     FlagClear(FLAG_SYS_FLASH_ACTIVE);
     FlagClear(FLAG_SYS_QL_DEPARTED);
     VarSet(VAR_QL_ENTRANCE, 0);
+    ClearFieldMoveFlags(); // qol_field_moves
 }
 
 #if B_RESET_FLAGS_VARS_AFTER_WHITEOUT  == TRUE
@@ -396,6 +400,7 @@ static void Overworld_ResetStateAfterWhitingOut(void)
     FlagClear(FLAG_SYS_QL_DEPARTED);
     VarSet(VAR_QL_ENTRANCE, 0);
     FollowerNPC_TryRemoveFollowerOnWhiteOut();
+    ClearFieldMoveFlags(); // qol_field_moves
 }
 
 static void Overworld_ResetStateOnContinue(void)

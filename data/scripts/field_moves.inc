@@ -3,6 +3,9 @@ EventScript_CutTree::
 	lockall
 	checkfieldmoveusable FIELD_MOVE_CUT
 	goto_if_eq VAR_RESULT, FALSE, EventScript_CantCutTree
+	checkitem ITEM_HM01, 1
+	goto_if_eq VAR_RESULT, FALSE, EventScript_CantCutTree
+	goto_if_set FLAG_SYS_USE_CUT, EventScript_CutTreeCommon
 	msgbox Text_CutTreeDown, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_DontCutTree
 	msgbox Text_MonUsedMove
@@ -13,6 +16,7 @@ EventScript_CutTreeCommon:
 	dofieldeffect FLDEFF_USE_CUT_ON_TREE
 	waitstate
 EventScript_CutTreeDown:: @ fallthrough
+	setflag FLAG_SYS_USE_CUT @ qol_field_moves
 	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	call_if_eq VAR_0x8004, TRUE, EventScript_FollowerFieldMove
 	applymovement VAR_LAST_TALKED, Movement_CutTreeDown
@@ -62,6 +66,9 @@ EventScript_RockSmash::
 	lockall
 	checkfieldmoveusable FIELD_MOVE_ROCK_SMASH
 	goto_if_eq VAR_RESULT, FALSE, EventScript_CantSmashRock
+	checkitem ITEM_HM06, 1
+	goto_if_eq VAR_RESULT, FALSE, EventScript_CantSmashRock
+	goto_if_set FLAG_SYS_USE_ROCK_SMASH, EventScript_RockSmashCommon
 	msgbox Text_UseRockSmash, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_DontSmashRock
 	msgbox Text_MonUsedMove
@@ -74,6 +81,7 @@ EventScript_RockSmashCommon:
 	waitstate
 EventScript_SmashRock:: @ fallthrough
 	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
+	setflag FLAG_SYS_USE_ROCK_SMASH
 	call_if_eq VAR_0x8004, TRUE, EventScript_FollowerFieldMove
 	applymovement VAR_LAST_TALKED, Movement_BreakRock
 	waitmovement 0
@@ -280,10 +288,15 @@ EventScript_Waterfall::
 	lockall
 	checkfieldmoveusable FIELD_MOVE_WATERFALL
 	goto_if_eq VAR_RESULT, FALSE, EventScript_WaterCrashingDown
+	checkitem ITEM_HM08
+	goto_if_eq VAR_RESULT, FALSE, EventScript_WaterCrashingDown
+	goto_if_set FLAG_SYS_USE_WATERFALL, EventScript_WaterfallQuick
 	msgbox Text_UseWaterfall, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_EndWaterfall
 	msgbox Text_MonUsedWaterfall
+EventScript_WaterfallQuick:
 	dofieldeffect FLDEFF_USE_WATERFALL
+	setflag FLAG_SYS_USE_WATERFALL
 	callnative FollowerNPC_WarpSetEnd
 	goto EventScript_EndWaterfall
 

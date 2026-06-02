@@ -96,8 +96,8 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "ViridianForest_EventScript_ItemPokeBall",
-      "flag": "FLAG_HIDE_VIRIDIAN_FOREST_POKE_BALL"
+      "script": "ViridianForest_EventScript_ItemTM118",
+      "flag": "FLAG_HIDE_VIRIDIAN_FOREST_TM118"
     },
     {
       "type": "object",
@@ -296,6 +296,16 @@
       "item": "ITEM_ANTIDOTE",
       "flag": "FLAG_HIDDEN_ITEM_VIRIDIAN_FOREST_ANTIDOTE",
       "quantity": 1,
+      "underfoot": false
+    },
+    {
+      "type": "hidden_item",
+      "x": 49,
+      "y": 26,
+      "elevation": 0,
+      "item": "ITEM_POKE_BALL",
+      "flag": "FLAG_HIDDEN_ITEM_VIRIDIAN_FOREST_POKE_BALL",
+      "quantity": 3,
       "underfoot": false
     }
   ]

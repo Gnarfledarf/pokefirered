@@ -10,9 +10,9 @@ Route2_EventScript_ItemEther::
 Route2_EventScript_ItemParalyzeHeal::
 	finditem ITEM_PARALYZE_HEAL
 	end
-
-ViridianForest_EventScript_ItemPokeBall::
-	finditem ITEM_POKE_BALL
+@TM Infestation
+ViridianForest_EventScript_ItemTM118::
+	finditem ITEM_TM118
 	end
 
 ViridianForest_EventScript_ItemAntidote::
@@ -95,8 +95,8 @@ SSAnne_Kitchen_EventScript_ItemGreatBall::
 	finditem ITEM_GREAT_BALL
 	end
 
-Route9_EventScript_ItemTM40::
-	finditem ITEM_TM40
+Route9_EventScript_ItemTM127::
+	finditem ITEM_TM127
 	end
 
 RocketHideout_B1F_EventScript_ItemEscapeRope::
@@ -129,6 +129,10 @@ RocketHideout_B3F_EventScript_ItemRareCandy::
 
 RocketHideout_B3F_EventScript_ItemTM21::
 	finditem ITEM_TM21
+	end
+
+RocketHideout_B3F_EventScript_ItemTM117::
+	finditem ITEM_TM117
 	end
 
 RocketHideout_B4F_EventScript_ItemTM49::
@@ -173,6 +177,10 @@ PokemonTower_6F_EventScript_ItemXAccuracy::
 
 Route12_EventScript_ItemTM48::
 	finditem ITEM_TM48
+	end
+@TM Sludge Bomb
+Route17_EventScript_ItemTM36::
+	finditem ITEM_TM36
 	end
 
 Route12_EventScript_ItemIron::
@@ -478,6 +486,10 @@ PokemonMansion_2F_EventScript_ItemHPUp::
 ViridianCity_EventScript_ItemPotion::
 	finditem ITEM_POTION
 	end
+@TM Rock Polish
+Route10_EventScript_ItemTM69::
+	finditem ITEM_TM69
+	end
 
 Route11_EventScript_ItemGreatBall::
 	finditem ITEM_GREAT_BALL
@@ -498,17 +510,17 @@ CeladonCity_EventScript_ItemEther::
 RocketHideout_B3F_EventScript_ItemBlackGlasses::
 	finditem ITEM_BLACK_GLASSES
 	end
-
-SafariZone_North_EventScript_ItemQuickClaw::
-	finditem ITEM_QUICK_CLAW
+@TM Smart Strike
+SafariZone_North_EventScript_ItemTM123::
+	finditem ITEM_TM123
 	end
 
 SeafoamIslands_1F_EventScript_ItemIceHeal::
 	finditem ITEM_ICE_HEAL
 	end
 
-SeafoamIslands_B1F_EventScript_ItemWaterStone::
-	finditem ITEM_WATER_STONE
+SeafoamIslands_B1F_EventScript_ItemIceStone::
+	finditem ITEM_ICE_STONE
 	end
 
 SeafoamIslands_B1F_EventScript_ItemRevive::
@@ -518,9 +530,9 @@ SeafoamIslands_B1F_EventScript_ItemRevive::
 SeafoamIslands_B2F_EventScript_ItemBigPearl::
 	finditem ITEM_BIG_PEARL
 	end
-
-SeafoamIslands_B4F_EventScript_ItemUltraBall::
-	finditem ITEM_ULTRA_BALL
+@TM Frost Breath
+SeafoamIslands_B4F_EventScript_ItemTM113::
+	finditem ITEM_TM113
 	end
 
 FourIsland_EventScript_ItemStarPiece::
@@ -566,6 +578,10 @@ SixIsland_WaterPath_EventScript_ItemElixir::
 SixIsland_WaterPath_EventScript_ItemDragonScale::
 	finditem ITEM_DRAGON_SCALE
 	end
+@TM U-Turn
+SixIsland_PatternBush_EventScript_ItemTM89::
+	finditem ITEM_TM89
+	end
 
 SixIsland_RuinValley_EventScript_ItemFullRestore::
 	finditem ITEM_FULL_RESTORE
@@ -595,8 +611,8 @@ ThreeIsland_BerryForest_EventScript_ItemMaxEther::
 	finditem ITEM_MAX_ETHER
 	end
 
-ThreeIsland_BerryForest_EventScript_ItemFullHeal::
-	finditem ITEM_FULL_HEAL
+ThreeIsland_BerryForest_EventScript_ItemTM81::
+	finditem ITEM_TM81
 	end
 
 ThreeIsland_BerryForest_EventScript_ItemMaxElixir::
@@ -634,9 +650,9 @@ FourIsland_IcefallCave_B1F_EventScript_ItemNeverMeltIce::
 FiveIsland_RocketWarehouse_EventScript_ItemBigPearl::
 	finditem ITEM_BIG_PEARL
 	end
-
-FiveIsland_RocketWarehouse_EventScript_ItemTM36::
-	finditem ITEM_TM36
+@TM Sludge Wave
+FiveIsland_RocketWarehouse_EventScript_ItemTM98::
+	finditem ITEM_TM98
 	end
 
 FiveIsland_RocketWarehouse_EventScript_ItemPearl::

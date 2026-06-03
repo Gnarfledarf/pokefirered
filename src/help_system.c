@@ -57,17 +57,17 @@ struct HelpSystemState
 COMMON_DATA struct HelpSystemState gHelpSystemState = {0};
 COMMON_DATA u16 gHelpContextIdBackup = 0;
 
-static bool32 IsCurrentMapInArray(const u16 * mapIdxs);
-static void BuildMainTopicsListAndMoveToH00(struct HelpSystemListMenu * a0, struct ListMenuItem * a1);
-static void SetHelpSystemSubmenuItems(struct HelpSystemListMenu * a0, struct ListMenuItem * a1);
+static bool32 IsCurrentMapInArray(const u16 *mapIdxs);
+static void BuildMainTopicsListAndMoveToH00(struct HelpSystemListMenu *a0, struct ListMenuItem *a1);
+static void SetHelpSystemSubmenuItems(struct HelpSystemListMenu *a0, struct ListMenuItem *a1);
 static bool8 HelpSystem_ShouldShowBasicTerms(void);
 static bool8 IsHelpSystemSubmenuEnabled(u8);
 static bool8 HasGottenAtLeastOneHM(void);
 
 static void PrintWelcomeMessageOnPanel1(void);
 static void PrintTextOnPanel2Row52RightAlign(const u8 *);
-static void ResetHelpSystemCursor(struct HelpSystemListMenu * a0);
-static void PrintHelpSystemTopicMouseoverDescription(struct HelpSystemListMenu * a0, struct ListMenuItem * a1);
+static void ResetHelpSystemCursor(struct HelpSystemListMenu *a0);
+static void PrintHelpSystemTopicMouseoverDescription(struct HelpSystemListMenu *a0, struct ListMenuItem *a1);
 
 static const u8 *const sHelpSystemTopicPtrs[TOPIC_COUNT] = {
     [TOPIC_WHAT_TO_DO]   = Help_Text_WhatShouldIDo,
@@ -1821,7 +1821,7 @@ static bool32 IsInGymMap(void)
     return IsCurrentMapInArray(sGymMaps);
 }
 
-static bool32 IsCurrentMapInArray(const u16 * mapIdxs)
+static bool32 IsCurrentMapInArray(const u16 *mapIdxs)
 {
     u16 mapIdx = (gSaveBlock1Ptr->location.mapGroup << 8) + gSaveBlock1Ptr->location.mapNum;
     s32 i;
@@ -1940,7 +1940,7 @@ void HelpSystem_EnableToggleWithRButton(void)
     gHelpSystemToggleWithRButtonDisabled = FALSE;
 }
 
-static void ResetHelpSystemListMenu(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer)
+static void ResetHelpSystemListMenu(struct HelpSystemListMenu *helpListMenu, struct ListMenuItem *listMenuItemsBuffer)
 {
     helpListMenu->sub.items = listMenuItemsBuffer;
     helpListMenu->sub.totalItems = 1;
@@ -1949,7 +1949,7 @@ static void ResetHelpSystemListMenu(struct HelpSystemListMenu * helpListMenu, st
     helpListMenu->sub.top = 4;
 }
 
-static void BuildAndPrintMainTopicsListMenu(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer)
+static void BuildAndPrintMainTopicsListMenu(struct HelpSystemListMenu *helpListMenu, struct ListMenuItem *listMenuItemsBuffer)
 {
     ResetHelpSystemListMenu(helpListMenu, listMenuItemsBuffer);
     BuildMainTopicsListAndMoveToH00(helpListMenu, listMenuItemsBuffer);
@@ -1960,7 +1960,7 @@ static void BuildAndPrintMainTopicsListMenu(struct HelpSystemListMenu * helpList
     HS_ShowOrHideControlsGuideInTopRight(1);
 }
 
-static void BuildMainTopicsListAndMoveToH00(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer)
+static void BuildMainTopicsListAndMoveToH00(struct HelpSystemListMenu *helpListMenu, struct ListMenuItem *listMenuItemsBuffer)
 {
     u8 i;
     u8 totalItems = 0;
@@ -1979,7 +1979,7 @@ static void BuildMainTopicsListAndMoveToH00(struct HelpSystemListMenu * helpList
     helpListMenu->sub.left = 0;
 }
 
-static void BuildAndPrintSubmenuList(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer)
+static void BuildAndPrintSubmenuList(struct HelpSystemListMenu *helpListMenu, struct ListMenuItem *listMenuItemsBuffer)
 {
     HS_SetMainWindowBgBrightness(0);
     HS_ShowOrHideHeaderLine_Darker_FooterStyle(0);
@@ -1993,10 +1993,10 @@ static void BuildAndPrintSubmenuList(struct HelpSystemListMenu * helpListMenu, s
     HS_ShowOrHideControlsGuideInTopRight(1);
 }
 
-static void SetHelpSystemSubmenuItems(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer)
+static void SetHelpSystemSubmenuItems(struct HelpSystemListMenu *helpListMenu, struct ListMenuItem *listMenuItemsBuffer)
 {
     u8 totalItems = 0;
-    const u8 * submenuItems = sHelpSystemSubmenuItemLists[sHelpSystemContextId * 5 + gHelpSystemState.topic]; // accessing as 2D array
+    const u8 *submenuItems = sHelpSystemSubmenuItemLists[sHelpSystemContextId * 5 + gHelpSystemState.topic]; // accessing as 2D array
     u8 i;
     for (i = 0; submenuItems[i] != HELP_END; i++)
     {
@@ -2272,7 +2272,7 @@ static bool8 HasGottenAtLeastOneHM(void)
     return FALSE;
 }
 
-bool8 RunHelpMenuSubroutine(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer)
+bool8 RunHelpMenuSubroutine(struct HelpSystemListMenu *helpListMenu, struct ListMenuItem *listMenuItemsBuffer)
 {
     switch (helpListMenu->state)
     {
@@ -2300,7 +2300,7 @@ bool8 RunHelpMenuSubroutine(struct HelpSystemListMenu * helpListMenu, struct Lis
     return FALSE;
 }
 
-bool8 HelpSystemSubroutine_PrintWelcomeMessage(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer)
+bool8 HelpSystemSubroutine_PrintWelcomeMessage(struct HelpSystemListMenu *helpListMenu, struct ListMenuItem *listMenuItemsBuffer)
 {
     PrintTextOnPanel2Row52RightAlign(gText_ABUTTONNext);
     PrintWelcomeMessageOnPanel1();
@@ -2310,7 +2310,7 @@ bool8 HelpSystemSubroutine_PrintWelcomeMessage(struct HelpSystemListMenu * helpL
     return TRUE;
 }
 
-bool8 HelpSystemSubroutine_WelcomeWaitButton(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer)
+bool8 HelpSystemSubroutine_WelcomeWaitButton(struct HelpSystemListMenu *helpListMenu, struct ListMenuItem *listMenuItemsBuffer)
 {
     if (JOY_NEW(A_BUTTON))
     {
@@ -2320,7 +2320,7 @@ bool8 HelpSystemSubroutine_WelcomeWaitButton(struct HelpSystemListMenu * helpLis
     return TRUE;
 }
 
-bool8 HelpSystemSubroutine_WelcomeEndGotoMenu(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer)
+bool8 HelpSystemSubroutine_WelcomeEndGotoMenu(struct HelpSystemListMenu *helpListMenu, struct ListMenuItem *listMenuItemsBuffer)
 {
     gHelpSystemState.scrollMain = 0;
     ResetHelpSystemCursor(helpListMenu);
@@ -2329,7 +2329,7 @@ bool8 HelpSystemSubroutine_WelcomeEndGotoMenu(struct HelpSystemListMenu * helpLi
     return TRUE;
 }
 
-bool8 HelpSystemSubroutine_MenuInputHandlerMain(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer)
+bool8 HelpSystemSubroutine_MenuInputHandlerMain(struct HelpSystemListMenu *helpListMenu, struct ListMenuItem *listMenuItemsBuffer)
 {
     s32 input = HelpSystem_GetMenuInput();
     switch (input)
@@ -2352,7 +2352,7 @@ bool8 HelpSystemSubroutine_MenuInputHandlerMain(struct HelpSystemListMenu * help
     return TRUE;
 }
 
-bool8 HelpMenuSubroutine_InitSubmenu(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer)
+bool8 HelpMenuSubroutine_InitSubmenu(struct HelpSystemListMenu *helpListMenu, struct ListMenuItem *listMenuItemsBuffer)
 {
     gHelpSystemState.level = 1;
     gHelpSystemState.scrollMain = helpListMenu->cursorPos;
@@ -2364,7 +2364,7 @@ bool8 HelpMenuSubroutine_InitSubmenu(struct HelpSystemListMenu * helpListMenu, s
     return TRUE;
 }
 
-bool8 HelpMenuSubroutine_ReturnFromSubmenu(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer)
+bool8 HelpMenuSubroutine_ReturnFromSubmenu(struct HelpSystemListMenu *helpListMenu, struct ListMenuItem *listMenuItemsBuffer)
 {
     HS_ShowOrHideScrollArrows(0, 0);
     HS_ShowOrHideScrollArrows(1, 0);
@@ -2374,7 +2374,7 @@ bool8 HelpMenuSubroutine_ReturnFromSubmenu(struct HelpSystemListMenu * helpListM
     return TRUE;
 }
 
-bool8 HelpMenuSubroutine_SubmenuInputHandler(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer)
+bool8 HelpMenuSubroutine_SubmenuInputHandler(struct HelpSystemListMenu *helpListMenu, struct ListMenuItem *listMenuItemsBuffer)
 {
     s32 input = HelpSystem_GetMenuInput();
     switch (input)
@@ -2402,7 +2402,7 @@ void HelpSystem_PrintTopicLabel(void)
     HelpSystem_PrintTextAt(sHelpSystemTopicPtrs[gHelpSystemState.topic], 0, 0);
 }
 
-bool8 HelpMenuSubroutine_HelpItemPrint(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer)
+bool8 HelpMenuSubroutine_HelpItemPrint(struct HelpSystemListMenu *helpListMenu, struct ListMenuItem *listMenuItemsBuffer)
 {
     gHelpSystemState.level = 2;
     HS_ShowOrHideMainWindowText(0);
@@ -2437,7 +2437,7 @@ bool8 HelpMenuSubroutine_HelpItemPrint(struct HelpSystemListMenu * helpListMenu,
     return TRUE;
 }
 
-bool8 HelpMenuSubroutine_ReturnFromHelpItem(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer)
+bool8 HelpMenuSubroutine_ReturnFromHelpItem(struct HelpSystemListMenu *helpListMenu, struct ListMenuItem *listMenuItemsBuffer)
 {
     gHelpSystemState.level = 1;
     BuildAndPrintSubmenuList(helpListMenu, listMenuItemsBuffer);
@@ -2447,7 +2447,7 @@ bool8 HelpMenuSubroutine_ReturnFromHelpItem(struct HelpSystemListMenu * helpList
     return TRUE;
 }
 
-bool8 HelpMenuSubroutine_HelpItemWaitButton(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer)
+bool8 HelpMenuSubroutine_HelpItemWaitButton(struct HelpSystemListMenu *helpListMenu, struct ListMenuItem *listMenuItemsBuffer)
 {
     if (JOY_NEW(B_BUTTON) || JOY_NEW(A_BUTTON))
     {
@@ -2466,7 +2466,7 @@ static void PrintWelcomeMessageOnPanel1(void)
     HelpSystem_PrintTextAt(Help_Text_Greetings, 0, 0);
 }
 
-static void PrintTextOnPanel2Row52RightAlign(const u8 * str)
+static void PrintTextOnPanel2Row52RightAlign(const u8 *str)
 {
     HelpSystem_FillPanel2();
     HelpSystem_PrintTextRightAlign_Row52(str);
@@ -2477,13 +2477,13 @@ u8 GetHelpSystemMenuLevel(void)
     return gHelpSystemState.level;
 }
 
-static void ResetHelpSystemCursor(struct HelpSystemListMenu * helpListMenu)
+static void ResetHelpSystemCursor(struct HelpSystemListMenu *helpListMenu)
 {
     helpListMenu->itemsAbove = 0;
     helpListMenu->cursorPos = 0;
 }
 
-static void PrintHelpSystemTopicMouseoverDescription(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer)
+static void PrintHelpSystemTopicMouseoverDescription(struct HelpSystemListMenu *helpListMenu, struct ListMenuItem *listMenuItemsBuffer)
 {
     s32 index = listMenuItemsBuffer[helpListMenu->itemsAbove + helpListMenu->cursorPos].id;
     if (index == -2)

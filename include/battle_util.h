@@ -52,6 +52,8 @@ enum AbilityEffect
     ABILITYEFFECT_MOVE_END_OTHER,
     ABILITYEFFECT_MOVE_END_FOES_FAINTED, // Moxie-like abilities / Battle Bond / Magician
 
+    ABILITYEFFECT_ON_FORM_CHANGE,
+
     // On Switch in
     ABILITYEFFECT_TERA_SHIFT,
     ABILITYEFFECT_NEUTRALIZINGGAS,
@@ -85,14 +87,6 @@ enum ItemEffect
 #define CRITICAL_HIT_BLOCKED -1
 #define CRITICAL_HIT_ALWAYS  -2
 
-// for Natural Gift and Fling
-struct TypePower
-{
-    enum Type type:8;
-    u8 power;
-    u16 effect;
-};
-
 enum ImmunityHealStatusOutcome
 {
     IMMUNITY_NO_EFFECT,
@@ -101,8 +95,6 @@ enum ImmunityHealStatusOutcome
     IMMUNITY_INFATUATION_CLEARED,
     IMMUNITY_TAUNT_CLEARED,
 };
-
-extern const struct TypePower gNaturalGiftTable[];
 
 struct BattleContext
 {
@@ -407,6 +399,7 @@ bool32 HasPartnerTrainer(enum BattlerId battler);
 bool32 IsAffectedByPowderMove(enum BattlerId battler, enum Ability ability, enum HoldEffect holdEffect);
 enum Move GetNaturePowerMove(void);
 void RemoveAbilityFlags(enum BattlerId battler);
+void RemoveRuinAbilityFlags(enum BattlerId battler);
 void CheckSetUnburden(enum BattlerId battler);
 bool32 IsDazzlingAbility(enum Ability ability);
 bool32 IsAllowedToUseBag(void);

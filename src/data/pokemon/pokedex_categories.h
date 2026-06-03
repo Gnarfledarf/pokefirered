@@ -1026,7 +1026,7 @@ static const struct PokedexCategoryPage sDexCategory_RarePkmn[] = {
 };
 
 struct {
-    const struct PokedexCategoryPage * page;
+    const struct PokedexCategoryPage *page;
     u8 count;
 } const gDexCategories[] = {
     DEX_CATEGORY(GrasslandPkmn),

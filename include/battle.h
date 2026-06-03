@@ -115,7 +115,8 @@ struct SpecialStatus
     u8 neutralizingGasRemoved:1;
     u8 berryReduced:1;
     u8 mindBlownRecoil:1;
-    u8 padding2:2;
+    u8 poisonPuppeteer:1;
+    u8 padding2:1;
     // End of byte
     u8 gemParam:7;
     u8 gemBoost:1;
@@ -613,7 +614,7 @@ struct BattleStruct
     u8 battlerKOAnimsRunning:3;
     u8 friskedAbility:1; // If identifies two mons, show the ability pop-up only once.
     u8 fickleBeamBoosted:1;
-    u8 poisonPuppeteerConfusion:1;
+    u8 unused2:1;
     u8 toxicChainPriority:1; // If Toxic Chain will trigger on target, all other non volatiles will be blocked
     u8 battlersSorted:1; // To avoid unnessasery computation
     // struct BattleTvMovePoints tvMovePoints;
@@ -680,6 +681,7 @@ struct BattleStruct
     u16 prevTurnSpecies[MAX_BATTLERS_COUNT]; // Stores species the AI has in play at start of turn
     s16 passiveHpUpdate[MAX_BATTLERS_COUNT]; // non-move damage and healing
     s16 moveDamage[MAX_BATTLERS_COUNT];
+    u16 innardsOutHpLost[MAX_BATTLERS_COUNT];
     u16 moveResultFlags[MAX_BATTLERS_COUNT];
     enum CalcDamageState noResultString[MAX_BATTLERS_COUNT];
     u8 doneDoublesSpreadHit:1;

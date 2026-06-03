@@ -12,6 +12,7 @@
 #include "sound.h"
 #include "strings.h"
 #include "task.h"
+#include "constants/event_bg.h"
 #include "constants/songs.h"
 
 static void Task_NoResponse_CleanUp(u8 taskId);
@@ -27,7 +28,7 @@ static void Task_ItemfinderUnderfootPrintMessage(u8 taskId);
 static void Task_ItemfinderUnderfootDigUpItem(u8 taskId);
 static void DestroyArrowAndStarTiles(void);
 static void LoadArrowAndStarTiles(void);
-static void CreateArrowSprite(u8 animNum, u8 direction);
+static void CreateArrowSprite(u8 animNum, enum Direction direction);
 static void SpriteCallback_Arrow(struct Sprite *sprite);
 static void SpriteCallback_DestroyArrow(struct Sprite *sprite);
 static u8 CreateStarSprite(void);
@@ -110,7 +111,7 @@ static const union AffineAnimCmd *const sArrowAndStarSpriteAffineAnimTable[] = {
 
 static const struct SpriteTemplate sSpriteTemplate_ArrowAndStar = {
     .tileTag = ARROW_TILE_TAG,
-    .paletteTag = 0xFFFF,
+    .paletteTag = TAG_NONE,
     .oam = &sArrowAndStarSpriteOamData,
     .anims = sArrowAndStarSpriteAnimTable,
     .affineAnims = sArrowAndStarSpriteAffineAnimTable,
@@ -175,7 +176,7 @@ static void Task_NoResponse_CleanUp(u8 taskId)
 static void Task_ItemfinderResponseSoundsAndAnims(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
-    u8 direction;
+    enum Direction direction;
     if (tDingTimer % 25 == 0)
     {
         direction = GetPlayerDirectionTowardsHiddenItem(tItemX, tItemY);
@@ -216,6 +217,13 @@ static void Task_ItemfinderUnderfootSoundsAndAnims(u8 taskId)
     tDingTimer++;
 }
 
+bool32 IsUnderfootItem(const struct BgEvent *bgEvent)
+{
+    bool32 isUnderfoot = GetHiddenItemAttr(bgEvent->bgUnion.hiddenItem, HIDDEN_ITEM_UNDERFOOT) == TRUE;
+
+    return isUnderfoot && (I_ORAS_DOWSING_FLAG == 0 || !FlagGet(I_ORAS_DOWSING_FLAG));
+}
+
 bool8 HiddenItemIsWithinRangeOfPlayer(const struct MapEvents *events, u8 taskId)
 {
     s16 x, y, i, dx, dy;
@@ -228,11 +236,11 @@ bool8 HiddenItemIsWithinRangeOfPlayer(const struct MapEvents *events, u8 taskId)
 
     for (i = 0; i < events->bgEventCount; i++)
     {
-        if (events->bgEvents[i].kind == 7 && !FlagGet(GetHiddenItemAttr(events->bgEvents[i].bgUnion.hiddenItem, HIDDEN_ITEM_FLAG)))
+        if (events->bgEvents[i].kind == BG_EVENT_HIDDEN_ITEM && !FlagGet(GetHiddenItemAttr(events->bgEvents[i].bgUnion.hiddenItem, HIDDEN_ITEM_FLAG)))
         {
-            dx = events->bgEvents[i].x + 7 - x;
-            dy = events->bgEvents[i].y + 7 - y;
-            if (GetHiddenItemAttr(events->bgEvents[i].bgUnion.hiddenItem, HIDDEN_ITEM_UNDERFOOT) == TRUE)
+            dx = events->bgEvents[i].x + MAP_OFFSET - x;
+            dy = events->bgEvents[i].y + MAP_OFFSET - y;
+            if (IsUnderfootItem(&events->bgEvents[i]))
             {
                 if (dx == 0 && dy == 0)
                 {
@@ -240,12 +248,7 @@ bool8 HiddenItemIsWithinRangeOfPlayer(const struct MapEvents *events, u8 taskId)
                     return TRUE;
                 }
             }
-            else if (
-                dx >= -7
-             && dx <=  7
-             && dy >= -5
-             && dy <=  5
-            )
+            else if (dx >= -7 && dx <= 7 && dy >= -5 && dy <= 5)
             {
                 RegisterHiddenItemRelativeCoordsIfCloser(taskId, dx, dy);
             }
@@ -306,20 +309,16 @@ static void SetNormalHiddenItem(u8 taskId)
     }
 }
 
-static bool8 HiddenItemAtPos(const struct MapEvents * events, s16 x, s16 y)
+static bool8 HiddenItemAtPos(const struct MapEvents *events, s16 x, s16 y)
 {
     u8 bgEventCount = events->bgEventCount;
-    const struct BgEvent * bgEvents = events->bgEvents;
+    const struct BgEvent *bgEvents = events->bgEvents;
     u16 eventFlag;
     int i;
 
     for (i = 0; i < bgEventCount; i++)
     {
-        if (
-            bgEvents[i].kind == 7
-         && x == bgEvents[i].x
-         && y == bgEvents[i].y
-        )
+        if (bgEvents[i].kind == BG_EVENT_HIDDEN_ITEM && x == bgEvents[i].x && y == bgEvents[i].y)
         {
             eventFlag = GetHiddenItemAttr(bgEvents[i].bgUnion.hiddenItem, HIDDEN_ITEM_FLAG);
             if (GetHiddenItemAttr(bgEvents[i].bgUnion.hiddenItem, HIDDEN_ITEM_UNDERFOOT) != TRUE && !FlagGet(eventFlag))
@@ -331,9 +330,9 @@ static bool8 HiddenItemAtPos(const struct MapEvents * events, s16 x, s16 y)
     return FALSE;
 }
 
-static bool8 HiddenItemInConnectedMapAtPos(const struct MapConnection * connection, s32 x, s32 y)
+static bool8 HiddenItemInConnectedMapAtPos(const struct MapConnection *connection, s32 x, s32 y)
 {
-    const struct MapHeader * mapHeader;
+    const struct MapHeader *mapHeader;
     u16 localX, localY;
     u32 localOffset;
     s32 localLength;
@@ -394,7 +393,7 @@ static void FindHiddenItemsInConnectedMaps(u8 taskId)
                 || var2 > curY
                 || curY >= height)
             {
-                const struct MapConnection * conn = GetMapConnectionAtPos(curX, curY);
+                const struct MapConnection *conn = GetMapConnectionAtPos(curX, curY);
                 if (conn != NULL && HiddenItemInConnectedMapAtPos(conn, curX, curY) == TRUE)
                     RegisterHiddenItemRelativeCoordsIfCloser(taskId, curX - x, curY - y);
             }
@@ -406,6 +405,9 @@ static void RegisterHiddenItemRelativeCoordsIfCloser(u8 taskId, s16 dx, s16 dy)
 {
     s16 *data = gTasks[taskId].data;
     s16 dx2, dy2, dx3, dy3;
+
+    if (I_ORAS_DOWSING_FLAG != 0)
+        data = gSprites[gObjectEvents[gPlayerAvatar.objectEventId].fieldEffectSpriteId].data;
 
     if (tHiddenItemFound == FALSE)
     {
@@ -453,7 +455,7 @@ static void RegisterHiddenItemRelativeCoordsIfCloser(u8 taskId, s16 dx, s16 dy)
     }
 }
 
-u8 GetPlayerDirectionTowardsHiddenItem(s16 itemX, s16 itemY)
+enum Direction GetPlayerDirectionTowardsHiddenItem(s16 itemX, s16 itemY)
 {
     s16 abX, abY;
 
@@ -554,10 +556,10 @@ static void DestroyArrowAndStarTiles(void)
     FreeSpriteTilesByTag(ARROW_TILE_TAG);
 }
 
-static void CreateArrowSprite(u8 animNum, u8 direction)
+static void CreateArrowSprite(u8 animNum, enum Direction direction)
 {
     u8 spriteId = CreateSprite(&sSpriteTemplate_ArrowAndStar, 120, 76, 0);
-    gSprites[spriteId].oam.paletteNum = 0;
+    gSprites[spriteId].oam.paletteNum = gSaveBlock2Ptr->playerGender == MALE ? IndexOfSpritePaletteTag(OBJ_EVENT_PAL_TAG_PLAYER_RED) : IndexOfSpritePaletteTag(OBJ_EVENT_PAL_TAG_PLAYER_GREEN);
     StartSpriteAnim(&gSprites[spriteId], animNum);
     gSprites[spriteId].spAnimNum = animNum;
     gSprites[spriteId].spData0 = 0;
@@ -590,6 +592,8 @@ static void CreateArrowSprite(u8 animNum, u8 direction)
             gSprites[spriteId].spDeltaY = 100;
             StartSpriteAffineAnim(&gSprites[spriteId], 1);
             break;
+        default:
+            break;
         }
         break;
     case DIR_SOUTH:
@@ -610,6 +614,8 @@ static void CreateArrowSprite(u8 animNum, u8 direction)
     case DIR_EAST:
         gSprites[spriteId].spDeltaX = -100;
         gSprites[spriteId].spDeltaY = 0;
+        break;
+    default:
         break;
     }
 }

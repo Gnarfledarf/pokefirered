@@ -974,6 +974,8 @@ static void Task_InitUpdateMonBg(u8 taskId)
         gTasks[updateTaskId].t2_BgY = gBattle_BG2_Y;
     }
 
+    assertf(sMonAnimTaskIdArray[tIsPartner] == TASK_NONE, "Duplicate monbg without clearmonbg");
+
     gTasks[updateTaskId].t2_InBg2 = tInBg2;
     gTasks[updateTaskId].t2_BattlerId = tBattlerId;
     sMonAnimTaskIdArray[tIsPartner] = updateTaskId;
@@ -1553,7 +1555,7 @@ void LoadMoveBg(u16 bgId)
 {
     if (IsContest())
     {
-        void *decompressionBuffer = malloc_and_decompress(gBattleAnimBackgroundTable[bgId].tilemap, NULL);
+        void *decompressionBuffer = AllocAndDecompress(gBattleAnimBackgroundTable[bgId].tilemap, NULL);
         RelocateBattleBgPal(GetBattleBgPaletteNum(), decompressionBuffer, 0x100, FALSE);
         DmaCopy32(3, decompressionBuffer, (void *)BG_SCREEN_ADDR(26), 0x800);
         Free(decompressionBuffer);

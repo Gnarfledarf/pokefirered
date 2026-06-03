@@ -103,91 +103,91 @@ FiveIsland_Meadow_EventScript_HeadbuttSudowoodo::
 # 52 "data/maps/FiveIsland_Meadow/scripts.pory"
 	closemessage
 # 53 "data/maps/FiveIsland_Meadow/scripts.pory"
-	dofieldeffect FLDEFF_USE_HEADBUTT
-# 54 "data/maps/FiveIsland_Meadow/scripts.pory"
-	waitstate
-# 55 "data/maps/FiveIsland_Meadow/scripts.pory"
 	goto FiveIsland_Meadow_EventScript_HeadbuttTree_Sudowoodo
-# 56 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 54 "data/maps/FiveIsland_Meadow/scripts.pory"
 	end
-# 57 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 55 "data/maps/FiveIsland_Meadow/scripts.pory"
 
-# 58 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 56 "data/maps/FiveIsland_Meadow/scripts.pory"
 FiveIsland_Meadow_EventScript_HeadbuttTree_Sudowoodo::
-# 59 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 57 "data/maps/FiveIsland_Meadow/scripts.pory"
 	lockall
-# 60 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 58 "data/maps/FiveIsland_Meadow/scripts.pory"
 	dofieldeffect FLDEFF_USE_HEADBUTT
-# 61 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 59 "data/maps/FiveIsland_Meadow/scripts.pory"
 	waitstate
-# 62 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 60 "data/maps/FiveIsland_Meadow/scripts.pory"
 	setvar VAR_0x8004, 1  @ vertical pan
-# 63 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 61 "data/maps/FiveIsland_Meadow/scripts.pory"
 	setvar VAR_0x8005, 1  @ horizontal pan
-# 64 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 62 "data/maps/FiveIsland_Meadow/scripts.pory"
 	setvar VAR_0x8006, 8  @ num shakes
-# 65 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 63 "data/maps/FiveIsland_Meadow/scripts.pory"
 	setvar VAR_0x8007, 5  @ shake delay
-# 66 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 64 "data/maps/FiveIsland_Meadow/scripts.pory"
 	special ShakeScreen
-# 67 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 65 "data/maps/FiveIsland_Meadow/scripts.pory"
 	waitstate
-# 68 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 66 "data/maps/FiveIsland_Meadow/scripts.pory"
 	waitse
+# 67 "data/maps/FiveIsland_Meadow/scripts.pory"
+	playse SE_SUDOWOODO_SHAKE
+# 68 "data/maps/FiveIsland_Meadow/scripts.pory"
+	applymovement LOCALID_FIVE_ISLAND_MEADOW_SUDOWOODO, FiveIsland_Meadow_Movement_SudowoodoShake
 # 69 "data/maps/FiveIsland_Meadow/scripts.pory"
 	playse SE_SUDOWOODO_SHAKE
 # 70 "data/maps/FiveIsland_Meadow/scripts.pory"
 	applymovement LOCALID_FIVE_ISLAND_MEADOW_SUDOWOODO, FiveIsland_Meadow_Movement_SudowoodoShake
 # 71 "data/maps/FiveIsland_Meadow/scripts.pory"
-	playse SE_SUDOWOODO_SHAKE
-# 72 "data/maps/FiveIsland_Meadow/scripts.pory"
-	applymovement LOCALID_FIVE_ISLAND_MEADOW_SUDOWOODO, FiveIsland_Meadow_Movement_SudowoodoShake
-# 73 "data/maps/FiveIsland_Meadow/scripts.pory"
 	waitmovement 0
-# 74 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 72 "data/maps/FiveIsland_Meadow/scripts.pory"
 	msgbox gText_Sudowoodo_Furious, MSGBOX_DEFAULT
-# 75 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 73 "data/maps/FiveIsland_Meadow/scripts.pory"
 	closemessage
-# 76 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 74 "data/maps/FiveIsland_Meadow/scripts.pory"
 	waitse
-# 77 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 75 "data/maps/FiveIsland_Meadow/scripts.pory"
 	playmoncry SPECIES_SUDOWOODO, CRY_MODE_ENCOUNTER
-# 78 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 76 "data/maps/FiveIsland_Meadow/scripts.pory"
 	delay 40
-# 79 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 77 "data/maps/FiveIsland_Meadow/scripts.pory"
 	waitmoncry
-# 80 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 78 "data/maps/FiveIsland_Meadow/scripts.pory"
 	setvar VAR_LAST_TALKED, LOCALID_FIVE_ISLAND_MEADOW_SUDOWOODO
-# 81 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 79 "data/maps/FiveIsland_Meadow/scripts.pory"
 	setwildbattle SPECIES_SUDOWOODO, 40
-# 82 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 80 "data/maps/FiveIsland_Meadow/scripts.pory"
 	setflag FLAG_SYS_SPECIAL_WILD_BATTLE
-# 83 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 81 "data/maps/FiveIsland_Meadow/scripts.pory"
 	dowildbattle
-# 84 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 82 "data/maps/FiveIsland_Meadow/scripts.pory"
 	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
-# 85 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 83 "data/maps/FiveIsland_Meadow/scripts.pory"
 	specialvar VAR_RESULT, GetBattleOutcome
-# 86 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 84 "data/maps/FiveIsland_Meadow/scripts.pory"
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, FiveIsland_Meadow_EventScript_DefeatedSudowoodo
+# 85 "data/maps/FiveIsland_Meadow/scripts.pory"
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, FiveIsland_Meadow_EventScript_RanFromSudowoodo
+# 86 "data/maps/FiveIsland_Meadow/scripts.pory"
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, FiveIsland_Meadow_EventScript_RanFromSudowoodo
 # 87 "data/maps/FiveIsland_Meadow/scripts.pory"
-	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, FiveIsland_Meadow_EventScript_DefeatedSudowoodo
-# 88 "data/maps/FiveIsland_Meadow/scripts.pory"
-	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, FiveIsland_Meadow_EventScript_DefeatedSudowoodo
-# 89 "data/maps/FiveIsland_Meadow/scripts.pory"
-	setflag FLAG_DEFEATED_FIVE_ISLAND_MEADOW_SUDOWOODO
-# 90 "data/maps/FiveIsland_Meadow/scripts.pory"
 	release
-# 91 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 88 "data/maps/FiveIsland_Meadow/scripts.pory"
 	end
-# 92 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 89 "data/maps/FiveIsland_Meadow/scripts.pory"
 
-# 93 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 90 "data/maps/FiveIsland_Meadow/scripts.pory"
 FiveIsland_Meadow_EventScript_DefeatedSudowoodo::
-# 94 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 91 "data/maps/FiveIsland_Meadow/scripts.pory"
 	setflag FLAG_DEFEATED_FIVE_ISLAND_MEADOW_SUDOWOODO
-# 95 "data/maps/FiveIsland_Meadow/scripts.pory"
+# 92 "data/maps/FiveIsland_Meadow/scripts.pory"
 	goto EventScript_RemoveStaticMon
+# 93 "data/maps/FiveIsland_Meadow/scripts.pory"
+	end
+# 94 "data/maps/FiveIsland_Meadow/scripts.pory"
+
+# 95 "data/maps/FiveIsland_Meadow/scripts.pory"
+FiveIsland_Meadow_EventScript_RanFromSudowoodo:
 # 96 "data/maps/FiveIsland_Meadow/scripts.pory"
 	end
 # 97 "data/maps/FiveIsland_Meadow/scripts.pory"

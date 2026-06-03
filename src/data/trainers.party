@@ -7392,6 +7392,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Onix (M)
 Ability: Sturdy
 Level: 14
+Bold Nature
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
 - Bind
@@ -9303,12 +9304,22 @@ Double Battle: Yes
 AI: Check Bad Move
 
 Clefairy
+Ability: Friend Guard
 Level: 22
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Disarming Voice
+- Pound
+- Follow Me
+- Minimize
 
 Jigglypuff
+Ability: Friend Guard
 Level: 22
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Round
+- Double Slap
+- Disarming Voice
+- Disable
 
 === TRAINER_COOL_COUPLE_RAY_TYRA ===
 Name: Ray & Tyra
@@ -9323,17 +9334,17 @@ Nidoqueen
 Level: 45
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Superpower
-- Body Slam
-- Double Kick
-- Poison Sting
+- Drill Run
+- Icy Wind
+- Helping Hand
 
 Nidoking
 Level: 45
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Sludge Wave
 - Megahorn
 - Thrash
 - Double Kick
-- Poison Sting
 
 === TRAINER_YOUNG_COUPLE_GIA_JES ===
 Name: Gia & Jes
@@ -9347,10 +9358,18 @@ AI: Check Bad Move
 Nidoran M
 Level: 24
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Peck
+- Horn Attack
+- Double Kick
+- Helping Hand
 
 Nidoran F
 Level: 24
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Poison Sting
+- Bite
+- Helping Hand
+- Growl
 
 === TRAINER_TWINS_KIRI_JAN ===
 Name: Kiri & Jan
@@ -9362,12 +9381,20 @@ Double Battle: Yes
 AI: Check Bad Move
 
 Charmander
-Level: 29
+Level: 30
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Flame Burst
+- Dragon Breath
+- Growl
+- Scary Face
 
 Squirtle
-Level: 29
+Level: 30
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bubble Beam
+- Bite
+- Iron Defense
+- Protect
 
 === TRAINER_CRUSH_KIN_RON_MYA ===
 Name: Ron & Mya
@@ -9379,12 +9406,22 @@ Double Battle: Yes
 AI: Check Bad Move
 
 Hitmonchan @ Black Belt
+Ability: Inner Focus
 Level: 29
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Fake Out
+- Mach Punch
+- Bullet Punch
+- Thunder Punch
 
 Hitmonlee @ Black Belt
+Ability: Limber
 Level: 29
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Rolling Kick
+- Rage
+- Feint
+- Helping Hand
 
 === TRAINER_YOUNG_COUPLE_LEA_JED ===
 Name: Lea & Jed
@@ -9398,10 +9435,18 @@ AI: Check Bad Move
 Rapidash
 Level: 29
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Ember
+- Stomp
+- Quick Attack
+- Growl
 
 Ninetales
 Level: 29
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Flame Burst
+- Hex
+- Confuse Ray
+- Disable
 
 === TRAINER_SIS_AND_BRO_LIA_LUC ===
 Name: Lia & Luc
@@ -9415,10 +9460,18 @@ AI: Check Bad Move
 Goldeen
 Level: 30
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Water Gun
+- Fury Attack
+- Water Sport
+- Tail Whip
 
 Seaking
 Level: 30
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Water Gun
+- Peck
+- Flail
+- Tail Whip
 
 === TRAINER_SIS_AND_BRO_LIL_IAN ===
 Name: Lil & Ian
@@ -9430,12 +9483,22 @@ Double Battle: Yes
 AI: Check Bad Move
 
 Seadra
+Ability: Poison Point
 Level: 33
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bubble Beam
+- Scale Shot
+- Smokescreen
+- Leer
 
 Starmie
+Ability: Illuminate
 Level: 33
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Aqua Jet
+- Psybeam
+- Swift
+- Confuse Ray
 
 === TRAINER_BUG_CATCHER_3 ===
 Name: PH
@@ -10184,12 +10247,22 @@ Double Battle: Yes
 AI: Check Bad Move
 
 Clefairy
-Level: 28
+Ability: Friend Guard
+Level: 29
 IVs: 7 HP / 7 Atk / 7 Def / 7 SpA / 7 SpD / 7 Spe
+- Disarming Voice
+- Metronome
+- Minimize
+- Follow Me
 
 Jigglypuff
-Level: 28
+Ability: Friend Guard
+Level: 29
 IVs: 7 HP / 7 Atk / 7 Def / 7 SpA / 7 SpD / 7 Spe
+- Echoed Voice
+- Disarming Voice
+- Sing
+- Disable
 
 === TRAINER_YOUNGSTER_JOHNSON ===
 Name: Johnson
@@ -10733,12 +10806,22 @@ Double Battle: Yes
 AI: Check Bad Move
 
 Machoke @ Black Belt
+Ability: Guts
 Level: 39
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Vital Throw
+- Coaching
+- Foresight
+- Leer
 
 Primeape @ Black Belt
+Ability: Vital Spirit
 Level: 39
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Low Kick
+- Assurance
+- Fury Swipes
+- Leer
 
 === TRAINER_AROMA_LADY_VIOLET ===
 Name: Violet
@@ -11106,13 +11189,23 @@ Music: Swimmer
 Double Battle: Yes
 AI: Check Bad Move
 
-Poliwhirl
+Quagsire
+Ability: Water Absorb
 Level: 50
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Muddy Water
+- Earthquake
+- Rain Dance
+- Yawn
 
-Starmie
+Mantine
+Ability: Swift Swim
 Level: 50
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Surf
+- Air Slash
+- Signal Beam
+- Wide Guard
 
 === TRAINER_AROMA_LADY_ROSE ===
 Name: Rose
@@ -13296,12 +13389,22 @@ Double Battle: Yes
 AI: Check Bad Move
 
 Hitmonchan @ Black Belt
+Ability: Inner Focus
 Level: 33
 IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
+- Fake Out
+- Mach Punch
+- Bullet Punch
+- Thunder Punch
 
 Hitmonlee @ Black Belt
+Ability: Limber
 Level: 33
 IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
+- Jump Kick
+- Blaze Kick
+- Feint
+- Helping Hand
 
 === TRAINER_CRUSH_KIN_RON_MYA_3 ===
 Name: Ron & Mya
@@ -13313,12 +13416,22 @@ Double Battle: Yes
 AI: Check Bad Move
 
 Hitmonchan @ Black Belt
+Ability: Inner Focus
 Level: 51
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Fake Out
+- Sky Uppercut
+- Bullet Punch
+- Thunder Punch
 
 Hitmonlee @ Black Belt
+Ability: Limber
 Level: 51
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- High Jump Kick
+- Blaze Kick
+- Mega Kick
+- Helping Hand
 
 === TRAINER_CRUSH_KIN_RON_MYA_4 ===
 Name: Ron & Mya
@@ -13330,12 +13443,31 @@ Double Battle: Yes
 AI: Check Bad Move
 
 Hitmonchan @ Black Belt
+Ability: Inner Focus
 Level: 56
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Fake Out
+- Sky Uppercut
+- Bullet Punch
+- Thunder Punch
 
 Hitmonlee @ Black Belt
+Ability: Limber
 Level: 56
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- High Jump Kick
+- Blaze Kick
+- Sucker Punch
+- Helping Hand
+
+Hitmontop @ Black Belt
+Ability: Intimidate
+Level: 56
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Fake Out
+- Triple Kick
+- Triple Axel
+- Detect
 
 === TRAINER_BIKER_RUBEN_2 ===
 Name: Ruben
@@ -13608,12 +13740,22 @@ Double Battle: Yes
 AI: Check Bad Move
 
 Seadra
+Ability: Poison Point
 Level: 50
 IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
+- Bubble Beam
+- Dragon Breath
+- Scale Shot
+- Smokescreen
 
 Starmie
+Ability: Illuminate
 Level: 50
 IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
+- Bubble Beam
+- Psychic
+- Power Gem
+- Reflect Type
 
 === TRAINER_SIS_AND_BRO_LIL_IAN_3 ===
 Name: Lil & Ian
@@ -13624,13 +13766,23 @@ Music: Swimmer
 Double Battle: Yes
 AI: Check Bad Move
 
-Seadra
+Kingdra
+Ability: Swift Swim
 Level: 55
 IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
+- Bubble Beam
+- Dragon Pulse
+- Laser Focus
+- Smokescreen
 
 Starmie
+Ability: Illuminate
 Level: 55
 IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
+- Bubble Beam
+- Psychic
+- Power Gem
+- Rain Dance
 
 === TRAINER_SWIMMER_MALE_FINN_2 ===
 Name: Finn
@@ -13791,12 +13943,22 @@ Double Battle: Yes
 AI: Check Bad Move
 
 Machoke @ Black Belt
+Ability: Guts
 Level: 51
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Cross Chop
+- Knock Off
+- Coaching
+- Leer
 
 Primeape @ Black Belt
+Ability: Defiant
 Level: 51
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Cross Chop
+- Rage Fist
+- Assurance
+- Stomping Tantrum
 
 === TRAINER_CRUSH_KIN_MIK_KIA_3 ===
 Name: Mik & Kia
@@ -13808,12 +13970,22 @@ Double Battle: Yes
 AI: Check Bad Move
 
 Machamp @ Black Belt
+Ability: Guts
 Level: 56
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Cross Chop
+- Knock Off
+- Coaching
+- Leer
 
-Primeape @ Black Belt
+Annihilape @ Black Belt
+Ability: Defiant
 Level: 56
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Cross Chop
+- Rage Fist
+- Assurance
+- Stomping Tantrum
 
 === TRAINER_TUBER_AMIRA_2 ===
 Name: Amira
@@ -13963,10 +14135,18 @@ AI: Check Bad Move
 Nidorina
 Level: 30
 IVs: 7 HP / 7 Atk / 7 Def / 7 SpA / 7 SpD / 7 Spe
+- Poison Sting
+- Bite
+- Helping Hand
+- Growl
 
 Nidorino
 Level: 30
 IVs: 7 HP / 7 Atk / 7 Def / 7 SpA / 7 SpD / 7 Spe
+- Horn Attack
+- Double Kick
+- Helping Hand
+- Leer
 
 === TRAINER_YOUNG_COUPLE_GIA_JES_3 ===
 Name: Gia & Jes
@@ -13980,10 +14160,18 @@ AI: Check Bad Move
 Nidoking
 Level: 55
 IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
+- Sludge Wave
+- Drill Run
+- Double Kick
+- Helping Hand
 
 Nidoqueen
 Level: 55
 IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
+- Sludge Wave
+- Bite
+- Superpower
+- Helping Hand
 
 === TRAINER_BIRD_KEEPER_MILO_2 ===
 Name: Milo

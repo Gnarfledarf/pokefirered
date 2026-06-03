@@ -147,6 +147,6 @@ bool32 MetatileBehavior_IsWestArrowWarp(enum MetatileBehavior metatileBehavior);
 bool32 MetatileBehavior_IsWestBlocked(enum MetatileBehavior metatileBehavior);
 bool32 MetatileBehavior_IsWestwardCurrent(enum MetatileBehavior metatileBehavior);
 bool32 TestMetatileAttributeBit(u8 attr, u8 bitmask);
-bool32 MetatileBehavior_IsHeadbuttTree(u8 metatileBehavior);
+bool32 MetatileBehavior_IsHeadbuttTree(enum MetatileBehavior metatileBehavior);
 
 #endif // GUARD_METATILE_BEHAVIOR

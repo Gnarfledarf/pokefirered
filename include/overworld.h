@@ -186,12 +186,4 @@ void UpdateTimeOfDay(void);
 void WarpIntoMap(void);
 u32 GetCurrentBadgeCount(void);
 
-// Item Description Headers
-enum ItemObtainFlags
-{
-    FLAG_GET_ITEM_OBTAINED,
-    FLAG_SET_ITEM_OBTAINED,
-};
-bool8 GetSetItemObtained(enum Item item, enum ItemObtainFlags caseId);
-
 #endif //GUARD_OVERWORLD_H

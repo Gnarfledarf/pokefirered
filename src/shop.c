@@ -83,12 +83,6 @@ struct ShopInfo
     const enum Item *items;
 };
 
-struct ShopInfo
-{
-    bool32 (*isUnlockedFunc)(void);
-    const enum Item *items;
-};
-
 static const u8 sText_ShopBuy[] = _("Buy");
 static const u8 sText_ShopSell[] = _("Sell");
 static const u8 sText_ShopQuit[] = _("See Ya!");

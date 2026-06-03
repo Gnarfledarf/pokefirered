@@ -448,9 +448,9 @@ bool32 MetatileBehavior_IsFootprints(enum MetatileBehavior metatileBehavior) { r
 bool32 MetatileBehavior_IsBridge(enum MetatileBehavior metatileBehavior) { return FALSE; }
 bool32 MetatileBehavior_GetBridgeType(enum MetatileBehavior metatileBehavior) { return FALSE; }
 
-bool32 MetatileBehavior_IsUnused01(enum MetatileBehavior metatileBehavior)
+bool32 MetatileBehavior_IsWaterfall(enum MetatileBehavior metatileBehavior)
 {
-    if (metatileBehavior == MB_UNUSED_01)
+    if (metatileBehavior == MB_WATERFALL)
         return TRUE;
     else
         return FALSE;
@@ -591,14 +591,6 @@ bool32 MetatileBehavior_IsShortGrass(enum MetatileBehavior metatileBehavior) { r
 bool32 MetatileBehavior_IsHotSprings(enum MetatileBehavior metatileBehavior)
 {
     if (metatileBehavior == MB_HOT_SPRINGS)
-        return TRUE;
-    else
-        return FALSE;
-}
-
-bool32 MetatileBehavior_IsWaterfall(enum MetatileBehavior metatileBehavior)
-{
-    if (metatileBehavior == MB_WATERFALL)
         return TRUE;
     else
         return FALSE;
@@ -1127,7 +1119,7 @@ bool32 MetatileBehavior_IsRockClimbable(enum MetatileBehavior metatileBehavior)
         return FALSE;
 }
 
-bool8 MetatileBehavior_IsHeadbuttTree(u8 metatileBehavior)
+bool32 MetatileBehavior_IsHeadbuttTree(enum MetatileBehavior metatileBehavior)
 {
     if (metatileBehavior == MB_HEADBUTT)
         return TRUE;

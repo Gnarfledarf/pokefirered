@@ -43,6 +43,22 @@ ViridianForest_Text_SammyPostBattle::
     .string "I'm looking for the stuff I\n"
     .string "dropped. Can you help me?$"
 
+ViridianForest_Text_Sammy_FoundItem::
+    .string "Return the lost item?$"
+
+ViridianForest_Text_Sammy_GaveItemBack::
+    .string "You returned the lost Potion\n"
+    .string "to the boy.$"
+
+ViridianForest_Text_Sammy_ThankYouSoMuch::
+    .string "Yes, that's my Potion!\n"
+    .string "Thank you so much!$"
+
+ViridianForest_Text_Sammy_NetBallExplanation::
+    .string "A Net Ball lets you catch bugs\n"
+    .string "no problem!\p"
+    .string "It's perfect for a Bug Catcher!$"
+
 ViridianForest_Text_AnthonyIntro::
     .string "I might be little, but I won't like\n"
     .string "it if you go easy on me!$"

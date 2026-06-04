@@ -207,7 +207,7 @@
 #define FLAG_HIDE_BATTLE_FRONTIER_RECEPTION_GATE_SCOTT      0x0BD
 #define FLAG_CANCEL_BATTLE_ROOM_CHALLENGE                   0x0BE
 #define FLAG_BATTLE_FRONTIER_UNLOCKED                       0x0BF
-#define FLAG_0x0C0               0x0C0
+#define FLAG_GOT_NET_BALL_IN_VIRIDIAN_FOREST                0x0C0
 #define FLAG_0x0C1               0x0C1
 #define FLAG_0x0C2               0x0C2
 #define FLAG_0x0C3               0x0C3

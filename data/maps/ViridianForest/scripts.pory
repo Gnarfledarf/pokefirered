@@ -39,6 +39,7 @@ ViridianForest_EventScript_ExitSign::
 	msgbox ViridianForest_Text_LeavingViridianForest, MSGBOX_SIGN
 	end
 
+@todo: Replace Bug Catcher Colton with Bug Catcher Rick
 ViridianForest_EventScript_Rick::
 	trainerbattle_single TRAINER_BUG_CATCHER_RICK, ViridianForest_Text_RickIntro, ViridianForest_Text_RickDefeat
 	msgbox ViridianForest_Text_RickPostBattle, MSGBOX_AUTOCLOSE
@@ -51,7 +52,48 @@ ViridianForest_EventScript_Doug::
 
 ViridianForest_EventScript_Sammy::
 	trainerbattle_single TRAINER_BUG_CATCHER_SAMMY, ViridianForest_Text_SammyIntro, ViridianForest_Text_SammyDefeat
+	goto_if_set FLAG_GOT_NET_BALL_IN_VIRIDIAN_FOREST, ViridianForest_EventScript_Sammy_NetBallExplanation
+	goto_if_unset FLAG_GOT_NET_BALL_IN_VIRIDIAN_FOREST, ViridianForest_EventScript_Sammy_CheckIfFoundItem
 	msgbox ViridianForest_Text_SammyPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+ViridianForest_EventScript_Sammy_CheckIfFoundItem::
+	goto_if_set FLAG_HIDDEN_ITEM_VIRIDIAN_FOREST_POTION, ViridianForest_EventScript_Sammy_FoundItem
+	msgbox ViridianForest_Text_SammyPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+ViridianForest_EventScript_Sammy_FoundItem::
+	checkitem ITEM_POTION, 1
+	msgbox ViridianForest_Text_SammyPostBattle, MSGBOX_DEFAULT
+	goto_if_ge VAR_RESULT, TRUE, ViridianForest_EventScript_Sammy_ReturnLostItem
+	end
+
+ViridianForest_EventScript_Sammy_ReturnLostItem::
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox ViridianForest_Text_Sammy_FoundItem, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, ViridianForest_EventScript_Sammy_ReturnedLostItem
+	closemessage
+	end
+
+ViridianForest_EventScript_Sammy_ReturnedLostItem::
+	removeitem ITEM_POTION
+	msgbox ViridianForest_Text_Sammy_GaveItemBack
+	closemessage
+	call EventScript_RestorePrevTextColor
+	msgbox ViridianForest_Text_Sammy_ThankYouSoMuch, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	checkitemspace ITEM_NET_BALL
+	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
+	giveitem ITEM_NET_BALL, 1
+	goto_if_eq VAR_RESULT, FALSE, EventScript_NoRoomForItem
+	setflag FLAG_GOT_NET_BALL_IN_VIRIDIAN_FOREST
+	goto ViridianForest_EventScript_Sammy_NetBallExplanation
+	release
+	end
+
+ViridianForest_EventScript_Sammy_NetBallExplanation::
+	textcolor NPC_TEXT_COLOR_DEFAULT
+	msgbox ViridianForest_Text_Sammy_NetBallExplanation, MSGBOX_AUTOCLOSE
 	end
 
 ViridianForest_EventScript_Anthony::

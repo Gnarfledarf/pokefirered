@@ -42,6 +42,11 @@ PewterCity_Gym_EventScript_Liam::
 	msgbox PewterCity_Gym_Text_LiamPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+PewterCity_Gym_EventScript_Akina::
+	trainerbattle_single TRAINER_PICNICKER_AKINA, PewterCity_Gym_Text_AkinaIntro, PewterCity_Gym_Text_AkinaDefeat
+	msgbox PewterCity_Gym_Text_AkinaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
 PewterCity_Gym_EventScript_GymGuy::
 	lock
 	faceplayer

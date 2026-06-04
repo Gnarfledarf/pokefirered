@@ -76,6 +76,20 @@ PewterCity_Gym_Text_LiamPostBattle::
     .string "You're pretty hot.\n"
     .string "…But not as hot as Brock!$"
 
+PewterCity_Gym_Text_AkinaIntro::
+    .string "This is the Pewter City Gym!\p"
+    .string "Trainers here are a bit different\n"
+    .string "from those you've faced so far.$"
+
+PewterCity_Gym_Text_AkinaDefeat::
+    .string "You're quite different from the\n"
+    .string "challengers I've faced!$"
+
+PewterCity_Gym_Text_AkinaPostBattle::
+    .string "Was it your first Gym battle?\p"
+    .string "You don't look it, but you have\n"
+    .string "a lot of guts.$"
+
 PewterCity_Gym_Text_LetMeTakeYouToTheTop::
     .string "Hiya!\n"
     .string "Do you want to dream big?\p"

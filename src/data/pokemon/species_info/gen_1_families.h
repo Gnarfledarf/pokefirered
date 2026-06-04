@@ -3280,11 +3280,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             .frontPicYOffset = 9,
             .frontAnimFrames = ANIM_FRAMES(
                 ANIMCMD_FRAME(0, 15),
-                ANIMCMD_FRAME(1, 60),
+                ANIMCMD_FRAME(1, 15),
                 ANIMCMD_FRAME(1, 20),
                 ANIMCMD_FRAME(0, 1),
             ),
-            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_FLASH_YELLOW : ANIM_V_STRETCH,
+            .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_FLASH_YELLOW : ANIM_V_SQUISH_AND_BOUNCE,
             .frontAnimDelay = P_GBA_STYLE_SPECIES_GFX ? 0 : 25,
         #else
             .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(48, 48),

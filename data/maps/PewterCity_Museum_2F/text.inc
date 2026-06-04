@@ -53,8 +53,8 @@ PewterCity_Museum_1F_Text_MeteoriteThatFellOnMtMoon::
     .string "It is thought to be a Moon Stone.$"
 
 Text_WaterGunTeach::
-    .string "I'm watering this plant!\n"
-    .string "with my Water Gun!\p"
+    .string "I'm watering this plant with\n"
+    .string "Water Gun!\p"
     .string "Want me to teach one of\n"
     .string "your Pokémon Water Gun!$"
 
@@ -65,7 +65,7 @@ Text_WaterGunDeclined::
 Text_WaterGunWhichMon::
     .string "Great! Which Pokémon\n"
     .string "should learn Water Gun?$"
-
+//todo: Make this tutor repeatable by giving him something to drink
 Text_WaterGunTaught::
     .string "Whew! Now I feel relieved.\n"
     .string "But I'm thirsty again…$"

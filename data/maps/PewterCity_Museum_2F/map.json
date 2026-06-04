@@ -97,7 +97,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PewterCity_Museum_2F_EventScript_WaterGunTutor",
-      "flag": "FLAG_TUTOR_WATER_GUN"
+      "flag": "0"
     }
   ],
   "warp_events": [

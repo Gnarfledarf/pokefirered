@@ -1126,3 +1126,35 @@ bool32 MetatileBehavior_IsHeadbuttTree(enum MetatileBehavior metatileBehavior)
     else
         return FALSE;
 }
+
+bool32 MetatileBehavior_IsMeteoriteDeoxysNormal(enum MetatileBehavior metatileBehavior)
+{
+    if (metatileBehavior == MB_METEORITE_DEOXYS_NORMAL)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool32 MetatileBehavior_IsMeteoriteDeoxysAttack(enum MetatileBehavior metatileBehavior)
+{
+    if (metatileBehavior == MB_METEORITE_DEOXYS_ATTACK)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool32 MetatileBehavior_IsMeteoriteDeoxysDefense(enum MetatileBehavior metatileBehavior)
+{
+    if (metatileBehavior == MB_METEORITE_DEOXYS_DEFENSE)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool32 MetatileBehavior_IsMeteoriteDeoxysSpeed(enum MetatileBehavior metatileBehavior)
+{
+    if (metatileBehavior == MB_METEORITE_DEOXYS_SPEED)
+        return TRUE;
+    else
+        return FALSE;
+}

@@ -830,6 +830,7 @@ extern const u8 EventScript_FldEffStrength[];
 extern const u8 EventScript_FailSweetScent[];
 extern const u8 EventScript_FldEffRockSmash[];
 extern const u8 EventScript_UseHeadbutt[];
+extern const u8 EventScript_ChangeDeoxysForm[];
 
 extern const u8 SafariZone_EventScript_TimesUp[];
 extern const u8 SafariZone_EventScript_RetirePrompt[];

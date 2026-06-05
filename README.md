@@ -12,3 +12,4 @@ Press B to toggle Running Shoes(https://github.com/pret/pokeemerald/wiki/Push-B-
 [Lunos overworld Headbutt](https://github.com/pret/pokeemerald/compare/master...LOuroboros:ow_headbutt)
 Checking for specific caught species (Discord user properattire, channel "Rom Hacking Hideout", https://discord.com/channels/419213663107416084/419214240277200898/1362252888348557373)
 [PokemonSanFran/QoL-Field-Moves](https://github.com/PokemonSanFran/pokeemerald/wiki/QoL-Field-Moves)
+[Lunos Gen 4 styled Deoxys form change in overworld](https://github.com/DizzyEggg/pokeemerald/compare/master...LOuroboros:pokeemerald:change_deoxys_form)

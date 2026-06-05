@@ -8,6 +8,7 @@
 #include "dynamic_placeholder_text_util.h"
 #include "event_data.h"
 #include "event_object_movement.h"
+#include "event_scripts.h"
 #include "field_camera.h"
 #include "field_effect.h"
 #include "field_fadetransition.h"
@@ -17,6 +18,7 @@
 #include "field_specials.h"
 #include "field_weather.h"
 #include "fieldmap.h"
+#include "fldeff.h"
 #include "help_system.h"
 #include "international_string_util.h"
 #include "item_icon.h"
@@ -57,7 +59,7 @@
 #include "constants/items.h"
 #include "constants/maps.h"
 #include "constants/menu.h"
-#include "constants/metatile_labels.h"
+#include "constants/metatile_behaviors.h"
 #include "constants/metatile_labels.h"
 #include "constants/moves.h"
 #include "constants/region_map_sections.h"
@@ -3959,5 +3961,61 @@ void CheckPlayerHasCaughtSpecies(void)
         gSpecialVar_Result = TRUE;
         return;
     }
+    gSpecialVar_Result = FALSE;
+}
+
+bool32 CheckPartyHasSpecies(u32 givenSpecies)
+{
+    u32 partyIndex;
+
+    for (partyIndex = 0; partyIndex < CalculatePlayerPartyCount(); partyIndex++)
+        if (GetMonData(&gPlayerParty[partyIndex], MON_DATA_SPECIES) == givenSpecies)
+            return TRUE;
+
+    return FALSE;
+}
+
+// Changes a Deoxys' form if the following conditions are met:
+// -gSpecialVar_0x8004 is currently hosting a Deoxys form.
+// -The metatile behavior of the tile in front of the Player is MB_UNUSED_2C, MB_UNUSED_2D, MB_UNUSED_2E or MB_UNUSED_2F.
+// If these conditions aren't met, gSpecialVar_Result is set to FALSE meaning Deoxys' form didn't change.
+void TryChangeDeoxysForm(void)
+{
+    u16 baseSpecies = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES);
+    u16 targetSpecies;
+
+    if (baseSpecies == SPECIES_DEOXYS
+     || baseSpecies == SPECIES_DEOXYS_ATTACK
+     || baseSpecies == SPECIES_DEOXYS_DEFENSE
+     || baseSpecies == SPECIES_DEOXYS_SPEED)
+    {
+        s16 x, y;
+        u8 elevation;
+        GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
+        if (MapGridGetElevationAt(x, y) == gPlayerFacingPosition.elevation)
+        {
+            if (MapGridGetMetatileBehaviorAt(x, y) == MB_METEORITE_DEOXYS_NORMAL)
+            {
+                targetSpecies = SPECIES_DEOXYS;
+            }
+            else if (MapGridGetMetatileBehaviorAt(x, y) == MB_METEORITE_DEOXYS_ATTACK)
+            {
+                targetSpecies = SPECIES_DEOXYS_ATTACK;
+            }
+            else if (MapGridGetMetatileBehaviorAt(x, y) == MB_METEORITE_DEOXYS_DEFENSE)
+            {
+                targetSpecies = SPECIES_DEOXYS_DEFENSE;
+            }
+            else if (MapGridGetMetatileBehaviorAt(x, y) == MB_METEORITE_DEOXYS_SPEED)
+            {
+                targetSpecies = SPECIES_DEOXYS_SPEED;
+            }
+        }
+        SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES, &targetSpecies);
+        CalculateMonStats(&gPlayerParty[gSpecialVar_0x8004]);
+        gSpecialVar_Result = TRUE;
+        return;
+    }
+
     gSpecialVar_Result = FALSE;
 }

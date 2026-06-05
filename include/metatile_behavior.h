@@ -148,5 +148,9 @@ bool32 MetatileBehavior_IsWestBlocked(enum MetatileBehavior metatileBehavior);
 bool32 MetatileBehavior_IsWestwardCurrent(enum MetatileBehavior metatileBehavior);
 bool32 TestMetatileAttributeBit(u8 attr, u8 bitmask);
 bool32 MetatileBehavior_IsHeadbuttTree(enum MetatileBehavior metatileBehavior);
+bool32 MetatileBehavior_IsMeteoriteDeoxysNormal(enum MetatileBehavior metatileBehavior);
+bool32 MetatileBehavior_IsMeteoriteDeoxysAttack(enum MetatileBehavior metatileBehavior);
+bool32 MetatileBehavior_IsMeteoriteDeoxysDefense(enum MetatileBehavior metatileBehavior);
+bool32 MetatileBehavior_IsMeteoriteDeoxysSpeed(enum MetatileBehavior metatileBehavior);
 
 #endif // GUARD_METATILE_BEHAVIOR

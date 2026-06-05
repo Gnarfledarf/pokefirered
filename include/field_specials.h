@@ -35,5 +35,6 @@ void StopPokemonLeagueLightingEffectTask(void);
 void TV_PrintIntToStringVar(u8 varidx, s32 number);
 void UpdateFrontierGambler(u16 daysSince);
 void UpdateFrontierManiac(u16 daysSince);
+bool32 CheckPartyHasSpecies(u32);
 
 #endif // GUARD_FIELD_SPECIALS_H

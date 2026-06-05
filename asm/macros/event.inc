@@ -2491,3 +2491,20 @@
 	callnative ScrCmd_istmrelearneractive, requests_effects=1
 	.4byte \destination
 	.endm
+
+	@ Check if the Player has speciesId in their party. OPEN_PARTY_SCREEN will have the player select a mon from their party. NO_PARTY_SCREEN will automatically check every mon in the player's party.
+	.macro checkspecies speciesId:req, mode=NO_PARTY_SCREEN
+	.if \mode == OPEN_PARTY_SCREEN
+		special ChoosePartyMon
+		waitstate
+		callnative Scrcmd_checkspecies_choose
+		.2byte \speciesId
+	.else
+		callnative Scrcmd_checkspecies
+		.2byte \speciesId
+	.endif
+	.endm
+
+	.macro checkspecies_choose speciesId:req
+	checkspecies \speciesId, OPEN_PARTY_SCREEN
+	.endm

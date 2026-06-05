@@ -846,6 +846,7 @@
 	.include "data/scripts/berry_tree.inc"
 	.include "data/scripts/cable_club.inc"
 	.include "data/scripts/cave_of_origin.inc"
+	.include "data/scripts/change_deoxys_form.inc"
 	.include "data/scripts/config.inc"
 	.include "data/scripts/day_care.inc"
 	.include "data/scripts/debug.inc"

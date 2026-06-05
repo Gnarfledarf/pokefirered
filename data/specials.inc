@@ -353,4 +353,5 @@ gSpecials::
 	def_special HeadbuttWildEncounter
 	def_special GetCurrentBadgeCount
 	def_special CheckPlayerHasCaughtSpecies
+	def_special TryChangeDeoxysForm
 gSpecialsEnd::

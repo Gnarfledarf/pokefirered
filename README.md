@@ -9,5 +9,6 @@ To set up the repository, see [INSTALL.md](https://github.com/rh-hideout/pokeeme
 [rh-hideout/pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion/wiki/Credits)
 [Sotomura/pokefirered-rtc](https://github.com/Sotomura/pokefirered/tree/pokefirered-rtc)
 Press B to toggle Running Shoes(https://github.com/pret/pokeemerald/wiki/Push-B-to-Toggle-Running-Shoes)
+[Lunos overworld Headbutt](https://github.com/pret/pokeemerald/compare/master...LOuroboros:ow_headbutt)
 Checking for specific caught species (Discord user properattire, channel "Rom Hacking Hideout", https://discord.com/channels/419213663107416084/419214240277200898/1362252888348557373)
 [PokemonSanFran/QoL-Field-Moves](https://github.com/PokemonSanFran/pokeemerald/wiki/QoL-Field-Moves)

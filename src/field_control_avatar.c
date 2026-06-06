@@ -602,6 +602,7 @@ static const u8 *GetInteractedBackgroundEventScript(struct MapPosition *position
 
 static const u8 *GetInteractedMetatileScript(struct MapPosition *position, enum MetatileBehavior metatileBehavior, enum Direction direction)
 {
+    s8 elevation;
     gSpecialVar_Facing = direction;
     if (MetatileBehavior_IsPC(metatileBehavior) == TRUE)
         return EventScript_PC;
@@ -686,16 +687,20 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, enum 
     if (MetatileBehavior_IsRockClimbable(metatileBehavior) == TRUE && !IsRockClimbActive())
         return EventScript_UseRockClimb;
 
-    if (MetatileBehavior_IsHeadbuttTree(metatileBehavior) == TRUE)
-        return EventScript_Headbutt;
-    if (MetatileBehavior_IsMeteoriteDeoxysNormal(metatileBehavior) == TRUE)
-        return EventScript_ChangeDeoxysForm;
-    if (MetatileBehavior_IsMeteoriteDeoxysAttack(metatileBehavior) == TRUE)
-        return EventScript_ChangeDeoxysForm;
-    if (MetatileBehavior_IsMeteoriteDeoxysDefense(metatileBehavior) == TRUE)
-        return EventScript_ChangeDeoxysForm;
-    if (MetatileBehavior_IsMeteoriteDeoxysSpeed(metatileBehavior) == TRUE)
-        return EventScript_ChangeDeoxysForm;
+    elevation = position->elevation;
+    if (elevation == MapGridGetElevationAt(position->x, position->y))
+    {
+        if (MetatileBehavior_IsHeadbuttTree(metatileBehavior) == TRUE)
+            return EventScript_Headbutt;
+        if (MetatileBehavior_IsMeteoriteDeoxysNormal(metatileBehavior) == TRUE)
+            return EventScript_ChangeDeoxysForm;
+        if (MetatileBehavior_IsMeteoriteDeoxysAttack(metatileBehavior) == TRUE)
+            return EventScript_ChangeDeoxysForm;
+        if (MetatileBehavior_IsMeteoriteDeoxysDefense(metatileBehavior) == TRUE)
+            return EventScript_ChangeDeoxysForm;
+        if (MetatileBehavior_IsMeteoriteDeoxysSpeed(metatileBehavior) == TRUE)
+            return EventScript_ChangeDeoxysForm;
+    }
     return NULL;
 }
 

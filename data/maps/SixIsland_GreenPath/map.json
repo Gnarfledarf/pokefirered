@@ -45,28 +45,28 @@
     {
       "x": 63,
       "y": 10,
-      "elevation": 3,
+      "elevation": 5,
       "dest_map": "MAP_SIX_ISLAND_PATTERN_BUSH",
       "dest_warp_id": "1"
     },
     {
       "x": 64,
       "y": 10,
-      "elevation": 3,
+      "elevation": 5,
       "dest_map": "MAP_SIX_ISLAND_PATTERN_BUSH",
       "dest_warp_id": "1"
     },
     {
       "x": 45,
       "y": 10,
-      "elevation": 3,
+      "elevation": 5,
       "dest_map": "MAP_SIX_ISLAND_PATTERN_BUSH",
       "dest_warp_id": "4"
     },
     {
       "x": 46,
       "y": 10,
-      "elevation": 3,
+      "elevation": 5,
       "dest_map": "MAP_SIX_ISLAND_PATTERN_BUSH",
       "dest_warp_id": "4"
     }
@@ -96,7 +96,7 @@
       "elevation": 3,
       "item": "ITEM_ULTRA_BALL",
       "flag": "FLAG_HIDDEN_ITEM_SIX_ISLAND_GREEN_PATH_ULTRA_BALL",
-      "quantity": 1,
+      "quantity": 3,
       "underfoot": false
     }
   ]

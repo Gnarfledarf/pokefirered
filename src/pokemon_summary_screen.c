@@ -4549,31 +4549,23 @@ static void ChangeSummaryPokemon(u8 taskId, s8 direction)
 
 static s8 AdvanceMonIndex(s8 delta)
 {
+    struct Pokemon *mon = sMonSummaryScreen->monList.mons;
     u8 index = gLastViewedMonIndex;
-    struct Pokemon *partyMons = sMonSummaryScreen->monList.mons;
+    u8 numMons = sMonSummaryScreen->maxMonIndex + 1;
+    delta += numMons;
 
-    if (sMonSummaryScreen->curPageIndex == PSS_PAGE_INFO)
-    {
-        if (delta == -1 && index == 0)
-            return -1;
-        if (delta == 1 && index >= sMonSummaryScreen->maxMonIndex)
-            return -1;
+    index = (index + delta) % numMons;
 
-        return index + delta;
-    }
+    // skip over any Eggs unless on the Info Page
+    if (sMonSummaryScreen->curPageIndex != PSS_PAGE_INFO)
+        while (GetMonData(&mon[index], MON_DATA_IS_EGG))
+            index = (index + delta) % numMons;
 
-    while (TRUE)
-    {
-        index += delta;
-
-        if (0 > index || index > sMonSummaryScreen->maxMonIndex)
-            return -1;
-
-        if (GetMonData(&partyMons[index], MON_DATA_IS_EGG) == 0)
-            return index;
-    }
-
-    return -1;
+    // to avoid "scrolling" to the same Pokemon
+    if (index == gLastViewedMonIndex)
+        return -1;
+    else
+        return index;
 }
 
 static u8 IsValidToViewInMulti(struct Pokemon *partyMons)

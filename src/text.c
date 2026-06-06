@@ -1374,13 +1374,13 @@ static u16 RenderText(struct TextPrinter *textPrinter)
     switch (textPrinter->state)
     {
     case RENDER_STATE_HANDLE_CHAR:
-        if ((JOY_HELD(A_BUTTON | B_BUTTON) && textPrinter->hasPrintBeenSpedUp) || IsPlayerTextSpeedInstant())
+        if ((((A_BUTTON | B_BUTTON) || (gSaveBlock2Ptr->optionsTextSpeed == OPTIONS_TEXT_SPEED_FAST)) && textPrinter->hasPrintBeenSpedUp) || IsPlayerTextSpeedInstant())
             textPrinter->delayCounter = 0;
 
         if (textPrinter->delayCounter && textPrinter->textSpeed)
         {
             textPrinter->delayCounter--;
-            if (gTextFlags.canABSpeedUpPrint && (JOY_NEW(A_BUTTON | B_BUTTON)))
+            if (gTextFlags.canABSpeedUpPrint && ((JOY_NEW(A_BUTTON | B_BUTTON)) || (gSaveBlock2Ptr->optionsTextSpeed == OPTIONS_TEXT_SPEED_FAST)))
             {
                 textPrinter->hasPrintBeenSpedUp = TRUE;
                 textPrinter->delayCounter = 0;

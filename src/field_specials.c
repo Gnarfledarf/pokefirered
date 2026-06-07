@@ -3990,9 +3990,7 @@ void TryChangeDeoxysForm(void)
      || baseSpecies == SPECIES_DEOXYS_SPEED)
     {
         s16 x, y;
-        u8 elevation;
         GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
-        if (MapGridGetElevationAt(x, y) == gPlayerFacingPosition.elevation)
         {
             if (MapGridGetMetatileBehaviorAt(x, y) == MB_METEORITE_DEOXYS_NORMAL)
             {

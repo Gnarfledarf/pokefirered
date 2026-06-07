@@ -977,7 +977,7 @@ Text_WelcomeWantToHealPkmn_Champ_Evening::
 
 Text_WelcomeWantToHealPkmn_Champ_Night::
 	.string "Welcome to our Pokémon Center!\n"
-	.string "Still hard at work today, huh, Champ?\p"
+	.string "Still hard at work today, Champ?\p"
 	.string "Would you like me to heal your\n"
 	.string "Pokémon back to perfect health?$"
 

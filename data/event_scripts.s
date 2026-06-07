@@ -933,8 +933,51 @@ gText_SelectWithoutRegisteredItem::
 Text_PlayerBootedUpPC::
 	.string "{PLAYER} booted up the PC.$"
 
-Text_WelcomeWantToHealPkmn::
-	.string "Welcome to our Pokémon Center!\p"
+Text_WelcomeWantToHealPkmn_Morning::
+	.string "Good morning! Welcome to our\n"
+	.string "Pokémon Center.\p"
+	.string "Would you like me to heal your\n"
+	.string "Pokémon back to perfect health?$"
+
+Text_WelcomeWantToHealPkmn_Day::
+	.string "Hello, and welcome to our\n"
+	.string "Pokémon Center.\p"
+	.string "Would you like me to heal your\n"
+	.string "Pokémon back to perfect health?$"
+
+Text_WelcomeWantToHealPkmn_Evening::
+	.string "Good evening! Welcome to our\n"
+	.string "Pokémon Center.\p"
+	.string "Would you like me to heal your\n"
+	.string "Pokémon back to perfect health?$"
+
+Text_WelcomeWantToHealPkmn_Night::
+	.string "Good evening! Welcome to our\n"
+	.string "Pokémon Center.\p"
+	.string "Would you like me to heal your\n"
+	.string "Pokémon back to perfect health?$"
+
+Text_WelcomeWantToHealPkmn_Champ_Morning::
+	.string "Morning, Champ! Welcome to our\n"
+	.string "Pokémon Center.\p"
+	.string "Would you like me to heal your\n"
+	.string "Pokémon back to perfect health?$"
+
+Text_WelcomeWantToHealPkmn_Champ_Day::
+	.string "Hello, Champ! Welcome to our\n"
+	.string "Pokémon Center.\p"
+	.string "Would you like me to heal your\n"
+	.string "Pokémon back to perfect health?$"
+
+Text_WelcomeWantToHealPkmn_Champ_Evening::
+	.string "Good evening, Champ! Welcome\n"
+	.string "to our Pokémon Center.\p"
+	.string "Would you like me to heal your\n"
+	.string "Pokémon back to perfect health?$"
+
+Text_WelcomeWantToHealPkmn_Champ_Night::
+	.string "Welcome to our Pokémon Center!\n"
+	.string "Still hard at work today, huh, Champ?\p"
 	.string "Would you like me to heal your\n"
 	.string "Pokémon back to perfect health?$"
 

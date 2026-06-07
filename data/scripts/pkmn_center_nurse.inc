@@ -1,6 +1,95 @@
 EventScript_PkmnCenterNurse::
 	goto_if_questlog EventScript_ReleaseEnd
-	message Text_WelcomeWantToHealPkmn
+	goto_if_set FLAG_SYS_GAME_CLEAR, EventScript_PkmnCenterNurse_Champ
+	gettime
+	switch VAR_0x8003
+	case 0, EventScript_PkmnCenterNurse_NurseIntro_Morning
+	case 1, EventScript_PkmnCenterNurse_NurseIntro_Day
+	case 2, EventScript_PkmnCenterNurse_NurseIntro_Evening
+	case 3, EventScript_PkmnCenterNurse_NurseIntro_Night
+	end
+
+EventScript_PkmnCenterNurse_Champ::
+	gettime
+	switch VAR_0x8003
+	case 0, EventScript_PkmnCenterNurse_NurseIntro_Champ_Morning
+	case 1, EventScript_PkmnCenterNurse_NurseIntro_Champ_Day
+	case 2, EventScript_PkmnCenterNurse_NurseIntro_Champ_Evening
+	case 3, EventScript_PkmnCenterNurse_NurseIntro_Champ_Night
+	end
+
+EventScript_PkmnCenterNurse_NurseIntro_Morning::
+	message Text_WelcomeWantToHealPkmn_Morning
+	waitmessage
+	multichoice 19, 8, MULTI_YESNO, FALSE | (TRUE << 1)
+	switch VAR_RESULT
+	case 0, EventScript_PkmnCenterNurse_HealPkmn
+	case 1 EventScript_PkmnCenterNurse_Goodbye
+	case MULTI_B_PRESSED, EventScript_PkmnCenterNurse_Goodbye
+	end
+
+EventScript_PkmnCenterNurse_NurseIntro_Day::
+	message Text_WelcomeWantToHealPkmn_Day
+	waitmessage
+	multichoice 19, 8, MULTI_YESNO, FALSE | (TRUE << 1)
+	switch VAR_RESULT
+	case 0, EventScript_PkmnCenterNurse_HealPkmn
+	case 1 EventScript_PkmnCenterNurse_Goodbye
+	case MULTI_B_PRESSED, EventScript_PkmnCenterNurse_Goodbye
+	end
+
+EventScript_PkmnCenterNurse_NurseIntro_Evening::
+	message Text_WelcomeWantToHealPkmn_Evening
+	waitmessage
+	multichoice 19, 8, MULTI_YESNO, FALSE | (TRUE << 1)
+	switch VAR_RESULT
+	case 0, EventScript_PkmnCenterNurse_HealPkmn
+	case 1 EventScript_PkmnCenterNurse_Goodbye
+	case MULTI_B_PRESSED, EventScript_PkmnCenterNurse_Goodbye
+	end
+
+EventScript_PkmnCenterNurse_NurseIntro_Night::
+	message Text_WelcomeWantToHealPkmn_Night
+	waitmessage
+	multichoice 19, 8, MULTI_YESNO, FALSE | (TRUE << 1)
+	switch VAR_RESULT
+	case 0, EventScript_PkmnCenterNurse_HealPkmn
+	case 1 EventScript_PkmnCenterNurse_Goodbye
+	case MULTI_B_PRESSED, EventScript_PkmnCenterNurse_Goodbye
+	end
+
+EventScript_PkmnCenterNurse_NurseIntro_Champ_Morning::
+	message Text_WelcomeWantToHealPkmn_Champ_Morning
+	waitmessage
+	multichoice 19, 8, MULTI_YESNO, FALSE | (TRUE << 1)
+	switch VAR_RESULT
+	case 0, EventScript_PkmnCenterNurse_HealPkmn
+	case 1 EventScript_PkmnCenterNurse_Goodbye
+	case MULTI_B_PRESSED, EventScript_PkmnCenterNurse_Goodbye
+	end
+
+EventScript_PkmnCenterNurse_NurseIntro_Champ_Day::
+	message Text_WelcomeWantToHealPkmn_Champ_Day
+	waitmessage
+	multichoice 19, 8, MULTI_YESNO, FALSE | (TRUE << 1)
+	switch VAR_RESULT
+	case 0, EventScript_PkmnCenterNurse_HealPkmn
+	case 1 EventScript_PkmnCenterNurse_Goodbye
+	case MULTI_B_PRESSED, EventScript_PkmnCenterNurse_Goodbye
+	end
+
+EventScript_PkmnCenterNurse_NurseIntro_Champ_Evening::
+	message Text_WelcomeWantToHealPkmn_Champ_Evening
+	waitmessage
+	multichoice 19, 8, MULTI_YESNO, FALSE | (TRUE << 1)
+	switch VAR_RESULT
+	case 0, EventScript_PkmnCenterNurse_HealPkmn
+	case 1 EventScript_PkmnCenterNurse_Goodbye
+	case MULTI_B_PRESSED, EventScript_PkmnCenterNurse_Goodbye
+	end
+
+EventScript_PkmnCenterNurse_NurseIntro_Champ_Night::
+	message Text_WelcomeWantToHealPkmn_Champ_Night
 	waitmessage
 	multichoice 19, 8, MULTI_YESNO, FALSE | (TRUE << 1)
 	switch VAR_RESULT

@@ -327,7 +327,7 @@
 	.byte SCR_OP_DOTIMEBASEDEVENTS
 	.endm
 
-	@ Sets the values of variables VAR_0x8000, VAR_0x8001, and VAR_0x8002 to 0. In RSE, they'd get the current hour, minute, and second respectively.
+	@ Sets the values of variables VAR_0x8000, VAR_0x8001, VAR_0x8002 and VAR_0x8003 to the current hour, minute, second and day of week. In RSE, they'd get the current hour, minute, and second respectively.
 	.macro gettime
 	.byte SCR_OP_GETTIME
 	.endm

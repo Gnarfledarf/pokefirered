@@ -65,7 +65,22 @@ Text_WaterGunDeclined::
 Text_WaterGunWhichMon::
     .string "Great! Which Pokémon\n"
     .string "should learn Water Gun?$"
-//todo: Make this tutor repeatable by giving him something to drink
+
 Text_WaterGunTaught::
-    .string "Whew! Now I feel relieved.\n"
-    .string "But I'm thirsty again…$"
+    .string "Whew! I feel relieved.\n"
+    .string "But now I'm thirsty again…$"
+
+PewterCity_Museum_1F_Text_WaterGunTutor_AskGiveFreshWater::
+    .string "Hey, do you have Fresh Water?\n"
+    .string "Can you share some with me?$"
+
+Text_WaterGunTutor_SoThirsty::
+    .string "Please, I'm so thirsty…$"
+
+Text_WaterGunTutor_GiveFreshWater::
+    .string "You gave the boy one bottle\n"
+    .string "of Fresh Water.$"
+
+Text_WaterGunTutor_Thanks::
+    .string "Yeah, thanks! Now, do you want\n"
+    .string "me to teach Water Gun again?$"

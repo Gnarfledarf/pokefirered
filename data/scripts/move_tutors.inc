@@ -50,6 +50,7 @@ EventScript_ExplosionTaught::
 PewterCity_Museum_2F_EventScript_WaterGunTutor::
 	lock
 	faceplayer
+	goto_if_set FLAG_TUTOR_WATER_GUN, EventScript_WaterGunTutor_CheckPlayerHasFreshWater
 	move_tutor MOVE_WATER_GUN, Text_WaterGunTeach, Text_WaterGunWhichMon, EventScript_WaterGunDeclined, EventScript_WaterGunTaught, FLAG_TUTOR_WATER_GUN
 	end
 
@@ -60,6 +61,35 @@ EventScript_WaterGunDeclined::
 
 EventScript_WaterGunTaught::
 	msgbox Text_WaterGunTaught
+	release
+	end
+
+EventScript_WaterGunTutor_CheckPlayerHasFreshWater::
+	checkitem ITEM_FRESH_WATER
+	call_if_eq VAR_RESULT, TRUE, EventScript_WaterGunTutor_AskGiveWater
+	goto EventScript_WaterGunTaught
+	end
+
+EventScript_WaterGunTutor_AskGiveWater::
+	lock
+	faceplayer
+	msgbox Text_WaterGunTaught
+	msgbox PewterCity_Museum_1F_Text_WaterGunTutor_AskGiveFreshWater, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, WaterGunTutor_DontGiveWater
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox Text_WaterGunTutor_GiveFreshWater
+	call EventScript_RestorePrevTextColor
+	goto EventScript_WaterGunTutor_TeachAgain
+
+WaterGunTutor_DontGiveWater::
+	msgbox Text_WaterGunTutor_SoThirsty
+	release
+	end
+
+EventScript_WaterGunTutor_TeachAgain::
+	removeitem ITEM_FRESH_WATER
+	clearflag FLAG_TUTOR_WATER_GUN
+	move_tutor MOVE_WATER_GUN, Text_WaterGunTutor_Thanks, Text_WaterGunWhichMon, EventScript_WaterGunDeclined, EventScript_WaterGunTaught, FLAG_TUTOR_WATER_GUN
 	release
 	end
 

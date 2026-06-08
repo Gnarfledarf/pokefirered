@@ -162,11 +162,11 @@ enum Gender
     GENDER_COUNT,
 };
 
-#define BARD_SONG_LENGTH       6
-#define NUM_STORYTELLER_TALES  4
-#define NUM_TRADER_ITEMS       4
-#define GIDDY_MAX_TALES       10
-#define GIDDY_MAX_QUESTIONS    8
+#define BARD_SONG_LENGTH       0
+#define NUM_STORYTELLER_TALES  0
+#define NUM_TRADER_ITEMS       0
+#define GIDDY_MAX_TALES        0
+#define GIDDY_MAX_QUESTIONS    0
 
 #define OPTIONS_BUTTON_MODE_HELP         0
 #define OPTIONS_BUTTON_MODE_LR           1

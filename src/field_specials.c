@@ -1,7 +1,9 @@
 #include "global.h"
 #include "battle.h"
+#include "battle_pyramid.h"
 #include "cable_club.h"
 #include "chooseboxmon.h"
+#include "constants/trainer_types.h"
 #include "data.h"
 #include "debug.h"
 #include "diploma.h"
@@ -4016,4 +4018,76 @@ void TryChangeDeoxysForm(void)
     }
 
     gSpecialVar_Result = FALSE;
+}
+
+#define MAX_BIRD_SPOTS 10
+
+static const u8 randomBirdArray[MAX_BIRD_SPOTS + 1][4] =
+{
+    [0]  = { 0, 0, 0, 0 },
+    [1]  = { 1, 0, 1, 0 },
+    [2]  = { 1, 0, 1, 0 },
+    [3]  = { 2, 1, 1, 0 },
+    [4]  = { 2, 1, 1, 0 },
+    [5]  = { 2, 1, 2, 0 },
+    [6]  = { 3, 2, 2, 1 },
+    [7]  = { 3, 2, 3, 2 },
+    [8]  = { 4, 2, 3, 2 },
+    [9]  = { 4, 3, 3, 2 },
+    [10] = { 4, 3, 4, 3 },
+};
+
+void SetRoofBirds(void)
+{
+    u8 i;
+    u8 objectEventCount;
+    struct ObjectEventTemplate *template;
+    u8 birdIndexes[MAX_BIRD_SPOTS + 1] = {0};
+    u32 birdCount = 0;
+    if (gMapHeader.events != NULL)
+    {
+        if (InBattlePyramid_())
+           objectEventCount = GetNumBattlePyramidObjectEvents();
+        /*
+        else if (InTrainerHill())
+           objectEventCount = HILL_TRAINERS_PER_FLOOR;
+        */
+        else
+           objectEventCount = gMapHeader.events->objectEventCount;
+
+        for (i = 0; i < objectEventCount; i++)
+        {
+            template = &gSaveBlock1Ptr->objectEventTemplates[i];
+            if (template->trainerType == TRAINER_TYPE_BIRD && birdCount <= MAX_BIRD_SPOTS)
+            {
+                birdIndexes[birdCount] = i; // Store index of bird
+                birdCount++;
+            }
+        }
+    
+        if (birdCount > 0)
+        {
+            u8 visibleCount = randomBirdArray[birdCount][Random() % 4];
+            Shuffle8(birdIndexes, birdCount);
+
+            // Mark the birds that will be visible as Seen in the Pokedex
+            for (i = 0; i < visibleCount; i++)
+            {
+                u8 birdIndex = birdIndexes[i];
+                template = &gSaveBlock1Ptr->objectEventTemplates[birdIndex];
+
+                // Find the SPECIES constant from the graphicsId
+                u32 speciesId = template->graphicsId - OBJ_EVENT_MON_SPECIES_MASK;
+                GetSetPokedexFlag(speciesId, FLAG_SET_SEEN);
+            }
+
+            // Hide random birds until only `visibleCount` remain
+            for (i = visibleCount; i < birdCount; i++)
+            {
+                u8 birdIndex = birdIndexes[i];
+                template = &gSaveBlock1Ptr->objectEventTemplates[birdIndex];
+                FlagSet(template->flagId);
+            }
+        }
+    }
 }

@@ -18,3 +18,4 @@ To set up the repository, see [INSTALL.md](https://github.com/rh-hideout/pokeeme
 [Zeturic - Wrapping summary screen](https://www.pokecommunity.com/threads/simple-modifications-directory.416647/page-2#post-10060875)
 [Justin Zhu - Make ledge jumps check collision](https://github.com/pret/pokeemerald/wiki/Make-Ledge-Jumps-Check-Collision)
 [PCG - Time-based Pokémon Center nurse greetings](https://github.com/TeamAquasHideout/Team-Aquas-Asset-Repo/wiki/Time-based-Nurse-Joy-greetings)
+[Surskitty - Put random birds on the roofs of your towns](https://github.com/TeamAquasHideout/Team-Aquas-Asset-Repo/wiki/Put-random-birds-on-the-roofs-of-your-towns!)

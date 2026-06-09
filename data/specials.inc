@@ -354,4 +354,5 @@ gSpecials::
 	def_special GetCurrentBadgeCount
 	def_special CheckPlayerHasCaughtSpecies
 	def_special TryChangeDeoxysForm
+	def_special SetRoofBirds
 gSpecialsEnd::

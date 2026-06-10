@@ -1,6 +1,18 @@
 raw `
 Route3_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, Route3_OnLoad
 	.byte 0
+
+Route3_OnLoad::
+#ifdef FIRERED
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(EKANS)
+#else
+#ifdef LEAFGREEN
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(SANDSHREW)
+#endif
+#endif
+	special SetRoofBirds
+	end
 
 Route3_EventScript_Youngster::
 	msgbox Route3_Text_TunnelFromCeruleanTiring, MSGBOX_NPC

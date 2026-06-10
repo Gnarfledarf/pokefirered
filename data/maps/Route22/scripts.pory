@@ -1,6 +1,11 @@
 raw `
 Route22_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, Route22_OnLoad
 	.byte 0
+
+Route22_OnLoad::
+	special SetRoofBirds
+	end
 
 Route22_EventScript_EarlyRivalTriggerTop::
 	lockall

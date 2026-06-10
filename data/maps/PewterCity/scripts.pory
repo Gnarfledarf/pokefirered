@@ -1,7 +1,12 @@
 raw `
 PewterCity_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, PewterCity_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, PewterCity_OnTransition
 	.byte 0
+
+PewterCity_OnLoad::
+	special SetRoofBirds
+	end
 
 PewterCity_OnTransition::
 	setworldmapflag FLAG_WORLD_MAP_PEWTER_CITY

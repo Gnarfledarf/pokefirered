@@ -70,6 +70,9 @@ const u32 gMetatileAttributes_Mart[] = INCBIN_U32("data/tilesets/secondary/mart/
 const u16 gMetatiles_PokemonCenter[] = INCBIN_U16("data/tilesets/secondary/pokemon_center/metatiles.bin");
 const u32 gMetatileAttributes_PokemonCenter[] = INCBIN_U32("data/tilesets/secondary/pokemon_center/metatile_attributes.bin");
 
+const u16 gMetatiles_PokemonCenter2[] = INCBIN_U16("data/tilesets/secondary/pokemon_center2/metatiles.bin");
+const u32 gMetatileAttributes_PokemonCenter2[] = INCBIN_U32("data/tilesets/secondary/pokemon_center2/metatile_attributes.bin");
+
 const u16 gMetatiles_GenericBuilding1[] = INCBIN_U16("data/tilesets/secondary/generic_building_1/metatiles.bin");
 const u32 gMetatileAttributes_GenericBuilding1[] = INCBIN_U32("data/tilesets/secondary/generic_building_1/metatile_attributes.bin");
 

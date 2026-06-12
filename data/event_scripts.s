@@ -1215,3 +1215,9 @@ EventScript_NoMoreRoomForPokemon::
 	msgbox Text_NoMoreRoomForPokemon
 	release
 	end
+
+	.include "data/maps/MtMoon_Square/scripts.inc"
+	.include "data/maps/MtMoon_Square/text.inc"
+
+	.include "data/maps/MtMoon_Square_Shop/scripts.inc"
+	.include "data/maps/MtMoon_Square_Shop/text.inc"

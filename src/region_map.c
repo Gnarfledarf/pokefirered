@@ -898,6 +898,7 @@ static const u8 sMapFlyDestinations[][3] = {
     [MAPSEC_ROUTE_25]            = {MAP(MAP_ROUTE25),                               HEAL_LOCATION_NONE},
     [MAPSEC_VIRIDIAN_FOREST]     = {MAP(MAP_PALLET_TOWN),                           HEAL_LOCATION_NONE},
     [MAPSEC_MT_MOON]             = {MAP(MAP_PALLET_TOWN),                           HEAL_LOCATION_NONE},
+    [MAPSEC_MT_MOON_SQUARE]      = {MAP(MAP_PALLET_TOWN),                           HEAL_LOCATION_NONE},
     [MAPSEC_S_S_ANNE]            = {MAP(MAP_PALLET_TOWN),                           HEAL_LOCATION_NONE},
     [MAPSEC_UNDERGROUND_PATH]    = {MAP(MAP_PALLET_TOWN),                           HEAL_LOCATION_NONE},
     [MAPSEC_UNDERGROUND_PATH_2]  = {MAP(MAP_PALLET_TOWN),                           HEAL_LOCATION_NONE},

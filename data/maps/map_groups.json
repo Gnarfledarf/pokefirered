@@ -175,7 +175,9 @@
     "SixIsland_PatternBush",
     "SixIsland_AlteringCave",
     "ArtisanCave_B1F",
-    "ArtisanCave_1F"
+    "ArtisanCave_1F",
+    "MtMoon_Square",
+    "MtMoon_Square_Shop"
   ],
   "gMapGroup_SpecialArea": [
     "NavelRock_Exterior",

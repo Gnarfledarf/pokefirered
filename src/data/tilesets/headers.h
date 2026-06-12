@@ -163,6 +163,17 @@ const struct Tileset gTileset_PokemonCenter =
     .callback = NULL,
 };
 
+const struct Tileset gTileset_PokemonCenter2 =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_PokemonCenter2,
+    .palettes = gTilesetPalettes_PokemonCenter2,
+    .metatiles = gMetatiles_PokemonCenter2,
+    .metatileAttributes = gMetatileAttributes_PokemonCenter2,
+    .callback = NULL,
+};
+
 const struct Tileset gTileset_Cave =
 {
     .isCompressed = TRUE,

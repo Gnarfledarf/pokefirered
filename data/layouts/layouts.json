@@ -4572,6 +4572,32 @@
       "secondary_tileset": "gTileset_ArtisanCave",
       "border_filepath": "data/layouts/ArtisanCave_1F/border.bin",
       "blockdata_filepath": "data/layouts/ArtisanCave_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_MT_MOON_SQUARE",
+      "name": "MtMoon_Square_Layout",
+      "width": 49,
+      "height": 26,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_SeviiIslands67",
+      "border_filepath": "data/layouts/MtMoon_Square/border.bin",
+      "blockdata_filepath": "data/layouts/MtMoon_Square/map.bin",
+      "layout_version": "frlg"
+    },
+    {
+      "id": "LAYOUT_MT_MOON_SQUARE_SHOP",
+      "name": "MtMoon_Square_Shop_Layout",
+      "width": 12,
+      "height": 9,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter2",
+      "border_filepath": "data/layouts/MtMoon_Square_Shop/border.bin",
+      "blockdata_filepath": "data/layouts/MtMoon_Square_Shop/map.bin",
+      "layout_version": "frlg"
     }
   ]
 }

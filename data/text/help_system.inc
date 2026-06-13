@@ -755,7 +755,8 @@ Help_Text_HowToUsePlayer::
 	.string "   the reverse side of the Card.$"
 
 Help_Text_HowToUseSave::
-	.string "{CIRCLE_1} Select “Save” on the Menu.\n"
+	.string "{CIRCLE_1} Select “Save” on the Menu\n"
+	.string "{CIRCLE_1} or press Select on the Menu.\n"
 	.string "{CIRCLE_2} Select “Yes” and your progress is\n"
 	.string "   recorded in the save file.\n"
 	.string "Once the game is saved, you may turn\n"

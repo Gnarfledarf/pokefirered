@@ -676,6 +676,13 @@ static bool8 HandleStartMenuInput(void)
         return FALSE;
     }
 
+    if (JOY_NEW(SELECT_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        StartMenuSaveCallback();
+        return FALSE;
+    }
+
     if (JOY_NEW(B_BUTTON | START_BUTTON))
     {
         RemoveExtraStartMenuWindows();

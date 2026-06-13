@@ -244,7 +244,9 @@ PalletTown_ProfessorOaksLab_Text_PressStartToOpenMenu::
 
 PalletTown_ProfessorOaksLab_Text_SaveOptionInMenu::
     .string "The Save option is on the Menu.\n"
-    .string "Use it regularly.$"
+    .string "Use it regularly.\p"
+    .string "You can even save by pressing the\n"
+    .string "Select button while in the Menu.$"
 
 PalletTown_ProfessorOaksLab_Text_AllMonTypesHaveStrongAndWeakPoints::
     .string "All Pokémon types have strong and\n"

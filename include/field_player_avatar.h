@@ -6,7 +6,7 @@
 #include "constants/metatile_behaviors.h"
 
 bool32 IsPlayerBiking(void);
-bool32 ObjectMovingOnRockStairs(struct ObjectEvent *objectEvent, enum Direction direction);
+bool8 ObjectMovingOnRockStairs(struct ObjectEvent *objectEvent, enum Direction direction);
 bool32 TestPlayerAvatarState(enum AvatarState state);
 bool32 WaitTeleportInPlayerAnim(void);
 bool32 WaitTeleportWarpOutPlayerAnim(void);

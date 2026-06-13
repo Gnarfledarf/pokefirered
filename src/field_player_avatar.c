@@ -614,40 +614,37 @@ static void PlayerNotOnBikeMoving(enum Direction direction, u16 heldKeys)
     }
 }
 
-bool32 ObjectMovingOnRockStairs(struct ObjectEvent *objectEvent, enum Direction direction)
+bool8 ObjectMovingOnRockStairs(struct ObjectEvent *objectEvent, enum Direction direction)
 {
-#if SLOW_MOVEMENT_ON_STAIRS == TRUE
-    s16 x, y;
+    #if SLOW_MOVEMENT_ON_STAIRS == TRUE
+        s16 x = objectEvent->currentCoords.x;
+        s16 y = objectEvent->currentCoords.y;
 
-    x = objectEvent->currentCoords.x;
-    y = objectEvent->currentCoords.y;
+        if (IsFollowerVisible() && GetFollowerObject() != NULL && (objectEvent->isPlayer || objectEvent->localId == OBJ_EVENT_ID_FOLLOWER))
+            return FALSE;
 
-    // TODO followers on sideways stairs
-    // if (IsFollowerVisible() && GetFollowerObject() != NULL && (objectEvent->isPlayer || objectEvent->localId == OBJ_EVENT_ID_FOLLOWER))
-    //     return FALSE;
-
-    switch (direction)
-    {
-    case DIR_NORTH:
-        return MetatileBehavior_IsRockStairs(MapGridGetMetatileBehaviorAt(x, y));
-    case DIR_SOUTH:
-        MoveCoords(DIR_SOUTH, &x, &y);
-        return MetatileBehavior_IsRockStairs(MapGridGetMetatileBehaviorAt(x, y));
-    case DIR_WEST:
-    case DIR_EAST:
-    case DIR_NORTHEAST:
-    case DIR_NORTHWEST:
-    case DIR_SOUTHWEST:
-    case DIR_SOUTHEAST:
-        // directionOverwrite is only used for sideways stairs motion
-        if (objectEvent->directionOverwrite)
-            return TRUE;
-    default:
+        switch (direction)
+        {
+        case DIR_NORTH:
+            return MetatileBehavior_IsRockStairs(MapGridGetMetatileBehaviorAt(x,y));
+        case DIR_SOUTH:
+            MoveCoords(DIR_SOUTH, &x, &y);
+            return MetatileBehavior_IsRockStairs(MapGridGetMetatileBehaviorAt(x,y));
+        case DIR_WEST:
+        case DIR_EAST:
+        case DIR_NORTHEAST:
+        case DIR_NORTHWEST:
+        case DIR_SOUTHWEST:
+        case DIR_SOUTHEAST:
+            // directionOverwrite is only used for sideways stairs motion
+            if (objectEvent->directionOverwrite)
+                return TRUE;
+        default:
+            return FALSE;
+        }
+    #else
         return FALSE;
-    }
-#else
-    return FALSE;
-#endif
+    #endif
 }
 
 static enum Collision CheckForPlayerAvatarCollision(enum Direction direction)

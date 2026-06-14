@@ -1860,12 +1860,9 @@ static void MoveSelectionDisplayMoveDescription(enum BattlerId battler)
     }
 
     u8 pwr_num[3], acc_num[3];
-    u8 cat_desc[7] = _("CAT: ");
     u8 pwr_desc[7] = _("PWR: ");
     u8 acc_desc[7] = _("ACC: ");
-    u8 cat_start[] = _("{CLEAR_TO 0x03}");
-    u8 pwr_start[] = _("{CLEAR_TO 0x38}");
-    u8 acc_start[] = _("{CLEAR_TO 0x6C}");
+    u8 acc_start[] = _("{CLEAR_TO 0x30}");
     LoadMessageBoxAndBorderGfx();
     DrawStdWindowFrame(B_WIN_MOVE_DESCRIPTION, FALSE);
     if (pwr < 2)
@@ -1876,10 +1873,7 @@ static void MoveSelectionDisplayMoveDescription(enum BattlerId battler)
         StringCopy(acc_num, gText_BattleSwitchWhich5);
     else
         ConvertIntToDecimalStringN(acc_num, acc, STR_CONV_MODE_LEFT_ALIGN, 3);
-    StringCopy(gDisplayedStringBattle, cat_start);
-    StringAppend(gDisplayedStringBattle, cat_desc);
-    StringAppend(gDisplayedStringBattle, pwr_start);
-    StringAppend(gDisplayedStringBattle, pwr_desc);
+    StringCopy(gDisplayedStringBattle, pwr_desc);
     StringAppend(gDisplayedStringBattle, pwr_num);
     StringAppend(gDisplayedStringBattle, acc_start);
     StringAppend(gDisplayedStringBattle, acc_desc);
@@ -1889,7 +1883,7 @@ static void MoveSelectionDisplayMoveDescription(enum BattlerId battler)
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_DESCRIPTION);
 
     if (gCategoryIconSpriteId == 0xFF)
-        gCategoryIconSpriteId = CreateSprite(&gSpriteTemplate_CategoryIcons, 38, 64, 1);
+        gCategoryIconSpriteId = CreateSprite(&gSpriteTemplate_CategoryIcons, 106, 32, 1);
 
     StartSpriteAnim(&gSprites[gCategoryIconSpriteId], cat);
 

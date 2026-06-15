@@ -296,7 +296,7 @@ static const struct WindowTemplate sShopBuyMenuWindowTemplatesNormal[] =
     },
     DUMMY_WIN_TEMPLATE,
 };
-
+//todo: try to copy this for buying tutor moves
 // firered uses different layout when selling TMs
 static const struct WindowTemplate sShopBuyMenuWindowTemplatesTM[] =
 {

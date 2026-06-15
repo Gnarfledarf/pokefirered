@@ -562,9 +562,9 @@ static const struct WindowTemplate sItemGiveTakeWindowTemplate =
 {
     .bg = 2,
     .tilemapLeft = 22,
-    .tilemapTop = 13,
+    .tilemapTop = 11,
     .width = 7,
-    .height = 6,
+    .height = 8,
     .paletteNum = 14,
     .baseBlock = 0x373,
 };
@@ -717,6 +717,7 @@ static const u8 *const sActionStringTable[] =
     [PARTY_MSG_TEACH_WHICH_MON]        = COMPOUND_STRING("Teach which Pokémon?"),
     [PARTY_MSG_USE_ON_WHICH_MON]       = COMPOUND_STRING("Use on which Pokémon?"),
     [PARTY_MSG_GIVE_TO_WHICH_MON]      = COMPOUND_STRING("Give to which Pokémon?"),
+    [PARTY_MSG_MOVE_ITEM_WHERE]        = gText_MoveItemWhere,
     [PARTY_MSG_NOTHING_TO_CUT]         = COMPOUND_STRING("There's nothing to Cut."),
     [PARTY_MSG_CANT_SURF_HERE]         = COMPOUND_STRING("No Surfing here!"),
     [PARTY_MSG_ALREADY_SURFING]        = COMPOUND_STRING("You're already Surfing."),
@@ -1070,6 +1071,7 @@ enum
     CURSOR_OPTION_ITEM,
     CURSOR_OPTION_GIVE,
     CURSOR_OPTION_TAKE_ITEM,
+    CURSOR_OPTION_MOVE_ITEM,
     CURSOR_OPTION_MAIL,
     CURSOR_OPTION_TAKE_MAIL,
     CURSOR_OPTION_READ,
@@ -1111,6 +1113,7 @@ static struct
     [CURSOR_OPTION_ITEM]            = {gText_Item,                         CursorCB_Item                },
     [CURSOR_OPTION_GIVE]            = {gText_Give,                         CursorCB_Give                },
     [CURSOR_OPTION_TAKE_ITEM]       = {gText_Take,                         CursorCB_TakeItem            },
+    [CURSOR_OPTION_MOVE_ITEM]       = {gMenuText_Move,                     CursorCb_MoveItem            },
     [CURSOR_OPTION_MAIL]            = {gText_Mail,                         CursorCB_Mail                },
     [CURSOR_OPTION_TAKE_MAIL]       = {gText_Take,                         CursorCB_TakeMail            },
     [CURSOR_OPTION_READ]            = {gText_Read,                         CursorCB_Read                },
@@ -1139,21 +1142,21 @@ static struct
     [CURSOR_OPTION_CHANGE_ABILITY]  = {COMPOUND_STRING("Change Ability"),  CursorCB_ChangeAbility       },
 };
 
-static const u8 sPartyMenuAction_SummarySwitchCancel[]   = {CURSOR_OPTION_SUMMARY,  CURSOR_OPTION_SWITCH,    CURSOR_OPTION_CANCEL1};
-static const u8 sPartyMenuAction_ShiftSummaryCancel[]    = {CURSOR_OPTION_SHIFT,    CURSOR_OPTION_SUMMARY,   CURSOR_OPTION_CANCEL1};
-static const u8 sPartyMenuAction_SendOutSummaryCancel[]  = {CURSOR_OPTION_SEND_OUT, CURSOR_OPTION_SUMMARY,   CURSOR_OPTION_CANCEL1};
-static const u8 sPartyMenuAction_SummaryCancel[]         = {CURSOR_OPTION_SUMMARY,  CURSOR_OPTION_CANCEL1};
-static const u8 sPartyMenuAction_EnterSummaryCancel[]    = {CURSOR_OPTION_ENTER,    CURSOR_OPTION_SUMMARY,   CURSOR_OPTION_CANCEL1};
-static const u8 sPartyMenuAction_NoEntrySummaryCancel[]  = {CURSOR_OPTION_NO_ENTRY, CURSOR_OPTION_SUMMARY,   CURSOR_OPTION_CANCEL1};
-static const u8 sPartyMenuAction_StoreSummaryCancel[]    = {CURSOR_OPTION_STORE,    CURSOR_OPTION_SUMMARY,   CURSOR_OPTION_CANCEL1};
-static const u8 sPartyMenuAction_GiveTakeItemCancel[]    = {CURSOR_OPTION_GIVE,     CURSOR_OPTION_TAKE_ITEM, CURSOR_OPTION_CANCEL2};
-static const u8 sPartyMenuAction_ReadTakeMailCancel[]    = {CURSOR_OPTION_READ,     CURSOR_OPTION_TAKE_MAIL, CURSOR_OPTION_CANCEL2};
-static const u8 sPartyMenuAction_RegisterSummaryCancel[] = {CURSOR_OPTION_REGISTER, CURSOR_OPTION_SUMMARY,   CURSOR_OPTION_CANCEL1};
-static const u8 sPartyMenuAction_TradeSummaryCancel1[]   = {CURSOR_OPTION_TRADE1,   CURSOR_OPTION_SUMMARY,   CURSOR_OPTION_CANCEL1};
-static const u8 sPartyMenuAction_TradeSummaryCancel2[]   = {CURSOR_OPTION_TRADE2,   CURSOR_OPTION_SUMMARY,   CURSOR_OPTION_CANCEL1};
-static const u8 sPartyMenuAction_TakeItemTossCancel[]    = {CURSOR_OPTION_TAKE_ITEM, MENU_TOSS, CURSOR_OPTION_CANCEL1};
-static const u8 sPartyMenuAction_RotomCatalog[]          = {CURSOR_OPTION_CATALOG_BULB, CURSOR_OPTION_CATALOG_OVEN, CURSOR_OPTION_CATALOG_WASHING, CURSOR_OPTION_CATALOG_FRIDGE, CURSOR_OPTION_CATALOG_FAN, CURSOR_OPTION_CATALOG_MOWER, CURSOR_OPTION_CANCEL1};
-static const u8 sPartyMenuAction_ZygardeCube[]           = {CURSOR_OPTION_CHANGE_FORM, CURSOR_OPTION_CHANGE_ABILITY, CURSOR_OPTION_CANCEL1};
+static const u8 sPartyMenuAction_SummarySwitchCancel[]      = {CURSOR_OPTION_SUMMARY,  CURSOR_OPTION_SWITCH,    CURSOR_OPTION_CANCEL1};
+static const u8 sPartyMenuAction_ShiftSummaryCancel[]       = {CURSOR_OPTION_SHIFT,    CURSOR_OPTION_SUMMARY,   CURSOR_OPTION_CANCEL1};
+static const u8 sPartyMenuAction_SendOutSummaryCancel[]     = {CURSOR_OPTION_SEND_OUT, CURSOR_OPTION_SUMMARY,   CURSOR_OPTION_CANCEL1};
+static const u8 sPartyMenuAction_SummaryCancel[]            = {CURSOR_OPTION_SUMMARY,  CURSOR_OPTION_CANCEL1};
+static const u8 sPartyMenuAction_EnterSummaryCancel[]       = {CURSOR_OPTION_ENTER,    CURSOR_OPTION_SUMMARY,   CURSOR_OPTION_CANCEL1};
+static const u8 sPartyMenuAction_NoEntrySummaryCancel[]     = {CURSOR_OPTION_NO_ENTRY, CURSOR_OPTION_SUMMARY,   CURSOR_OPTION_CANCEL1};
+static const u8 sPartyMenuAction_StoreSummaryCancel[]       = {CURSOR_OPTION_STORE,    CURSOR_OPTION_SUMMARY,   CURSOR_OPTION_CANCEL1};
+static const u8 sPartyMenuAction_GiveTakeMoveItemCancel[]   = {CURSOR_OPTION_GIVE,     CURSOR_OPTION_TAKE_ITEM, CURSOR_OPTION_MOVE_ITEM, CURSOR_OPTION_CANCEL2};
+static const u8 sPartyMenuAction_ReadTakeMailCancel[]       = {CURSOR_OPTION_READ,     CURSOR_OPTION_TAKE_MAIL, CURSOR_OPTION_CANCEL2};
+static const u8 sPartyMenuAction_RegisterSummaryCancel[]    = {CURSOR_OPTION_REGISTER, CURSOR_OPTION_SUMMARY,   CURSOR_OPTION_CANCEL1};
+static const u8 sPartyMenuAction_TradeSummaryCancel1[]      = {CURSOR_OPTION_TRADE1,   CURSOR_OPTION_SUMMARY,   CURSOR_OPTION_CANCEL1};
+static const u8 sPartyMenuAction_TradeSummaryCancel2[]      = {CURSOR_OPTION_TRADE2,   CURSOR_OPTION_SUMMARY,   CURSOR_OPTION_CANCEL1};
+static const u8 sPartyMenuAction_TakeItemTossCancel[]       = {CURSOR_OPTION_TAKE_ITEM, MENU_TOSS, CURSOR_OPTION_CANCEL1};
+static const u8 sPartyMenuAction_RotomCatalog[]             = {CURSOR_OPTION_CATALOG_BULB, CURSOR_OPTION_CATALOG_OVEN, CURSOR_OPTION_CATALOG_WASHING, CURSOR_OPTION_CATALOG_FRIDGE, CURSOR_OPTION_CATALOG_FAN, CURSOR_OPTION_CATALOG_MOWER, CURSOR_OPTION_CANCEL1};
+static const u8 sPartyMenuAction_ZygardeCube[]              = {CURSOR_OPTION_CHANGE_FORM, CURSOR_OPTION_CHANGE_ABILITY, CURSOR_OPTION_CANCEL1};
 
 // IDs for the action lists that appear when a party mon is selected
 enum
@@ -1187,7 +1190,7 @@ static const u8 *const sPartyMenuActions[] =
     [ACTIONS_NO_ENTRY]      = sPartyMenuAction_NoEntrySummaryCancel,
     [ACTIONS_STORE]         = sPartyMenuAction_StoreSummaryCancel,
     [ACTIONS_SUMMARY_ONLY]  = sPartyMenuAction_SummaryCancel,
-    [ACTIONS_ITEM]          = sPartyMenuAction_GiveTakeItemCancel,
+    [ACTIONS_ITEM]          = sPartyMenuAction_GiveTakeMoveItemCancel,
     [ACTIONS_MAIL]          = sPartyMenuAction_ReadTakeMailCancel,
     [ACTIONS_REGISTER]      = sPartyMenuAction_RegisterSummaryCancel,
     [ACTIONS_TRADE]         = sPartyMenuAction_TradeSummaryCancel1,
@@ -1207,7 +1210,7 @@ static const u8 sPartyMenuActionCounts[] =
     [ACTIONS_NO_ENTRY]      = ARRAY_COUNT(sPartyMenuAction_NoEntrySummaryCancel),
     [ACTIONS_STORE]         = ARRAY_COUNT(sPartyMenuAction_StoreSummaryCancel),
     [ACTIONS_SUMMARY_ONLY]  = ARRAY_COUNT(sPartyMenuAction_SummaryCancel),
-    [ACTIONS_ITEM]          = ARRAY_COUNT(sPartyMenuAction_GiveTakeItemCancel),
+    [ACTIONS_ITEM]          = ARRAY_COUNT(sPartyMenuAction_GiveTakeMoveItemCancel),
     [ACTIONS_MAIL]          = ARRAY_COUNT(sPartyMenuAction_ReadTakeMailCancel),
     [ACTIONS_REGISTER]      = ARRAY_COUNT(sPartyMenuAction_RegisterSummaryCancel),
     [ACTIONS_TRADE]         = ARRAY_COUNT(sPartyMenuAction_TradeSummaryCancel1),

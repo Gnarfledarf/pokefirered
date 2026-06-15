@@ -683,7 +683,7 @@ static const struct DebugMenuOption sDebugMenu_Actions_Flags[] =
     [DEBUG_FLAGVAR_MENU_ITEM_DEXFLAGS_RESET]       = { COMPOUND_STRING("Pokédex Flags Reset"),               DebugAction_FlagsVars_PokedexFlags_Reset },
     [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_POKEDEX]       = { COMPOUND_STRING("Toggle {STR_VAR_1}Pokédex"),         DebugAction_ToggleFlag, DebugAction_FlagsVars_SwitchDex },
     [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_NATDEX]        = { COMPOUND_STRING("Toggle {STR_VAR_1}National Dex"),    DebugAction_ToggleFlag, DebugAction_FlagsVars_SwitchNatDex },
-    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_RUN_SHOES]     = { COMPOUND_STRING("Toggle {STR_VAR_1}Running Shoes"),   DebugAction_ToggleFlag, DebugAction_FlagsVars_RunningShoes },
+    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_RUN_SHOES]     = { COMPOUND_STRING("Toggle {STR_VAR_1}unused flag"),   DebugAction_ToggleFlag, DebugAction_FlagsVars_RunningShoes },
     [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_LOCATIONS]     = { COMPOUND_STRING("Toggle {STR_VAR_1}Fly Flags"),       DebugAction_ToggleFlag, DebugAction_FlagsVars_ToggleFlyFlags },
     [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_BADGES_ALL]    = { COMPOUND_STRING("Toggle {STR_VAR_1}All badges"),      DebugAction_ToggleFlag, DebugAction_FlagsVars_ToggleBadgeFlags },
     [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_GAME_CLEAR]    = { COMPOUND_STRING("Toggle {STR_VAR_1}Game clear"),      DebugAction_ToggleFlag, DebugAction_FlagsVars_ToggleGameClear },
@@ -1140,7 +1140,7 @@ static u32 Debug_CheckToggleFlags(u8 id)
         result = IsNationalPokedexEnabled();
         break;
     case DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_RUN_SHOES:
-        result = FlagGet(FLAG_SYS_B_DASH);
+        result = FlagGet(FLAG_0x82F);
         break;
     case DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_LOCATIONS:
         result = TRUE;
@@ -2450,11 +2450,11 @@ static void DebugAction_FlagsVars_SwitchNatDex(u8 taskId)
 
 static void DebugAction_FlagsVars_RunningShoes(u8 taskId)
 {
-    if (FlagGet(FLAG_SYS_B_DASH))
+    if (FlagGet(FLAG_0x82F))
         PlaySE(SE_PC_OFF);
     else
         PlaySE(SE_PC_LOGIN);
-    FlagToggle(FLAG_SYS_B_DASH);
+    FlagToggle(FLAG_0x82F);
 }
 
 static void DebugAction_FlagsVars_ToggleFlyFlags(u8 taskId)

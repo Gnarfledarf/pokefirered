@@ -542,7 +542,7 @@ static void PlayerNotOnBikeMoving(enum Direction direction, u16 heldKeys)
         return;
     }
 
-    if ((gRunToggleBtnSet || FlagGet(FLAG_RUNNING_SHOES_TOGGLE) || (heldKeys & B_BUTTON)) && FlagGet(FLAG_SYS_B_DASH)
+    if ((gRunToggleBtnSet || FlagGet(FLAG_RUNNING_SHOES_TOGGLE) || (heldKeys & B_BUTTON))
         && !IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior)
         && !FollowerNPCComingThroughDoor())
     {

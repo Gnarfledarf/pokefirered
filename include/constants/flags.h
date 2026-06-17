@@ -1469,7 +1469,7 @@
 
 #define FLAG_WORLD_MAP_BATTLE_FRONTIER                              (SYS_FLAGS + 0xC3)
 #define FLAG_WORLD_ARTISAN_CAVE                                     (SYS_FLAGS + 0xC4)
-#define FLAG_RUNNING_SHOES_TOGGLE                                   (SYS_FLAGS + 0xC5)
+#define FLAG_AUTORUN_TOGGLE                                   (SYS_FLAGS + 0xC5)
 #define FLAG_0x8C6                                                  (SYS_FLAGS + 0xC6)
 #define FLAG_0x8C7                                                  (SYS_FLAGS + 0xC7)
 #define FLAG_SYS_TOWER_SILVER                                       (SYS_FLAGS + 0xC8)
@@ -1487,7 +1487,7 @@
 #define FLAG_SYS_PYRAMID_SILVER                                     (SYS_FLAGS + 0xD4)
 #define FLAG_SYS_PYRAMID_GOLD                                       (SYS_FLAGS + 0xD5)
 #define FLAG_SYS_FRONTIER_PASS                                      (SYS_FLAGS + 0xD6)
-#define FLAG_0x8D7                                                  (SYS_FLAGS + 0xD7)
+#define FLAG_HIDDEN_ITEM_MT_MOON_SQUARE_MAX_REVIVE                  (SYS_FLAGS + 0xD7)
 #define FLAG_0x8D8                                                  (SYS_FLAGS + 0xD8)
 #define FLAG_0x8D9                                                  (SYS_FLAGS + 0xD9)
 #define FLAG_0x8DA                                                  (SYS_FLAGS + 0xDA)

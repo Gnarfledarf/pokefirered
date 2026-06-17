@@ -149,17 +149,12 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
 
     if (forcedMove == FALSE)
     {
+        if(newKeys & B_BUTTON)
+            input->pressedBButton = TRUE;
         if (tileTransitionState == T_TILE_CENTER && runningState == MOVING)
             input->tookStep = TRUE;
         if (forcedMove == FALSE && tileTransitionState == T_TILE_CENTER)
             input->checkStandardWildEncounter = TRUE;
-    }
-
-    // If B is pressed, field controls are allowed, and the player is either running or walking.
-    if ((newKeys & B_BUTTON) && (!ArePlayerFieldControlsLocked())
-    && (gPlayerAvatar.playerState == PLAYER_AVATAR_STATE_NORMAL || gPlayerAvatar.dashing))
-    {
-        gRunToggleBtnSet = TRUE;
     }
 
     if (!QL_IS_PLAYBACK_STATE)
@@ -244,6 +239,11 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     if (TryRunOnFrameMapScript() == TRUE)
         return TRUE;
 
+    if (input->pressedBButton && (gPlayerAvatar.playerState == PLAYER_AVATAR_STATE_NORMAL || gPlayerAvatar.dashing))
+    {
+            FlagToggle(FLAG_AUTORUN_TOGGLE);
+    }
+    
     if (input->tookStep)
     {
         IncrementGameStat(GAME_STAT_STEPS);

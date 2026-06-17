@@ -103,6 +103,7 @@ static bool8 PlayerAvatar_SecretBaseMatSpinStep3(struct Task *task, struct Objec
 static void CreateStopSurfingTask(enum Direction direction);
 static void Task_StopSurfingInit(u8 taskId);
 static void Task_WaitStopSurfing(u8 taskId);
+static bool8 ShouldPlayerRun(u16 heldKeys);
 
 static void Task_TeleportWarpOutPlayerAnim(u8 taskId);
 static void Task_TeleportWarpInPlayerAnim(u8 taskId);
@@ -542,47 +543,10 @@ static void PlayerNotOnBikeMoving(enum Direction direction, u16 heldKeys)
         return;
     }
 
-    if ((gRunToggleBtnSet || FlagGet(FLAG_RUNNING_SHOES_TOGGLE) || (heldKeys & B_BUTTON))
+    if (ShouldPlayerRun(heldKeys)
         && !IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior)
         && !FollowerNPCComingThroughDoor())
     {
-        if (gRunToggleBtnSet)
-        {
-            gRunToggleBtnSet = FALSE;
-            if (FlagGet(FLAG_RUNNING_SHOES_TOGGLE) == FALSE)
-            {
-                FlagSet(FLAG_RUNNING_SHOES_TOGGLE);
-                if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
-                    PlayerRunSlow(direction);
-                else
-                    PlayerRun(direction);
-                    gPlayerAvatar.dashing = TRUE;
-                return;
-            }
-            else
-            {
-                FlagClear(FLAG_RUNNING_SHOES_TOGGLE);
-                gRunToggleBtnSet = FALSE;
-                if (!(heldKeys & B_BUTTON))
-                {
-                    if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
-                        PlayerWalkSlow(direction);
-                    else
-                        PlayerWalkNormal(direction);
-                    return;
-                }
-                else
-                {
-                    if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
-                        PlayerRunSlow(direction);
-                    else
-                        PlayerRun(direction);
-                        gPlayerAvatar.dashing = TRUE;
-                    return;
-                }
-                return;
-            } 
-        }
         if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
             PlayerRunSlow(direction);
         else
@@ -595,18 +559,8 @@ static void PlayerNotOnBikeMoving(enum Direction direction, u16 heldKeys)
         gPlayerAvatar.creeping = TRUE;
         PlayerWalkSlow(direction);
     }
-/*    else
-    {
-        if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
-            PlayerRunSlow(direction);
-        else
-            PlayerRun(direction);
-            gPlayerAvatar.dashing = TRUE;
-        return;
-    }*/
     else
     {
-        gRunToggleBtnSet = FALSE;
         if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
             PlayerWalkSlow(direction);
         else
@@ -1698,6 +1652,15 @@ static void Task_WaitStopSurfing(u8 taskId)
         DestroyTask(taskId);
         SetHelpContextForMap();
     }
+}
+
+static bool8 ShouldPlayerRun(u16 heldKeys)
+{
+    bool8 isHoldingB = (heldKeys & B_BUTTON);
+
+    return (FlagGet(FLAG_AUTORUN_TOGGLE) == TRUE && !isHoldingB)
+        || (isHoldingB);
+    
 }
 
 #define tState data[0]

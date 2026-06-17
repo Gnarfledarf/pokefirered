@@ -21,3 +21,4 @@ To set up the repository, see [INSTALL.md](https://github.com/rh-hideout/pokeeme
 [Surskitty - Put random birds on the roofs of your towns](https://github.com/TeamAquasHideout/Team-Aquas-Asset-Repo/wiki/Put-random-birds-on-the-roofs-of-your-towns!)
 [Zeturic - Move items around in party screen](https://www.pokecommunity.com/threads/simple-modifications-directory.416647/page-3#post-10120157)
     [Deokishisu - fix that prevents swapping mail between party members](https://www.pokecommunity.com/threads/simple-modifications-directory.416647/post-10517557)
+[Anon822 - Category icons in battle](https://www.pokecommunity.com/threads/simple-modifications-directory.416647/page-20#post-10527471)

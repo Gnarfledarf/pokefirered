@@ -82,6 +82,7 @@ static void MoveSelectionDisplayPpNumber(enum BattlerId battler);
 static void MoveSelectionDisplayPpString(enum BattlerId battler);
 static void MoveSelectionDisplayMoveType(enum BattlerId battler);
 static void MoveSelectionDisplayMoveNames(enum BattlerId battler);
+static void MoveSelectionDisplayCategoryIcon(enum BattlerId battler);
 static void TryMoveSelectionDisplayMoveDescription(enum BattlerId battler);
 static void MoveSelectionDisplayMoveDescription(enum BattlerId battler);
 static void WaitForMonSelection(enum BattlerId battler);
@@ -1833,6 +1834,22 @@ static void MoveSelectionDisplayMoveType(enum BattlerId battler)
 
     PrependFontIdToFit(txtPtr, end, FONT_NORMAL, WindowWidthPx(B_WIN_MOVE_TYPE) - 25);
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_TYPE);
+    MoveSelectionDisplayCategoryIcon(battler);
+}
+
+static void MoveSelectionDisplayCategoryIcon(enum BattlerId battler)
+{
+	static const u16 sCategoryIcons_Pal[] = INCBIN_U16("graphics/interface/category_icons_battle.gbapal");
+	static const u8 sCategoryIcons_Gfx[] = INCBIN_U8("graphics/interface/category_icons_battle.4bpp");
+	struct ChooseMoveStruct *moveInfo;
+	int icon;
+
+	moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[battler][4]);
+	icon = GetBattleMoveCategory(moveInfo->moves[gMoveSelectionCursor[battler]]);
+	LoadPalette(sCategoryIcons_Pal, 10 * 0x10, 0x20);
+	BlitBitmapToWindow(B_WIN_DUMMY, sCategoryIcons_Gfx + 0x80 * icon, 0, 0, 16, 16);
+	PutWindowTilemap(B_WIN_DUMMY);
+	CopyWindowToVram(B_WIN_DUMMY, 3);
 }
 
 static void TryMoveSelectionDisplayMoveDescription(enum BattlerId battler)
@@ -1881,11 +1898,6 @@ static void MoveSelectionDisplayMoveDescription(enum BattlerId battler)
     StringAppend(gDisplayedStringBattle, gText_Newline);
     StringAppend(gDisplayedStringBattle, GetMoveDescription(move));
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_DESCRIPTION);
-
-    if (gCategoryIconSpriteId == 0xFF)
-        gCategoryIconSpriteId = CreateSprite(&gSpriteTemplate_CategoryIcons, 106, 32, 1);
-
-    StartSpriteAnim(&gSprites[gCategoryIconSpriteId], cat);
 
     CopyWindowToVram(B_WIN_MOVE_DESCRIPTION, COPYWIN_FULL);
 }

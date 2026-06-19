@@ -180,3 +180,9 @@ CeruleanCity_Text_GymSign::
     .string "Leader: Misty\l"
     .string "The Tomboyish Mermaid!$"
 
+CeruleanCity_Text_SorryNoOneCanLeaveTHisWay::
+    .string "Sorry, no one can leave this way\n"
+    .string "until the perpetrator is caught!$"
+
+CeruleanCity_Text_Growlithe::
+    .string "Rrrrawr!$"

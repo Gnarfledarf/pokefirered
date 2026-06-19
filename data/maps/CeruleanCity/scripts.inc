@@ -371,125 +371,125 @@ CeruleanCity_EventScript_GruntDefeated::
 # 186 "data/maps/CeruleanCity/scripts.pory"
 	removeobject LOCALID_CERULEAN_GRUNT
 # 187 "data/maps/CeruleanCity/scripts.pory"
-	fadescreenswapbuffers FADE_FROM_BLACK
+	removeobject LOCALID_CERULEAN_GROWLITHE_1
 # 188 "data/maps/CeruleanCity/scripts.pory"
-	setflag FLAG_GOT_TM28_FROM_ROCKET
+	removeobject LOCALID_CERULEAN_POLICEMAN_BARRICADE_1
 # 189 "data/maps/CeruleanCity/scripts.pory"
-	release
+	removeobject LOCALID_CERULEAN_GROWLITHE_2
 # 190 "data/maps/CeruleanCity/scripts.pory"
-	end
+	removeobject LOCALID_CERULEAN_POLICEMAN_BARRICADE_2
 # 191 "data/maps/CeruleanCity/scripts.pory"
-
+	removeobject LOCALID_CERULEAN_GROWLITHE_3
 # 192 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_NoRoomForTM28::
+	fadescreenswapbuffers FADE_FROM_BLACK
 # 193 "data/maps/CeruleanCity/scripts.pory"
-	textcolor NPC_TEXT_COLOR_MALE
+	setflag FLAG_GOT_TM28_FROM_ROCKET
 # 194 "data/maps/CeruleanCity/scripts.pory"
-	msgbox CeruleanCity_Text_MakeRoomForThisCantRun
+	release
 # 195 "data/maps/CeruleanCity/scripts.pory"
-	release
+	end
 # 196 "data/maps/CeruleanCity/scripts.pory"
-	end
+
 # 197 "data/maps/CeruleanCity/scripts.pory"
-
+CeruleanCity_EventScript_NoRoomForTM28::
 # 198 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_GruntTriggerTop::
-# 199 "data/maps/CeruleanCity/scripts.pory"
-	lockall
-# 200 "data/maps/CeruleanCity/scripts.pory"
-	setvar VAR_TEMP_1, 0
-# 201 "data/maps/CeruleanCity/scripts.pory"
-	applymovement LOCALID_CERULEAN_GRUNT, Common_Movement_WalkInPlaceFasterUp
-# 202 "data/maps/CeruleanCity/scripts.pory"
-	waitmovement 0
-# 203 "data/maps/CeruleanCity/scripts.pory"
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 204 "data/maps/CeruleanCity/scripts.pory"
-	waitmovement 0
-# 205 "data/maps/CeruleanCity/scripts.pory"
-	goto CeruleanCity_EventScript_GruntTrigger
-# 206 "data/maps/CeruleanCity/scripts.pory"
-	end
-# 207 "data/maps/CeruleanCity/scripts.pory"
-
-# 208 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_GruntTriggerBottom::
-# 209 "data/maps/CeruleanCity/scripts.pory"
-	lockall
-# 210 "data/maps/CeruleanCity/scripts.pory"
-	setvar VAR_TEMP_1, 1
-# 211 "data/maps/CeruleanCity/scripts.pory"
-	applymovement LOCALID_CERULEAN_GRUNT, Common_Movement_WalkInPlaceFasterDown
-# 212 "data/maps/CeruleanCity/scripts.pory"
-	waitmovement 0
-# 213 "data/maps/CeruleanCity/scripts.pory"
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 214 "data/maps/CeruleanCity/scripts.pory"
-	waitmovement 0
-# 215 "data/maps/CeruleanCity/scripts.pory"
-	goto CeruleanCity_EventScript_GruntTrigger
-# 216 "data/maps/CeruleanCity/scripts.pory"
-	end
-# 217 "data/maps/CeruleanCity/scripts.pory"
-
-# 218 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_GruntTrigger::
-# 219 "data/maps/CeruleanCity/scripts.pory"
 	textcolor NPC_TEXT_COLOR_MALE
-# 220 "data/maps/CeruleanCity/scripts.pory"
-	msgbox CeruleanCity_Text_GruntIntro
-# 221 "data/maps/CeruleanCity/scripts.pory"
-	setvar VAR_LAST_TALKED, LOCALID_CERULEAN_GRUNT
-# 222 "data/maps/CeruleanCity/scripts.pory"
-	trainerbattle_no_intro TRAINER_TEAM_ROCKET_GRUNT_5, CeruleanCity_Text_GruntDefeat
-# 223 "data/maps/CeruleanCity/scripts.pory"
-	setvar VAR_MAP_SCENE_CERULEAN_CITY_ROCKET, 1
-# 224 "data/maps/CeruleanCity/scripts.pory"
-	goto CeruleanCity_EventScript_GruntDefeated
-# 225 "data/maps/CeruleanCity/scripts.pory"
+# 199 "data/maps/CeruleanCity/scripts.pory"
+	msgbox CeruleanCity_Text_MakeRoomForThisCantRun
+# 200 "data/maps/CeruleanCity/scripts.pory"
+	release
+# 201 "data/maps/CeruleanCity/scripts.pory"
 	end
-# 226 "data/maps/CeruleanCity/scripts.pory"
+# 202 "data/maps/CeruleanCity/scripts.pory"
 
-# 227 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_Policeman::
-# 228 "data/maps/CeruleanCity/scripts.pory"
-	lock
-# 229 "data/maps/CeruleanCity/scripts.pory"
-	faceplayer
-# 230 "data/maps/CeruleanCity/scripts.pory"
-	msgbox CeruleanCity_Text_PeopleHereWereRobbed
-# 231 "data/maps/CeruleanCity/scripts.pory"
-	closemessage
-# 232 "data/maps/CeruleanCity/scripts.pory"
-	applymovement LOCALID_CERULEAN_POLICEMAN, Common_Movement_FaceOriginalDirection
-# 233 "data/maps/CeruleanCity/scripts.pory"
+# 203 "data/maps/CeruleanCity/scripts.pory"
+CeruleanCity_EventScript_GruntTriggerTop::
+# 204 "data/maps/CeruleanCity/scripts.pory"
+	lockall
+# 205 "data/maps/CeruleanCity/scripts.pory"
+	setvar VAR_TEMP_1, 0
+# 206 "data/maps/CeruleanCity/scripts.pory"
+	applymovement LOCALID_CERULEAN_GRUNT, Common_Movement_WalkInPlaceFasterUp
+# 207 "data/maps/CeruleanCity/scripts.pory"
 	waitmovement 0
-# 234 "data/maps/CeruleanCity/scripts.pory"
-	release
-# 235 "data/maps/CeruleanCity/scripts.pory"
+# 208 "data/maps/CeruleanCity/scripts.pory"
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+# 209 "data/maps/CeruleanCity/scripts.pory"
+	waitmovement 0
+# 210 "data/maps/CeruleanCity/scripts.pory"
+	goto CeruleanCity_EventScript_GruntTrigger
+# 211 "data/maps/CeruleanCity/scripts.pory"
 	end
-# 236 "data/maps/CeruleanCity/scripts.pory"
+# 212 "data/maps/CeruleanCity/scripts.pory"
 
-# 237 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_LittleBoy::
-# 238 "data/maps/CeruleanCity/scripts.pory"
+# 213 "data/maps/CeruleanCity/scripts.pory"
+CeruleanCity_EventScript_GruntTriggerBottom::
+# 214 "data/maps/CeruleanCity/scripts.pory"
+	lockall
+# 215 "data/maps/CeruleanCity/scripts.pory"
+	setvar VAR_TEMP_1, 1
+# 216 "data/maps/CeruleanCity/scripts.pory"
+	applymovement LOCALID_CERULEAN_GRUNT, Common_Movement_WalkInPlaceFasterDown
+# 217 "data/maps/CeruleanCity/scripts.pory"
+	waitmovement 0
+# 218 "data/maps/CeruleanCity/scripts.pory"
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+# 219 "data/maps/CeruleanCity/scripts.pory"
+	waitmovement 0
+# 220 "data/maps/CeruleanCity/scripts.pory"
+	goto CeruleanCity_EventScript_GruntTrigger
+# 221 "data/maps/CeruleanCity/scripts.pory"
+	end
+# 222 "data/maps/CeruleanCity/scripts.pory"
+
+# 223 "data/maps/CeruleanCity/scripts.pory"
+CeruleanCity_EventScript_GruntTrigger::
+# 224 "data/maps/CeruleanCity/scripts.pory"
+	textcolor NPC_TEXT_COLOR_MALE
+# 225 "data/maps/CeruleanCity/scripts.pory"
+	msgbox CeruleanCity_Text_GruntIntro
+# 226 "data/maps/CeruleanCity/scripts.pory"
+	setvar VAR_LAST_TALKED, LOCALID_CERULEAN_GRUNT
+# 227 "data/maps/CeruleanCity/scripts.pory"
+	trainerbattle_no_intro TRAINER_TEAM_ROCKET_GRUNT_5, CeruleanCity_Text_GruntDefeat
+# 228 "data/maps/CeruleanCity/scripts.pory"
+	setvar VAR_MAP_SCENE_CERULEAN_CITY_ROCKET, 1
+# 229 "data/maps/CeruleanCity/scripts.pory"
+	goto CeruleanCity_EventScript_GruntDefeated
+# 230 "data/maps/CeruleanCity/scripts.pory"
+	end
+# 231 "data/maps/CeruleanCity/scripts.pory"
+
+# 232 "data/maps/CeruleanCity/scripts.pory"
+CeruleanCity_EventScript_Policeman::
+# 233 "data/maps/CeruleanCity/scripts.pory"
 	lock
-# 239 "data/maps/CeruleanCity/scripts.pory"
+# 234 "data/maps/CeruleanCity/scripts.pory"
 	faceplayer
-# 240 "data/maps/CeruleanCity/scripts.pory"
-	goto_if_set FLAG_GOT_SS_TICKET, CeruleanCity_EventScript_LittleBoySlowbroMoved
-# 241 "data/maps/CeruleanCity/scripts.pory"
-	msgbox CeruleanCity_Text_IfSlowbroWasntThereCouldCutTree
-# 242 "data/maps/CeruleanCity/scripts.pory"
+# 235 "data/maps/CeruleanCity/scripts.pory"
+	msgbox CeruleanCity_Text_PeopleHereWereRobbed
+# 236 "data/maps/CeruleanCity/scripts.pory"
+	closemessage
+# 237 "data/maps/CeruleanCity/scripts.pory"
+	applymovement LOCALID_CERULEAN_POLICEMAN, Common_Movement_FaceOriginalDirection
+# 238 "data/maps/CeruleanCity/scripts.pory"
+	waitmovement 0
+# 239 "data/maps/CeruleanCity/scripts.pory"
 	release
-# 243 "data/maps/CeruleanCity/scripts.pory"
+# 240 "data/maps/CeruleanCity/scripts.pory"
 	end
-# 244 "data/maps/CeruleanCity/scripts.pory"
+# 241 "data/maps/CeruleanCity/scripts.pory"
 
+# 242 "data/maps/CeruleanCity/scripts.pory"
+CeruleanCity_EventScript_LittleBoy::
+# 243 "data/maps/CeruleanCity/scripts.pory"
+	lock
+# 244 "data/maps/CeruleanCity/scripts.pory"
+	faceplayer
 # 245 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_LittleBoySlowbroMoved::
+	goto_if_set FLAG_GOT_SS_TICKET, CeruleanCity_EventScript_LittleBoySlowbroMoved
 # 246 "data/maps/CeruleanCity/scripts.pory"
-	msgbox CeruleanCity_Text_YouCanCutDownSmallTrees
+	msgbox CeruleanCity_Text_IfSlowbroWasntThereCouldCutTree
 # 247 "data/maps/CeruleanCity/scripts.pory"
 	release
 # 248 "data/maps/CeruleanCity/scripts.pory"
@@ -497,222 +497,344 @@ CeruleanCity_EventScript_LittleBoySlowbroMoved::
 # 249 "data/maps/CeruleanCity/scripts.pory"
 
 # 250 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_BaldingMan::
+CeruleanCity_EventScript_LittleBoySlowbroMoved::
 # 251 "data/maps/CeruleanCity/scripts.pory"
-	msgbox CeruleanCity_Text_PokemonEncyclopediaAmusing, MSGBOX_NPC
+	msgbox CeruleanCity_Text_YouCanCutDownSmallTrees
 # 252 "data/maps/CeruleanCity/scripts.pory"
-	end
+	release
 # 253 "data/maps/CeruleanCity/scripts.pory"
-
+	end
 # 254 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_Youngster::
+
 # 255 "data/maps/CeruleanCity/scripts.pory"
-	msgbox CeruleanCity_Text_TrainerLifeIsToughIsntIt, MSGBOX_NPC
+CeruleanCity_EventScript_BaldingMan::
 # 256 "data/maps/CeruleanCity/scripts.pory"
-	end
+	msgbox CeruleanCity_Text_PokemonEncyclopediaAmusing, MSGBOX_NPC
 # 257 "data/maps/CeruleanCity/scripts.pory"
-
+	end
 # 258 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_CeruleanCaveGuard::
+
 # 259 "data/maps/CeruleanCity/scripts.pory"
-	msgbox CeruleanCity_Text_ThisIsCeruleanCave, MSGBOX_NPC
+CeruleanCity_EventScript_Youngster::
 # 260 "data/maps/CeruleanCity/scripts.pory"
-	end
+	msgbox CeruleanCity_Text_TrainerLifeIsToughIsntIt, MSGBOX_NPC
 # 261 "data/maps/CeruleanCity/scripts.pory"
-
+	end
 # 262 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_Woman::
+
 # 263 "data/maps/CeruleanCity/scripts.pory"
-	lock
+CeruleanCity_EventScript_CeruleanCaveGuard::
 # 264 "data/maps/CeruleanCity/scripts.pory"
-	faceplayer
+	msgbox CeruleanCity_Text_ThisIsCeruleanCave, MSGBOX_NPC
 # 265 "data/maps/CeruleanCity/scripts.pory"
-	msgbox CeruleanCity_Text_WantBrightRedBicycle
+	end
 # 266 "data/maps/CeruleanCity/scripts.pory"
-	closemessage
+
 # 267 "data/maps/CeruleanCity/scripts.pory"
-	applymovement LOCALID_CERULEAN_WOMAN, Common_Movement_FaceOriginalDirection
+CeruleanCity_EventScript_Woman::
 # 268 "data/maps/CeruleanCity/scripts.pory"
-	waitmovement 0
+	lock
 # 269 "data/maps/CeruleanCity/scripts.pory"
-	release
+	faceplayer
 # 270 "data/maps/CeruleanCity/scripts.pory"
-	end
+	msgbox CeruleanCity_Text_WantBrightRedBicycle
 # 271 "data/maps/CeruleanCity/scripts.pory"
-
+	closemessage
 # 272 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_Lass::
+	applymovement LOCALID_CERULEAN_WOMAN, Common_Movement_FaceOriginalDirection
 # 273 "data/maps/CeruleanCity/scripts.pory"
-	lock
-# 274 "data/maps/CeruleanCity/scripts.pory"
-	random 3
-# 275 "data/maps/CeruleanCity/scripts.pory"
-	copyvar VAR_0x8008, VAR_RESULT
-# 276 "data/maps/CeruleanCity/scripts.pory"
-	call_if_eq VAR_0x8008, 0, CeruleanCity_EventScript_SlowbroCommand1
-# 277 "data/maps/CeruleanCity/scripts.pory"
-	call_if_eq VAR_0x8008, 1, CeruleanCity_EventScript_SlowbroCommand2
-# 278 "data/maps/CeruleanCity/scripts.pory"
-	call_if_eq VAR_0x8008, 2, CeruleanCity_EventScript_SlowbroCommand3
-# 279 "data/maps/CeruleanCity/scripts.pory"
-	waitmessage
-# 280 "data/maps/CeruleanCity/scripts.pory"
-	delay 40
-# 281 "data/maps/CeruleanCity/scripts.pory"
-	playse SE_PIN
-# 282 "data/maps/CeruleanCity/scripts.pory"
-	applymovement LOCALID_CERULEAN_SLOWBRO, Common_Movement_QuestionMark
-# 283 "data/maps/CeruleanCity/scripts.pory"
 	waitmovement 0
-# 284 "data/maps/CeruleanCity/scripts.pory"
-	delay 30
-# 285 "data/maps/CeruleanCity/scripts.pory"
-	call_if_eq VAR_0x8008, 0, CeruleanCity_EventScript_SlowbroFailed1
-# 286 "data/maps/CeruleanCity/scripts.pory"
-	call_if_eq VAR_0x8008, 1, CeruleanCity_EventScript_SlowbroFailed2
-# 287 "data/maps/CeruleanCity/scripts.pory"
-	call_if_eq VAR_0x8008, 2, CeruleanCity_EventScript_SlowbroFailed3
-# 288 "data/maps/CeruleanCity/scripts.pory"
+# 274 "data/maps/CeruleanCity/scripts.pory"
 	release
-# 289 "data/maps/CeruleanCity/scripts.pory"
+# 275 "data/maps/CeruleanCity/scripts.pory"
 	end
-# 290 "data/maps/CeruleanCity/scripts.pory"
+# 276 "data/maps/CeruleanCity/scripts.pory"
 
-# 291 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_SlowbroCommand1::
-# 292 "data/maps/CeruleanCity/scripts.pory"
-	message CeruleanCity_Text_SlowbroUseSonicboom
-# 293 "data/maps/CeruleanCity/scripts.pory"
-	return
-# 294 "data/maps/CeruleanCity/scripts.pory"
-
-# 295 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_SlowbroCommand2::
-# 296 "data/maps/CeruleanCity/scripts.pory"
-	message CeruleanCity_Text_SlowbroPunch
-# 297 "data/maps/CeruleanCity/scripts.pory"
-	return
-# 298 "data/maps/CeruleanCity/scripts.pory"
-
-# 299 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_SlowbroCommand3::
-# 300 "data/maps/CeruleanCity/scripts.pory"
-	message CeruleanCity_Text_SlowbroWithdraw
-# 301 "data/maps/CeruleanCity/scripts.pory"
-	return
-# 302 "data/maps/CeruleanCity/scripts.pory"
-
-# 303 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_SlowbroFailed1::
-# 304 "data/maps/CeruleanCity/scripts.pory"
-	msgbox CeruleanCity_Text_SlowbroPayAttention
-# 305 "data/maps/CeruleanCity/scripts.pory"
-	return
-# 306 "data/maps/CeruleanCity/scripts.pory"
-
-# 307 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_SlowbroFailed2::
-# 308 "data/maps/CeruleanCity/scripts.pory"
-	msgbox CeruleanCity_Text_NoYouBlewItAgain
-# 309 "data/maps/CeruleanCity/scripts.pory"
-	return
-# 310 "data/maps/CeruleanCity/scripts.pory"
-
-# 311 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_SlowbroFailed3::
-# 312 "data/maps/CeruleanCity/scripts.pory"
-	msgbox CeruleanCity_Text_HardToControlMonsObedience
-# 313 "data/maps/CeruleanCity/scripts.pory"
-	return
-# 314 "data/maps/CeruleanCity/scripts.pory"
-
-# 315 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_Slowbro::
-# 316 "data/maps/CeruleanCity/scripts.pory"
+# 277 "data/maps/CeruleanCity/scripts.pory"
+CeruleanCity_EventScript_Lass::
+# 278 "data/maps/CeruleanCity/scripts.pory"
 	lock
-# 317 "data/maps/CeruleanCity/scripts.pory"
-	random 4
-# 318 "data/maps/CeruleanCity/scripts.pory"
+# 279 "data/maps/CeruleanCity/scripts.pory"
+	random 3
+# 280 "data/maps/CeruleanCity/scripts.pory"
 	copyvar VAR_0x8008, VAR_RESULT
-# 319 "data/maps/CeruleanCity/scripts.pory"
-	call_if_eq VAR_0x8008, 0, CeruleanCity_EventScript_SlowbroText1
-# 320 "data/maps/CeruleanCity/scripts.pory"
-	call_if_eq VAR_0x8008, 1, CeruleanCity_EventScript_SlowbroText2
-# 321 "data/maps/CeruleanCity/scripts.pory"
-	call_if_eq VAR_0x8008, 2, CeruleanCity_EventScript_SlowbroText3
-# 322 "data/maps/CeruleanCity/scripts.pory"
-	call_if_eq VAR_0x8008, 3, CeruleanCity_EventScript_SlowbroText4
-# 323 "data/maps/CeruleanCity/scripts.pory"
+# 281 "data/maps/CeruleanCity/scripts.pory"
+	call_if_eq VAR_0x8008, 0, CeruleanCity_EventScript_SlowbroCommand1
+# 282 "data/maps/CeruleanCity/scripts.pory"
+	call_if_eq VAR_0x8008, 1, CeruleanCity_EventScript_SlowbroCommand2
+# 283 "data/maps/CeruleanCity/scripts.pory"
+	call_if_eq VAR_0x8008, 2, CeruleanCity_EventScript_SlowbroCommand3
+# 284 "data/maps/CeruleanCity/scripts.pory"
+	waitmessage
+# 285 "data/maps/CeruleanCity/scripts.pory"
+	delay 40
+# 286 "data/maps/CeruleanCity/scripts.pory"
+	playse SE_PIN
+# 287 "data/maps/CeruleanCity/scripts.pory"
+	applymovement LOCALID_CERULEAN_SLOWBRO, Common_Movement_QuestionMark
+# 288 "data/maps/CeruleanCity/scripts.pory"
+	waitmovement 0
+# 289 "data/maps/CeruleanCity/scripts.pory"
+	delay 30
+# 290 "data/maps/CeruleanCity/scripts.pory"
+	call_if_eq VAR_0x8008, 0, CeruleanCity_EventScript_SlowbroFailed1
+# 291 "data/maps/CeruleanCity/scripts.pory"
+	call_if_eq VAR_0x8008, 1, CeruleanCity_EventScript_SlowbroFailed2
+# 292 "data/maps/CeruleanCity/scripts.pory"
+	call_if_eq VAR_0x8008, 2, CeruleanCity_EventScript_SlowbroFailed3
+# 293 "data/maps/CeruleanCity/scripts.pory"
 	release
+# 294 "data/maps/CeruleanCity/scripts.pory"
+	end
+# 295 "data/maps/CeruleanCity/scripts.pory"
+
+# 296 "data/maps/CeruleanCity/scripts.pory"
+CeruleanCity_EventScript_SlowbroCommand1::
+# 297 "data/maps/CeruleanCity/scripts.pory"
+	message CeruleanCity_Text_SlowbroUseSonicboom
+# 298 "data/maps/CeruleanCity/scripts.pory"
+	return
+# 299 "data/maps/CeruleanCity/scripts.pory"
+
+# 300 "data/maps/CeruleanCity/scripts.pory"
+CeruleanCity_EventScript_SlowbroCommand2::
+# 301 "data/maps/CeruleanCity/scripts.pory"
+	message CeruleanCity_Text_SlowbroPunch
+# 302 "data/maps/CeruleanCity/scripts.pory"
+	return
+# 303 "data/maps/CeruleanCity/scripts.pory"
+
+# 304 "data/maps/CeruleanCity/scripts.pory"
+CeruleanCity_EventScript_SlowbroCommand3::
+# 305 "data/maps/CeruleanCity/scripts.pory"
+	message CeruleanCity_Text_SlowbroWithdraw
+# 306 "data/maps/CeruleanCity/scripts.pory"
+	return
+# 307 "data/maps/CeruleanCity/scripts.pory"
+
+# 308 "data/maps/CeruleanCity/scripts.pory"
+CeruleanCity_EventScript_SlowbroFailed1::
+# 309 "data/maps/CeruleanCity/scripts.pory"
+	msgbox CeruleanCity_Text_SlowbroPayAttention
+# 310 "data/maps/CeruleanCity/scripts.pory"
+	return
+# 311 "data/maps/CeruleanCity/scripts.pory"
+
+# 312 "data/maps/CeruleanCity/scripts.pory"
+CeruleanCity_EventScript_SlowbroFailed2::
+# 313 "data/maps/CeruleanCity/scripts.pory"
+	msgbox CeruleanCity_Text_NoYouBlewItAgain
+# 314 "data/maps/CeruleanCity/scripts.pory"
+	return
+# 315 "data/maps/CeruleanCity/scripts.pory"
+
+# 316 "data/maps/CeruleanCity/scripts.pory"
+CeruleanCity_EventScript_SlowbroFailed3::
+# 317 "data/maps/CeruleanCity/scripts.pory"
+	msgbox CeruleanCity_Text_HardToControlMonsObedience
+# 318 "data/maps/CeruleanCity/scripts.pory"
+	return
+# 319 "data/maps/CeruleanCity/scripts.pory"
+
+# 320 "data/maps/CeruleanCity/scripts.pory"
+CeruleanCity_EventScript_Slowbro::
+# 321 "data/maps/CeruleanCity/scripts.pory"
+	lock
+# 322 "data/maps/CeruleanCity/scripts.pory"
+	random 4
+# 323 "data/maps/CeruleanCity/scripts.pory"
+	copyvar VAR_0x8008, VAR_RESULT
 # 324 "data/maps/CeruleanCity/scripts.pory"
-	end
+	call_if_eq VAR_0x8008, 0, CeruleanCity_EventScript_SlowbroText1
 # 325 "data/maps/CeruleanCity/scripts.pory"
-
+	call_if_eq VAR_0x8008, 1, CeruleanCity_EventScript_SlowbroText2
 # 326 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_SlowbroText1::
+	call_if_eq VAR_0x8008, 2, CeruleanCity_EventScript_SlowbroText3
 # 327 "data/maps/CeruleanCity/scripts.pory"
-	msgbox CeruleanCity_Text_SlowbroTookSnooze
+	call_if_eq VAR_0x8008, 3, CeruleanCity_EventScript_SlowbroText4
 # 328 "data/maps/CeruleanCity/scripts.pory"
-	return
+	release
 # 329 "data/maps/CeruleanCity/scripts.pory"
-
+	end
 # 330 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_SlowbroText2::
+
 # 331 "data/maps/CeruleanCity/scripts.pory"
-	msgbox CeruleanCity_Text_SlowbroLoafingAround
+CeruleanCity_EventScript_SlowbroText1::
 # 332 "data/maps/CeruleanCity/scripts.pory"
-	return
+	msgbox CeruleanCity_Text_SlowbroTookSnooze
 # 333 "data/maps/CeruleanCity/scripts.pory"
-
+	return
 # 334 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_SlowbroText3::
+
 # 335 "data/maps/CeruleanCity/scripts.pory"
-	msgbox CeruleanCity_Text_SlowbroTurnedAway
+CeruleanCity_EventScript_SlowbroText2::
 # 336 "data/maps/CeruleanCity/scripts.pory"
-	return
+	msgbox CeruleanCity_Text_SlowbroLoafingAround
 # 337 "data/maps/CeruleanCity/scripts.pory"
-
-# 338 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_SlowbroText4::
-# 339 "data/maps/CeruleanCity/scripts.pory"
-	msgbox CeruleanCity_Text_SlowbroIgnoredOrders
-# 340 "data/maps/CeruleanCity/scripts.pory"
 	return
+# 338 "data/maps/CeruleanCity/scripts.pory"
+
+# 339 "data/maps/CeruleanCity/scripts.pory"
+CeruleanCity_EventScript_SlowbroText3::
+# 340 "data/maps/CeruleanCity/scripts.pory"
+	msgbox CeruleanCity_Text_SlowbroTurnedAway
 # 341 "data/maps/CeruleanCity/scripts.pory"
-
+	return
 # 342 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_CitySign::
+
 # 343 "data/maps/CeruleanCity/scripts.pory"
-	msgbox CeruleanCity_Text_CitySign, MSGBOX_SIGN
+CeruleanCity_EventScript_SlowbroText4::
 # 344 "data/maps/CeruleanCity/scripts.pory"
-	end
+	msgbox CeruleanCity_Text_SlowbroIgnoredOrders
 # 345 "data/maps/CeruleanCity/scripts.pory"
-
+	return
 # 346 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_TrainerTips::
+
 # 347 "data/maps/CeruleanCity/scripts.pory"
-	msgbox CeruleanCity_Text_TrainerTipsHeldItems, MSGBOX_SIGN
+CeruleanCity_EventScript_CitySign::
 # 348 "data/maps/CeruleanCity/scripts.pory"
-	end
+	msgbox CeruleanCity_Text_CitySign, MSGBOX_SIGN
 # 349 "data/maps/CeruleanCity/scripts.pory"
-
-# 350 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_BikeShopSign::
-# 351 "data/maps/CeruleanCity/scripts.pory"
-	msgbox CeruleanCity_Text_BikeShopSign, MSGBOX_SIGN
-# 352 "data/maps/CeruleanCity/scripts.pory"
 	end
-# 353 "data/maps/CeruleanCity/scripts.pory"
+# 350 "data/maps/CeruleanCity/scripts.pory"
 
+# 351 "data/maps/CeruleanCity/scripts.pory"
+CeruleanCity_EventScript_TrainerTips::
+# 352 "data/maps/CeruleanCity/scripts.pory"
+	msgbox CeruleanCity_Text_TrainerTipsHeldItems, MSGBOX_SIGN
+# 353 "data/maps/CeruleanCity/scripts.pory"
+	end
 # 354 "data/maps/CeruleanCity/scripts.pory"
-CeruleanCity_EventScript_GymSign::
+
 # 355 "data/maps/CeruleanCity/scripts.pory"
-	lockall
+CeruleanCity_EventScript_BikeShopSign::
 # 356 "data/maps/CeruleanCity/scripts.pory"
-	famechecker FAMECHECKER_MISTY, 0
+	msgbox CeruleanCity_Text_BikeShopSign, MSGBOX_SIGN
 # 357 "data/maps/CeruleanCity/scripts.pory"
-	msgbox CeruleanCity_Text_GymSign
+	end
 # 358 "data/maps/CeruleanCity/scripts.pory"
-	releaseall
+
 # 359 "data/maps/CeruleanCity/scripts.pory"
+CeruleanCity_EventScript_GymSign::
+# 360 "data/maps/CeruleanCity/scripts.pory"
+	lockall
+# 361 "data/maps/CeruleanCity/scripts.pory"
+	famechecker FAMECHECKER_MISTY, 0
+# 362 "data/maps/CeruleanCity/scripts.pory"
+	msgbox CeruleanCity_Text_GymSign
+# 363 "data/maps/CeruleanCity/scripts.pory"
+	releaseall
+# 364 "data/maps/CeruleanCity/scripts.pory"
+	end
+# 365 "data/maps/CeruleanCity/scripts.pory"
+
+# 366 "data/maps/CeruleanCity/scripts.pory"
+CeruleanCity_EventScript_PolicemanBarricade1::
+# 367 "data/maps/CeruleanCity/scripts.pory"
+	lock
+# 368 "data/maps/CeruleanCity/scripts.pory"
+	faceplayer
+# 369 "data/maps/CeruleanCity/scripts.pory"
+	msgbox CeruleanCity_Text_SorryNoOneCanLeaveTHisWay
+# 370 "data/maps/CeruleanCity/scripts.pory"
+	closemessage
+# 371 "data/maps/CeruleanCity/scripts.pory"
+	applymovement LOCALID_CERULEAN_POLICEMAN_BARRICADE_1, Common_Movement_FaceOriginalDirection
+# 372 "data/maps/CeruleanCity/scripts.pory"
+	waitmovement 0
+# 373 "data/maps/CeruleanCity/scripts.pory"
+	release
+# 374 "data/maps/CeruleanCity/scripts.pory"
+	end
+# 375 "data/maps/CeruleanCity/scripts.pory"
+
+# 376 "data/maps/CeruleanCity/scripts.pory"
+CeruleanCity_EventScript_PolicemanBarricade2::
+# 377 "data/maps/CeruleanCity/scripts.pory"
+	lock
+# 378 "data/maps/CeruleanCity/scripts.pory"
+	faceplayer
+# 379 "data/maps/CeruleanCity/scripts.pory"
+	msgbox CeruleanCity_Text_SorryNoOneCanLeaveTHisWay
+# 380 "data/maps/CeruleanCity/scripts.pory"
+	closemessage
+# 381 "data/maps/CeruleanCity/scripts.pory"
+	applymovement LOCALID_CERULEAN_POLICEMAN_BARRICADE_2, Common_Movement_FaceOriginalDirection
+# 382 "data/maps/CeruleanCity/scripts.pory"
+	waitmovement 0
+# 383 "data/maps/CeruleanCity/scripts.pory"
+	release
+# 384 "data/maps/CeruleanCity/scripts.pory"
+	end
+# 385 "data/maps/CeruleanCity/scripts.pory"
+
+# 386 "data/maps/CeruleanCity/scripts.pory"
+CeruleanCity_EventScript_Growlithe1::
+# 387 "data/maps/CeruleanCity/scripts.pory"
+	lock
+# 388 "data/maps/CeruleanCity/scripts.pory"
+	faceplayer
+# 389 "data/maps/CeruleanCity/scripts.pory"
+	playmoncry SPECIES_GROWLITHE, CRY_MODE_NORMAL
+# 390 "data/maps/CeruleanCity/scripts.pory"
+	msgbox CeruleanCity_Text_Growlithe
+# 391 "data/maps/CeruleanCity/scripts.pory"
+	waitmoncry
+# 392 "data/maps/CeruleanCity/scripts.pory"
+	applymovement LOCALID_CERULEAN_GROWLITHE_1, Common_Movement_FaceOriginalDirection
+# 393 "data/maps/CeruleanCity/scripts.pory"
+	waitmovement 0
+# 394 "data/maps/CeruleanCity/scripts.pory"
+	release
+# 395 "data/maps/CeruleanCity/scripts.pory"
+	closemessage
+# 396 "data/maps/CeruleanCity/scripts.pory"
+	end
+# 397 "data/maps/CeruleanCity/scripts.pory"
+
+# 398 "data/maps/CeruleanCity/scripts.pory"
+CeruleanCity_EventScript_Growlithe2::
+# 399 "data/maps/CeruleanCity/scripts.pory"
+	lock
+# 400 "data/maps/CeruleanCity/scripts.pory"
+	faceplayer
+# 401 "data/maps/CeruleanCity/scripts.pory"
+	playmoncry SPECIES_GROWLITHE, CRY_MODE_NORMAL
+# 402 "data/maps/CeruleanCity/scripts.pory"
+	msgbox CeruleanCity_Text_Growlithe
+# 403 "data/maps/CeruleanCity/scripts.pory"
+	waitmoncry
+# 404 "data/maps/CeruleanCity/scripts.pory"
+	applymovement LOCALID_CERULEAN_GROWLITHE_2, Common_Movement_FaceOriginalDirection
+# 405 "data/maps/CeruleanCity/scripts.pory"
+	waitmovement 0
+# 406 "data/maps/CeruleanCity/scripts.pory"
+	release
+# 407 "data/maps/CeruleanCity/scripts.pory"
+	closemessage
+# 408 "data/maps/CeruleanCity/scripts.pory"
+	end
+# 409 "data/maps/CeruleanCity/scripts.pory"
+
+# 410 "data/maps/CeruleanCity/scripts.pory"
+CeruleanCity_EventScript_Growlithe3::
+# 411 "data/maps/CeruleanCity/scripts.pory"
+	lock
+# 412 "data/maps/CeruleanCity/scripts.pory"
+	faceplayer
+# 413 "data/maps/CeruleanCity/scripts.pory"
+	playmoncry SPECIES_GROWLITHE, CRY_MODE_NORMAL
+# 414 "data/maps/CeruleanCity/scripts.pory"
+	msgbox CeruleanCity_Text_Growlithe
+# 415 "data/maps/CeruleanCity/scripts.pory"
+	waitmoncry
+# 416 "data/maps/CeruleanCity/scripts.pory"
+	applymovement LOCALID_CERULEAN_GROWLITHE_3, Common_Movement_FaceOriginalDirection
+# 417 "data/maps/CeruleanCity/scripts.pory"
+	waitmovement 0
+# 418 "data/maps/CeruleanCity/scripts.pory"
+	release
+# 419 "data/maps/CeruleanCity/scripts.pory"
+	closemessage
+# 420 "data/maps/CeruleanCity/scripts.pory"
 	end

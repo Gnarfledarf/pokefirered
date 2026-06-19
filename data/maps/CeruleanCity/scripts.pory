@@ -184,6 +184,11 @@ CeruleanCity_EventScript_GruntDefeated::
 	closemessage
 	fadescreenswapbuffers FADE_TO_BLACK
 	removeobject LOCALID_CERULEAN_GRUNT
+	removeobject LOCALID_CERULEAN_GROWLITHE_1
+	removeobject LOCALID_CERULEAN_POLICEMAN_BARRICADE_1
+	removeobject LOCALID_CERULEAN_GROWLITHE_2
+	removeobject LOCALID_CERULEAN_POLICEMAN_BARRICADE_2
+	removeobject LOCALID_CERULEAN_GROWLITHE_3
 	fadescreenswapbuffers FADE_FROM_BLACK
 	setflag FLAG_GOT_TM28_FROM_ROCKET
 	release
@@ -356,5 +361,61 @@ CeruleanCity_EventScript_GymSign::
 	famechecker FAMECHECKER_MISTY, 0
 	msgbox CeruleanCity_Text_GymSign
 	releaseall
+	end
+
+CeruleanCity_EventScript_PolicemanBarricade1::
+	lock
+	faceplayer
+	msgbox CeruleanCity_Text_SorryNoOneCanLeaveTHisWay
+	closemessage
+	applymovement LOCALID_CERULEAN_POLICEMAN_BARRICADE_1, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
+CeruleanCity_EventScript_PolicemanBarricade2::
+	lock
+	faceplayer
+	msgbox CeruleanCity_Text_SorryNoOneCanLeaveTHisWay
+	closemessage
+	applymovement LOCALID_CERULEAN_POLICEMAN_BARRICADE_2, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
+CeruleanCity_EventScript_Growlithe1::
+	lock
+	faceplayer
+	playmoncry SPECIES_GROWLITHE, CRY_MODE_NORMAL
+	msgbox CeruleanCity_Text_Growlithe
+	waitmoncry
+	applymovement LOCALID_CERULEAN_GROWLITHE_1, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	closemessage
+	end
+
+CeruleanCity_EventScript_Growlithe2::
+	lock
+	faceplayer
+	playmoncry SPECIES_GROWLITHE, CRY_MODE_NORMAL
+	msgbox CeruleanCity_Text_Growlithe
+	waitmoncry
+	applymovement LOCALID_CERULEAN_GROWLITHE_2, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	closemessage
+	end
+
+CeruleanCity_EventScript_Growlithe3::
+	lock
+	faceplayer
+	playmoncry SPECIES_GROWLITHE, CRY_MODE_NORMAL
+	msgbox CeruleanCity_Text_Growlithe
+	waitmoncry
+	applymovement LOCALID_CERULEAN_GROWLITHE_3, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	closemessage
 	end
 `

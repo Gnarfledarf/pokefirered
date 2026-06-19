@@ -1,0 +1,19 @@
+raw `
+MtMoon_Square_Shop_MapScripts::
+	.byte 0
+
+MtMoon_Square_Shop_EventScript_Old_Man::
+	goto_if_questlog EventScript_ReleaseEnd
+	lock
+	faceplayer
+	message MtMoon_Square_Shop_Text_YouMustBeTiredFromClimbing
+	waitmessage
+	pokemart SHOP_ID_MT_MOON_SQUARE_MART
+	msgbox MtMoon_Square_Shop_Text_ComeBackAnytime
+	release
+	end
+
+MtMoon_Square_Shop_EventScript_Lass::
+	msgbox MtMoon_Square_Shop_Text_WhenTheSunGoesOut, MSGBOX_NPC
+	end
+`

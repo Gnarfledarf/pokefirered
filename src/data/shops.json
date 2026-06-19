@@ -377,6 +377,21 @@
                     ]
                 }
             ]
+        },
+        {
+            "id": "SHOP_ID_MT_MOON_SQUARE_MART",
+            "stages": [
+                {
+                    "items": [
+                        "ITEM_POKE_DOLL",
+                        "ITEM_FRESH_WATER",
+                        "ITEM_SODA_POP",
+                        "ITEM_LEMONADE",
+                        "ITEM_REPEL",
+                        "ITEM_DREAM_MAIL"
+                    ]
+                }
+            ]
         }
     ]
 }

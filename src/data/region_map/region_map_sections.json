@@ -1099,7 +1099,11 @@
     },
     {
       "id": "MAPSEC_MT_MOON_SQUARE",
-      "name": "Mt. Moon Square"
+      "name": "Mt. Moon Square",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "height": 1
     }
   ]
 }

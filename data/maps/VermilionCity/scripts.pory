@@ -2,11 +2,16 @@ raw `
 VermilionCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, VermilionCity_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, VermilionCity_OnFrame
+	map_script MAP_SCRIPT_ON_LOAD, VermilionCity_OnLoad
 	.byte 0
 
 VermilionCity_OnFrame::
 	map_script_2 VAR_MAP_SCENE_VERMILION_CITY, 2, VermilionCity_EventScript_ExitSSAnne
 	.2byte 0
+
+VermilionCity_OnLoad::
+	special SetRoofBirds
+	end
 
 VermilionCity_EventScript_ExitSSAnne::
 	lockall
